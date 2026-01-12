@@ -8,9 +8,13 @@
  * - Détection vitesse de compréhension
  * - Mémorisation exercices
  */
+import { findCompetence, NIVEAU_TO_SCORE, getScoreToNiveau } from '../data/competencesExcel.js';
+
 class UserProfile {
   constructor() {
     this.niveau = null;
+    this.scoreGranulaire = 0; // NOUVEAU
+    this.competences = {}; // NOUVEAU
     this.contexteMetier = null;
     this.historique = [];
     
@@ -75,7 +79,39 @@ class UserProfile {
     };
     console.log(`📝 [UserProfile] Exercice proposé: ${exerciceMetadata.type}`);
   }
+  // NOUVEAU : Marquer un exercice comme terminé
+markExerciceComplete(exerciceId, success, score) {
+  if (!this.exerciceEnCours || this.exerciceEnCours.id !== exerciceId) {
+    console.warn('⚠️ [UserProfile] Exercice terminé mais pas celui en cours');
+    return;
+  }
   
+  // Ajouter à l'historique
+  const completedExercice = {
+    ...this.exerciceEnCours,
+    completedAt: new Date(),
+    success: success,
+    score: score,
+    attempts: 1
+  };
+  
+  this.addToHistory({
+    type: 'exercice',
+    exerciceId: exerciceId,
+    exerciceTopic: this.exerciceEnCours.type,
+    exerciceSuccess: success,
+    exerciceScore: score
+  });
+  
+  // Mettre à jour progression
+  this.recordExerciceResult(success, this.exerciceEnCours.type);
+  
+  // Vider l'exercice en cours
+  this.exerciceEnCours = null;
+  
+  console.log(`✅ [UserProfile] Exercice ${exerciceId} terminé (${success ? 'RÉUSSI' : 'ÉCHOUÉ'}, score: ${score}/10)`);
+}
+
   // NOUVEAU : Enregistrer résultat d'un exercice
   recordExerciceResult(success, topic) {
     this.progression.exercicesCompletes++;
@@ -187,10 +223,63 @@ class UserProfile {
       h.exerciceTopic === topic && h.exerciceSuccess === true
     ).length;
   }
+  // NOUVEAU : Enregistrer une compétence maîtrisée
+recordCompetence(competenceNom, maitrise) {
+  const comp = findCompetence(competenceNom);
+  if (!comp) {
+    console.warn(`⚠️ Compétence inconnue: ${competenceNom}`);
+    return;
+  }
   
-  reset() {
-    this.niveau = null;
-    this.contexteMetier = null;
+  if (!this.competences[comp.nom]) {
+    this.competences[comp.nom] = {
+      niveau: comp.niveau,
+      maitrise: 0,
+      tentatives: 0
+    };
+  }
+  
+  this.competences[comp.nom].maitrise = Math.max(
+    this.competences[comp.nom].maitrise,
+    maitrise
+  );
+  this.competences[comp.nom].tentatives++;
+  
+  // Recalculer le score granulaire
+  this.updateScoreGranulaire();
+  
+  console.log(`📈 [UserProfile] Compétence ${comp.nom}: ${maitrise}% maîtrisée`);
+}
+
+// NOUVEAU : Calculer le score granulaire global
+updateScoreGranulaire() {
+  const competencesMaitrisees = Object.values(this.competences)
+    .filter(c => c.maitrise >= 70); // 70% = maîtrisé
+  
+  if (competencesMaitrisees.length === 0) {
+    this.scoreGranulaire = NIVEAU_TO_SCORE[this.niveau] || 0;
+    return;
+  }
+  
+  // Score = niveau moyen des compétences maîtrisées
+  const scoreCalc = competencesMaitrisees.reduce((sum, c) => sum + c.niveau, 0) 
+    / competencesMaitrisees.length;
+  
+  this.scoreGranulaire = Math.round(scoreCalc);
+  
+  // Mettre à jour le label si changement de tranche
+  const nouveauNiveau = getScoreToNiveau(this.scoreGranulaire);
+  if (nouveauNiveau !== this.niveau) {
+    console.log(`📊 [UserProfile] Niveau upgradé: ${this.niveau} → ${nouveauNiveau}`);
+    this.niveau = nouveauNiveau;
+  }
+}
+  
+reset() {
+  this.niveau = null;
+  this.scoreGranulaire = 0; // NOUVEAU
+  this.competences = {}; // NOUVEAU
+  this.contexteMetier = null;
     this.historique = [];
     this.progression = {
       exercicesCompletes: 0,
@@ -214,6 +303,8 @@ class UserProfile {
   getProfile() {
     return {
       niveau: this.niveau,
+      scoreGranulaire: this.scoreGranulaire, // NOUVEAU
+      competences: this.competences, // NOUVEAU
       contexteMetier: this.contexteMetier,
       historiqueLength: this.historique.length,
       progression: this.progression,

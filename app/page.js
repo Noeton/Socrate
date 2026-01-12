@@ -173,13 +173,14 @@ export default function Home() {
     }]);
 
     try {
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('sessionId', sessionId);
-        formData.append('userLevel', userProfile.niveau || 'intermediaire');
-        formData.append('userMetier', userProfile.contexteMetier || 'général');
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('sessionId', sessionId);
+      formData.append('userLevel', userProfile.niveau || 'intermediaire');
+      formData.append('userMetier', userProfile.contexteMetier || 'général');
+      formData.append('exerciceEnCours', userProfile.exerciceEnCours?.id || '');
         
-        const response = await fetch('/api/analyze-excel', {
+      const response = await fetch('/api/analyze-excel', {
         method: 'POST',
         body: formData
       });
@@ -194,6 +195,18 @@ export default function Home() {
         role: 'assistant', 
         content: data.report 
       }]);
+
+      if (data.exerciceScore !== undefined && data.competences) {
+        console.log('📊 [FRONTEND] Score exercice:', data.exerciceScore);
+        console.log('📊 [FRONTEND] Compétences détectées:', data.competences);
+        console.log('📊 [FRONTEND] Exercice ID:', data.exerciceId);
+        
+        setUserProfile(prev => ({
+          ...prev,
+          lastExerciceScore: data.exerciceScore,
+          lastExerciceSuccess: data.exerciceSuccess
+        }));
+      }
 
       console.log('✅ Fichier analysé !', data.analysis);
     } catch (error) {
@@ -236,9 +249,9 @@ export default function Home() {
       </div>
 
       {/* Profil utilisateur */}
-      {(userProfile.niveau || userProfile.contexteMetier) && (
+      {(userProfile.niveau || userProfile.contexteMetier || userProfile.scoreGranulaire > 0) && (
         <div className="bg-blue-50 border-b border-blue-200 p-3">
-          <div className="max-w-4xl mx-auto flex items-center gap-4 text-sm">
+          <div className="max-w-4xl mx-auto flex items-center gap-4 text-sm flex-wrap">
             <span className="font-semibold text-blue-900">📊 Ton profil :</span>
             {userProfile.niveau && (
               <span className="bg-blue-200 text-blue-900 px-3 py-1 rounded-full">
@@ -248,6 +261,16 @@ export default function Home() {
             {userProfile.contexteMetier && (
               <span className="bg-purple-200 text-purple-900 px-3 py-1 rounded-full">
                 Métier : <strong>{userProfile.contexteMetier}</strong>
+              </span>
+            )}
+            {userProfile.scoreGranulaire > 0 && (
+              <span className="bg-green-200 text-green-900 px-3 py-1 rounded-full font-bold">
+                🎯 Score : {userProfile.scoreGranulaire}/50
+              </span>
+            )}
+            {userProfile.competences && Object.keys(userProfile.competences).length > 0 && (
+              <span className="bg-green-100 text-green-900 px-3 py-1 rounded-full">
+                🏆 {Object.keys(userProfile.competences).length} compétence(s)
               </span>
             )}
           </div>

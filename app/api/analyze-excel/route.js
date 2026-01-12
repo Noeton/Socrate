@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import ExcelJS from 'exceljs';
+import { getUserProfile } from '@/shared/utils/userProfilesStore';
+import { detectCompetencesFromExercise, evaluateCompetenceMastery } from '@/shared/utils/competenceDetector';
 
 /**
  * API Route : Analyse INTELLIGENTE de fichiers Excel avec IA
@@ -17,6 +19,8 @@ export async function POST(request) {
     const sessionId = formData.get('sessionId'); // Pour récupérer le profil utilisateur
     const userLevel = formData.get('userLevel') || 'intermediaire'; // Niveau de l'utilisateur
     const userMetier = formData.get('userMetier') || 'général';
+    const exerciceEnCours = formData.get('exerciceEnCours'); // ID de l'exercice si c'est une solution
+    const isSolution = !!exerciceEnCours; // true si c'est une solution d'exercice
 
     if (!file) {
       return NextResponse.json(
@@ -123,9 +127,15 @@ export async function POST(request) {
     // ✨ ANALYSE INTELLIGENTE selon le niveau
     let report = '';
     
-    if (analysis.errors.length === 0) {
-      // Pas d'erreurs → Rapport simple
-      report = generateSimpleReport(analysis, userLevel);
+    if (isSolution) {
+        // MODE CORRECTION : C'est une solution d'exercice
+        console.log('✅ [ANALYZE-EXCEL] Mode CORRECTION : Solution d\'exercice');
+        report = await generateSolutionFeedback(analysis, exerciceEnCours, userLevel, userMetier, sessionId);
+        
+    } else if (analysis.errors.length === 0) {
+        // Pas d'erreurs → Rapport simple
+        report = generateSimpleReport(analysis, userLevel);
+
     } else {
       // Des erreurs détectées → Analyse selon niveau
       
@@ -156,11 +166,22 @@ export async function POST(request) {
       }
     }
 
-    return NextResponse.json({
-      success: true,
-      analysis,
-      report
-    });
+    // Si c'est une solution, retourner aussi metadata
+const response = {
+    success: true,
+    analysis,
+    report: typeof report === 'string' ? report : report.report
+  };
+  
+  if (isSolution && typeof report === 'object') {
+    response.exerciceScore = report.score;
+    response.exerciceSuccess = report.success;
+    response.exerciceId = report.exerciceId;
+    response.competences = report.competences; // NOUVEAU
+  }
+  
+  return NextResponse.json(response);
+
 
   } catch (error) {
     console.error('❌ [API] Erreur analyse Excel:', error);
@@ -460,3 +481,173 @@ function findDivisor(formula, context) {
   
   return { divisor: '?', value: '?', explanation: ' par zéro' };
 }
+/**
+ * CORRECTION DE SOLUTION D'EXERCICE
+ * Analyse intelligente avec IA pour corriger la solution
+ */
+async function generateSolutionFeedback(analysis, exerciceId, userLevel, userMetier, sessionId) {
+    console.log('🎯 [SOLUTION-FEEDBACK] Correction exercice:', exerciceId);
+    
+    try {
+      // Préparer le contexte pour Claude
+      const fileContext = {
+        fileName: analysis.fileName,
+        formulas: analysis.formulas.map(f => ({
+          cell: f.cell,
+          formula: f.formula
+        })),
+        errors: analysis.errors.map(e => ({
+          cell: e.cell,
+          error: e.error,
+          formula: e.formula
+        })),
+        dataPreview: analysis.data.slice(0, 10) // 10 premières lignes
+      };
+      
+      // Prompt système pour correction
+      const systemPrompt = `Tu es un CORRECTEUR EXPERT Excel.
+  
+  Tu corriges la solution d'un exercice Excel pour un utilisateur de niveau ${userLevel} travaillant en ${userMetier}.
+  
+  EXERCICE ID : ${exerciceId}
+  
+  TON RÔLE :
+  1. Analyser si la solution répond aux critères de l'exercice
+  2. Identifier ce qui est CORRECT
+  3. Identifier ce qui MANQUE ou est INCORRECT
+  4. Donner un FEEDBACK CONSTRUCTIF et PRÉCIS
+  5. Proposer des AMÉLIORATIONS
+  
+  TON TON selon niveau :
+  ${userLevel === 'debutant' ? `- Encourageant et bienveillant
+  - Explique clairement les erreurs
+  - Propose des corrections pas à pas
+  - Rassure systématiquement` : userLevel === 'intermediaire' ? `- Professionnel mais pédagogue
+  - Pointe les erreurs avec précision
+  - Suggère des optimisations
+  - Challenge doucement` : `- Direct et technique
+  - Analyse de performance et architecture
+  - Suggère des patterns avancés
+  - Challenge intellectuellement`}
+  
+  FORMAT DE FEEDBACK :
+  
+  ✅ CE QUI EST CORRECT :
+  [Liste les éléments réussis]
+  
+  ⚠️ CE QUI MANQUE OU DOIT ÊTRE AMÉLIORÉ :
+  [Liste les problèmes avec explications]
+  
+  💡 SUGGESTIONS :
+  [Propose des améliorations concrètes]
+  
+  🎯 NOTE : X/10
+  [Justifie la note]
+  
+  Sois précis, constructif et encourage la progression.`;
+  
+      // Message avec le contexte du fichier
+      const userMessage = `Corrige cette solution d'exercice :
+  
+  EXERCICE : ${exerciceId}
+  
+  FICHIER ANALYSÉ :
+  ${JSON.stringify(fileContext, null, 2)}
+  
+  Donne ton feedback détaillé.`;
+      
+      // Appel à Claude
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': process.env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 2048,
+          messages: [{
+            role: 'user',
+            content: userMessage
+          }],
+          system: systemPrompt
+        })
+      });
+  
+      const data = await response.json();
+      
+      if (data.content && data.content[0]) {
+        const feedback = data.content[0].text;
+        
+        console.log('✅ [SOLUTION-FEEDBACK] Feedback généré');
+        // Extraire la note de la réponse IA (format attendu : "NOTE : X/10")
+let score = 5; // Défaut
+let success = false;
+const scoreMatch = feedback.match(/NOTE\s*:\s*(\d+)\/10/i);
+if (scoreMatch) {
+  score = parseInt(scoreMatch[1]);
+  success = score >= 6; // Réussi si note >= 6/10
+}
+// NOUVEAU : Détecter les compétences testées dans l'exercice
+const competencesTestees = detectCompetencesFromExercise(exerciceId, fileContext);
+console.log('🎯 [SOLUTION-FEEDBACK] Compétences détectées:', competencesTestees);
+
+// Enregistrer compétences dans profil utilisateur
+if (sessionId && competencesTestees.length > 0) {
+  const userProfile = getUserProfile(sessionId);
+  const maitrise = Math.round((score / 10) * 100);
+  
+  competencesTestees.forEach(comp => {
+    userProfile.recordCompetence(comp, maitrise);
+  });
+  
+  userProfile.markExerciceComplete(exerciceId, success, score);
+  
+  console.log('✅ [SOLUTION-FEEDBACK] Profil mis à jour:', {
+    scoreGranulaire: userProfile.scoreGranulaire,
+    competences: Object.keys(userProfile.competences)
+  });
+}
+        
+        // Construire le rapport final
+        let report = `📝 **CORRECTION DE TON EXERCICE**\n\n`;
+        report += `Exercice : ${exerciceId}\n`;
+        report += `Fichier : ${analysis.fileName}\n\n`;
+        report += `---\n\n`;
+        report += feedback;
+        report += `\n\n---\n\n`;
+        report += `**💬 TU VEUX AMÉLIORER TA SOLUTION ?**\n`;
+        report += `Dis-moi "explique-moi comment améliorer" et je te guide ! 😊\n`;
+        
+        return {
+            report: report,
+            score: score,
+            success: success,
+            exerciceId: exerciceId,
+            competences: competencesTestees
+          };
+
+      } else {
+        console.error('❌ [SOLUTION-FEEDBACK] Réponse IA invalide');
+        return {
+            report: `📝 Solution reçue ! Analyse en cours... Réessaie dans quelques instants.`,
+            score: 0,
+            success: false,
+            exerciceId: exerciceId,
+            competences: []
+          };
+      }
+      
+    } catch (error) {
+      console.error('❌ [SOLUTION-FEEDBACK] Erreur:', error);
+      return {
+        report: `📝 Solution reçue ! Analyse en cours... Réessaie dans quelques instants.`,
+        score: 0,
+        success: false,
+        exerciceId: exerciceId,
+        competences: []
+      };
+    }
+}
+

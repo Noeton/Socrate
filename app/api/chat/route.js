@@ -1,24 +1,12 @@
 import { NextResponse } from 'next/server';
-import UserProfile from '@/shared/utils/userProfile';
+import { getUserProfile, deleteUserProfile } from '@/shared/utils/userProfilesStore';
 import { selectPrompt, detectAndUpdateProfile } from '@/shared/utils/promptSelector';
-
-// Stockage temporaire des profils utilisateurs (en mémoire)
-// TODO: Migrer vers Redis ou base de données pour la production
-const userProfiles = new Map();
 
 export async function POST(request) {
   try {
     const { message, history, sessionId } = await request.json();
-    
-    // Récupération ou création du profil utilisateur
-    let userProfile;
-    if (!userProfiles.has(sessionId)) {
-      userProfile = new UserProfile();
-      userProfiles.set(sessionId, userProfile);
-      console.log(`🆕 [API] Nouveau profil créé pour session: ${sessionId}`);
-    } else {
-      userProfile = userProfiles.get(sessionId);
-    }
+
+    const userProfile = getUserProfile(sessionId);
 
     // Détection et mise à jour du profil basé sur le message
     const profileUpdated = detectAndUpdateProfile(message, userProfile);
@@ -26,38 +14,45 @@ export async function POST(request) {
     if (profileUpdated) {
       console.log('📊 [API] Profil mis à jour:', userProfile.getProfile());
     }
+    
+    // Message en minuscules pour détection
+    const messageLower = message.toLowerCase();
+    
     // Détection du mode (théorique vs pratique)
     const isTheoreticalQuestion = [
-    "c'est quoi", "qu'est-ce", "comment ça marche", 
-    "explique", "différence entre"
-  ].some(kw => message.toLowerCase().includes(kw));
-  
-  if (isTheoreticalQuestion) {
-    userProfile.incrementQuestionTheorique();
-  }
-  
-  // Détection demande d'exercice
-  const isExerciseRequest = [
-    "exercice", "pratiquer", "m'entraîner", "essayer"
-  ].some(kw => message.toLowerCase().includes(kw));
+      "c'est quoi", "qu'est-ce", "comment ça marche", 
+      "explique", "différence entre"
+    ].some(kw => messageLower.includes(kw));
+    
+    if (isTheoreticalQuestion) {
+      userProfile.incrementQuestionTheorique();
+    }
+    
+    // Détection demande d'exercice
+    const isExerciseRequest = [
+      "exercice", "pratiquer", "m'entraîner", "essayer", "exo", "entraine"
+    ].some(kw => messageLower.includes(kw));
+    
+    console.log('🔍 [DEBUG] Message:', messageLower);
+    console.log('🔍 [DEBUG] isExerciseRequest:', isExerciseRequest);
 
     // Sélection du prompt adapté
-let systemPrompt = selectPrompt(userProfile, message);
+    let systemPrompt = selectPrompt(userProfile, message);
 
-const { vitesseComprehension, modePrefere } = userProfile.comportement || { 
-    vitesseComprehension: "normale", 
-    modePrefere: "learning" 
-};
+    const { vitesseComprehension, modePrefere } = userProfile.comportement || { 
+      vitesseComprehension: "normale", 
+      modePrefere: "learning" 
+    };
 
-if (vitesseComprehension === "rapide") {
-  systemPrompt += `\n\nCOMPORTEMENT ADAPTATIF : Cet utilisateur comprend vite. Sois CONCIS et DIRECT. Pas de sur-explication.`;
-} else if (vitesseComprehension === "lente") {
-  systemPrompt += `\n\nCOMPORTEMENT ADAPTATIF : Cet utilisateur a besoin de temps. DÉCOMPOSE en micro-étapes. RASSURE systématiquement.`;
-}
+    if (vitesseComprehension === "rapide") {
+      systemPrompt += `\n\nCOMPORTEMENT ADAPTATIF : Cet utilisateur comprend vite. Sois CONCIS et DIRECT. Pas de sur-explication.`;
+    } else if (vitesseComprehension === "lente") {
+      systemPrompt += `\n\nCOMPORTEMENT ADAPTATIF : Cet utilisateur a besoin de temps. DÉCOMPOSE en micro-étapes. RASSURE systématiquement.`;
+    }
 
-if (modePrefere === "work") {
-  systemPrompt += `\nMode WORK activé : Réponses ultra-rapides, juste la solution, pas de blabla.`;
-}
+    if (modePrefere === "work") {
+      systemPrompt += `\nMode WORK activé : Réponses ultra-rapides, juste la solution, pas de blabla.`;
+    }
 
     // Appel à l'API Claude
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -85,27 +80,36 @@ if (modePrefere === "work") {
     });
 
     const data = await response.json();
+    
+    // Vérifier si la réponse API est valide
+    if (!data.content || !data.content[0]) {
+      console.error('❌ [API] Réponse Claude invalide:', data);
+      return NextResponse.json(
+        { error: data.error?.message || 'Erreur API Claude' },
+        { status: 500 }
+      );
+    }
+    
     // NOUVEAU : Détecter si Socrate propose un exercice
-const responseText = data.content[0].text;
-console.log('🔍 [DEBUG] isExerciseRequest:', isExerciseRequest);
-console.log('🔍 [DEBUG] responseText contient "exercice":', responseText.toLowerCase().includes("exercice"));
+    const responseText = data.content[0].text;
+    console.log('🔍 [DEBUG] responseText contient "exercice":', responseText.toLowerCase().includes("exercice"));
 
-if (isExerciseRequest && responseText.toLowerCase().includes("exercice")) {
-  // Extraire intelligemment le contexte de l'exercice depuis la réponse de Claude
-  const exerciseMeta = {
-    id: `ex_${Date.now()}`,
-    type: "CONTEXTUEL", // Toujours contextuel, jamais générique
-    niveau: userProfile.niveau,
-    context: message, // Le message original de l'utilisateur
-    description: responseText.substring(0, 500) // Début de la description de Socrate
-  };
-  userProfile.setExerciceEnCours(exerciseMeta);
-  console.log('📝 [CHAT] Exercice contextuel proposé:', {
-    id: exerciseMeta.id,
-    niveau: exerciseMeta.niveau,
-    preview: message.substring(0, 50)
-  });
-}
+    if (isExerciseRequest && responseText.toLowerCase().includes("exercice")) {
+      // Extraire intelligemment le contexte de l'exercice
+      const exerciseMeta = {
+        id: `ex_${Date.now()}`,
+        type: "CONTEXTUEL",
+        niveau: userProfile.niveau || 'intermediaire',
+        context: message,
+        description: responseText.substring(0, 500)
+      };
+      userProfile.setExerciceEnCours(exerciseMeta);
+      console.log('📝 [CHAT] Exercice contextuel proposé:', {
+        id: exerciseMeta.id,
+        niveau: exerciseMeta.niveau,
+        preview: message.substring(0, 50)
+      });
+    }
 
     // Ajout de l'interaction à l'historique
     userProfile.addToHistory({
@@ -116,7 +120,7 @@ if (isExerciseRequest && responseText.toLowerCase().includes("exercice")) {
 
     return NextResponse.json({ 
       response: data.content[0].text,
-      profile: userProfile.getProfile() // Retourne le profil pour l'affichage côté client
+      profile: userProfile.getProfile()
     });
     
   } catch (error) {
@@ -133,10 +137,7 @@ export async function DELETE(request) {
   try {
     const { sessionId } = await request.json();
     
-    if (userProfiles.has(sessionId)) {
-      userProfiles.delete(sessionId);
-      console.log(`🗑️  [API] Profil supprimé pour session: ${sessionId}`);
-    }
+    deleteUserProfile(sessionId);
     
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -146,8 +147,4 @@ export async function DELETE(request) {
       { status: 500 }
     );
   }
-  /**
- * Extraire le topic principal d'un message
- */
-
 }
