@@ -1,0 +1,363 @@
+{
+    "id": "intermediaire_23_dashboard_ventes_graphiques",
+    "titre": "Dashboard Commercial : Visualisation des Performances",
+    "niveau": "intermediaire",
+    "duree_estimee": "35 min",
+    "competences": [
+      "Graphiques basiques",
+      "SOMME.SI",
+      "Analyse de données"
+    ],
+    "competence_ids": [21, 13, 4],
+  
+    "contexte": {
+      "situation": "Tu es Analyste Commercial chez TechVision, une entreprise de distribution de matériel informatique. Le Directeur Commercial prépare le comité de direction de vendredi et a besoin d'un dashboard visuel pour présenter les performances du trimestre.",
+      "manager": {
+        "nom": "Marc Delaunay",
+        "poste": "Directeur Commercial",
+        "personnalite": "Pragmatique et orienté résultats. Il veut des visuels impactants qui parlent d'eux-mêmes.",
+        "demande": "J'ai besoin de 3 graphiques clairs pour le CODIR : la répartition du CA par catégorie, l'évolution mensuelle, et un comparatif régional. Pas de fioritures, juste des données qui parlent."
+      },
+      "enjeux": "Ce dashboard sera projeté devant le PDG et les investisseurs. La clarté des visualisations influencera les décisions budgétaires du prochain trimestre.",
+      "deadline": "Jeudi 17h - révision finale avec Marc avant le CODIR"
+    },
+  
+    "presentation_donnees": "Tu disposes des ventes du Q4 2024 : 80 transactions avec date, catégorie produit, région et montant. Les données sont prêtes dans la feuille 'Ventes'.",
+  
+    "objectifs": [
+      "Créer un tableau de synthèse avec SOMME.SI",
+      "Construire un camembert de répartition du CA par catégorie",
+      "Créer un histogramme d'évolution mensuelle",
+      "Réaliser un graphique en barres comparant les régions"
+    ],
+  
+    "consignes": [
+      "Crée une nouvelle feuille 'Dashboard'",
+      "En A1:B6, calcule le CA par catégorie avec SOMME.SI",
+      "Crée un graphique en secteurs (camembert) à partir de ces données",
+      "En D1:E4, calcule le CA par mois (Oct, Nov, Déc)",
+      "Crée un histogramme montrant l'évolution mensuelle",
+      "En G1:H5, calcule le CA par région",
+      "Crée un graphique en barres horizontales comparant les régions",
+      "Ajoute des titres explicites à chaque graphique"
+    ],
+  
+    "donnees": {
+      "headers": ["Date", "Catégorie", "Région", "Vendeur", "Montant_HT"],
+      "rows": [
+        ["01/10/2024", "Ordinateurs", "Île-de-France", "Sophie Martin", 2450],
+        ["02/10/2024", "Périphériques", "Auvergne-Rhône-Alpes", "Lucas Dubois", 890],
+        ["03/10/2024", "Réseau", "Île-de-France", "Emma Bernard", 1200],
+        ["04/10/2024", "Ordinateurs", "PACA", "Hugo Petit", 3200],
+        ["05/10/2024", "Stockage", "Nouvelle-Aquitaine", "Léa Moreau", 450],
+        ["08/10/2024", "Périphériques", "Île-de-France", "Sophie Martin", 320],
+        ["09/10/2024", "Ordinateurs", "Auvergne-Rhône-Alpes", "Lucas Dubois", 2890],
+        ["10/10/2024", "Réseau", "PACA", "Emma Bernard", 980],
+        ["11/10/2024", "Stockage", "Île-de-France", "Hugo Petit", 670],
+        ["12/10/2024", "Périphériques", "Nouvelle-Aquitaine", "Léa Moreau", 540],
+        ["15/10/2024", "Ordinateurs", "Île-de-France", "Sophie Martin", 4100],
+        ["16/10/2024", "Réseau", "Auvergne-Rhône-Alpes", "Lucas Dubois", 1450],
+        ["17/10/2024", "Périphériques", "PACA", "Emma Bernard", 280],
+        ["18/10/2024", "Stockage", "Nouvelle-Aquitaine", "Hugo Petit", 890],
+        ["19/10/2024", "Ordinateurs", "Île-de-France", "Léa Moreau", 2670],
+        ["22/10/2024", "Périphériques", "Auvergne-Rhône-Alpes", "Sophie Martin", 410],
+        ["23/10/2024", "Réseau", "Île-de-France", "Lucas Dubois", 2100],
+        ["24/10/2024", "Ordinateurs", "PACA", "Emma Bernard", 3450],
+        ["25/10/2024", "Stockage", "Nouvelle-Aquitaine", "Hugo Petit", 560],
+        ["26/10/2024", "Périphériques", "Île-de-France", "Léa Moreau", 720],
+        ["29/10/2024", "Ordinateurs", "Auvergne-Rhône-Alpes", "Sophie Martin", 2980],
+        ["30/10/2024", "Réseau", "PACA", "Lucas Dubois", 870],
+        ["31/10/2024", "Stockage", "Île-de-France", "Emma Bernard", 340],
+        ["01/11/2024", "Ordinateurs", "Île-de-France", "Hugo Petit", 5200],
+        ["02/11/2024", "Périphériques", "Nouvelle-Aquitaine", "Léa Moreau", 630],
+        ["05/11/2024", "Réseau", "Auvergne-Rhône-Alpes", "Sophie Martin", 1890],
+        ["06/11/2024", "Ordinateurs", "PACA", "Lucas Dubois", 2750],
+        ["07/11/2024", "Stockage", "Île-de-France", "Emma Bernard", 920],
+        ["08/11/2024", "Périphériques", "Nouvelle-Aquitaine", "Hugo Petit", 380],
+        ["09/11/2024", "Ordinateurs", "Île-de-France", "Léa Moreau", 4300],
+        ["12/11/2024", "Réseau", "PACA", "Sophie Martin", 1100],
+        ["13/11/2024", "Périphériques", "Auvergne-Rhône-Alpes", "Lucas Dubois", 590],
+        ["14/11/2024", "Stockage", "Île-de-France", "Emma Bernard", 780],
+        ["15/11/2024", "Ordinateurs", "Nouvelle-Aquitaine", "Hugo Petit", 3100],
+        ["16/11/2024", "Périphériques", "PACA", "Léa Moreau", 450],
+        ["19/11/2024", "Réseau", "Île-de-France", "Sophie Martin", 2300],
+        ["20/11/2024", "Ordinateurs", "Auvergne-Rhône-Alpes", "Lucas Dubois", 2650],
+        ["21/11/2024", "Stockage", "PACA", "Emma Bernard", 410],
+        ["22/11/2024", "Périphériques", "Nouvelle-Aquitaine", "Hugo Petit", 320],
+        ["23/11/2024", "Ordinateurs", "Île-de-France", "Léa Moreau", 3800],
+        ["26/11/2024", "Réseau", "Auvergne-Rhône-Alpes", "Sophie Martin", 1670],
+        ["27/11/2024", "Périphériques", "Île-de-France", "Lucas Dubois", 840],
+        ["28/11/2024", "Stockage", "PACA", "Emma Bernard", 290],
+        ["29/11/2024", "Ordinateurs", "Nouvelle-Aquitaine", "Hugo Petit", 4500],
+        ["30/11/2024", "Périphériques", "Île-de-France", "Léa Moreau", 670],
+        ["02/12/2024", "Réseau", "PACA", "Sophie Martin", 980],
+        ["03/12/2024", "Ordinateurs", "Auvergne-Rhône-Alpes", "Lucas Dubois", 3900],
+        ["04/12/2024", "Stockage", "Île-de-France", "Emma Bernard", 1100],
+        ["05/12/2024", "Périphériques", "Nouvelle-Aquitaine", "Hugo Petit", 520],
+        ["06/12/2024", "Ordinateurs", "PACA", "Léa Moreau", 2870],
+        ["09/12/2024", "Réseau", "Île-de-France", "Sophie Martin", 2450],
+        ["10/12/2024", "Périphériques", "Auvergne-Rhône-Alpes", "Lucas Dubois", 380],
+        ["11/12/2024", "Stockage", "PACA", "Emma Bernard", 650],
+        ["12/12/2024", "Ordinateurs", "Nouvelle-Aquitaine", "Hugo Petit", 5100],
+        ["13/12/2024", "Périphériques", "Île-de-France", "Léa Moreau", 910],
+        ["16/12/2024", "Réseau", "Auvergne-Rhône-Alpes", "Sophie Martin", 1340],
+        ["17/12/2024", "Ordinateurs", "Île-de-France", "Lucas Dubois", 4200],
+        ["18/12/2024", "Stockage", "PACA", "Emma Bernard", 480],
+        ["19/12/2024", "Périphériques", "Nouvelle-Aquitaine", "Hugo Petit", 290],
+        ["20/12/2024", "Ordinateurs", "Île-de-France", "Léa Moreau", 3650],
+        ["23/12/2024", "Réseau", "PACA", "Sophie Martin", 870],
+        ["24/12/2024", "Périphériques", "Auvergne-Rhône-Alpes", "Lucas Dubois", 1200],
+        ["26/12/2024", "Stockage", "Île-de-France", "Emma Bernard", 340],
+        ["27/12/2024", "Ordinateurs", "Nouvelle-Aquitaine", "Hugo Petit", 2980],
+        ["28/12/2024", "Périphériques", "PACA", "Léa Moreau", 560],
+        ["29/12/2024", "Réseau", "Île-de-France", "Sophie Martin", 1890],
+        ["30/12/2024", "Ordinateurs", "Auvergne-Rhône-Alpes", "Lucas Dubois", 4700],
+        ["31/12/2024", "Stockage", "Nouvelle-Aquitaine", "Emma Bernard", 720],
+        ["31/12/2024", "Périphériques", "Île-de-France", "Hugo Petit", 430],
+        ["31/12/2024", "Ordinateurs", "PACA", "Léa Moreau", 3200],
+        ["31/12/2024", "Réseau", "Auvergne-Rhône-Alpes", "Sophie Martin", 1560],
+        ["31/12/2024", "Ordinateurs", "Île-de-France", "Lucas Dubois", 5800],
+        ["31/12/2024", "Périphériques", "Nouvelle-Aquitaine", "Emma Bernard", 380],
+        ["31/12/2024", "Stockage", "PACA", "Hugo Petit", 290],
+        ["31/12/2024", "Réseau", "Île-de-France", "Léa Moreau", 2100],
+        ["31/12/2024", "Ordinateurs", "Auvergne-Rhône-Alpes", "Sophie Martin", 3450],
+        ["31/12/2024", "Périphériques", "PACA", "Lucas Dubois", 670],
+        ["31/12/2024", "Stockage", "Nouvelle-Aquitaine", "Emma Bernard", 510],
+        ["31/12/2024", "Ordinateurs", "Île-de-France", "Hugo Petit", 4100],
+        ["31/12/2024", "Réseau", "PACA", "Léa Moreau", 1230]
+      ]
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Préparation du tableau de synthèse",
+        "objectif": "Calculer les totaux par catégorie, mois et région",
+        "consignes": [
+          "Crée une feuille 'Dashboard'",
+          "En A1, écris 'CA par Catégorie'. En A2:A6, liste : Ordinateurs, Périphériques, Réseau, Stockage, TOTAL",
+          "En B2, calcule le CA Ordinateurs avec SOMME.SI sur la feuille Ventes",
+          "Recopie la formule jusqu'à B5, puis calcule le total en B6"
+        ]
+      },
+      {
+        "phase": "B. Camembert - Répartition par catégorie",
+        "objectif": "Visualiser la part de chaque catégorie dans le CA total",
+        "consignes": [
+          "Sélectionne A2:B5 (sans le total)",
+          "Insertion > Graphique > Secteurs",
+          "Ajoute le titre 'Répartition CA par Catégorie - Q4 2024'",
+          "Affiche les pourcentages sur chaque secteur"
+        ]
+      },
+      {
+        "phase": "C. Histogramme - Évolution mensuelle",
+        "objectif": "Montrer la tendance des ventes sur le trimestre",
+        "consignes": [
+          "En D1, écris 'CA Mensuel'. En D2:D4 : Octobre, Novembre, Décembre",
+          "En E2:E4, calcule le CA de chaque mois (utilise le mois dans la date)",
+          "Crée un histogramme vertical avec ces données",
+          "Titre : 'Évolution CA Mensuel - Q4 2024'"
+        ]
+      },
+      {
+        "phase": "D. Barres horizontales - Comparatif régional",
+        "objectif": "Comparer les performances des 4 régions",
+        "consignes": [
+          "En G1, écris 'CA par Région'. En G2:G5 : les 4 régions",
+          "En H2:H5, calcule le CA de chaque région avec SOMME.SI",
+          "Crée un graphique en barres horizontales",
+          "Titre : 'Performance Régionale - Q4 2024'"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_formule_cat",
+        "cellule": "Dashboard!B2",
+        "type": "formule",
+        "description": "SOMME.SI pour calculer le CA Ordinateurs",
+        "competence_id": 13,
+        "fonction": "SOMME.SI",
+        "computation": {
+          "type": "sumif",
+          "criteria_column": "Catégorie",
+          "criteria": "Ordinateurs",
+          "sum_column": "Montant_HT"
+        },
+        "expected_value": 91990,
+        "tolerance": 0.01,
+        "points": 15,
+        "indices": [
+          "Tu dois additionner les montants uniquement pour la catégorie Ordinateurs",
+          "SOMME.SI prend 3 arguments : plage de critère, critère, plage à sommer",
+          "=SOMME.SI(Ventes!$B$2:$B$81;A2;Ventes!$E$2:$E$81)"
+        ],
+        "erreurs_probables": [
+          {"type": "reference_relative", "message": "Attention aux $ dans les références pour pouvoir recopier"},
+          {"type": "mauvaise_colonne", "message": "Vérifie que tu sommes bien la colonne Montant_HT"}
+        ]
+      },
+      {
+        "id": "cp_2_total_cat",
+        "cellule": "Dashboard!B6",
+        "type": "formule",
+        "description": "Total de toutes les catégories",
+        "competence_id": 3,
+        "fonction": "SOMME",
+        "computation": {
+          "type": "sum",
+          "column": "Montant_HT"
+        },
+        "expected_value": 139750,
+        "tolerance": 0.01,
+        "points": 5,
+        "indices": [
+          "Additionne simplement les 4 CA calculés au-dessus",
+          "Utilise SOMME sur la plage B2:B5",
+          "=SOMME(B2:B5)"
+        ]
+      },
+      {
+        "id": "cp_3_camembert",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Graphique camembert de répartition du CA par catégorie",
+        "competence_id": 21,
+        "graph_type": "camembert",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "Un camembert montrant 4 secteurs pour Ordinateurs (91 990€ soit 66%), Périphériques (12 380€ soit 9%), Réseau (25 980€ soit 19%) et Stockage (9 400€ soit 7%). Ordinateurs doit être le plus gros secteur.",
+          "categories": ["Ordinateurs", "Périphériques", "Réseau", "Stockage"],
+          "values": [91990, 12380, 25980, 9400],
+          "dominant_category": "Ordinateurs",
+          "dominant_percentage": 66
+        },
+        "points": 25,
+        "indices": [
+          "Sélectionne A2:B5 (catégories et leurs CA, sans le total)",
+          "Va dans Insertion > Graphique > Secteurs (ou Camembert)",
+          "Insertion > Graphiques > Secteurs, puis ajoute un titre via '+' > Titre du graphique"
+        ]
+      },
+      {
+        "id": "cp_4_formule_mois",
+        "cellule": "Dashboard!E2",
+        "type": "formule",
+        "description": "CA du mois d'Octobre",
+        "competence_id": 13,
+        "fonction": "SOMME.SI.ENS",
+        "computation": {
+          "type": "manual",
+          "note": "Calcul basé sur le mois extrait de la date"
+        },
+        "expected_value": 34410,
+        "tolerance": 0.01,
+        "points": 10,
+        "indices": [
+          "Tu peux utiliser SOMME.SI.ENS avec MOIS() ou filtrer sur les dates d'octobre",
+          "Une approche : ajouter une colonne Mois dans Ventes avec =MOIS(A2)",
+          "=SOMME.SI.ENS(Ventes!$E$2:$E$81;Ventes!$F$2:$F$81;10) si tu as une colonne Mois"
+        ]
+      },
+      {
+        "id": "cp_5_histogramme",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Histogramme de l'évolution mensuelle du CA",
+        "competence_id": 21,
+        "graph_type": "histogramme",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "Un histogramme vertical avec 3 barres pour Octobre (34 410€), Novembre (39 540€), Décembre (65 800€). Décembre doit avoir la plus haute barre, montrant une forte progression sur le trimestre.",
+          "categories": ["Octobre", "Novembre", "Décembre"],
+          "values": [34410, 39540, 65800],
+          "x_axis": "Mois",
+          "y_axis": "CA en €",
+          "trend": "croissant"
+        },
+        "points": 20,
+        "indices": [
+          "Sélectionne D2:E4 (mois et leurs CA)",
+          "Insertion > Graphique > Histogramme (barres verticales)",
+          "Ajoute un titre et vérifie que l'axe Y montre bien les montants"
+        ]
+      },
+      {
+        "id": "cp_6_formule_region",
+        "cellule": "Dashboard!H2",
+        "type": "formule",
+        "description": "CA de la première région avec SOMME.SI",
+        "competence_id": 13,
+        "fonction": "SOMME.SI",
+        "computation": {
+          "type": "sumif",
+          "criteria_column": "Région",
+          "criteria": "Île-de-France",
+          "sum_column": "Montant_HT"
+        },
+        "expected_value": 60350,
+        "tolerance": 0.01,
+        "points": 10,
+        "indices": [
+          "Même logique que pour les catégories, mais sur la colonne Région",
+          "Vérifie bien les références absolues pour recopier",
+          "=SOMME.SI(Ventes!$C$2:$C$81;G2;Ventes!$E$2:$E$81)"
+        ]
+      },
+      {
+        "id": "cp_7_barres_regions",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Graphique en barres horizontales comparant les régions",
+        "competence_id": 21,
+        "graph_type": "histogramme",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "Un graphique en barres horizontales avec 4 barres pour les régions. Île-de-France (60 350€) doit avoir la plus longue barre, suivi d'Auvergne-Rhône-Alpes (31 950€), PACA (25 580€) et Nouvelle-Aquitaine (21 870€).",
+          "categories": ["Île-de-France", "Auvergne-Rhône-Alpes", "PACA", "Nouvelle-Aquitaine"],
+          "values": [60350, 31950, 25580, 21870],
+          "orientation": "horizontal",
+          "dominant_category": "Île-de-France"
+        },
+        "points": 15,
+        "indices": [
+          "Sélectionne G2:H5 (régions et leurs CA)",
+          "Insertion > Graphique > Barres (horizontales)",
+          "Les barres horizontales facilitent la lecture des noms de régions"
+        ]
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90,
+      "repartition": {
+        "formules": 40,
+        "graphiques": 60
+      }
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent travail ! Ces visuels sont exactement ce qu'il me fallait pour le CODIR. Clairs, professionnels, impactants. Je te mets en copie de ma présentation.",
+      "partiel": "C'est un bon début, mais il manque des éléments. Le CODIR a besoin de données complètes. Peux-tu finaliser les graphiques manquants ?",
+      "echec": "Là, on n'y est pas encore. Les calculs semblent incorrects ou les graphiques ne sont pas lisibles. On reprend ensemble les bases ?"
+    },
+  
+    "socrate_message": {
+      "intro": "Aujourd'hui, tu vas créer ton premier dashboard commercial ! 📊 C'est une compétence très demandée en entreprise. Marc compte sur toi pour le CODIR de vendredi.",
+      "conclusion": "Bravo ! Tu maîtrises maintenant la création de graphiques professionnels. Un bon dashboard raconte une histoire avec les données. Continue comme ça ! 🚀"
+    },
+  
+    "metadata": {
+      "version": "2.0",
+      "created_at": "2026-01-21",
+      "tags": ["graphiques", "dashboard", "visualisation", "SOMME.SI"],
+      "difficulty_factors": {
+        "data_volume": "medium",
+        "formula_complexity": "medium",
+        "visual_requirements": "high"
+      }
+    }
+  }

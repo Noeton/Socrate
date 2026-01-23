@@ -1,0 +1,194 @@
+{
+  "id": "mfc_25_06_multi_regles",
+  "version": "1.0",
+  "titre": "🎯 MFC avancée : plusieurs règles combinées",
+
+  "metadata": {
+    "niveau": "avance",
+    "duree_estimee": "15 min",
+    "competences_ids": [25],
+    "competences_noms": ["MFC avancée"],
+    "prerequis": [10],
+    "objectif_pedagogique": "Créer et ordonner plusieurs règles MFC pour un système de notation visuelle",
+    "source_pdf": "Chapter 27: Conditional formatting - multiple rules",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu crées un bulletin de notes avec un code couleur : vert pour Très bien, jaune pour Bien, orange pour Passable, rouge pour Insuffisant.",
+    
+    "personnage": "Toi, professeur créant un tableau de notes visuellement clair.",
+    
+    "objectif": "Appliquer 4 règles MFC ordonnées pour créer un système de couleurs par tranche de notes.",
+    
+    "motivation": "Plusieurs règles MFC permettent de créer des systèmes de classification sophistiqués.",
+    
+    "ton": "Le niveau expert : combiner et ordonner plusieurs règles. L'ordre compte !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Notes d'un contrôle sur 20 avec mentions à attribuer.",
+    "periode": "Janvier 2025",
+    "source_fictive": "Carnet de notes"
+  },
+
+  "donnees": {
+    "headers": ["Élève", "Note /20"],
+    "rows": [
+      ["Alice", 18],
+      ["Bob", 12],
+      ["Claire", 8],
+      ["David", 15],
+      ["Emma", 5],
+      ["Fabien", 14],
+      ["Gaëlle", 9],
+      ["Hugo", 17],
+      ["Inès", 11],
+      ["Jules", 6]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les notes",
+      "consigne": "Sélectionne B2:B11.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Créer la règle Très bien (>= 16)",
+      "consigne": "Accueil > MFC > Règles de surbrillance > Supérieur à... > 15 > Format vert.",
+      "aide_contextuelle": ">15 signifie >= 16. Pour inclure 16, on met 'supérieur à 15'.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Créer la règle Bien (>= 12)",
+      "consigne": "MFC > Supérieur à... > 11 > Format jaune.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Créer la règle Passable (>= 10)",
+      "consigne": "MFC > Supérieur à... > 9 > Format orange.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Créer la règle Insuffisant (< 10)",
+      "consigne": "MFC > Inférieur à... > 10 > Format rouge.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 6,
+      "titre": "Vérifier l'ordre des règles",
+      "description": "L'ordre est crucial ! Les règles sont évaluées de haut en bas.",
+      "consigne": "Accueil > MFC > Gérer les règles. Vérifie que l'ordre est : >=16, >=12, >=10, <10.",
+      "aide_contextuelle": "Si l'ordre est mauvais, une note de 18 pourrait être jaune au lieu de verte !",
+      "temps": "2 min"
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "id": "cp_multi_1",
+      "type": "format",
+      "subtype": "mfc_multi_rules",
+      "description": "4 règles MFC créées",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rules_count": 4
+      },
+      "points": 25,
+      "indices": [
+        "Tu dois créer 4 règles distinctes, pas une échelle de couleurs.",
+        "Chaque règle a son propre seuil et sa propre couleur.",
+        "Accueil > MFC > Gérer les règles pour voir toutes tes règles."
+      ]
+    },
+    {
+      "id": "cp_multi_2",
+      "type": "format",
+      "subtype": "mfc_coverage",
+      "description": "Couleurs correctement attribuées",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "green_cells": [18, 17],
+        "yellow_cells": [15, 14, 12],
+        "orange_cells": [11],
+        "red_cells": [8, 9, 5, 6]
+      },
+      "points": 40,
+      "indices": [
+        "Vert (>=16) : Alice (18), Hugo (17) → 2 cellules",
+        "Jaune (12-15) : David (15), Fabien (14), Bob (12) → 3 cellules",
+        "Orange (10-11) : Inès (11) → 1 cellule",
+        "Rouge (<10) : Claire (8), Emma (5), Gaëlle (9), Jules (6) → 4 cellules"
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_order", "message": "Les couleurs sont mélangées. Vérifie l'ordre des règles dans 'Gérer les règles'." },
+        { "type": "overlapping", "message": "Certaines cellules ont la mauvaise couleur. Les seuils se chevauchent mal." }
+      ]
+    },
+    {
+      "id": "cp_multi_3",
+      "type": "format",
+      "subtype": "mfc_order",
+      "description": "Règles dans le bon ordre",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "order_matters": true,
+        "first_rule": ">=16 vert",
+        "last_rule": "<10 rouge"
+      },
+      "points": 25,
+      "indices": [
+        "L'ordre dans 'Gérer les règles' doit être du plus restrictif au moins restrictif.",
+        ">=16 doit être AVANT >=12, sinon 18 serait jaune !",
+        "Utilise les flèches haut/bas pour réordonner si nécessaire."
+      ]
+    },
+    {
+      "id": "cp_multi_4",
+      "type": "format",
+      "subtype": "mfc_colors",
+      "description": "4 couleurs distinctes utilisées",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "colors_count": 4,
+        "colors": ["green", "yellow", "orange", "red"]
+      },
+      "points": 10
+    }
+  ],
+
+  "solution_complete": {
+    "description": "4 règles MFC ordonnées : >=16 vert, >=12 jaune, >=10 orange, <10 rouge.",
+    "etapes_cles": [
+      "Créer 4 règles avec seuils différents",
+      "Attribuer couleurs distinctes",
+      "Vérifier l'ordre dans Gérer les règles"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Excellent ! Tu maîtrises les règles MFC multiples. C'est une compétence pro !",
+    "bien": "👍 Bien ! Les règles sont là. Vérifie l'ordre si certaines couleurs semblent incorrectes.",
+    "ameliorer": "🎯 Presque ! L'ordre des règles est crucial. Mets les plus restrictives en premier.",
+    "revoir": "🔄 Crée 4 règles séparées (pas une échelle de couleurs) et ordonne-les correctement."
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "id": "debutant_15_premier_graphique",
+  "titre": "Mon Premier Graphique - Évolution du CA",
+  "niveau": "debutant",
+  "duree_estimee": "20 min",
+  "competences": [
+    "Graphiques simples"
+  ],
+  "contexte": {
+    "situation": "Tu es assistant contrôleur de gestion chez FreshFood, une chaîne de restaurants bio. Le directeur financier te demande de créer un graphique montrant l'évolution du chiffre d'affaires mensuel sur l'année 2024. Il veut quelque chose de clair pour sa présentation au comité de direction.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Sélectionner correctement les données pour un graphique",
+    "Choisir le type de graphique adapté (courbe pour évolution)",
+    "Ajouter un titre et libeller les axes",
+    "Rendre le graphique lisible et professionnel"
+  ],
+  "consignes": [
+    "Les données du CA mensuel sont en A1:B13 (mois + montant)",
+    "Sélectionne A1:B13 (inclus les en-têtes)",
+    "Insère un graphique : Insertion > Graphiques > Courbe",
+    "Ajoute un titre : 'Évolution du CA 2024 - FreshFood'",
+    "Ajoute un titre à l'axe vertical : 'CA (€)'",
+    "Vérifie que l'axe horizontal affiche les mois",
+    "BONUS : Ajoute les étiquettes de données sur les points"
+  ],
+  "donnees": {
+    "headers": [
+      "Mois",
+      "CA (€)"
+    ],
+    "rows": [
+      [
+        "Janvier",
+        45200
+      ],
+      [
+        "Février",
+        42800
+      ],
+      [
+        "Mars",
+        51300
+      ],
+      [
+        "Avril",
+        55100
+      ],
+      [
+        "Mai",
+        62400
+      ],
+      [
+        "Juin",
+        71200
+      ],
+      [
+        "Juillet",
+        78500
+      ],
+      [
+        "Août",
+        72100
+      ],
+      [
+        "Septembre",
+        65300
+      ],
+      [
+        "Octobre",
+        58900
+      ],
+      [
+        "Novembre",
+        52100
+      ],
+      [
+        "Décembre",
+        68700
+      ]
+    ],
+    "statistiques": {
+      "total_annuel": 723600,
+      "moyenne_mensuelle": 60300,
+      "mois_max": "Juillet",
+      "mois_min": "Février",
+      "ca_max": 78500,
+      "ca_min": 42800
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "cellule": "A1:B13",
+      "type": "donnees",
+      "description": "Données saisies correctement",
+      "points": 10,
+      "indices": [
+        "A1 = 'Mois', B1 = 'CA (€)'",
+        "A2:A13 = les 12 mois de janvier à décembre",
+        "B2:B13 = les montants correspondants"
+      ]
+    },
+    {
+      "id": "cp2",
+      "type": "graphique_present",
+      "description": "Un graphique est présent dans la feuille",
+      "points": 15,
+      "indices": [
+        "Sélectionne tes données A1:B13",
+        "Va dans Insertion > Graphiques",
+        "Choisis 'Courbe' ou 'Ligne'"
+      ]
+    },
+    {
+      "id": "cp3",
+      "type": "graphique_type",
+      "description": "Type de graphique approprié (courbe/ligne)",
+      "type_attendu": [
+        "line",
+        "courbe",
+        "ligne"
+      ],
+      "points": 15,
+      "indices": [
+        "Pour montrer une ÉVOLUTION dans le temps, utilise une COURBE",
+        "Pas un camembert (c'est pour les répartitions)",
+        "Pas un histogramme (moins adapté pour le temps)"
+      ]
+    },
+    {
+      "id": "cp4",
+      "type": "graphique_titre",
+      "description": "Titre du graphique présent et pertinent",
+      "contient": [
+        "CA",
+        "2024"
+      ],
+      "points": 15,
+      "indices": [
+        "Clique sur le graphique",
+        "Utilise le + à droite du graphique > Titre du graphique",
+        "Ou double-clique sur 'Titre du graphique' pour le modifier"
+      ]
+    },
+    {
+      "id": "cp5",
+      "type": "graphique_axe_y",
+      "description": "Axe vertical libellé",
+      "points": 10,
+      "indices": [
+        "L'axe Y (vertical) doit indiquer ce qu'on mesure",
+        "Ici : 'CA (€)' ou 'Chiffre d'affaires (€)'",
+        "Clic sur graphique > + > Titres des axes > Axe vertical principal"
+      ]
+    },
+    {
+      "id": "cp6",
+      "type": "graphique_axe_x",
+      "description": "Axe horizontal affiche les mois",
+      "valeurs_attendues": [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril",
+        "Mai",
+        "Juin",
+        "Juillet",
+        "Août",
+        "Septembre",
+        "Octobre",
+        "Novembre",
+        "Décembre"
+      ],
+      "points": 10,
+      "indices": [
+        "L'axe X doit afficher les noms des mois",
+        "Si tu vois 1, 2, 3... au lieu des mois, ta sélection était incorrecte",
+        "Resélectionne A1:B13 en incluant la colonne des mois"
+      ]
+    },
+    {
+      "id": "cp7",
+      "type": "graphique_donnees",
+      "description": "Les 12 points de données sont affichés",
+      "nb_points": 12,
+      "points": 10,
+      "indices": [
+        "Tu dois voir 12 points sur ta courbe (un par mois)",
+        "Le point le plus haut devrait être en juillet (78 500€)",
+        "Le point le plus bas devrait être en février (42 800€)"
+      ]
+    },
+    {
+      "id": "cp8",
+      "type": "graphique_lisibilite",
+      "description": "Graphique lisible (pas de chevauchement, légende si utile)",
+      "points": 15,
+      "criteres": [
+        "Taille suffisante pour lire les valeurs",
+        "Couleurs contrastées",
+        "Pas d'éléments qui se chevauchent"
+      ],
+      "indices": [
+        "Agrandis le graphique si nécessaire",
+        "Vérifie que tous les mois sont lisibles sur l'axe X",
+        "Si les mois se chevauchent, incline le texte (clic droit sur l'axe > Format)"
+      ]
+    }
+  ],
+  "erreurs_pedagogiques": [
+    {
+      "erreur": "Utiliser un camembert au lieu d'une courbe",
+      "consequence": "Le camembert montre une répartition, pas une évolution. Illisible avec 12 parts.",
+      "explication": "Camembert = répartition d'un total. Courbe = évolution dans le temps."
+    },
+    {
+      "erreur": "Ne pas inclure les en-têtes dans la sélection",
+      "consequence": "Excel ne sait pas quoi afficher sur les axes",
+      "explication": "Inclure A1:B13, pas A2:B13. Les en-têtes servent de légende."
+    },
+    {
+      "erreur": "Inclure une ligne de total dans les données",
+      "consequence": "Un 13ème point énorme fausse l'échelle du graphique",
+      "explication": "Ne jamais inclure les totaux dans un graphique d'évolution"
+    },
+    {
+      "erreur": "Sélectionner seulement les montants (B1:B13)",
+      "consequence": "L'axe X affiche 1, 2, 3... au lieu des mois",
+      "explication": "Il faut sélectionner les deux colonnes pour que Excel sache quoi mettre en abscisse"
+    }
+  ],
+  "bonus": {
+    "etiquettes_donnees": {
+      "description": "Afficher les valeurs sur chaque point",
+      "etapes": [
+        "Clic sur le graphique",
+        "Clic sur le + à droite",
+        "Coche 'Étiquettes de données'"
+      ],
+      "points_bonus": 5
+    },
+    "courbe_tendance": {
+      "description": "Ajouter une courbe de tendance",
+      "etapes": [
+        "Clic droit sur la courbe",
+        "Ajouter une courbe de tendance",
+        "Choisir 'Linéaire' ou 'Moyenne mobile'"
+      ],
+      "points_bonus": 5
+    }
+  },
+  "conseils_design": [
+    "Un bon graphique se comprend en 5 secondes",
+    "Le titre doit dire CE QUE montre le graphique",
+    "Évite les effets 3D (moins lisibles)",
+    "Une seule série = pas besoin de légende",
+    "Les couleurs doivent avoir du sens (rouge=danger, vert=positif)"
+  ],
+  "criteres_reussite": {
+    "graphique_present": true,
+    "type_adapte": true,
+    "titre_present": true,
+    "axes_libelles": true,
+    "score_minimum": 7
+  },
+  "competence_ids": [
+    21
+  ]
+}

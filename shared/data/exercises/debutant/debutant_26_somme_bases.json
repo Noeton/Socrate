@@ -1,0 +1,273 @@
+{
+  "id": "debutant_26_somme_bases",
+  "titre": "SOMME : La Formule Fondamentale",
+  "niveau": "debutant",
+  "duree_estimee": "10 min",
+  "competences": [
+    "SOMME",
+    "Formules de base",
+    "Plages",
+    "Raccourcis"
+  ],
+  "competence_ids": [
+    3
+  ],
+  "contexte": {
+    "situation": "Premier jour au service comptabilité de QuickCount. Ton manager te donne une liste de dépenses à totaliser. C'est l'occasion d'apprendre LA formule que tu utiliseras 100 fois par jour : SOMME.",
+    "manager": {
+      "nom": "Paul Compteur",
+      "poste": "Chef Comptable",
+      "personnalite": "Patient avec les débutants, il aime expliquer les fondamentaux.",
+      "demande": "SOMME, c'est la base de tout. Si tu maîtrises ça, tu maîtrises 50% d'Excel. Je vais te montrer toutes les façons de l'utiliser."
+    },
+    "enjeux": "Fondation de toutes tes futures compétences Excel.",
+    "deadline": "Formation jour 1"
+  },
+  "objectifs": [
+    "Écrire une formule SOMME basique",
+    "Utiliser le raccourci Alt+=",
+    "Sommer des plages non contiguës",
+    "Comprendre la différence entre SOMME et +"
+  ],
+  "donnees": {
+    "feuille": "Dépenses",
+    "headers": [
+      "Mois",
+      "Loyer",
+      "Électricité",
+      "Internet",
+      "Assurance",
+      "Total"
+    ],
+    "rows": [
+      [
+        "Janvier",
+        1200,
+        85,
+        45,
+        120,
+        null
+      ],
+      [
+        "Février",
+        1200,
+        92,
+        45,
+        120,
+        null
+      ],
+      [
+        "Mars",
+        1200,
+        78,
+        45,
+        120,
+        null
+      ],
+      [
+        "Avril",
+        1200,
+        65,
+        45,
+        120,
+        null
+      ]
+    ],
+    "position": "A1:F5"
+  },
+  "etapes": [
+    {
+      "phase": "A. Formule SOMME basique",
+      "syntaxe": "=SOMME(plage)",
+      "exemple": "=SOMME(B2:E2) → additionne de B2 à E2",
+      "alternative": "=B2+C2+D2+E2 → même résultat mais plus long"
+    },
+    {
+      "phase": "B. Raccourci Alt+=",
+      "methode": [
+        "Sélectionne la cellule où tu veux le total",
+        "Appuie sur Alt+=",
+        "Excel propose automatiquement =SOMME(...)",
+        "Entrée pour valider"
+      ],
+      "magie": "Excel devine la plage à sommer !"
+    },
+    {
+      "phase": "C. Somme d'une colonne entière",
+      "exemple": "=SOMME(B2:B5) → total de la colonne Loyer",
+      "astuce": "=SOMME(B:B) somme toute la colonne (attention aux performances)"
+    },
+    {
+      "phase": "D. Somme de plages non contiguës",
+      "syntaxe": "=SOMME(plage1;plage2;plage3)",
+      "exemple": "=SOMME(B2:B5;D2:D5) → Loyer + Internet",
+      "note": "Utilise ; pour séparer les plages"
+    },
+    {
+      "phase": "E. SOMME vs +",
+      "somme": "=SOMME(A1:A100) → ignore les cellules vides et texte",
+      "plus": "=A1+A2+A3... → erreur si une cellule contient du texte",
+      "conseil": "Toujours préférer SOMME pour les plages"
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp_1_somme_ligne",
+      "cellule": "F2",
+      "type": "valeur",
+      "description": "Total dépenses Janvier",
+      "competence_id": 3,
+      "expected_value": 1450,
+      "points": 15,
+      "indices": [
+        "=SOMME(B2:E2)",
+        "1200 + 85 + 45 + 120 = 1450",
+        "Ou Alt+= pour auto-complétion"
+      ]
+    },
+    {
+      "id": "cp_2_formule_somme",
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Formule SOMME utilisée",
+      "competence_id": 3,
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME"
+      ],
+      "points": 10,
+      "indices": [
+        "La formule doit commencer par =SOMME(",
+        "Pas =B2+C2+D2+E2",
+        "SOMME est plus robuste"
+      ],
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      }
+    },
+    {
+      "id": "cp_3_somme_colonne",
+      "cellule": "B6",
+      "type": "valeur",
+      "description": "Total Loyer (colonne)",
+      "competence_id": 3,
+      "expected_value": 4800,
+      "points": 15,
+      "indices": [
+        "=SOMME(B2:B5)",
+        "4 × 1200 = 4800",
+        "Total de la colonne Loyer"
+      ]
+    },
+    {
+      "id": "cp_4_toutes_lignes",
+      "cellule": "F5",
+      "type": "valeur",
+      "description": "Total dépenses Avril",
+      "competence_id": 3,
+      "expected_value": 1430,
+      "points": 15,
+      "indices": [
+        "Recopie la formule de F2",
+        "1200 + 65 + 45 + 120 = 1430",
+        "Les références s'adaptent"
+      ]
+    },
+    {
+      "id": "cp_5_total_general",
+      "cellule": "F6",
+      "type": "valeur",
+      "description": "Total général",
+      "competence_id": 3,
+      "expected_value": 5780,
+      "points": 20,
+      "indices": [
+        "=SOMME(F2:F5) → somme des totaux",
+        "Ou =SOMME(B2:E5) → tout d'un coup",
+        "1450+1457+1443+1430 = 5780"
+      ]
+    },
+    {
+      "id": "cp_6_somme_non_contigu",
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Somme Loyer + Assurance (non contigu)",
+      "competence_id": 3,
+      "pattern": [
+        "SOMME",
+        ";"
+      ],
+      "points": 15,
+      "indices": [
+        "=SOMME(B2;E2) ou =SOMME(B2:B2;E2:E2)",
+        "Sépare les plages avec ;",
+        "1200 + 120 = 1320"
+      ]
+    },
+    {
+      "id": "cp_7_raccourci_alt",
+      "type": "action",
+      "description": "Utiliser Alt+= pour créer une SOMME",
+      "competence_id": 3,
+      "points": 10,
+      "indices": [
+        "Place-toi sous une colonne de chiffres",
+        "Appuie sur Alt+=",
+        "Excel propose =SOMME(...) automatiquement"
+      ]
+    }
+  ],
+  "erreurs_courantes": [
+    {
+      "erreur": "Oublier le = au début",
+      "symptome": "La formule s'affiche comme texte",
+      "solution": "Toujours commencer par ="
+    },
+    {
+      "erreur": "Utiliser , au lieu de ;",
+      "symptome": "Erreur ou résultat inattendu",
+      "solution": "En français, le séparateur est ; (point-virgule)"
+    },
+    {
+      "erreur": "Inclure l'en-tête dans la somme",
+      "symptome": "Résultat faux ou erreur",
+      "solution": "B2:B5, pas B1:B5 (B1 = en-tête)"
+    }
+  ],
+  "scoring": {
+    "total_points": 100,
+    "seuil_reussite": 70,
+    "seuil_maitrise": 90
+  },
+  "feedback_manager": {
+    "succes": "Bravo ! Tu maîtrises SOMME, la formule la plus utilisée d'Excel. Tu viens d'acquérir un super-pouvoir ! ➕",
+    "partiel": "Bon début ! =SOMME(plage) c'est la base. Alt+= est ton ami pour aller plus vite.",
+    "echec": "SOMME c'est simple : =SOMME(B2:B10) additionne de B2 à B10. Commence par le =, finis par Entrée."
+  },
+  "socrate_message": {
+    "intro": "SOMME, c'est la formule n°1 ! ➕ Tu vas l'utiliser des milliers de fois. Autant la maîtriser parfaitement.",
+    "conclusion": "Tu connais maintenant SOMME sous toutes ses formes. C'est la fondation de toutes les autres formules. Tu es prêt pour la suite ! 🎯"
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-21",
+    "tags": [
+      "SOMME",
+      "SUM",
+      "addition",
+      "formule",
+      "base",
+      "débutant",
+      "fondamentaux"
+    ],
+    "prerequis": [
+      "Saisie de données"
+    ],
+    "ouvre_vers": [
+      "MOYENNE",
+      "MIN/MAX",
+      "SOMME.SI"
+    ]
+  }
+}

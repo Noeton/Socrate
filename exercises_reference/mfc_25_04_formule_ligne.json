@@ -1,0 +1,203 @@
+{
+  "id": "mfc_25_04_formule_ligne",
+  "version": "1.0",
+  "titre": "🧮 MFC avancée : formule pour colorer toute la ligne",
+
+  "metadata": {
+    "niveau": "avance",
+    "duree_estimee": "15 min",
+    "competences_ids": [25],
+    "competences_noms": ["MFC avancée"],
+    "prerequis": [10, 9],
+    "objectif_pedagogique": "Créer une règle MFC basée sur une formule personnalisée pour colorer une ligne entière",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.1 (xlExpression)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu gères l'inventaire d'un entrepôt. Tu veux que toute la ligne d'un produit passe en rouge si son stock est inférieur au seuil de réapprovisionnement.",
+    
+    "personnage": "Toi, gestionnaire de stock.",
+    
+    "objectif": "Colorer automatiquement toute la ligne (produit + stock + seuil) quand Stock < Seuil.",
+    
+    "motivation": "La formule MFC permet de créer des règles ultra-personnalisées impossibles avec les règles prédéfinies.",
+    
+    "ton": "On passe au niveau expert ! Les formules MFC, c'est le Graal de la mise en forme."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Inventaire avec niveaux de stock et seuils d'alerte personnalisés par produit.",
+    "periode": "Stock au 20/01/2025",
+    "source_fictive": "WMS Entrepôt"
+  },
+
+  "donnees": {
+    "headers": ["Produit", "Stock actuel", "Seuil alerte"],
+    "rows": [
+      ["Écran 24\"", 45, 20],
+      ["Clavier sans fil", 8, 15],
+      ["Souris optique", 62, 30],
+      ["Casque audio", 12, 25],
+      ["Webcam HD", 5, 10],
+      ["Hub USB", 28, 20],
+      ["Câble HDMI", 3, 15],
+      ["Tapis souris", 89, 40]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner toute la plage de données",
+      "consigne": "Sélectionne A2:C9 (toutes les lignes de données, pas les en-têtes).",
+      "aide_contextuelle": "On sélectionne toute la zone car on veut colorer des lignes entières.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Ouvrir le gestionnaire de règles",
+      "consigne": "Accueil > MFC > Nouvelle règle... > 'Utiliser une formule pour...'",
+      "aide_contextuelle": "C'est la dernière option dans la liste des types de règles.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Écrire la formule",
+      "description": "La formule doit comparer Stock (B) avec Seuil (C) pour la ligne courante.",
+      "consigne": "Dans le champ formule, tape : =$B2<$C2",
+      "aide_contextuelle": "Le $ devant B et C fige les colonnes. Sans $ devant 2, la ligne s'adapte. C'est la clé !",
+      "temps": "3 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Définir le format",
+      "consigne": "Clique sur 'Format...' > Remplissage > Rouge clair.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier le résultat",
+      "description": "Les produits en rupture imminente doivent avoir toute leur ligne en rouge.",
+      "consigne": "Vérifie que Clavier (8<15), Casque (12<25), Webcam (5<10) et Câble (3<15) ont leur ligne complète en rouge.",
+      "aide_contextuelle": "4 produits sur 8 ont Stock < Seuil.",
+      "temps": "2 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "MFC formule sur toute la zone de données",
+    "structure": [
+      { "cellule": "A1:C9", "label": "Données", "style": "data" },
+      { "cellule": "A2:C9", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_formula_1",
+      "type": "format",
+      "subtype": "mfc_formula",
+      "description": "Règle basée sur formule appliquée",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "formula",
+        "formula_contains": ["$B", "$C", "<"]
+      },
+      "points": 35,
+      "indices": [
+        "La formule doit être =$B2<$C2 (avec les $ devant B et C).",
+        "Le $ fige la colonne, le 2 sans $ permet à la ligne de s'adapter.",
+        "Sans les $, la règle ne fonctionnera pas correctement sur toutes les lignes."
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_formula", "message": "La formule n'est pas correcte. Elle doit comparer $B2 avec $C2." },
+        { "type": "missing_dollar", "message": "Il manque les $ devant B et C. La formule doit être =$B2<$C2." },
+        { "type": "absolute_row", "message": "Tu as mis $B$2 (ligne figée). Utilise $B2 pour que la ligne s'adapte." }
+      ]
+    },
+    {
+      "id": "cp_formula_2",
+      "type": "format",
+      "subtype": "mfc_row_coloring",
+      "description": "Lignes entières colorées (pas juste une cellule)",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "applies_to_row": true,
+        "colored_columns": ["A", "B", "C"]
+      },
+      "points": 25,
+      "indices": [
+        "Toute la ligne doit être rouge (colonnes A, B et C).",
+        "Si seule la colonne B est rouge, tu as sélectionné B2:B9 au lieu de A2:C9.",
+        "La sélection initiale détermine la zone d'application."
+      ]
+    },
+    {
+      "id": "cp_formula_3",
+      "type": "format",
+      "subtype": "mfc_coverage",
+      "description": "4 lignes colorées sur 8",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "colored_rows_count": 4,
+        "colored_products": ["Clavier sans fil", "Casque audio", "Webcam HD", "Câble HDMI"],
+        "not_colored_products": ["Écran 24\"", "Souris optique", "Hub USB", "Tapis souris"]
+      },
+      "points": 30,
+      "indices": [
+        "4 produits ont Stock < Seuil : Clavier (8<15), Casque (12<25), Webcam (5<10), Câble (3<15).",
+        "4 produits ont Stock >= Seuil et ne doivent PAS être colorés.",
+        "Écran (45>=20), Souris (62>=30), Hub (28>=20), Tapis (89>=40) sont OK."
+      ]
+    },
+    {
+      "id": "cp_formula_4",
+      "type": "format",
+      "subtype": "mfc_color",
+      "description": "Format rouge appliqué",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "fill_color": "red",
+        "fill_color_variants": ["rouge", "red", "lightred"]
+      },
+      "points": 10
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Règle formule =$B2<$C2 avec format rouge sur A2:C9. 4 lignes entières sont colorées.",
+    "etapes_cles": [
+      "Sélection A2:C9",
+      "MFC > Nouvelle règle > Formule",
+      "Formule : =$B2<$C2",
+      "Format rouge"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Bravo ! Tu maîtrises les formules MFC. C'est une compétence avancée très recherchée !",
+    "bien": "👍 Très bien ! La logique est bonne. Vérifie que les lignes ENTIÈRES sont colorées.",
+    "ameliorer": "🧮 Presque ! La formule doit être =$B2<$C2 avec $ devant B et C uniquement.",
+    "revoir": "🔄 Recommence : sélectionne A2:C9, puis MFC > Nouvelle règle > Formule > =$B2<$C2."
+  },
+
+  "pour_aller_plus_loin": [
+    "Ajoute une 2ème règle : orange si Stock < Seuil*1.5 (alerte préventive).",
+    "Utilise une formule plus complexe avec ET() ou OU().",
+    "Applique sur un tableau de plusieurs centaines de lignes."
+  ]
+}

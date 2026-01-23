@@ -1,0 +1,202 @@
+{
+  "id": "tcd_35_05_groupe_date",
+  "version": "1.0",
+  "titre": "📅 TCD : grouper les dates par mois/trimestre",
+
+  "metadata": {
+    "niveau": "avance",
+    "duree_estimee": "15 min",
+    "competences_ids": [35],
+    "competences_noms": ["Tableaux croisés dynamiques"],
+    "prerequis": [35],
+    "objectif_pedagogique": "Grouper automatiquement des dates par mois, trimestre ou année dans un TCD",
+    "source_pdf": "Chapter 13: Pivot Tables - date grouping",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu as des données de ventes quotidiennes sur un an. Analyser jour par jour est impossible. Tu veux voir les tendances par mois et par trimestre.",
+    
+    "personnage": "Toi, contrôleur de gestion analysant les tendances.",
+    
+    "objectif": "Grouper automatiquement les dates en mois et trimestres pour une analyse agrégée.",
+    
+    "motivation": "Le groupement de dates transforme 365 lignes en 12 mois ou 4 trimestres. Magique !",
+    
+    "ton": "Excel groupe les dates automatiquement. Fini le découpage manuel !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Ventes quotidiennes sur l'année 2024 (échantillon représentatif).",
+    "periode": "2024",
+    "source_fictive": "Export caisse"
+  },
+
+  "donnees": {
+    "headers": ["Date", "CA (€)"],
+    "rows": [
+      ["15/01/2024", 1250],
+      ["22/01/2024", 1180],
+      ["08/02/2024", 1420],
+      ["19/02/2024", 1350],
+      ["05/03/2024", 1580],
+      ["21/03/2024", 1490],
+      ["10/04/2024", 1620],
+      ["25/04/2024", 1710],
+      ["03/05/2024", 1550],
+      ["18/05/2024", 1680],
+      ["07/06/2024", 1820],
+      ["22/06/2024", 1750],
+      ["11/07/2024", 1450],
+      ["26/07/2024", 1380],
+      ["09/08/2024", 1290],
+      ["23/08/2024", 1320],
+      ["06/09/2024", 1650],
+      ["20/09/2024", 1720],
+      ["04/10/2024", 1890],
+      ["19/10/2024", 1950],
+      ["08/11/2024", 2100],
+      ["22/11/2024", 2250],
+      ["06/12/2024", 2450],
+      ["20/12/2024", 2680]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Créer le TCD",
+      "consigne": "Insertion > TCD > Nouvelle feuille. Mets 'Date' en lignes et 'CA' en valeurs.",
+      "aide_contextuelle": "Au départ, tu verras chaque date individuellement.",
+      "temps": "3 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Grouper par mois",
+      "consigne": "Clic droit sur une date dans le TCD > Grouper... > Coche 'Mois' > OK.",
+      "aide_contextuelle": "Excel propose de grouper par Secondes, Minutes, Heures, Jours, Mois, Trimestres, Années.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter le groupement par trimestre",
+      "consigne": "Clic droit > Grouper... > Coche aussi 'Trimestres' (garde Mois coché) > OK.",
+      "aide_contextuelle": "Tu peux cocher plusieurs niveaux. Mois + Trimestres = hiérarchie.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Explorer la hiérarchie",
+      "description": "Le TCD affiche maintenant Trimestres > Mois.",
+      "consigne": "Clique sur les + et - pour développer/réduire les trimestres.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier les totaux",
+      "consigne": "T1 (Jan-Mar) = 8270€, T4 (Oct-Déc) = 13320€ (pic de fin d'année).",
+      "temps": "2 min"
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "id": "cp_group_1",
+      "type": "pivot_table",
+      "description": "Dates groupées par mois",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "date_grouping": true,
+        "grouping_includes": ["Mois"]
+      },
+      "points": 30,
+      "indices": [
+        "Les dates ne doivent plus apparaître individuellement.",
+        "Tu dois voir les noms des mois (Janvier, Février...) ou leurs numéros.",
+        "Clic droit sur une date > Grouper > Cocher 'Mois'."
+      ],
+      "erreurs_probables": [
+        { "type": "no_grouping", "message": "Les dates sont encore individuelles. Utilise clic droit > Grouper." },
+        { "type": "wrong_grouping", "message": "Tu as groupé par Années seules. Ajoute 'Mois'." }
+      ]
+    },
+    {
+      "id": "cp_group_2",
+      "type": "pivot_table",
+      "description": "Groupement par trimestre aussi",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "grouping_includes": ["Trimestres", "Mois"]
+      },
+      "points": 30,
+      "indices": [
+        "Tu dois voir T1, T2, T3, T4 dans le TCD.",
+        "Coche 'Trimestres' en plus de 'Mois' dans la boîte de groupement.",
+        "Les trimestres sont le niveau parent, les mois le niveau enfant."
+      ]
+    },
+    {
+      "id": "cp_group_3",
+      "type": "pivot_table",
+      "description": "Valeurs trimestrielles correctes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "quarterly_values": {
+          "T1": 8270,
+          "T2": 10130,
+          "T3": 9810,
+          "T4": 13320
+        }
+      },
+      "points": 25,
+      "indices": [
+        "T1 (Jan+Fév+Mar) = 2430+2770+3070 = 8270€",
+        "T4 (Oct+Nov+Déc) = 3840+4350+5130 = 13320€",
+        "Les totaux trimestriels sont la somme des mois."
+      ]
+    },
+    {
+      "id": "cp_group_4",
+      "type": "pivot_table",
+      "description": "Hiérarchie développable",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_expand_collapse": true
+      },
+      "points": 15,
+      "indices": [
+        "Des + ou - doivent apparaître pour développer/réduire.",
+        "Clique sur + pour voir les mois d'un trimestre.",
+        "Double-clic sur un trimestre développe aussi."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "TCD avec dates groupées par Trimestres et Mois. Hiérarchie T1>Jan,Fév,Mar etc.",
+    "etapes_cles": [
+      "Date → Lignes, CA → Valeurs",
+      "Clic droit > Grouper",
+      "Cocher Mois ET Trimestres"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Excellent ! Tu transformes 24 lignes de dates en 4 trimestres analysables. Power move !",
+    "bien": "👍 Bien ! Le groupement fonctionne. Vérifie que tu as Mois ET Trimestres.",
+    "ameliorer": "📅 Presque ! Coche les deux options : Mois ET Trimestres.",
+    "revoir": "🔄 Clic droit sur une date > Grouper > Coche Mois et Trimestres."
+  }
+}

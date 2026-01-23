@@ -1,0 +1,206 @@
+{
+  "id": "debutant_09_graphique_ca",
+  "titre": "Graphique d'Évolution du Chiffre d'Affaires",
+  "niveau": "debutant",
+  "duree_estimee": "22 min",
+  "competences": [
+    "graphiques"
+  ],
+  "contexte": {
+    "situation": "Tu dois créer un graphique pour présenter l'évolution du CA sur 2 ans.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Créer un graphique en courbes",
+    "Comparer 2023 vs 2024",
+    "Ajouter titre et légendes"
+  ],
+  "consignes": [
+    "Sélectionne les données A1:C13",
+    "Insère un graphique en courbes avec marqueurs",
+    "Titre du graphique: 'Évolution CA 2023-2024'",
+    "Légende en bas",
+    "Axe Y: 'Chiffre d'Affaires (€)'",
+    "Place le graphique sous le tableau",
+    "Calcule la croissance moyenne entre 2023 et 2024"
+  ],
+  "donnees": {
+    "headers": [
+      "Mois",
+      "CA 2023",
+      "CA 2024"
+    ],
+    "rows": [
+      [
+        "Janvier",
+        103088,
+        95683
+      ],
+      [
+        "Février",
+        79492,
+        79306
+      ],
+      [
+        "Mars",
+        77755,
+        80515
+      ],
+      [
+        "Avril",
+        92811,
+        118729
+      ],
+      [
+        "Mai",
+        79923,
+        87155
+      ],
+      [
+        "Juin",
+        81820,
+        71879
+      ],
+      [
+        "Juillet",
+        105163,
+        94726
+      ],
+      [
+        "Août",
+        98131,
+        104069
+      ],
+      [
+        "Septembre",
+        116336,
+        104066
+      ],
+      [
+        "Octobre",
+        105785,
+        59770
+      ],
+      [
+        "Novembre",
+        76872,
+        103718
+      ],
+      [
+        "Décembre",
+        57976,
+        120697
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "graphique_present": true,
+    "titres_legendes": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "GRAPHIQUE_EXISTE",
+      "type": "graphique",
+      "description": "Création d'un graphique en courbes avec marqueurs",
+      "fonction": null,
+      "pattern": [
+        "courbes",
+        "marqueurs"
+      ],
+      "recopie_jusqua": null,
+      "points": 25,
+      "indices": [
+        "Tu dois créer un graphique qui montre l'évolution dans le temps avec des points visibles.",
+        "Utilise l'onglet Insertion et cherche les graphiques en courbes.",
+        "Sélectionne A1:C13 puis Insertion > Graphiques > Courbes > Courbes avec marqueurs"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "GRAPHIQUE_TITRE",
+      "type": "propriete",
+      "description": "Titre du graphique 'Évolution CA 2023-2024'",
+      "fonction": null,
+      "pattern": [
+        "Évolution CA 2023-2024"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Le graphique doit avoir un titre qui explique ce qu'il représente.",
+        "Clique sur le graphique puis cherche comment ajouter un titre.",
+        "Clic droit sur le graphique > Ajouter un élément de graphique > Titre du graphique"
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "GRAPHIQUE_LEGENDE",
+      "type": "propriete",
+      "description": "Légende positionnée en bas du graphique",
+      "fonction": null,
+      "pattern": [
+        "bas",
+        "légende"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "La légende doit être visible et bien placée pour identifier les courbes.",
+        "Tu peux déplacer la légende vers le bas du graphique.",
+        "Clic droit sur le graphique > Ajouter un élément > Légende > En bas"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "GRAPHIQUE_AXE_Y",
+      "type": "propriete",
+      "description": "Titre de l'axe Y : 'Chiffre d'Affaires (€)'",
+      "fonction": null,
+      "pattern": [
+        "Chiffre d'Affaires",
+        "€"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "L'axe vertical doit avoir un titre qui explique ce qu'il mesure.",
+        "Tu dois ajouter un titre à l'axe des ordonnées (vertical).",
+        "Clic droit sur le graphique > Ajouter un élément > Titres des axes > Titre de l'axe vertical principal"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "D15",
+      "type": "formule",
+      "description": "Calcul de la croissance moyenne entre 2023 et 2024",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "C2:C13",
+        "B2:B13",
+        "-"
+      ],
+      "recopie_jusqua": null,
+      "points": 35,
+      "indices": [
+        "Tu dois calculer la différence moyenne entre les deux années.",
+        "Utilise la fonction MOYENNE sur la différence entre les colonnes CA 2024 et CA 2023.",
+        "=MOYENNE(C2:C13-B2:B13) ou =(MOYENNE(C2:C13)-MOYENNE(B2:B13))"
+      ],
+      "id": "cp_5",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      }
+    }
+  ],
+  "competence_ids": [
+    21
+  ]
+}

@@ -1,0 +1,3460 @@
+{
+  "timestamp": "2026-01-23T10:25:29.030Z",
+  "stats": {
+    "totalTemplates": 76,
+    "byLevel": {
+      "debutant": 26,
+      "intermediaire": 34,
+      "avance": 16
+    },
+    "withCompetenceIds": 58,
+    "withoutCompetenceIds": 18,
+    "totalCheckpoints": 543,
+    "visualCheckpoints": 81
+  },
+  "competenceNames": [
+    "ANNEE",
+    "Alertes visuelles",
+    "Alignement",
+    "Alternative RECHERCHEV",
+    "Alternative aux formules ENS",
+    "Analyse de données",
+    "Analyse multidimensionnelle",
+    "Analyse temporelle",
+    "Barres de données",
+    "Barèmes",
+    "Bordures",
+    "CHERCHE",
+    "CONCAT",
+    "CONCATENER",
+    "Calculs de dates",
+    "Calculs matriciels",
+    "Champs lignes/colonnes",
+    "Classification",
+    "Collage spécial",
+    "Comptage",
+    "Comptage conditionnel",
+    "Comptage multi-critères",
+    "Conditions multiples",
+    "Contrôle de saisie",
+    "Copier-coller",
+    "Couleurs",
+    "Courbes",
+    "Critères",
+    "Ctrl+T",
+    "DATEDIF",
+    "DECALER",
+    "DROITE",
+    "Différence nombres/valeurs",
+    "EQUIV",
+    "ETL",
+    "Excel 365",
+    "Extraction de données",
+    "FILTER",
+    "FILTRE",
+    "FIN.MOIS",
+    "Filtres automatiques",
+    "Filtres personnalisés",
+    "Fonctions date",
+    "Format nombre",
+    "Formatage cellules",
+    "Formules MFC",
+    "Formules date (AUJOURDHUI, MOIS)",
+    "Formules de base",
+    "Formules matricielles",
+    "Formules robustes",
+    "GAUCHE",
+    "Gestion des erreurs",
+    "Graphiques basiques",
+    "Graphiques dynamiques",
+    "Graphiques simples",
+    "Génération de séries",
+    "Histogrammes",
+    "INDEX",
+    "INDEX+EQUIV",
+    "INDEX+EQUIV_avance",
+    "JOUR",
+    "JOURSEM",
+    "Jeux d'icônes",
+    "Listes déroulantes",
+    "Logique conditionnelle",
+    "MAX",
+    "MFC avancée",
+    "MIN",
+    "MOIS",
+    "MOYENNE",
+    "MOYENNE.SI",
+    "Mise en forme conditionnelle",
+    "Moyennes mobiles",
+    "NB",
+    "NB.JOURS.OUVRES",
+    "NB.SI",
+    "NB.SI.ENS",
+    "NBCAR",
+    "NBVAL",
+    "Navigation clavier",
+    "Nettoyage données",
+    "Nuances couleurs",
+    "Plages",
+    "Plages dynamiques",
+    "Power Query",
+    "RECHERCHEH",
+    "RECHERCHEV",
+    "RECHERCHEV approchée",
+    "RECHERCHEX",
+    "Raccourcis",
+    "Recherche bidirectionnelle",
+    "Recherche horizontale",
+    "Recopie de formules",
+    "Recopie incrémentée",
+    "Références absolues",
+    "Références absolues ($)",
+    "Références mixtes",
+    "Références structurées",
+    "SI",
+    "SI imbriqués",
+    "SI simple",
+    "SIERREUR",
+    "SI_imbriques",
+    "SOMME",
+    "SOMME.SI",
+    "SOMME.SI.ENS",
+    "SOMMEPROD",
+    "SORT",
+    "STXT",
+    "Saisie de données",
+    "Secteurs",
+    "Somme multi-critères",
+    "Structure TCD",
+    "Sélection",
+    "TCD",
+    "Tableaux croisés dynamiques",
+    "Tableaux dynamiques",
+    "Tableaux structurés",
+    "Tranches",
+    "Transformation",
+    "Transposition",
+    "Tri multi-niveaux",
+    "Tri simple",
+    "UNIQUE",
+    "Valeurs",
+    "Validation de données",
+    "Validation données",
+    "XLOOKUP",
+    "calculs_base",
+    "calculs_pourcentage",
+    "copier_coller",
+    "filtres",
+    "formatage",
+    "formules_date",
+    "formules_matricielles",
+    "graphiques",
+    "graphiques_combines",
+    "mise_en_forme_conditionnelle",
+    "mise_forme_conditionnelle_avancee",
+    "references_absolues",
+    "tableaux_croises_dynamiques",
+    "tableaux_structures",
+    "texte",
+    "tri",
+    "validation_donnees",
+    "visualisation"
+  ],
+  "competenceNameToTemplates": {
+    "SOMME": [
+      {
+        "id": "debutant_01_budget_mensuel",
+        "title": "Gestion Budget Personnel Mensuel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_26_somme_bases",
+        "title": "SOMME : La Formule Fondamentale",
+        "level": "debutant"
+      }
+    ],
+    "MOYENNE": [
+      {
+        "id": "debutant_01_budget_mensuel",
+        "title": "Gestion Budget Personnel Mensuel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_02_notes_etudiants",
+        "title": "Calcul Moyennes et Classement Étudiants",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_14_mentions_bac",
+        "title": "Attribution Mentions avec SI Imbriqués",
+        "level": "intermediaire"
+      }
+    ],
+    "SI": [
+      {
+        "id": "debutant_01_budget_mensuel",
+        "title": "Gestion Budget Personnel Mensuel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_06_alerte_stock",
+        "title": "Alertes de Stock avec Fonction SI",
+        "level": "debutant"
+      }
+    ],
+    "MIN": [
+      {
+        "id": "debutant_02_notes_etudiants",
+        "title": "Calcul Moyennes et Classement Étudiants",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_03_calcul_prix",
+        "title": "Catalogue Produits - Calcul Prix TTC",
+        "level": "debutant"
+      }
+    ],
+    "MAX": [
+      {
+        "id": "debutant_02_notes_etudiants",
+        "title": "Calcul Moyennes et Classement Étudiants",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_03_calcul_prix",
+        "title": "Catalogue Produits - Calcul Prix TTC",
+        "level": "debutant"
+      }
+    ],
+    "calculs_base": [
+      {
+        "id": "debutant_03_calcul_prix",
+        "title": "Catalogue Produits - Calcul Prix TTC",
+        "level": "debutant"
+      }
+    ],
+    "copier_coller": [
+      {
+        "id": "debutant_04_planning_travail",
+        "title": "Planning Heures de Travail - Copier-Coller",
+        "level": "debutant"
+      }
+    ],
+    "formatage": [
+      {
+        "id": "debutant_04_planning_travail",
+        "title": "Planning Heures de Travail - Copier-Coller",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_08_annuaire_entreprise",
+        "title": "Annuaire Entreprise - Formatage Professionnel",
+        "level": "debutant"
+      }
+    ],
+    "tri": [
+      {
+        "id": "debutant_05_tri_ventes",
+        "title": "Tri et Recherche dans Liste de Ventes",
+        "level": "debutant"
+      }
+    ],
+    "filtres": [
+      {
+        "id": "debutant_05_tri_ventes",
+        "title": "Tri et Recherche dans Liste de Ventes",
+        "level": "debutant"
+      }
+    ],
+    "mise_en_forme_conditionnelle": [
+      {
+        "id": "debutant_07_temperatures",
+        "title": "Suivi Températures avec Mise en Forme Conditionnelle",
+        "level": "debutant"
+      }
+    ],
+    "graphiques": [
+      {
+        "id": "debutant_09_graphique_ca",
+        "title": "Graphique d'Évolution du Chiffre d'Affaires",
+        "level": "debutant"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "validation_donnees": [
+      {
+        "id": "debutant_10_formulaire_conges",
+        "title": "Formulaire de Demande de Congés avec Validation",
+        "level": "debutant"
+      }
+    ],
+    "Références absolues ($)": [
+      {
+        "id": "debutant_11_grille_tarifaire",
+        "title": "Maîtrise des Références - Grille Tarifaire SaaS",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_12_tva_multipays",
+        "title": "Calcul TVA Multi-Pays avec RECHERCHEV",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_46_references_table_multiplication",
+        "title": "Table de Multiplication - Maîtriser les Références",
+        "level": "intermediaire"
+      }
+    ],
+    "Références mixtes": [
+      {
+        "id": "debutant_11_grille_tarifaire",
+        "title": "Maîtrise des Références - Grille Tarifaire SaaS",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_34_references_absolues_mixtes",
+        "title": "Références Absolues ($) et Mixtes : Maîtriser la Recopie",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_46_references_table_multiplication",
+        "title": "Table de Multiplication - Maîtriser les Références",
+        "level": "intermediaire"
+      }
+    ],
+    "RECHERCHEV": [
+      {
+        "id": "debutant_12_tva_multipays",
+        "title": "Calcul TVA Multi-Pays avec RECHERCHEV",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_15_commandes_recherchev",
+        "title": "Gestion Commandes avec RECHERCHEV",
+        "level": "intermediaire"
+      }
+    ],
+    "Génération de séries": [
+      {
+        "id": "debutant_13_planning_mensuel",
+        "title": "Génération Planning Mensuel - Séries et Dates",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_18_series_automatiques",
+        "title": "Générer des Séries Automatiques",
+        "level": "debutant"
+      }
+    ],
+    "Formules date (AUJOURDHUI, MOIS)": [
+      {
+        "id": "debutant_13_planning_mensuel",
+        "title": "Génération Planning Mensuel - Séries et Dates",
+        "level": "debutant"
+      }
+    ],
+    "SI simple": [
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      }
+    ],
+    "Graphiques simples": [
+      {
+        "id": "debutant_15_premier_graphique",
+        "title": "Mon Premier Graphique - Évolution du CA",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_16_camembert_categories",
+        "title": "Répartition des Ventes par Catégorie - Graphique Secteurs",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_23_graphiques_visualisation",
+        "title": "Graphiques : Visualiser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "SOMME.SI": [
+      {
+        "id": "debutant_16_camembert_categories",
+        "title": "Répartition des Ventes par Catégorie - Graphique Secteurs",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_12_ca_par_region",
+        "title": "Calcul CA par Région avec SOMME.SI",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_23_dashboard_ventes_graphiques",
+        "title": "Dashboard Commercial : Visualisation des Performances",
+        "level": "intermediaire"
+      }
+    ],
+    "Copier-coller": [
+      {
+        "id": "debutant_17_recopie_formules",
+        "title": "Maîtriser la Recopie de Formules",
+        "level": "debutant"
+      }
+    ],
+    "Recopie de formules": [
+      {
+        "id": "debutant_17_recopie_formules",
+        "title": "Maîtriser la Recopie de Formules",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_34_references_absolues_mixtes",
+        "title": "Références Absolues ($) et Mixtes : Maîtriser la Recopie",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_46_references_table_multiplication",
+        "title": "Table de Multiplication - Maîtriser les Références",
+        "level": "intermediaire"
+      }
+    ],
+    "Recopie incrémentée": [
+      {
+        "id": "debutant_18_series_automatiques",
+        "title": "Générer des Séries Automatiques",
+        "level": "debutant"
+      }
+    ],
+    "Collage spécial": [
+      {
+        "id": "debutant_19_collage_special",
+        "title": "Maîtriser le Collage Spécial",
+        "level": "debutant"
+      }
+    ],
+    "Valeurs": [
+      {
+        "id": "debutant_19_collage_special",
+        "title": "Maîtriser le Collage Spécial",
+        "level": "debutant"
+      }
+    ],
+    "Transposition": [
+      {
+        "id": "debutant_19_collage_special",
+        "title": "Maîtriser le Collage Spécial",
+        "level": "debutant"
+      }
+    ],
+    "Mise en forme conditionnelle": [
+      {
+        "id": "debutant_20_mfc_alertes",
+        "title": "Alertes Visuelles avec la Mise en Forme Conditionnelle",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_42_mfc_formule",
+        "title": "Mise en forme conditionnelle avec formules",
+        "level": "intermediaire"
+      }
+    ],
+    "Alertes visuelles": [
+      {
+        "id": "debutant_20_mfc_alertes",
+        "title": "Alertes Visuelles avec la Mise en Forme Conditionnelle",
+        "level": "debutant"
+      }
+    ],
+    "Tri simple": [
+      {
+        "id": "debutant_22_tri_filtres_analyse",
+        "title": "Tri et Filtres : Organiser et Analyser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "Tri multi-niveaux": [
+      {
+        "id": "debutant_22_tri_filtres_analyse",
+        "title": "Tri et Filtres : Organiser et Analyser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "Filtres automatiques": [
+      {
+        "id": "debutant_22_tri_filtres_analyse",
+        "title": "Tri et Filtres : Organiser et Analyser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "Filtres personnalisés": [
+      {
+        "id": "debutant_22_tri_filtres_analyse",
+        "title": "Tri et Filtres : Organiser et Analyser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "Histogrammes": [
+      {
+        "id": "debutant_23_graphiques_visualisation",
+        "title": "Graphiques : Visualiser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "Courbes": [
+      {
+        "id": "debutant_23_graphiques_visualisation",
+        "title": "Graphiques : Visualiser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "Secteurs": [
+      {
+        "id": "debutant_23_graphiques_visualisation",
+        "title": "Graphiques : Visualiser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "Saisie de données": [
+      {
+        "id": "debutant_24_saisie_navigation",
+        "title": "Saisie et Navigation : Les Bases Essentielles",
+        "level": "debutant"
+      }
+    ],
+    "Navigation clavier": [
+      {
+        "id": "debutant_24_saisie_navigation",
+        "title": "Saisie et Navigation : Les Bases Essentielles",
+        "level": "debutant"
+      }
+    ],
+    "Sélection": [
+      {
+        "id": "debutant_24_saisie_navigation",
+        "title": "Saisie et Navigation : Les Bases Essentielles",
+        "level": "debutant"
+      }
+    ],
+    "Raccourcis": [
+      {
+        "id": "debutant_24_saisie_navigation",
+        "title": "Saisie et Navigation : Les Bases Essentielles",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_26_somme_bases",
+        "title": "SOMME : La Formule Fondamentale",
+        "level": "debutant"
+      }
+    ],
+    "Formatage cellules": [
+      {
+        "id": "debutant_25_formatage_cellules",
+        "title": "Formatage : Rendre ses Données Lisibles",
+        "level": "debutant"
+      }
+    ],
+    "Format nombre": [
+      {
+        "id": "debutant_25_formatage_cellules",
+        "title": "Formatage : Rendre ses Données Lisibles",
+        "level": "debutant"
+      }
+    ],
+    "Alignement": [
+      {
+        "id": "debutant_25_formatage_cellules",
+        "title": "Formatage : Rendre ses Données Lisibles",
+        "level": "debutant"
+      }
+    ],
+    "Bordures": [
+      {
+        "id": "debutant_25_formatage_cellules",
+        "title": "Formatage : Rendre ses Données Lisibles",
+        "level": "debutant"
+      }
+    ],
+    "Couleurs": [
+      {
+        "id": "debutant_25_formatage_cellules",
+        "title": "Formatage : Rendre ses Données Lisibles",
+        "level": "debutant"
+      }
+    ],
+    "Formules de base": [
+      {
+        "id": "debutant_26_somme_bases",
+        "title": "SOMME : La Formule Fondamentale",
+        "level": "debutant"
+      }
+    ],
+    "Plages": [
+      {
+        "id": "debutant_26_somme_bases",
+        "title": "SOMME : La Formule Fondamentale",
+        "level": "debutant"
+      }
+    ],
+    "NB": [
+      {
+        "id": "debutant_27_nb_nbval_comptage",
+        "title": "Compter avec NB et NBVAL",
+        "level": "debutant"
+      }
+    ],
+    "NBVAL": [
+      {
+        "id": "debutant_27_nb_nbval_comptage",
+        "title": "Compter avec NB et NBVAL",
+        "level": "debutant"
+      }
+    ],
+    "Comptage": [
+      {
+        "id": "debutant_27_nb_nbval_comptage",
+        "title": "Compter avec NB et NBVAL",
+        "level": "debutant"
+      }
+    ],
+    "Différence nombres/valeurs": [
+      {
+        "id": "debutant_27_nb_nbval_comptage",
+        "title": "Compter avec NB et NBVAL",
+        "level": "debutant"
+      }
+    ],
+    "NB.SI": [
+      {
+        "id": "intermediaire_11_comptage_ventes",
+        "title": "Analyse Commerciale avec NB.SI",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_14_mentions_bac",
+        "title": "Attribution Mentions avec SI Imbriqués",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_32_nbsi_comptage_conditionnel",
+        "title": "NB.SI : Compter avec des Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "calculs_pourcentage": [
+      {
+        "id": "intermediaire_12_ca_par_region",
+        "title": "Calcul CA par Région avec SOMME.SI",
+        "level": "intermediaire"
+      }
+    ],
+    "references_absolues": [
+      {
+        "id": "intermediaire_13_calcul_remises",
+        "title": "Calcul de Remises avec Références Absolues",
+        "level": "intermediaire"
+      }
+    ],
+    "SI_imbriques": [
+      {
+        "id": "intermediaire_14_mentions_bac",
+        "title": "Attribution Mentions avec SI Imbriqués",
+        "level": "intermediaire"
+      }
+    ],
+    "NB.SI.ENS": [
+      {
+        "id": "intermediaire_16_analyse_multicriteres",
+        "title": "Analyse Multi-Critères avec NB.SI.ENS",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_25_nbsi_ens_rh",
+        "title": "NB.SI.ENS : Analyse RH Multi-Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "SOMME.SI.ENS": [
+      {
+        "id": "intermediaire_17_ca_segmente",
+        "title": "CA Segmenté avec SOMME.SI.ENS",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_26_sommesi_ens_ventes",
+        "title": "SOMME.SI.ENS : Analyse des Ventes Multi-Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "CONCATENER": [
+      {
+        "id": "intermediaire_18_generation_emails",
+        "title": "Génération Automatique d'Emails et Codes",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      }
+    ],
+    "texte": [
+      {
+        "id": "intermediaire_18_generation_emails",
+        "title": "Génération Automatique d'Emails et Codes",
+        "level": "intermediaire"
+      }
+    ],
+    "formules_date": [
+      {
+        "id": "intermediaire_19_anciennete_employes",
+        "title": "Calcul d'Ancienneté et Dates avec Formules",
+        "level": "intermediaire"
+      }
+    ],
+    "tableaux_croises_dynamiques": [
+      {
+        "id": "intermediaire_20_analyse_tcd",
+        "title": "Analyse Ventes avec Tableau Croisé Dynamique",
+        "level": "intermediaire"
+      }
+    ],
+    "MOYENNE.SI": [
+      {
+        "id": "intermediaire_21_moyennes_classes",
+        "title": "Moyennes par Classe avec MOYENNE.SI",
+        "level": "intermediaire"
+      }
+    ],
+    "mise_forme_conditionnelle_avancee": [
+      {
+        "id": "intermediaire_22_heatmap_ventes",
+        "title": "Heatmap des Ventes avec Mise en Forme Avancée",
+        "level": "intermediaire"
+      }
+    ],
+    "Graphiques basiques": [
+      {
+        "id": "intermediaire_23_dashboard_ventes_graphiques",
+        "title": "Dashboard Commercial : Visualisation des Performances",
+        "level": "intermediaire"
+      }
+    ],
+    "Analyse de données": [
+      {
+        "id": "intermediaire_23_dashboard_ventes_graphiques",
+        "title": "Dashboard Commercial : Visualisation des Performances",
+        "level": "intermediaire"
+      }
+    ],
+    "SI imbriqués": [
+      {
+        "id": "intermediaire_24_si_imbriques_mentions",
+        "title": "SI Imbriqués : Attribution Automatique de Mentions",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_43_si_imbriques_scoring",
+        "title": "Scoring Client avec SI Imbriqués",
+        "level": "intermediaire"
+      }
+    ],
+    "Logique conditionnelle": [
+      {
+        "id": "intermediaire_24_si_imbriques_mentions",
+        "title": "SI Imbriqués : Attribution Automatique de Mentions",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_43_si_imbriques_scoring",
+        "title": "Scoring Client avec SI Imbriqués",
+        "level": "intermediaire"
+      }
+    ],
+    "Comptage multi-critères": [
+      {
+        "id": "intermediaire_25_nbsi_ens_rh",
+        "title": "NB.SI.ENS : Analyse RH Multi-Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "Somme multi-critères": [
+      {
+        "id": "intermediaire_26_sommesi_ens_ventes",
+        "title": "SOMME.SI.ENS : Analyse des Ventes Multi-Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "SIERREUR": [
+      {
+        "id": "intermediaire_27_sierreur_formules_robustes",
+        "title": "SIERREUR : Formules Robustes et Gestion d'Erreurs",
+        "level": "intermediaire"
+      }
+    ],
+    "Gestion des erreurs": [
+      {
+        "id": "intermediaire_27_sierreur_formules_robustes",
+        "title": "SIERREUR : Formules Robustes et Gestion d'Erreurs",
+        "level": "intermediaire"
+      }
+    ],
+    "Formules robustes": [
+      {
+        "id": "intermediaire_27_sierreur_formules_robustes",
+        "title": "SIERREUR : Formules Robustes et Gestion d'Erreurs",
+        "level": "intermediaire"
+      }
+    ],
+    "RECHERCHEH": [
+      {
+        "id": "intermediaire_28_rechercheh_planning",
+        "title": "RECHERCHEH : Recherche dans un Planning Horizontal",
+        "level": "intermediaire"
+      }
+    ],
+    "Recherche horizontale": [
+      {
+        "id": "intermediaire_28_rechercheh_planning",
+        "title": "RECHERCHEH : Recherche dans un Planning Horizontal",
+        "level": "intermediaire"
+      }
+    ],
+    "Validation de données": [
+      {
+        "id": "intermediaire_29_validation_donnees_formulaire",
+        "title": "Validation de Données : Formulaire de Saisie Contrôlé",
+        "level": "intermediaire"
+      }
+    ],
+    "Listes déroulantes": [
+      {
+        "id": "intermediaire_29_validation_donnees_formulaire",
+        "title": "Validation de Données : Formulaire de Saisie Contrôlé",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_41_validation_liste",
+        "title": "Créer des listes déroulantes avec validation",
+        "level": "intermediaire"
+      }
+    ],
+    "Contrôle de saisie": [
+      {
+        "id": "intermediaire_29_validation_donnees_formulaire",
+        "title": "Validation de Données : Formulaire de Saisie Contrôlé",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_41_validation_liste",
+        "title": "Créer des listes déroulantes avec validation",
+        "level": "intermediaire"
+      }
+    ],
+    "RECHERCHEV approchée": [
+      {
+        "id": "intermediaire_30_recherchev_approchee_baremes",
+        "title": "RECHERCHEV Approchée : Barèmes et Tranches Automatiques",
+        "level": "intermediaire"
+      }
+    ],
+    "Barèmes": [
+      {
+        "id": "intermediaire_30_recherchev_approchee_baremes",
+        "title": "RECHERCHEV Approchée : Barèmes et Tranches Automatiques",
+        "level": "intermediaire"
+      }
+    ],
+    "Tranches": [
+      {
+        "id": "intermediaire_30_recherchev_approchee_baremes",
+        "title": "RECHERCHEV Approchée : Barèmes et Tranches Automatiques",
+        "level": "intermediaire"
+      }
+    ],
+    "Fonctions date": [
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      }
+    ],
+    "DATEDIF": [
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_45_dates_echeances",
+        "title": "Gestion des Échéances avec Fonctions Date",
+        "level": "intermediaire"
+      }
+    ],
+    "ANNEE": [
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      }
+    ],
+    "MOIS": [
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      }
+    ],
+    "JOUR": [
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      }
+    ],
+    "FIN.MOIS": [
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_45_dates_echeances",
+        "title": "Gestion des Échéances avec Fonctions Date",
+        "level": "intermediaire"
+      }
+    ],
+    "Comptage conditionnel": [
+      {
+        "id": "intermediaire_32_nbsi_comptage_conditionnel",
+        "title": "NB.SI : Compter avec des Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "Critères": [
+      {
+        "id": "intermediaire_32_nbsi_comptage_conditionnel",
+        "title": "NB.SI : Compter avec des Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "CONCAT": [
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      }
+    ],
+    "GAUCHE": [
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_44_texte_extraction_codes",
+        "title": "Extraction de Données avec Fonctions Texte",
+        "level": "intermediaire"
+      }
+    ],
+    "DROITE": [
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_44_texte_extraction_codes",
+        "title": "Extraction de Données avec Fonctions Texte",
+        "level": "intermediaire"
+      }
+    ],
+    "STXT": [
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_44_texte_extraction_codes",
+        "title": "Extraction de Données avec Fonctions Texte",
+        "level": "intermediaire"
+      }
+    ],
+    "CHERCHE": [
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_44_texte_extraction_codes",
+        "title": "Extraction de Données avec Fonctions Texte",
+        "level": "intermediaire"
+      }
+    ],
+    "NBCAR": [
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_44_texte_extraction_codes",
+        "title": "Extraction de Données avec Fonctions Texte",
+        "level": "intermediaire"
+      }
+    ],
+    "Références absolues": [
+      {
+        "id": "intermediaire_34_references_absolues_mixtes",
+        "title": "Références Absolues ($) et Mixtes : Maîtriser la Recopie",
+        "level": "intermediaire"
+      },
+      {
+        "id": "avance_07_index_equiv_prix",
+        "title": "Grille Tarifaire Dynamique avec INDEX+EQUIV",
+        "level": "avance"
+      }
+    ],
+    "Tableaux croisés dynamiques": [
+      {
+        "id": "intermediaire_35_tcd_analyse_ventes",
+        "title": "Tableaux Croisés Dynamiques : L'Outil d'Analyse Ultime",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_38_tcd_structure",
+        "title": "Structurer un Tableau Croisé Dynamique",
+        "level": "intermediaire"
+      }
+    ],
+    "TCD": [
+      {
+        "id": "intermediaire_35_tcd_analyse_ventes",
+        "title": "Tableaux Croisés Dynamiques : L'Outil d'Analyse Ultime",
+        "level": "intermediaire"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "Analyse multidimensionnelle": [
+      {
+        "id": "intermediaire_35_tcd_analyse_ventes",
+        "title": "Tableaux Croisés Dynamiques : L'Outil d'Analyse Ultime",
+        "level": "intermediaire"
+      }
+    ],
+    "Tableaux structurés": [
+      {
+        "id": "intermediaire_36_tableaux_structures",
+        "title": "Tableaux Structurés : Organiser ses Données Intelligemment",
+        "level": "intermediaire"
+      }
+    ],
+    "Références structurées": [
+      {
+        "id": "intermediaire_36_tableaux_structures",
+        "title": "Tableaux Structurés : Organiser ses Données Intelligemment",
+        "level": "intermediaire"
+      }
+    ],
+    "Ctrl+T": [
+      {
+        "id": "intermediaire_36_tableaux_structures",
+        "title": "Tableaux Structurés : Organiser ses Données Intelligemment",
+        "level": "intermediaire"
+      }
+    ],
+    "MFC avancée": [
+      {
+        "id": "intermediaire_37_mfc_avancee",
+        "title": "Mise en Forme Conditionnelle Avancée",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_42_mfc_formule",
+        "title": "Mise en forme conditionnelle avec formules",
+        "level": "intermediaire"
+      }
+    ],
+    "Barres de données": [
+      {
+        "id": "intermediaire_37_mfc_avancee",
+        "title": "Mise en Forme Conditionnelle Avancée",
+        "level": "intermediaire"
+      }
+    ],
+    "Nuances couleurs": [
+      {
+        "id": "intermediaire_37_mfc_avancee",
+        "title": "Mise en Forme Conditionnelle Avancée",
+        "level": "intermediaire"
+      }
+    ],
+    "Jeux d'icônes": [
+      {
+        "id": "intermediaire_37_mfc_avancee",
+        "title": "Mise en Forme Conditionnelle Avancée",
+        "level": "intermediaire"
+      }
+    ],
+    "Formules MFC": [
+      {
+        "id": "intermediaire_37_mfc_avancee",
+        "title": "Mise en Forme Conditionnelle Avancée",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_42_mfc_formule",
+        "title": "Mise en forme conditionnelle avec formules",
+        "level": "intermediaire"
+      }
+    ],
+    "Champs lignes/colonnes": [
+      {
+        "id": "intermediaire_38_tcd_structure",
+        "title": "Structurer un Tableau Croisé Dynamique",
+        "level": "intermediaire"
+      }
+    ],
+    "Structure TCD": [
+      {
+        "id": "intermediaire_38_tcd_structure",
+        "title": "Structurer un Tableau Croisé Dynamique",
+        "level": "intermediaire"
+      }
+    ],
+    "Validation données": [
+      {
+        "id": "intermediaire_41_validation_liste",
+        "title": "Créer des listes déroulantes avec validation",
+        "level": "intermediaire"
+      }
+    ],
+    "Classification": [
+      {
+        "id": "intermediaire_43_si_imbriques_scoring",
+        "title": "Scoring Client avec SI Imbriqués",
+        "level": "intermediaire"
+      }
+    ],
+    "Extraction de données": [
+      {
+        "id": "intermediaire_44_texte_extraction_codes",
+        "title": "Extraction de Données avec Fonctions Texte",
+        "level": "intermediaire"
+      }
+    ],
+    "JOURSEM": [
+      {
+        "id": "intermediaire_45_dates_echeances",
+        "title": "Gestion des Échéances avec Fonctions Date",
+        "level": "intermediaire"
+      }
+    ],
+    "NB.JOURS.OUVRES": [
+      {
+        "id": "intermediaire_45_dates_echeances",
+        "title": "Gestion des Échéances avec Fonctions Date",
+        "level": "intermediaire"
+      }
+    ],
+    "Calculs de dates": [
+      {
+        "id": "intermediaire_45_dates_echeances",
+        "title": "Gestion des Échéances avec Fonctions Date",
+        "level": "intermediaire"
+      }
+    ],
+    "INDEX": [
+      {
+        "id": "avance_01_index_equiv_recherche_bidirectionnelle",
+        "title": "INDEX + EQUIV : La Recherche Bidirectionnelle",
+        "level": "avance"
+      }
+    ],
+    "EQUIV": [
+      {
+        "id": "avance_01_index_equiv_recherche_bidirectionnelle",
+        "title": "INDEX + EQUIV : La Recherche Bidirectionnelle",
+        "level": "avance"
+      }
+    ],
+    "Recherche bidirectionnelle": [
+      {
+        "id": "avance_01_index_equiv_recherche_bidirectionnelle",
+        "title": "INDEX + EQUIV : La Recherche Bidirectionnelle",
+        "level": "avance"
+      },
+      {
+        "id": "avance_07_index_equiv_prix",
+        "title": "Grille Tarifaire Dynamique avec INDEX+EQUIV",
+        "level": "avance"
+      }
+    ],
+    "Alternative RECHERCHEV": [
+      {
+        "id": "avance_01_index_equiv_recherche_bidirectionnelle",
+        "title": "INDEX + EQUIV : La Recherche Bidirectionnelle",
+        "level": "avance"
+      }
+    ],
+    "RECHERCHEX": [
+      {
+        "id": "avance_02_recherchex_moderne",
+        "title": "RECHERCHEX : Le Successeur Moderne de RECHERCHEV",
+        "level": "avance"
+      }
+    ],
+    "XLOOKUP": [
+      {
+        "id": "avance_02_recherchex_moderne",
+        "title": "RECHERCHEX : Le Successeur Moderne de RECHERCHEV",
+        "level": "avance"
+      }
+    ],
+    "Excel 365": [
+      {
+        "id": "avance_02_recherchex_moderne",
+        "title": "RECHERCHEX : Le Successeur Moderne de RECHERCHEV",
+        "level": "avance"
+      }
+    ],
+    "Formules matricielles": [
+      {
+        "id": "avance_03_formules_matricielles_dynamiques",
+        "title": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+        "level": "avance"
+      }
+    ],
+    "FILTER": [
+      {
+        "id": "avance_03_formules_matricielles_dynamiques",
+        "title": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+        "level": "avance"
+      }
+    ],
+    "SORT": [
+      {
+        "id": "avance_03_formules_matricielles_dynamiques",
+        "title": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+        "level": "avance"
+      },
+      {
+        "id": "avance_29_formules_dynamiques",
+        "title": "Analyses Dynamiques avec Formules Matricielles",
+        "level": "avance"
+      }
+    ],
+    "UNIQUE": [
+      {
+        "id": "avance_03_formules_matricielles_dynamiques",
+        "title": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+        "level": "avance"
+      },
+      {
+        "id": "avance_29_formules_dynamiques",
+        "title": "Analyses Dynamiques avec Formules Matricielles",
+        "level": "avance"
+      }
+    ],
+    "Tableaux dynamiques": [
+      {
+        "id": "avance_03_formules_matricielles_dynamiques",
+        "title": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+        "level": "avance"
+      }
+    ],
+    "SOMMEPROD": [
+      {
+        "id": "avance_04_sommeprod_calculs_matriciels",
+        "title": "SOMMEPROD : Calculs Matriciels Sans Limites",
+        "level": "avance"
+      },
+      {
+        "id": "avance_09_sommeprod_multicriteres",
+        "title": "Analyse Multicritères avec SOMMEPROD",
+        "level": "avance"
+      }
+    ],
+    "Calculs matriciels": [
+      {
+        "id": "avance_04_sommeprod_calculs_matriciels",
+        "title": "SOMMEPROD : Calculs Matriciels Sans Limites",
+        "level": "avance"
+      },
+      {
+        "id": "avance_09_sommeprod_multicriteres",
+        "title": "Analyse Multicritères avec SOMMEPROD",
+        "level": "avance"
+      }
+    ],
+    "Conditions multiples": [
+      {
+        "id": "avance_04_sommeprod_calculs_matriciels",
+        "title": "SOMMEPROD : Calculs Matriciels Sans Limites",
+        "level": "avance"
+      },
+      {
+        "id": "avance_09_sommeprod_multicriteres",
+        "title": "Analyse Multicritères avec SOMMEPROD",
+        "level": "avance"
+      }
+    ],
+    "DECALER": [
+      {
+        "id": "avance_05_decaler_plages_dynamiques",
+        "title": "DECALER : Créer des Plages Dynamiques",
+        "level": "avance"
+      },
+      {
+        "id": "avance_08_decaler_moyenne_mobile",
+        "title": "Moyennes Mobiles avec DECALER",
+        "level": "avance"
+      },
+      {
+        "id": "avance_27_moyennes_mobiles",
+        "title": "Moyennes Mobiles avec DECALER",
+        "level": "avance"
+      }
+    ],
+    "Plages dynamiques": [
+      {
+        "id": "avance_05_decaler_plages_dynamiques",
+        "title": "DECALER : Créer des Plages Dynamiques",
+        "level": "avance"
+      },
+      {
+        "id": "avance_08_decaler_moyenne_mobile",
+        "title": "Moyennes Mobiles avec DECALER",
+        "level": "avance"
+      }
+    ],
+    "Graphiques dynamiques": [
+      {
+        "id": "avance_05_decaler_plages_dynamiques",
+        "title": "DECALER : Créer des Plages Dynamiques",
+        "level": "avance"
+      }
+    ],
+    "Power Query": [
+      {
+        "id": "avance_06_power_query_intro",
+        "title": "Power Query : Automatiser le Nettoyage de Données",
+        "level": "avance"
+      }
+    ],
+    "ETL": [
+      {
+        "id": "avance_06_power_query_intro",
+        "title": "Power Query : Automatiser le Nettoyage de Données",
+        "level": "avance"
+      }
+    ],
+    "Nettoyage données": [
+      {
+        "id": "avance_06_power_query_intro",
+        "title": "Power Query : Automatiser le Nettoyage de Données",
+        "level": "avance"
+      }
+    ],
+    "Transformation": [
+      {
+        "id": "avance_06_power_query_intro",
+        "title": "Power Query : Automatiser le Nettoyage de Données",
+        "level": "avance"
+      }
+    ],
+    "INDEX+EQUIV": [
+      {
+        "id": "avance_07_index_equiv_prix",
+        "title": "Grille Tarifaire Dynamique avec INDEX+EQUIV",
+        "level": "avance"
+      },
+      {
+        "id": "avance_23_index_equiv_commandes",
+        "title": "Recherche Avancée avec INDEX+EQUIV",
+        "level": "avance"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "Moyennes mobiles": [
+      {
+        "id": "avance_08_decaler_moyenne_mobile",
+        "title": "Moyennes Mobiles avec DECALER",
+        "level": "avance"
+      }
+    ],
+    "Analyse temporelle": [
+      {
+        "id": "avance_08_decaler_moyenne_mobile",
+        "title": "Moyennes Mobiles avec DECALER",
+        "level": "avance"
+      }
+    ],
+    "Alternative aux formules ENS": [
+      {
+        "id": "avance_09_sommeprod_multicriteres",
+        "title": "Analyse Multicritères avec SOMMEPROD",
+        "level": "avance"
+      }
+    ],
+    "INDEX+EQUIV_avance": [
+      {
+        "id": "avance_24_tarification_dynamique",
+        "title": "Tarification Dynamique avec INDEX+EQUIV Bidirectionnel",
+        "level": "avance"
+      }
+    ],
+    "tableaux_structures": [
+      {
+        "id": "avance_25_tableaux_structures",
+        "title": "Gestion de Données avec Tableaux Structurés",
+        "level": "avance"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "graphiques_combines": [
+      {
+        "id": "avance_26_dashboard_graphiques",
+        "title": "Dashboard Exécutif avec Graphiques Combinés",
+        "level": "avance"
+      }
+    ],
+    "visualisation": [
+      {
+        "id": "avance_26_dashboard_graphiques",
+        "title": "Dashboard Exécutif avec Graphiques Combinés",
+        "level": "avance"
+      }
+    ],
+    "formules_matricielles": [
+      {
+        "id": "avance_29_formules_dynamiques",
+        "title": "Analyses Dynamiques avec Formules Matricielles",
+        "level": "avance"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "FILTRE": [
+      {
+        "id": "avance_29_formules_dynamiques",
+        "title": "Analyses Dynamiques avec Formules Matricielles",
+        "level": "avance"
+      }
+    ]
+  },
+  "competenceIdToTemplates": {
+    "1": [
+      {
+        "id": "debutant_24_saisie_navigation",
+        "title": "Saisie et Navigation : Les Bases Essentielles",
+        "level": "debutant"
+      }
+    ],
+    "2": [
+      {
+        "id": "debutant_25_formatage_cellules",
+        "title": "Formatage : Rendre ses Données Lisibles",
+        "level": "debutant"
+      }
+    ],
+    "3": [
+      {
+        "id": "debutant_01_budget_mensuel",
+        "title": "Gestion Budget Personnel Mensuel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_26_somme_bases",
+        "title": "SOMME : La Formule Fondamentale",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_27_nb_nbval_comptage",
+        "title": "Compter avec NB et NBVAL",
+        "level": "debutant"
+      }
+    ],
+    "4": [
+      {
+        "id": "debutant_01_budget_mensuel",
+        "title": "Gestion Budget Personnel Mensuel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_02_notes_etudiants",
+        "title": "Calcul Moyennes et Classement Étudiants",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_14_mentions_bac",
+        "title": "Attribution Mentions avec SI Imbriqués",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_23_dashboard_ventes_graphiques",
+        "title": "Dashboard Commercial : Visualisation des Performances",
+        "level": "intermediaire"
+      }
+    ],
+    "5": [
+      {
+        "id": "debutant_02_notes_etudiants",
+        "title": "Calcul Moyennes et Classement Étudiants",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_03_calcul_prix",
+        "title": "Catalogue Produits - Calcul Prix TTC",
+        "level": "debutant"
+      }
+    ],
+    "6": [
+      {
+        "id": "debutant_04_planning_travail",
+        "title": "Planning Heures de Travail - Copier-Coller",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_17_recopie_formules",
+        "title": "Maîtriser la Recopie de Formules",
+        "level": "debutant"
+      }
+    ],
+    "7": [
+      {
+        "id": "debutant_05_tri_ventes",
+        "title": "Tri et Recherche dans Liste de Ventes",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_22_tri_filtres_analyse",
+        "title": "Tri et Filtres : Organiser et Analyser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "8": [
+      {
+        "id": "debutant_05_tri_ventes",
+        "title": "Tri et Recherche dans Liste de Ventes",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_22_tri_filtres_analyse",
+        "title": "Tri et Filtres : Organiser et Analyser ses Données",
+        "level": "debutant"
+      }
+    ],
+    "9": [
+      {
+        "id": "debutant_01_budget_mensuel",
+        "title": "Gestion Budget Personnel Mensuel",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_06_alerte_stock",
+        "title": "Alertes de Stock avec Fonction SI",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_27_sierreur_formules_robustes",
+        "title": "SIERREUR : Formules Robustes et Gestion d'Erreurs",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_43_si_imbriques_scoring",
+        "title": "Scoring Client avec SI Imbriqués",
+        "level": "intermediaire"
+      }
+    ],
+    "10": [
+      {
+        "id": "debutant_07_temperatures",
+        "title": "Suivi Températures avec Mise en Forme Conditionnelle",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_20_mfc_alertes",
+        "title": "Alertes Visuelles avec la Mise en Forme Conditionnelle",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_42_mfc_formule",
+        "title": "Mise en forme conditionnelle avec formules",
+        "level": "intermediaire"
+      }
+    ],
+    "11": [
+      {
+        "id": "intermediaire_11_comptage_ventes",
+        "title": "Analyse Commerciale avec NB.SI",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_14_mentions_bac",
+        "title": "Attribution Mentions avec SI Imbriqués",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_32_nbsi_comptage_conditionnel",
+        "title": "NB.SI : Compter avec des Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "12": [
+      {
+        "id": "intermediaire_16_analyse_multicriteres",
+        "title": "Analyse Multi-Critères avec NB.SI.ENS",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_25_nbsi_ens_rh",
+        "title": "NB.SI.ENS : Analyse RH Multi-Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "13": [
+      {
+        "id": "debutant_16_camembert_categories",
+        "title": "Répartition des Ventes par Catégorie - Graphique Secteurs",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_12_ca_par_region",
+        "title": "Calcul CA par Région avec SOMME.SI",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_23_dashboard_ventes_graphiques",
+        "title": "Dashboard Commercial : Visualisation des Performances",
+        "level": "intermediaire"
+      }
+    ],
+    "14": [
+      {
+        "id": "intermediaire_17_ca_segmente",
+        "title": "CA Segmenté avec SOMME.SI.ENS",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_26_sommesi_ens_ventes",
+        "title": "SOMME.SI.ENS : Analyse des Ventes Multi-Critères",
+        "level": "intermediaire"
+      }
+    ],
+    "15": [
+      {
+        "id": "intermediaire_13_calcul_remises",
+        "title": "Calcul de Remises avec Références Absolues",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_34_references_absolues_mixtes",
+        "title": "Références Absolues ($) et Mixtes : Maîtriser la Recopie",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_46_references_table_multiplication",
+        "title": "Table de Multiplication - Maîtriser les Références",
+        "level": "intermediaire"
+      },
+      {
+        "id": "avance_07_index_equiv_prix",
+        "title": "Grille Tarifaire Dynamique avec INDEX+EQUIV",
+        "level": "avance"
+      }
+    ],
+    "16": [
+      {
+        "id": "intermediaire_14_mentions_bac",
+        "title": "Attribution Mentions avec SI Imbriqués",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_24_si_imbriques_mentions",
+        "title": "SI Imbriqués : Attribution Automatique de Mentions",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_43_si_imbriques_scoring",
+        "title": "Scoring Client avec SI Imbriqués",
+        "level": "intermediaire"
+      }
+    ],
+    "17": [
+      {
+        "id": "intermediaire_18_generation_emails",
+        "title": "Génération Automatique d'Emails et Codes",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_35_tcd_analyse_ventes",
+        "title": "Tableaux Croisés Dynamiques : L'Outil d'Analyse Ultime",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_38_tcd_structure",
+        "title": "Structurer un Tableau Croisé Dynamique",
+        "level": "intermediaire"
+      }
+    ],
+    "18": [
+      {
+        "id": "debutant_12_tva_multipays",
+        "title": "Calcul TVA Multi-Pays avec RECHERCHEV",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_14_diagnostic_erreurs",
+        "title": "Diagnostic et Correction d'Erreurs Excel",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_15_commandes_recherchev",
+        "title": "Gestion Commandes avec RECHERCHEV",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_27_sierreur_formules_robustes",
+        "title": "SIERREUR : Formules Robustes et Gestion d'Erreurs",
+        "level": "intermediaire"
+      }
+    ],
+    "19": [
+      {
+        "id": "intermediaire_18_generation_emails",
+        "title": "Génération Automatique d'Emails et Codes",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      }
+    ],
+    "20": [
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_33_fonctions_texte_manipulation",
+        "title": "Fonctions Texte : Manipuler et Transformer les Données",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_44_texte_extraction_codes",
+        "title": "Extraction de Données avec Fonctions Texte",
+        "level": "intermediaire"
+      }
+    ],
+    "21": [
+      {
+        "id": "debutant_09_graphique_ca",
+        "title": "Graphique d'Évolution du Chiffre d'Affaires",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_23_dashboard_ventes_graphiques",
+        "title": "Dashboard Commercial : Visualisation des Performances",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_31_fonctions_dates_complet",
+        "title": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_45_dates_echeances",
+        "title": "Gestion des Échéances avec Fonctions Date",
+        "level": "intermediaire"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "22": [
+      {
+        "id": "intermediaire_27_sierreur_formules_robustes",
+        "title": "SIERREUR : Formules Robustes et Gestion d'Erreurs",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_29_validation_donnees_formulaire",
+        "title": "Validation de Données : Formulaire de Saisie Contrôlé",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_41_validation_liste",
+        "title": "Créer des listes déroulantes avec validation",
+        "level": "intermediaire"
+      }
+    ],
+    "23": [
+      {
+        "id": "intermediaire_35_tcd_analyse_ventes",
+        "title": "Tableaux Croisés Dynamiques : L'Outil d'Analyse Ultime",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_38_tcd_structure",
+        "title": "Structurer un Tableau Croisé Dynamique",
+        "level": "intermediaire"
+      },
+      {
+        "id": "avance_04_sommeprod_calculs_matriciels",
+        "title": "SOMMEPROD : Calculs Matriciels Sans Limites",
+        "level": "avance"
+      },
+      {
+        "id": "avance_09_sommeprod_multicriteres",
+        "title": "Analyse Multicritères avec SOMMEPROD",
+        "level": "avance"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "24": [
+      {
+        "id": "intermediaire_37_mfc_avancee",
+        "title": "Mise en Forme Conditionnelle Avancée",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_42_mfc_formule",
+        "title": "Mise en forme conditionnelle avec formules",
+        "level": "intermediaire"
+      },
+      {
+        "id": "avance_01_index_equiv_recherche_bidirectionnelle",
+        "title": "INDEX + EQUIV : La Recherche Bidirectionnelle",
+        "level": "avance"
+      },
+      {
+        "id": "avance_23_index_equiv_commandes",
+        "title": "Recherche Avancée avec INDEX+EQUIV",
+        "level": "avance"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "25": [
+      {
+        "id": "debutant_10_formulaire_conges",
+        "title": "Formulaire de Demande de Congés avec Validation",
+        "level": "debutant"
+      },
+      {
+        "id": "debutant_23_graphiques_visualisation",
+        "title": "Graphiques : Visualiser ses Données",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_29_validation_donnees_formulaire",
+        "title": "Validation de Données : Formulaire de Saisie Contrôlé",
+        "level": "intermediaire"
+      }
+    ],
+    "26": [
+      {
+        "id": "avance_01_index_equiv_recherche_bidirectionnelle",
+        "title": "INDEX + EQUIV : La Recherche Bidirectionnelle",
+        "level": "avance"
+      },
+      {
+        "id": "avance_07_index_equiv_prix",
+        "title": "Grille Tarifaire Dynamique avec INDEX+EQUIV",
+        "level": "avance"
+      }
+    ],
+    "27": [
+      {
+        "id": "intermediaire_36_tableaux_structures",
+        "title": "Tableaux Structurés : Organiser ses Données Intelligemment",
+        "level": "intermediaire"
+      },
+      {
+        "id": "avance_25_tableaux_structures",
+        "title": "Gestion de Données avec Tableaux Structurés",
+        "level": "avance"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "28": [
+      {
+        "id": "avance_04_sommeprod_calculs_matriciels",
+        "title": "SOMMEPROD : Calculs Matriciels Sans Limites",
+        "level": "avance"
+      },
+      {
+        "id": "avance_05_decaler_plages_dynamiques",
+        "title": "DECALER : Créer des Plages Dynamiques",
+        "level": "avance"
+      },
+      {
+        "id": "avance_08_decaler_moyenne_mobile",
+        "title": "Moyennes Mobiles avec DECALER",
+        "level": "avance"
+      },
+      {
+        "id": "avance_09_sommeprod_multicriteres",
+        "title": "Analyse Multicritères avec SOMMEPROD",
+        "level": "avance"
+      }
+    ],
+    "29": [
+      {
+        "id": "avance_03_formules_matricielles_dynamiques",
+        "title": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+        "level": "avance"
+      },
+      {
+        "id": "avance_27_moyennes_mobiles",
+        "title": "Moyennes Mobiles avec DECALER",
+        "level": "avance"
+      },
+      {
+        "id": "avance_29_formules_dynamiques",
+        "title": "Analyses Dynamiques avec Formules Matricielles",
+        "level": "avance"
+      },
+      {
+        "id": "avance_30_dashboard_executif",
+        "title": "Dashboard Exécutif Complet Multi-Compétences",
+        "level": "avance"
+      }
+    ],
+    "30": [
+      {
+        "id": "avance_06_power_query_intro",
+        "title": "Power Query : Automatiser le Nettoyage de Données",
+        "level": "avance"
+      }
+    ],
+    "32": [
+      {
+        "id": "intermediaire_37_mfc_avancee",
+        "title": "Mise en Forme Conditionnelle Avancée",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_42_mfc_formule",
+        "title": "Mise en forme conditionnelle avec formules",
+        "level": "intermediaire"
+      }
+    ],
+    "38": [
+      {
+        "id": "avance_02_recherchex_moderne",
+        "title": "RECHERCHEX : Le Successeur Moderne de RECHERCHEV",
+        "level": "avance"
+      }
+    ],
+    "39": [
+      {
+        "id": "avance_03_formules_matricielles_dynamiques",
+        "title": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+        "level": "avance"
+      }
+    ],
+    "51": [
+      {
+        "id": "debutant_11_grille_tarifaire",
+        "title": "Maîtrise des Références - Grille Tarifaire SaaS",
+        "level": "debutant"
+      },
+      {
+        "id": "intermediaire_34_references_absolues_mixtes",
+        "title": "Références Absolues ($) et Mixtes : Maîtriser la Recopie",
+        "level": "intermediaire"
+      },
+      {
+        "id": "intermediaire_46_references_table_multiplication",
+        "title": "Table de Multiplication - Maîtriser les Références",
+        "level": "intermediaire"
+      }
+    ],
+    "52": [
+      {
+        "id": "debutant_18_series_automatiques",
+        "title": "Générer des Séries Automatiques",
+        "level": "debutant"
+      }
+    ],
+    "53": [
+      {
+        "id": "intermediaire_30_recherchev_approchee_baremes",
+        "title": "RECHERCHEV Approchée : Barèmes et Tranches Automatiques",
+        "level": "intermediaire"
+      }
+    ],
+    "54": [
+      {
+        "id": "intermediaire_28_rechercheh_planning",
+        "title": "RECHERCHEH : Recherche dans un Planning Horizontal",
+        "level": "intermediaire"
+      }
+    ],
+    "56": [
+      {
+        "id": "intermediaire_36_tableaux_structures",
+        "title": "Tableaux Structurés : Organiser ses Données Intelligemment",
+        "level": "intermediaire"
+      }
+    ],
+    "58": [
+      {
+        "id": "debutant_19_collage_special",
+        "title": "Maîtriser le Collage Spécial",
+        "level": "debutant"
+      }
+    ]
+  },
+  "coverage": {
+    "full": [
+      {
+        "id": 3,
+        "name": "SOMME",
+        "count": 4
+      },
+      {
+        "id": 4,
+        "name": "MOYENNE",
+        "count": 5
+      },
+      {
+        "id": 5,
+        "name": "MIN_MAX",
+        "count": 2
+      },
+      {
+        "id": 6,
+        "name": "COPIER_COLLER",
+        "count": 2
+      },
+      {
+        "id": 7,
+        "name": "TRI_SIMPLE",
+        "count": 2
+      },
+      {
+        "id": 8,
+        "name": "FILTRES_BASIQUES",
+        "count": 2
+      },
+      {
+        "id": 9,
+        "name": "SI",
+        "count": 5
+      },
+      {
+        "id": 10,
+        "name": "MFC_SIMPLE",
+        "count": 3
+      },
+      {
+        "id": 11,
+        "name": "NB_SI",
+        "count": 3
+      },
+      {
+        "id": 12,
+        "name": "NB_SI_ENS",
+        "count": 2
+      },
+      {
+        "id": 13,
+        "name": "SOMME_SI",
+        "count": 3
+      },
+      {
+        "id": 14,
+        "name": "SOMME_SI_ENS",
+        "count": 2
+      },
+      {
+        "id": 15,
+        "name": "REFERENCES_ABSOLUES",
+        "count": 4
+      },
+      {
+        "id": 16,
+        "name": "SI_IMBRIQUES",
+        "count": 3
+      },
+      {
+        "id": 17,
+        "name": "FONCTIONS_TEXTE",
+        "count": 3
+      },
+      {
+        "id": 18,
+        "name": "RECHERCHEV",
+        "count": 4
+      },
+      {
+        "id": 19,
+        "name": "CONCATENER",
+        "count": 2
+      },
+      {
+        "id": 20,
+        "name": "FONCTIONS_DATE",
+        "count": 3
+      },
+      {
+        "id": 21,
+        "name": "GRAPHIQUES_BASIQUES",
+        "count": 5
+      },
+      {
+        "id": 22,
+        "name": "SIERREUR",
+        "count": 3
+      },
+      {
+        "id": 23,
+        "name": "TCD_BASIQUE",
+        "count": 5
+      },
+      {
+        "id": 24,
+        "name": "INDEX_EQUIV",
+        "count": 5
+      },
+      {
+        "id": 25,
+        "name": "VALIDATION_DONNEES",
+        "count": 3
+      },
+      {
+        "id": 26,
+        "name": "TCD_AVANCE",
+        "count": 2
+      },
+      {
+        "id": 27,
+        "name": "TABLEAUX_STRUCTURES",
+        "count": 3
+      },
+      {
+        "id": 28,
+        "name": "SOMMEPROD",
+        "count": 4
+      },
+      {
+        "id": 29,
+        "name": "FORMULES_MATRICIELLES",
+        "count": 4
+      },
+      {
+        "id": 32,
+        "name": "MFC_AVANCEE",
+        "count": 2
+      },
+      {
+        "id": 51,
+        "name": "REFERENCES_MIXTES",
+        "count": 3
+      }
+    ],
+    "partial": [
+      {
+        "id": 1,
+        "name": "SAISIE_DONNEES",
+        "count": 1
+      },
+      {
+        "id": 2,
+        "name": "FORMATAGE_CELLULES",
+        "count": 1
+      },
+      {
+        "id": 30,
+        "name": "INDIRECT",
+        "count": 1
+      },
+      {
+        "id": 38,
+        "name": "RECHERCHEX",
+        "count": 1
+      },
+      {
+        "id": 39,
+        "name": "FORMULES_DYNAMIQUES",
+        "count": 1
+      },
+      {
+        "id": 52,
+        "name": "SERIES_AUTOMATIQUES",
+        "count": 1
+      },
+      {
+        "id": 53,
+        "name": "RECHERCHEV_APPROCHEE",
+        "count": 1
+      },
+      {
+        "id": 54,
+        "name": "RECHERCHEH",
+        "count": 1
+      },
+      {
+        "id": 58,
+        "name": "COLLAGE_SPECIAL",
+        "count": 1
+      }
+    ],
+    "none": [
+      {
+        "id": 31,
+        "name": "GRAPHIQUES_AVANCES",
+        "count": 0
+      }
+    ]
+  },
+  "problems": [
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_03_calcul_prix.json",
+      "competenceName": "calculs_base"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_04_planning_travail.json",
+      "id": "debutant_04_planning_travail",
+      "competenceNames": [
+        "copier_coller",
+        "formatage"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_04_planning_travail.json",
+      "competenceName": "formatage"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_04_planning_travail.json",
+      "checkpointId": "cp_1",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_04_planning_travail.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_04_planning_travail.json",
+      "checkpointId": "cp_3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_04_planning_travail.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_04_planning_travail.json",
+      "checkpointId": "cp_5",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_04_planning_travail.json",
+      "checkpointId": "cp_6",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_05_tri_ventes.json",
+      "id": "debutant_05_tri_ventes",
+      "competenceNames": [
+        "tri",
+        "filtres"
+      ]
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_05_tri_ventes.json",
+      "checkpointId": "cp_1",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_05_tri_ventes.json",
+      "checkpointId": "cp_3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_05_tri_ventes.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_05_tri_ventes.json",
+      "checkpointId": "cp_5",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_07_temperatures.json",
+      "id": "debutant_07_temperatures",
+      "competenceNames": [
+        "mise_en_forme_conditionnelle"
+      ]
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_08_annuaire_entreprise.json",
+      "id": "debutant_08_annuaire_entreprise",
+      "competenceNames": [
+        "formatage"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_08_annuaire_entreprise.json",
+      "competenceName": "formatage"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_09_graphique_ca.json",
+      "id": "debutant_09_graphique_ca",
+      "competenceNames": [
+        "graphiques"
+      ]
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_10_formulaire_conges.json",
+      "id": "debutant_10_formulaire_conges",
+      "competenceNames": [
+        "validation_donnees"
+      ]
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_11_grille_tarifaire.json",
+      "id": "debutant_11_grille_tarifaire",
+      "competenceNames": [
+        "Références absolues ($)",
+        "Références mixtes"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_11_grille_tarifaire.json",
+      "competenceName": "Références absolues ($)"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_11_grille_tarifaire.json",
+      "checkpointId": "cp7",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_12_tva_multipays.json",
+      "competenceName": "Références absolues ($)"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_12_tva_multipays.json",
+      "checkpointId": "cp3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_12_tva_multipays.json",
+      "checkpointId": "cp4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_12_tva_multipays.json",
+      "checkpointId": "cp6",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_12_tva_multipays.json",
+      "checkpointId": "cp9",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_13_planning_mensuel.json",
+      "id": "debutant_13_planning_mensuel",
+      "competenceNames": [
+        "Génération de séries",
+        "Formules date (AUJOURDHUI, MOIS)"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_13_planning_mensuel.json",
+      "competenceName": "Génération de séries"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_13_planning_mensuel.json",
+      "competenceName": "Formules date (AUJOURDHUI, MOIS)"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_13_planning_mensuel.json",
+      "checkpointId": "cp1",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_13_planning_mensuel.json",
+      "checkpointId": "cp3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_13_planning_mensuel.json",
+      "checkpointId": "cp4",
+      "issue": "Checkpoint formule sans pattern/expected_formula/fonction"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_13_planning_mensuel.json",
+      "checkpointId": "cp5",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_13_planning_mensuel.json",
+      "checkpointId": "cp7",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_13_planning_mensuel.json",
+      "checkpointId": "cp8",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_13_planning_mensuel.json",
+      "checkpointId": "cp9",
+      "issue": "Checkpoint formule sans pattern/expected_formula/fonction"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_14_diagnostic_erreurs.json",
+      "competenceName": "SI simple"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_14_diagnostic_erreurs.json",
+      "competenceName": "Références absolues ($)"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_14_diagnostic_erreurs.json",
+      "checkpointId": "cp1",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_14_diagnostic_erreurs.json",
+      "checkpointId": "cp3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_14_diagnostic_erreurs.json",
+      "checkpointId": "cp5",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_14_diagnostic_erreurs.json",
+      "checkpointId": "cp7",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_14_diagnostic_erreurs.json",
+      "checkpointId": "cp8",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "debutant_15_premier_graphique.json",
+      "id": "debutant_15_premier_graphique",
+      "competenceNames": [
+        "Graphiques simples"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_15_premier_graphique.json",
+      "competenceName": "Graphiques simples"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_16_camembert_categories.json",
+      "competenceName": "Graphiques simples"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_16_camembert_categories.json",
+      "checkpointId": "cp4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_16_camembert_categories.json",
+      "checkpointId": "cp5",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_17_recopie_formules.json",
+      "competenceName": "Recopie de formules"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_18_series_automatiques.json",
+      "competenceName": "Génération de séries"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_18_series_automatiques.json",
+      "competenceName": "Recopie incrémentée"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_19_collage_special.json",
+      "competenceName": "Valeurs"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_19_collage_special.json",
+      "competenceName": "Transposition"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_20_mfc_alertes.json",
+      "competenceName": "Alertes visuelles"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_22_tri_filtres_analyse.json",
+      "competenceName": "Tri multi-niveaux"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_22_tri_filtres_analyse.json",
+      "competenceName": "Filtres automatiques"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_22_tri_filtres_analyse.json",
+      "competenceName": "Filtres personnalisés"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_23_graphiques_visualisation.json",
+      "competenceName": "Graphiques simples"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_23_graphiques_visualisation.json",
+      "competenceName": "Histogrammes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_23_graphiques_visualisation.json",
+      "competenceName": "Courbes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_23_graphiques_visualisation.json",
+      "competenceName": "Secteurs"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_24_saisie_navigation.json",
+      "competenceName": "Saisie de données"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_24_saisie_navigation.json",
+      "competenceName": "Navigation clavier"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_24_saisie_navigation.json",
+      "competenceName": "Sélection"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_24_saisie_navigation.json",
+      "competenceName": "Raccourcis"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_24_saisie_navigation.json",
+      "checkpointId": "cp_3_saisie_email",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_24_saisie_navigation.json",
+      "checkpointId": "cp_6_saisie_telephone",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_25_formatage_cellules.json",
+      "competenceName": "Format nombre"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_25_formatage_cellules.json",
+      "competenceName": "Alignement"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_25_formatage_cellules.json",
+      "competenceName": "Bordures"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_25_formatage_cellules.json",
+      "competenceName": "Couleurs"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_26_somme_bases.json",
+      "competenceName": "Formules de base"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_26_somme_bases.json",
+      "competenceName": "Plages"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_26_somme_bases.json",
+      "competenceName": "Raccourcis"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_27_nb_nbval_comptage.json",
+      "competenceName": "NB"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_27_nb_nbval_comptage.json",
+      "competenceName": "NBVAL"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_27_nb_nbval_comptage.json",
+      "competenceName": "Comptage"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "debutant_27_nb_nbval_comptage.json",
+      "competenceName": "Différence nombres/valeurs"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_27_nb_nbval_comptage.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_27_nb_nbval_comptage.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "debutant_27_nb_nbval_comptage.json",
+      "checkpointId": "cp_6",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_12_ca_par_region.json",
+      "competenceName": "calculs_pourcentage"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "intermediaire_13_calcul_remises.json",
+      "id": "intermediaire_13_calcul_remises",
+      "competenceNames": [
+        "references_absolues"
+      ]
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_13_calcul_remises.json",
+      "checkpointId": "cp_1",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_13_calcul_remises.json",
+      "checkpointId": "cp_8",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_14_mentions_bac.json",
+      "checkpointId": "cp10",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "intermediaire_19_anciennete_employes.json",
+      "id": "intermediaire_19_anciennete_employes",
+      "competenceNames": [
+        "formules_date"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_19_anciennete_employes.json",
+      "competenceName": "formules_date"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "intermediaire_20_analyse_tcd.json",
+      "id": "intermediaire_20_analyse_tcd",
+      "competenceNames": [
+        "tableaux_croises_dynamiques"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_20_analyse_tcd.json",
+      "competenceName": "tableaux_croises_dynamiques"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "intermediaire_21_moyennes_classes.json",
+      "id": "intermediaire_21_moyennes_classes",
+      "competenceNames": [
+        "MOYENNE.SI"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_21_moyennes_classes.json",
+      "competenceName": "MOYENNE.SI"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_21_moyennes_classes.json",
+      "checkpointId": "cp_3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "intermediaire_22_heatmap_ventes.json",
+      "id": "intermediaire_22_heatmap_ventes",
+      "competenceNames": [
+        "mise_forme_conditionnelle_avancee"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_22_heatmap_ventes.json",
+      "competenceName": "mise_forme_conditionnelle_avancee"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_23_dashboard_ventes_graphiques.json",
+      "competenceName": "Analyse de données"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_24_si_imbriques_mentions.json",
+      "competenceName": "Logique conditionnelle"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_25_nbsi_ens_rh.json",
+      "competenceName": "Comptage multi-critères"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_26_sommesi_ens_ventes.json",
+      "competenceName": "Somme multi-critères"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_27_sierreur_formules_robustes.json",
+      "competenceName": "Gestion des erreurs"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_27_sierreur_formules_robustes.json",
+      "competenceName": "Formules robustes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_28_rechercheh_planning.json",
+      "competenceName": "Recherche horizontale"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_29_validation_donnees_formulaire.json",
+      "competenceName": "Listes déroulantes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_29_validation_donnees_formulaire.json",
+      "competenceName": "Contrôle de saisie"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_30_recherchev_approchee_baremes.json",
+      "competenceName": "RECHERCHEV approchée"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_30_recherchev_approchee_baremes.json",
+      "competenceName": "Barèmes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_30_recherchev_approchee_baremes.json",
+      "competenceName": "Tranches"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_31_fonctions_dates_complet.json",
+      "competenceName": "DATEDIF"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_31_fonctions_dates_complet.json",
+      "competenceName": "ANNEE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_31_fonctions_dates_complet.json",
+      "competenceName": "MOIS"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_31_fonctions_dates_complet.json",
+      "competenceName": "JOUR"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_31_fonctions_dates_complet.json",
+      "competenceName": "FIN.MOIS"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_32_nbsi_comptage_conditionnel.json",
+      "competenceName": "Comptage conditionnel"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_32_nbsi_comptage_conditionnel.json",
+      "competenceName": "Critères"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_33_fonctions_texte_manipulation.json",
+      "competenceName": "GAUCHE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_33_fonctions_texte_manipulation.json",
+      "competenceName": "DROITE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_33_fonctions_texte_manipulation.json",
+      "competenceName": "STXT"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_33_fonctions_texte_manipulation.json",
+      "competenceName": "CHERCHE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_33_fonctions_texte_manipulation.json",
+      "competenceName": "NBCAR"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_34_references_absolues_mixtes.json",
+      "competenceName": "Recopie de formules"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_35_tcd_analyse_ventes.json",
+      "competenceName": "Analyse multidimensionnelle"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_36_tableaux_structures.json",
+      "competenceName": "Références structurées"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_36_tableaux_structures.json",
+      "competenceName": "Ctrl+T"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_37_mfc_avancee.json",
+      "competenceName": "Barres de données"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_37_mfc_avancee.json",
+      "competenceName": "Nuances couleurs"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_37_mfc_avancee.json",
+      "competenceName": "Jeux d'icônes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_37_mfc_avancee.json",
+      "competenceName": "Formules MFC"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_38_tcd_structure.json",
+      "competenceName": "Champs lignes/colonnes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_38_tcd_structure.json",
+      "competenceName": "Structure TCD"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_41_validation_liste.json",
+      "competenceName": "Validation données"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_41_validation_liste.json",
+      "competenceName": "Listes déroulantes"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_41_validation_liste.json",
+      "competenceName": "Contrôle de saisie"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_42_mfc_formule.json",
+      "competenceName": "Formules MFC"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_43_si_imbriques_scoring.json",
+      "competenceName": "Logique conditionnelle"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_43_si_imbriques_scoring.json",
+      "competenceName": "Classification"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_43_si_imbriques_scoring.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_43_si_imbriques_scoring.json",
+      "checkpointId": "cp_3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_43_si_imbriques_scoring.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_43_si_imbriques_scoring.json",
+      "checkpointId": "cp_5",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "competenceName": "GAUCHE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "competenceName": "DROITE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "competenceName": "STXT"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "competenceName": "CHERCHE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "competenceName": "NBCAR"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "competenceName": "Extraction de données"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_44_texte_extraction_codes.json",
+      "checkpointId": "cp_6",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_45_dates_echeances.json",
+      "competenceName": "DATEDIF"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_45_dates_echeances.json",
+      "competenceName": "FIN.MOIS"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_45_dates_echeances.json",
+      "competenceName": "JOURSEM"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_45_dates_echeances.json",
+      "competenceName": "NB.JOURS.OUVRES"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_45_dates_echeances.json",
+      "competenceName": "Calculs de dates"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_45_dates_echeances.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_45_dates_echeances.json",
+      "checkpointId": "cp_6",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_46_references_table_multiplication.json",
+      "competenceName": "Références absolues ($)"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "intermediaire_46_references_table_multiplication.json",
+      "competenceName": "Recopie de formules"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_46_references_table_multiplication.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_46_references_table_multiplication.json",
+      "checkpointId": "cp_3",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_46_references_table_multiplication.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_46_references_table_multiplication.json",
+      "checkpointId": "cp_5",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "intermediaire_46_references_table_multiplication.json",
+      "checkpointId": "cp_6",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_01_index_equiv_recherche_bidirectionnelle.json",
+      "competenceName": "Recherche bidirectionnelle"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_01_index_equiv_recherche_bidirectionnelle.json",
+      "competenceName": "Alternative RECHERCHEV"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_02_recherchex_moderne.json",
+      "competenceName": "Excel 365"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_03_formules_matricielles_dynamiques.json",
+      "competenceName": "FILTER"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_03_formules_matricielles_dynamiques.json",
+      "competenceName": "SORT"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_03_formules_matricielles_dynamiques.json",
+      "competenceName": "UNIQUE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_03_formules_matricielles_dynamiques.json",
+      "competenceName": "Tableaux dynamiques"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_04_sommeprod_calculs_matriciels.json",
+      "competenceName": "Calculs matriciels"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_04_sommeprod_calculs_matriciels.json",
+      "competenceName": "Conditions multiples"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_04_sommeprod_calculs_matriciels.json",
+      "checkpointId": "cp_6_moyenne_ponderee",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_05_decaler_plages_dynamiques.json",
+      "competenceName": "DECALER"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_05_decaler_plages_dynamiques.json",
+      "competenceName": "Plages dynamiques"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_05_decaler_plages_dynamiques.json",
+      "competenceName": "Graphiques dynamiques"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_06_power_query_intro.json",
+      "competenceName": "Power Query"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_06_power_query_intro.json",
+      "competenceName": "ETL"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_06_power_query_intro.json",
+      "competenceName": "Nettoyage données"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_06_power_query_intro.json",
+      "competenceName": "Transformation"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_07_index_equiv_prix.json",
+      "competenceName": "INDEX+EQUIV"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_07_index_equiv_prix.json",
+      "competenceName": "Recherche bidirectionnelle"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_07_index_equiv_prix.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_07_index_equiv_prix.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint formule sans pattern/expected_formula/fonction"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_08_decaler_moyenne_mobile.json",
+      "competenceName": "DECALER"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_08_decaler_moyenne_mobile.json",
+      "competenceName": "Moyennes mobiles"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_08_decaler_moyenne_mobile.json",
+      "competenceName": "Plages dynamiques"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_08_decaler_moyenne_mobile.json",
+      "competenceName": "Analyse temporelle"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_08_decaler_moyenne_mobile.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_08_decaler_moyenne_mobile.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_09_sommeprod_multicriteres.json",
+      "competenceName": "Calculs matriciels"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_09_sommeprod_multicriteres.json",
+      "competenceName": "Conditions multiples"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_09_sommeprod_multicriteres.json",
+      "competenceName": "Alternative aux formules ENS"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_09_sommeprod_multicriteres.json",
+      "checkpointId": "cp_2",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_09_sommeprod_multicriteres.json",
+      "checkpointId": "cp_4",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_23_index_equiv_commandes.json",
+      "competenceName": "INDEX+EQUIV"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "avance_24_tarification_dynamique.json",
+      "id": "avance_24_tarification_dynamique",
+      "competenceNames": [
+        "INDEX+EQUIV_avance"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_24_tarification_dynamique.json",
+      "competenceName": "INDEX+EQUIV_avance"
+    },
+    {
+      "type": "INCOMPLETE_CHECKPOINT",
+      "file": "avance_24_tarification_dynamique.json",
+      "checkpointId": "cp_8",
+      "issue": "Checkpoint valeur sans expected_value"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "avance_25_tableaux_structures.json",
+      "id": "avance_25_tableaux_structures",
+      "competenceNames": [
+        "tableaux_structures"
+      ]
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "avance_26_dashboard_graphiques.json",
+      "id": "avance_26_dashboard_graphiques",
+      "competenceNames": [
+        "graphiques_combines",
+        "visualisation"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_26_dashboard_graphiques.json",
+      "competenceName": "graphiques_combines"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_26_dashboard_graphiques.json",
+      "competenceName": "visualisation"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_27_moyennes_mobiles.json",
+      "competenceName": "DECALER"
+    },
+    {
+      "type": "MISSING_COMPETENCE_IDS",
+      "file": "avance_29_formules_dynamiques.json",
+      "id": "avance_29_formules_dynamiques",
+      "competenceNames": [
+        "formules_matricielles",
+        "FILTRE",
+        "UNIQUE",
+        "SORT"
+      ]
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_29_formules_dynamiques.json",
+      "competenceName": "FILTRE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_29_formules_dynamiques.json",
+      "competenceName": "UNIQUE"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_29_formules_dynamiques.json",
+      "competenceName": "SORT"
+    },
+    {
+      "type": "UNKNOWN_COMPETENCE_NAME",
+      "file": "avance_30_dashboard_executif.json",
+      "competenceName": "INDEX+EQUIV"
+    },
+    {
+      "type": "ORPHAN_COMPETENCE",
+      "competenceId": 31,
+      "competenceName": "GRAPHIQUES_AVANCES",
+      "issue": "Aucun template pour cette compétence"
+    }
+  ]
+}

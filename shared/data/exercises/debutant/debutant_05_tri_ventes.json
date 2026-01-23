@@ -1,0 +1,583 @@
+{
+  "id": "debutant_05_tri_ventes",
+  "titre": "Tri et Recherche dans Liste de Ventes",
+  "niveau": "debutant",
+  "duree_estimee": "18 min",
+  "competences": [
+    "tri",
+    "filtres"
+  ],
+  "contexte": {
+    "situation": "Tu es assistant commercial et tu dois organiser une liste de 50 ventes pour faciliter l'analyse.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Trier les ventes par montant décroissant",
+    "Filtrer les ventes d'une région spécifique",
+    "Identifier les 10 meilleures ventes"
+  ],
+  "consignes": [
+    "Sélectionne tout le tableau (A1:G51)",
+    "Trie par la colonne 'Total' du plus grand au plus petit",
+    "Active les filtres automatiques sur la ligne d'en-tête",
+    "Filtre pour voir uniquement les ventes de la région 'Île-de-France'",
+    "Note les 3 meilleures ventes dans la feuille 'Analyse' (à créer)",
+    "Retire les filtres et trie par date croissante"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Produit",
+      "Vendeur",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Clavier",
+        "Eve",
+        "Normandie",
+        28,
+        399,
+        11172
+      ],
+      [
+        "02/01/2024",
+        "Écran",
+        "Eve",
+        "Hauts-de-France",
+        4,
+        299,
+        1196
+      ],
+      [
+        "03/01/2024",
+        "Ordinateur portable",
+        "Xavier",
+        "Île-de-France",
+        27,
+        499,
+        13473
+      ],
+      [
+        "04/01/2024",
+        "Clavier",
+        "Xavier",
+        "Hauts-de-France",
+        31,
+        149,
+        4619
+      ],
+      [
+        "05/01/2024",
+        "Webcam",
+        "Zoé",
+        "Normandie",
+        30,
+        299,
+        8970
+      ],
+      [
+        "06/01/2024",
+        "Chargeur",
+        "Rose",
+        "Pays de la Loire",
+        35,
+        299,
+        10465
+      ],
+      [
+        "07/01/2024",
+        "Tablette",
+        "Tom",
+        "Provence-Alpes-Côte d'Azur",
+        17,
+        199,
+        3383
+      ],
+      [
+        "08/01/2024",
+        "Webcam",
+        "Nathan",
+        "Hauts-de-France",
+        19,
+        149,
+        2831
+      ],
+      [
+        "09/01/2024",
+        "Tablette",
+        "Xavier",
+        "Bourgogne-Franche-Comté",
+        38,
+        149,
+        5662
+      ],
+      [
+        "10/01/2024",
+        "Housse",
+        "Yves",
+        "Auvergne-Rhône-Alpes",
+        11,
+        799,
+        8789
+      ],
+      [
+        "11/01/2024",
+        "Router",
+        "Charlie",
+        "Hauts-de-France",
+        9,
+        399,
+        3591
+      ],
+      [
+        "12/01/2024",
+        "Moniteur",
+        "Quentin",
+        "Centre-Val de Loire",
+        31,
+        399,
+        12369
+      ],
+      [
+        "13/01/2024",
+        "Router",
+        "Frank",
+        "Nouvelle-Aquitaine",
+        24,
+        199,
+        4776
+      ],
+      [
+        "14/01/2024",
+        "Moniteur",
+        "Rose",
+        "Occitanie",
+        26,
+        99,
+        2574
+      ],
+      [
+        "15/01/2024",
+        "Batterie",
+        "Iris",
+        "Île-de-France",
+        36,
+        999,
+        35964
+      ],
+      [
+        "16/01/2024",
+        "Ordinateur portable",
+        "Rose",
+        "Bourgogne-Franche-Comté",
+        40,
+        199,
+        7960
+      ],
+      [
+        "17/01/2024",
+        "Router",
+        "Eve",
+        "Grand Est",
+        9,
+        499,
+        4491
+      ],
+      [
+        "18/01/2024",
+        "Switch",
+        "Diana",
+        "Occitanie",
+        47,
+        399,
+        18753
+      ],
+      [
+        "19/01/2024",
+        "Moniteur",
+        "Zoé",
+        "Grand Est",
+        50,
+        399,
+        19950
+      ],
+      [
+        "20/01/2024",
+        "Écouteurs",
+        "Yves",
+        "Provence-Alpes-Côte d'Azur",
+        3,
+        149,
+        447
+      ],
+      [
+        "21/01/2024",
+        "Tablette",
+        "Jack",
+        "Hauts-de-France",
+        11,
+        799,
+        8789
+      ],
+      [
+        "22/01/2024",
+        "Switch",
+        "Grace",
+        "Bretagne",
+        44,
+        999,
+        43956
+      ],
+      [
+        "23/01/2024",
+        "Batterie",
+        "Quentin",
+        "Bretagne",
+        18,
+        149,
+        2682
+      ],
+      [
+        "24/01/2024",
+        "Clavier",
+        "Leo",
+        "Centre-Val de Loire",
+        43,
+        499,
+        21457
+      ],
+      [
+        "25/01/2024",
+        "Imprimante",
+        "Eve",
+        "Provence-Alpes-Côte d'Azur",
+        40,
+        999,
+        39960
+      ],
+      [
+        "26/01/2024",
+        "Housse",
+        "Yves",
+        "Pays de la Loire",
+        21,
+        1299,
+        27279
+      ],
+      [
+        "27/01/2024",
+        "Casque",
+        "Kate",
+        "Provence-Alpes-Côte d'Azur",
+        4,
+        999,
+        3996
+      ],
+      [
+        "28/01/2024",
+        "Tablette",
+        "Olivia",
+        "Hauts-de-France",
+        15,
+        999,
+        14985
+      ],
+      [
+        "29/01/2024",
+        "Casque",
+        "Marie",
+        "Hauts-de-France",
+        32,
+        999,
+        31968
+      ],
+      [
+        "30/01/2024",
+        "Batterie",
+        "Yves",
+        "Nouvelle-Aquitaine",
+        3,
+        199,
+        597
+      ],
+      [
+        "31/01/2024",
+        "Câble USB",
+        "Diana",
+        "Auvergne-Rhône-Alpes",
+        36,
+        1299,
+        46764
+      ],
+      [
+        "01/02/2024",
+        "Souris",
+        "Iris",
+        "Normandie",
+        29,
+        149,
+        4321
+      ],
+      [
+        "02/02/2024",
+        "Imprimante",
+        "Xavier",
+        "Normandie",
+        8,
+        499,
+        3992
+      ],
+      [
+        "03/02/2024",
+        "Téléphone",
+        "Diana",
+        "Bretagne",
+        34,
+        999,
+        33966
+      ],
+      [
+        "04/02/2024",
+        "Disque dur",
+        "Bob",
+        "Bourgogne-Franche-Comté",
+        21,
+        499,
+        10479
+      ],
+      [
+        "05/02/2024",
+        "Écouteurs",
+        "Eve",
+        "Bourgogne-Franche-Comté",
+        46,
+        499,
+        22954
+      ],
+      [
+        "06/02/2024",
+        "Moniteur",
+        "Bob",
+        "Pays de la Loire",
+        31,
+        499,
+        15469
+      ],
+      [
+        "07/02/2024",
+        "Moniteur",
+        "Iris",
+        "Nouvelle-Aquitaine",
+        45,
+        499,
+        22455
+      ],
+      [
+        "08/02/2024",
+        "Imprimante",
+        "Rose",
+        "Pays de la Loire",
+        19,
+        149,
+        2831
+      ],
+      [
+        "09/02/2024",
+        "Adaptateur",
+        "Sam",
+        "Occitanie",
+        43,
+        599,
+        25757
+      ],
+      [
+        "10/02/2024",
+        "Adaptateur",
+        "Rose",
+        "Nouvelle-Aquitaine",
+        21,
+        1299,
+        27279
+      ],
+      [
+        "11/02/2024",
+        "Support",
+        "Quentin",
+        "Centre-Val de Loire",
+        4,
+        1299,
+        5196
+      ],
+      [
+        "12/02/2024",
+        "Adaptateur",
+        "Iris",
+        "Centre-Val de Loire",
+        13,
+        599,
+        7787
+      ],
+      [
+        "13/02/2024",
+        "Moniteur",
+        "Kate",
+        "Île-de-France",
+        25,
+        1299,
+        32475
+      ],
+      [
+        "14/02/2024",
+        "Batterie",
+        "Zoé",
+        "Hauts-de-France",
+        18,
+        999,
+        17982
+      ],
+      [
+        "15/02/2024",
+        "Câble USB",
+        "Leo",
+        "Île-de-France",
+        16,
+        299,
+        4784
+      ],
+      [
+        "16/02/2024",
+        "Ordinateur portable",
+        "Grace",
+        "Hauts-de-France",
+        21,
+        799,
+        16779
+      ],
+      [
+        "17/02/2024",
+        "Écran",
+        "Alice",
+        "Bourgogne-Franche-Comté",
+        37,
+        199,
+        7363
+      ],
+      [
+        "18/02/2024",
+        "Moniteur",
+        "Grace",
+        "Nouvelle-Aquitaine",
+        23,
+        299,
+        6877
+      ],
+      [
+        "19/02/2024",
+        "Écran",
+        "Rose",
+        "Grand Est",
+        4,
+        399,
+        1596
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "tri_correct": true,
+    "filtres_utilises": true,
+    "score_minimum": 6.5
+  },
+  "checkpoints": [
+    {
+      "cellule": "G2",
+      "type": "valeur",
+      "description": "Tri par Total décroissant - vérification de la plus grande valeur en première position",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Après le tri, la plus grande valeur de la colonne Total doit être en haut du tableau.",
+        "Utilise l'onglet Données > Trier pour organiser par la colonne Total.",
+        "Sélectionne A1:G51, puis Données > Trier > Colonne Total > Du plus grand au plus petit."
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "A1",
+      "type": "interface",
+      "description": "Activation des filtres automatiques - présence des flèches de filtre",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Les en-têtes doivent avoir des petites flèches pour pouvoir filtrer.",
+        "Va dans l'onglet Données pour activer une fonctionnalité de filtrage.",
+        "Données > Filtre pour activer les filtres automatiques."
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "D2",
+      "type": "valeur",
+      "description": "Filtre Île-de-France appliqué - vérification que seules les ventes d'Île-de-France sont visibles",
+      "fonction": null,
+      "pattern": [
+        "Île-de-France"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Toutes les lignes visibles doivent montrer la même région dans la colonne Région.",
+        "Clique sur la flèche de la colonne Région pour choisir quoi afficher.",
+        "Flèche colonne Région > Décocher 'Tout sélectionner' > Cocher seulement 'Île-de-France'."
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "Analyse!A1",
+      "type": "valeur",
+      "description": "Création de la feuille Analyse avec les 3 meilleures ventes d'Île-de-France",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": null,
+      "points": 25,
+      "indices": [
+        "Tu dois créer une nouvelle feuille et y noter les informations des 3 premières lignes filtrées.",
+        "Clic droit sur l'onglet de feuille en bas > Insérer une feuille > Nommer 'Analyse'.",
+        "Copie les 3 premières lignes de données filtrées vers la nouvelle feuille Analyse."
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "A2",
+      "type": "valeur",
+      "description": "Tri final par date croissante - vérification de la date la plus ancienne en première position",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Après avoir retiré les filtres, la date la plus ancienne doit être en première ligne de données.",
+        "Retire d'abord tous les filtres, puis trie par la colonne Date du plus ancien au plus récent.",
+        "Données > Effacer les filtres, puis Données > Trier > Colonne Date > Du plus ancien au plus récent."
+      ],
+      "id": "cp_5"
+    }
+  ],
+  "competence_ids": [
+    7,
+    8
+  ]
+}

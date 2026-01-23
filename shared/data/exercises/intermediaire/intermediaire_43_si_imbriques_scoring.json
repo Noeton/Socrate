@@ -1,0 +1,163 @@
+{
+  "id": "intermediaire_43_si_imbriques_scoring",
+  "titre": "Scoring Client avec SI Imbriqués",
+  "niveau": "intermediaire",
+  "competences": ["SI imbriqués", "Logique conditionnelle", "Classification"],
+  "competence_ids": [16, 9],
+  "duree_estimee": "20 min",
+  
+  "contexte": {
+    "situation": "Le service marketing veut segmenter les clients selon leur valeur. Tu dois créer un système de scoring automatique basé sur le CA annuel.",
+    "manager": {
+      "nom": "Amélie Rousseau",
+      "poste": "Directrice Marketing"
+    },
+    "enjeux": "Identifier les clients VIP pour leur proposer des offres personnalisées.",
+    "deadline": "Demain matin"
+  },
+  
+  "objectifs": [
+    "Créer une classification à 5 niveaux avec SI imbriqués",
+    "Comprendre l'ordre des conditions (du plus restrictif au moins)",
+    "Éviter les erreurs classiques de parenthèses"
+  ],
+  
+  "consignes": [
+    "En D2, crée une formule SI imbriquée pour classifier le client selon son CA (C2) :",
+    "- CA >= 100000 → 'Platinum'",
+    "- CA >= 50000 → 'Gold'",
+    "- CA >= 20000 → 'Silver'",
+    "- CA >= 5000 → 'Bronze'",
+    "- Sinon → 'Standard'",
+    "Recopie la formule jusqu'à D21"
+  ],
+  
+  "donnees": {
+    "headers": ["Client", "Secteur", "CA Annuel", "Catégorie"],
+    "rows": [
+      ["Entreprise Alpha", "Industrie", 125000, ""],
+      ["SociétéBeta", "Services", 45000, ""],
+      ["GroupeGamma", "Commerce", 78000, ""],
+      ["Delta Corp", "Tech", 12000, ""],
+      ["Epsilon SA", "Finance", 250000, ""],
+      ["Zeta Industries", "Industrie", 8500, ""],
+      ["Eta Consulting", "Services", 3200, ""],
+      ["Theta Solutions", "Tech", 67000, ""],
+      ["Iota Group", "Commerce", 19500, ""],
+      ["Kappa SA", "Finance", 55000, ""],
+      ["Lambda Tech", "Tech", 92000, ""],
+      ["Mu Services", "Services", 4800, ""],
+      ["Nu Corp", "Industrie", 31000, ""],
+      ["Xi Trading", "Commerce", 15000, ""],
+      ["Omicron SA", "Finance", 180000, ""],
+      ["Pi Solutions", "Tech", 22000, ""],
+      ["Rho Industries", "Industrie", 6200, ""],
+      ["Sigma Group", "Services", 48000, ""],
+      ["Tau Commerce", "Commerce", 2100, ""],
+      ["Upsilon SA", "Finance", 73000, ""]
+    ]
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "D2",
+      "description": "Formule SI imbriquée présente",
+      "fonction": "SI",
+      "pattern": ["SI", "C2", ">=", "100000", "Platinum"],
+      "points": 15,
+      "indices": [
+        "Commence par le cas le plus élevé : =SI(C2>=100000;\"Platinum\";...)",
+        "Chaque SI a 3 arguments : condition, si_vrai, si_faux"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "D2",
+      "description": "Premier client (125000) = Platinum",
+      "valeur_attendue": "Platinum",
+      "points": 15
+    },
+    {
+      "id": "cp_3",
+      "type": "valeur",
+      "cellule": "D3",
+      "description": "Deuxième client (45000) = Bronze",
+      "valeur_attendue": "Bronze",
+      "points": 15
+    },
+    {
+      "id": "cp_4",
+      "type": "valeur",
+      "cellule": "D4",
+      "description": "Troisième client (78000) = Gold",
+      "valeur_attendue": "Gold",
+      "points": 15
+    },
+    {
+      "id": "cp_5",
+      "type": "valeur",
+      "cellule": "D7",
+      "description": "Client avec 3200€ = Standard",
+      "valeur_attendue": "Standard",
+      "points": 15
+    },
+    {
+      "id": "cp_6",
+      "type": "formule",
+      "cellule": "D21",
+      "description": "Formule recopiée jusqu'à la ligne 21",
+      "fonction": "SI",
+      "pattern": ["SI", "C21"],
+      "points": 10
+    },
+    {
+      "id": "cp_7",
+      "type": "comptage",
+      "description": "Vérification : 3 clients Platinum dans la liste",
+      "formule_verification": "NB.SI(D2:D21;\"Platinum\")",
+      "valeur_attendue": 3,
+      "points": 15
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70,
+    "tous_clients_categories": true
+  },
+  
+  "theorie": {
+    "concept": "SI imbriqués pour classification multi-niveaux",
+    "explication": "Quand on a plus de 2 catégories, on imbrique plusieurs SI. L'astuce : toujours tester du plus restrictif au moins restrictif.",
+    "formule_type": "=SI(cond1;val1;SI(cond2;val2;SI(cond3;val3;val_defaut)))",
+    "regle_or": "L'ordre compte ! Si tu testes >=5000 avant >=100000, tous les clients seront Bronze.",
+    "alternative": "Excel 2019+ propose SI.CONDITIONS qui est plus lisible pour 3+ conditions"
+  },
+  
+  "indices": [
+    "Teste TOUJOURS du plus grand au plus petit : 100000, puis 50000, puis 20000...",
+    "Chaque SI remplace le 'sinon' du précédent",
+    "Compte tes parenthèses : autant de ( que de )",
+    "Le dernier 'sinon' est la catégorie par défaut (Standard)"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "Tous les clients sont 'Bronze'",
+      "cause": "Les conditions sont dans le mauvais ordre (petit → grand)",
+      "solution": "Inverse l'ordre : teste 100000 en premier, pas 5000"
+    },
+    {
+      "erreur": "Parenthèse manquante",
+      "cause": "Il manque des ) à la fin de la formule",
+      "solution": "Compte : 4 SI = 4 parenthèses ouvrantes = 4 fermantes"
+    },
+    {
+      "erreur": "#VALEUR!",
+      "cause": "Les guillemets autour des textes sont manquants",
+      "solution": "Les catégories doivent être entre guillemets : \"Platinum\""
+    }
+  ]
+}

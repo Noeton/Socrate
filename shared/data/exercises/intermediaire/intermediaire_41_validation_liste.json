@@ -1,0 +1,206 @@
+{
+  "id": "intermediaire_41_validation_liste",
+  "titre": "Créer des listes déroulantes avec validation",
+  "niveau": "intermediaire",
+  "competences": ["Validation données", "Listes déroulantes", "Contrôle de saisie"],
+  "competence_ids": [22],
+  "duree_estimee": "20 min",
+  
+  "contexte": {
+    "situation": "Tu travailles aux RH et tu dois créer un formulaire de saisie pour les nouvelles embauches. Pour éviter les erreurs de saisie, tu dois contraindre certains champs avec des listes déroulantes.",
+    "manager": {
+      "nom": "Claire Dupont",
+      "poste": "DRH"
+    },
+    "enjeux": "Réduire les erreurs de saisie et standardiser les données RH.",
+    "deadline": "Fin de semaine"
+  },
+  
+  "objectifs": [
+    "Créer une liste déroulante à partir d'une plage de cellules",
+    "Configurer un message de saisie explicatif",
+    "Ajouter un message d'erreur personnalisé",
+    "Appliquer une validation numérique avec bornes"
+  ],
+  
+  "consignes": [
+    "1. Dans la feuille 'Référentiel', vous avez les listes de valeurs autorisées",
+    "2. En B2 (Service), créez une liste déroulante pointant vers Référentiel!A2:A8",
+    "3. En B3 (Type contrat), créez une liste : CDI, CDD, Stage, Alternance",
+    "4. En B4 (Salaire), autorisez uniquement les nombres entre 25000 et 150000",
+    "5. Ajoutez un message d'erreur personnalisé pour le salaire",
+    "6. Testez vos validations en saisissant des valeurs incorrectes"
+  ],
+  
+  "donnees": {
+    "headers": ["Champ", "Valeur", "Commentaire"],
+    "rows": [
+      ["Nom", "", "Saisie libre"],
+      ["Prénom", "", "Saisie libre"],
+      ["Service", "", "← Liste déroulante"],
+      ["Type de contrat", "", "← Liste déroulante"],
+      ["Salaire annuel", "", "← Validation numérique"],
+      ["Date d'entrée", "", "Saisie libre"],
+      ["Manager", "", "Saisie libre"]
+    ],
+    "referentiel": {
+      "services": ["Commercial", "Marketing", "Finance", "RH", "IT", "Production", "Direction"],
+      "contrats": ["CDI", "CDD", "Stage", "Alternance"]
+    }
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "validation",
+      "cellule": "B2",
+      "description": "Liste déroulante pour le service",
+      "validation": {
+        "type": "list",
+        "source_contains": "Commercial"
+      },
+      "points": 20,
+      "indices": [
+        "Sélectionnez B2 puis Données > Validation des données",
+        "Choisissez 'Liste' dans le type de validation",
+        "Dans Source, sélectionnez la plage des services ou tapez =Référentiel!A2:A8"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "validation",
+      "cellule": "B3",
+      "description": "Liste déroulante pour le type de contrat",
+      "validation": {
+        "type": "list",
+        "values": ["CDI", "CDD", "Stage", "Alternance"]
+      },
+      "points": 20,
+      "indices": [
+        "Même méthode que pour le service",
+        "Vous pouvez taper directement les valeurs séparées par des points-virgules",
+        "Source : CDI;CDD;Stage;Alternance"
+      ]
+    },
+    {
+      "id": "cp_3",
+      "type": "validation",
+      "cellule": "B4",
+      "description": "Validation numérique pour le salaire (25000-150000)",
+      "validation": {
+        "type": "decimal",
+        "min": 25000,
+        "max": 150000
+      },
+      "points": 25,
+      "indices": [
+        "Choisissez 'Nombre décimal' comme type de validation",
+        "Opérateur : 'comprise entre'",
+        "Minimum : 25000, Maximum : 150000"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "validation",
+      "cellule": "B4",
+      "description": "Message d'erreur personnalisé configuré",
+      "validation": {
+        "has_error_message": true
+      },
+      "points": 15,
+      "indices": [
+        "Dans la fenêtre Validation, allez dans l'onglet 'Alerte d'erreur'",
+        "Personnalisez le titre et le message",
+        "Ex: 'Le salaire doit être entre 25 000 € et 150 000 €'"
+      ]
+    },
+    {
+      "id": "cp_5",
+      "type": "validation",
+      "cellule": "B2",
+      "description": "Message de saisie configuré (optionnel)",
+      "validation": {
+        "has_input_message": true
+      },
+      "points": 10,
+      "indices": [
+        "Onglet 'Message de saisie' dans la fenêtre Validation",
+        "Ajoutez un titre et un message explicatif",
+        "Ce message apparaît quand l'utilisateur sélectionne la cellule"
+      ]
+    },
+    {
+      "id": "cp_6",
+      "type": "verification",
+      "description": "Test de la validation (saisie incorrecte rejetée)",
+      "validation": {
+        "test_value": "Département inconnu",
+        "expected_rejection": true
+      },
+      "points": 10,
+      "indices": [
+        "Essayez de taper une valeur qui n'est pas dans la liste",
+        "Excel doit afficher un message d'erreur",
+        "La saisie doit être bloquée ou signalée"
+      ]
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70,
+    "checkpoints_requis": ["cp_1", "cp_2", "cp_3"]
+  },
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "Plage source de la liste non figée",
+      "explication": "Si vous recopiez la cellule, la référence se décale et la liste ne fonctionne plus",
+      "solution": "Utilisez des références absolues ($A$2:$A$8) ou une plage nommée"
+    },
+    {
+      "erreur": "Oublier d'autoriser les cellules vides",
+      "explication": "Par défaut, une validation peut bloquer les cellules vides",
+      "solution": "Cochez 'Ignorer si vide' si la saisie est optionnelle"
+    },
+    {
+      "erreur": "Liste saisie avec virgules au lieu de points-virgules",
+      "explication": "En français, le séparateur est le point-virgule, pas la virgule",
+      "solution": "CDI;CDD;Stage et non CDI,CDD,Stage"
+    },
+    {
+      "erreur": "Validation trop restrictive",
+      "explication": "Une validation qui bloque tout frustre l'utilisateur",
+      "solution": "Utilisez 'Avertissement' plutôt que 'Arrêt' si possible"
+    },
+    {
+      "erreur": "Oublier de tester la validation",
+      "explication": "Sans test, vous ne savez pas si ça fonctionne",
+      "solution": "Essayez de saisir des valeurs valides ET invalides"
+    }
+  ],
+  
+  "theorie": {
+    "concept": "Validation des données",
+    "explication": "La validation de données permet de contrôler ce que l'utilisateur peut saisir dans une cellule. Elle garantit la qualité et la cohérence des données.",
+    "types_validation": [
+      "Liste : choix parmi des valeurs prédéfinies",
+      "Nombre entier/décimal : avec bornes min/max",
+      "Date/Heure : avec contraintes",
+      "Longueur de texte : nombre de caractères",
+      "Personnalisée : formule de validation"
+    ],
+    "bonnes_pratiques": [
+      "Utilisez des plages nommées pour les sources de listes",
+      "Ajoutez toujours un message d'aide (message de saisie)",
+      "Personnalisez les messages d'erreur pour guider l'utilisateur",
+      "Testez systématiquement avec des valeurs limites"
+    ]
+  },
+  
+  "indices": [
+    "La validation de données est dans le menu Données",
+    "Une liste peut pointer vers une plage ou contenir des valeurs directes",
+    "Le message de saisie aide l'utilisateur AVANT qu'il ne fasse une erreur",
+    "Vous pouvez copier une validation vers d'autres cellules avec Collage spécial > Validation"
+  ]
+}

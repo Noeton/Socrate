@@ -1,0 +1,255 @@
+{
+    "id": "intermediaire_28_rechercheh_planning",
+    "titre": "RECHERCHEH : Recherche dans un Planning Horizontal",
+    "niveau": "intermediaire",
+    "duree_estimee": "18 min",
+    "competences": ["RECHERCHEH", "Recherche horizontale"],
+    "competence_ids": [54],
+  
+    "contexte": {
+      "situation": "Tu travailles chez EventPro, une agence d'événementiel. Le planning des salles est organisé horizontalement : les jours en colonnes, les salles en lignes. Tu dois créer un système pour vérifier rapidement la disponibilité d'une salle à une date donnée.",
+      "manager": {
+        "nom": "Marc Fontaine",
+        "poste": "Directeur des opérations",
+        "personnalite": "Réactif, il veut des réponses instantanées quand un client appelle.",
+        "demande": "Quand un client appelle, je dois savoir en 2 secondes si la Grande Salle est libre mardi. Peux-tu créer un système de recherche rapide dans notre planning ?"
+      },
+      "enjeux": "Chaque appel client est une opportunité. Trop lent = client perdu.",
+      "deadline": "Pour la réunion commerciale de demain"
+    },
+  
+    "objectifs": [
+      "Comprendre quand utiliser RECHERCHEH vs RECHERCHEV",
+      "Maîtriser la syntaxe RECHERCHEH(valeur;table;ligne;mode)",
+      "Rechercher dans des tables horizontales (jours, mois, trimestres...)",
+      "Combiner RECHERCHEH avec d'autres fonctions"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec le planning des salles",
+      "Utilise RECHERCHEH pour trouver le statut d'une salle à une date donnée",
+      "Crée un mini-formulaire de recherche : choix de la date → affichage du statut",
+      "Gère les erreurs si la date n'existe pas"
+    ],
+  
+    "donnees": {
+      "feuille": "Planning",
+      "structure": "Horizontal - Dates en ligne 1, Salles en colonne A",
+      "headers_row": ["Salle", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+      "rows": [
+        ["Grande Salle", "Réservé", "Libre", "Réservé", "Libre", "Réservé", "Réservé", "Libre"],
+        ["Salle Conférence", "Libre", "Réservé", "Libre", "Réservé", "Libre", "Libre", "Libre"],
+        ["Espace Cocktail", "Réservé", "Réservé", "Libre", "Libre", "Réservé", "Réservé", "Réservé"],
+        ["Terrasse", "Libre", "Libre", "Libre", "Réservé", "Libre", "Réservé", "Libre"],
+        ["Salon VIP", "Réservé", "Libre", "Réservé", "Réservé", "Réservé", "Libre", "Libre"]
+      ],
+      "tarifs_row": ["Tarif/jour", 500, 500, 500, 500, 600, 800, 400],
+      "formulaire": {
+        "cellule_jour": "J2",
+        "cellule_resultat": "K2"
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. RECHERCHEV vs RECHERCHEH",
+        "explications": [
+          "RECHERCHEV : cherche dans la 1ère COLONNE, renvoie une valeur de la même LIGNE",
+          "RECHERCHEH : cherche dans la 1ère LIGNE, renvoie une valeur de la même COLONNE",
+          "V = Vertical (colonnes), H = Horizontal (lignes)"
+        ],
+        "quand_utiliser": {
+          "RECHERCHEV": "Table avec en-têtes en colonne A (clients, produits, codes...)",
+          "RECHERCHEH": "Table avec en-têtes en ligne 1 (jours, mois, années...)"
+        }
+      },
+      {
+        "phase": "B. Syntaxe RECHERCHEH",
+        "syntaxe": "=RECHERCHEH(valeur_cherchée; table; n°_ligne; [mode])",
+        "arguments": [
+          "valeur_cherchée : ce qu'on cherche dans la 1ère ligne",
+          "table : la plage contenant les données",
+          "n°_ligne : quelle ligne de résultat renvoyer (2=2ème ligne, etc.)",
+          "mode : FAUX pour exact, VRAI pour approché"
+        ]
+      },
+      {
+        "phase": "C. Rechercher le statut d'une salle",
+        "consignes": [
+          "Pour savoir si Grande Salle est libre mardi :",
+          "=RECHERCHEH(\"Mardi\";$B$1:$H$6;2;FAUX)",
+          "Cherche 'Mardi' en ligne 1, renvoie la ligne 2 (Grande Salle)"
+        ]
+      },
+      {
+        "phase": "D. Recherche dynamique avec formulaire",
+        "consignes": [
+          "En J2, l'utilisateur tape un jour (ex: 'Jeudi')",
+          "En K2, formule : =RECHERCHEH(J2;$B$1:$H$6;2;FAUX)",
+          "Résultat : le statut de Grande Salle ce jour-là"
+        ]
+      },
+      {
+        "phase": "E. Rechercher le tarif d'un jour",
+        "consignes": [
+          "La ligne 7 contient les tarifs par jour",
+          "=RECHERCHEH(\"Samedi\";$B$1:$H$7;7;FAUX)",
+          "Renvoie 800 (tarif du samedi)"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_grande_salle_mardi",
+        "cellule": "J5",
+        "type": "valeur",
+        "description": "Statut Grande Salle le mardi",
+        "competence_id": 54,
+        "expected_value": "Libre",
+        "points": 15,
+        "indices": [
+          "Cherche 'Mardi' dans la première ligne",
+          "Renvoie la valeur de la ligne 2 (Grande Salle)",
+          "=RECHERCHEH(\"Mardi\";$B$1:$H$6;2;FAUX)"
+        ]
+      },
+      {
+        "id": "cp_2_conference_jeudi",
+        "cellule": "J6",
+        "type": "valeur",
+        "description": "Statut Salle Conférence le jeudi",
+        "competence_id": 54,
+        "expected_value": "Réservé",
+        "points": 15,
+        "indices": [
+          "Cherche 'Jeudi' en ligne 1",
+          "Renvoie la ligne 3 (Salle Conférence)",
+          "=RECHERCHEH(\"Jeudi\";$B$1:$H$6;3;FAUX)"
+        ]
+      },
+      {
+        "id": "cp_3_tarif_samedi",
+        "cellule": "J7",
+        "type": "valeur",
+        "description": "Tarif du samedi",
+        "competence_id": 54,
+        "expected_value": 800,
+        "points": 15,
+        "indices": [
+          "Les tarifs sont en ligne 7",
+          "Cherche 'Samedi', renvoie ligne 7",
+          "=RECHERCHEH(\"Samedi\";$B$1:$H$7;7;FAUX)"
+        ]
+      },
+      {
+        "id": "cp_4_tarif_dimanche",
+        "cellule": "J8",
+        "type": "valeur",
+        "description": "Tarif du dimanche",
+        "competence_id": 54,
+        "expected_value": 400,
+        "points": 10,
+        "indices": [
+          "Dimanche = tarif réduit",
+          "=RECHERCHEH(\"Dimanche\";$B$1:$H$7;7;FAUX)",
+          "Résultat : 400€"
+        ]
+      },
+      {
+        "id": "cp_5_formule_dynamique",
+        "cellule": "K2",
+        "type": "formule",
+        "description": "Formule RECHERCHEH dynamique",
+        "competence_id": 54,
+        "fonction": "RECHERCHEH",
+        "pattern": ["RECHERCHEH", "J2"],
+        "points": 20,
+        "indices": [
+          "La formule doit référencer J2 (le jour choisi)",
+          "=RECHERCHEH(J2;$B$1:$H$6;2;FAUX)",
+          "Change le résultat quand J2 change"
+        ]
+      },
+      {
+        "id": "cp_6_terrasse_vendredi",
+        "cellule": "J9",
+        "type": "valeur",
+        "description": "Statut Terrasse le vendredi",
+        "competence_id": 54,
+        "expected_value": "Libre",
+        "points": 10,
+        "indices": [
+          "Terrasse = ligne 5",
+          "Vendredi en colonne F",
+          "=RECHERCHEH(\"Vendredi\";$B$1:$H$6;5;FAUX)"
+        ]
+      },
+      {
+        "id": "cp_7_vip_samedi",
+        "cellule": "J10",
+        "type": "valeur",
+        "description": "Statut Salon VIP le samedi",
+        "competence_id": 54,
+        "expected_value": "Libre",
+        "points": 15,
+        "indices": [
+          "Salon VIP = ligne 6",
+          "=RECHERCHEH(\"Samedi\";$B$1:$H$6;6;FAUX)",
+          "Le VIP est libre le samedi"
+        ]
+      }
+    ],
+  
+    "comparaison_v_h": {
+      "recherchev": {
+        "structure": "Verticale - valeurs à chercher en colonne A",
+        "exemple": "Liste de clients avec ID en colonne A",
+        "syntaxe": "=RECHERCHEV(valeur; table; n°_colonne; mode)"
+      },
+      "rechercheh": {
+        "structure": "Horizontale - valeurs à chercher en ligne 1", 
+        "exemple": "Planning avec jours en ligne 1",
+        "syntaxe": "=RECHERCHEH(valeur; table; n°_ligne; mode)"
+      },
+      "astuce": "Si ta table a plus de lignes que de colonnes → RECHERCHEV. Plus de colonnes que de lignes → RECHERCHEH."
+    },
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Confondre n° de ligne et n° de colonne",
+        "probleme": "Le 3ème argument de RECHERCHEH est le n° de LIGNE, pas de colonne",
+        "solution": "Compte les lignes depuis le haut de ta table (1, 2, 3...)"
+      },
+      {
+        "erreur": "Table mal sélectionnée",
+        "probleme": "La table doit commencer par la ligne où tu cherches",
+        "solution": "Inclus la ligne d'en-têtes dans ta sélection"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Parfait ! Tu maîtrises RECHERCHEH. Maintenant tu peux chercher dans n'importe quelle direction : verticale OU horizontale ! 🔄",
+      "partiel": "Tu as compris le principe. N'oublie pas : le 3ème argument est le n° de LIGNE (pas de colonne).",
+      "echec": "RECHERCHEH = RECHERCHEV tourné à 90°. Cherche dans la 1ère LIGNE, renvoie une valeur de la même COLONNE."
+    },
+  
+    "socrate_message": {
+      "intro": "RECHERCHEH, c'est le cousin horizontal de RECHERCHEV ! 📊 Parfait pour les plannings avec les jours/mois en colonnes.",
+      "conclusion": "Tu connais maintenant les deux directions de recherche. RECHERCHEV pour les listes verticales, RECHERCHEH pour les tableaux horizontaux. Combo gagnant ! 🎯"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["RECHERCHEH", "recherche horizontale", "planning", "intermédiaire"],
+      "prerequis": ["RECHERCHEV"],
+      "ouvre_vers": ["INDEX+EQUIV", "RECHERCHEX"]
+    }
+  }

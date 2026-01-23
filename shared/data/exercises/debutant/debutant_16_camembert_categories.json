@@ -1,0 +1,582 @@
+{
+  "id": "debutant_16_camembert_categories",
+  "titre": "Répartition des Ventes par Catégorie - Graphique Secteurs",
+  "niveau": "debutant",
+  "duree_estimee": "25 min",
+  "competences": [
+    "Graphiques simples",
+    "SOMME.SI"
+  ],
+  "contexte": {
+    "situation": "Tu travailles chez TechStore, un revendeur informatique. Le directeur marketing veut visualiser la répartition du chiffre d'affaires par catégorie de produits pour décider où investir le budget pub. Il te demande un camembert clair avec les pourcentages.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer les totaux par catégorie avec SOMME.SI",
+    "Créer un graphique en secteurs (camembert)",
+    "Afficher les pourcentages sur le graphique",
+    "Choisir quand utiliser un camembert vs autre graphique"
+  ],
+  "consignes": [
+    "Les données de ventes sont en A1:C51 (50 ventes avec catégorie et montant)",
+    "Crée un tableau récapitulatif en E1:F6 avec les 5 catégories",
+    "Utilise SOMME.SI pour calculer le CA par catégorie",
+    "Calcule le total général et les pourcentages",
+    "Crée un graphique en secteurs à partir du récap",
+    "Affiche les pourcentages sur chaque part",
+    "Ajoute un titre pertinent"
+  ],
+  "donnees": {
+    "headers": [
+      "N° Vente",
+      "Catégorie",
+      "Montant"
+    ],
+    "rows": [
+      [
+        "V001",
+        "Ordinateurs",
+        1299
+      ],
+      [
+        "V002",
+        "Smartphones",
+        899
+      ],
+      [
+        "V003",
+        "Accessoires",
+        45
+      ],
+      [
+        "V004",
+        "Ordinateurs",
+        1549
+      ],
+      [
+        "V005",
+        "Tablettes",
+        599
+      ],
+      [
+        "V006",
+        "Smartphones",
+        1199
+      ],
+      [
+        "V007",
+        "Accessoires",
+        29
+      ],
+      [
+        "V008",
+        "Gaming",
+        459
+      ],
+      [
+        "V009",
+        "Ordinateurs",
+        899
+      ],
+      [
+        "V010",
+        "Smartphones",
+        749
+      ],
+      [
+        "V011",
+        "Accessoires",
+        79
+      ],
+      [
+        "V012",
+        "Tablettes",
+        449
+      ],
+      [
+        "V013",
+        "Gaming",
+        1299
+      ],
+      [
+        "V014",
+        "Ordinateurs",
+        1899
+      ],
+      [
+        "V015",
+        "Smartphones",
+        999
+      ],
+      [
+        "V016",
+        "Accessoires",
+        35
+      ],
+      [
+        "V017",
+        "Gaming",
+        349
+      ],
+      [
+        "V018",
+        "Tablettes",
+        699
+      ],
+      [
+        "V019",
+        "Ordinateurs",
+        1099
+      ],
+      [
+        "V020",
+        "Smartphones",
+        649
+      ],
+      [
+        "V021",
+        "Accessoires",
+        89
+      ],
+      [
+        "V022",
+        "Gaming",
+        549
+      ],
+      [
+        "V023",
+        "Tablettes",
+        399
+      ],
+      [
+        "V024",
+        "Ordinateurs",
+        2199
+      ],
+      [
+        "V025",
+        "Smartphones",
+        1099
+      ],
+      [
+        "V026",
+        "Accessoires",
+        59
+      ],
+      [
+        "V027",
+        "Gaming",
+        799
+      ],
+      [
+        "V028",
+        "Ordinateurs",
+        999
+      ],
+      [
+        "V029",
+        "Smartphones",
+        849
+      ],
+      [
+        "V030",
+        "Tablettes",
+        549
+      ],
+      [
+        "V031",
+        "Accessoires",
+        99
+      ],
+      [
+        "V032",
+        "Gaming",
+        649
+      ],
+      [
+        "V033",
+        "Ordinateurs",
+        1399
+      ],
+      [
+        "V034",
+        "Smartphones",
+        949
+      ],
+      [
+        "V035",
+        "Accessoires",
+        25
+      ],
+      [
+        "V036",
+        "Tablettes",
+        479
+      ],
+      [
+        "V037",
+        "Gaming",
+        899
+      ],
+      [
+        "V038",
+        "Ordinateurs",
+        1799
+      ],
+      [
+        "V039",
+        "Smartphones",
+        699
+      ],
+      [
+        "V040",
+        "Accessoires",
+        69
+      ],
+      [
+        "V041",
+        "Gaming",
+        429
+      ],
+      [
+        "V042",
+        "Tablettes",
+        629
+      ],
+      [
+        "V043",
+        "Ordinateurs",
+        1199
+      ],
+      [
+        "V044",
+        "Smartphones",
+        799
+      ],
+      [
+        "V045",
+        "Accessoires",
+        49
+      ],
+      [
+        "V046",
+        "Gaming",
+        579
+      ],
+      [
+        "V047",
+        "Tablettes",
+        519
+      ],
+      [
+        "V048",
+        "Ordinateurs",
+        1649
+      ],
+      [
+        "V049",
+        "Smartphones",
+        1049
+      ],
+      [
+        "V050",
+        "Accessoires",
+        39
+      ]
+    ],
+    "categories": [
+      "Ordinateurs",
+      "Smartphones",
+      "Tablettes",
+      "Gaming",
+      "Accessoires"
+    ],
+    "resultats_attendus": {
+      "Ordinateurs": 15989,
+      "Smartphones": 9939,
+      "Tablettes": 4322,
+      "Gaming": 6011,
+      "Accessoires": 717,
+      "Total": 36978,
+      "pourcentages": {
+        "Ordinateurs": 43.2,
+        "Smartphones": 26.9,
+        "Tablettes": 11.7,
+        "Gaming": 16.3,
+        "Accessoires": 1.9
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "cellule": "E1:E6",
+      "type": "donnees",
+      "description": "Liste des catégories créée",
+      "valeurs_attendues": [
+        "Catégorie",
+        "Ordinateurs",
+        "Smartphones",
+        "Tablettes",
+        "Gaming",
+        "Accessoires"
+      ],
+      "points": 5,
+      "indices": [
+        "En E1 écris 'Catégorie' comme en-tête",
+        "En E2:E6 liste les 5 catégories"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp2",
+      "cellule": "F1",
+      "type": "donnees",
+      "description": "En-tête CA Total",
+      "valeur_attendue": "CA Total",
+      "points": 5,
+      "indices": [
+        "F1 = 'CA Total' ou 'Montant'"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp3",
+      "cellule": "F2",
+      "type": "formule",
+      "description": "SOMME.SI pour calculer CA Ordinateurs",
+      "fonction": "SOMME.SI",
+      "pattern": [
+        "SOMME.SI",
+        "$B$2:$B$51",
+        "E2",
+        "$C$2:$C$51"
+      ],
+      "points": 20,
+      "validation_avancee": {
+        "references": {
+          "$B$2:$B$51": {
+            "expected_type": "absolute",
+            "reason": "Plage critère fixe pour recopie"
+          },
+          "E2": {
+            "expected_type": "relative",
+            "reason": "Change selon la catégorie"
+          },
+          "$C$2:$C$51": {
+            "expected_type": "absolute",
+            "reason": "Plage somme fixe pour recopie"
+          }
+        }
+      },
+      "indices": [
+        "=SOMME.SI(plage_critère; critère; plage_somme)",
+        "=SOMME.SI($B$2:$B$51;E2;$C$2:$C$51)",
+        "Fige les plages B et C avec $ pour pouvoir recopier"
+      ],
+      "computation": {
+        "type": "sumif",
+        "criteria_column": "auto",
+        "criteria": "auto",
+        "sum_column": "auto"
+      },
+      "competence_id": 13
+    },
+    {
+      "id": "cp4",
+      "cellule": "F2",
+      "type": "valeur",
+      "description": "CA Ordinateurs correct",
+      "valeur_attendue": 15989,
+      "tolerance": 1,
+      "points": 5,
+      "indices": [
+        "Le total des ventes d'ordinateurs devrait être 15 989 €"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp5",
+      "cellule": "F6",
+      "type": "valeur",
+      "description": "CA Accessoires correct (vérification recopie)",
+      "valeur_attendue": 717,
+      "tolerance": 1,
+      "points": 10,
+      "indices": [
+        "Recopie la formule de F2 jusqu'à F6",
+        "Le CA Accessoires devrait être 717 €",
+        "Si tu as un autre chiffre, tes plages n'étaient pas figées"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp6",
+      "cellule": "F7",
+      "type": "formule",
+      "description": "Total général",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "F2:F6"
+      ],
+      "points": 5,
+      "indices": [
+        "=SOMME(F2:F6) pour le total",
+        "Devrait donner 36 978 €"
+      ],
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 13
+    },
+    {
+      "id": "cp7",
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Calcul du pourcentage",
+      "pattern": [
+        "F2",
+        "$F$7",
+        "/"
+      ],
+      "points": 10,
+      "indices": [
+        "% = CA catégorie / CA total",
+        "=F2/$F$7",
+        "Fige F7 avec $ pour la recopie",
+        "Formate en pourcentage (Ctrl+Maj+%)"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp8",
+      "type": "graphique_present",
+      "description": "Graphique présent",
+      "points": 10,
+      "indices": [
+        "Sélectionne E1:F6 (catégories + montants)",
+        "Insertion > Graphiques > Secteurs"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp9",
+      "type": "graphique_type",
+      "description": "Type camembert/secteurs",
+      "type_attendu": [
+        "pie",
+        "secteur",
+        "camembert"
+      ],
+      "points": 10,
+      "indices": [
+        "Pour une RÉPARTITION, utilise un graphique en SECTEURS",
+        "Aussi appelé 'camembert' ou 'pie chart'"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp10",
+      "type": "graphique_etiquettes",
+      "description": "Pourcentages affichés sur le graphique",
+      "contient_pourcentages": true,
+      "points": 10,
+      "indices": [
+        "Clic sur le graphique > + > Étiquettes de données",
+        "Clic droit sur les étiquettes > Format > Pourcentage",
+        "Décoche 'Valeur' si tu veux seulement les %"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp11",
+      "type": "graphique_titre",
+      "description": "Titre présent",
+      "points": 5,
+      "indices": [
+        "Ajoute un titre explicite",
+        "Ex: 'Répartition du CA par catégorie'"
+      ],
+      "competence_id": 13
+    },
+    {
+      "id": "cp12",
+      "type": "graphique_legende",
+      "description": "Légende présente et lisible",
+      "points": 5,
+      "indices": [
+        "La légende doit identifier chaque part",
+        "Positionne-la à droite ou en bas pour ne pas cacher le graphique"
+      ],
+      "competence_id": 13
+    }
+  ],
+  "erreurs_pedagogiques": [
+    {
+      "erreur": "Utiliser un camembert avec trop de catégories (>7)",
+      "consequence": "Illisible, parts trop petites",
+      "explication": "Le camembert est idéal pour 3-6 catégories. Au-delà, utilise un histogramme."
+    },
+    {
+      "erreur": "Inclure le total dans le graphique",
+      "consequence": "Le total écrase toutes les autres parts",
+      "explication": "Ne sélectionne que les catégories, pas la ligne de total"
+    },
+    {
+      "erreur": "Ne pas figer les plages dans SOMME.SI",
+      "consequence": "Les formules recopiées pointent vers les mauvaises cellules",
+      "explication": "Toujours figer les plages de données avec $"
+    },
+    {
+      "erreur": "Utiliser un camembert pour une évolution temporelle",
+      "consequence": "Impossible de voir la tendance",
+      "explication": "Camembert = répartition à un instant T. Courbe = évolution dans le temps."
+    }
+  ],
+  "quand_utiliser_camembert": {
+    "adapte": [
+      "Répartition d'un budget",
+      "Parts de marché",
+      "Composition d'un portefeuille",
+      "Résultats d'un sondage (peu de réponses)"
+    ],
+    "pas_adapte": [
+      "Évolution dans le temps → Courbe",
+      "Comparaison de valeurs → Histogramme",
+      "Plus de 7 catégories → Histogramme",
+      "Valeurs négatives → Histogramme"
+    ]
+  },
+  "bonus": {
+    "camembert_3d": {
+      "description": "Version 3D (déconseillé mais demandé parfois)",
+      "avertissement": "La 3D déforme les proportions visuelles. Les parts au premier plan semblent plus grandes.",
+      "points_bonus": 0
+    },
+    "explosion_part": {
+      "description": "Détacher la part la plus importante",
+      "etapes": [
+        "Clic sur le graphique",
+        "Clic sur la part à détacher",
+        "Glisse vers l'extérieur"
+      ],
+      "points_bonus": 5
+    }
+  },
+  "criteres_reussite": {
+    "somme_si_correct": true,
+    "graphique_secteurs": true,
+    "pourcentages_affiches": true,
+    "score_minimum": 7
+  },
+  "competence_ids": [
+    13
+  ]
+}

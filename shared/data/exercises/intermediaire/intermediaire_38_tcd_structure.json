@@ -1,0 +1,266 @@
+{
+  "id": "intermediaire_38_tcd_structure",
+  "titre": "Structurer un Tableau Croisé Dynamique",
+  "niveau": "intermediaire",
+  "competences": ["Tableaux croisés dynamiques", "Champs lignes/colonnes", "Structure TCD"],
+  "competence_ids": [17],
+  "duree_estimee": "25 min",
+  "disponibilite": "excel_requis",
+  "downloadFile": "/exercise-files/tcd_structure.xlsx",
+  
+  "contexte": {
+    "situation": "La directrice commerciale souhaite analyser les ventes par région ET par catégorie de produit pour identifier les combinaisons les plus performantes.",
+    "manager": {
+      "nom": "Sophie Martin",
+      "poste": "Directrice Commerciale"
+    },
+    "enjeux": "Présenter une vue croisée région/catégorie pour le comité de direction de vendredi.",
+    "deadline": "Vendredi 14h"
+  },
+  
+  "objectifs": [
+    "Créer un TCD avec plusieurs champs en lignes (hiérarchie)",
+    "Ajouter des champs en colonnes pour croiser les dimensions",
+    "Comprendre la différence entre lignes et colonnes dans un TCD",
+    "Réorganiser la structure par glisser-déposer"
+  ],
+  
+  "consignes": [
+    "1. Sélectionnez la plage de données A1:F101 (en-têtes inclus)",
+    "2. Insérez un Tableau Croisé Dynamique (Insertion > TCD)",
+    "3. Placez 'Région' dans la zone LIGNES",
+    "4. Placez 'Catégorie' également dans LIGNES (en-dessous de Région)",
+    "5. Placez 'Trimestre' dans la zone COLONNES",
+    "6. Placez 'Montant' dans la zone VALEURS (vérifiez que c'est 'Somme')",
+    "7. Observez la structure hiérarchique obtenue",
+    "8. Sauvegardez et uploadez votre fichier"
+  ],
+  
+  "theorie": {
+    "concept": "Structure d'un TCD",
+    "explication": "Un TCD permet de croiser plusieurs dimensions. Les champs en LIGNES créent une hiérarchie verticale (Région > Catégorie). Les champs en COLONNES créent des sous-totaux horizontaux (T1, T2, T3, T4).",
+    "schema": "LIGNES (vertical) × COLONNES (horizontal) = VALEURS (intersection)",
+    "astuce": "Glissez les champs entre les zones pour réorganiser instantanément votre analyse."
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "tcd_exists",
+      "description": "Un TCD a été créé",
+      "validation": {
+        "has_pivot_table": true
+      },
+      "points": 10,
+      "indices": [
+        "Sélectionnez vos données puis allez dans Insertion > Tableau croisé dynamique",
+        "Choisissez 'Nouvelle feuille de calcul' pour plus de clarté"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "tcd_structure",
+      "description": "Région est placée en lignes",
+      "validation": {
+        "row_fields_contains": "Région"
+      },
+      "points": 15,
+      "indices": [
+        "Glissez le champ 'Région' depuis la liste vers la zone 'Lignes'",
+        "Vous devriez voir les 4 régions apparaître verticalement"
+      ]
+    },
+    {
+      "id": "cp_3",
+      "type": "tcd_structure",
+      "description": "Catégorie est en sous-niveau des lignes (hiérarchie)",
+      "validation": {
+        "row_fields": ["Région", "Catégorie"],
+        "hierarchy_order": true
+      },
+      "points": 20,
+      "indices": [
+        "Glissez 'Catégorie' dans la zone Lignes, EN-DESSOUS de Région",
+        "L'ordre dans la zone Lignes détermine la hiérarchie",
+        "Vous devriez voir les catégories s'afficher sous chaque région"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "tcd_structure",
+      "description": "Trimestre est placé en colonnes",
+      "validation": {
+        "column_fields_contains": "Trimestre"
+      },
+      "points": 20,
+      "indices": [
+        "Glissez 'Trimestre' dans la zone 'Colonnes'",
+        "Les trimestres T1, T2, T3, T4 doivent apparaître en en-têtes de colonnes"
+      ]
+    },
+    {
+      "id": "cp_5",
+      "type": "tcd_values",
+      "description": "Montant est en valeurs avec Somme",
+      "validation": {
+        "value_field": "Montant",
+        "aggregation": "sum"
+      },
+      "points": 20,
+      "indices": [
+        "Glissez 'Montant' dans la zone 'Valeurs'",
+        "Vérifiez que c'est bien 'Somme de Montant' (clic droit > Paramètres si besoin)"
+      ]
+    },
+    {
+      "id": "cp_6",
+      "type": "tcd_total",
+      "description": "Le total général est correct (vérification des données)",
+      "validation": {
+        "grand_total_approximate": 485000,
+        "tolerance": 5000
+      },
+      "points": 15,
+      "indices": [
+        "Le total général en bas à droite doit être proche de 485 000 €",
+        "Si ce n'est pas le cas, vérifiez que toutes les données sont incluses"
+      ]
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 80,
+    "checkpoints_requis": ["cp_1", "cp_2", "cp_3", "cp_4", "cp_5"]
+  },
+  
+  "donnees": {
+    "headers": ["Date", "Région", "Catégorie", "Produit", "Trimestre", "Montant"],
+    "rows": [
+      ["2024-01-15", "Nord", "Électronique", "Laptop Pro", "T1", 1299],
+      ["2024-01-18", "Sud", "Mobilier", "Bureau ergonomique", "T1", 549],
+      ["2024-01-22", "Est", "Électronique", "Écran 27\"", "T1", 399],
+      ["2024-01-25", "Ouest", "Fournitures", "Pack papier A4", "T1", 89],
+      ["2024-02-03", "Nord", "Mobilier", "Chaise directeur", "T1", 459],
+      ["2024-02-08", "Sud", "Électronique", "Clavier sans fil", "T1", 79],
+      ["2024-02-12", "Est", "Fournitures", "Stylos premium", "T1", 45],
+      ["2024-02-19", "Ouest", "Électronique", "Souris ergonomique", "T1", 69],
+      ["2024-02-24", "Nord", "Fournitures", "Classeurs", "T1", 35],
+      ["2024-03-01", "Sud", "Mobilier", "Armoire", "T1", 899],
+      ["2024-03-07", "Est", "Électronique", "Webcam HD", "T1", 129],
+      ["2024-03-14", "Ouest", "Mobilier", "Table réunion", "T1", 1299],
+      ["2024-03-21", "Nord", "Électronique", "Casque audio", "T1", 199],
+      ["2024-03-28", "Sud", "Fournitures", "Post-it", "T1", 25],
+      ["2024-04-02", "Est", "Mobilier", "Caisson", "T2", 289],
+      ["2024-04-09", "Ouest", "Électronique", "Laptop Standard", "T2", 899],
+      ["2024-04-15", "Nord", "Fournitures", "Agrafeuse", "T2", 29],
+      ["2024-04-22", "Sud", "Électronique", "Tablette", "T2", 599],
+      ["2024-04-29", "Est", "Fournitures", "Enveloppes", "T2", 19],
+      ["2024-05-06", "Ouest", "Mobilier", "Étagère", "T2", 199],
+      ["2024-05-13", "Nord", "Électronique", "Imprimante", "T2", 349],
+      ["2024-05-20", "Sud", "Mobilier", "Fauteuil", "T2", 699],
+      ["2024-05-27", "Est", "Électronique", "Scanner", "T2", 279],
+      ["2024-06-03", "Ouest", "Fournitures", "Trombones", "T2", 8],
+      ["2024-06-10", "Nord", "Mobilier", "Lampe bureau", "T2", 89],
+      ["2024-06-17", "Sud", "Fournitures", "Cahiers", "T2", 42],
+      ["2024-06-24", "Est", "Électronique", "Hub USB", "T2", 49],
+      ["2024-07-01", "Ouest", "Mobilier", "Repose-pieds", "T3", 79],
+      ["2024-07-08", "Nord", "Électronique", "Disque SSD", "T3", 159],
+      ["2024-07-15", "Sud", "Électronique", "Câbles HDMI", "T3", 25],
+      ["2024-07-22", "Est", "Mobilier", "Paravent", "T3", 249],
+      ["2024-07-29", "Ouest", "Fournitures", "Marqueurs", "T3", 18],
+      ["2024-08-05", "Nord", "Mobilier", "Tabouret", "T3", 149],
+      ["2024-08-12", "Sud", "Fournitures", "Chemises", "T3", 32],
+      ["2024-08-19", "Est", "Électronique", "Batterie externe", "T3", 59],
+      ["2024-08-26", "Ouest", "Électronique", "Adaptateur", "T3", 35],
+      ["2024-09-02", "Nord", "Fournitures", "Ruban adhésif", "T3", 12],
+      ["2024-09-09", "Sud", "Mobilier", "Support écran", "T3", 89],
+      ["2024-09-16", "Est", "Fournitures", "Ciseaux", "T3", 15],
+      ["2024-09-23", "Ouest", "Mobilier", "Corbeille", "T3", 45],
+      ["2024-09-30", "Nord", "Électronique", "Clé USB 64Go", "T3", 19],
+      ["2024-10-07", "Sud", "Électronique", "Routeur WiFi", "T4", 129],
+      ["2024-10-14", "Est", "Mobilier", "Porte-manteau", "T4", 79],
+      ["2024-10-21", "Ouest", "Fournitures", "Calculatrice", "T4", 29],
+      ["2024-10-28", "Nord", "Mobilier", "Pouf", "T4", 129],
+      ["2024-11-04", "Sud", "Fournitures", "Agenda 2025", "T4", 22],
+      ["2024-11-11", "Est", "Électronique", "Enceinte BT", "T4", 89],
+      ["2024-11-18", "Ouest", "Électronique", "Chargeur rapide", "T4", 45],
+      ["2024-11-25", "Nord", "Fournitures", "Perforatrice", "T4", 35],
+      ["2024-12-02", "Sud", "Mobilier", "Tapis souris XXL", "T4", 39],
+      ["2024-12-09", "Est", "Fournitures", "Bloc-notes", "T4", 8],
+      ["2024-12-16", "Ouest", "Mobilier", "Support laptop", "T4", 69],
+      ["2024-12-23", "Nord", "Électronique", "Multiprise", "T4", 35],
+      ["2024-01-05", "Sud", "Électronique", "Webcam 4K", "T1", 199],
+      ["2024-01-12", "Est", "Mobilier", "Siège gaming", "T1", 399],
+      ["2024-01-19", "Ouest", "Fournitures", "Pochettes plastique", "T1", 15],
+      ["2024-01-26", "Nord", "Électronique", "Micro USB", "T1", 89],
+      ["2024-02-02", "Sud", "Mobilier", "Bibliothèque", "T1", 599],
+      ["2024-02-09", "Est", "Fournitures", "Gommes", "T1", 5],
+      ["2024-02-16", "Ouest", "Électronique", "Câble ethernet", "T1", 19],
+      ["2024-02-23", "Nord", "Mobilier", "Tableau blanc", "T1", 149],
+      ["2024-03-02", "Sud", "Fournitures", "Punaises", "T1", 6],
+      ["2024-03-09", "Est", "Électronique", "Powerbank", "T1", 49],
+      ["2024-03-16", "Ouest", "Mobilier", "Casier rangement", "T1", 189],
+      ["2024-03-23", "Nord", "Fournitures", "Correcteur", "T1", 8],
+      ["2024-03-30", "Sud", "Électronique", "Rallonge USB", "T1", 15],
+      ["2024-04-06", "Est", "Mobilier", "Desserte", "T2", 259],
+      ["2024-04-13", "Ouest", "Fournitures", "Colle", "T2", 7],
+      ["2024-04-20", "Nord", "Électronique", "Support téléphone", "T2", 25],
+      ["2024-04-27", "Sud", "Mobilier", "Porte-documents", "T2", 45],
+      ["2024-05-04", "Est", "Fournitures", "Surligneur", "T2", 12],
+      ["2024-05-11", "Ouest", "Électronique", "Station d'accueil", "T2", 189],
+      ["2024-05-18", "Nord", "Mobilier", "Plateau tournant", "T2", 35],
+      ["2024-05-25", "Sud", "Fournitures", "Étiquettes", "T2", 18],
+      ["2024-06-01", "Est", "Électronique", "Ventilateur USB", "T2", 29],
+      ["2024-06-08", "Ouest", "Mobilier", "Bac courrier", "T2", 25],
+      ["2024-06-15", "Nord", "Fournitures", "Reliure", "T2", 45],
+      ["2024-06-22", "Sud", "Électronique", "Lampe LED USB", "T2", 19],
+      ["2024-06-29", "Est", "Mobilier", "Range-câbles", "T2", 15],
+      ["2024-07-06", "Ouest", "Fournitures", "Feutres", "T3", 22],
+      ["2024-07-13", "Nord", "Électronique", "Tapis chauffant", "T3", 45],
+      ["2024-07-20", "Sud", "Mobilier", "Repose-poignet", "T3", 25],
+      ["2024-07-27", "Est", "Fournitures", "Rouleau papier", "T3", 35],
+      ["2024-08-03", "Ouest", "Électronique", "Thermomètre digital", "T3", 19],
+      ["2024-08-10", "Nord", "Mobilier", "Poubelle design", "T3", 49],
+      ["2024-08-17", "Sud", "Fournitures", "Trousse", "T3", 15],
+      ["2024-08-24", "Est", "Électronique", "Mini aspirateur", "T3", 35],
+      ["2024-08-31", "Ouest", "Mobilier", "Patère", "T3", 19],
+      ["2024-09-07", "Nord", "Fournitures", "Intercalaires", "T3", 9],
+      ["2024-09-14", "Sud", "Électronique", "Réveil digital", "T3", 25],
+      ["2024-09-21", "Est", "Mobilier", "Porte-revues", "T3", 35],
+      ["2024-09-28", "Ouest", "Fournitures", "Scotch", "T3", 8],
+      ["2024-10-05", "Nord", "Électronique", "Horloge murale", "T4", 39],
+      ["2024-10-12", "Sud", "Mobilier", "Porte-parapluie", "T4", 29],
+      ["2024-10-19", "Est", "Fournitures", "Papier cadeau", "T4", 12],
+      ["2024-10-26", "Ouest", "Électronique", "Guirlande LED", "T4", 19],
+      ["2024-11-02", "Nord", "Mobilier", "Sapin artificiel", "T4", 89],
+      ["2024-11-09", "Sud", "Fournitures", "Cartes voeux", "T4", 25],
+      ["2024-11-16", "Est", "Électronique", "Enceinte Noël", "T4", 49],
+      ["2024-11-23", "Ouest", "Mobilier", "Décoration", "T4", 35]
+    ]
+  },
+  
+  "indices": [
+    "Un TCD peut avoir plusieurs champs en lignes → ils créent une hiérarchie",
+    "L'ordre dans la zone 'Lignes' est important : le premier est le niveau supérieur",
+    "Les champs en colonnes créent des sous-totaux horizontaux (ici par trimestre)",
+    "Vous pouvez réorganiser en glissant les champs entre les zones"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "Catégorie placée avant Région dans les lignes",
+      "explication": "L'ordre détermine la hiérarchie. Si Catégorie est avant Région, vous verrez les catégories avec les régions en sous-niveau, ce qui n'est pas la demande.",
+      "solution": "Glissez Région au-dessus de Catégorie dans la zone Lignes"
+    },
+    {
+      "erreur": "Trimestre placé en lignes au lieu de colonnes",
+      "explication": "Pour une vue croisée, les trimestres doivent être en colonnes pour créer une matrice Région/Catégorie × Temps",
+      "solution": "Glissez Trimestre de la zone Lignes vers la zone Colonnes"
+    },
+    {
+      "erreur": "'Nombre de Montant' au lieu de 'Somme de Montant'",
+      "explication": "Excel a mis 'Nombre' car il a détecté du texte quelque part. Cela compte les lignes au lieu de sommer les montants.",
+      "solution": "Clic droit sur le champ Valeurs > Paramètres des champs de valeurs > Somme"
+    }
+  ]
+}

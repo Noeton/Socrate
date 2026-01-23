@@ -1,0 +1,202 @@
+{
+  "id": "mfc_10_02_echelle_couleurs",
+  "version": "1.0",
+  "titre": "🌈 MFC : visualiser les stocks avec des couleurs",
+
+  "metadata": {
+    "niveau": "debutant",
+    "duree_estimee": "10 min",
+    "competences_ids": [10],
+    "competences_noms": ["Mise en forme conditionnelle simple"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Appliquer une échelle de couleurs (dégradé) pour visualiser des valeurs relatives",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.1 (xlColorScale)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu gères le stock d'une boutique de pièces détachées. Tu veux voir d'un coup d'œil quels produits sont en rupture imminente (rouge) et lesquels sont bien approvisionnés (vert).",
+    
+    "personnage": "Toi, responsable logistique chez AutoPièces.",
+    
+    "objectif": "Appliquer un dégradé rouge-jaune-vert qui colore automatiquement chaque cellule selon le niveau de stock.",
+    
+    "motivation": "L'échelle de couleurs transforme un tableau de chiffres en heatmap intuitive. Plus besoin de chercher les petits nombres !",
+    
+    "ton": "Le dégradé, c'est comme un thermomètre visuel : du froid (rouge = danger) au chaud (vert = OK)."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Niveaux de stock de 8 références de pièces détachées automobiles.",
+    "periode": "Stock au 15 janvier 2025",
+    "source_fictive": "Inventaire AutoPièces"
+  },
+
+  "donnees": {
+    "headers": ["Référence", "Produit", "Stock"],
+    "rows": [
+      ["REF001", "Filtre à huile", 45],
+      ["REF002", "Plaquettes frein", 8],
+      ["REF003", "Courroie distribution", 22],
+      ["REF004", "Bougies (x4)", 67],
+      ["REF005", "Amortisseur avant", 5],
+      ["REF006", "Disque de frein", 31],
+      ["REF007", "Batterie 12V", 12],
+      ["REF008", "Phare LED", 3]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les stocks",
+      "consigne": "Sélectionne C2:C9 (les quantités en stock).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Appliquer l'échelle de couleurs",
+      "consigne": "Accueil > Mise en forme conditionnelle > Échelles de couleurs > Échelle Rouge-Jaune-Vert.",
+      "aide_contextuelle": "C'est la première échelle à 3 couleurs dans le menu. Rouge = bas, Vert = élevé.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Vérifier le résultat",
+      "description": "Les cellules les plus basses (3, 5, 8) doivent être rougeâtres, les plus hautes (45, 67) verdâtres.",
+      "consigne": "Vérifie que le dégradé va bien du rouge (faibles stocks) au vert (stocks élevés).",
+      "aide_contextuelle": "Excel calcule automatiquement le dégradé entre le min (3) et le max (67).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Comprendre le calcul",
+      "description": "Excel attribue rouge au minimum, vert au maximum, et jaune à la médiane.",
+      "consigne": "Note que les valeurs intermédiaires (22, 31) sont jaunâtres/orangées.",
+      "action_requise": false,
+      "temps": "1 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "Échelle de couleurs sur la colonne Stock",
+    "structure": [
+      { "cellule": "A1:C9", "label": "Données", "style": "data" },
+      { "cellule": "C2:C9", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_scale_1",
+      "type": "format",
+      "subtype": "mfc_color_scale",
+      "description": "Échelle de couleurs 3 points appliquée",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "color_scale",
+        "scale_type": "3-color",
+        "colors": ["red", "yellow", "green"]
+      },
+      "points": 40,
+      "indices": [
+        "Tu dois utiliser une échelle de couleurs, pas une règle 'Supérieur à'.",
+        "Accueil > MFC > Échelles de couleurs > Rouge-Jaune-Vert",
+        "Le dégradé doit être automatique sur toute la plage."
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_rule_type", "message": "Tu as appliqué une règle simple, pas une échelle de couleurs. Choisis 'Échelles de couleurs' dans le menu." },
+        { "type": "2_color_scale", "message": "Tu as une échelle à 2 couleurs. Choisis celle à 3 couleurs (rouge-jaune-vert)." }
+      ]
+    },
+    {
+      "id": "cp_scale_2",
+      "type": "format",
+      "subtype": "mfc_gradient",
+      "description": "Dégradé correct (rouge=bas, vert=haut)",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "min_color": "red",
+        "max_color": "green",
+        "mid_color": "yellow"
+      },
+      "points": 30,
+      "indices": [
+        "Les petites valeurs (3, 5, 8) doivent être rouges/oranges.",
+        "Les grandes valeurs (45, 67) doivent être vertes.",
+        "Si c'est l'inverse, tu as choisi l'échelle Vert-Rouge."
+      ],
+      "erreurs_probables": [
+        { "type": "inverted_scale", "message": "L'échelle est inversée (vert pour les petites valeurs). Choisis Rouge-Jaune-Vert, pas Vert-Jaune-Rouge." }
+      ]
+    },
+    {
+      "id": "cp_scale_3",
+      "type": "format",
+      "subtype": "mfc_range",
+      "description": "MFC sur la bonne plage",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "range": "C2:C9",
+        "excludes_header": true
+      },
+      "points": 15,
+      "indices": [
+        "La MFC doit être uniquement sur C2:C9.",
+        "L'en-tête 'Stock' ne doit pas être coloré."
+      ]
+    },
+    {
+      "id": "cp_scale_4",
+      "type": "format",
+      "subtype": "mfc_visual",
+      "description": "Visualisation claire des stocks critiques",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "critical_items_red": ["REF005", "REF008"],
+        "healthy_items_green": ["REF001", "REF004"]
+      },
+      "points": 15,
+      "indices": [
+        "REF005 (5) et REF008 (3) doivent être clairement rouges.",
+        "REF001 (45) et REF004 (67) doivent être clairement verts.",
+        "Les autres doivent être dans les teintes intermédiaires."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Échelle de couleurs Rouge-Jaune-Vert sur C2:C9. Les stocks bas sont rouges, les stocks élevés sont verts.",
+    "etapes_cles": [
+      "Sélection C2:C9",
+      "Accueil > MFC > Échelles de couleurs",
+      "Choisir Rouge-Jaune-Vert"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Tu vois immédiatement que REF005 et REF008 sont en rupture imminente. L'échelle de couleurs, c'est la base de la data visualization !",
+    "bien": "👍 Très bien ! L'échelle est appliquée. Vérifie que le rouge correspond bien aux stocks bas.",
+    "ameliorer": "🌈 Presque ! Assure-toi d'utiliser une échelle de couleurs (dégradé), pas une règle simple.",
+    "revoir": "🔄 Recommence : MFC > Échelles de couleurs > Rouge-Jaune-Vert. Tu dois voir un dégradé progressif."
+  },
+
+  "pour_aller_plus_loin": [
+    "Personnalise les seuils : rouge si < 10, jaune si < 30, vert sinon.",
+    "Essaie l'échelle Vert-Blanc-Rouge (inversée).",
+    "Applique une échelle 2 couleurs (Rouge-Vert sans jaune)."
+  ]
+}

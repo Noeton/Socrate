@@ -1,0 +1,320 @@
+{
+    "id": "avance_03_formules_matricielles_dynamiques",
+    "titre": "Formules Matricielles Dynamiques : FILTER, SORT, UNIQUE",
+    "niveau": "avance",
+    "duree_estimee": "35 min",
+    "competences": ["Formules matricielles", "FILTER", "SORT", "UNIQUE", "Tableaux dynamiques"],
+    "competence_ids": [29, 39],
+  
+    "contexte": {
+      "situation": "Tu es data analyst chez SportMax, un réseau de magasins de sport. Le directeur marketing veut des listes dynamiques qui se mettent à jour automatiquement : clients par région, top ventes, produits uniques... Sans tableaux croisés dynamiques, juste des formules qui créent des tableaux automatiquement.",
+      "manager": {
+        "nom": "Alexandre Moreau",
+        "poste": "Directeur Marketing",
+        "personnalite": "Data-driven, il veut des dashboards qui s'actualisent en temps réel.",
+        "demande": "Je veux des listes qui se mettent à jour toutes seules quand on ajoute des données. Par exemple, la liste des clients de Paris, triée par CA décroissant. C'est possible sans VBA ?"
+      },
+      "enjeux": "Dashboard temps réel pour le CODIR hebdomadaire.",
+      "deadline": "Prototype pour la réunion de mardi"
+    },
+  
+    "objectifs": [
+      "Comprendre les formules matricielles dynamiques (Excel 365)",
+      "Utiliser FILTER pour extraire des données selon critères",
+      "Utiliser SORT pour trier automatiquement",
+      "Utiliser UNIQUE pour extraire les valeurs distinctes",
+      "Combiner ces fonctions pour des analyses puissantes"
+    ],
+  
+    "prerequis_version": {
+      "minimum": "Excel 365 (Microsoft 365)",
+      "note": "Ces fonctions n'existent pas dans Excel 2019 et versions antérieures"
+    },
+  
+    "consignes": [
+      "Ouvre le fichier avec les données de ventes",
+      "Crée une liste filtrée des clients d'une région spécifique",
+      "Trie automatiquement les résultats par CA décroissant",
+      "Extrais la liste des régions uniques",
+      "Combine les fonctions pour des analyses avancées"
+    ],
+  
+    "donnees": {
+      "feuille": "Ventes",
+      "table_ventes": {
+        "headers": ["ID_Client", "Nom", "Région", "Catégorie", "CA_Annuel", "Nb_Commandes"],
+        "rows": [
+          ["CL001", "Dupont Sport", "Paris", "Premium", 125000, 45],
+          ["CL002", "FitZone", "Lyon", "Standard", 78000, 32],
+          ["CL003", "RunParis", "Paris", "Premium", 98000, 38],
+          ["CL004", "VéloMax", "Marseille", "Standard", 45000, 22],
+          ["CL005", "GymTonic", "Paris", "Standard", 67000, 28],
+          ["CL006", "SportLyon", "Lyon", "Premium", 112000, 42],
+          ["CL007", "AquaFit", "Bordeaux", "Standard", 34000, 15],
+          ["CL008", "MontagnePro", "Lyon", "Premium", 89000, 35],
+          ["CL009", "BeachSport", "Marseille", "Standard", 52000, 24],
+          ["CL010", "ParisGym", "Paris", "Standard", 73000, 30],
+          ["CL011", "LyonFit", "Lyon", "Standard", 61000, 26],
+          ["CL012", "MarseilleSport", "Marseille", "Premium", 95000, 37]
+        ],
+        "position": "A1:F13"
+      },
+      "zones_resultats": {
+        "filter_simple": "I2",
+        "filter_multiple": "I10",
+        "sort_simple": "I18",
+        "unique_regions": "I26",
+        "combine_avance": "I32"
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Introduction aux tableaux dynamiques",
+        "explications": [
+          "Les formules matricielles renvoient PLUSIEURS valeurs à la fois",
+          "Le résultat 'déborde' automatiquement dans les cellules adjacentes",
+          "Pas besoin de Ctrl+Maj+Entrée en Excel 365 (ancienne méthode)",
+          "Les cellules de débordement sont liées à la formule d'origine"
+        ],
+        "symbole": "Le symbole # (spill reference) permet de référencer tout le tableau dynamique"
+      },
+      {
+        "phase": "B. FILTER - Filtrer selon critères",
+        "syntaxe": "=FILTER(tableau; condition; [si_vide])",
+        "arguments": [
+          "tableau : les données à filtrer",
+          "condition : critère booléen (renvoie VRAI/FAUX pour chaque ligne)",
+          "si_vide : valeur à afficher si aucun résultat (optionnel)"
+        ],
+        "exemple": "=FILTER(A2:F13;C2:C13=\"Paris\";\"Aucun résultat\")"
+      },
+      {
+        "phase": "C. Filtrage simple par région",
+        "consignes": [
+          "En I2, filtre pour afficher uniquement les clients de Paris",
+          "=FILTER(A2:F13;C2:C13=\"Paris\")",
+          "Le tableau s'étend automatiquement vers le bas"
+        ]
+      },
+      {
+        "phase": "D. SORT - Trier automatiquement",
+        "syntaxe": "=SORT(tableau; [n°_colonne]; [ordre]; [par_colonne])",
+        "arguments": [
+          "tableau : données à trier",
+          "n°_colonne : quelle colonne pour le tri (défaut=1)",
+          "ordre : 1=croissant (défaut), -1=décroissant",
+          "par_colonne : FAUX=tri par lignes (défaut), VRAI=tri par colonnes"
+        ],
+        "exemple": "=SORT(A2:F13;5;-1) → trie par CA décroissant"
+      },
+      {
+        "phase": "E. UNIQUE - Valeurs distinctes",
+        "syntaxe": "=UNIQUE(tableau; [par_colonne]; [exactement_une_fois])",
+        "arguments": [
+          "tableau : données source",
+          "par_colonne : FAUX=unique par lignes (défaut), VRAI=par colonnes",
+          "exactement_une_fois : FAUX=toutes uniques (défaut), VRAI=seulement celles qui apparaissent 1 fois"
+        ],
+        "exemple": "=UNIQUE(C2:C13) → liste des régions sans doublons"
+      },
+      {
+        "phase": "F. Combiner les fonctions",
+        "cas_1": {
+          "description": "Clients Paris triés par CA décroissant",
+          "formule": "=SORT(FILTER(A2:F13;C2:C13=\"Paris\");5;-1)"
+        },
+        "cas_2": {
+          "description": "Top 3 clients toutes régions",
+          "formule": "=TAKE(SORT(A2:F13;5;-1);3)"
+        },
+        "cas_3": {
+          "description": "Clients Premium avec CA > 100k",
+          "formule": "=FILTER(A2:F13;(D2:D13=\"Premium\")*(E2:E13>100000))"
+        }
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_filter_paris",
+        "cellule": "I2",
+        "type": "formule",
+        "description": "FILTER clients de Paris",
+        "competence_id": 39,
+        "fonction": "FILTER",
+        "pattern": ["FILTER", "Paris"],
+        "points": 15,
+        "indices": [
+          "=FILTER(tableau; condition)",
+          "Condition : colonne C = \"Paris\"",
+          "=FILTER(A2:F13;C2:C13=\"Paris\")"
+        ]
+      },
+      {
+        "id": "cp_2_filter_resultat",
+        "cellule": "I2",
+        "type": "valeur",
+        "description": "Premier client Paris filtré (ID)",
+        "competence_id": 39,
+        "expected_value": "CL001",
+        "points": 10,
+        "indices": [
+          "Dupont Sport est le premier client de Paris",
+          "Vérifie que ton filtre renvoie les bonnes lignes",
+          "4 clients à Paris au total"
+        ]
+      },
+      {
+        "id": "cp_3_filter_count",
+        "type": "count",
+        "zone_debut": "I2",
+        "description": "Nombre de clients Paris (4 lignes)",
+        "competence_id": 39,
+        "expected_count": 4,
+        "points": 10,
+        "indices": [
+          "Il y a 4 clients à Paris",
+          "Dupont, RunParis, GymTonic, ParisGym",
+          "Le tableau doit s'étendre sur 4 lignes"
+        ]
+      },
+      {
+        "id": "cp_4_sort_ca",
+        "cellule": "I18",
+        "type": "formule",
+        "description": "SORT par CA décroissant",
+        "competence_id": 39,
+        "fonction": "SORT",
+        "pattern": ["SORT", "-1"],
+        "points": 15,
+        "indices": [
+          "=SORT(tableau; colonne; ordre)",
+          "Colonne CA = 5ème colonne",
+          "=SORT(A2:F13;5;-1) → -1 pour décroissant"
+        ]
+      },
+      {
+        "id": "cp_5_sort_premier",
+        "cellule": "I18",
+        "type": "valeur",
+        "description": "Client avec plus gros CA en premier",
+        "competence_id": 39,
+        "expected_value": "CL001",
+        "points": 10,
+        "indices": [
+          "Dupont Sport a le plus gros CA (125000€)",
+          "Il doit apparaître en premier après le tri",
+          "Vérifie l'ordre décroissant"
+        ]
+      },
+      {
+        "id": "cp_6_unique_regions",
+        "cellule": "I26",
+        "type": "formule",
+        "description": "UNIQUE liste des régions",
+        "competence_id": 39,
+        "fonction": "UNIQUE",
+        "pattern": ["UNIQUE"],
+        "points": 15,
+        "indices": [
+          "=UNIQUE(colonne_regions)",
+          "=UNIQUE(C2:C13)",
+          "Doit renvoyer 4 régions uniques"
+        ]
+      },
+      {
+        "id": "cp_7_combine_filter_sort",
+        "cellule": "I32",
+        "type": "formule",
+        "description": "Combinaison FILTER + SORT",
+        "competence_id": 29,
+        "pattern": ["SORT", "FILTER"],
+        "points": 25,
+        "indices": [
+          "Imbrique FILTER dans SORT",
+          "=SORT(FILTER(...);colonne;ordre)",
+          "=SORT(FILTER(A2:F13;C2:C13=\"Paris\");5;-1)"
+        ]
+      }
+    ],
+  
+    "operateurs_matriciels": {
+      "et_logique": {
+        "syntaxe": "(condition1)*(condition2)",
+        "exemple": "=FILTER(A:F;(C:C=\"Paris\")*(E:E>50000))",
+        "note": "Les deux conditions doivent être vraies"
+      },
+      "ou_logique": {
+        "syntaxe": "(condition1)+(condition2)",
+        "exemple": "=FILTER(A:F;(C:C=\"Paris\")+(C:C=\"Lyon\"))",
+        "note": "Au moins une condition vraie"
+      }
+    },
+  
+    "fonctions_complementaires": [
+      {
+        "fonction": "TAKE(tableau;n)",
+        "description": "Prend les n premières lignes",
+        "exemple": "=TAKE(SORT(A:F;5;-1);3) → Top 3"
+      },
+      {
+        "fonction": "DROP(tableau;n)",
+        "description": "Supprime les n premières lignes",
+        "exemple": "=DROP(A2:F13;2) → Sans les 2 premières"
+      },
+      {
+        "fonction": "CHOOSECOLS(tableau;cols)",
+        "description": "Sélectionne certaines colonnes",
+        "exemple": "=CHOOSECOLS(A:F;1;2;5) → Colonnes 1, 2 et 5"
+      },
+      {
+        "fonction": "CHOOSEROWS(tableau;rows)",
+        "description": "Sélectionne certaines lignes",
+        "exemple": "=CHOOSEROWS(A:F;1;3;5) → Lignes 1, 3 et 5"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "#DÉBORDEMENT! (#SPILL!)",
+        "cause": "Les cellules de débordement contiennent déjà des données",
+        "solution": "Vide les cellules où le tableau doit s'étendre"
+      },
+      {
+        "erreur": "Critères multiples ne fonctionnent pas",
+        "cause": "Utilisation de ET() au lieu de la multiplication",
+        "solution": "Utilise (cond1)*(cond2) et non ET(cond1;cond2)"
+      },
+      {
+        "erreur": "FILTER renvoie toutes les lignes",
+        "cause": "Condition toujours vraie",
+        "solution": "Vérifie que ta condition compare la bonne plage"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Impressionnant ! Tu maîtrises les formules matricielles dynamiques. FILTER, SORT, UNIQUE... tu peux créer des dashboards qui s'actualisent automatiquement ! 🎉",
+      "partiel": "Tu as compris les bases. Les formules matricielles sont puissantes mais demandent de la pratique. Attention aux critères multiples : utilise * pour ET, + pour OU.",
+      "echec": "Les formules matricielles sont le niveau expert d'Excel. Reprends FILTER d'abord, puis SORT, puis combine-les progressivement."
+    },
+  
+    "socrate_message": {
+      "intro": "Les formules matricielles, c'est la révolution Excel 365 ! 🚀 Une seule formule qui crée tout un tableau, filtré, trié, sans doublons... Magie !",
+      "conclusion": "Tu as atteint le niveau expert Excel ! FILTER+SORT+UNIQUE = des dashboards dynamiques sans VBA, sans tableaux croisés. Le graal de l'analyste ! 🏆"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["formules matricielles", "FILTER", "SORT", "UNIQUE", "Excel 365", "avancé", "tableaux dynamiques"],
+      "prerequis": ["INDEX+EQUIV", "RECHERCHEX", "Fonctions logiques"],
+      "ouvre_vers": ["LET", "LAMBDA", "Power Query"]
+    }
+  }

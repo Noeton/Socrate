@@ -1,0 +1,407 @@
+{
+  "id": "intermediaire_27_sierreur_formules_robustes",
+  "titre": "SIERREUR : Formules Robustes et Gestion d'Erreurs",
+  "niveau": "intermediaire",
+  "duree_estimee": "18 min",
+  "competences": [
+    "SIERREUR",
+    "Gestion des erreurs",
+    "Formules robustes"
+  ],
+  "competence_ids": [
+    9,
+    18
+  ],
+  "contexte": {
+    "situation": "Tu travailles au service comptabilité de GlobalTech. Ton fichier de suivi des commandes affiche des erreurs #N/A et #DIV/0! partout. Le directeur financier ne peut pas présenter ce rapport aux investisseurs avec tous ces messages d'erreur disgracieux.",
+    "manager": {
+      "nom": "Catherine Blanc",
+      "poste": "Directrice Financière",
+      "personnalite": "Perfectionniste, elle veut des rapports impeccables sans aucune erreur visible.",
+      "demande": "Ces #N/A et #DIV/0! rendent le rapport illisible ! Peux-tu faire en sorte que les erreurs soient remplacées par des messages clairs ou des valeurs par défaut ?"
+    },
+    "enjeux": "Le rapport part aux investisseurs demain. Les erreurs Excel font très amateur.",
+    "deadline": "Demain 9h"
+  },
+  "objectifs": [
+    "Comprendre les types d'erreurs Excel (#N/A, #DIV/0!, #REF!, #VALEUR!)",
+    "Utiliser SIERREUR pour capturer et remplacer les erreurs",
+    "Créer des formules robustes qui ne plantent jamais",
+    "Combiner SIERREUR avec RECHERCHEV et autres fonctions"
+  ],
+  "consignes": [
+    "Identifie les cellules en erreur dans le fichier",
+    "Utilise SIERREUR pour remplacer les erreurs par des messages appropriés",
+    "Crée des formules RECHERCHEV robustes qui ne renvoient jamais #N/A",
+    "Gère les divisions par zéro avec SIERREUR"
+  ],
+  "donnees": {
+    "feuille": "Commandes",
+    "headers": [
+      "N° Commande",
+      "Client_ID",
+      "Nom Client",
+      "Montant",
+      "Quantité",
+      "Prix Unitaire",
+      "Statut"
+    ],
+    "rows": [
+      [
+        "CMD001",
+        "C101",
+        null,
+        1500,
+        10,
+        null,
+        "Livré"
+      ],
+      [
+        "CMD002",
+        "C102",
+        null,
+        2400,
+        8,
+        null,
+        "En cours"
+      ],
+      [
+        "CMD003",
+        "C999",
+        null,
+        800,
+        0,
+        null,
+        "Annulé"
+      ],
+      [
+        "CMD004",
+        "C103",
+        null,
+        3200,
+        16,
+        null,
+        "Livré"
+      ],
+      [
+        "CMD005",
+        "C104",
+        null,
+        0,
+        5,
+        null,
+        "En attente"
+      ],
+      [
+        "CMD006",
+        "C888",
+        null,
+        1800,
+        12,
+        null,
+        "Livré"
+      ],
+      [
+        "CMD007",
+        "C101",
+        null,
+        950,
+        0,
+        null,
+        "Annulé"
+      ],
+      [
+        "CMD008",
+        "C105",
+        null,
+        4500,
+        15,
+        null,
+        "En cours"
+      ]
+    ],
+    "table_clients": {
+      "headers": [
+        "Client_ID",
+        "Nom",
+        "Ville"
+      ],
+      "rows": [
+        [
+          "C101",
+          "Dupont SA",
+          "Paris"
+        ],
+        [
+          "C102",
+          "Martin & Fils",
+          "Lyon"
+        ],
+        [
+          "C103",
+          "Tech Solutions",
+          "Marseille"
+        ],
+        [
+          "C104",
+          "Innov Corp",
+          "Bordeaux"
+        ],
+        [
+          "C105",
+          "Data Plus",
+          "Lille"
+        ]
+      ]
+    },
+    "erreurs_attendues": {
+      "C999": "#N/A (client inexistant)",
+      "C888": "#N/A (client inexistant)",
+      "quantite_0": "#DIV/0! (division par zéro)"
+    }
+  },
+  "etapes": [
+    {
+      "phase": "A. Comprendre les erreurs Excel",
+      "explications": [
+        "#N/A : Valeur non disponible (RECHERCHEV ne trouve pas)",
+        "#DIV/0! : Division par zéro",
+        "#REF! : Référence invalide (cellule supprimée)",
+        "#VALEUR! : Type de données incorrect",
+        "#NOM? : Fonction ou plage non reconnue"
+      ]
+    },
+    {
+      "phase": "B. Syntaxe SIERREUR",
+      "explications": [
+        "=SIERREUR(formule; valeur_si_erreur)",
+        "Si la formule produit une erreur, renvoie la valeur de remplacement",
+        "Sinon, renvoie le résultat normal de la formule"
+      ],
+      "exemple": "=SIERREUR(RECHERCHEV(A2;Table;2;FAUX);\"Client inconnu\")"
+    },
+    {
+      "phase": "C. RECHERCHEV robuste",
+      "consignes": [
+        "Formule normale : =RECHERCHEV(B2;Clients;2;FAUX)",
+        "Problème : renvoie #N/A si client inexistant",
+        "Solution : =SIERREUR(RECHERCHEV(B2;Clients;2;FAUX);\"Non trouvé\")"
+      ]
+    },
+    {
+      "phase": "D. Division robuste",
+      "consignes": [
+        "Formule normale : =D2/E2 (Montant/Quantité)",
+        "Problème : #DIV/0! si quantité = 0",
+        "Solution : =SIERREUR(D2/E2;0) ou =SIERREUR(D2/E2;\"N/A\")"
+      ]
+    },
+    {
+      "phase": "E. Formules imbriquées robustes",
+      "consignes": [
+        "Tu peux imbriquer SIERREUR dans d'autres formules",
+        "=SI(SIERREUR(RECHERCHEV(...);0)=0;\"Erreur\";\"OK\")",
+        "Ou utiliser SIERREUR autour de formules complexes"
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp_1_recherchev_robuste",
+      "cellule": "C2",
+      "type": "valeur",
+      "description": "Nom client via RECHERCHEV robuste (client existant)",
+      "expected_value": "Dupont SA",
+      "points": 15,
+      "indices": [
+        "Le client C101 existe dans la table",
+        "=SIERREUR(RECHERCHEV(B2;$J$2:$L$6;2;FAUX);\"Non trouvé\")",
+        "Résultat : Dupont SA (pas d'erreur)"
+      ],
+      "competence_id": 9
+    },
+    {
+      "id": "cp_2_client_inexistant",
+      "cellule": "C4",
+      "type": "valeur",
+      "description": "Gestion client inexistant (C999)",
+      "expected_value": "Non trouvé",
+      "points": 20,
+      "indices": [
+        "Le client C999 n'existe pas dans la table",
+        "Sans SIERREUR : #N/A",
+        "Avec SIERREUR : \"Non trouvé\" (ou message de ton choix)"
+      ],
+      "competence_id": 9
+    },
+    {
+      "id": "cp_3_division_ok",
+      "cellule": "F2",
+      "type": "valeur",
+      "description": "Prix unitaire calculé (division normale)",
+      "expected_value": 150,
+      "points": 10,
+      "indices": [
+        "Prix unitaire = Montant / Quantité",
+        "1500 / 10 = 150",
+        "=SIERREUR(D2/E2;0)"
+      ],
+      "competence_id": 9
+    },
+    {
+      "id": "cp_4_division_zero",
+      "cellule": "F4",
+      "type": "valeur",
+      "description": "Gestion division par zéro (quantité = 0)",
+      "expected_value": 0,
+      "tolerance": 0,
+      "alternative_values": [
+        "N/A",
+        "-",
+        "Erreur"
+      ],
+      "points": 20,
+      "indices": [
+        "Quantité = 0, donc division impossible",
+        "Sans SIERREUR : #DIV/0!",
+        "Avec SIERREUR : 0 ou \"N/A\" ou autre valeur"
+      ],
+      "competence_id": 9
+    },
+    {
+      "id": "cp_5_formule_sierreur",
+      "cellule": "C2",
+      "type": "formule",
+      "description": "Formule utilisant SIERREUR",
+      "fonction": "SIERREUR",
+      "pattern": [
+        "SIERREUR",
+        "RECHERCHEV"
+      ],
+      "points": 15,
+      "indices": [
+        "Ta formule doit contenir SIERREUR",
+        "SIERREUR entoure le RECHERCHEV",
+        "=SIERREUR(RECHERCHEV(...);\"valeur par défaut\")"
+      ],
+      "competence_id": 9
+    },
+    {
+      "id": "cp_6_tous_clients",
+      "cellule": "C9",
+      "type": "valeur",
+      "description": "Dernier client (Data Plus)",
+      "expected_value": "Data Plus",
+      "points": 10,
+      "indices": [
+        "Client C105 existe",
+        "La formule doit être recopiée sur toutes les lignes",
+        "Vérifie que les références de la table sont absolues ($)"
+      ],
+      "competence_id": 9
+    },
+    {
+      "id": "cp_7_client_888",
+      "cellule": "C7",
+      "type": "valeur",
+      "description": "Gestion deuxième client inexistant (C888)",
+      "expected_value": "Non trouvé",
+      "points": 10,
+      "indices": [
+        "C888 n'existe pas non plus",
+        "Doit afficher le même message que C999",
+        "\"Non trouvé\" ou équivalent"
+      ],
+      "competence_id": 9
+    }
+  ],
+  "types_erreurs_excel": [
+    {
+      "erreur": "#N/A",
+      "signification": "Valeur non disponible",
+      "causes": [
+        "RECHERCHEV ne trouve pas",
+        "EQUIV ne trouve pas",
+        "Référence vide"
+      ],
+      "solution": "SIERREUR ou SIERREUR.TYPE"
+    },
+    {
+      "erreur": "#DIV/0!",
+      "signification": "Division par zéro",
+      "causes": [
+        "Diviseur = 0",
+        "Diviseur = cellule vide"
+      ],
+      "solution": "SIERREUR ou SI(diviseur=0;0;calcul)"
+    },
+    {
+      "erreur": "#REF!",
+      "signification": "Référence invalide",
+      "causes": [
+        "Cellule supprimée",
+        "Collage mal fait"
+      ],
+      "solution": "Reconstruire la formule, vérifier les références"
+    },
+    {
+      "erreur": "#VALEUR!",
+      "signification": "Type incorrect",
+      "causes": [
+        "Texte au lieu de nombre",
+        "Opération impossible"
+      ],
+      "solution": "CNUM(), SIERREUR, vérifier les données"
+    },
+    {
+      "erreur": "#NOM?",
+      "signification": "Nom non reconnu",
+      "causes": [
+        "Fonction mal orthographiée",
+        "Plage nommée inexistante"
+      ],
+      "solution": "Vérifier l'orthographe, définir la plage nommée"
+    }
+  ],
+  "bonnes_pratiques": [
+    "Toujours entourer RECHERCHEV de SIERREUR dans les rapports",
+    "Tester les divisions avant de les faire : =SI(B2=0;0;A2/B2)",
+    "Utiliser des valeurs par défaut significatives (pas juste 0)",
+    "SIERREUR attrape TOUTES les erreurs - parfois trop large"
+  ],
+  "scoring": {
+    "total_points": 100,
+    "seuil_reussite": 70,
+    "seuil_maitrise": 90
+  },
+  "feedback_manager": {
+    "succes": "Parfait ! Tes formules sont maintenant robustes et ne planteront plus jamais. Le rapport est présentable aux investisseurs ! 💼",
+    "partiel": "Tu as compris le principe. Vérifie que toutes les erreurs sont gérées, y compris les clients inexistants ET les divisions par zéro.",
+    "echec": "SIERREUR est simple : =SIERREUR(formule;valeur_si_erreur). Entoure tes RECHERCHEV et divisions avec cette fonction."
+  },
+  "socrate_message": {
+    "intro": "Les erreurs #N/A et #DIV/0! sont le cauchemar des rapports Excel. SIERREUR est ton bouclier ! 🛡️",
+    "conclusion": "Tu sais maintenant créer des formules qui ne plantent jamais. Un vrai pro Excel prévoit toujours les cas d'erreur ! ✨"
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-21",
+    "tags": [
+      "SIERREUR",
+      "erreurs",
+      "robustesse",
+      "RECHERCHEV",
+      "division",
+      "intermédiaire"
+    ],
+    "prerequis": [
+      "RECHERCHEV",
+      "SI simple"
+    ],
+    "ouvre_vers": [
+      "SIERREUR.TYPE",
+      "Formules complexes",
+      "Tableaux de bord"
+    ]
+  }
+}

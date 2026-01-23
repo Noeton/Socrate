@@ -1,0 +1,442 @@
+{
+  "id": "debutant_02_notes_etudiants",
+  "titre": "Calcul Moyennes et Classement Étudiants",
+  "niveau": "debutant",
+  "duree_estimee": "20 min",
+  "competences": [
+    "MOYENNE",
+    "MIN",
+    "MAX"
+  ],
+  "contexte": {
+    "situation": "Tu es professeur et tu dois calculer les moyennes de tes 30 élèves sur 5 contrôles.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer la moyenne de chaque élève",
+    "Identifier la meilleure et la pire note",
+    "Calculer la moyenne de classe"
+  ],
+  "consignes": [
+    "Dans G2, calcule la moyenne de l'élève: =MOYENNE(B2:F2) et recopie jusqu'à G31",
+    "En G32, calcule la moyenne de classe: =MOYENNE(G2:G31)",
+    "En G33, trouve la meilleure moyenne: =MAX(G2:G31)",
+    "En G34, trouve la moins bonne moyenne: =MIN(G2:G31)",
+    "Formate les moyennes avec 2 décimales"
+  ],
+  "donnees": {
+    "headers": [
+      "Nom Complet",
+      "Note 1",
+      "Note 2",
+      "Note 3",
+      "Note 4",
+      "Note 5",
+      "Moyenne"
+    ],
+    "rows": [
+      [
+        "Nathan Bonnet",
+        14.6,
+        13.8,
+        14.6,
+        17.6,
+        14.9,
+        ""
+      ],
+      [
+        "Leo Simon",
+        12.3,
+        12.9,
+        13.9,
+        13.1,
+        12.7,
+        ""
+      ],
+      [
+        "Uma Durand",
+        17.3,
+        13.1,
+        11.3,
+        15,
+        14.2,
+        ""
+      ],
+      [
+        "Uma Moreau",
+        16.2,
+        9,
+        11.5,
+        16.5,
+        9.5,
+        ""
+      ],
+      [
+        "Victor Martin",
+        13,
+        8,
+        9.7,
+        13.5,
+        11.7,
+        ""
+      ],
+      [
+        "Wendy Moreau",
+        16.6,
+        14.7,
+        14.4,
+        12.6,
+        9.7,
+        ""
+      ],
+      [
+        "Iris David",
+        15.1,
+        12,
+        10.1,
+        12.9,
+        8.9,
+        ""
+      ],
+      [
+        "Sam Lambert",
+        16.1,
+        11.5,
+        9.9,
+        17,
+        15.2,
+        ""
+      ],
+      [
+        "Sam Bonnet",
+        13.8,
+        15.4,
+        16.5,
+        10.9,
+        8.6,
+        ""
+      ],
+      [
+        "Bob Roux",
+        16.7,
+        11.3,
+        16.8,
+        11,
+        15.6,
+        ""
+      ],
+      [
+        "Bob Robert",
+        12,
+        8.2,
+        11.5,
+        14.2,
+        9.5,
+        ""
+      ],
+      [
+        "Uma Vincent",
+        15.7,
+        12,
+        10.9,
+        16.8,
+        13.6,
+        ""
+      ],
+      [
+        "Grace Dubois",
+        16.4,
+        15.2,
+        12.5,
+        12.2,
+        16.8,
+        ""
+      ],
+      [
+        "Quentin Bernard",
+        17.1,
+        14.1,
+        16.2,
+        8,
+        8.8,
+        ""
+      ],
+      [
+        "Jack Roux",
+        17.2,
+        16.2,
+        14.1,
+        13.3,
+        12.8,
+        ""
+      ],
+      [
+        "Iris Moreau",
+        15.6,
+        16.8,
+        16.6,
+        17.4,
+        17.4,
+        ""
+      ],
+      [
+        "Paul Leroy",
+        8.2,
+        16,
+        16.4,
+        12,
+        11.6,
+        ""
+      ],
+      [
+        "Marie Martin",
+        14.4,
+        16.8,
+        14.7,
+        9.8,
+        11.5,
+        ""
+      ],
+      [
+        "Eve Richard",
+        14.4,
+        8,
+        11.9,
+        10.2,
+        13.3,
+        ""
+      ],
+      [
+        "Jack Laurent",
+        17.7,
+        12.3,
+        15,
+        9.6,
+        14.3,
+        ""
+      ],
+      [
+        "Zoé Garcia",
+        13.1,
+        17,
+        8.6,
+        16.7,
+        14.1,
+        ""
+      ],
+      [
+        "Wendy Lefebvre",
+        12.7,
+        10.3,
+        12.6,
+        11.7,
+        16.8,
+        ""
+      ],
+      [
+        "Frank Vincent",
+        8.1,
+        11.7,
+        11.3,
+        9.9,
+        12.1,
+        ""
+      ],
+      [
+        "Paul David",
+        14.2,
+        13.1,
+        17.7,
+        9.2,
+        13.2,
+        ""
+      ],
+      [
+        "Iris Leroy",
+        15.8,
+        9.5,
+        13.5,
+        14.7,
+        8.9,
+        ""
+      ],
+      [
+        "Eve Richard",
+        15.1,
+        16.4,
+        11.9,
+        10.7,
+        14.9,
+        ""
+      ],
+      [
+        "Marie Thomas",
+        13.4,
+        16.5,
+        13.8,
+        13.4,
+        17.8,
+        ""
+      ],
+      [
+        "Kate Lambert",
+        17,
+        15.5,
+        15,
+        13.4,
+        8.4,
+        ""
+      ],
+      [
+        "Leo Leroy",
+        15.7,
+        14.7,
+        9.8,
+        11.1,
+        13.2,
+        ""
+      ],
+      [
+        "Yves Bertrand",
+        9.6,
+        17.1,
+        11.1,
+        15.3,
+        13.8,
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "formule_moyenne_presente": true,
+    "formule_min_presente": true,
+    "formule_max_presente": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Calcul de la moyenne de l'élève (première ligne)",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "B2:F2"
+      ],
+      "recopie_jusqua": "G31",
+      "points": 25,
+      "indices": [
+        "Pour calculer une moyenne, il faut additionner toutes les notes et diviser par le nombre de notes.",
+        "Excel a une fonction spéciale pour calculer les moyennes automatiquement.",
+        "=MOYENNE(B2:F2)"
+      ],
+      "id": "cp_1",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "cellule": "G31",
+      "type": "formule",
+      "description": "Calcul de la moyenne de l'élève (dernière ligne)",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "B31:F31"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée à la dernière ligne.",
+        "Les références de cellules doivent avoir changé lors de la recopie.",
+        "=MOYENNE(B31:F31)"
+      ],
+      "id": "cp_2",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "cellule": "G32",
+      "type": "formule",
+      "description": "Calcul de la moyenne de classe",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "G2:G31"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "La moyenne de classe, c'est la moyenne de toutes les moyennes individuelles.",
+        "Tu dois utiliser la fonction MOYENNE sur la colonne des moyennes.",
+        "=MOYENNE(G2:G31)"
+      ],
+      "id": "cp_3",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "cellule": "G33",
+      "type": "formule",
+      "description": "Recherche de la meilleure moyenne",
+      "fonction": "MAX",
+      "pattern": [
+        "MAX",
+        "G2:G31"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Pour trouver la plus grande valeur dans une série, quelle fonction utiliser ?",
+        "Il existe une fonction qui trouve automatiquement la valeur maximale.",
+        "=MAX(G2:G31)"
+      ],
+      "id": "cp_4",
+      "computation": {
+        "type": "max",
+        "column": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "cellule": "G34",
+      "type": "formule",
+      "description": "Recherche de la moins bonne moyenne",
+      "fonction": "MIN",
+      "pattern": [
+        "MIN",
+        "G2:G31"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Pour trouver la plus petite valeur dans une série, quelle fonction utiliser ?",
+        "C'est l'opposé de MAX, il existe une fonction pour la valeur minimale.",
+        "=MIN(G2:G31)"
+      ],
+      "id": "cp_5",
+      "computation": {
+        "type": "min",
+        "column": "auto"
+      },
+      "competence_id": 4
+    }
+  ],
+  "competence_ids": [
+    4,
+    5
+  ]
+}

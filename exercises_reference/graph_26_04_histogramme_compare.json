@@ -1,0 +1,223 @@
+{
+  "id": "graph_26_04_histogramme_compare",
+  "version": "1.0",
+  "titre": "📊 Histogramme comparatif : 2024 vs 2025",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "20 min",
+    "competences_ids": [26],
+    "competences_noms": ["Graphiques simples"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Créer un histogramme groupé avec plusieurs séries pour comparer des données",
+    "source_pdf": "Chapter 15: Charts and Charting - Section 15.1",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "La direction de GreenEnergy veut voir d'un coup d'œil si les ventes ont progressé entre 2024 et 2025. Ils veulent un graphique qui mette côte à côte les performances de chaque trimestre.",
+    
+    "personnage": "Toi, analyste commercial chez GreenEnergy.",
+    
+    "objectif": "Créer un histogramme groupé qui compare les ventes 2024 et 2025 trimestre par trimestre.",
+    
+    "motivation": "L'histogramme groupé est parfait pour comparer deux séries. Les barres côte à côte permettent de voir immédiatement quelle année performe mieux.",
+    
+    "ton": "On passe à la vitesse supérieure avec 2 séries de données. Ça reste simple, promis !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Chiffre d'affaires trimestriel 2024 vs 2025. On observe une progression sur tous les trimestres.",
+    "periode": "2024-2025",
+    "source_fictive": "Rapport annuel GreenEnergy"
+  },
+
+  "donnees": {
+    "headers": ["Trimestre", "CA 2024 (k€)", "CA 2025 (k€)"],
+    "rows": [
+      ["T1", 45, 52],
+      ["T2", 52, 61],
+      ["T3", 48, 57],
+      ["T4", 61, 73]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner toutes les données",
+      "consigne": "Sélectionne A1:C5 (trimestres + les deux colonnes de CA).",
+      "aide_contextuelle": "Pour un graphique à 2 séries, tu dois sélectionner les deux colonnes de valeurs.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Insérer l'histogramme groupé",
+      "consigne": "Insertion > Graphiques > Histogramme > Histogramme groupé (le premier).",
+      "aide_contextuelle": "Groupé = les barres sont côte à côte. Empilé = les barres sont les unes sur les autres.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter un titre",
+      "consigne": "Titre : 'Comparaison CA 2024 vs 2025'.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Vérifier la légende",
+      "description": "La légende doit distinguer 2024 de 2025.",
+      "consigne": "Vérifie que la légende affiche 'CA 2024' et 'CA 2025'. Si elle affiche 'Série1/Série2', les en-têtes n'ont pas été bien pris.",
+      "aide_contextuelle": "La légende est essentielle quand tu as plusieurs séries. Sans elle, impossible de savoir quelle barre est 2024 ou 2025.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Changer les couleurs",
+      "description": "Pour bien différencier les années.",
+      "consigne": "Clic droit sur les barres 2024 > Remplissage > Bleu. Même chose pour 2025 en vert.",
+      "aide_contextuelle": "Des couleurs contrastées (bleu/vert ou bleu/orange) aident à distinguer les séries.",
+      "temps": "2 min",
+      "optionnel": true
+    }
+  ],
+
+  "zone_travail": {
+    "description": "Graphique à créer à côté des données",
+    "structure": [
+      { "cellule": "A1:C5", "label": "Données source", "style": "data" },
+      { "cellule": "E2:M18", "label": "Zone graphique", "style": "chart_area" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_compare_1",
+      "type": "graphique",
+      "description": "Histogramme groupé avec 2 séries",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "type": "histogramme",
+        "type_variants": ["histogram", "bar", "column", "colonnes", "barres"],
+        "series_count": 2,
+        "categories_count": 4,
+        "is_grouped": true
+      },
+      "points": 30,
+      "indices": [
+        "Tu dois voir 2 barres côte à côte pour chaque trimestre (une pour 2024, une pour 2025).",
+        "Si tu n'as qu'une seule couleur de barres, tu n'as sélectionné qu'une seule colonne de données.",
+        "Sélectionne bien A1:C5, pas seulement A1:B5."
+      ],
+      "erreurs_probables": [
+        { "type": "single_series", "message": "Ton graphique n'a qu'une seule série. Sélectionne les colonnes B ET C." },
+        { "type": "stacked", "message": "Les barres sont empilées au lieu d'être groupées. Choisis 'Histogramme groupé', pas 'empilé'." }
+      ]
+    },
+    {
+      "id": "cp_compare_2",
+      "type": "graphique",
+      "description": "Légende avec noms des séries",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_legend": true,
+        "legend_labels": ["2024", "2025"],
+        "legend_labels_any": true
+      },
+      "points": 25,
+      "indices": [
+        "La légende doit afficher 'CA 2024' et 'CA 2025' (ou similaire).",
+        "Si elle affiche 'Série1' et 'Série2', Excel n'a pas reconnu les en-têtes.",
+        "Vérifie que la ligne 1 contient bien les en-têtes de colonnes."
+      ],
+      "erreurs_probables": [
+        { "type": "generic_legend", "message": "La légende affiche 'Série1/Série2'. Vérifie que tes en-têtes sont inclus dans la sélection." },
+        { "type": "no_legend", "message": "Pas de légende visible. Ajoute-la via Création > Ajouter un élément > Légende." }
+      ]
+    },
+    {
+      "id": "cp_compare_3",
+      "type": "graphique",
+      "description": "Titre présent et explicite",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_title": true,
+        "title_contains": ["2024", "2025", "Comparaison", "CA"],
+        "title_contains_any": true
+      },
+      "points": 15,
+      "indices": [
+        "Le titre doit indiquer qu'il s'agit d'une comparaison entre deux années.",
+        "Exemple : 'Comparaison CA 2024 vs 2025' ou 'Évolution du chiffre d'affaires'"
+      ]
+    },
+    {
+      "id": "cp_compare_4",
+      "type": "graphique",
+      "description": "4 trimestres sur l'axe X",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_x_axis": true,
+        "x_axis_labels": ["T1", "T2", "T3", "T4"],
+        "categories_count": 4
+      },
+      "points": 15,
+      "indices": [
+        "L'axe horizontal doit afficher T1, T2, T3, T4.",
+        "Si tu vois des chiffres, la colonne A n'est pas bien prise en compte."
+      ]
+    },
+    {
+      "id": "cp_compare_5",
+      "type": "graphique",
+      "description": "Couleurs distinctes pour les séries",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "distinct_colors": true,
+        "series_differentiated": true
+      },
+      "points": 15,
+      "indices": [
+        "Les barres 2024 et 2025 doivent avoir des couleurs différentes.",
+        "Excel attribue automatiquement des couleurs différentes, mais vérifie qu'elles sont bien distinctes."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Histogramme groupé avec 2 séries (2024 et 2025), 4 groupes de barres (T1-T4), légende explicite, titre 'Comparaison CA 2024 vs 2025'.",
+    "etapes_cles": [
+      "Sélection A1:C5 (3 colonnes)",
+      "Insertion > Histogramme groupé",
+      "Vérification légende",
+      "Titre personnalisé"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Excellent ! Ton graphique comparatif est parfait. On voit immédiatement que 2025 bat 2024 sur tous les trimestres !",
+    "bien": "👍 Très bien ! Le graphique fonctionne. Vérifie que la légende est bien explicite (pas 'Série1/Série2').",
+    "ameliorer": "📊 Pas mal ! Assure-toi d'avoir 2 séries de barres côte à côte, pas empilées.",
+    "revoir": "🔄 Recommence en sélectionnant bien A1:C5. Tu dois avoir 2 couleurs de barres différentes."
+  },
+
+  "pour_aller_plus_loin": [
+    "Calcule la variation (%) entre 2024 et 2025 et ajoute-la comme étiquette.",
+    "Ajoute une courbe de tendance pour chaque année.",
+    "Transforme en graphique combiné : barres 2024 + courbe 2025."
+  ]
+}

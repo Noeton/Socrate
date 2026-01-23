@@ -1,0 +1,449 @@
+{
+  "id": "debutant_12_tva_multipays",
+  "titre": "Calcul TVA Multi-Pays avec RECHERCHEV",
+  "niveau": "debutant",
+  "duree_estimee": "30 min",
+  "competences": [
+    "RECHERCHEV",
+    "Références absolues ($)"
+  ],
+  "contexte": {
+    "situation": "Tu travailles chez EuroShop, un e-commerce qui vend dans 5 pays européens. Chaque pays a un taux de TVA différent. Tu dois calculer automatiquement le prix TTC de chaque commande en fonction du pays de livraison. Le comptable en a marre de chercher les taux à la main !",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Créer une table de référence des taux de TVA",
+    "Utiliser RECHERCHEV pour trouver le bon taux",
+    "Figer la table avec $ pour pouvoir recopier",
+    "Calculer le prix TTC"
+  ],
+  "consignes": [
+    "Crée une feuille 'TVA' avec la table des taux (voir données)",
+    "Dans la feuille principale, tu as 20 commandes avec le pays",
+    "En colonne E (Taux TVA), utilise RECHERCHEV pour trouver le taux",
+    "IMPORTANT : Fige la table avec $ sinon la recopie va tout casser !",
+    "En colonne F (Prix TTC), calcule : Prix HT × (1 + Taux TVA)",
+    "Recopie les formules jusqu'à la ligne 21",
+    "Calcule le total TTC en F22"
+  ],
+  "donnees": {
+    "headers": [
+      "N° Commande",
+      "Client",
+      "Pays",
+      "Prix HT",
+      "Taux TVA",
+      "Prix TTC"
+    ],
+    "rows": [
+      [
+        "CMD001",
+        "Marie Dupont",
+        "France",
+        150,
+        "",
+        ""
+      ],
+      [
+        "CMD002",
+        "Hans Mueller",
+        "Allemagne",
+        89,
+        "",
+        ""
+      ],
+      [
+        "CMD003",
+        "Sofia Garcia",
+        "Espagne",
+        210,
+        "",
+        ""
+      ],
+      [
+        "CMD004",
+        "Marco Rossi",
+        "Italie",
+        75,
+        "",
+        ""
+      ],
+      [
+        "CMD005",
+        "Pierre Martin",
+        "France",
+        320,
+        "",
+        ""
+      ],
+      [
+        "CMD006",
+        "Emma Schmidt",
+        "Allemagne",
+        145,
+        "",
+        ""
+      ],
+      [
+        "CMD007",
+        "Lucas Bernard",
+        "France",
+        55,
+        "",
+        ""
+      ],
+      [
+        "CMD008",
+        "Anna Kowalski",
+        "Pologne",
+        180,
+        "",
+        ""
+      ],
+      [
+        "CMD009",
+        "Giuseppe Conti",
+        "Italie",
+        95,
+        "",
+        ""
+      ],
+      [
+        "CMD010",
+        "Carmen Lopez",
+        "Espagne",
+        275,
+        "",
+        ""
+      ],
+      [
+        "CMD011",
+        "Thomas Weber",
+        "Allemagne",
+        420,
+        "",
+        ""
+      ],
+      [
+        "CMD012",
+        "Julie Moreau",
+        "France",
+        65,
+        "",
+        ""
+      ],
+      [
+        "CMD013",
+        "Piotr Nowak",
+        "Pologne",
+        130,
+        "",
+        ""
+      ],
+      [
+        "CMD014",
+        "Laura Bianchi",
+        "Italie",
+        88,
+        "",
+        ""
+      ],
+      [
+        "CMD015",
+        "François Petit",
+        "France",
+        195,
+        "",
+        ""
+      ],
+      [
+        "CMD016",
+        "Marta Rodriguez",
+        "Espagne",
+        310,
+        "",
+        ""
+      ],
+      [
+        "CMD017",
+        "Klaus Fischer",
+        "Allemagne",
+        72,
+        "",
+        ""
+      ],
+      [
+        "CMD018",
+        "Zofia Kaminska",
+        "Pologne",
+        225,
+        "",
+        ""
+      ],
+      [
+        "CMD019",
+        "Paolo Ferrari",
+        "Italie",
+        168,
+        "",
+        ""
+      ],
+      [
+        "CMD020",
+        "Claire Dubois",
+        "France",
+        99,
+        "",
+        ""
+      ]
+    ],
+    "table_tva": {
+      "description": "Table à créer dans la feuille 'TVA'",
+      "headers": [
+        "Pays",
+        "Taux TVA"
+      ],
+      "rows": [
+        [
+          "Allemagne",
+          0.19
+        ],
+        [
+          "Espagne",
+          0.21
+        ],
+        [
+          "France",
+          0.2
+        ],
+        [
+          "Italie",
+          0.22
+        ],
+        [
+          "Pologne",
+          0.23
+        ]
+      ]
+    },
+    "resultats_attendus": {
+      "E2": 0.2,
+      "E3": 0.19,
+      "E8": 0.23,
+      "F2": 180,
+      "F3": 105.91,
+      "F22_total": 4372.11
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "cellule": "TVA!A1:B6",
+      "type": "donnees",
+      "description": "Table TVA créée correctement",
+      "points": 10,
+      "validation_avancee": {
+        "headers_attendus": [
+          "Pays",
+          "Taux TVA"
+        ],
+        "nb_lignes": 5
+      },
+      "indices": [
+        "Crée une nouvelle feuille nommée 'TVA'",
+        "En-têtes en ligne 1 : Pays | Taux TVA",
+        "5 pays : Allemagne (0.19), Espagne (0.21), France (0.20), Italie (0.22), Pologne (0.23)"
+      ],
+      "competence_id": 18
+    },
+    {
+      "id": "cp2",
+      "cellule": "E2",
+      "type": "formule",
+      "description": "RECHERCHEV pour trouver le taux TVA",
+      "fonction": "RECHERCHEV",
+      "pattern": [
+        "RECHERCHEV",
+        "C2",
+        "TVA!",
+        "$A$",
+        "$B$",
+        "2",
+        "FAUX"
+      ],
+      "points": 25,
+      "validation_avancee": {
+        "references": {
+          "C2": {
+            "expected_type": "relative",
+            "reason": "Doit changer à chaque ligne"
+          },
+          "TVA!$A$1:$B$6": {
+            "expected_type": "absolute",
+            "reason": "Table fixe"
+          }
+        },
+        "recherchev": {
+          "exact_match_required": true,
+          "table_must_be_absolute": true
+        }
+      },
+      "indices": [
+        "Tu cherches le pays (C2) dans la table TVA",
+        "=RECHERCHEV(C2;TVA!A1:B6;2;FAUX)",
+        "ATTENTION ! Tu dois figer la table : TVA!$A$1:$B$6",
+        "Le 2 = 2ème colonne de la table (le taux)",
+        "FAUX = correspondance exacte"
+      ],
+      "competence_id": 18
+    },
+    {
+      "id": "cp3",
+      "cellule": "E2",
+      "type": "valeur",
+      "description": "Taux TVA France correct",
+      "valeur_attendue": 0.2,
+      "tolerance": 0.001,
+      "points": 5,
+      "indices": [
+        "La France a un taux de TVA de 20% soit 0.20",
+        "Si tu as #N/A, vérifie que 'France' est bien écrit pareil dans les deux feuilles"
+      ],
+      "competence_id": 18
+    },
+    {
+      "id": "cp4",
+      "cellule": "E8",
+      "type": "valeur",
+      "description": "Taux TVA Pologne correct (vérification recopie)",
+      "valeur_attendue": 0.23,
+      "tolerance": 0.001,
+      "points": 10,
+      "indices": [
+        "La Pologne a un taux de 23% soit 0.23",
+        "Si tu as #REF!, ta table n'était pas figée avec $",
+        "La formule en E8 doit être =RECHERCHEV(C8;TVA!$A$1:$B$6;2;FAUX)"
+      ],
+      "competence_id": 18
+    },
+    {
+      "id": "cp5",
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Calcul du prix TTC",
+      "pattern": [
+        "D2",
+        "1",
+        "E2",
+        "*",
+        "+"
+      ],
+      "points": 15,
+      "indices": [
+        "Prix TTC = Prix HT × (1 + Taux TVA)",
+        "=D2*(1+E2)",
+        "Pas besoin de $ ici car les deux références doivent bouger"
+      ],
+      "competence_id": 18
+    },
+    {
+      "id": "cp6",
+      "cellule": "F2",
+      "type": "valeur",
+      "description": "Prix TTC première commande correct",
+      "valeur_attendue": 180,
+      "tolerance": 0.01,
+      "points": 5,
+      "indices": [
+        "150€ HT × (1 + 0.20) = 150 × 1.20 = 180€ TTC"
+      ],
+      "competence_id": 18
+    },
+    {
+      "id": "cp7",
+      "cellule": "E21",
+      "type": "formule",
+      "description": "RECHERCHEV recopié jusqu'à la dernière ligne",
+      "fonction": "RECHERCHEV",
+      "pattern": [
+        "RECHERCHEV",
+        "C21",
+        "TVA!",
+        "$A$",
+        "$B$"
+      ],
+      "points": 10,
+      "indices": [
+        "La formule doit aller jusqu'à E21 (20 commandes)",
+        "Vérifie que la table est toujours TVA!$A$1:$B$6 (pas de décalage)"
+      ],
+      "competence_id": 18
+    },
+    {
+      "id": "cp8",
+      "cellule": "F22",
+      "type": "formule",
+      "description": "Total TTC avec SOMME",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "F2:F21"
+      ],
+      "points": 10,
+      "indices": [
+        "=SOMME(F2:F21) pour additionner tous les prix TTC",
+        "Le total devrait être environ 4372€"
+      ],
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 18
+    },
+    {
+      "id": "cp9",
+      "cellule": "F22",
+      "type": "valeur",
+      "description": "Total TTC correct",
+      "valeur_attendue": 4372.11,
+      "tolerance": 0.1,
+      "points": 10,
+      "indices": [
+        "Si ton total est différent, vérifie tes RECHERCHEV",
+        "Une table non figée donne des résultats faux sans erreur visible !"
+      ],
+      "competence_id": 18
+    }
+  ],
+  "erreurs_pedagogiques": [
+    {
+      "erreur": "Table TVA non figée : TVA!A1:B6 au lieu de TVA!$A$1:$B$6",
+      "consequence": "Après recopie, la table se décale et pointe vers des cellules vides → #N/A ou mauvais taux",
+      "explication": "Sans $, quand tu recopies de E2 vers E3, la table devient A2:B7 au lieu de rester A1:B6"
+    },
+    {
+      "erreur": "Oublier FAUX dans RECHERCHEV",
+      "consequence": "Peut retourner un mauvais pays si la table n'est pas triée",
+      "explication": "Sans FAUX, Excel fait une recherche approchée qui nécessite une table triée"
+    },
+    {
+      "erreur": "Formule TTC : D2*E2 au lieu de D2*(1+E2)",
+      "consequence": "Tu calcules juste la TVA, pas le prix TTC",
+      "explication": "TTC = HT + TVA = HT + (HT × taux) = HT × (1 + taux)"
+    }
+  ],
+  "criteres_reussite": {
+    "recherchev_correcte": true,
+    "table_figee": true,
+    "calcul_ttc_correct": true,
+    "score_minimum": 7.5
+  },
+  "competence_ids": [
+    18
+  ]
+}

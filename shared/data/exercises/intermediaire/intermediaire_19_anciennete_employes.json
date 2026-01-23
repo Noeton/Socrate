@@ -1,0 +1,662 @@
+{
+  "id": "intermediaire_19_anciennete_employes",
+  "titre": "Calcul d'Ancienneté et Dates avec Formules",
+  "niveau": "intermediaire",
+  "duree_estimee": "30 min",
+  "competences": [
+    "formules_date"
+  ],
+  "contexte": {
+    "situation": "Tu calcules l'ancienneté des employés et leur éligibilité aux primes d'ancienneté.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer l'ancienneté en années",
+    "Extraire le mois et l'année d'embauche",
+    "Déterminer l'éligibilité aux primes"
+  ],
+  "consignes": [
+    "Dans F2, calcule l'ancienneté: =(AUJOURDHUI()-E2)/365.25 (arrondi à 1 décimale)",
+    "Dans G2, extrais l'année: =ANNEE(E2)",
+    "Dans H2, extrais le mois: =MOIS(E2)",
+    "Dans I2, éligibilité prime: =SI(F2>=5;\"Prime ancienneté\";\"Non éligible\")",
+    "Dans J2, calcule la date anniversaire 2024: =DATE(2024;MOIS(E2);JOUR(E2))",
+    "Compte combien d'employés ont >10 ans d'ancienneté",
+    "Identifie le mois d'embauche le plus fréquent"
+  ],
+  "donnees": {
+    "headers": [
+      "ID",
+      "Prénom",
+      "Nom",
+      "Service",
+      "Date Embauche",
+      "Ancienneté (ans)",
+      "Année",
+      "Mois",
+      "Prime",
+      "Anniversaire 2024"
+    ],
+    "rows": [
+      [
+        "EMP001",
+        "Victor",
+        "Bertrand",
+        "R&D",
+        "04/06/2010",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP002",
+        "Wendy",
+        "Leroy",
+        "IT",
+        "25/06/2010",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP003",
+        "Wendy",
+        "Dubois",
+        "Support",
+        "08/07/2013",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP004",
+        "Diana",
+        "Bernard",
+        "IT",
+        "07/02/2012",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP005",
+        "Tom",
+        "Petit",
+        "Production",
+        "27/02/2022",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP006",
+        "Wendy",
+        "Bernard",
+        "IT",
+        "27/03/2013",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP007",
+        "Diana",
+        "Lefebvre",
+        "IT",
+        "10/04/2010",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP008",
+        "Quentin",
+        "Lefebvre",
+        "Commercial",
+        "13/02/2016",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP009",
+        "Grace",
+        "Bertrand",
+        "Administration",
+        "26/09/2018",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP010",
+        "Jack",
+        "Leroy",
+        "Administration",
+        "10/04/2022",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP011",
+        "Rose",
+        "Lambert",
+        "Administration",
+        "02/01/2020",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP012",
+        "Uma",
+        "Petit",
+        "RH",
+        "19/05/2013",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP013",
+        "Charlie",
+        "Moreau",
+        "Support",
+        "14/03/2012",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP014",
+        "Grace",
+        "Bonnet",
+        "Administration",
+        "07/09/2014",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP015",
+        "Frank",
+        "Petit",
+        "Support",
+        "18/09/2020",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP016",
+        "Henry",
+        "Martin",
+        "Production",
+        "28/10/2016",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP017",
+        "Charlie",
+        "Lambert",
+        "Logistique",
+        "16/07/2011",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP018",
+        "Henry",
+        "Fournier",
+        "R&D",
+        "07/09/2018",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP019",
+        "Xavier",
+        "Dubois",
+        "R&D",
+        "12/08/2022",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP020",
+        "Olivia",
+        "Durand",
+        "R&D",
+        "03/03/2014",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP021",
+        "Grace",
+        "Robert",
+        "RH",
+        "25/06/2012",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP022",
+        "Uma",
+        "Garcia",
+        "Marketing",
+        "27/06/2015",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP023",
+        "Yves",
+        "Petit",
+        "Administration",
+        "01/08/2017",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP024",
+        "Zoé",
+        "Bertrand",
+        "Administration",
+        "24/05/2021",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP025",
+        "Grace",
+        "Thomas",
+        "IT",
+        "04/09/2018",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP026",
+        "Olivia",
+        "David",
+        "Finance",
+        "09/05/2014",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP027",
+        "Rose",
+        "David",
+        "Marketing",
+        "12/10/2018",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP028",
+        "Eve",
+        "Michel",
+        "Administration",
+        "27/01/2010",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP029",
+        "Zoé",
+        "Bonnet",
+        "R&D",
+        "23/07/2012",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP030",
+        "Kate",
+        "Lambert",
+        "RH",
+        "11/02/2018",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP031",
+        "Nathan",
+        "Lambert",
+        "Logistique",
+        "13/06/2018",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP032",
+        "Quentin",
+        "Durand",
+        "Commercial",
+        "11/08/2016",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP033",
+        "Iris",
+        "Bonnet",
+        "IT",
+        "23/05/2011",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP034",
+        "Henry",
+        "Vincent",
+        "RH",
+        "21/10/2023",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP035",
+        "Paul",
+        "Roux",
+        "Logistique",
+        "18/04/2016",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "formules_date_correctes": true,
+    "calculs_anciennete": true,
+    "score_minimum": 8
+  },
+  "checkpoints": [
+    {
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Calcul de l'ancienneté en années (première ligne)",
+      "fonction": "AUJOURDHUI",
+      "pattern": [
+        "AUJOURDHUI()",
+        "E2",
+        "365.25",
+        "/",
+        "-"
+      ],
+      "recopie_jusqua": "F36",
+      "points": 15,
+      "indices": [
+        "Pour calculer l'ancienneté, tu dois soustraire la date d'embauche à la date d'aujourd'hui.",
+        "Utilise AUJOURDHUI() et divise par 365.25 pour avoir des années précises.",
+        "=(AUJOURDHUI()-E2)/365.25 puis utilise ARRONDI(...;1)"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "F36",
+      "type": "formule",
+      "description": "Calcul de l'ancienneté en années (dernière ligne)",
+      "fonction": "AUJOURDHUI",
+      "pattern": [
+        "AUJOURDHUI()",
+        "E36",
+        "365.25",
+        "/",
+        "-"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée à la dernière ligne.",
+        "La référence doit pointer sur E36, pas E2.",
+        "=(AUJOURDHUI()-E36)/365.25"
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Extraction de l'année (première ligne)",
+      "fonction": "ANNEE",
+      "pattern": [
+        "ANNEE",
+        "E2"
+      ],
+      "recopie_jusqua": "G36",
+      "points": 10,
+      "indices": [
+        "Il existe une fonction spécifique pour extraire l'année d'une date.",
+        "Cette fonction s'appelle ANNEE et prend une date en paramètre.",
+        "=ANNEE(E2)"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "H2",
+      "type": "formule",
+      "description": "Extraction du mois (première ligne)",
+      "fonction": "MOIS",
+      "pattern": [
+        "MOIS",
+        "E2"
+      ],
+      "recopie_jusqua": "H36",
+      "points": 10,
+      "indices": [
+        "Comme pour l'année, il y a une fonction pour extraire le mois.",
+        "Cette fonction s'appelle MOIS et fonctionne de la même manière.",
+        "=MOIS(E2)"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "I2",
+      "type": "formule",
+      "description": "Test d'éligibilité à la prime (première ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "F2",
+        ">=",
+        "5",
+        "Prime ancienneté",
+        "Non éligible"
+      ],
+      "recopie_jusqua": "I36",
+      "points": 15,
+      "indices": [
+        "Tu dois tester si l'ancienneté est supérieure ou égale à 5 ans.",
+        "Utilise la fonction SI avec une condition sur la colonne F.",
+        "=SI(F2>=5;\"Prime ancienneté\";\"Non éligible\")"
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "J2",
+      "type": "formule",
+      "description": "Calcul de la date anniversaire 2024 (première ligne)",
+      "fonction": "DATE",
+      "pattern": [
+        "DATE",
+        "2024",
+        "MOIS",
+        "JOUR",
+        "E2"
+      ],
+      "recopie_jusqua": "J36",
+      "points": 15,
+      "indices": [
+        "Tu dois reconstituer une date avec l'année 2024 mais le même mois et jour qu'en E2.",
+        "Utilise la fonction DATE qui prend 3 paramètres : année, mois, jour.",
+        "=DATE(2024;MOIS(E2);JOUR(E2))"
+      ],
+      "id": "cp_6"
+    },
+    {
+      "cellule": "J36",
+      "type": "formule",
+      "description": "Calcul de la date anniversaire 2024 (dernière ligne)",
+      "fonction": "DATE",
+      "pattern": [
+        "DATE",
+        "2024",
+        "MOIS",
+        "JOUR",
+        "E36"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que les références de cellules se sont bien adaptées.",
+        "Tu dois voir E36 dans la formule, pas E2.",
+        "=DATE(2024;MOIS(E36);JOUR(E36))"
+      ],
+      "id": "cp_7"
+    },
+    {
+      "cellule": "A38",
+      "type": "formule",
+      "description": "Comptage des employés avec plus de 10 ans d'ancienneté",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "F2:F36",
+        ">10"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Tu dois compter combien de cellules dans la colonne ancienneté sont supérieures à 10.",
+        "Utilise une fonction de comptage conditionnel sur la plage F2:F36.",
+        "=NB.SI(F2:F36;\">10\")"
+      ],
+      "id": "cp_8",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      }
+    },
+    {
+      "cellule": "A39",
+      "type": "formule",
+      "description": "Identification du mois d'embauche le plus fréquent",
+      "fonction": "MODE",
+      "pattern": [
+        "MODE",
+        "H2:H36"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Tu cherches la valeur qui apparaît le plus souvent dans la colonne des mois.",
+        "Il existe une fonction qui trouve la valeur la plus fréquente dans une plage.",
+        "=MODE(H2:H36)"
+      ],
+      "id": "cp_9"
+    }
+  ],
+  "competence_ids": [
+    20
+  ]
+}

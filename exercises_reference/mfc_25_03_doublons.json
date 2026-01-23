@@ -1,0 +1,193 @@
+{
+  "id": "mfc_25_03_doublons",
+  "version": "1.0",
+  "titre": "🔍 MFC avancée : traquer les doublons",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "10 min",
+    "competences_ids": [25],
+    "competences_noms": ["MFC avancée"],
+    "prerequis": [10],
+    "objectif_pedagogique": "Utiliser la règle 'Valeurs en double' pour identifier les doublons dans une liste",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.3 (FormatConditions.AddUniqueValues)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu importes une liste de codes produits depuis un ancien système. Avant de l'intégrer, tu dois vérifier qu'il n'y a pas de doublons qui pourraient causer des erreurs.",
+    
+    "personnage": "Toi, data analyst nettoyant des données.",
+    
+    "objectif": "Mettre en rouge tous les codes produits qui apparaissent plus d'une fois.",
+    
+    "motivation": "Détecter les doublons manuellement dans 1000 lignes ? Non merci. La MFC le fait en 2 clics.",
+    
+    "ton": "Le nettoyage de données, c'est 80% du travail d'un data analyst. Autant l'automatiser !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Liste de codes produits importés avec des doublons accidentels.",
+    "periode": "Import du 15/01/2025",
+    "source_fictive": "Export ERP legacy"
+  },
+
+  "donnees": {
+    "headers": ["Code Produit"],
+    "rows": [
+      ["PRD-001"],
+      ["PRD-002"],
+      ["PRD-003"],
+      ["PRD-001"],
+      ["PRD-004"],
+      ["PRD-005"],
+      ["PRD-002"],
+      ["PRD-006"],
+      ["PRD-003"],
+      ["PRD-007"]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les codes",
+      "consigne": "Sélectionne A2:A11 (tous les codes produits).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Appliquer la règle doublons",
+      "consigne": "Accueil > MFC > Règles de mise en surbrillance des cellules > Valeurs en double...",
+      "aide_contextuelle": "Cette règle détecte automatiquement les valeurs qui apparaissent plus d'une fois.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Choisir le format",
+      "consigne": "Garde le format par défaut (rouge clair) ou personnalise en rouge vif.",
+      "aide_contextuelle": "Le rouge signale un problème à corriger.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Analyser les résultats",
+      "description": "Les doublons doivent être identifiés.",
+      "consigne": "Vérifie que PRD-001 (lignes 2 et 5), PRD-002 (lignes 3 et 8), PRD-003 (lignes 4 et 10) sont en rouge.",
+      "aide_contextuelle": "6 cellules sur 10 sont des doublons (3 paires).",
+      "temps": "1 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "MFC sur la colonne des codes",
+    "structure": [
+      { "cellule": "A1:A11", "label": "Données", "style": "data" },
+      { "cellule": "A2:A11", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_dup_1",
+      "type": "format",
+      "subtype": "mfc_unique_values",
+      "description": "Règle 'Valeurs en double' appliquée",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "duplicate",
+        "type": "duplicate"
+      },
+      "points": 40,
+      "indices": [
+        "Utilise 'Valeurs en double', pas 'Valeurs uniques'.",
+        "Accueil > MFC > Règles de mise en surbrillance > Valeurs en double",
+        "La règle colore TOUTES les occurrences d'une valeur répétée."
+      ],
+      "erreurs_probables": [
+        { "type": "unique_instead", "message": "Tu as sélectionné 'Valeurs uniques' au lieu de 'Valeurs en double'." },
+        { "type": "wrong_rule", "message": "Tu as utilisé une autre règle. Cherche 'Valeurs en double' dans le menu." }
+      ]
+    },
+    {
+      "id": "cp_dup_2",
+      "type": "format",
+      "subtype": "mfc_color",
+      "description": "Format rouge appliqué",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "fill_color": "red",
+        "fill_color_variants": ["rouge", "red", "lightred", "rouge clair", "pink"]
+      },
+      "points": 20,
+      "indices": [
+        "Le rouge indique un problème/erreur.",
+        "Le format par défaut est déjà rouge clair."
+      ]
+    },
+    {
+      "id": "cp_dup_3",
+      "type": "format",
+      "subtype": "mfc_coverage",
+      "description": "6 cellules colorées (3 paires de doublons)",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "colored_cells_count": 6,
+        "duplicate_values": ["PRD-001", "PRD-002", "PRD-003"],
+        "unique_values_not_colored": ["PRD-004", "PRD-005", "PRD-006", "PRD-007"]
+      },
+      "points": 30,
+      "indices": [
+        "3 codes sont en double : PRD-001, PRD-002, PRD-003.",
+        "Chaque doublon colore 2 cellules, donc 6 au total.",
+        "PRD-004, 005, 006, 007 sont uniques et ne doivent PAS être colorés."
+      ]
+    },
+    {
+      "id": "cp_dup_4",
+      "type": "format",
+      "subtype": "mfc_range",
+      "description": "MFC sur la bonne plage",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "range": "A2:A11"
+      },
+      "points": 10
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Règle 'Valeurs en double' avec format rouge sur A2:A11. 6 cellules colorées (3 paires de doublons).",
+    "etapes_cles": [
+      "Sélection A2:A11",
+      "MFC > Valeurs en double",
+      "Format rouge (défaut)"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Tu as détecté les 3 paires de doublons. Maintenant tu peux les nettoyer !",
+    "bien": "👍 Très bien ! Les doublons sont identifiés. Vérifie que seules les valeurs répétées sont rouges.",
+    "ameliorer": "🔍 Presque ! Assure-toi d'utiliser 'Valeurs en double', pas 'Valeurs uniques'.",
+    "revoir": "🔄 Recommence : MFC > Règles de surbrillance > Valeurs en double."
+  },
+
+  "pour_aller_plus_loin": [
+    "Utilise 'Supprimer les doublons' (onglet Données) pour nettoyer la liste.",
+    "Ajoute 'Valeurs uniques' en vert pour voir les deux catégories.",
+    "Applique sur plusieurs colonnes pour détecter les doublons multi-critères."
+  ]
+}

@@ -1,0 +1,248 @@
+{
+    "id": "debutant_22_tri_filtres_analyse",
+    "titre": "Tri et Filtres : Organiser et Analyser ses Données",
+    "niveau": "debutant",
+    "duree_estimee": "18 min",
+    "competences": ["Tri simple", "Tri multi-niveaux", "Filtres automatiques", "Filtres personnalisés"],
+    "competence_ids": [7, 8],
+  
+    "contexte": {
+      "situation": "Tu es assistant(e) commercial(e) chez BioCoop, un réseau de magasins bio. Tu reçois chaque semaine un export des ventes avec des centaines de lignes. Le directeur te pose des questions : 'Quels sont nos 10 meilleurs produits ?', 'Montre-moi uniquement les ventes de Lyon', 'Trie par date décroissante'...",
+      "manager": {
+        "nom": "Antoine Moreau",
+        "poste": "Directeur Commercial",
+        "personnalite": "Curieux et analytique, il pose beaucoup de questions sur les données.",
+        "demande": "J'ai besoin de naviguer rapidement dans nos données. Trier par CA, filtrer par magasin, voir uniquement les produits bio... Tu peux me montrer comment faire ?"
+      },
+      "enjeux": "Réactivité face aux demandes de la direction.",
+      "deadline": "Réunion hebdomadaire chaque lundi"
+    },
+  
+    "objectifs": [
+      "Trier des données par une ou plusieurs colonnes",
+      "Utiliser les filtres automatiques (menus déroulants)",
+      "Créer des filtres personnalisés (contient, supérieur à...)",
+      "Combiner tri et filtres pour des analyses rapides"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier des ventes BioCoop",
+      "Trie les données par CA décroissant",
+      "Filtre pour voir uniquement les ventes de Lyon",
+      "Utilise des filtres avancés pour des critères complexes"
+    ],
+  
+    "donnees": {
+      "feuille": "Ventes",
+      "headers": ["ID_Vente", "Date", "Magasin", "Catégorie", "Produit", "Quantité", "CA"],
+      "rows": [
+        ["V001", "02/01/2025", "Lyon", "Fruits", "Pommes Bio 1kg", 45, 180],
+        ["V002", "02/01/2025", "Paris", "Légumes", "Carottes Bio 1kg", 32, 96],
+        ["V003", "03/01/2025", "Lyon", "Épicerie", "Pâtes complètes 500g", 28, 84],
+        ["V004", "03/01/2025", "Marseille", "Fruits", "Bananes Bio 1kg", 52, 156],
+        ["V005", "04/01/2025", "Paris", "Boissons", "Jus d'orange Bio 1L", 38, 152],
+        ["V006", "04/01/2025", "Lyon", "Légumes", "Tomates Bio 1kg", 41, 164],
+        ["V007", "05/01/2025", "Bordeaux", "Épicerie", "Riz complet 1kg", 22, 77],
+        ["V008", "05/01/2025", "Paris", "Fruits", "Oranges Bio 2kg", 35, 175],
+        ["V009", "06/01/2025", "Lyon", "Boissons", "Lait d'amande 1L", 29, 116],
+        ["V010", "06/01/2025", "Marseille", "Légumes", "Courgettes Bio 1kg", 33, 99],
+        ["V011", "07/01/2025", "Paris", "Épicerie", "Muesli Bio 500g", 24, 120],
+        ["V012", "07/01/2025", "Bordeaux", "Fruits", "Kiwis Bio 1kg", 18, 90],
+        ["V013", "08/01/2025", "Lyon", "Légumes", "Poireaux Bio 1kg", 26, 78],
+        ["V014", "08/01/2025", "Marseille", "Boissons", "Thé vert Bio 100g", 42, 252],
+        ["V015", "09/01/2025", "Paris", "Fruits", "Poires Bio 1kg", 31, 155]
+      ],
+      "position": "A1:G16"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Tri simple (une colonne)",
+        "methode_1": "Clic sur une cellule de la colonne > Données > Trier A-Z ou Z-A",
+        "methode_2": "Clic droit > Trier > Trier du plus petit au plus grand",
+        "raccourci": "Alt + D + S pour ouvrir la boîte de tri",
+        "exemple": "Trier par CA décroissant pour voir les meilleures ventes en premier"
+      },
+      {
+        "phase": "B. Tri multi-niveaux",
+        "acces": "Données > Trier > Ajouter un niveau",
+        "exemple": "Trier par Magasin (A-Z), puis par CA (décroissant)",
+        "resultat": "Les ventes sont groupées par magasin, et dans chaque magasin triées par CA"
+      },
+      {
+        "phase": "C. Filtres automatiques",
+        "activation": "Données > Filtrer (ou Ctrl+Maj+L)",
+        "apparence": "Des flèches apparaissent dans les en-têtes",
+        "usage": "Clic sur la flèche > décocher/cocher les valeurs à afficher"
+      },
+      {
+        "phase": "D. Filtres texte personnalisés",
+        "acces": "Flèche du filtre > Filtres textuels",
+        "options": [
+          "Égal à...",
+          "Contient...",
+          "Commence par...",
+          "Se termine par..."
+        ],
+        "exemple": "Produit contient 'Bio' pour voir uniquement les produits bio"
+      },
+      {
+        "phase": "E. Filtres numériques",
+        "acces": "Flèche du filtre > Filtres numériques",
+        "options": [
+          "Supérieur à...",
+          "Inférieur à...",
+          "Entre...",
+          "10 premiers..."
+        ],
+        "exemple": "CA > 150 pour voir les grosses ventes"
+      },
+      {
+        "phase": "F. Effacer les filtres",
+        "methode_1": "Données > Effacer (icône entonnoir avec croix)",
+        "methode_2": "Flèche du filtre > Effacer le filtre de [colonne]",
+        "note": "Le tri reste, seuls les filtres sont effacés"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_tri_ca_decroissant",
+        "type": "tri",
+        "description": "Données triées par CA décroissant",
+        "competence_id": 7,
+        "expected_first_value": 252,
+        "column": "G",
+        "points": 15,
+        "indices": [
+          "Sélectionne une cellule dans la colonne CA",
+          "Données > Trier du plus grand au plus petit",
+          "Le thé vert (252€) doit être en premier"
+        ]
+      },
+      {
+        "id": "cp_2_filtre_lyon",
+        "type": "filtre",
+        "description": "Filtre sur Magasin = Lyon",
+        "competence_id": 8,
+        "expected_visible_count": 5,
+        "filter_column": "Magasin",
+        "filter_value": "Lyon",
+        "points": 15,
+        "indices": [
+          "Active les filtres (Données > Filtrer)",
+          "Clique sur la flèche de Magasin",
+          "Décoche tout sauf Lyon"
+        ]
+      },
+      {
+        "id": "cp_3_filtre_ca_sup_150",
+        "type": "filtre",
+        "description": "Filtre CA > 150€",
+        "competence_id": 8,
+        "expected_visible_count": 6,
+        "filter_column": "CA",
+        "filter_condition": ">150",
+        "points": 20,
+        "indices": [
+          "Flèche CA > Filtres numériques > Supérieur à",
+          "Entre 150 dans la boîte",
+          "6 ventes dépassent 150€"
+        ]
+      },
+      {
+        "id": "cp_4_tri_multi",
+        "type": "tri",
+        "description": "Tri par Magasin puis par CA",
+        "competence_id": 7,
+        "expected_order": ["Bordeaux", "Lyon", "Marseille", "Paris"],
+        "points": 20,
+        "indices": [
+          "Données > Trier > Ajouter un niveau",
+          "1er niveau : Magasin (A à Z)",
+          "2ème niveau : CA (du plus grand au plus petit)"
+        ]
+      },
+      {
+        "id": "cp_5_filtre_fruits",
+        "type": "filtre",
+        "description": "Filtre Catégorie = Fruits",
+        "competence_id": 8,
+        "expected_visible_count": 5,
+        "filter_column": "Catégorie",
+        "filter_value": "Fruits",
+        "points": 15,
+        "indices": [
+          "Flèche Catégorie > décocher tout sauf Fruits",
+          "5 produits sont des fruits",
+          "Pommes, Bananes, Oranges, Kiwis, Poires"
+        ]
+      },
+      {
+        "id": "cp_6_filtre_combine",
+        "type": "filtre",
+        "description": "Filtre Paris ET CA > 100",
+        "competence_id": 8,
+        "expected_visible_count": 3,
+        "points": 15,
+        "indices": [
+          "D'abord filtre Magasin = Paris",
+          "Puis filtre CA > 100",
+          "Les deux filtres se combinent (ET logique)"
+        ]
+      }
+    ],
+  
+    "astuces": [
+      {
+        "titre": "Reconnaître un filtre actif",
+        "astuce": "La flèche devient un entonnoir quand un filtre est appliqué"
+      },
+      {
+        "titre": "Voir le nombre de résultats",
+        "astuce": "La barre d'état en bas affiche 'X sur Y enregistrements trouvés'"
+      },
+      {
+        "titre": "Raccourci filtre",
+        "astuce": "Ctrl+Maj+L active/désactive les filtres"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Trier sans sélectionner toutes les colonnes",
+        "consequence": "Les données sont mélangées (un CA se retrouve avec le mauvais produit)",
+        "solution": "Toujours trier avec 'Étendre la sélection' ou depuis une seule cellule"
+      },
+      {
+        "erreur": "Oublier qu'un filtre est actif",
+        "consequence": "On croit avoir peu de données alors qu'elles sont juste masquées",
+        "solution": "Vérifie les icônes d'entonnoir dans les en-têtes"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises le tri et les filtres. Tu peux maintenant naviguer dans n'importe quel tableau de données ! 🔍",
+      "partiel": "Bon début ! Les filtres sont puissants. N'oublie pas : la flèche devient un entonnoir quand un filtre est actif.",
+      "echec": "Tri et filtres sont les bases de l'analyse. Active les filtres avec Ctrl+Maj+L, puis clique sur les flèches pour filtrer."
+    },
+  
+    "socrate_message": {
+      "intro": "Tri et filtres, c'est le GPS de tes données ! 🧭 Sans ça, impossible de naviguer dans un gros fichier.",
+      "conclusion": "Tu sais maintenant trier et filtrer comme un pro. Ces outils simples mais puissants te feront gagner un temps fou ! ⚡"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["tri", "filtres", "analyse", "données", "débutant"],
+      "prerequis": ["Navigation Excel"],
+      "ouvre_vers": ["Filtres avancés", "Tableaux croisés dynamiques", "Sous-totaux"]
+    }
+  }

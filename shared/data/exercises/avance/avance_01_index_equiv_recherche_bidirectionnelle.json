@@ -1,0 +1,291 @@
+{
+    "id": "avance_01_index_equiv_recherche_bidirectionnelle",
+    "titre": "INDEX + EQUIV : La Recherche Bidirectionnelle",
+    "niveau": "avance",
+    "duree_estimee": "30 min",
+    "competences": ["INDEX", "EQUIV", "Recherche bidirectionnelle", "Alternative RECHERCHEV"],
+    "competence_ids": [26],
+  
+    "contexte": {
+      "situation": "Tu es analyste pricing chez AirCargo, une compagnie de fret aérien. Les tarifs dépendent de deux variables : la zone de destination ET le poids du colis. RECHERCHEV ne peut chercher que dans une direction... Tu as besoin de INDEX+EQUIV pour faire une recherche croisée dans ta grille tarifaire.",
+      "manager": {
+        "nom": "Philippe Duval",
+        "poste": "Directeur Commercial",
+        "personnalite": "Exigeant, il veut un système de cotation instantané et sans erreur.",
+        "demande": "Nos commerciaux perdent 10 minutes par devis à chercher le bon tarif dans la grille. Je veux une cellule où on entre la zone et le poids, et le prix s'affiche automatiquement. RECHERCHEV ne suffit pas pour ça, non ?"
+      },
+      "enjeux": "500 devis/jour × 10 min = 83h perdues par jour. ROI énorme si automatisé.",
+      "deadline": "Prototype pour la réunion commerciale de lundi"
+    },
+  
+    "objectifs": [
+      "Comprendre pourquoi RECHERCHEV est limité (recherche uniquement en colonne 1)",
+      "Maîtriser EQUIV : trouver la POSITION d'une valeur",
+      "Maîtriser INDEX : renvoyer la valeur à une POSITION donnée",
+      "Combiner INDEX+EQUIV pour des recherches bidirectionnelles",
+      "Rechercher à gauche (impossible avec RECHERCHEV)"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec la grille tarifaire zones × poids",
+      "Crée un formulaire de cotation avec zone et poids en entrée",
+      "Utilise INDEX+EQUIV pour trouver le tarif correspondant",
+      "Gère les erreurs si zone ou poids n'existe pas"
+    ],
+  
+    "donnees": {
+      "feuille": "Tarifs",
+      "grille_tarifaire": {
+        "description": "Tarifs en € par kg selon zone et tranche de poids",
+        "position": "B2:G7",
+        "headers_colonnes": ["0-5kg", "5-10kg", "10-25kg", "25-50kg", "50-100kg", "100kg+"],
+        "headers_lignes": ["Zone A (France)", "Zone B (Europe)", "Zone C (Maghreb)", "Zone D (Amérique)", "Zone E (Asie)"],
+        "valeurs": [
+          [8.50, 7.20, 5.80, 4.50, 3.20, 2.10],
+          [12.00, 10.50, 8.90, 7.20, 5.50, 3.80],
+          [18.50, 16.00, 13.50, 11.00, 8.50, 6.00],
+          [25.00, 22.00, 18.50, 15.00, 12.00, 9.00],
+          [32.00, 28.00, 24.00, 19.50, 15.50, 11.50]
+        ]
+      },
+      "formulaire_cotation": {
+        "cellule_zone": "J3",
+        "cellule_poids": "J4",
+        "cellule_tarif": "J5",
+        "exemple": {
+          "zone": "Zone C (Maghreb)",
+          "poids": "10-25kg",
+          "tarif_attendu": 13.50
+        }
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Comprendre les limites de RECHERCHEV",
+        "probleme": [
+          "RECHERCHEV cherche UNIQUEMENT dans la 1ère colonne",
+          "RECHERCHEV renvoie une colonne à DROITE (jamais à gauche)",
+          "RECHERCHEV ne peut pas faire de recherche croisée (ligne ET colonne)"
+        ],
+        "solution": "INDEX + EQUIV = recherche dans n'importe quelle direction !"
+      },
+      {
+        "phase": "B. Comprendre EQUIV",
+        "syntaxe": "=EQUIV(valeur_cherchée; plage; [type])",
+        "description": "EQUIV renvoie la POSITION (numéro) d'une valeur dans une plage",
+        "types": [
+          "0 = correspondance exacte (le plus courant)",
+          "1 = plus grande valeur <= (nécessite tri croissant)",
+          "-1 = plus petite valeur >= (nécessite tri décroissant)"
+        ],
+        "exemple": "=EQUIV(\"Zone C\";A3:A7;0) → 3 (Zone C est en 3ème position)"
+      },
+      {
+        "phase": "C. Comprendre INDEX",
+        "syntaxe": "=INDEX(plage; n°_ligne; [n°_colonne])",
+        "description": "INDEX renvoie la VALEUR à une position donnée dans une plage",
+        "exemple": "=INDEX(B3:G7;3;4) → valeur ligne 3, colonne 4 de la plage"
+      },
+      {
+        "phase": "D. Combiner INDEX + EQUIV",
+        "formule_magique": "=INDEX(plage_valeurs; EQUIV(recherche_ligne;plage_lignes;0); EQUIV(recherche_col;plage_col;0))",
+        "decomposition": [
+          "EQUIV(J3;A3:A7;0) → trouve le n° de ligne de la zone",
+          "EQUIV(J4;B2:G2;0) → trouve le n° de colonne du poids",
+          "INDEX(B3:G7;...;...) → renvoie le tarif à l'intersection"
+        ],
+        "formule_complete": "=INDEX($B$3:$G$7;EQUIV(J3;$A$3:$A$7;0);EQUIV(J4;$B$2:$G$2;0))"
+      },
+      {
+        "phase": "E. Ajouter la gestion d'erreurs",
+        "formule_robuste": "=SIERREUR(INDEX($B$3:$G$7;EQUIV(J3;$A$3:$A$7;0);EQUIV(J4;$B$2:$G$2;0));\"Zone ou poids invalide\")"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_equiv_zone",
+        "cellule": "L3",
+        "type": "valeur",
+        "description": "Position de 'Zone C (Maghreb)' avec EQUIV",
+        "competence_id": 26,
+        "expected_value": 3,
+        "points": 15,
+        "indices": [
+          "EQUIV trouve la POSITION d'une valeur",
+          "=EQUIV(\"Zone C (Maghreb)\";$A$3:$A$7;0)",
+          "Zone C est en 3ème position dans la liste"
+        ]
+      },
+      {
+        "id": "cp_2_equiv_poids",
+        "cellule": "L4",
+        "type": "valeur",
+        "description": "Position de '10-25kg' avec EQUIV",
+        "competence_id": 26,
+        "expected_value": 3,
+        "points": 15,
+        "indices": [
+          "Cherche dans la ligne d'en-têtes",
+          "=EQUIV(\"10-25kg\";$B$2:$G$2;0)",
+          "10-25kg est en 3ème colonne"
+        ]
+      },
+      {
+        "id": "cp_3_index_simple",
+        "cellule": "L5",
+        "type": "valeur",
+        "description": "Valeur à position fixe avec INDEX",
+        "competence_id": 26,
+        "expected_value": 13.50,
+        "points": 10,
+        "indices": [
+          "INDEX(plage; ligne; colonne)",
+          "=INDEX($B$3:$G$7;3;3)",
+          "Ligne 3, Colonne 3 de la grille = 13.50"
+        ]
+      },
+      {
+        "id": "cp_4_formule_complete",
+        "cellule": "J5",
+        "type": "formule",
+        "description": "Formule INDEX+EQUIV complète",
+        "competence_id": 26,
+        "fonction": "INDEX",
+        "pattern": ["INDEX", "EQUIV", "J3", "EQUIV", "J4"],
+        "points": 25,
+        "indices": [
+          "Combine INDEX avec 2 EQUIV",
+          "=INDEX(plage;EQUIV(zone;...);EQUIV(poids;...))",
+          "=INDEX($B$3:$G$7;EQUIV(J3;$A$3:$A$7;0);EQUIV(J4;$B$2:$G$2;0))"
+        ]
+      },
+      {
+        "id": "cp_5_tarif_zone_a",
+        "cellule": "J8",
+        "type": "valeur",
+        "description": "Tarif Zone A, 50-100kg",
+        "competence_id": 26,
+        "expected_value": 3.20,
+        "points": 10,
+        "indices": [
+          "Zone A = ligne 1, 50-100kg = colonne 5",
+          "Vérifie que ta formule fonctionne avec d'autres valeurs",
+          "=INDEX($B$3:$G$7;EQUIV(\"Zone A (France)\";$A$3:$A$7;0);EQUIV(\"50-100kg\";$B$2:$G$2;0))"
+        ]
+      },
+      {
+        "id": "cp_6_tarif_zone_e",
+        "cellule": "J9",
+        "type": "valeur",
+        "description": "Tarif Zone E, 0-5kg",
+        "competence_id": 26,
+        "expected_value": 32.00,
+        "points": 10,
+        "indices": [
+          "Zone E = dernière ligne, 0-5kg = 1ère colonne",
+          "Le tarif le plus cher",
+          "32.00 €/kg"
+        ]
+      },
+      {
+        "id": "cp_7_gestion_erreur",
+        "cellule": "J10",
+        "type": "valeur",
+        "description": "Gestion zone invalide avec SIERREUR",
+        "competence_id": 26,
+        "expected_value": "Zone ou poids invalide",
+        "alternative_values": ["Erreur", "Non trouvé", "#N/A"],
+        "points": 15,
+        "indices": [
+          "Teste avec une zone qui n'existe pas",
+          "=SIERREUR(INDEX(...);\"Message d'erreur\")",
+          "Doit afficher un message clair, pas #N/A"
+        ]
+      }
+    ],
+  
+    "comparaison_recherchev": {
+      "recherchev": {
+        "avantages": ["Syntaxe simple", "Rapide pour cas simples"],
+        "limites": [
+          "Cherche uniquement en colonne 1",
+          "Renvoie uniquement à droite",
+          "Pas de recherche croisée",
+          "Fragile si colonnes insérées"
+        ]
+      },
+      "index_equiv": {
+        "avantages": [
+          "Cherche dans n'importe quelle colonne",
+          "Renvoie à gauche OU à droite",
+          "Recherche croisée (2D)",
+          "Robuste si colonnes insérées",
+          "Plus rapide sur gros fichiers"
+        ],
+        "limites": ["Syntaxe plus complexe"]
+      }
+    },
+  
+    "cas_usage_avances": [
+      {
+        "cas": "Recherche à gauche",
+        "description": "Trouver un nom à partir d'un ID situé à droite",
+        "formule": "=INDEX(A:A;EQUIV(valeur;C:C;0))"
+      },
+      {
+        "cas": "Dernière valeur non vide",
+        "description": "Trouver la dernière entrée d'une colonne",
+        "formule": "=INDEX(A:A;EQUIV(9.99E+307;A:A))"
+      },
+      {
+        "cas": "Recherche avec 2 critères",
+        "description": "Trouver une valeur basée sur 2 colonnes",
+        "formule": "=INDEX(C:C;EQUIV(1;(A:A=crit1)*(B:B=crit2);0))"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Plages de mauvaise taille",
+        "symptome": "#REF! ou résultat incorrect",
+        "solution": "Les plages EQUIV doivent correspondre aux dimensions de INDEX"
+      },
+      {
+        "erreur": "Oublier le 0 dans EQUIV",
+        "symptome": "Mauvais résultat (mode approché par défaut)",
+        "solution": "Toujours mettre 0 pour correspondance exacte"
+      },
+      {
+        "erreur": "Plage INDEX décalée",
+        "symptome": "Résultat décalé d'une ligne/colonne",
+        "solution": "INDEX doit commencer APRÈS les en-têtes si EQUIV les exclut"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Bravo ! Tu maîtrises INDEX+EQUIV, la combinaison la plus puissante d'Excel. Tu peux maintenant faire des recherches dans toutes les directions ! 🎯",
+      "partiel": "Tu as compris le principe. Vérifie que tes plages sont cohérentes : EQUIV pour les positions, INDEX pour la valeur finale.",
+      "echec": "INDEX+EQUIV est complexe mais puissant. Décompose : d'abord EQUIV seul pour trouver les positions, puis INDEX pour récupérer la valeur."
+    },
+  
+    "socrate_message": {
+      "intro": "INDEX+EQUIV, c'est le niveau supérieur ! 🚀 Là où RECHERCHEV s'arrête, INDEX+EQUIV continue. Recherche croisée, recherche à gauche, tout devient possible.",
+      "conclusion": "Tu as débloqué la compétence ultime de recherche Excel. INDEX+EQUIV est utilisé par tous les pros. RECHERCHEV, c'était le permis B. INDEX+EQUIV, c'est la Formule 1 ! 🏎️"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["INDEX", "EQUIV", "recherche bidirectionnelle", "avancé", "pricing"],
+      "prerequis": ["RECHERCHEV", "Références absolues"],
+      "ouvre_vers": ["RECHERCHEX", "Formules matricielles", "Tableaux croisés"]
+    }
+  }

@@ -1,0 +1,292 @@
+{
+  "id": "avance_26_dashboard_graphiques",
+  "titre": "Dashboard Exécutif avec Graphiques Combinés",
+  "niveau": "avance",
+  "duree_estimee": "50 min",
+  "competences": [
+    "graphiques_combines",
+    "visualisation"
+  ],
+  "contexte": {
+    "situation": "Tu crées un dashboard pour la direction avec graphiques combinés (barres + courbes).",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Créer un graphique combiné (2 axes Y)",
+    "Superposer barres et courbes",
+    "Rendre le dashboard professionnel"
+  ],
+  "consignes": [
+    "Crée un graphique: CA en colonnes (axe gauche), Marge % en courbe (axe droite)",
+    "Titre: 'Performance Mensuelle 2024'",
+    "Légende positionnée en haut",
+    "Ajoute des étiquettes de données sur la courbe",
+    "Crée un 2ème graphique: Évolution nombre de clients (aire)",
+    "Crée un 3ème graphique: Top 5 des mois par CA (barres horizontales)",
+    "Dispose les 3 graphiques en dashboard (1 page)"
+  ],
+  "donnees": {
+    "headers": [
+      "Mois",
+      "CA (€)",
+      "Marge (%)",
+      "Nb Clients",
+      "Panier Moyen"
+    ],
+    "rows": [
+      [
+        "Jan",
+        127006,
+        33.5,
+        315,
+        403.19
+      ],
+      [
+        "Fév",
+        148641,
+        20.7,
+        202,
+        735.85
+      ],
+      [
+        "Mar",
+        115484,
+        28.6,
+        195,
+        592.23
+      ],
+      [
+        "Avr",
+        132714,
+        32.2,
+        325,
+        408.35
+      ],
+      [
+        "Mai",
+        118161,
+        30.3,
+        185,
+        638.71
+      ],
+      [
+        "Jun",
+        118497,
+        15.7,
+        189,
+        626.97
+      ],
+      [
+        "Jul",
+        108499,
+        30.8,
+        389,
+        278.92
+      ],
+      [
+        "Aoû",
+        87195,
+        27,
+        204,
+        427.43
+      ],
+      [
+        "Sep",
+        95230,
+        20,
+        386,
+        246.71
+      ],
+      [
+        "Oct",
+        94933,
+        32.2,
+        194,
+        489.35
+      ],
+      [
+        "Nov",
+        96342,
+        15.4,
+        327,
+        294.62
+      ],
+      [
+        "Déc",
+        110390,
+        19.9,
+        354,
+        311.84
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "graphique_combine": true,
+    "deux_axes": true,
+    "dashboard_complet": true,
+    "presentation_pro": true,
+    "score_minimum": 9
+  },
+  "checkpoints": [
+    {
+      "cellule": "Graphique1",
+      "type": "graphique",
+      "description": "Graphique combiné CA (colonnes) et Marge % (courbe) avec double axe",
+      "fonction": null,
+      "pattern": [
+        "CA",
+        "Marge",
+        "colonnes",
+        "courbe",
+        "axe secondaire"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Un graphique combiné utilise deux types de visualisation différents sur le même graphique.",
+        "Tu dois créer un graphique avec CA en colonnes sur l'axe principal et Marge % en courbe sur l'axe secondaire.",
+        "Sélectionne les données CA et Marge %, insère un graphique combiné, puis configure l'axe secondaire pour la courbe."
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "Graphique1_Titre",
+      "type": "mise_en_forme",
+      "description": "Titre du graphique combiné : 'Performance Mensuelle 2024'",
+      "fonction": null,
+      "pattern": [
+        "Performance Mensuelle 2024"
+      ],
+      "recopie_jusqua": null,
+      "points": 8,
+      "indices": [
+        "Le titre d'un graphique doit être explicite et refléter son contenu.",
+        "Tu dois modifier le titre par défaut du graphique.",
+        "Clique sur le titre du graphique et tape 'Performance Mensuelle 2024'."
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "Graphique1_Legende",
+      "type": "mise_en_forme",
+      "description": "Légende positionnée en haut du graphique combiné",
+      "fonction": null,
+      "pattern": [
+        "légende",
+        "haut"
+      ],
+      "recopie_jusqua": null,
+      "points": 8,
+      "indices": [
+        "La position de la légende influence la lisibilité du graphique.",
+        "Tu dois accéder aux options de légende pour modifier sa position.",
+        "Clic droit sur la légende > Format de la légende > Position : En haut."
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "Graphique1_Etiquettes",
+      "type": "mise_en_forme",
+      "description": "Étiquettes de données visibles sur la courbe de marge",
+      "fonction": null,
+      "pattern": [
+        "étiquettes",
+        "courbe",
+        "marge"
+      ],
+      "recopie_jusqua": null,
+      "points": 12,
+      "indices": [
+        "Les étiquettes de données permettent de lire les valeurs exactes directement sur le graphique.",
+        "Tu dois ajouter les étiquettes uniquement sur la série courbe (Marge %).",
+        "Sélectionne la courbe de marge, clic droit > Ajouter des étiquettes de données."
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "Graphique2",
+      "type": "graphique",
+      "description": "Graphique en aires pour l'évolution du nombre de clients",
+      "fonction": null,
+      "pattern": [
+        "Nb Clients",
+        "aire",
+        "évolution"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Un graphique en aires est idéal pour montrer l'évolution d'une valeur dans le temps.",
+        "Tu dois créer un graphique basé sur les colonnes Mois et Nb Clients.",
+        "Sélectionne Mois et Nb Clients, insère un graphique > Aires > Aire 2D."
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "Graphique3_Donnees",
+      "type": "formule",
+      "description": "Identification et tri des Top 5 des mois par CA",
+      "fonction": "GRANDE.VALEUR",
+      "pattern": [
+        "GRANDE.VALEUR",
+        "CA",
+        "5"
+      ],
+      "recopie_jusqua": null,
+      "points": 18,
+      "indices": [
+        "Pour un Top 5, tu dois identifier les 5 plus grandes valeurs et leurs mois correspondants.",
+        "Utilise des fonctions de classement pour extraire les 5 meilleurs CA avec leurs mois.",
+        "Combine GRANDE.VALEUR pour les CA et INDEX/EQUIV pour retrouver les mois correspondants."
+      ],
+      "id": "cp_6"
+    },
+    {
+      "cellule": "Graphique3",
+      "type": "graphique",
+      "description": "Graphique en barres horizontales pour le Top 5 des mois par CA",
+      "fonction": null,
+      "pattern": [
+        "barres horizontales",
+        "Top 5",
+        "CA"
+      ],
+      "recopie_jusqua": null,
+      "points": 12,
+      "indices": [
+        "Les barres horizontales sont parfaites pour présenter un classement ou un top.",
+        "Tu dois créer un graphique basé sur tes données de Top 5 triées.",
+        "Sélectionne tes données Top 5, insère un graphique > Barres > Barres groupées horizontales."
+      ],
+      "id": "cp_7"
+    },
+    {
+      "cellule": "Dashboard_Layout",
+      "type": "mise_en_forme",
+      "description": "Disposition harmonieuse des 3 graphiques sur une seule page",
+      "fonction": null,
+      "pattern": [
+        "3 graphiques",
+        "une page",
+        "disposition"
+      ],
+      "recopie_jusqua": null,
+      "points": 7,
+      "indices": [
+        "Un dashboard efficace organise les graphiques de manière logique et esthétique.",
+        "Tu dois redimensionner et positionner les 3 graphiques pour qu'ils tiennent sur une page.",
+        "Utilise une disposition en L ou en grille : graphique principal en haut, les 2 autres en dessous côte à côte."
+      ],
+      "id": "cp_8"
+    }
+  ],
+  "competence_ids": [
+    31,
+    40
+  ]
+}

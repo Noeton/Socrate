@@ -1,0 +1,242 @@
+{
+    "id": "intermediaire_36_tableaux_structures",
+    "titre": "Tableaux Structurés : Organiser ses Données Intelligemment",
+    "niveau": "intermediaire",
+    "duree_estimee": "18 min",
+    "competences": ["Tableaux structurés", "Références structurées", "Ctrl+T"],
+    "competence_ids": [27, 56],
+  
+    "contexte": {
+      "situation": "Tu es gestionnaire de stock chez TechStore. Tes collègues ajoutent des lignes de données tous les jours, mais les formules ne se mettent pas à jour, les filtres sautent, le formatage est incohérent... La solution : convertir en tableau structuré. Excel gère tout automatiquement !",
+      "manager": {
+        "nom": "Philippe Durand",
+        "poste": "Responsable Logistique",
+        "personnalite": "Pragmatique, il veut que ça fonctionne sans maintenance.",
+        "demande": "Chaque fois qu'on ajoute un produit, il faut refaire les formules, les filtres, le formatage... C'est pas automatique dans Excel ? Je suis sûr qu'il y a un truc."
+      },
+      "enjeux": "Fiabilité des données et gain de temps.",
+      "deadline": "Optimisation continue"
+    },
+  
+    "objectifs": [
+      "Convertir une plage en tableau structuré (Ctrl+T)",
+      "Comprendre les avantages des tableaux structurés",
+      "Utiliser les références structurées dans les formules",
+      "Ajouter des colonnes calculées qui s'étendent automatiquement"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec la liste des produits",
+      "Convertis la plage en tableau structuré",
+      "Ajoute une colonne calculée (Valeur Stock)",
+      "Utilise les références structurées pour les totaux"
+    ],
+  
+    "donnees": {
+      "feuille": "Stock",
+      "headers": ["Ref", "Produit", "Catégorie", "Prix_Unitaire", "Quantité"],
+      "rows": [
+        ["P001", "iPhone 15", "Smartphones", 999, 25],
+        ["P002", "Samsung S24", "Smartphones", 899, 30],
+        ["P003", "MacBook Pro", "Ordinateurs", 2499, 12],
+        ["P004", "Dell XPS 15", "Ordinateurs", 1799, 18],
+        ["P005", "iPad Pro", "Tablettes", 1199, 22],
+        ["P006", "Galaxy Tab S9", "Tablettes", 849, 28],
+        ["P007", "AirPods Pro", "Accessoires", 279, 45],
+        ["P008", "Galaxy Buds", "Accessoires", 179, 52]
+      ],
+      "position": "A1:E9"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Convertir en tableau structuré",
+        "methode_1": "Sélectionne une cellule > Ctrl+T > OK",
+        "methode_2": "Insertion > Tableau",
+        "verification": "Coche 'Mon tableau comporte des en-têtes'",
+        "resultat": "Le tableau a un style, des filtres, et un nom (Table1)"
+      },
+      {
+        "phase": "B. Avantages immédiats",
+        "avantages": [
+          "Filtres automatiques sur chaque colonne",
+          "Mise en forme alternée (lignes colorées)",
+          "Les formules s'étendent automatiquement",
+          "Les nouvelles lignes héritent du formatage",
+          "Référencement par nom au lieu de A1:E9"
+        ]
+      },
+      {
+        "phase": "C. Renommer le tableau",
+        "acces": "Clic dans le tableau > Création de tableau > Nom du tableau",
+        "exemple": "Renomme en 'Stock' au lieu de 'Table1'",
+        "avantage": "Formules plus lisibles : Stock[Prix] au lieu de C2:C100"
+      },
+      {
+        "phase": "D. Ajouter une colonne calculée",
+        "etapes": [
+          "Tape un en-tête dans la colonne suivante (F1: 'Valeur_Stock')",
+          "Dans F2, tape : =[@Prix_Unitaire]*[@Quantité]",
+          "La formule se copie automatiquement sur toutes les lignes !"
+        ],
+        "note": "[@NomColonne] référence la valeur de la même ligne"
+      },
+      {
+        "phase": "E. Références structurées",
+        "syntaxes": [
+          "Stock[Prix_Unitaire] → toute la colonne Prix",
+          "[@Prix_Unitaire] → valeur de la ligne actuelle",
+          "Stock[[#Totaux];[Valeur_Stock]] → total de la colonne",
+          "Stock[#En-têtes] → les en-têtes",
+          "Stock[#Données] → uniquement les données (sans en-têtes)"
+        ]
+      },
+      {
+        "phase": "F. Ligne des totaux",
+        "activation": "Création de tableau > Cocher 'Ligne des totaux'",
+        "personnalisation": "Clic sur la cellule total > choisir Somme, Moyenne, Nb...",
+        "avantage": "Les totaux ignorent les lignes filtrées"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_tableau_cree",
+        "type": "tableau_structure",
+        "description": "Plage convertie en tableau structuré",
+        "competence_id": 27,
+        "expected_is_table": true,
+        "points": 15,
+        "indices": [
+          "Sélectionne une cellule dans tes données",
+          "Ctrl+T ou Insertion > Tableau",
+          "Les filtres apparaissent automatiquement"
+        ]
+      },
+      {
+        "id": "cp_2_tableau_nomme",
+        "type": "tableau_nom",
+        "description": "Tableau renommé 'Stock'",
+        "competence_id": 27,
+        "expected_name": "Stock",
+        "points": 10,
+        "indices": [
+          "Clic dans le tableau",
+          "Onglet Création > Nom du tableau",
+          "Remplace 'Table1' par 'Stock'"
+        ]
+      },
+      {
+        "id": "cp_3_colonne_calculee",
+        "cellule": "F2",
+        "type": "formule",
+        "description": "Colonne Valeur_Stock calculée",
+        "competence_id": 56,
+        "pattern": ["@", "Prix", "Quantité"],
+        "points": 20,
+        "indices": [
+          "En F1, tape 'Valeur_Stock'",
+          "En F2 : =[@Prix_Unitaire]*[@Quantité]",
+          "La formule se propage automatiquement"
+        ]
+      },
+      {
+        "id": "cp_4_valeur_iphone",
+        "cellule": "F2",
+        "type": "valeur",
+        "description": "Valeur stock iPhone (999×25)",
+        "competence_id": 56,
+        "expected_value": 24975,
+        "points": 10,
+        "indices": [
+          "999 × 25 = 24975",
+          "Première ligne de données",
+          "Vérifie ta formule"
+        ]
+      },
+      {
+        "id": "cp_5_reference_structuree",
+        "cellule": "H2",
+        "type": "formule",
+        "description": "Somme avec référence structurée",
+        "competence_id": 56,
+        "pattern": ["SOMME", "Stock", "Valeur_Stock"],
+        "points": 20,
+        "indices": [
+          "=SOMME(Stock[Valeur_Stock])",
+          "Référence toute la colonne par son nom",
+          "Plus lisible que =SOMME(F2:F9)"
+        ]
+      },
+      {
+        "id": "cp_6_ligne_totaux",
+        "type": "tableau_totaux",
+        "description": "Ligne des totaux activée",
+        "competence_id": 27,
+        "expected_has_totals": true,
+        "points": 15,
+        "indices": [
+          "Création de tableau > Ligne des totaux",
+          "Une ligne apparaît en bas du tableau",
+          "Clic pour choisir le type de calcul"
+        ]
+      },
+      {
+        "id": "cp_7_total_valeur",
+        "type": "valeur",
+        "description": "Total de la colonne Valeur_Stock",
+        "competence_id": 27,
+        "expected_value": 164174,
+        "points": 10,
+        "indices": [
+          "Somme de tous les F",
+          "24975+26970+29988+32382+26378+23772+12555+9308",
+          "= 164174 (ou proche si données différentes)"
+        ]
+      }
+    ],
+  
+    "references_structurees_recap": {
+      "colonne_entiere": "NomTable[NomColonne]",
+      "ligne_actuelle": "[@NomColonne]",
+      "plusieurs_colonnes": "NomTable[[Col1]:[Col3]]",
+      "donnees_seules": "NomTable[#Données]",
+      "entetes": "NomTable[#En-têtes]",
+      "totaux": "NomTable[#Totaux]",
+      "tout": "NomTable[#Tout]"
+    },
+  
+    "avantages_vs_plage": [
+      "Les formules s'étendent automatiquement aux nouvelles lignes",
+      "Les graphiques liés s'actualisent",
+      "Les références structurées sont plus lisibles",
+      "Le formatage est cohérent",
+      "Les filtres sont toujours disponibles",
+      "Les TCD se mettent à jour facilement"
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Parfait ! Tu maîtrises les tableaux structurés. Tes données sont maintenant organisées de façon professionnelle et auto-extensible ! 📋",
+      "partiel": "Bon travail ! Ctrl+T est ton ami. Les références [@Colonne] rendent les formules super lisibles.",
+      "echec": "Les tableaux structurés simplifient tout. Ctrl+T pour convertir, et Excel gère le reste automatiquement."
+    },
+  
+    "socrate_message": {
+      "intro": "Les tableaux structurés, c'est l'organisation Pro d'Excel ! 📊 Fini les plages qui se décalent et les formules à refaire.",
+      "conclusion": "Tu connais maintenant le secret des pros : tout mettre en tableau structuré. Auto-extension, références lisibles, formatage automatique. La base de tout fichier Excel sérieux ! 💼"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["tableaux structurés", "Ctrl+T", "références structurées", "organisation", "intermédiaire"],
+      "prerequis": ["Formules de base", "Filtres"],
+      "ouvre_vers": ["Power Query", "TCD", "Modèles de données"]
+    }
+  }

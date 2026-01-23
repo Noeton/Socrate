@@ -1,0 +1,241 @@
+{
+    "id": "intermediaire_37_mfc_avancee",
+    "titre": "Mise en Forme Conditionnelle Avancée",
+    "niveau": "intermediaire",
+    "duree_estimee": "22 min",
+    "competences": ["MFC avancée", "Barres de données", "Nuances couleurs", "Jeux d'icônes", "Formules MFC"],
+    "competence_ids": [24],
+  
+    "contexte": {
+      "situation": "Tu es analyste chez PerformancePro, un cabinet de conseil en performance commerciale. Le directeur veut un tableau de bord visuel où les bonnes performances sautent aux yeux (vert) et les mauvaises alertent immédiatement (rouge). La mise en forme conditionnelle avancée transforme les chiffres en signaux visuels.",
+      "manager": {
+        "nom": "Isabelle Chartier",
+        "poste": "Directrice Performance",
+        "personnalite": "Très visuelle, elle veut comprendre la situation en un coup d'œil.",
+        "demande": "Je ne veux plus lire des colonnes de chiffres. Je veux voir immédiatement : qui performe, qui est en danger, quelle est la tendance. Avec des couleurs, des icônes, des barres !"
+      },
+      "enjeux": "Pilotage visuel de la performance.",
+      "deadline": "Revue mensuelle"
+    },
+  
+    "objectifs": [
+      "Créer des barres de données dans les cellules",
+      "Appliquer des nuances de couleurs (heatmap)",
+      "Utiliser les jeux d'icônes (flèches, feux)",
+      "Créer des règles avec formules personnalisées",
+      "Gérer les priorités de règles"
+    ],
+  
+    "donnees": {
+      "feuille": "Performance",
+      "headers": ["Commercial", "Objectif", "Réalisé", "Écart", "Taux", "Tendance"],
+      "rows": [
+        ["Martin", 100000, 115000, 15000, 1.15, 0.05],
+        ["Dubois", 80000, 72000, -8000, 0.90, -0.02],
+        ["Bernard", 90000, 94500, 4500, 1.05, 0.01],
+        ["Petit", 75000, 60000, -15000, 0.80, -0.08],
+        ["Moreau", 85000, 89250, 4250, 1.05, 0.03],
+        ["Leroy", 95000, 104500, 9500, 1.10, 0.04],
+        ["Simon", 70000, 63000, -7000, 0.90, -0.01],
+        ["Laurent", 110000, 121000, 11000, 1.10, 0.02]
+      ],
+      "position": "A1:F9"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Barres de données",
+        "acces": "Sélection > Accueil > Mise en forme conditionnelle > Barres de données",
+        "options": [
+          "Remplissage uni ou dégradé",
+          "Couleur personnalisable",
+          "Afficher uniquement la barre (masquer le nombre)"
+        ],
+        "usage": "Comparer visuellement des magnitudes (CA, volumes)"
+      },
+      {
+        "phase": "B. Nuances de couleurs (Heatmap)",
+        "acces": "MFC > Nuances de couleurs",
+        "options": [
+          "2 couleurs : min → max",
+          "3 couleurs : min → milieu → max",
+          "Personnalisation des couleurs et seuils"
+        ],
+        "usage": "Identifier rapidement les valeurs hautes/basses"
+      },
+      {
+        "phase": "C. Jeux d'icônes",
+        "acces": "MFC > Jeux d'icônes",
+        "types": [
+          "Flèches (↑ → ↓) : tendances",
+          "Feux tricolores (🔴🟡🟢) : alertes",
+          "Étoiles/Barres : scores",
+          "Coches (✓ ✗) : validation"
+        ],
+        "personnalisation": "Modifier les seuils (ex: vert > 100%, rouge < 80%)"
+      },
+      {
+        "phase": "D. Règles avec formules",
+        "acces": "MFC > Nouvelle règle > Utiliser une formule",
+        "syntaxe": "La formule doit renvoyer VRAI ou FAUX",
+        "exemples": [
+          "=$E2<0.9 → mettre en rouge si taux < 90%",
+          "=$C2>$B2 → vert si réalisé > objectif",
+          "=MOIS(AUJOURDHUI())=MOIS($A2) → surligner le mois en cours"
+        ],
+        "attention": "La référence doit être relative pour s'appliquer à chaque ligne"
+      },
+      {
+        "phase": "E. Gérer les règles",
+        "acces": "MFC > Gérer les règles",
+        "actions": [
+          "Modifier une règle existante",
+          "Changer l'ordre de priorité",
+          "Cocher 'Arrêter si vrai' pour éviter cumul"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_barres_realise",
+        "type": "mfc",
+        "description": "Barres de données sur colonne Réalisé",
+        "competence_id": 24,
+        "column": "C",
+        "expected_mfc_type": "dataBar",
+        "points": 15,
+        "indices": [
+          "Sélectionne C2:C9",
+          "MFC > Barres de données > Remplissage uni bleu",
+          "Des barres proportionnelles apparaissent"
+        ]
+      },
+      {
+        "id": "cp_2_nuances_taux",
+        "type": "mfc",
+        "description": "Nuances de couleurs sur Taux",
+        "competence_id": 24,
+        "column": "E",
+        "expected_mfc_type": "colorScale",
+        "points": 15,
+        "indices": [
+          "Sélectionne E2:E9",
+          "MFC > Nuances de couleurs > Rouge-Jaune-Vert",
+          "Les mauvais taux sont rouges, les bons verts"
+        ]
+      },
+      {
+        "id": "cp_3_icones_tendance",
+        "type": "mfc",
+        "description": "Icônes flèches sur Tendance",
+        "competence_id": 24,
+        "column": "F",
+        "expected_mfc_type": "iconSet",
+        "points": 20,
+        "indices": [
+          "Sélectionne F2:F9",
+          "MFC > Jeux d'icônes > Flèches 3 couleurs",
+          "↑ vert si positif, ↓ rouge si négatif"
+        ]
+      },
+      {
+        "id": "cp_4_formule_objectif_atteint",
+        "type": "mfc",
+        "description": "Ligne verte si objectif dépassé",
+        "competence_id": 24,
+        "expected_mfc_type": "formula",
+        "formula_contains": "$C",
+        "points": 20,
+        "indices": [
+          "Sélectionne A2:F9 (toutes les données)",
+          "MFC > Nouvelle règle > Formule",
+          "=$C2>$B2 avec format fond vert clair"
+        ]
+      },
+      {
+        "id": "cp_5_formule_alerte",
+        "type": "mfc",
+        "description": "Ligne rouge si taux < 85%",
+        "competence_id": 24,
+        "expected_mfc_type": "formula",
+        "formula_contains": "$E",
+        "points": 20,
+        "indices": [
+          "Même plage A2:F9",
+          "Nouvelle règle : =$E2<0.85",
+          "Format : fond rouge, texte blanc"
+        ]
+      },
+      {
+        "id": "cp_6_masquer_valeur_barre",
+        "type": "mfc",
+        "description": "Barres de données sans afficher le nombre",
+        "competence_id": 24,
+        "expected_show_value": false,
+        "points": 10,
+        "indices": [
+          "Gérer les règles > Modifier",
+          "Cocher 'Afficher la barre uniquement'",
+          "Le nombre disparaît, seule la barre reste"
+        ]
+      }
+    ],
+  
+    "cas_usage_avances": [
+      {
+        "cas": "Surligner les doublons",
+        "regle": "MFC > Règles de mise en surbrillance > Valeurs en double"
+      },
+      {
+        "cas": "Top 10 / Bottom 10",
+        "regle": "MFC > Règles des valeurs plus/moins élevées > 10 valeurs les plus élevées"
+      },
+      {
+        "cas": "Valeurs entre deux bornes",
+        "regle": "MFC > Règles de mise en surbrillance > Entre..."
+      },
+      {
+        "cas": "Lignes alternées",
+        "formule": "=MOD(LIGNE();2)=0 → format chaque ligne paire"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Formule avec référence absolue partout",
+        "consequence": "La règle ne s'applique qu'à une cellule",
+        "solution": "Utilise $E2 (colonne fixe, ligne relative) pas $E$2"
+      },
+      {
+        "erreur": "Règles qui se contredisent",
+        "consequence": "Couleurs inattendues",
+        "solution": "Vérifie l'ordre dans Gérer les règles, utilise 'Arrêter si vrai'"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Impressionnant ! Tes tableaux sont maintenant des tableaux de bord visuels. Les données parlent d'elles-mêmes ! 🎨",
+      "partiel": "Bon travail ! Barres, nuances, icônes... c'est puissant. Les formules MFC demandent de la pratique.",
+      "echec": "La MFC transforme les chiffres en signaux visuels. Commence par les barres de données, c'est le plus simple."
+    },
+  
+    "socrate_message": {
+      "intro": "La MFC avancée, c'est le data viz directement dans Excel ! 📊 Fini de chercher les problèmes, ils sautent aux yeux.",
+      "conclusion": "Tu maîtrises maintenant les techniques visuelles avancées. Barres, heatmaps, icônes, formules... tes tableaux sont devenus des dashboards ! 🚀"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["MFC", "mise en forme conditionnelle", "barres", "icônes", "heatmap", "intermédiaire"],
+      "prerequis": ["MFC simple", "Formules de base"],
+      "ouvre_vers": ["Dashboards", "Sparklines", "Power BI"]
+    }
+  }

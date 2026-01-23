@@ -1,0 +1,225 @@
+{
+    "meta": {
+      "version": "1.0",
+      "description": "Personnages récurrents pour les contextes d'exercices Socrate",
+      "usage": "Claude pioche un manager adapté au métier et au niveau de l'exercice"
+    },
+  
+    "managers": {
+      "finance": [
+        {
+          "id": "fin_01",
+          "nom": "Marc Tessier",
+          "poste": "Partner",
+          "entreprise_type": "VC / Private Equity",
+          "experience": "15 ans, ex-Goldman Sachs",
+          "personnalite": "Brillant, pressé, peu patient avec les approximations",
+          "style_management": "Challenge chaque hypothèse, attend de la rigueur",
+          "citation": "Un modèle, c'est pas pour avoir le bon chiffre. C'est pour comprendre ce qui fait bouger le chiffre.",
+          "niveau_exigence": "avance",
+          "feedbacks": {
+            "succes": "Très bien. Ton analyse tient la route.",
+            "partiel": "Il y a des trous. Reprends les hypothèses.",
+            "echec": "C'est pas au niveau. On en reparle demain."
+          }
+        },
+        {
+          "id": "fin_02",
+          "nom": "Claire Dubois",
+          "poste": "Directrice Financière (CFO)",
+          "entreprise_type": "Scale-up / ETI",
+          "experience": "12 ans, ex-Big 4",
+          "personnalite": "Rigoureuse, pédagogue, exigeante mais juste",
+          "style_management": "Explique le pourquoi, attend que tu comprennes pas juste que tu exécutes",
+          "citation": "Si tu ne peux pas expliquer ton chiffre en 30 secondes, c'est que tu ne le comprends pas.",
+          "niveau_exigence": "intermediaire",
+          "feedbacks": {
+            "succes": "Excellent travail, c'est exactement ce qu'il fallait.",
+            "partiel": "Bon début, mais vérifie les points en rouge.",
+            "echec": "Il faut reprendre les bases. Viens me voir si tu bloques."
+          }
+        },
+        {
+          "id": "fin_03",
+          "nom": "Thomas Renard",
+          "poste": "Contrôleur de gestion senior",
+          "entreprise_type": "Grand groupe",
+          "experience": "8 ans",
+          "personnalite": "Méthodique, patient, aime transmettre",
+          "style_management": "Accompagne, donne des exemples, vérifie la compréhension",
+          "citation": "En finance, on ne devine pas, on calcule. Et on documente.",
+          "niveau_exigence": "debutant",
+          "feedbacks": {
+            "succes": "Super ! Tu as bien compris la logique.",
+            "partiel": "C'est pas mal. On va corriger ensemble les erreurs.",
+            "echec": "Pas de souci, c'est normal au début. On reprend étape par étape."
+          }
+        }
+      ],
+  
+      "commercial": [
+        {
+          "id": "com_01",
+          "nom": "Sophie Marchand",
+          "poste": "Directrice Commerciale",
+          "entreprise_type": "PME / ETI",
+          "experience": "10 ans",
+          "personnalite": "Orientée résultats, directe, protège son équipe",
+          "style_management": "Veut des faits, pas des impressions. Vérifie les chiffres.",
+          "citation": "Je veux des chiffres, pas des impressions. Et si tu n'es pas sûr, dis-le.",
+          "niveau_exigence": "intermediaire",
+          "feedbacks": {
+            "succes": "Parfait, c'est exactement ce qu'il me fallait pour le CODIR.",
+            "partiel": "Merci pour le travail. Quelques ajustements à faire.",
+            "echec": "Il me faut des chiffres fiables. On reprend ça demain."
+          }
+        },
+        {
+          "id": "com_02",
+          "nom": "Alexandre Morin",
+          "poste": "Head of Sales",
+          "entreprise_type": "Startup / Scale-up",
+          "experience": "7 ans",
+          "personnalite": "Énergique, optimiste, focalisé croissance",
+          "style_management": "Encourage, pousse à aller vite, tolère les erreurs si on apprend",
+          "citation": "Done is better than perfect. Mais les chiffres, eux, doivent être parfaits.",
+          "niveau_exigence": "debutant",
+          "feedbacks": {
+            "succes": "Top ! Exactement ce qu'on avait besoin. Let's go !",
+            "partiel": "Good start ! Finis de corriger et on ship.",
+            "echec": "C'est pas grave, on itère. Mais là il faut reprendre."
+          }
+        }
+      ],
+  
+      "rh": [
+        {
+          "id": "rh_01",
+          "nom": "Caroline Martin",
+          "poste": "DRH",
+          "entreprise_type": "ETI / Grand groupe",
+          "experience": "15 ans",
+          "personnalite": "Empathique mais exigeante, vision stratégique",
+          "style_management": "Contexte toujours important, veut comprendre le 'pourquoi'",
+          "citation": "Les chiffres RH racontent une histoire. À toi de la décrypter.",
+          "niveau_exigence": "intermediaire",
+          "feedbacks": {
+            "succes": "Très bonne analyse. Ça va m'aider pour le plan social.",
+            "partiel": "C'est un bon début. Creuse un peu plus les causes.",
+            "echec": "Il manque l'essentiel. On en reparle ensemble."
+          }
+        },
+        {
+          "id": "rh_02",
+          "nom": "Julien Petit",
+          "poste": "Responsable People Analytics",
+          "entreprise_type": "Tech / Scale-up",
+          "experience": "5 ans",
+          "personnalite": "Data-driven, curieux, pédagogue",
+          "style_management": "Collaboratif, aime challenger et être challengé",
+          "citation": "Si on ne peut pas le mesurer, on ne peut pas l'améliorer.",
+          "niveau_exigence": "debutant",
+          "feedbacks": {
+            "succes": "Nickel ! Les dashboards vont kiffer.",
+            "partiel": "Pas mal ! Quelques formules à revoir.",
+            "echec": "On va décortiquer ça ensemble, pas de stress."
+          }
+        }
+      ],
+  
+      "comptabilite": [
+        {
+          "id": "cpt_01",
+          "nom": "Marie-Hélène Duval",
+          "poste": "Directrice Comptable",
+          "entreprise_type": "Grand groupe",
+          "experience": "20 ans, Expert-comptable",
+          "personnalite": "Très rigoureuse, pas de place pour l'à-peu-près",
+          "style_management": "Procédures strictes, double vérification systématique",
+          "citation": "Un centime d'écart, c'est un centime de trop.",
+          "niveau_exigence": "avance",
+          "feedbacks": {
+            "succes": "Impeccable. La balance est juste.",
+            "partiel": "Il y a des écarts. Reprends le rapprochement.",
+            "echec": "La clôture est dans 2 jours. Il faut que ce soit carré."
+          }
+        },
+        {
+          "id": "cpt_02",
+          "nom": "Philippe Garnier",
+          "poste": "Chef comptable",
+          "entreprise_type": "PME",
+          "experience": "12 ans",
+          "personnalite": "Patient, méthodique, aime former les juniors",
+          "style_management": "Explique les règles comptables, tolère les erreurs de débutant",
+          "citation": "La compta, c'est de la logique. Débit = Crédit, toujours.",
+          "niveau_exigence": "debutant",
+          "feedbacks": {
+            "succes": "Très bien ! Tu commences à avoir les bons réflexes.",
+            "partiel": "C'est pas mal. Attention aux écritures d'OD.",
+            "echec": "C'est normal de galérer au début. On reprend les bases."
+          }
+        }
+      ],
+  
+      "marketing": [
+        {
+          "id": "mkt_01",
+          "nom": "Léa Fontaine",
+          "poste": "CMO",
+          "entreprise_type": "Scale-up",
+          "experience": "10 ans, ex-Google",
+          "personnalite": "Créative mais data-driven, rapide, exigeante",
+          "style_management": "Attend des insights actionnables, pas juste des chiffres",
+          "citation": "Un dashboard sans recommandation, c'est une perte de temps.",
+          "niveau_exigence": "intermediaire",
+          "feedbacks": {
+            "succes": "Exactement ce qu'il fallait pour le board. Good job.",
+            "partiel": "Les chiffres sont là mais où sont les insights ?",
+            "echec": "Je comprends pas ce que tu veux me dire. On reprend."
+          }
+        },
+        {
+          "id": "mkt_02",
+          "nom": "Antoine Lefebvre",
+          "poste": "Growth Manager",
+          "entreprise_type": "Startup",
+          "experience": "4 ans",
+          "personnalite": "Test & Learn, rapide, accepte l'échec comme apprentissage",
+          "style_management": "Itératif, feedbacks fréquents, pas de jugement",
+          "citation": "On teste, on mesure, on apprend. Repeat.",
+          "niveau_exigence": "debutant",
+          "feedbacks": {
+            "succes": "Top ! On a les métriques pour lancer le test.",
+            "partiel": "C'est un bon draft. On itère.",
+            "echec": "Pas grave, on pivote. Qu'est-ce qu'on a appris ?"
+          }
+        }
+      ],
+  
+      "general": [
+        {
+          "id": "gen_01",
+          "nom": "Émilie Chen",
+          "poste": "Chief of Staff",
+          "entreprise_type": "Scale-up",
+          "experience": "6 ans, ex-consultante",
+          "personnalite": "Polyvalente, structurée, interface entre les équipes",
+          "style_management": "Attend de la clarté, synthèse et recommandations",
+          "citation": "Le CEO n'a que 5 minutes. Ton slide doit tout dire.",
+          "niveau_exigence": "intermediaire",
+          "feedbacks": {
+            "succes": "Parfait pour le weekly. Clair et actionnable.",
+            "partiel": "C'est bien mais trop long. Synthétise.",
+            "echec": "Je ne vois pas le message clé. On refait."
+          }
+        }
+      ]
+    },
+  
+    "helpers": {
+      "getManagerByMetier": "function(metier, niveau) { ... }",
+      "getRandomManager": "function(metier) { ... }",
+      "getManagerById": "function(id) { ... }"
+    }
+  }

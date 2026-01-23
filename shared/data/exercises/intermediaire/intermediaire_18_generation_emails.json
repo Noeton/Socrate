@@ -1,0 +1,574 @@
+{
+  "id": "intermediaire_18_generation_emails",
+  "titre": "Génération Automatique d'Emails et Codes",
+  "niveau": "intermediaire",
+  "duree_estimee": "28 min",
+  "competences": [
+    "CONCATENER",
+    "texte"
+  ],
+  "contexte": {
+    "situation": "Tu dois générer automatiquement les emails professionnels et codes employés.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Créer les emails au format prenom.nom@entreprise.fr",
+    "Générer les codes employés",
+    "Extraire les initiales"
+  ],
+  "consignes": [
+    "Dans E2, génère l'email: =MINUSCULE(CONCATENER(B2;\".\";C2;\"@entreprise.fr\"))",
+    "Dans F2, génère le code: =CONCATENER(GAUCHE(B2;1);GAUCHE(C2;1);A2)",
+    "Dans G2, extrais les initiales: =CONCATENER(MAJUSCULE(GAUCHE(B2;1));\".\";MAJUSCULE(GAUCHE(C2;1));\".\"))",
+    "Recopie jusqu'à la ligne 41",
+    "Vérifie qu'il n'y a pas de doublons dans les emails",
+    "Crée un répertoire téléphonique trié par nom"
+  ],
+  "donnees": {
+    "headers": [
+      "ID",
+      "Prénom",
+      "Nom",
+      "Service",
+      "Email",
+      "Code Employé",
+      "Initiales"
+    ],
+    "rows": [
+      [
+        "EMP001",
+        "Jack",
+        "Richard",
+        "RH",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP002",
+        "Bob",
+        "Roux",
+        "R&D",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP003",
+        "Paul",
+        "Bernard",
+        "Commercial",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP004",
+        "Leo",
+        "Simon",
+        "IT",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP005",
+        "Olivia",
+        "Fournier",
+        "Administration",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP006",
+        "Grace",
+        "Martin",
+        "R&D",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP007",
+        "Nathan",
+        "Lambert",
+        "R&D",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP008",
+        "Sam",
+        "Thomas",
+        "IT",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP009",
+        "Marie",
+        "Petit",
+        "Marketing",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP010",
+        "Uma",
+        "Thomas",
+        "Administration",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP011",
+        "Iris",
+        "Richard",
+        "Production",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP012",
+        "Marie",
+        "Bonnet",
+        "Logistique",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP013",
+        "Xavier",
+        "Bertrand",
+        "Support",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP014",
+        "Quentin",
+        "Bernard",
+        "Marketing",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP015",
+        "Yves",
+        "Lambert",
+        "Commercial",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP016",
+        "Frank",
+        "Moreau",
+        "RH",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP017",
+        "Charlie",
+        "Garcia",
+        "Production",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP018",
+        "Quentin",
+        "Fournier",
+        "Commercial",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP019",
+        "Sam",
+        "Leroy",
+        "Production",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP020",
+        "Kate",
+        "Durand",
+        "Marketing",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP021",
+        "Victor",
+        "Petit",
+        "Logistique",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP022",
+        "Paul",
+        "Bertrand",
+        "Logistique",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP023",
+        "Quentin",
+        "Leroy",
+        "RH",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP024",
+        "Diana",
+        "Laurent",
+        "Production",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP025",
+        "Leo",
+        "David",
+        "Administration",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP026",
+        "Grace",
+        "Garcia",
+        "Support",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP027",
+        "Yves",
+        "Lefebvre",
+        "Production",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP028",
+        "Victor",
+        "Petit",
+        "Support",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP029",
+        "Grace",
+        "Roux",
+        "Marketing",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP030",
+        "Leo",
+        "Michel",
+        "Administration",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP031",
+        "Diana",
+        "Petit",
+        "Production",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP032",
+        "Henry",
+        "Robert",
+        "IT",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP033",
+        "Iris",
+        "Robert",
+        "R&D",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP034",
+        "Xavier",
+        "Bertrand",
+        "R&D",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP035",
+        "Nathan",
+        "Roux",
+        "IT",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP036",
+        "Jack",
+        "Lefebvre",
+        "IT",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP037",
+        "Rose",
+        "Lefebvre",
+        "R&D",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP038",
+        "Grace",
+        "Robert",
+        "Production",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP039",
+        "Rose",
+        "Martin",
+        "IT",
+        "",
+        "",
+        ""
+      ],
+      [
+        "EMP040",
+        "Leo",
+        "Lambert",
+        "Finance",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "concatener_correct": true,
+    "formules_texte": true,
+    "score_minimum": 8
+  },
+  "checkpoints": [
+    {
+      "cellule": "E2",
+      "type": "formule",
+      "description": "Génération de l'email (première ligne)",
+      "fonction": "CONCATENER",
+      "pattern": [
+        "MINUSCULE",
+        "CONCATENER",
+        "B2",
+        "C2",
+        "@entreprise.fr",
+        "."
+      ],
+      "recopie_jusqua": "E41",
+      "points": 20,
+      "indices": [
+        "L'email doit combiner prénom, nom et domaine en minuscules.",
+        "Utilise MINUSCULE avec CONCATENER pour assembler prénom.nom@entreprise.fr",
+        "=MINUSCULE(CONCATENER(B2;\".\";C2;\"@entreprise.fr\"))"
+      ],
+      "id": "cp_1",
+      "competence_id": 19
+    },
+    {
+      "cellule": "E41",
+      "type": "formule",
+      "description": "Génération de l'email (dernière ligne)",
+      "fonction": "CONCATENER",
+      "pattern": [
+        "MINUSCULE",
+        "CONCATENER",
+        "B41",
+        "C41",
+        "@entreprise.fr",
+        "."
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée à la dernière ligne.",
+        "Les références doivent pointer vers B41 et C41.",
+        "La formule doit être identique à E2 mais avec les bonnes références de ligne."
+      ],
+      "id": "cp_2",
+      "competence_id": 19
+    },
+    {
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Génération du code employé (première ligne)",
+      "fonction": "CONCATENER",
+      "pattern": [
+        "CONCATENER",
+        "GAUCHE",
+        "B2",
+        "1",
+        "C2",
+        "A2"
+      ],
+      "recopie_jusqua": "F41",
+      "points": 20,
+      "indices": [
+        "Le code combine la première lettre du prénom, du nom et l'ID.",
+        "Utilise GAUCHE pour extraire le premier caractère de chaque nom.",
+        "=CONCATENER(GAUCHE(B2;1);GAUCHE(C2;1);A2)"
+      ],
+      "id": "cp_3",
+      "competence_id": 19
+    },
+    {
+      "cellule": "F41",
+      "type": "formule",
+      "description": "Génération du code employé (dernière ligne)",
+      "fonction": "CONCATENER",
+      "pattern": [
+        "CONCATENER",
+        "GAUCHE",
+        "B41",
+        "1",
+        "C41",
+        "A41"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Contrôle que le code se génère correctement sur la dernière ligne.",
+        "Les références doivent pointer vers A41, B41 et C41.",
+        "La structure de la formule doit être préservée avec les bonnes références."
+      ],
+      "id": "cp_4",
+      "competence_id": 19
+    },
+    {
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Extraction des initiales (première ligne)",
+      "fonction": "CONCATENER",
+      "pattern": [
+        "CONCATENER",
+        "MAJUSCULE",
+        "GAUCHE",
+        "B2",
+        "1",
+        "C2",
+        "."
+      ],
+      "recopie_jusqua": "G41",
+      "points": 20,
+      "indices": [
+        "Les initiales sont les premières lettres en majuscules séparées par des points.",
+        "Combine MAJUSCULE, GAUCHE et CONCATENER avec des points.",
+        "=CONCATENER(MAJUSCULE(GAUCHE(B2;1));\".\" ;MAJUSCULE(GAUCHE(C2;1));\".\")"
+      ],
+      "id": "cp_5",
+      "competence_id": 19
+    },
+    {
+      "cellule": "G41",
+      "type": "formule",
+      "description": "Extraction des initiales (dernière ligne)",
+      "fonction": "CONCATENER",
+      "pattern": [
+        "CONCATENER",
+        "MAJUSCULE",
+        "GAUCHE",
+        "B41",
+        "1",
+        "C41",
+        "."
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que les initiales se forment bien sur la dernière ligne.",
+        "Les références doivent être B41 et C41.",
+        "Le format doit rester cohérent : X.Y."
+      ],
+      "id": "cp_6",
+      "competence_id": 19
+    },
+    {
+      "cellule": "E2:E41",
+      "type": "verification",
+      "description": "Vérification absence de doublons dans les emails",
+      "fonction": null,
+      "pattern": [
+        "unique",
+        "doublons"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Parcours la colonne des emails pour détecter les répétitions.",
+        "Utilise la mise en forme conditionnelle ou une fonction pour identifier les doublons.",
+        "Chaque email doit être unique dans la plage E2:E41."
+      ],
+      "id": "cp_7",
+      "competence_id": 19
+    }
+  ],
+  "competence_ids": [
+    19
+  ]
+}

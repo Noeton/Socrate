@@ -1,0 +1,192 @@
+{
+  "id": "intermediaire_44_texte_extraction_codes",
+  "titre": "Extraction de Données avec Fonctions Texte",
+  "niveau": "intermediaire",
+  "competences": ["GAUCHE", "DROITE", "STXT", "CHERCHE", "NBCAR", "Extraction de données"],
+  "competence_ids": [20],
+  "duree_estimee": "25 min",
+  
+  "contexte": {
+    "situation": "Tu reçois des codes produits mal formatés du fournisseur : 'ELEC-12345-FR'. Tu dois extraire la catégorie (ELEC), le numéro (12345) et le pays (FR) dans des colonnes séparées.",
+    "manager": {
+      "nom": "Nathalie Mercier",
+      "poste": "Responsable Achats"
+    },
+    "enjeux": "Automatiser le traitement de 500 références reçues chaque semaine.",
+    "deadline": "Fin de journée"
+  },
+  
+  "objectifs": [
+    "Extraire le début d'un texte avec GAUCHE",
+    "Extraire la fin d'un texte avec DROITE",
+    "Extraire le milieu avec STXT",
+    "Trouver la position d'un caractère avec CHERCHE",
+    "Combiner ces fonctions pour des extractions dynamiques"
+  ],
+  
+  "consignes": [
+    "Les codes sont en A2:A16 au format 'CAT-NUMERO-PAYS'",
+    "En B2, extrait la catégorie (4 premiers caractères) : =GAUCHE(A2;4)",
+    "En C2, extrait le pays (2 derniers caractères) : =DROITE(A2;2)",
+    "En D2, extrait le numéro (5 caractères au milieu) : =STXT(A2;6;5)",
+    "BONUS E2 : Extrait le numéro de façon dynamique (position variable)"
+  ],
+  
+  "donnees": {
+    "headers": ["Code Complet", "Catégorie", "Pays", "Numéro", "Numéro (dynamique)"],
+    "rows": [
+      ["ELEC-12345-FR", "", "", "", ""],
+      ["MOBI-67890-DE", "", "", "", ""],
+      ["INFO-11111-US", "", "", "", ""],
+      ["ELEC-22222-FR", "", "", "", ""],
+      ["TEXT-33333-UK", "", "", "", ""],
+      ["MOBI-44444-ES", "", "", "", ""],
+      ["INFO-55555-IT", "", "", "", ""],
+      ["ELEC-66666-DE", "", "", "", ""],
+      ["TEXT-77777-FR", "", "", "", ""],
+      ["MOBI-88888-US", "", "", "", ""],
+      ["INFO-99999-UK", "", "", "", ""],
+      ["ELEC-10101-ES", "", "", "", ""],
+      ["TEXT-20202-IT", "", "", "", ""],
+      ["MOBI-30303-FR", "", "", "", ""],
+      ["INFO-40404-DE", "", "", "", ""]
+    ]
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "B2",
+      "description": "GAUCHE pour extraire la catégorie",
+      "fonction": "GAUCHE",
+      "pattern": ["GAUCHE", "A2", "4"],
+      "points": 20,
+      "indices": [
+        "GAUCHE(texte; nombre_caractères)",
+        "=GAUCHE(A2;4) extrait les 4 premiers caractères"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "B2",
+      "description": "Catégorie = ELEC",
+      "valeur_attendue": "ELEC",
+      "points": 10
+    },
+    {
+      "id": "cp_3",
+      "type": "formule",
+      "cellule": "C2",
+      "description": "DROITE pour extraire le pays",
+      "fonction": "DROITE",
+      "pattern": ["DROITE", "A2", "2"],
+      "points": 20,
+      "indices": [
+        "DROITE(texte; nombre_caractères)",
+        "=DROITE(A2;2) extrait les 2 derniers caractères"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "valeur",
+      "cellule": "C2",
+      "description": "Pays = FR",
+      "valeur_attendue": "FR",
+      "points": 10
+    },
+    {
+      "id": "cp_5",
+      "type": "formule",
+      "cellule": "D2",
+      "description": "STXT pour extraire le numéro",
+      "fonction": "STXT",
+      "pattern": ["STXT", "A2", "6", "5"],
+      "points": 20,
+      "indices": [
+        "STXT(texte; position_départ; nombre_caractères)",
+        "Le numéro commence en position 6 (après 'ELEC-')",
+        "=STXT(A2;6;5)"
+      ]
+    },
+    {
+      "id": "cp_6",
+      "type": "valeur",
+      "cellule": "D2",
+      "description": "Numéro = 12345",
+      "valeur_attendue": "12345",
+      "points": 10
+    },
+    {
+      "id": "cp_7",
+      "type": "formule",
+      "cellule": "B16",
+      "description": "Formules recopiées jusqu'à la ligne 16",
+      "fonction": "GAUCHE",
+      "pattern": ["GAUCHE", "A16"],
+      "points": 10
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70
+  },
+  
+  "theorie": {
+    "concept": "Les fonctions d'extraction de texte",
+    "fonctions": [
+      {
+        "nom": "GAUCHE",
+        "syntaxe": "GAUCHE(texte; n)",
+        "description": "Extrait les n premiers caractères"
+      },
+      {
+        "nom": "DROITE", 
+        "syntaxe": "DROITE(texte; n)",
+        "description": "Extrait les n derniers caractères"
+      },
+      {
+        "nom": "STXT",
+        "syntaxe": "STXT(texte; début; n)",
+        "description": "Extrait n caractères à partir de la position début"
+      },
+      {
+        "nom": "CHERCHE",
+        "syntaxe": "CHERCHE(cherché; texte)",
+        "description": "Retourne la position d'un caractère"
+      },
+      {
+        "nom": "NBCAR",
+        "syntaxe": "NBCAR(texte)",
+        "description": "Compte le nombre de caractères"
+      }
+    ],
+    "astuce_dynamique": "Pour une extraction dynamique : =STXT(A2;CHERCHE(\"-\";A2)+1;CHERCHE(\"-\";A2;CHERCHE(\"-\";A2)+1)-CHERCHE(\"-\";A2)-1)"
+  },
+  
+  "indices": [
+    "GAUCHE extrait depuis le début",
+    "DROITE extrait depuis la fin",
+    "STXT extrait du milieu (attention : position commence à 1, pas 0)",
+    "CHERCHE trouve où se trouve un caractère"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "Position décalée avec STXT",
+      "cause": "En Excel, la première position est 1 (pas 0 comme en programmation)",
+      "solution": "Si tu veux le 6ème caractère, utilise position = 6"
+    },
+    {
+      "erreur": "DROITE retourne trop ou pas assez",
+      "cause": "Mauvais compte des caractères depuis la fin",
+      "solution": "Compte bien : 'FR' = 2 caractères"
+    },
+    {
+      "erreur": "Espaces indésirables",
+      "cause": "Le texte source contient des espaces invisibles",
+      "solution": "Utilise SUPPRESPACE(A2) pour nettoyer"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "id": "intermediaire_45_dates_echeances",
+  "titre": "Gestion des Échéances avec Fonctions Date",
+  "niveau": "intermediaire",
+  "competences": ["DATEDIF", "FIN.MOIS", "JOURSEM", "NB.JOURS.OUVRES", "Calculs de dates"],
+  "competence_ids": [21],
+  "duree_estimee": "25 min",
+  
+  "contexte": {
+    "situation": "Tu gères la facturation client. Tu dois calculer les dates d'échéance (fin de mois +30 jours), identifier les retards, et calculer les jours ouvrés restants.",
+    "manager": {
+      "nom": "Michel Fontaine",
+      "poste": "Responsable Comptabilité Clients"
+    },
+    "enjeux": "Automatiser le suivi des créances pour éviter les impayés.",
+    "deadline": "Clôture mensuelle vendredi"
+  },
+  
+  "objectifs": [
+    "Calculer des échéances avec FIN.MOIS",
+    "Mesurer des écarts entre dates avec DATEDIF",
+    "Identifier le jour de la semaine avec JOURSEM",
+    "Calculer des jours ouvrés avec NB.JOURS.OUVRES"
+  ],
+  
+  "consignes": [
+    "En D2, calcule l'échéance : fin du mois de facturation + 30 jours",
+    "En E2, calcule le nombre de jours de retard (si date du jour > échéance)",
+    "En F2, indique le jour de la semaine de l'échéance (1=Dim, 7=Sam)",
+    "En G2, calcule les jours ouvrés entre la facture et l'échéance"
+  ],
+  
+  "donnees": {
+    "headers": ["Facture", "Client", "Date Facture", "Échéance", "Jours Retard", "Jour Semaine", "Jours Ouvrés"],
+    "rows": [
+      ["F001", "Alpha Corp", "2024-01-15", "", "", "", ""],
+      ["F002", "Beta SA", "2024-01-28", "", "", "", ""],
+      ["F003", "Gamma SAS", "2024-02-05", "", "", "", ""],
+      ["F004", "Delta Inc", "2024-02-20", "", "", "", ""],
+      ["F005", "Epsilon Ltd", "2024-03-01", "", "", "", ""],
+      ["F006", "Zeta Group", "2024-03-15", "", "", "", ""],
+      ["F007", "Eta Services", "2024-03-31", "", "", "", ""],
+      ["F008", "Theta Corp", "2024-04-10", "", "", "", ""],
+      ["F009", "Iota SA", "2024-04-25", "", "", "", ""],
+      ["F010", "Kappa SAS", "2024-05-08", "", "", "", ""]
+    ]
+  },
+  
+  "date_reference": "2024-06-15",
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "D2",
+      "description": "FIN.MOIS + 30 jours pour l'échéance",
+      "fonction": "FIN.MOIS",
+      "pattern": ["FIN.MOIS", "C2", "0", "+30"],
+      "points": 25,
+      "indices": [
+        "FIN.MOIS(date; mois) retourne le dernier jour du mois décalé",
+        "FIN.MOIS(C2;0) = fin du mois de la date en C2",
+        "=FIN.MOIS(C2;0)+30 pour ajouter 30 jours"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "D2",
+      "description": "Échéance F001 = 01/03/2024 (fin janvier + 30j)",
+      "valeur_attendue": "2024-03-01",
+      "type_valeur": "date",
+      "points": 10
+    },
+    {
+      "id": "cp_3",
+      "type": "formule",
+      "cellule": "E2",
+      "description": "Calcul du retard avec MAX et AUJOURDHUI (ou date fixe)",
+      "pattern": ["MAX", "AUJOURDHUI", "-", "D2", "0"],
+      "points": 20,
+      "indices": [
+        "Retard = Date du jour - Échéance (si positif)",
+        "=MAX(AUJOURDHUI()-D2;0) pour éviter les valeurs négatives",
+        "Ou avec une date fixe : =MAX(DATE(2024;6;15)-D2;0)"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "formule",
+      "cellule": "F2",
+      "description": "JOURSEM pour le jour de la semaine",
+      "fonction": "JOURSEM",
+      "pattern": ["JOURSEM", "D2"],
+      "points": 15,
+      "indices": [
+        "JOURSEM(date) retourne 1 (dimanche) à 7 (samedi) par défaut",
+        "JOURSEM(date;2) retourne 1 (lundi) à 7 (dimanche)"
+      ]
+    },
+    {
+      "id": "cp_5",
+      "type": "formule",
+      "cellule": "G2",
+      "description": "NB.JOURS.OUVRES entre facture et échéance",
+      "fonction": "NB.JOURS.OUVRES",
+      "pattern": ["NB.JOURS.OUVRES", "C2", "D2"],
+      "points": 20,
+      "indices": [
+        "NB.JOURS.OUVRES(date_début; date_fin) compte les jours hors week-end",
+        "=NB.JOURS.OUVRES(C2;D2)"
+      ]
+    },
+    {
+      "id": "cp_6",
+      "type": "valeur",
+      "cellule": "G2",
+      "description": "Jours ouvrés F001 = environ 32",
+      "valeur_attendue": 32,
+      "tolerance": 2,
+      "points": 10
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70
+  },
+  
+  "theorie": {
+    "concept": "Les fonctions de date avancées",
+    "fonctions": [
+      {
+        "nom": "FIN.MOIS",
+        "syntaxe": "FIN.MOIS(date; mois)",
+        "description": "Dernier jour du mois décalé de N mois",
+        "exemple": "FIN.MOIS(15/01/2024;0) = 31/01/2024"
+      },
+      {
+        "nom": "DATEDIF",
+        "syntaxe": "DATEDIF(début; fin; unité)",
+        "description": "Écart entre 2 dates (Y=années, M=mois, D=jours)",
+        "exemple": "DATEDIF(01/01/2024;15/06/2024;\"M\") = 5 mois"
+      },
+      {
+        "nom": "JOURSEM",
+        "syntaxe": "JOURSEM(date; [type])",
+        "description": "Numéro du jour de la semaine",
+        "exemple": "JOURSEM(01/01/2024) = 2 (lundi)"
+      },
+      {
+        "nom": "NB.JOURS.OUVRES",
+        "syntaxe": "NB.JOURS.OUVRES(début; fin; [jours_fériés])",
+        "description": "Compte les jours ouvrés entre 2 dates",
+        "exemple": "Exclut automatiquement samedis et dimanches"
+      }
+    ],
+    "rappel": "Les dates Excel sont des nombres : 1 = 01/01/1900. On peut donc les additionner/soustraire."
+  },
+  
+  "indices": [
+    "FIN.MOIS(date;0) = fin du mois actuel, FIN.MOIS(date;1) = fin du mois suivant",
+    "Pour ajouter des jours : date + nombre (ex: D2+30)",
+    "DATEDIF n'apparaît pas dans l'autocomplétion mais fonctionne",
+    "NB.JOURS.OUVRES peut prendre une plage de jours fériés en 3ème argument"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "#VALEUR!",
+      "cause": "La cellule contient du texte au lieu d'une date",
+      "solution": "Vérifie que les dates sont bien au format date (alignées à droite)"
+    },
+    {
+      "erreur": "DATEDIF retourne une erreur",
+      "cause": "La date de fin est avant la date de début",
+      "solution": "DATEDIF exige début < fin"
+    },
+    {
+      "erreur": "Échéance décalée d'un mois",
+      "cause": "Confusion sur le 2ème argument de FIN.MOIS",
+      "solution": "0 = mois actuel, 1 = mois suivant"
+    }
+  ]
+}

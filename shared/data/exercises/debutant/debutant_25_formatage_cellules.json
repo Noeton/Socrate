@@ -1,0 +1,242 @@
+{
+    "id": "debutant_25_formatage_cellules",
+    "titre": "Formatage : Rendre ses Données Lisibles",
+    "niveau": "debutant",
+    "duree_estimee": "15 min",
+    "competences": ["Formatage cellules", "Format nombre", "Alignement", "Bordures", "Couleurs"],
+    "competence_ids": [2],
+  
+    "contexte": {
+      "situation": "Tu travailles au service comptabilité de BellePresentation SA. Le directeur financier te demande de mettre en forme un tableau de budget avant la réunion. Les chiffres bruts sont illisibles - il faut des formats monétaires, des bordures, des couleurs pour les en-têtes...",
+      "manager": {
+        "nom": "Jacques Beaumont",
+        "poste": "Directeur Financier",
+        "personnalite": "Exigeant sur la présentation, il dit que 'la forme, c'est le fond qui remonte à la surface'.",
+        "demande": "Ce tableau est illisible ! Je veux des euros avec le symbole €, des pourcentages, des bordures propres, et des en-têtes qui ressortent. Ça doit être présentable en 5 minutes."
+      },
+      "enjeux": "Crédibilité en réunion de direction.",
+      "deadline": "Réunion dans 30 minutes"
+    },
+  
+    "objectifs": [
+      "Appliquer un format monétaire (€)",
+      "Appliquer un format pourcentage (%)",
+      "Formater les dates correctement",
+      "Ajouter des bordures et couleurs",
+      "Aligner le contenu des cellules"
+    ],
+  
+    "donnees": {
+      "feuille": "Budget",
+      "headers": ["Poste", "Budget", "Réalisé", "Écart", "Taux"],
+      "rows": [
+        ["Marketing", 50000, 48500, -1500, -0.03],
+        ["R&D", 120000, 135000, 15000, 0.125],
+        ["Commercial", 80000, 82000, 2000, 0.025],
+        ["Support", 35000, 33000, -2000, -0.057],
+        ["Direction", 45000, 44000, -1000, -0.022]
+      ],
+      "position": "A1:E6",
+      "etat_initial": "Nombres bruts, pas de formatage"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Format Nombre/Monétaire",
+        "acces": "Accueil > Nombre > Format (ou Ctrl+1)",
+        "formats": [
+          "Monétaire : 1234.56 → 1 234,56 €",
+          "Comptabilité : aligne les symboles €",
+          "Nombre : 1234.5678 → 1 234,57 (2 décimales)",
+          "Pourcentage : 0.15 → 15%"
+        ],
+        "raccourci": "Ctrl+Maj+$ pour monétaire, Ctrl+Maj+% pour pourcentage"
+      },
+      {
+        "phase": "B. Format Date",
+        "formats": [
+          "Court : 21/01/2026",
+          "Long : 21 janvier 2026",
+          "Personnalisé : jj/mm/aaaa, mmm-aa, etc."
+        ]
+      },
+      {
+        "phase": "C. Alignement",
+        "options": [
+          "Horizontal : Gauche, Centre, Droite",
+          "Vertical : Haut, Milieu, Bas",
+          "Retrait : décaler le texte",
+          "Fusionner : combiner plusieurs cellules"
+        ],
+        "bonne_pratique": "Texte à gauche, nombres à droite, en-têtes centrés"
+      },
+      {
+        "phase": "D. Bordures",
+        "acces": "Accueil > Bordures (icône grille)",
+        "options": [
+          "Toutes les bordures",
+          "Bordure extérieure",
+          "Bordures épaisses pour les en-têtes"
+        ]
+      },
+      {
+        "phase": "E. Couleurs et Remplissage",
+        "elements": [
+          "Couleur de remplissage (fond)",
+          "Couleur de police",
+          "Gras, Italique, Souligné"
+        ],
+        "conseil": "Sobre pour les rapports : gris clair pour en-têtes, pas de couleurs criardes"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_format_euro",
+        "cellule": "B2",
+        "type": "format",
+        "description": "Budget en format monétaire (€)",
+        "competence_id": 2,
+        "expected_format": "currency",
+        "expected_display": "50 000,00 €",
+        "points": 15,
+        "indices": [
+          "Sélectionne B2:D6",
+          "Ctrl+Maj+$ ou Accueil > € ",
+          "Les nombres affichent le symbole €"
+        ]
+      },
+      {
+        "id": "cp_2_format_pourcentage",
+        "cellule": "E2",
+        "type": "format",
+        "description": "Taux en format pourcentage",
+        "competence_id": 2,
+        "expected_format": "percentage",
+        "expected_display": "-3%",
+        "points": 15,
+        "indices": [
+          "Sélectionne E2:E6",
+          "Ctrl+Maj+% ou Accueil > %",
+          "-0.03 devient -3%"
+        ]
+      },
+      {
+        "id": "cp_3_entetes_gras",
+        "cellule": "A1",
+        "type": "format",
+        "description": "En-têtes en gras",
+        "competence_id": 2,
+        "expected_bold": true,
+        "points": 10,
+        "indices": [
+          "Sélectionne A1:E1",
+          "Ctrl+G ou bouton Gras",
+          "Les en-têtes ressortent"
+        ]
+      },
+      {
+        "id": "cp_4_entetes_fond",
+        "cellule": "A1",
+        "type": "format",
+        "description": "En-têtes avec fond coloré",
+        "competence_id": 2,
+        "expected_fill": true,
+        "points": 15,
+        "indices": [
+          "Sélectionne A1:E1",
+          "Accueil > Couleur de remplissage",
+          "Choisis un gris clair ou bleu sobre"
+        ]
+      },
+      {
+        "id": "cp_5_bordures",
+        "type": "format",
+        "description": "Bordures autour du tableau",
+        "competence_id": 2,
+        "expected_borders": true,
+        "points": 15,
+        "indices": [
+          "Sélectionne tout le tableau A1:E6",
+          "Accueil > Bordures > Toutes les bordures",
+          "Le tableau est encadré"
+        ]
+      },
+      {
+        "id": "cp_6_alignement_centre",
+        "cellule": "A1",
+        "type": "format",
+        "description": "En-têtes centrés",
+        "competence_id": 2,
+        "expected_alignment": "center",
+        "points": 10,
+        "indices": [
+          "Sélectionne A1:E1",
+          "Accueil > Centrer",
+          "Le texte est au milieu"
+        ]
+      },
+      {
+        "id": "cp_7_largeur_colonnes",
+        "type": "format",
+        "description": "Colonnes ajustées au contenu",
+        "competence_id": 2,
+        "expected_autofit": true,
+        "points": 10,
+        "indices": [
+          "Double-clic entre les en-têtes de colonnes",
+          "Ou : Accueil > Format > Ajuster largeur",
+          "Plus de ### ou de texte tronqué"
+        ]
+      },
+      {
+        "id": "cp_8_negatifs_rouge",
+        "cellule": "C5",
+        "type": "format",
+        "description": "Écarts négatifs en rouge",
+        "competence_id": 2,
+        "expected_color": "red",
+        "points": 10,
+        "indices": [
+          "Sélectionne les écarts négatifs",
+          "Change la couleur de police en rouge",
+          "Ou utilise un format personnalisé"
+        ]
+      }
+    ],
+  
+    "formats_personnalises": {
+      "exemples": [
+        "# ##0,00 € → 1 234,56 €",
+        "0,0% → 15,5%",
+        "jj/mm/aaaa → 21/01/2026",
+        "#,##0;[Rouge]-#,##0 → négatifs en rouge"
+      ],
+      "acces": "Ctrl+1 > Personnalisé"
+    },
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Parfait ! Ton tableau est maintenant professionnel et lisible. La forme compte autant que le fond ! ✨",
+      "partiel": "Bon travail ! N'oublie pas : € pour l'argent, % pour les taux, bordures pour structurer.",
+      "echec": "Le formatage rend les données lisibles. Ctrl+Maj+$ pour €, Ctrl+Maj+% pour %. Les bordures encadrent."
+    },
+  
+    "socrate_message": {
+      "intro": "Un tableau bien formaté, c'est un message clair ! 🎨 Les chiffres bruts sont illisibles, le formatage les rend parlants.",
+      "conclusion": "Tu sais maintenant présenter des données de façon professionnelle. Euros, pourcentages, bordures, couleurs... ton tableau est prêt pour la direction ! 💼"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["formatage", "mise en forme", "euros", "pourcentage", "bordures", "débutant"],
+      "prerequis": ["Saisie de données"],
+      "ouvre_vers": ["Mise en forme conditionnelle", "Styles"]
+    }
+  }

@@ -1,0 +1,489 @@
+{
+  "id": "debutant_10_formulaire_conges",
+  "titre": "Formulaire de Demande de Congés avec Validation",
+  "niveau": "debutant",
+  "duree_estimee": "22 min",
+  "competences": [
+    "validation_donnees"
+  ],
+  "contexte": {
+    "situation": "Tu crées un formulaire de demande de congés avec des listes déroulantes pour éviter les erreurs de saisie.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Créer des listes déroulantes",
+    "Limiter les dates autorisées",
+    "Valider les nombres de jours"
+  ],
+  "consignes": [
+    "Crée une liste déroulante dans F2:F31 avec les valeurs: Congés payés, RTT, Maladie, Sans solde",
+    "Crée une liste déroulante dans G2:G31 avec les statuts: En attente, Validé, Refusé",
+    "Limite les dates (C2:D31) entre 01/01/2024 et 31/12/2024",
+    "Limite le nombre de jours (E2:E31) entre 1 et 30",
+    "Ajoute des messages d'erreur personnalisés",
+    "Calcule le total de jours de congés par type"
+  ],
+  "donnees": {
+    "headers": [
+      "Nom",
+      "Prénom",
+      "Date Début",
+      "Date Fin",
+      "Nb Jours",
+      "Type",
+      "Statut"
+    ],
+    "rows": [
+      [
+        "Moreau",
+        "Xavier",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Bernard",
+        "Grace",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Robert",
+        "Bob",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Thomas",
+        "Grace",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Roux",
+        "Kate",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "David",
+        "Jack",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Bernard",
+        "Henry",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Richard",
+        "Frank",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Lefebvre",
+        "Marie",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Simon",
+        "Uma",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Lefebvre",
+        "Leo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Martin",
+        "Frank",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Martin",
+        "Diana",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Simon",
+        "Charlie",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Robert",
+        "Eve",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Leroy",
+        "Uma",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Dubois",
+        "Quentin",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Lambert",
+        "Wendy",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Bertrand",
+        "Kate",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Bernard",
+        "Sam",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Vincent",
+        "Jack",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Moreau",
+        "Uma",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Durand",
+        "Paul",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Simon",
+        "Kate",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Dubois",
+        "Wendy",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Moreau",
+        "Marie",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Thomas",
+        "Quentin",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Laurent",
+        "Tom",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Bonnet",
+        "Uma",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Durand",
+        "Victor",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "validation_presente": true,
+    "listes_deroulantes": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "F2",
+      "type": "validation",
+      "description": "Liste déroulante des types de congés (première cellule)",
+      "fonction": null,
+      "pattern": [
+        "Congés payés",
+        "RTT",
+        "Maladie",
+        "Sans solde"
+      ],
+      "recopie_jusqua": "F31",
+      "points": 15,
+      "indices": [
+        "Il faut créer une liste avec des choix prédéfinis pour le type de congé.",
+        "Utilise l'onglet Données > Validation des données pour créer une liste.",
+        "Dans Validation des données, choisis 'Liste' et tape: Congés payés;RTT;Maladie;Sans solde"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "G2",
+      "type": "validation",
+      "description": "Liste déroulante des statuts (première cellule)",
+      "fonction": null,
+      "pattern": [
+        "En attente",
+        "Validé",
+        "Refusé"
+      ],
+      "recopie_jusqua": "G31",
+      "points": 15,
+      "indices": [
+        "Il faut créer une liste avec les différents statuts possibles.",
+        "Utilise l'onglet Données > Validation des données pour créer une liste.",
+        "Dans Validation des données, choisis 'Liste' et tape: En attente;Validé;Refusé"
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "C2",
+      "type": "validation",
+      "description": "Validation des dates de début (première cellule)",
+      "fonction": null,
+      "pattern": [
+        "01/01/2024",
+        "31/12/2024"
+      ],
+      "recopie_jusqua": "C31",
+      "points": 15,
+      "indices": [
+        "Il faut limiter les dates qu'on peut saisir dans une plage précise.",
+        "Utilise Données > Validation des données avec le type 'Date'.",
+        "Choisis 'Date' puis 'comprise entre' avec 01/01/2024 et 31/12/2024"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "D2",
+      "type": "validation",
+      "description": "Validation des dates de fin (première cellule)",
+      "fonction": null,
+      "pattern": [
+        "01/01/2024",
+        "31/12/2024"
+      ],
+      "recopie_jusqua": "D31",
+      "points": 15,
+      "indices": [
+        "Il faut limiter les dates qu'on peut saisir dans une plage précise.",
+        "Utilise Données > Validation des données avec le type 'Date'.",
+        "Choisis 'Date' puis 'comprise entre' avec 01/01/2024 et 31/12/2024"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "E2",
+      "type": "validation",
+      "description": "Validation du nombre de jours (première cellule)",
+      "fonction": null,
+      "pattern": [
+        "1",
+        "30"
+      ],
+      "recopie_jusqua": "E31",
+      "points": 15,
+      "indices": [
+        "Il faut limiter le nombre de jours qu'on peut saisir.",
+        "Utilise Données > Validation des données avec le type 'Nombre entier'.",
+        "Choisis 'Nombre entier' puis 'comprise entre' avec 1 et 30"
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "F31",
+      "type": "validation",
+      "description": "Vérification que la validation est appliquée jusqu'à la dernière ligne",
+      "fonction": null,
+      "pattern": [
+        "Congés payés",
+        "RTT",
+        "Maladie",
+        "Sans solde"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Assure-toi que toutes les cellules ont la validation.",
+        "Sélectionne toute la plage F2:F31 avant d'appliquer la validation.",
+        "La validation doit être présente sur toutes les lignes jusqu'à F31"
+      ],
+      "id": "cp_6"
+    },
+    {
+      "cellule": "I2",
+      "type": "formule",
+      "description": "Calcul du total de jours pour 'Congés payés'",
+      "fonction": "SOMME.SI",
+      "pattern": [
+        "SOMME.SI",
+        "F2:F31",
+        "Congés payés",
+        "E2:E31"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Il faut additionner les jours selon le type de congé.",
+        "Utilise une fonction qui additionne selon une condition.",
+        "=SOMME.SI(F2:F31;\"Congés payés\";E2:E31)"
+      ],
+      "id": "cp_7",
+      "computation": {
+        "type": "sumif",
+        "criteria_column": "auto",
+        "criteria": "auto",
+        "sum_column": "auto"
+      }
+    },
+    {
+      "cellule": "I3",
+      "type": "formule",
+      "description": "Calcul du total de jours pour 'RTT'",
+      "fonction": "SOMME.SI",
+      "pattern": [
+        "SOMME.SI",
+        "F2:F31",
+        "RTT",
+        "E2:E31"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Il faut additionner les jours selon le type de congé.",
+        "Utilise une fonction qui additionne selon une condition.",
+        "=SOMME.SI(F2:F31;\"RTT\";E2:E31)"
+      ],
+      "id": "cp_8",
+      "computation": {
+        "type": "sumif",
+        "criteria_column": "auto",
+        "criteria": "auto",
+        "sum_column": "auto"
+      }
+    }
+  ],
+  "competence_ids": [
+    25
+  ]
+}

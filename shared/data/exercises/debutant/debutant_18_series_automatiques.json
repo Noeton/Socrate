@@ -1,0 +1,287 @@
+{
+    "id": "debutant_18_series_automatiques",
+    "titre": "Générer des Séries Automatiques",
+    "niveau": "debutant",
+    "duree_estimee": "15 min",
+    "competences": ["Génération de séries", "Recopie incrémentée"],
+    "competence_ids": [52],
+  
+    "contexte": {
+      "situation": "Tu travailles au service RH de LogiTrans, une entreprise de logistique. On te demande de préparer un planning de présence pour le mois de février 2025. Plutôt que de tout saisir à la main, tu vas utiliser les séries automatiques d'Excel.",
+      "manager": {
+        "nom": "Claire Fontaine",
+        "poste": "Responsable RH",
+        "personnalite": "Organisée et efficace. Elle déteste perdre du temps.",
+        "demande": "J'ai besoin du planning de février avec toutes les dates et les jours. Ne me dis pas que tu vas taper 28 dates à la main !"
+      },
+      "enjeux": "Ce planning servira à organiser les rotations des 12 chauffeurs.",
+      "deadline": "Demain matin"
+    },
+  
+    "objectifs": [
+      "Créer une série de dates automatiquement",
+      "Créer une série de jours de la semaine",
+      "Créer une série de nombres personnalisée",
+      "Comprendre la différence entre recopie simple et incrémentée"
+    ],
+  
+    "consignes": [
+      "Crée une feuille 'Planning' avec les colonnes : Jour, Date, Semaine, Équipe",
+      "Génère automatiquement les jours du 1er au 28 février",
+      "Génère les jours de la semaine correspondants",
+      "Numérote les semaines (S5 à S9)",
+      "Crée une rotation d'équipes (A, B, C, A, B, C...)"
+    ],
+  
+    "donnees": {
+      "feuille": "Planning",
+      "structure": {
+        "A1": "Date",
+        "B1": "Jour",
+        "C1": "Semaine",
+        "D1": "Équipe",
+        "A2": "01/02/2025",
+        "B2": "Samedi",
+        "C2": "S5",
+        "D2": "A"
+      },
+      "attendu": {
+        "nb_lignes": 28,
+        "derniere_date": "28/02/2025",
+        "dernier_jour": "Vendredi"
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Série de dates",
+        "explications": [
+          "Excel reconnaît les dates et peut les incrémenter automatiquement.",
+          "Tape une date, puis utilise la poignée de recopie en maintenant le clic."
+        ],
+        "consignes": [
+          "En A2, tape : 01/02/2025",
+          "Sélectionne A2, attrape la poignée de recopie (coin bas-droit)",
+          "Glisse vers le bas jusqu'à A29 (28 lignes)",
+          "Excel génère automatiquement 01/02, 02/02, 03/02... jusqu'au 28/02"
+        ]
+      },
+      {
+        "phase": "B. Série de jours",
+        "explications": [
+          "Excel connaît les jours de la semaine et peut les incrémenter.",
+          "Tu peux aussi taper 'Lundi' ou 'Lun' - Excel comprend."
+        ],
+        "consignes": [
+          "En B2, tape : Samedi (le 1er février 2025 est un samedi)",
+          "Recopie jusqu'à B29",
+          "Excel génère : Samedi, Dimanche, Lundi... et repart à Samedi après une semaine"
+        ]
+      },
+      {
+        "phase": "C. Série de numéros de semaine",
+        "explications": [
+          "Pour une série personnalisée, donne 2 valeurs à Excel.",
+          "Excel comprendra le pattern et continuera."
+        ],
+        "consignes": [
+          "En C2, tape : S5",
+          "En C3, tape : S5 (même semaine car Sam→Dim)",
+          "Sélectionne C2:C9 (toute la semaine 5)",
+          "Recopie jusqu'à C29",
+          "Ou : sélectionne C2:C3, puis utilise Ctrl+glisser pour incrémenter"
+        ]
+      },
+      {
+        "phase": "D. Série de rotation d'équipes",
+        "explications": [
+          "Pour une rotation A, B, C, donne les 3 valeurs puis recopie.",
+          "Excel répètera le cycle."
+        ],
+        "consignes": [
+          "En D2, tape : A",
+          "En D3, tape : B",
+          "En D4, tape : C",
+          "Sélectionne D2:D4",
+          "Recopie jusqu'à D29",
+          "Excel génère : A, B, C, A, B, C, A, B, C..."
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_premiere_date",
+        "cellule": "A2",
+        "type": "valeur",
+        "description": "Date de début correcte",
+        "competence_id": 52,
+        "expected_value": "01/02/2025",
+        "expected_type": "date",
+        "points": 10,
+        "indices": [
+          "Le planning commence le 1er février 2025",
+          "Format : JJ/MM/AAAA",
+          "01/02/2025"
+        ]
+      },
+      {
+        "id": "cp_2_derniere_date",
+        "cellule": "A29",
+        "type": "valeur",
+        "description": "Série de dates complète jusqu'au 28 février",
+        "competence_id": 52,
+        "expected_value": "28/02/2025",
+        "expected_type": "date",
+        "points": 20,
+        "indices": [
+          "Février 2025 a 28 jours",
+          "Utilise la poignée de recopie depuis A2",
+          "Glisse jusqu'à ce que tu voies 28/02/2025"
+        ]
+      },
+      {
+        "id": "cp_3_date_milieu",
+        "cellule": "A15",
+        "type": "valeur",
+        "description": "Date au milieu du mois correcte",
+        "competence_id": 52,
+        "expected_value": "14/02/2025",
+        "expected_type": "date",
+        "points": 10,
+        "indices": [
+          "La ligne 15 correspond au 14 février",
+          "Vérifie que les dates s'incrémentent de 1 jour",
+          "C'est la Saint-Valentin ! 💕"
+        ]
+      },
+      {
+        "id": "cp_4_premier_jour",
+        "cellule": "B2",
+        "type": "valeur",
+        "description": "Premier jour de la semaine correct",
+        "competence_id": 52,
+        "expected_value": "Samedi",
+        "points": 10,
+        "indices": [
+          "Le 1er février 2025 est un samedi",
+          "Tu peux vérifier avec un calendrier",
+          "Tape 'Samedi' ou 'Sam'"
+        ]
+      },
+      {
+        "id": "cp_5_dernier_jour",
+        "cellule": "B29",
+        "type": "valeur",
+        "description": "Série de jours complète",
+        "competence_id": 52,
+        "expected_value": "Vendredi",
+        "points": 15,
+        "indices": [
+          "28 jours après samedi = vendredi",
+          "La série doit boucler : Sam, Dim, Lun... Sam, Dim...",
+          "Le 28 février 2025 est un vendredi"
+        ]
+      },
+      {
+        "id": "cp_6_jour_milieu",
+        "cellule": "B15",
+        "type": "valeur",
+        "description": "Jour au milieu du mois correct",
+        "competence_id": 52,
+        "expected_value": "Vendredi",
+        "points": 5,
+        "indices": [
+          "14 jours = 2 semaines exactement",
+          "Sam + 13 jours = Vendredi",
+          "Le 14 février 2025 est un vendredi"
+        ]
+      },
+      {
+        "id": "cp_7_premiere_equipe",
+        "cellule": "D2",
+        "type": "valeur",
+        "description": "Première équipe",
+        "competence_id": 52,
+        "expected_value": "A",
+        "points": 5,
+        "indices": [
+          "La rotation commence par l'équipe A",
+          "Tape simplement : A",
+          "Les équipes sont A, B, C"
+        ]
+      },
+      {
+        "id": "cp_8_rotation_equipes",
+        "cellule": "D5",
+        "type": "valeur",
+        "description": "Rotation des équipes correcte (4ème jour = retour à A)",
+        "competence_id": 52,
+        "expected_value": "A",
+        "points": 15,
+        "indices": [
+          "Jour 1=A, Jour 2=B, Jour 3=C, Jour 4=A",
+          "Sélectionne D2:D4 puis recopie",
+          "La série doit boucler : A, B, C, A, B, C..."
+        ]
+      },
+      {
+        "id": "cp_9_derniere_equipe",
+        "cellule": "D29",
+        "type": "valeur",
+        "description": "Équipe du dernier jour",
+        "competence_id": 52,
+        "expected_value": "A",
+        "points": 10,
+        "indices": [
+          "28 jours avec rotation ABC",
+          "28 = 9×3 + 1, donc le 28ème jour = A",
+          "Vérifie que la rotation est cohérente"
+        ]
+      }
+    ],
+  
+    "astuces_excel": [
+      {
+        "titre": "Recopie simple vs incrémentée",
+        "contenu": "Clic simple sur la poignée = recopie incrémentée. Ctrl+clic = recopie identique."
+      },
+      {
+        "titre": "Séries personnalisées",
+        "contenu": "Pour créer ta propre série (T1, T2, T3...), donne 2 valeurs et Excel comprendra."
+      },
+      {
+        "titre": "Séries de dates spéciales",
+        "contenu": "Clic-droit sur la poignée permet de choisir : jours, jours ouvrés, mois, années..."
+      },
+      {
+        "titre": "Remplissage rapide",
+        "contenu": "Double-clic sur la poignée remplit automatiquement jusqu'à la dernière ligne de données adjacente."
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu viens de créer un planning de 28 lignes en quelques clics. Imagine le temps gagné sur un planning annuel de 365 jours ! 🗓️",
+      "partiel": "Tu as compris le principe des séries. Vérifie que toutes tes séries sont complètes et cohérentes.",
+      "echec": "Les séries automatiques sont très pratiques. Reprends l'exercice en observant comment Excel détecte le pattern que tu lui donnes."
+    },
+  
+    "socrate_message": {
+      "intro": "Les séries automatiques, c'est la magie d'Excel ! 🪄 Tu vas apprendre à générer des dates, des jours, des numéros... en quelques secondes.",
+      "conclusion": "Tu maîtrises maintenant les séries ! Excel est intelligent : donne-lui un pattern et il le continue. Dates, jours, mois, numéros, texte... tout est possible !"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["séries", "recopie", "dates", "jours", "automatisation", "fondamental"],
+      "prerequis": ["Saisie de données"],
+      "ouvre_vers": ["Copier-coller", "Planning avancé"]
+    }
+  }

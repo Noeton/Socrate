@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ============================================
+   SOCRATE DESIGN SYSTEM
+   Direction: Refined Minimal / Editorial
+   ============================================ */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  /* Typography */
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Border radius */
+  --radius: 0.5rem;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-slower: 600ms ease;
+  
+  /* Shadows - très subtiles */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+  
+  /* Palette - Slate monochrome + accent sauge */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+  
+  /* Accent - Vert sauge profond */
+  --accent-light: #d1ddd6;
+  --accent-base: #5a7c65;
+  --accent-dark: #3d5a47;
+  
+  /* Success / Error - discrets */
+  --success: #5a7c65;
+  --error: #b45454;
+  
+  /* Semantic colors */
+  --background: var(--slate-50);
+  --foreground: var(--slate-900);
+  --card: #ffffff;
+  --card-foreground: var(--slate-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--slate-900);
+  --primary: var(--slate-900);
+  --primary-foreground: #ffffff;
+  --secondary: var(--slate-100);
+  --secondary-foreground: var(--slate-800);
+  --muted: var(--slate-100);
+  --muted-foreground: var(--slate-500);
+  --accent: var(--accent-base);
+  --accent-foreground: #ffffff;
+  --destructive: var(--error);
+  --border: var(--slate-200);
+  --input: var(--slate-200);
+  --ring: var(--accent-base);
+  
+  /* Charts */
+  --chart-1: var(--accent-base);
+  --chart-2: var(--slate-400);
+  --chart-3: var(--slate-600);
+  --chart-4: var(--accent-light);
+  --chart-5: var(--slate-300);
+  
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--slate-900);
+  --sidebar-primary: var(--slate-900);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--slate-100);
+  --sidebar-accent-foreground: var(--slate-800);
+  --sidebar-border: var(--slate-200);
+  --sidebar-ring: var(--accent-base);
+}
+
+.dark {
+  --background: var(--slate-950);
+  --foreground: var(--slate-100);
+  --card: var(--slate-900);
+  --card-foreground: var(--slate-100);
+  --popover: var(--slate-900);
+  --popover-foreground: var(--slate-100);
+  --primary: var(--slate-100);
+  --primary-foreground: var(--slate-900);
+  --secondary: var(--slate-800);
+  --secondary-foreground: var(--slate-100);
+  --muted: var(--slate-800);
+  --muted-foreground: var(--slate-400);
+  --accent: var(--accent-base);
+  --accent-foreground: #ffffff;
+  --destructive: #c96c6c;
+  --border: var(--slate-800);
+  --input: var(--slate-800);
+  --ring: var(--accent-base);
+  --sidebar: var(--slate-900);
+  --sidebar-foreground: var(--slate-100);
+  --sidebar-primary: var(--accent-base);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--slate-800);
+  --sidebar-accent-foreground: var(--slate-100);
+  --sidebar-border: var(--slate-800);
+  --sidebar-ring: var(--accent-base);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  
+  /* Typography scale */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--slate-900);
+  }
+  
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: var(--slate-100);
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  
+  p {
+    color: var(--slate-600);
+  }
+  
+  .dark p {
+    color: var(--slate-400);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+@layer utilities {
+  /* Typography utilities */
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Transition utilities */
+  .transition-fast {
+    transition: all var(--transition-fast);
+  }
+  
+  .transition-base {
+    transition: all var(--transition-base);
+  }
+  
+  .transition-slow {
+    transition: all var(--transition-slow);
+  }
+  
+  .transition-slower {
+    transition: all var(--transition-slower);
+  }
+  
+  /* Shadow utilities */
+  .shadow-subtle {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Hover elevation */
+  .hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Focus ring - accessible but subtle */
+  .focus-ring {
+    @apply outline-none;
+    transition: box-shadow var(--transition-fast);
+  }
+  
+  .focus-ring:focus-visible {
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--accent-base);
+  }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+
+@layer utilities {
+  /* Fade in */
+  .animate-fade-in {
+    animation: fadeIn var(--transition-slow) ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Fade in up */
+  .animate-fade-in-up {
+    animation: fadeInUp var(--transition-slow) ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Slide in from right */
+  .animate-slide-in-right {
+    animation: slideInRight var(--transition-slow) ease forwards;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Slide in from left */
+  .animate-slide-in-left {
+    animation: slideInLeft var(--transition-slow) ease forwards;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Scale in */
+  .animate-scale-in {
+    animation: scaleIn var(--transition-base) ease forwards;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Stagger delays for lists */
+  .stagger-1 { animation-delay: 50ms; }
+  .stagger-2 { animation-delay: 100ms; }
+  .stagger-3 { animation-delay: 150ms; }
+  .stagger-4 { animation-delay: 200ms; }
+  .stagger-5 { animation-delay: 250ms; }
+  
+  /* Pulse subtle - for loading states */
+  .animate-pulse-subtle {
+    animation: pulseSubtle 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulseSubtle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
+
+/* ============================================
+   COMPONENT OVERRIDES
+   ============================================ */
+
+@layer components {
+  /* Card refinement */
+  .card-elevated {
+    @apply bg-card rounded-lg;
+    border: 1px solid var(--slate-200);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+  
+  .card-elevated:hover {
+    border-color: var(--slate-300);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Selection card - for onboarding choices */
+  .selection-card {
+    @apply bg-card rounded-lg p-4 cursor-pointer;
+    border: 1px solid var(--slate-200);
+    transition: all var(--transition-base);
+  }
+  
+  .selection-card:hover {
+    border-color: var(--slate-300);
+    background: var(--slate-50);
+  }
+  
+  .selection-card.selected {
+    border-color: var(--accent-base);
+    background: color-mix(in srgb, var(--accent-base) 5%, white);
+  }
+  
+  .dark .selection-card.selected {
+    background: color-mix(in srgb, var(--accent-base) 10%, var(--slate-900));
+  }
+  
+  /* Input refinement */
+  .input-refined {
+    @apply w-full px-4 py-3 rounded-lg bg-white;
+    border: 1px solid var(--slate-200);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  .input-refined::placeholder {
+    color: var(--slate-400);
+  }
+  
+  .input-refined:focus {
+    outline: none;
+    border-color: var(--accent-base);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-base) 15%, transparent);
+  }
+  
+  .dark .input-refined {
+    background: var(--slate-800);
+    border-color: var(--slate-700);
+  }
+  
+  /* Button refinement */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium;
+    background: var(--slate-900);
+    color: white;
+    font-family: var(--font-body);
+    transition: all var(--transition-base);
+  }
+  
+  .btn-primary:hover {
+    background: var(--slate-800);
+    transform: translateY(-1px);
+  }
+  
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+  
+  .btn-primary:disabled {
+    background: var(--slate-300);
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .dark .btn-primary {
+    background: var(--slate-100);
+    color: var(--slate-900);
+  }
+  
+  .dark .btn-primary:hover {
+    background: white;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium;
+    background: transparent;
+    color: var(--slate-700);
+    border: 1px solid var(--slate-300);
+    font-family: var(--font-body);
+    transition: all var(--transition-base);
+  }
+  
+  .btn-secondary:hover {
+    background: var(--slate-100);
+    border-color: var(--slate-400);
+  }
+  
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium;
+    background: transparent;
+    color: var(--slate-600);
+    font-family: var(--font-body);
+    transition: all var(--transition-fast);
+  }
+  
+  .btn-ghost:hover {
+    background: var(--slate-100);
+    color: var(--slate-900);
+  }
+  
+  /* Progress bar - thin and elegant */
+  .progress-bar {
+    @apply w-full h-1 rounded-full overflow-hidden;
+    background: var(--slate-200);
+  }
+  
+  .progress-bar-fill {
+    @apply h-full rounded-full;
+    background: var(--accent-base);
+    transition: width var(--transition-slow) ease;
+  }
+  
+  /* Divider */
+  .divider {
+    @apply w-full h-px;
+    background: var(--slate-200);
+  }
+  
+  /* Text link */
+  .text-link {
+    color: var(--slate-600);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--transition-fast);
+  }
+  
+  .text-link:hover {
+    color: var(--slate-900);
+  }
+}
+
+/* ============================================
+   ANIMATIONS POUR BOUTONS IMPORTANTS
+   ============================================ */
+
+/* Animation pulse subtile pour attirer l'attention */
+@keyframes subtle-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(139, 92, 246, 0.5);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+/* Animation pour bouton nouvelle conversation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}

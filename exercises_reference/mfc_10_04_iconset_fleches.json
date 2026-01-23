@@ -1,0 +1,213 @@
+{
+  "id": "mfc_10_04_iconset_fleches",
+  "version": "1.0",
+  "titre": "⬆️ MFC : flèches pour indiquer la tendance",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "15 min",
+    "competences_ids": [10],
+    "competences_noms": ["Mise en forme conditionnelle simple"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Utiliser les jeux d'icônes pour représenter visuellement des tendances ou catégories",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.6 (xlIconSet)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu présentes les résultats mensuels au comité de direction. Ils veulent voir d'un coup d'œil si chaque indicateur est en hausse, stable ou en baisse par rapport au mois dernier.",
+    
+    "personnage": "Toi, contrôleur de gestion présentant le tableau de bord mensuel.",
+    
+    "objectif": "Ajouter des flèches qui indiquent automatiquement la tendance : ⬆️ hausse, ➡️ stable, ⬇️ baisse.",
+    
+    "motivation": "Les icônes remplacent des mots par des symboles universels. Même sans lire les chiffres, on comprend la situation.",
+    
+    "ton": "Les icônes, c'est le langage universel du business dashboard !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Variation (%) des KPIs par rapport au mois précédent. Positif = hausse, négatif = baisse.",
+    "periode": "Janvier 2025 vs Décembre 2024",
+    "source_fictive": "Dashboard mensuel"
+  },
+
+  "donnees": {
+    "headers": ["Indicateur", "Variation (%)"],
+    "rows": [
+      ["Chiffre d'affaires", 8],
+      ["Marge brute", 3],
+      ["Coûts fixes", -2],
+      ["Nouveaux clients", 15],
+      ["Réclamations", -12],
+      ["Délai livraison (jours)", 1],
+      ["Satisfaction client", 0],
+      ["Turnover", -5]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les variations",
+      "consigne": "Sélectionne B2:B9 (les pourcentages de variation).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Appliquer le jeu d'icônes",
+      "consigne": "Accueil > Mise en forme conditionnelle > Jeux d'icônes > Flèches (3 flèches colorées).",
+      "aide_contextuelle": "Choisis les 3 flèches : verte haut ⬆️, jaune droite ➡️, rouge bas ⬇️.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Comprendre le problème",
+      "description": "Par défaut, Excel répartit les icônes sur les percentiles (tiers). Ce n'est pas ce qu'on veut.",
+      "consigne": "Tu verras que la répartition n'est pas logique. On va personnaliser.",
+      "action_requise": false,
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Personnaliser les seuils",
+      "description": "On veut : ⬆️ si > 0, ➡️ si = 0, ⬇️ si < 0.",
+      "consigne": "Accueil > MFC > Gérer les règles > Modifier la règle. Change les seuils : Vert >= 1, Jaune >= 0, Rouge < 0. Type : Nombre (pas pourcentage).",
+      "aide_contextuelle": "En mettant Vert >= 1 et Jaune >= 0, tu obtiens : positif = vert, zéro = jaune, négatif = rouge.",
+      "temps": "4 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier le résultat",
+      "description": "Les variations positives doivent avoir une flèche verte, les négatives une rouge, et zéro une jaune.",
+      "consigne": "CA (+8%), Marge (+3%), Nouveaux clients (+15%), Délai (+1%) = ⬆️ vert. Coûts (-2%), Réclamations (-12%), Turnover (-5%) = ⬇️ rouge. Satisfaction (0%) = ➡️ jaune.",
+      "temps": "2 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "Icônes sur la colonne Variation",
+    "structure": [
+      { "cellule": "A1:B9", "label": "Données", "style": "data" },
+      { "cellule": "B2:B9", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_icon_1",
+      "type": "format",
+      "subtype": "mfc_iconset",
+      "description": "Jeu d'icônes flèches appliqué",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "iconset",
+        "iconset_type": "arrows",
+        "icon_count": 3
+      },
+      "points": 30,
+      "indices": [
+        "Tu dois voir des flèches (⬆️➡️⬇️) à côté de chaque valeur.",
+        "Accueil > MFC > Jeux d'icônes > 3 flèches",
+        "Les icônes peuvent être colorées ou non selon le jeu choisi."
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_iconset", "message": "Tu as utilisé des feux tricolores ou des étoiles au lieu des flèches." },
+        { "type": "no_icons", "message": "Pas d'icônes visibles. Vérifie que tu as bien appliqué un jeu d'icônes." }
+      ]
+    },
+    {
+      "id": "cp_icon_2",
+      "type": "format",
+      "subtype": "mfc_iconset_thresholds",
+      "description": "Seuils personnalisés (>0, =0, <0)",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "green_threshold": "> 0",
+        "yellow_threshold": "= 0",
+        "red_threshold": "< 0",
+        "thresholds_custom": true
+      },
+      "points": 35,
+      "indices": [
+        "Par défaut, Excel utilise des percentiles. Tu dois personnaliser.",
+        "Gérer les règles > Modifier > Type : Nombre",
+        "Vert si >= 1, Jaune si >= 0, Rouge sinon."
+      ],
+      "erreurs_probables": [
+        { "type": "percentile_thresholds", "message": "Les seuils sont encore en pourcentile (33%, 67%). Change en 'Nombre' et mets des valeurs absolues." },
+        { "type": "wrong_thresholds", "message": "Les valeurs positives ne sont pas toutes vertes ou les négatives pas toutes rouges. Vérifie tes seuils." }
+      ]
+    },
+    {
+      "id": "cp_icon_3",
+      "type": "format",
+      "subtype": "mfc_iconset_correct",
+      "description": "Icônes correctement attribuées",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "green_arrows": ["CA", "Marge", "Nouveaux clients", "Délai"],
+        "yellow_arrows": ["Satisfaction"],
+        "red_arrows": ["Coûts", "Réclamations", "Turnover"]
+      },
+      "points": 25,
+      "indices": [
+        "4 indicateurs positifs → ⬆️ vert (CA, Marge, Nouveaux clients, Délai)",
+        "1 indicateur à zéro → ➡️ jaune (Satisfaction)",
+        "3 indicateurs négatifs → ⬇️ rouge (Coûts, Réclamations, Turnover)"
+      ]
+    },
+    {
+      "id": "cp_icon_4",
+      "type": "format",
+      "subtype": "mfc_range",
+      "description": "MFC sur la bonne plage",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "range": "B2:B9",
+        "excludes_header": true
+      },
+      "points": 10,
+      "indices": [
+        "Les icônes doivent être uniquement sur B2:B9.",
+        "L'en-tête 'Variation (%)' ne doit pas avoir d'icône."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Jeu d'icônes 3 flèches colorées sur B2:B9. Seuils personnalisés : vert >= 1, jaune >= 0, rouge < 0. 4 vertes, 1 jaune, 3 rouges.",
+    "etapes_cles": [
+      "Sélection B2:B9",
+      "MFC > Jeux d'icônes > 3 flèches",
+      "Gérer les règles > Modifier",
+      "Seuils : Type Nombre, Vert >= 1, Jaune >= 0"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Ton tableau de bord est prêt pour la présentation. Le comité voit instantanément les tendances !",
+    "bien": "👍 Très bien ! Les icônes sont là. Vérifie que les seuils sont bien personnalisés (positif = vert, négatif = rouge).",
+    "ameliorer": "⬆️ Presque ! Les flèches sont présentes mais la logique n'est pas bonne. Personnalise les seuils.",
+    "revoir": "🔄 Recommence : MFC > Jeux d'icônes > 3 flèches, puis personnalise les seuils via 'Gérer les règles'."
+  },
+
+  "pour_aller_plus_loin": [
+    "Masque les valeurs pour ne voir que les icônes (cocher 'Afficher l'icône uniquement').",
+    "Utilise 5 flèches pour plus de granularité (forte hausse, hausse, stable, baisse, forte baisse).",
+    "Inverse les couleurs pour les indicateurs où 'moins = mieux' (ex: coûts, réclamations)."
+  ]
+}

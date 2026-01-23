@@ -1,0 +1,725 @@
+{
+  "id": "intermediaire_11_comptage_ventes",
+  "titre": "Analyse Commerciale avec NB.SI",
+  "niveau": "intermediaire",
+  "duree_estimee": "25 min",
+  "competences": [
+    "NB.SI"
+  ],
+  "contexte": {
+    "situation": "Tu analyses 60 ventes pour compter les transactions par région et par produit.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Compter les ventes par région",
+    "Compter les ventes par type de produit",
+    "Identifier les régions les plus actives"
+  ],
+  "consignes": [
+    "Crée une feuille 'Analyse' avec la liste des régions uniques",
+    "Pour chaque région, utilise =NB.SI(Ventes!$D$2:$D$61;A2) pour compter les ventes",
+    "Compte les ventes de plus de 10 000€ avec NB.SI",
+    "Compte les ventes du vendeur 'Alice'",
+    "Identifie la région avec le plus de ventes",
+    "Calcule le pourcentage de ventes par région"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Produit",
+      "Vendeur",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Écran",
+        "Jack",
+        "Bourgogne-Franche-Comté",
+        23,
+        999,
+        22977
+      ],
+      [
+        "02/01/2024",
+        "Moniteur",
+        "Grace",
+        "Normandie",
+        31,
+        299,
+        9269
+      ],
+      [
+        "03/01/2024",
+        "Câble USB",
+        "Frank",
+        "Bourgogne-Franche-Comté",
+        3,
+        149,
+        447
+      ],
+      [
+        "04/01/2024",
+        "Router",
+        "Grace",
+        "Pays de la Loire",
+        33,
+        499,
+        16467
+      ],
+      [
+        "05/01/2024",
+        "Clavier",
+        "Zoé",
+        "Île-de-France",
+        48,
+        799,
+        38352
+      ],
+      [
+        "06/01/2024",
+        "Batterie",
+        "Marie",
+        "Provence-Alpes-Côte d'Azur",
+        50,
+        499,
+        24950
+      ],
+      [
+        "07/01/2024",
+        "Router",
+        "Eve",
+        "Normandie",
+        29,
+        299,
+        8671
+      ],
+      [
+        "08/01/2024",
+        "Router",
+        "Victor",
+        "Nouvelle-Aquitaine",
+        50,
+        199,
+        9950
+      ],
+      [
+        "09/01/2024",
+        "Imprimante",
+        "Rose",
+        "Bretagne",
+        44,
+        999,
+        43956
+      ],
+      [
+        "10/01/2024",
+        "Écouteurs",
+        "Nathan",
+        "Provence-Alpes-Côte d'Azur",
+        11,
+        799,
+        8789
+      ],
+      [
+        "11/01/2024",
+        "Téléphone",
+        "Wendy",
+        "Hauts-de-France",
+        34,
+        499,
+        16966
+      ],
+      [
+        "12/01/2024",
+        "Écouteurs",
+        "Quentin",
+        "Normandie",
+        27,
+        499,
+        13473
+      ],
+      [
+        "13/01/2024",
+        "Chargeur",
+        "Alice",
+        "Pays de la Loire",
+        2,
+        1299,
+        2598
+      ],
+      [
+        "14/01/2024",
+        "Clavier",
+        "Marie",
+        "Bretagne",
+        40,
+        99,
+        3960
+      ],
+      [
+        "15/01/2024",
+        "Ordinateur portable",
+        "Sam",
+        "Bretagne",
+        23,
+        499,
+        11477
+      ],
+      [
+        "16/01/2024",
+        "Housse",
+        "Leo",
+        "Bretagne",
+        33,
+        999,
+        32967
+      ],
+      [
+        "17/01/2024",
+        "Imprimante",
+        "Quentin",
+        "Occitanie",
+        35,
+        299,
+        10465
+      ],
+      [
+        "18/01/2024",
+        "Housse",
+        "Frank",
+        "Auvergne-Rhône-Alpes",
+        34,
+        499,
+        16966
+      ],
+      [
+        "19/01/2024",
+        "Câble USB",
+        "Marie",
+        "Bretagne",
+        47,
+        299,
+        14053
+      ],
+      [
+        "20/01/2024",
+        "Housse",
+        "Yves",
+        "Pays de la Loire",
+        35,
+        149,
+        5215
+      ],
+      [
+        "21/01/2024",
+        "Câble USB",
+        "Kate",
+        "Île-de-France",
+        20,
+        99,
+        1980
+      ],
+      [
+        "22/01/2024",
+        "Moniteur",
+        "Jack",
+        "Bretagne",
+        13,
+        999,
+        12987
+      ],
+      [
+        "23/01/2024",
+        "Ordinateur portable",
+        "Jack",
+        "Normandie",
+        22,
+        199,
+        4378
+      ],
+      [
+        "24/01/2024",
+        "Batterie",
+        "Rose",
+        "Centre-Val de Loire",
+        20,
+        199,
+        3980
+      ],
+      [
+        "25/01/2024",
+        "Batterie",
+        "Kate",
+        "Bourgogne-Franche-Comté",
+        7,
+        599,
+        4193
+      ],
+      [
+        "26/01/2024",
+        "Batterie",
+        "Grace",
+        "Grand Est",
+        17,
+        999,
+        16983
+      ],
+      [
+        "27/01/2024",
+        "Switch",
+        "Uma",
+        "Grand Est",
+        42,
+        599,
+        25158
+      ],
+      [
+        "28/01/2024",
+        "Disque dur",
+        "Marie",
+        "Auvergne-Rhône-Alpes",
+        15,
+        799,
+        11985
+      ],
+      [
+        "29/01/2024",
+        "Souris",
+        "Kate",
+        "Centre-Val de Loire",
+        34,
+        799,
+        27166
+      ],
+      [
+        "30/01/2024",
+        "Écouteurs",
+        "Grace",
+        "Provence-Alpes-Côte d'Azur",
+        19,
+        199,
+        3781
+      ],
+      [
+        "31/01/2024",
+        "Disque dur",
+        "Leo",
+        "Occitanie",
+        27,
+        299,
+        8073
+      ],
+      [
+        "01/02/2024",
+        "Moniteur",
+        "Zoé",
+        "Nouvelle-Aquitaine",
+        33,
+        149,
+        4917
+      ],
+      [
+        "02/02/2024",
+        "Câble USB",
+        "Iris",
+        "Bretagne",
+        9,
+        499,
+        4491
+      ],
+      [
+        "03/02/2024",
+        "Chargeur",
+        "Frank",
+        "Pays de la Loire",
+        8,
+        399,
+        3192
+      ],
+      [
+        "04/02/2024",
+        "Router",
+        "Olivia",
+        "Normandie",
+        50,
+        499,
+        24950
+      ],
+      [
+        "05/02/2024",
+        "Téléphone",
+        "Grace",
+        "Occitanie",
+        40,
+        999,
+        39960
+      ],
+      [
+        "06/02/2024",
+        "Batterie",
+        "Nathan",
+        "Occitanie",
+        20,
+        499,
+        9980
+      ],
+      [
+        "07/02/2024",
+        "Chargeur",
+        "Paul",
+        "Occitanie",
+        13,
+        149,
+        1937
+      ],
+      [
+        "08/02/2024",
+        "Clavier",
+        "Charlie",
+        "Provence-Alpes-Côte d'Azur",
+        24,
+        999,
+        23976
+      ],
+      [
+        "09/02/2024",
+        "Clavier",
+        "Uma",
+        "Pays de la Loire",
+        12,
+        299,
+        3588
+      ],
+      [
+        "10/02/2024",
+        "Chargeur",
+        "Sam",
+        "Normandie",
+        17,
+        599,
+        10183
+      ],
+      [
+        "11/02/2024",
+        "Câble USB",
+        "Alice",
+        "Provence-Alpes-Côte d'Azur",
+        8,
+        149,
+        1192
+      ],
+      [
+        "12/02/2024",
+        "Téléphone",
+        "Marie",
+        "Bretagne",
+        35,
+        1299,
+        45465
+      ],
+      [
+        "13/02/2024",
+        "Batterie",
+        "Paul",
+        "Centre-Val de Loire",
+        4,
+        499,
+        1996
+      ],
+      [
+        "14/02/2024",
+        "Webcam",
+        "Bob",
+        "Bourgogne-Franche-Comté",
+        41,
+        999,
+        40959
+      ],
+      [
+        "15/02/2024",
+        "Casque",
+        "Victor",
+        "Bretagne",
+        32,
+        99,
+        3168
+      ],
+      [
+        "16/02/2024",
+        "Housse",
+        "Tom",
+        "Île-de-France",
+        38,
+        399,
+        15162
+      ],
+      [
+        "17/02/2024",
+        "Batterie",
+        "Zoé",
+        "Île-de-France",
+        34,
+        149,
+        5066
+      ],
+      [
+        "18/02/2024",
+        "Chargeur",
+        "Henry",
+        "Hauts-de-France",
+        49,
+        99,
+        4851
+      ],
+      [
+        "19/02/2024",
+        "Router",
+        "Nathan",
+        "Bretagne",
+        12,
+        299,
+        3588
+      ],
+      [
+        "20/02/2024",
+        "Écouteurs",
+        "Henry",
+        "Bourgogne-Franche-Comté",
+        10,
+        399,
+        3990
+      ],
+      [
+        "21/02/2024",
+        "Écran",
+        "Wendy",
+        "Pays de la Loire",
+        45,
+        199,
+        8955
+      ],
+      [
+        "22/02/2024",
+        "Support",
+        "Sam",
+        "Centre-Val de Loire",
+        39,
+        299,
+        11661
+      ],
+      [
+        "23/02/2024",
+        "Écran",
+        "Rose",
+        "Auvergne-Rhône-Alpes",
+        16,
+        999,
+        15984
+      ],
+      [
+        "24/02/2024",
+        "Chargeur",
+        "Nathan",
+        "Hauts-de-France",
+        5,
+        149,
+        745
+      ],
+      [
+        "25/02/2024",
+        "Chargeur",
+        "Rose",
+        "Nouvelle-Aquitaine",
+        46,
+        599,
+        27554
+      ],
+      [
+        "26/02/2024",
+        "Housse",
+        "Victor",
+        "Occitanie",
+        42,
+        599,
+        25158
+      ],
+      [
+        "27/02/2024",
+        "Disque dur",
+        "Quentin",
+        "Auvergne-Rhône-Alpes",
+        6,
+        1299,
+        7794
+      ],
+      [
+        "28/02/2024",
+        "Téléphone",
+        "Jack",
+        "Provence-Alpes-Côte d'Azur",
+        15,
+        499,
+        7485
+      ],
+      [
+        "29/02/2024",
+        "Écouteurs",
+        "Eve",
+        "Grand Est",
+        45,
+        99,
+        4455
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "formule_nb_si_presente": true,
+    "comptages_corrects": true,
+    "score_minimum": 7.5
+  },
+  "checkpoints": [
+    {
+      "cellule": "Analyse!A2",
+      "type": "donnee",
+      "description": "Liste des régions uniques créée",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Tu dois créer une feuille 'Analyse' avec la liste des régions sans doublons.",
+        "Utilise les données de la colonne Région de la feuille Ventes pour extraire les valeurs uniques.",
+        "Copie les régions uniques en colonne A à partir de A2 dans la feuille Analyse."
+      ],
+      "id": "cp_1",
+      "competence_id": 11
+    },
+    {
+      "cellule": "Analyse!B2",
+      "type": "formule",
+      "description": "Comptage des ventes par région (première région)",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "Ventes!$D$2:$D$61",
+        "A2"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Utilise une fonction de comptage conditionnel pour compter les occurrences de chaque région.",
+        "La fonction NB.SI doit référencer la plage des régions avec des références absolues.",
+        "=NB.SI(Ventes!$D$2:$D$61;A2)"
+      ],
+      "id": "cp_2",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 11
+    },
+    {
+      "cellule": "Analyse!C2",
+      "type": "formule",
+      "description": "Comptage des ventes > 10000€",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "Ventes!",
+        ">10000"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Tu dois compter les ventes dont le montant dépasse un certain seuil.",
+        "Utilise NB.SI avec un critère de comparaison sur la colonne des totaux.",
+        "=NB.SI(Ventes!G2:G61;\">10000\")"
+      ],
+      "id": "cp_3",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 11
+    },
+    {
+      "cellule": "Analyse!D2",
+      "type": "formule",
+      "description": "Comptage des ventes d'Alice",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "Ventes!",
+        "Alice"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Compte combien de fois un vendeur spécifique apparaît dans les données.",
+        "Utilise NB.SI sur la colonne des vendeurs avec le nom exact.",
+        "=NB.SI(Ventes!C2:C61;\"Alice\")"
+      ],
+      "id": "cp_4",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 11
+    },
+    {
+      "cellule": "Analyse!E2",
+      "type": "formule",
+      "description": "Identification de la région avec le plus de ventes",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "MAX"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Tu dois trouver quelle région correspond au nombre maximum de ventes.",
+        "Combine les fonctions INDEX et EQUIV avec MAX pour trouver la région.",
+        "=INDEX(A:A;EQUIV(MAX(B:B);B:B;0))"
+      ],
+      "id": "cp_5",
+      "competence_id": 11
+    },
+    {
+      "cellule": "Analyse!F2",
+      "type": "formule",
+      "description": "Calcul du pourcentage de ventes par région (première région)",
+      "fonction": null,
+      "pattern": [
+        "B2",
+        "SOMME",
+        "/",
+        "*100"
+      ],
+      "recopie_jusqua": "F6",
+      "points": 20,
+      "indices": [
+        "Le pourcentage se calcule en divisant la part par le total, puis en multipliant par 100.",
+        "Divise le nombre de ventes de la région par la somme totale de toutes les ventes.",
+        "=B2/SOMME($B:$B)*100"
+      ],
+      "id": "cp_6",
+      "competence_id": 11
+    }
+  ],
+  "competence_ids": [
+    11
+  ]
+}

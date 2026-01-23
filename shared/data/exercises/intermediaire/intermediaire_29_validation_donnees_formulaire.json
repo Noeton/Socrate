@@ -1,0 +1,283 @@
+{
+    "id": "intermediaire_29_validation_donnees_formulaire",
+    "titre": "Validation de Données : Formulaire de Saisie Contrôlé",
+    "niveau": "intermediaire",
+    "duree_estimee": "22 min",
+    "competences": ["Validation de données", "Listes déroulantes", "Contrôle de saisie"],
+    "competence_ids": [22],
+  
+    "contexte": {
+      "situation": "Tu es responsable qualité chez MedSupply, un distributeur de matériel médical. Les commerciaux saisissent souvent des erreurs dans les bons de commande : codes produits invalides, quantités négatives, dates impossibles. Tu dois créer un formulaire qui empêche les erreurs de saisie.",
+      "manager": {
+        "nom": "Dr. Nadia Khelifi",
+        "poste": "Directrice Qualité",
+        "personnalite": "Rigoureuse, elle applique la norme ISO 9001 à la lettre.",
+        "demande": "Nos erreurs de saisie nous coûtent 50k€/an en retours et réclamations. Je veux un formulaire où il est IMPOSSIBLE de se tromper. Listes déroulantes, contrôles de plages, messages d'erreur clairs."
+      },
+      "enjeux": "Certification ISO 9001 en jeu. Les erreurs de saisie = non-conformités.",
+      "deadline": "Avant l'audit du mois prochain"
+    },
+  
+    "objectifs": [
+      "Créer des listes déroulantes pour limiter les choix",
+      "Définir des règles de validation (plages numériques, dates)",
+      "Personnaliser les messages d'erreur",
+      "Créer des listes déroulantes dynamiques (dépendantes)"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier du bon de commande",
+      "Crée une liste déroulante pour le choix du produit",
+      "Ajoute une validation pour la quantité (1-1000)",
+      "Ajoute une validation pour la date (>= aujourd'hui)",
+      "Personnalise les messages d'erreur pour guider l'utilisateur"
+    ],
+  
+    "donnees": {
+      "feuille": "Bon_Commande",
+      "formulaire": {
+        "headers": ["Champ", "Valeur", "Validation"],
+        "champs": [
+          {"nom": "N° Commande", "cellule": "B2", "validation": "Format CMD-XXXX"},
+          {"nom": "Date commande", "cellule": "B3", "validation": ">= Aujourd'hui"},
+          {"nom": "Client", "cellule": "B4", "validation": "Liste déroulante"},
+          {"nom": "Produit", "cellule": "B5", "validation": "Liste déroulante"},
+          {"nom": "Quantité", "cellule": "B6", "validation": "Entier 1-1000"},
+          {"nom": "Priorité", "cellule": "B7", "validation": "Liste: Normale, Urgente, Express"}
+        ]
+      },
+      "listes_reference": {
+        "clients": ["Hôpital Saint-Louis", "Clinique du Parc", "CHU Bordeaux", "Cabinet Médical Nord", "Pharmacie Centrale"],
+        "produits": ["Seringues 5ml (x100)", "Gants latex M (x50)", "Compresses stériles", "Masques FFP2 (x20)", "Thermomètre digital"],
+        "priorites": ["Normale", "Urgente", "Express"]
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Créer une liste déroulante simple",
+        "explications": [
+          "Une liste déroulante limite les choix possibles",
+          "L'utilisateur ne peut plus taper n'importe quoi",
+          "Accès : Données > Validation des données"
+        ],
+        "consignes": [
+          "Sélectionne la cellule B7 (Priorité)",
+          "Données > Validation des données",
+          "Autoriser : Liste",
+          "Source : Normale;Urgente;Express (séparés par ;)",
+          "OK"
+        ]
+      },
+      {
+        "phase": "B. Liste déroulante depuis une plage",
+        "consignes": [
+          "Crée d'abord la liste des clients en colonne E (E2:E6)",
+          "Sélectionne B4 (Client)",
+          "Validation > Liste > Source : =$E$2:$E$6",
+          "Coche 'Liste déroulante dans la cellule'"
+        ]
+      },
+      {
+        "phase": "C. Validation numérique",
+        "consignes": [
+          "Sélectionne B6 (Quantité)",
+          "Validation > Autoriser : Nombre entier",
+          "Données : comprise entre",
+          "Minimum : 1, Maximum : 1000"
+        ]
+      },
+      {
+        "phase": "D. Validation de date",
+        "consignes": [
+          "Sélectionne B3 (Date commande)",
+          "Validation > Autoriser : Date",
+          "Données : supérieure ou égale à",
+          "Valeur : =AUJOURDHUI()"
+        ]
+      },
+      {
+        "phase": "E. Messages d'erreur personnalisés",
+        "consignes": [
+          "Dans la validation, onglet 'Alerte d'erreur'",
+          "Style : Arrêt (bloque la saisie)",
+          "Titre : Erreur de saisie",
+          "Message : La quantité doit être entre 1 et 1000"
+        ]
+      },
+      {
+        "phase": "F. Message de saisie (aide)",
+        "consignes": [
+          "Onglet 'Message de saisie'",
+          "Titre : Quantité",
+          "Message : Entrez un nombre entre 1 et 1000",
+          "S'affiche quand l'utilisateur clique sur la cellule"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_liste_priorite",
+        "type": "validation",
+        "validation_type": "list",
+        "cellule": "B7",
+        "description": "Liste déroulante Priorité créée",
+        "competence_id": 22,
+        "expected_values": ["Normale", "Urgente", "Express"],
+        "points": 15,
+        "indices": [
+          "Données > Validation des données",
+          "Autoriser : Liste",
+          "Source : Normale;Urgente;Express"
+        ]
+      },
+      {
+        "id": "cp_2_liste_clients",
+        "type": "validation",
+        "validation_type": "list",
+        "cellule": "B4",
+        "description": "Liste déroulante Clients depuis plage",
+        "competence_id": 22,
+        "expected_count": 5,
+        "points": 15,
+        "indices": [
+          "Crée la liste des clients en E2:E6",
+          "Source de la validation : =$E$2:$E$6",
+          "5 clients dans la liste"
+        ]
+      },
+      {
+        "id": "cp_3_validation_quantite",
+        "type": "validation",
+        "validation_type": "number",
+        "cellule": "B6",
+        "description": "Quantité limitée entre 1 et 1000",
+        "competence_id": 22,
+        "expected_min": 1,
+        "expected_max": 1000,
+        "points": 20,
+        "indices": [
+          "Autoriser : Nombre entier",
+          "Données : comprise entre",
+          "Min 1, Max 1000"
+        ]
+      },
+      {
+        "id": "cp_4_validation_date",
+        "type": "validation",
+        "validation_type": "date",
+        "cellule": "B3",
+        "description": "Date >= aujourd'hui",
+        "competence_id": 22,
+        "expected_rule": ">=AUJOURDHUI()",
+        "points": 20,
+        "indices": [
+          "Autoriser : Date",
+          "Données : supérieure ou égale à",
+          "Valeur : =AUJOURDHUI()"
+        ]
+      },
+      {
+        "id": "cp_5_message_erreur",
+        "type": "validation",
+        "validation_type": "error_message",
+        "cellule": "B6",
+        "description": "Message d'erreur personnalisé pour quantité",
+        "competence_id": 22,
+        "has_custom_message": true,
+        "points": 15,
+        "indices": [
+          "Onglet 'Alerte d'erreur'",
+          "Style : Arrêt",
+          "Message explicatif pour l'utilisateur"
+        ]
+      },
+      {
+        "id": "cp_6_liste_produits",
+        "type": "validation",
+        "validation_type": "list",
+        "cellule": "B5",
+        "description": "Liste déroulante Produits",
+        "competence_id": 22,
+        "expected_count": 5,
+        "points": 15,
+        "indices": [
+          "Même principe que pour les clients",
+          "Liste des produits en colonne F ou G",
+          "Source : plage avec les 5 produits"
+        ]
+      }
+    ],
+  
+    "types_validation": [
+      {
+        "type": "Liste",
+        "usage": "Choix parmi des options prédéfinies",
+        "exemple": "Catégories, statuts, priorités"
+      },
+      {
+        "type": "Nombre entier",
+        "usage": "Quantités, codes, identifiants",
+        "exemple": "Quantité entre 1 et 100"
+      },
+      {
+        "type": "Décimal",
+        "usage": "Prix, pourcentages, mesures",
+        "exemple": "Prix entre 0 et 10000"
+      },
+      {
+        "type": "Date",
+        "usage": "Dates de livraison, échéances",
+        "exemple": "Date >= aujourd'hui"
+      },
+      {
+        "type": "Heure",
+        "usage": "Horaires, durées",
+        "exemple": "Heure entre 8:00 et 18:00"
+      },
+      {
+        "type": "Longueur du texte",
+        "usage": "Codes, références, commentaires limités",
+        "exemple": "Code de 5 caractères exactement"
+      },
+      {
+        "type": "Personnalisé",
+        "usage": "Règles complexes avec formules",
+        "exemple": "=ET(B2>0;B2<B3) - valeur positive et < autre cellule"
+      }
+    ],
+  
+    "bonnes_pratiques": [
+      "Toujours ajouter un message de saisie pour guider l'utilisateur",
+      "Utiliser 'Arrêt' pour les erreurs critiques, 'Avertissement' pour les alertes",
+      "Créer les listes de référence dans un onglet séparé 'Paramètres'",
+      "Nommer les plages (Gestionnaire de noms) pour des formules plus lisibles",
+      "Tester chaque validation avec des valeurs limites"
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Ton formulaire est maintenant à l'épreuve des erreurs. Les commerciaux ne pourront plus se tromper ! ✅",
+      "partiel": "Bon début ! Vérifie que toutes les validations sont en place et que les messages d'erreur sont clairs.",
+      "echec": "La validation de données est essentielle pour la qualité. Reprends étape par étape : d'abord une liste simple, puis les contrôles numériques."
+    },
+  
+    "socrate_message": {
+      "intro": "La validation de données, c'est le gardien de ton fichier Excel ! 🛡️ Elle empêche les erreurs AVANT qu'elles n'arrivent.",
+      "conclusion": "Tu sais maintenant créer des formulaires professionnels. Listes déroulantes + validations = zéro erreur de saisie ! 🎯"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["validation", "listes déroulantes", "contrôle saisie", "formulaire", "qualité", "intermédiaire"],
+      "prerequis": ["Formatage cellules", "Références absolues"],
+      "ouvre_vers": ["Listes dynamiques", "Formules de validation avancées"]
+    }
+  }

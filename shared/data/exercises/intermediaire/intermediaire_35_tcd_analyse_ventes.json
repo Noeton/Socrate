@@ -1,0 +1,271 @@
+{
+    "id": "intermediaire_35_tcd_analyse_ventes",
+    "titre": "Tableaux Croisés Dynamiques : L'Outil d'Analyse Ultime",
+    "niveau": "intermediaire",
+    "duree_estimee": "30 min",
+    "competences": ["Tableaux croisés dynamiques", "TCD", "Analyse multidimensionnelle"],
+    "competence_ids": [17],
+  
+    "contexte": {
+      "situation": "Tu es contrôleur de gestion chez AutoPièces, un distributeur de pièces automobiles. Tu as 5000 lignes de ventes et le directeur veut des analyses croisées : CA par région ET par catégorie, évolution mensuelle par commercial, top produits par trimestre... Les formules classiques prendraient des heures. Le TCD fait ça en quelques clics.",
+      "manager": {
+        "nom": "François Mercier",
+        "poste": "Directeur Général",
+        "personnalite": "Stratégique, il veut voir les données sous tous les angles.",
+        "demande": "Je veux pouvoir analyser nos ventes par région, par commercial, par catégorie, par mois... Et changer de vue en 2 secondes. Les tableaux croisés dynamiques peuvent faire ça, non ?"
+      },
+      "enjeux": "Pilotage stratégique de l'entreprise.",
+      "deadline": "Comité de direction mensuel"
+    },
+  
+    "objectifs": [
+      "Créer un tableau croisé dynamique à partir de données brutes",
+      "Organiser les champs en lignes, colonnes et valeurs",
+      "Modifier dynamiquement la structure du TCD",
+      "Utiliser les filtres et segments",
+      "Créer des calculs personnalisés (% du total, différence...)"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les données de ventes",
+      "Crée un TCD montrant le CA par Région et Catégorie",
+      "Ajoute une dimension temporelle (Mois)",
+      "Utilise les segments pour filtrer interactivement"
+    ],
+  
+    "donnees": {
+      "feuille": "Ventes",
+      "headers": ["ID", "Date", "Région", "Commercial", "Catégorie", "Produit", "Quantité", "CA"],
+      "rows": [
+        ["V001", "15/01/2025", "Nord", "Martin", "Freinage", "Plaquettes AV", 12, 480],
+        ["V002", "18/01/2025", "Sud", "Dubois", "Moteur", "Filtre à huile", 25, 375],
+        ["V003", "22/01/2025", "Nord", "Martin", "Électrique", "Batterie 60Ah", 8, 720],
+        ["V004", "25/01/2025", "Est", "Bernard", "Freinage", "Disques AV", 15, 675],
+        ["V005", "02/02/2025", "Sud", "Petit", "Moteur", "Courroie distrib", 10, 450],
+        ["V006", "08/02/2025", "Ouest", "Dubois", "Suspension", "Amortisseurs AV", 6, 540],
+        ["V007", "12/02/2025", "Nord", "Martin", "Freinage", "Plaquettes AR", 18, 630],
+        ["V008", "15/02/2025", "Est", "Bernard", "Électrique", "Alternateur", 4, 560],
+        ["V009", "20/02/2025", "Sud", "Petit", "Moteur", "Pompe à eau", 7, 385],
+        ["V010", "25/02/2025", "Ouest", "Dubois", "Suspension", "Ressorts AR", 9, 405],
+        ["V011", "03/03/2025", "Nord", "Martin", "Électrique", "Démarreur", 5, 475],
+        ["V012", "08/03/2025", "Sud", "Petit", "Freinage", "Kit freins AR", 11, 605],
+        ["V013", "15/03/2025", "Est", "Bernard", "Moteur", "Joint culasse", 3, 285],
+        ["V014", "20/03/2025", "Ouest", "Dubois", "Électrique", "Batterie 70Ah", 6, 594],
+        ["V015", "28/03/2025", "Nord", "Martin", "Suspension", "Rotules", 14, 420]
+      ],
+      "position": "A1:H16",
+      "note": "En réalité, tu aurais des milliers de lignes"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Créer le TCD",
+        "etapes": [
+          "Sélectionne une cellule dans tes données",
+          "Insertion > Tableau croisé dynamique",
+          "Choisis 'Nouvelle feuille de calcul'",
+          "OK"
+        ],
+        "resultat": "Un TCD vide apparaît avec le volet 'Champs' à droite"
+      },
+      {
+        "phase": "B. Comprendre les zones",
+        "zones": [
+          "FILTRES : pour filtrer tout le TCD (ex: Année)",
+          "COLONNES : en-têtes horizontaux (ex: Mois)",
+          "LIGNES : en-têtes verticaux (ex: Région, Catégorie)",
+          "VALEURS : les données à calculer (ex: Somme de CA)"
+        ]
+      },
+      {
+        "phase": "C. Premier TCD : CA par Région",
+        "actions": [
+          "Glisse 'Région' dans LIGNES",
+          "Glisse 'CA' dans VALEURS",
+          "Le TCD affiche automatiquement la somme du CA par région"
+        ]
+      },
+      {
+        "phase": "D. Ajouter une dimension : CA par Région ET Catégorie",
+        "actions": [
+          "Glisse 'Catégorie' dans COLONNES",
+          "Tu obtiens une matrice Région × Catégorie",
+          "Les totaux sont calculés automatiquement"
+        ]
+      },
+      {
+        "phase": "E. Changer le calcul",
+        "acces": "Clic droit sur une valeur > Synthétiser les valeurs par",
+        "options": ["Somme", "Nombre", "Moyenne", "Max", "Min"],
+        "astuce": "Clic droit > Afficher les valeurs > % du total général"
+      },
+      {
+        "phase": "F. Ajouter des segments (filtres visuels)",
+        "acces": "Analyse du tableau croisé > Insérer un segment",
+        "avantage": "Boutons cliquables pour filtrer sans ouvrir de menus"
+      },
+      {
+        "phase": "G. Grouper les dates",
+        "acces": "Clic droit sur une date > Grouper",
+        "options": ["Mois", "Trimestres", "Années"],
+        "resultat": "Analyse temporelle automatique"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_tcd_cree",
+        "type": "tcd_existe",
+        "description": "TCD créé à partir des données",
+        "competence_id": 17,
+        "points": 10,
+        "indices": [
+          "Insertion > Tableau croisé dynamique",
+          "Sélectionne tes données d'abord",
+          "Le TCD peut être dans une nouvelle feuille"
+        ]
+      },
+      {
+        "id": "cp_2_ca_par_region",
+        "type": "tcd_structure",
+        "description": "TCD avec CA par Région",
+        "competence_id": 17,
+        "expected_rows": ["Est", "Nord", "Ouest", "Sud"],
+        "expected_values_field": "CA",
+        "points": 15,
+        "indices": [
+          "Glisse 'Région' dans la zone LIGNES",
+          "Glisse 'CA' dans la zone VALEURS",
+          "4 régions doivent apparaître"
+        ]
+      },
+      {
+        "id": "cp_3_total_nord",
+        "type": "tcd_valeur",
+        "description": "CA total région Nord",
+        "competence_id": 17,
+        "expected_value": 2725,
+        "points": 15,
+        "indices": [
+          "Somme des ventes Nord",
+          "480 + 720 + 630 + 475 + 420 = 2725",
+          "Vérifie que c'est bien une SOMME"
+        ]
+      },
+      {
+        "id": "cp_4_matrice_region_categorie",
+        "type": "tcd_structure",
+        "description": "TCD Région × Catégorie",
+        "competence_id": 17,
+        "expected_rows": ["Région"],
+        "expected_columns": ["Catégorie"],
+        "points": 20,
+        "indices": [
+          "Région en LIGNES, Catégorie en COLONNES",
+          "Tu obtiens une matrice croisée",
+          "Les totaux ligne et colonne apparaissent"
+        ]
+      },
+      {
+        "id": "cp_5_ca_nord_freinage",
+        "type": "tcd_valeur",
+        "description": "CA Nord × Freinage",
+        "competence_id": 17,
+        "expected_value": 1110,
+        "points": 15,
+        "indices": [
+          "Intersection Nord et Freinage",
+          "480 (Plaquettes AV) + 630 (Plaquettes AR) = 1110",
+          "Cellule à l'intersection"
+        ]
+      },
+      {
+        "id": "cp_6_pourcentage",
+        "type": "tcd_format",
+        "description": "Affichage en % du total",
+        "competence_id": 17,
+        "expected_format": "pourcentage",
+        "points": 15,
+        "indices": [
+          "Clic droit sur une valeur > Afficher les valeurs",
+          "% du total général",
+          "Les valeurs deviennent des pourcentages"
+        ]
+      },
+      {
+        "id": "cp_7_segment",
+        "type": "tcd_segment",
+        "description": "Segment ajouté pour Commercial",
+        "competence_id": 17,
+        "expected_segment_field": "Commercial",
+        "points": 10,
+        "indices": [
+          "Analyse > Insérer un segment",
+          "Coche 'Commercial'",
+          "Des boutons cliquables apparaissent"
+        ]
+      }
+    ],
+  
+    "cas_usage_avances": [
+      {
+        "cas": "Évolution mensuelle",
+        "methode": "Date en LIGNES > Clic droit > Grouper > Mois"
+      },
+      {
+        "cas": "Top 10 produits",
+        "methode": "Filtre de valeurs > 10 premiers"
+      },
+      {
+        "cas": "Comparaison N/N-1",
+        "methode": "Afficher les valeurs > Différence par rapport à > Année précédente"
+      },
+      {
+        "cas": "Champ calculé",
+        "methode": "Analyse > Champs, éléments et jeux > Champ calculé"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Données sources mal structurées",
+        "symptome": "Champs manquants ou mal reconnus",
+        "solution": "Une ligne = un enregistrement, une colonne = un champ, pas de cellules fusionnées"
+      },
+      {
+        "erreur": "TCD ne se met pas à jour",
+        "symptome": "Nouvelles données non visibles",
+        "solution": "Clic droit > Actualiser, ou Analyse > Actualiser"
+      },
+      {
+        "erreur": "Comptage au lieu de Somme",
+        "symptome": "Valeurs incorrectes (nombre de lignes)",
+        "solution": "Clic droit > Synthétiser les valeurs par > Somme"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Félicitations ! Tu maîtrises les tableaux croisés dynamiques. C'est l'outil le plus puissant d'Excel pour l'analyse. Tu viens de gagner des heures de travail ! 🏆",
+      "partiel": "Bon début avec les TCD ! L'astuce : glisse-dépose les champs dans les bonnes zones. Région en lignes, CA en valeurs, et c'est parti.",
+      "echec": "Les TCD semblent complexes au début, mais c'est juste du glisser-déposer. Crée d'abord un TCD simple avec une seule dimension, puis ajoute-en."
+    },
+  
+    "socrate_message": {
+      "intro": "Les tableaux croisés dynamiques, c'est la magie d'Excel ! ✨ Ce qui prendrait 2 heures en formules se fait en 2 minutes avec un TCD.",
+      "conclusion": "Tu maîtrises maintenant l'outil d'analyse le plus puissant d'Excel. Les TCD transforment des milliers de lignes en insights en quelques clics. Game changer ! 🚀"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["TCD", "tableau croisé dynamique", "pivot", "analyse", "intermédiaire"],
+      "prerequis": ["Tri", "Filtres", "Structure de données"],
+      "ouvre_vers": ["Graphiques croisés dynamiques", "Power Pivot", "DAX"]
+    }
+  }

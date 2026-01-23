@@ -1,0 +1,285 @@
+{
+    "id": "intermediaire_31_fonctions_dates_complet",
+    "titre": "Maîtriser les Fonctions Date : DATEDIF, ANNEE, MOIS et Plus",
+    "niveau": "intermediaire",
+    "duree_estimee": "25 min",
+    "competences": ["Fonctions date", "DATEDIF", "ANNEE", "MOIS", "JOUR", "FIN.MOIS"],
+    "competence_ids": [21],
+  
+    "contexte": {
+      "situation": "Tu es assistant(e) RH chez ConseilPlus, un cabinet de conseil. Tu dois préparer plusieurs analyses basées sur les dates : ancienneté des consultants, dates d'anniversaire de contrat, échéances de périodes d'essai, calcul d'âge pour les statistiques.",
+      "manager": {
+        "nom": "Amélie Rousseau",
+        "poste": "DRH",
+        "personnalite": "Orientée données, elle veut des tableaux de bord RH précis.",
+        "demande": "J'ai besoin de calculer l'ancienneté exacte en années/mois/jours, les dates de fin de période d'essai, et l'âge de chaque consultant. Excel sait faire tout ça automatiquement, non ?"
+      },
+      "enjeux": "Rapports sociaux obligatoires + planning des entretiens annuels.",
+      "deadline": "Pour le bilan social du mois"
+    },
+  
+    "objectifs": [
+      "Calculer des durées entre deux dates avec DATEDIF",
+      "Extraire année, mois, jour d'une date",
+      "Calculer des échéances avec FIN.MOIS et MOIS.DECALER",
+      "Utiliser AUJOURDHUI() pour des calculs dynamiques",
+      "Formater et manipuler les dates"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec la liste des consultants",
+      "Calcule l'ancienneté en années, mois et jours",
+      "Calcule l'âge de chaque consultant",
+      "Détermine la date de fin de période d'essai (embauche + 3 mois)",
+      "Identifie le mois et l'année d'embauche pour les statistiques"
+    ],
+  
+    "donnees": {
+      "feuille": "Consultants",
+      "headers": ["ID", "Nom", "Date naissance", "Date embauche", "Ancienneté (ans)", "Ancienneté (mois)", "Âge", "Fin période essai", "Mois embauche", "Année embauche"],
+      "rows": [
+        ["C001", "Martin Sophie", "15/03/1985", "01/09/2020", null, null, null, null, null, null],
+        ["C002", "Dubois Thomas", "22/07/1990", "15/01/2019", null, null, null, null, null, null],
+        ["C003", "Bernard Claire", "08/11/1988", "01/06/2023", null, null, null, null, null, null],
+        ["C004", "Petit Lucas", "30/04/1992", "20/03/2021", null, null, null, null, null, null],
+        ["C005", "Robert Emma", "12/12/1987", "05/11/2018", null, null, null, null, null, null],
+        ["C006", "Durand Marc", "25/01/1995", "01/02/2024", null, null, null, null, null, null],
+        ["C007", "Leroy Julie", "18/06/1983", "10/07/2015", null, null, null, null, null, null],
+        ["C008", "Moreau Antoine", "03/09/1991", "01/04/2022", null, null, null, null, null, null]
+      ]
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. DATEDIF - Calculer des durées",
+        "explications": [
+          "DATEDIF(date_début; date_fin; unité) calcule la différence entre 2 dates",
+          "Unités : 'Y' = années, 'M' = mois, 'D' = jours",
+          "Unités combinées : 'YM' = mois restants après années, 'MD' = jours restants"
+        ],
+        "syntaxe": "=DATEDIF(D2; AUJOURDHUI(); \"Y\") → ancienneté en années complètes"
+      },
+      {
+        "phase": "B. Ancienneté en années",
+        "consignes": [
+          "En E2, calcule l'ancienneté en années complètes :",
+          "=DATEDIF(D2;AUJOURDHUI();\"Y\")",
+          "D2 = date d'embauche",
+          "AUJOURDHUI() = date du jour",
+          "\"Y\" = années complètes"
+        ]
+      },
+      {
+        "phase": "C. Ancienneté en mois totaux",
+        "consignes": [
+          "En F2, calcule l'ancienneté en mois TOTAUX :",
+          "=DATEDIF(D2;AUJOURDHUI();\"M\")",
+          "\"M\" = nombre total de mois (pas seulement les mois restants)"
+        ]
+      },
+      {
+        "phase": "D. Calculer l'âge",
+        "consignes": [
+          "En G2, calcule l'âge du consultant :",
+          "=DATEDIF(C2;AUJOURDHUI();\"Y\")",
+          "C2 = date de naissance",
+          "Même principe que l'ancienneté"
+        ]
+      },
+      {
+        "phase": "E. Date de fin de période d'essai",
+        "consignes": [
+          "Période d'essai = 3 mois après embauche",
+          "En H2 : =FIN.MOIS(D2;3)",
+          "Ou : =MOIS.DECALER(D2;3;0) si tu veux garder le même jour",
+          "Ou simplement : =DATE(ANNEE(D2);MOIS(D2)+3;JOUR(D2))"
+        ]
+      },
+      {
+        "phase": "F. Extraire mois et année",
+        "consignes": [
+          "En I2 (mois d'embauche) : =MOIS(D2)",
+          "En J2 (année d'embauche) : =ANNEE(D2)",
+          "Utile pour les statistiques par période"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_anciennete_annees",
+        "cellule": "E2",
+        "type": "formule",
+        "description": "Ancienneté en années avec DATEDIF",
+        "competence_id": 21,
+        "fonction": "DATEDIF",
+        "pattern": ["DATEDIF", "D2", "AUJOURDHUI", "Y"],
+        "points": 20,
+        "indices": [
+          "DATEDIF calcule la différence entre 2 dates",
+          "=DATEDIF(date_début; date_fin; unité)",
+          "=DATEDIF(D2;AUJOURDHUI();\"Y\")"
+        ]
+      },
+      {
+        "id": "cp_2_anciennete_mois",
+        "cellule": "F2",
+        "type": "formule",
+        "description": "Ancienneté en mois totaux",
+        "competence_id": 21,
+        "fonction": "DATEDIF",
+        "pattern": ["DATEDIF", "D2", "M"],
+        "points": 15,
+        "indices": [
+          "\"M\" = mois totaux",
+          "=DATEDIF(D2;AUJOURDHUI();\"M\")",
+          "Ex: 4 ans 3 mois = 51 mois"
+        ]
+      },
+      {
+        "id": "cp_3_age",
+        "cellule": "G2",
+        "type": "formule",
+        "description": "Âge calculé avec DATEDIF",
+        "competence_id": 21,
+        "fonction": "DATEDIF",
+        "pattern": ["DATEDIF", "C2", "Y"],
+        "points": 15,
+        "indices": [
+          "Même principe mais avec date de naissance (C2)",
+          "=DATEDIF(C2;AUJOURDHUI();\"Y\")",
+          "Martin Sophie née en 1985"
+        ]
+      },
+      {
+        "id": "cp_4_fin_essai",
+        "cellule": "H2",
+        "type": "formule",
+        "description": "Date fin période d'essai (+3 mois)",
+        "competence_id": 21,
+        "pattern": ["FIN.MOIS", "3"],
+        "alternative_patterns": [["MOIS.DECALER"], ["DATE", "MOIS", "+3"]],
+        "points": 15,
+        "indices": [
+          "FIN.MOIS(date; nb_mois) → dernier jour du mois cible",
+          "=FIN.MOIS(D2;3) pour +3 mois",
+          "Ou =DATE(ANNEE(D2);MOIS(D2)+3;JOUR(D2))"
+        ]
+      },
+      {
+        "id": "cp_5_mois_embauche",
+        "cellule": "I2",
+        "type": "formule",
+        "description": "Extraction du mois d'embauche",
+        "competence_id": 21,
+        "fonction": "MOIS",
+        "pattern": ["MOIS", "D2"],
+        "expected_value": 9,
+        "points": 10,
+        "indices": [
+          "MOIS(date) extrait le numéro du mois",
+          "=MOIS(D2)",
+          "01/09/2020 → 9 (septembre)"
+        ]
+      },
+      {
+        "id": "cp_6_annee_embauche",
+        "cellule": "J2",
+        "type": "formule",
+        "description": "Extraction de l'année d'embauche",
+        "competence_id": 21,
+        "fonction": "ANNEE",
+        "pattern": ["ANNEE", "D2"],
+        "expected_value": 2020,
+        "points": 10,
+        "indices": [
+          "ANNEE(date) extrait l'année",
+          "=ANNEE(D2)",
+          "01/09/2020 → 2020"
+        ]
+      },
+      {
+        "id": "cp_7_recopie_complete",
+        "cellule": "E9",
+        "type": "formule",
+        "description": "Formules recopiées sur toutes les lignes",
+        "competence_id": 21,
+        "fonction": "DATEDIF",
+        "pattern": ["DATEDIF", "D9"],
+        "points": 15,
+        "indices": [
+          "Les formules doivent être recopiées jusqu'à la ligne 9",
+          "Vérifie que les références s'adaptent (D2→D9)",
+          "Moreau Antoine doit avoir son ancienneté calculée"
+        ]
+      }
+    ],
+  
+    "fonctions_date_recap": [
+      {
+        "fonction": "AUJOURDHUI()",
+        "description": "Date du jour (se met à jour automatiquement)",
+        "exemple": "=AUJOURDHUI() → 21/01/2026"
+      },
+      {
+        "fonction": "ANNEE(date)",
+        "description": "Extrait l'année d'une date",
+        "exemple": "=ANNEE(\"15/03/2020\") → 2020"
+      },
+      {
+        "fonction": "MOIS(date)",
+        "description": "Extrait le mois (1-12)",
+        "exemple": "=MOIS(\"15/03/2020\") → 3"
+      },
+      {
+        "fonction": "JOUR(date)",
+        "description": "Extrait le jour (1-31)",
+        "exemple": "=JOUR(\"15/03/2020\") → 15"
+      },
+      {
+        "fonction": "DATEDIF(début;fin;unité)",
+        "description": "Calcule la différence entre 2 dates",
+        "unites": ["Y=années", "M=mois", "D=jours", "YM=mois restants", "MD=jours restants"]
+      },
+      {
+        "fonction": "FIN.MOIS(date;mois)",
+        "description": "Dernier jour du mois à +/- n mois",
+        "exemple": "=FIN.MOIS(\"15/01/2024\";2) → 31/03/2024"
+      },
+      {
+        "fonction": "DATE(année;mois;jour)",
+        "description": "Crée une date à partir de composants",
+        "exemple": "=DATE(2024;12;25) → 25/12/2024"
+      },
+      {
+        "fonction": "JOURSEM(date)",
+        "description": "Jour de la semaine (1=dim à 7=sam)",
+        "exemple": "=JOURSEM(\"21/01/2026\") → 4 (mercredi)"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises les fonctions date d'Excel. DATEDIF, ANNEE, MOIS, FIN.MOIS... tu peux tout calculer maintenant ! 📅",
+      "partiel": "Bien joué ! Vérifie les unités de DATEDIF : \"Y\" pour années, \"M\" pour mois totaux.",
+      "echec": "Les dates Excel sont puissantes mais demandent de la pratique. DATEDIF est la clé pour les durées."
+    },
+  
+    "socrate_message": {
+      "intro": "Les dates dans Excel, c'est un monde ! 📆 DATEDIF est ta fonction magique pour calculer des durées. Âge, ancienneté, échéances... tout devient simple.",
+      "conclusion": "Tu maîtrises maintenant les dates Excel ! DATEDIF pour les durées, ANNEE/MOIS/JOUR pour extraire, FIN.MOIS pour les échéances. Puissant ! 🗓️"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["dates", "DATEDIF", "ANNEE", "MOIS", "JOUR", "FIN.MOIS", "ancienneté", "âge", "intermédiaire"],
+      "prerequis": ["Formules de base"],
+      "ouvre_vers": ["NB.JOURS.OUVRES", "Plannings avancés"]
+    }
+  }

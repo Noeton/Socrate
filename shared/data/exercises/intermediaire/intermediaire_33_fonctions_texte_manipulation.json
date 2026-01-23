@@ -1,0 +1,281 @@
+{
+    "id": "intermediaire_33_fonctions_texte_manipulation",
+    "titre": "Fonctions Texte : Manipuler et Transformer les Données",
+    "niveau": "intermediaire",
+    "duree_estimee": "22 min",
+    "competences": ["CONCATENER", "CONCAT", "GAUCHE", "DROITE", "STXT", "CHERCHE", "NBCAR"],
+    "competence_ids": [19, 20],
+  
+    "contexte": {
+      "situation": "Tu travailles au service client de TélécomPlus. Les données clients arrivent en vrac : noms en majuscules, prénoms et noms collés, codes clients mal formatés... Tu dois nettoyer et restructurer ces données pour les importer dans le nouveau CRM.",
+      "manager": {
+        "nom": "Fatima Benali",
+        "poste": "Responsable Base de Données",
+        "personnalite": "Perfectionniste sur la qualité des données, elle refuse les imports mal formatés.",
+        "demande": "J'ai 5000 lignes à nettoyer. Les noms sont en MAJUSCULES, les codes clients n'ont pas le bon format, et je dois séparer prénom/nom. Tu peux automatiser ça avec des formules ?"
+      },
+      "enjeux": "Migration CRM bloquée tant que les données ne sont pas propres.",
+      "deadline": "Import prévu lundi"
+    },
+  
+    "objectifs": [
+      "Concaténer des textes avec CONCATENER, CONCAT et &",
+      "Extraire des parties de texte avec GAUCHE, DROITE, STXT",
+      "Trouver la position d'un caractère avec CHERCHE/TROUVE",
+      "Compter les caractères avec NBCAR",
+      "Transformer la casse avec MAJUSCULE, MINUSCULE, NOMPROPRE"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les données clients à nettoyer",
+      "Sépare les prénoms et noms qui sont collés",
+      "Reformate les codes clients au bon format",
+      "Crée des adresses email standardisées",
+      "Nettoie et transforme les données texte"
+    ],
+  
+    "donnees": {
+      "feuille": "Clients",
+      "headers": ["ID", "Nom_Complet", "Code_Brut", "Telephone", "Ville"],
+      "rows": [
+        ["1", "MARTIN Sophie", "cli001234", "0612345678", "PARIS"],
+        ["2", "DUBOIS Thomas", "cli005678", "0698765432", "LYON"],
+        ["3", "BERNARD Claire", "cli009012", "0654321098", "MARSEILLE"],
+        ["4", "PETIT Lucas", "cli003456", "0687654321", "BORDEAUX"],
+        ["5", "ROBERT Emma", "cli007890", "0621098765", "TOULOUSE"],
+        ["6", "DURAND Marc", "cli002345", "0643210987", "NANTES"],
+        ["7", "LEROY Julie", "cli006789", "0676543210", "STRASBOURG"],
+        ["8", "MOREAU Antoine", "cli000123", "0609876543", "LILLE"]
+      ],
+      "position": "A1:E9",
+      "objectif_format": {
+        "code_client": "CLI-XXXX (majuscules, tiret, 4 chiffres)",
+        "email": "prenom.nom@telecomplus.fr (tout en minuscules)",
+        "nom_propre": "Sophie Martin (Nompropre)"
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Concaténation - Assembler des textes",
+        "methodes": [
+          "Opérateur & : =A1&\" \"&B1 → assemble A1, espace, B1",
+          "CONCATENER : =CONCATENER(A1;\" \";B1) → même résultat",
+          "CONCAT : =CONCAT(A1;\" \";B1) → version moderne (Excel 2016+)"
+        ],
+        "exemple": "=CONCATENER(\"Bonjour \";A2;\" !\") → 'Bonjour Sophie !'"
+      },
+      {
+        "phase": "B. GAUCHE - Extraire depuis le début",
+        "syntaxe": "=GAUCHE(texte; nb_caractères)",
+        "exemple": "=GAUCHE(\"cli001234\";3) → 'cli'",
+        "usage": "Extraire un préfixe, un code, les premières lettres"
+      },
+      {
+        "phase": "C. DROITE - Extraire depuis la fin",
+        "syntaxe": "=DROITE(texte; nb_caractères)",
+        "exemple": "=DROITE(\"cli001234\";6) → '001234'",
+        "usage": "Extraire un suffixe, les derniers chiffres"
+      },
+      {
+        "phase": "D. STXT - Extraire au milieu",
+        "syntaxe": "=STXT(texte; position_début; nb_caractères)",
+        "exemple": "=STXT(\"cli001234\";4;4) → '0012' (commence position 4, prend 4 car.)",
+        "usage": "Extraire une partie spécifique"
+      },
+      {
+        "phase": "E. CHERCHE - Trouver la position d'un caractère",
+        "syntaxe": "=CHERCHE(caractère; texte; [début])",
+        "exemple": "=CHERCHE(\" \";\"MARTIN Sophie\") → 7 (l'espace est en position 7)",
+        "usage": "Trouver où couper un texte (ex: séparer prénom/nom)"
+      },
+      {
+        "phase": "F. NBCAR - Compter les caractères",
+        "syntaxe": "=NBCAR(texte)",
+        "exemple": "=NBCAR(\"Sophie\") → 6",
+        "usage": "Calculer la longueur pour DROITE dynamique"
+      },
+      {
+        "phase": "G. Transformation de casse",
+        "fonctions": [
+          "MAJUSCULE(texte) → TOUT EN MAJUSCULES",
+          "MINUSCULE(texte) → tout en minuscules",
+          "NOMPROPRE(texte) → Première Lettre En Majuscule"
+        ]
+      },
+      {
+        "phase": "H. Combiner pour séparer prénom/nom",
+        "probleme": "Séparer 'MARTIN Sophie' en nom et prénom",
+        "solution_nom": "=GAUCHE(B2;CHERCHE(\" \";B2)-1) → 'MARTIN'",
+        "solution_prenom": "=STXT(B2;CHERCHE(\" \";B2)+1;100) → 'Sophie'",
+        "explication": "CHERCHE trouve l'espace, GAUCHE/STXT extraient avant/après"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_code_formate",
+        "cellule": "G2",
+        "type": "valeur",
+        "description": "Code client reformaté (CLI-1234)",
+        "competence_id": 19,
+        "expected_value": "CLI-1234",
+        "points": 15,
+        "indices": [
+          "Extraire les 4 derniers chiffres avec DROITE",
+          "Concaténer avec 'CLI-'",
+          "=CONCAT(\"CLI-\";DROITE(C2;4)) ou =\"CLI-\"&DROITE(C2;4)"
+        ]
+      },
+      {
+        "id": "cp_2_formule_concat",
+        "cellule": "G2",
+        "type": "formule",
+        "description": "Utilisation de concaténation",
+        "competence_id": 19,
+        "pattern": ["DROITE", "CLI"],
+        "points": 10,
+        "indices": [
+          "Combine DROITE et concaténation",
+          "& ou CONCAT ou CONCATENER",
+          "Extrait les 4 derniers caractères"
+        ]
+      },
+      {
+        "id": "cp_3_nom_seul",
+        "cellule": "H2",
+        "type": "valeur",
+        "description": "Extraction du nom (avant l'espace)",
+        "competence_id": 20,
+        "expected_value": "MARTIN",
+        "points": 15,
+        "indices": [
+          "Le nom est avant l'espace",
+          "CHERCHE(\" \";B2) trouve la position de l'espace",
+          "=GAUCHE(B2;CHERCHE(\" \";B2)-1)"
+        ]
+      },
+      {
+        "id": "cp_4_prenom_seul",
+        "cellule": "I2",
+        "type": "valeur",
+        "description": "Extraction du prénom (après l'espace)",
+        "competence_id": 20,
+        "expected_value": "Sophie",
+        "points": 15,
+        "indices": [
+          "Le prénom est après l'espace",
+          "=STXT(B2;CHERCHE(\" \";B2)+1;100)",
+          "Ou =DROITE(B2;NBCAR(B2)-CHERCHE(\" \";B2))"
+        ]
+      },
+      {
+        "id": "cp_5_email",
+        "cellule": "J2",
+        "type": "valeur",
+        "description": "Email généré (prenom.nom@telecomplus.fr)",
+        "competence_id": 19,
+        "expected_value": "sophie.martin@telecomplus.fr",
+        "points": 20,
+        "indices": [
+          "Format : prenom.nom@telecomplus.fr en minuscules",
+          "Utilise MINUSCULE pour tout mettre en minuscules",
+          "=MINUSCULE(I2&\".\"&H2&\"@telecomplus.fr\")"
+        ]
+      },
+      {
+        "id": "cp_6_nom_propre",
+        "cellule": "K2",
+        "type": "valeur",
+        "description": "Nom complet en NomPropre",
+        "competence_id": 20,
+        "expected_value": "Martin Sophie",
+        "points": 10,
+        "indices": [
+          "NOMPROPRE met la 1ère lettre en majuscule",
+          "=NOMPROPRE(B2)",
+          "'MARTIN Sophie' → 'Martin Sophie'"
+        ]
+      },
+      {
+        "id": "cp_7_telephone_formate",
+        "cellule": "L2",
+        "type": "valeur",
+        "description": "Téléphone formaté (06 12 34 56 78)",
+        "competence_id": 20,
+        "expected_value": "06 12 34 56 78",
+        "points": 15,
+        "indices": [
+          "Insérer des espaces tous les 2 chiffres",
+          "=GAUCHE(D2;2)&\" \"&STXT(D2;3;2)&\" \"&STXT(D2;5;2)&\" \"&STXT(D2;7;2)&\" \"&DROITE(D2;2)",
+          "Ou utiliser SUBSTITUE avec un peu de magie"
+        ]
+      }
+    ],
+  
+    "fonctions_complementaires": [
+      {
+        "fonction": "SUPPRESPACE(texte)",
+        "description": "Supprime les espaces en trop",
+        "exemple": "=SUPPRESPACE(\"  Sophie  Martin  \") → 'Sophie Martin'"
+      },
+      {
+        "fonction": "SUBSTITUE(texte;ancien;nouveau)",
+        "description": "Remplace un texte par un autre",
+        "exemple": "=SUBSTITUE(\"cli001234\";\"cli\";\"CLI-\") → 'CLI-001234'"
+      },
+      {
+        "fonction": "TEXTE(valeur;format)",
+        "description": "Formate un nombre en texte",
+        "exemple": "=TEXTE(1234;\"0000\") → '1234' avec zéros de tête"
+      },
+      {
+        "fonction": "CNUM(texte)",
+        "description": "Convertit un texte en nombre",
+        "exemple": "=CNUM(\"1234\") → 1234 (nombre)"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "STXT avec position 0",
+        "probleme": "Les positions commencent à 1, pas 0",
+        "solution": "=STXT(texte;1;5) pour les 5 premiers caractères"
+      },
+      {
+        "erreur": "CHERCHE sensible à la casse",
+        "note": "CHERCHE n'est PAS sensible, TROUVE est sensible",
+        "solution": "Utilise CHERCHE pour ignorer la casse"
+      },
+      {
+        "erreur": "Oublier de soustraire 1 avec GAUCHE+CHERCHE",
+        "probleme": "=GAUCHE(B2;CHERCHE(\" \";B2)) inclut l'espace",
+        "solution": "=GAUCHE(B2;CHERCHE(\" \";B2)-1)"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises les fonctions texte. Tu peux nettoyer et transformer n'importe quelle donnée maintenant ! ✨",
+      "partiel": "Bon travail ! Les combinaisons CHERCHE+GAUCHE/STXT demandent de la pratique. N'oublie pas le -1 pour exclure le séparateur.",
+      "echec": "Les fonctions texte sont nombreuses mais logiques. GAUCHE/DROITE pour les extrémités, STXT pour le milieu, CHERCHE pour trouver où couper."
+    },
+  
+    "socrate_message": {
+      "intro": "Les fonctions texte, c'est la trousse à outils du nettoyage de données ! 🧹 Extraire, assembler, transformer... tout est possible.",
+      "conclusion": "Tu sais maintenant manipuler le texte comme un pro. Données sales ? Plus de problème ! GAUCHE, DROITE, STXT, CHERCHE = combo gagnant ! 🎯"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["texte", "CONCATENER", "GAUCHE", "DROITE", "STXT", "CHERCHE", "nettoyage", "intermédiaire"],
+      "prerequis": ["Formules de base"],
+      "ouvre_vers": ["TEXTJOIN", "Expressions régulières", "Power Query"]
+    }
+  }

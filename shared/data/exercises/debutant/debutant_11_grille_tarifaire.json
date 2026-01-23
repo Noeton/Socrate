@@ -1,0 +1,300 @@
+{
+  "id": "debutant_11_grille_tarifaire",
+  "titre": "Maîtrise des Références - Grille Tarifaire SaaS",
+  "niveau": "debutant",
+  "duree_estimee": "25 min",
+  "competences": [
+    "Références absolues ($)",
+    "Références mixtes"
+  ],
+  "contexte": {
+    "situation": "Tu viens d'être embauché chez CloudApp, une startup qui vend des abonnements SaaS. Le directeur commercial te demande de créer une grille tarifaire automatique. Les prix varient selon la formule (Basic, Pro, Team, Enterprise) ET la durée d'engagement (1, 3, 6 ou 12 mois). Plus l'engagement est long, plus la remise est importante.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Comprendre la différence entre $A$1, $A1 et A$1",
+    "Créer une formule avec références mixtes",
+    "Recopier correctement sur une grille 2D",
+    "Vérifier que les calculs sont justes après recopie"
+  ],
+  "consignes": [
+    "En A1, écris 'Formule' comme en-tête",
+    "En B1:E1, écris les durées : 1 mois, 3 mois, 6 mois, 12 mois",
+    "En A2:A5, écris les formules : Basic, Pro, Team, Enterprise",
+    "En F2:F5, écris les prix de base mensuels (voir données)",
+    "En B6:E6, écris les coefficients de remise (voir données)",
+    "En B2, écris LA formule magique : =$F2*B$6",
+    "Analyse : pourquoi $F2 et pas F$2 ? Pourquoi B$6 et pas $B6 ?",
+    "Recopie B2 vers la droite jusqu'à E2",
+    "Recopie B2:E2 vers le bas jusqu'à la ligne 5",
+    "Vérifie que TOUS les prix sont corrects !"
+  ],
+  "donnees": {
+    "headers": [
+      "Formule",
+      "1 mois",
+      "3 mois",
+      "6 mois",
+      "12 mois",
+      "Prix base"
+    ],
+    "structure": {
+      "lignes": [
+        "Basic",
+        "Pro",
+        "Team",
+        "Enterprise"
+      ],
+      "colonnes_duree": [
+        "1 mois",
+        "3 mois",
+        "6 mois",
+        "12 mois"
+      ]
+    },
+    "prix_base": {
+      "description": "Prix mensuel de base par formule (colonne F)",
+      "valeurs": {
+        "Basic": 9,
+        "Pro": 29,
+        "Team": 79,
+        "Enterprise": 199
+      }
+    },
+    "coefficients_remise": {
+      "description": "Multiplicateur selon durée (ligne 6)",
+      "valeurs": {
+        "1 mois": 1,
+        "3 mois": 0.95,
+        "6 mois": 0.85,
+        "12 mois": 0.75
+      }
+    },
+    "resultats_attendus": {
+      "B2": 9,
+      "C2": 8.55,
+      "D2": 7.65,
+      "E2": 6.75,
+      "B3": 29,
+      "C3": 27.55,
+      "D3": 24.65,
+      "E3": 21.75,
+      "B4": 79,
+      "C4": 75.05,
+      "D4": 67.15,
+      "E4": 59.25,
+      "B5": 199,
+      "C5": 189.05,
+      "D5": 169.15,
+      "E5": 149.25
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "cellule": "F2:F5",
+      "type": "donnees",
+      "description": "Prix de base saisis correctement",
+      "valeurs_attendues": [
+        9,
+        29,
+        79,
+        199
+      ],
+      "points": 10,
+      "indices": [
+        "Les prix de base sont : Basic=9€, Pro=29€, Team=79€, Enterprise=199€",
+        "Ces prix vont dans la colonne F, de F2 à F5",
+        "Ce sont des valeurs fixes, pas des formules"
+      ]
+    },
+    {
+      "id": "cp2",
+      "cellule": "B6:E6",
+      "type": "donnees",
+      "description": "Coefficients de remise saisis correctement",
+      "valeurs_attendues": [
+        1,
+        0.95,
+        0.85,
+        0.75
+      ],
+      "points": 10,
+      "indices": [
+        "Les coefficients sont : 1 mois=1, 3 mois=0.95, 6 mois=0.85, 12 mois=0.75",
+        "1 = pas de remise, 0.75 = 25% de remise",
+        "Ces valeurs vont en ligne 6, de B6 à E6"
+      ]
+    },
+    {
+      "id": "cp3",
+      "cellule": "B2",
+      "type": "formule",
+      "description": "Formule avec références mixtes correctes",
+      "pattern": [
+        "$F2",
+        "B$6",
+        "*"
+      ],
+      "fonction": null,
+      "points": 25,
+      "validation_avancee": {
+        "references": {
+          "$F2": {
+            "expected_type": "mixed_col",
+            "reason": "Colonne F figée car prix toujours en F, ligne libre car change selon la formule"
+          },
+          "B$6": {
+            "expected_type": "mixed_row",
+            "reason": "Ligne 6 figée car coefficients toujours en ligne 6, colonne libre car change selon durée"
+          }
+        },
+        "recopie": {
+          "direction": "both",
+          "attendu_E2": "=$F2*E$6",
+          "attendu_B5": "=$F5*B$6",
+          "attendu_E5": "=$F5*E$6"
+        }
+      },
+      "indices": [
+        "Tu dois multiplier le prix de base (colonne F) par le coefficient (ligne 6)",
+        "Réfléchis : quand tu recopies vers la DROITE, qu'est-ce qui doit bouger ? Le coefficient (B→C→D→E) mais PAS le prix !",
+        "Réfléchis : quand tu recopies vers le BAS, qu'est-ce qui doit bouger ? Le prix (F2→F3→F4→F5) mais PAS le coefficient !",
+        "Solution : =$F2*B$6 → $F fige la colonne F, $6 fige la ligne 6"
+      ]
+    },
+    {
+      "id": "cp4",
+      "cellule": "E2",
+      "type": "formule",
+      "description": "Recopie horizontale correcte",
+      "pattern": [
+        "$F2",
+        "E$6",
+        "*"
+      ],
+      "points": 15,
+      "validation_avancee": {
+        "references": {
+          "$F2": {
+            "expected_type": "mixed_col"
+          },
+          "E$6": {
+            "expected_type": "mixed_row"
+          }
+        }
+      },
+      "indices": [
+        "Après recopie de B2 vers E2, la formule doit être =$F2*E$6",
+        "Le $F2 n'a pas bougé (colonne figée)",
+        "Le B$6 est devenu E$6 (colonne libre, ligne figée)"
+      ]
+    },
+    {
+      "id": "cp5",
+      "cellule": "B5",
+      "type": "formule",
+      "description": "Recopie verticale correcte",
+      "pattern": [
+        "$F5",
+        "B$6",
+        "*"
+      ],
+      "points": 15,
+      "validation_avancee": {
+        "references": {
+          "$F5": {
+            "expected_type": "mixed_col"
+          },
+          "B$6": {
+            "expected_type": "mixed_row"
+          }
+        }
+      },
+      "indices": [
+        "Après recopie de B2 vers B5, la formule doit être =$F5*B$6",
+        "Le $F2 est devenu $F5 (colonne figée, ligne libre)",
+        "Le B$6 n'a pas bougé (ligne figée)"
+      ]
+    },
+    {
+      "id": "cp6",
+      "cellule": "E5",
+      "type": "formule",
+      "description": "Recopie diagonale correcte (coin opposé)",
+      "pattern": [
+        "$F5",
+        "E$6",
+        "*"
+      ],
+      "points": 10,
+      "validation_avancee": {
+        "references": {
+          "$F5": {
+            "expected_type": "mixed_col"
+          },
+          "E$6": {
+            "expected_type": "mixed_row"
+          }
+        }
+      },
+      "indices": [
+        "E5 est le coin opposé à B2",
+        "La formule doit être =$F5*E$6",
+        "Les deux références ont bougé dans la bonne direction"
+      ]
+    },
+    {
+      "id": "cp7",
+      "cellule": "E5",
+      "type": "valeur",
+      "description": "Valeur finale correcte (Enterprise 12 mois)",
+      "valeur_attendue": 149.25,
+      "tolerance": 0.01,
+      "points": 15,
+      "indices": [
+        "Enterprise (199€) × coefficient 12 mois (0.75) = ?",
+        "199 × 0.75 = 149.25€",
+        "Si tu n'as pas ce résultat, vérifie tes références mixtes !"
+      ]
+    }
+  ],
+  "erreurs_pedagogiques": [
+    {
+      "erreur": "Utiliser $F$2 au lieu de $F2",
+      "consequence": "Tous les prix seront ceux de Basic (9€)",
+      "explication": "En figeant la ligne ($F$2), tu empêches la formule de descendre vers F3, F4, F5"
+    },
+    {
+      "erreur": "Utiliser $B$6 au lieu de B$6",
+      "consequence": "Tous les coefficients seront celui de 1 mois (1)",
+      "explication": "En figeant la colonne ($B$6), tu empêches la formule d'aller vers C6, D6, E6"
+    },
+    {
+      "erreur": "Utiliser F2 et B6 (tout relatif)",
+      "consequence": "Chaos total, les références se décalent partout",
+      "explication": "Sans aucun $, tout bouge à chaque recopie"
+    },
+    {
+      "erreur": "Inverser : F$2 et $B6",
+      "consequence": "Résultats complètement faux",
+      "explication": "Tu as figé l'inverse de ce qu'il fallait"
+    }
+  ],
+  "criteres_reussite": {
+    "formule_correcte": true,
+    "references_mixtes_maitrisees": true,
+    "recopie_correcte": true,
+    "score_minimum": 7
+  },
+  "conseil_pedagogique": "Cet exercice est FONDAMENTAL. Si tu ne comprends pas les références mixtes, tu galèreras sur RECHERCHEV, les tableaux croisés, et toutes les formules avancées. Prends le temps de comprendre POURQUOI on utilise $F2 et B$6, pas juste de copier la solution.",
+  "competence_ids": [
+    15,
+    51
+  ]
+}

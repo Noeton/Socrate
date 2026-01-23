@@ -1,0 +1,858 @@
+{
+  "id": "intermediaire_12_ca_par_region",
+  "titre": "Calcul CA par Région avec SOMME.SI",
+  "niveau": "intermediaire",
+  "duree_estimee": "28 min",
+  "competences": [
+    "SOMME.SI",
+    "calculs_pourcentage"
+  ],
+  "contexte": {
+    "situation": "Tu dois calculer le chiffre d'affaires réalisé dans chaque région pour 70 ventes.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer le CA total par région",
+    "Calculer la part de marché de chaque région",
+    "Identifier la région la plus performante"
+  ],
+  "consignes": [
+    "Crée une feuille 'CA_Regions' avec les 12 régions",
+    "Pour chaque région, calcule le CA: =SOMME.SI(Ventes!$D$2:$D$71;A2;Ventes!$G$2:$G$71)",
+    "Calcule le CA total toutes régions",
+    "Calcule la part (%) de chaque région: =B2/$B$13*100",
+    "Identifie les 3 meilleures régions",
+    "Crée un graphique en secteurs du CA par région"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Produit",
+      "Vendeur",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Disque dur",
+        "Olivia",
+        "Nouvelle-Aquitaine",
+        46,
+        999,
+        45954
+      ],
+      [
+        "02/01/2024",
+        "Adaptateur",
+        "Nathan",
+        "Nouvelle-Aquitaine",
+        12,
+        199,
+        2388
+      ],
+      [
+        "03/01/2024",
+        "Adaptateur",
+        "Wendy",
+        "Provence-Alpes-Côte d'Azur",
+        39,
+        799,
+        31161
+      ],
+      [
+        "04/01/2024",
+        "Support",
+        "Henry",
+        "Bretagne",
+        4,
+        199,
+        796
+      ],
+      [
+        "05/01/2024",
+        "Support",
+        "Marie",
+        "Centre-Val de Loire",
+        37,
+        999,
+        36963
+      ],
+      [
+        "06/01/2024",
+        "Support",
+        "Sam",
+        "Pays de la Loire",
+        28,
+        999,
+        27972
+      ],
+      [
+        "07/01/2024",
+        "Switch",
+        "Leo",
+        "Auvergne-Rhône-Alpes",
+        23,
+        499,
+        11477
+      ],
+      [
+        "08/01/2024",
+        "Disque dur",
+        "Quentin",
+        "Bretagne",
+        11,
+        1299,
+        14289
+      ],
+      [
+        "09/01/2024",
+        "Adaptateur",
+        "Zoé",
+        "Centre-Val de Loire",
+        43,
+        799,
+        34357
+      ],
+      [
+        "10/01/2024",
+        "Clavier",
+        "Grace",
+        "Normandie",
+        46,
+        599,
+        27554
+      ],
+      [
+        "11/01/2024",
+        "Webcam",
+        "Iris",
+        "Hauts-de-France",
+        38,
+        1299,
+        49362
+      ],
+      [
+        "12/01/2024",
+        "Webcam",
+        "Sam",
+        "Bretagne",
+        45,
+        999,
+        44955
+      ],
+      [
+        "13/01/2024",
+        "Housse",
+        "Bob",
+        "Pays de la Loire",
+        40,
+        499,
+        19960
+      ],
+      [
+        "14/01/2024",
+        "Câble USB",
+        "Diana",
+        "Nouvelle-Aquitaine",
+        9,
+        99,
+        891
+      ],
+      [
+        "15/01/2024",
+        "Router",
+        "Kate",
+        "Pays de la Loire",
+        31,
+        799,
+        24769
+      ],
+      [
+        "16/01/2024",
+        "Imprimante",
+        "Zoé",
+        "Nouvelle-Aquitaine",
+        21,
+        499,
+        10479
+      ],
+      [
+        "17/01/2024",
+        "Disque dur",
+        "Charlie",
+        "Occitanie",
+        22,
+        299,
+        6578
+      ],
+      [
+        "18/01/2024",
+        "Router",
+        "Xavier",
+        "Bretagne",
+        23,
+        399,
+        9177
+      ],
+      [
+        "19/01/2024",
+        "Webcam",
+        "Quentin",
+        "Centre-Val de Loire",
+        42,
+        99,
+        4158
+      ],
+      [
+        "20/01/2024",
+        "Housse",
+        "Uma",
+        "Centre-Val de Loire",
+        15,
+        599,
+        8985
+      ],
+      [
+        "21/01/2024",
+        "Batterie",
+        "Charlie",
+        "Grand Est",
+        19,
+        99,
+        1881
+      ],
+      [
+        "22/01/2024",
+        "Écran",
+        "Frank",
+        "Hauts-de-France",
+        20,
+        499,
+        9980
+      ],
+      [
+        "23/01/2024",
+        "Écran",
+        "Bob",
+        "Grand Est",
+        5,
+        399,
+        1995
+      ],
+      [
+        "24/01/2024",
+        "Casque",
+        "Diana",
+        "Provence-Alpes-Côte d'Azur",
+        31,
+        149,
+        4619
+      ],
+      [
+        "25/01/2024",
+        "Ordinateur portable",
+        "Rose",
+        "Grand Est",
+        8,
+        299,
+        2392
+      ],
+      [
+        "26/01/2024",
+        "Ordinateur portable",
+        "Victor",
+        "Bretagne",
+        21,
+        99,
+        2079
+      ],
+      [
+        "27/01/2024",
+        "Disque dur",
+        "Quentin",
+        "Pays de la Loire",
+        1,
+        149,
+        149
+      ],
+      [
+        "28/01/2024",
+        "Tablette",
+        "Quentin",
+        "Nouvelle-Aquitaine",
+        20,
+        149,
+        2980
+      ],
+      [
+        "29/01/2024",
+        "Clavier",
+        "Victor",
+        "Auvergne-Rhône-Alpes",
+        38,
+        99,
+        3762
+      ],
+      [
+        "30/01/2024",
+        "Switch",
+        "Eve",
+        "Occitanie",
+        3,
+        99,
+        297
+      ],
+      [
+        "31/01/2024",
+        "Switch",
+        "Sam",
+        "Île-de-France",
+        33,
+        399,
+        13167
+      ],
+      [
+        "01/02/2024",
+        "Webcam",
+        "Bob",
+        "Provence-Alpes-Côte d'Azur",
+        18,
+        1299,
+        23382
+      ],
+      [
+        "02/02/2024",
+        "Câble USB",
+        "Leo",
+        "Centre-Val de Loire",
+        12,
+        149,
+        1788
+      ],
+      [
+        "03/02/2024",
+        "Disque dur",
+        "Bob",
+        "Provence-Alpes-Côte d'Azur",
+        37,
+        499,
+        18463
+      ],
+      [
+        "04/02/2024",
+        "Support",
+        "Kate",
+        "Provence-Alpes-Côte d'Azur",
+        9,
+        599,
+        5391
+      ],
+      [
+        "05/02/2024",
+        "Ordinateur portable",
+        "Diana",
+        "Bretagne",
+        43,
+        199,
+        8557
+      ],
+      [
+        "06/02/2024",
+        "Clavier",
+        "Diana",
+        "Centre-Val de Loire",
+        20,
+        599,
+        11980
+      ],
+      [
+        "07/02/2024",
+        "Housse",
+        "Uma",
+        "Nouvelle-Aquitaine",
+        1,
+        999,
+        999
+      ],
+      [
+        "08/02/2024",
+        "Support",
+        "Jack",
+        "Provence-Alpes-Côte d'Azur",
+        23,
+        299,
+        6877
+      ],
+      [
+        "09/02/2024",
+        "Ordinateur portable",
+        "Alice",
+        "Auvergne-Rhône-Alpes",
+        1,
+        499,
+        499
+      ],
+      [
+        "10/02/2024",
+        "Casque",
+        "Kate",
+        "Bourgogne-Franche-Comté",
+        17,
+        99,
+        1683
+      ],
+      [
+        "11/02/2024",
+        "Webcam",
+        "Eve",
+        "Hauts-de-France",
+        23,
+        799,
+        18377
+      ],
+      [
+        "12/02/2024",
+        "Disque dur",
+        "Grace",
+        "Normandie",
+        8,
+        299,
+        2392
+      ],
+      [
+        "13/02/2024",
+        "Disque dur",
+        "Iris",
+        "Bourgogne-Franche-Comté",
+        1,
+        299,
+        299
+      ],
+      [
+        "14/02/2024",
+        "Support",
+        "Eve",
+        "Bourgogne-Franche-Comté",
+        5,
+        149,
+        745
+      ],
+      [
+        "15/02/2024",
+        "Casque",
+        "Kate",
+        "Centre-Val de Loire",
+        31,
+        499,
+        15469
+      ],
+      [
+        "16/02/2024",
+        "Housse",
+        "Wendy",
+        "Occitanie",
+        4,
+        599,
+        2396
+      ],
+      [
+        "17/02/2024",
+        "Router",
+        "Marie",
+        "Pays de la Loire",
+        9,
+        499,
+        4491
+      ],
+      [
+        "18/02/2024",
+        "Tablette",
+        "Diana",
+        "Hauts-de-France",
+        22,
+        199,
+        4378
+      ],
+      [
+        "19/02/2024",
+        "Switch",
+        "Quentin",
+        "Grand Est",
+        49,
+        199,
+        9751
+      ],
+      [
+        "20/02/2024",
+        "Tablette",
+        "Wendy",
+        "Nouvelle-Aquitaine",
+        16,
+        99,
+        1584
+      ],
+      [
+        "21/02/2024",
+        "Écran",
+        "Uma",
+        "Pays de la Loire",
+        46,
+        599,
+        27554
+      ],
+      [
+        "22/02/2024",
+        "Switch",
+        "Uma",
+        "Pays de la Loire",
+        22,
+        499,
+        10978
+      ],
+      [
+        "23/02/2024",
+        "Batterie",
+        "Nathan",
+        "Centre-Val de Loire",
+        8,
+        99,
+        792
+      ],
+      [
+        "24/02/2024",
+        "Moniteur",
+        "Marie",
+        "Pays de la Loire",
+        34,
+        999,
+        33966
+      ],
+      [
+        "25/02/2024",
+        "Moniteur",
+        "Wendy",
+        "Occitanie",
+        9,
+        999,
+        8991
+      ],
+      [
+        "26/02/2024",
+        "Écouteurs",
+        "Diana",
+        "Hauts-de-France",
+        37,
+        99,
+        3663
+      ],
+      [
+        "27/02/2024",
+        "Router",
+        "Olivia",
+        "Normandie",
+        3,
+        199,
+        597
+      ],
+      [
+        "28/02/2024",
+        "Switch",
+        "Grace",
+        "Normandie",
+        12,
+        799,
+        9588
+      ],
+      [
+        "29/02/2024",
+        "Câble USB",
+        "Tom",
+        "Hauts-de-France",
+        3,
+        999,
+        2997
+      ],
+      [
+        "01/03/2024",
+        "Imprimante",
+        "Diana",
+        "Pays de la Loire",
+        35,
+        799,
+        27965
+      ],
+      [
+        "02/03/2024",
+        "Support",
+        "Paul",
+        "Provence-Alpes-Côte d'Azur",
+        48,
+        199,
+        9552
+      ],
+      [
+        "03/03/2024",
+        "Écran",
+        "Olivia",
+        "Provence-Alpes-Côte d'Azur",
+        12,
+        199,
+        2388
+      ],
+      [
+        "04/03/2024",
+        "Souris",
+        "Iris",
+        "Hauts-de-France",
+        43,
+        799,
+        34357
+      ],
+      [
+        "05/03/2024",
+        "Housse",
+        "Kate",
+        "Normandie",
+        47,
+        1299,
+        61053
+      ],
+      [
+        "06/03/2024",
+        "Casque",
+        "Quentin",
+        "Bourgogne-Franche-Comté",
+        39,
+        799,
+        31161
+      ],
+      [
+        "07/03/2024",
+        "Imprimante",
+        "Victor",
+        "Bretagne",
+        29,
+        199,
+        5771
+      ],
+      [
+        "08/03/2024",
+        "Souris",
+        "Sam",
+        "Pays de la Loire",
+        32,
+        399,
+        12768
+      ],
+      [
+        "09/03/2024",
+        "Batterie",
+        "Marie",
+        "Grand Est",
+        9,
+        149,
+        1341
+      ],
+      [
+        "10/03/2024",
+        "Moniteur",
+        "Bob",
+        "Hauts-de-France",
+        25,
+        499,
+        12475
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "formule_somme_si_presente": true,
+    "calculs_pourcentage": true,
+    "graphique_present": true,
+    "score_minimum": 8
+  },
+  "checkpoints": [
+    {
+      "cellule": "A2",
+      "type": "donnee",
+      "description": "Première région listée dans la feuille CA_Regions",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "A13",
+      "points": 5,
+      "indices": [
+        "Il faut d'abord lister toutes les régions uniques de tes données de vente.",
+        "Va voir dans la feuille Ventes, colonne Région, et recopie chaque région une seule fois.",
+        "Liste les 12 régions distinctes de A2 à A13 (une par ligne)."
+      ],
+      "id": "cp_1",
+      "competence_id": 13
+    },
+    {
+      "cellule": "B2",
+      "type": "formule",
+      "description": "Calcul CA première région avec SOMME.SI",
+      "fonction": "SOMME.SI",
+      "pattern": [
+        "SOMME.SI",
+        "Ventes!$D$2:$D$71",
+        "A2",
+        "Ventes!$G$2:$G$71"
+      ],
+      "recopie_jusqua": "B13",
+      "points": 25,
+      "indices": [
+        "Tu dois utiliser SOMME.SI pour additionner les totaux selon la région.",
+        "La fonction cherche dans la colonne Région (D) et additionne la colonne Total (G).",
+        "=SOMME.SI(Ventes!$D$2:$D$71;A2;Ventes!$G$2:$G$71)"
+      ],
+      "id": "cp_2",
+      "computation": {
+        "type": "sumif",
+        "criteria_column": "auto",
+        "criteria": "auto",
+        "sum_column": "auto"
+      },
+      "competence_id": 13
+    },
+    {
+      "cellule": "B13",
+      "type": "formule",
+      "description": "Calcul CA dernière région avec SOMME.SI",
+      "fonction": "SOMME.SI",
+      "pattern": [
+        "SOMME.SI",
+        "Ventes!$D$2:$D$71",
+        "A13",
+        "Ventes!$G$2:$G$71"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que ta formule SOMME.SI fonctionne jusqu'à la dernière région.",
+        "Les références absolues ($) doivent être correctes pour la recopie.",
+        "La formule doit référencer A13 pour la dernière région."
+      ],
+      "id": "cp_3",
+      "computation": {
+        "type": "sumif",
+        "criteria_column": "auto",
+        "criteria": "auto",
+        "sum_column": "auto"
+      },
+      "competence_id": 13
+    },
+    {
+      "cellule": "B14",
+      "type": "formule",
+      "description": "Calcul du CA total toutes régions",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "B2:B13"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Pour le total, tu dois additionner tous les CA régionaux calculés.",
+        "Utilise la fonction SOMME sur la plage des CA régionaux.",
+        "=SOMME(B2:B13)"
+      ],
+      "id": "cp_4",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 13
+    },
+    {
+      "cellule": "C2",
+      "type": "formule",
+      "description": "Calcul pourcentage première région",
+      "fonction": null,
+      "pattern": [
+        "B2",
+        "$B$14",
+        "100",
+        "/",
+        "*"
+      ],
+      "recopie_jusqua": "C13",
+      "points": 20,
+      "indices": [
+        "Le pourcentage = (CA région / CA total) × 100.",
+        "Attention aux références absolues pour le CA total lors de la recopie.",
+        "=B2/$B$14*100"
+      ],
+      "id": "cp_5",
+      "competence_id": 13
+    },
+    {
+      "cellule": "C13",
+      "type": "formule",
+      "description": "Calcul pourcentage dernière région",
+      "fonction": null,
+      "pattern": [
+        "B13",
+        "$B$14",
+        "100",
+        "/",
+        "*"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que le calcul de pourcentage fonctionne pour toutes les régions.",
+        "La référence au total doit rester fixe ($B$14).",
+        "La formule doit utiliser B13 pour cette dernière région."
+      ],
+      "id": "cp_6",
+      "competence_id": 13
+    },
+    {
+      "cellule": "A16",
+      "type": "donnee",
+      "description": "Identification des 3 meilleures régions (première)",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "A18",
+      "points": 10,
+      "indices": [
+        "Regarde tes résultats et identifie les régions avec le plus gros CA.",
+        "Classe tes régions par ordre décroissant de CA.",
+        "Écris les noms des 3 régions ayant les CA les plus élevés."
+      ],
+      "id": "cp_7",
+      "competence_id": 13
+    },
+    {
+      "cellule": "Graphique1",
+      "type": "graphique",
+      "description": "Graphique en secteurs du CA par région",
+      "fonction": null,
+      "pattern": [
+        "secteurs",
+        "camembert"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Sélectionne tes données (régions et CA) puis insère un graphique.",
+        "Choisis le type 'Secteurs' ou 'Camembert' dans les graphiques.",
+        "Le graphique doit montrer la répartition du CA entre toutes les régions."
+      ],
+      "id": "cp_8",
+      "competence_id": 13
+    }
+  ],
+  "competence_ids": [
+    13
+  ]
+}

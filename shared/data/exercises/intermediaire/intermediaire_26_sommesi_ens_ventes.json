@@ -1,0 +1,257 @@
+{
+    "id": "intermediaire_26_sommesi_ens_ventes",
+    "titre": "SOMME.SI.ENS : Analyse des Ventes Multi-Critères",
+    "niveau": "intermediaire",
+    "duree_estimee": "22 min",
+    "competences": ["SOMME.SI.ENS", "Somme multi-critères"],
+    "competence_ids": [14],
+  
+    "contexte": {
+      "situation": "Tu es contrôleur de gestion chez AutoPlus, un réseau de concessions automobiles. Le directeur financier veut analyser les ventes par région, par vendeur, par type de véhicule... Tu dois créer un tableau de bord avec des sommes conditionnelles croisées.",
+      "manager": {
+        "nom": "François Legrand",
+        "poste": "Directeur Financier",
+        "personnalite": "Cartésien, il veut des analyses précises pour piloter les performances.",
+        "demande": "Je veux savoir exactement combien on a vendu par région et par type de véhicule. Et aussi par vendeur et par trimestre. SOMME.SI ne suffit plus, j'ai besoin de croiser les critères."
+      },
+      "enjeux": "Les bonus des vendeurs dépendent de ces chiffres. Pas droit à l'erreur.",
+      "deadline": "Lundi pour la réunion commerciale"
+    },
+  
+    "objectifs": [
+      "Comprendre SOMME.SI.ENS : somme avec plusieurs critères",
+      "Maîtriser la syntaxe (plage_somme en premier !)",
+      "Croiser région + type, vendeur + période, etc.",
+      "Utiliser des critères avec opérateurs et références"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier des ventes trimestrielles",
+      "Calcule le CA par combinaison de critères",
+      "Crée un tableau croisé Région × Type de véhicule",
+      "Analyse les performances par vendeur et par trimestre"
+    ],
+  
+    "donnees": {
+      "feuille": "Ventes",
+      "headers": ["Date", "Vendeur", "Région", "Type", "Modèle", "Prix", "Marge"],
+      "rows": [
+        ["15/01/2024", "Dupont", "Nord", "SUV", "X-Trail", 35000, 3500],
+        ["22/01/2024", "Martin", "Sud", "Berline", "Mégane", 28000, 2800],
+        ["05/02/2024", "Dupont", "Nord", "Citadine", "Clio", 18000, 1800],
+        ["18/02/2024", "Bernard", "Est", "SUV", "Captur", 25000, 2500],
+        ["03/03/2024", "Martin", "Sud", "SUV", "Kadjar", 32000, 3200],
+        ["20/03/2024", "Dupont", "Nord", "Berline", "Talisman", 38000, 3800],
+        ["10/04/2024", "Bernard", "Est", "Citadine", "Twingo", 15000, 1500],
+        ["25/04/2024", "Leroy", "Ouest", "SUV", "Arkana", 36000, 3600],
+        ["08/05/2024", "Martin", "Sud", "Citadine", "Zoe", 22000, 2200],
+        ["22/05/2024", "Dupont", "Nord", "SUV", "Koleos", 42000, 4200],
+        ["05/06/2024", "Leroy", "Ouest", "Berline", "Talisman", 38000, 3800],
+        ["18/06/2024", "Bernard", "Est", "SUV", "X-Trail", 35000, 3500],
+        ["02/07/2024", "Martin", "Sud", "SUV", "Captur", 25000, 2500],
+        ["15/07/2024", "Dupont", "Nord", "Citadine", "Clio", 18000, 1800],
+        ["28/07/2024", "Leroy", "Ouest", "SUV", "Kadjar", 32000, 3200]
+      ],
+      "resultats_attendus": {
+        "ca_nord_suv": 77000,
+        "ca_sud_total": 107000,
+        "ca_dupont_t1": 91000,
+        "marge_est_suv": 6000,
+        "ca_prix_sup_30k": 288000
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Syntaxe SOMME.SI.ENS",
+        "explications": [
+          "ATTENTION : l'ordre est différent de NB.SI.ENS !",
+          "=SOMME.SI.ENS(plage_somme; plage_critère1; critère1; plage_critère2; critère2; ...)",
+          "La plage à additionner vient EN PREMIER"
+        ],
+        "comparaison": {
+          "nb_si_ens": "=NB.SI.ENS(plage1;critère1;plage2;critère2)",
+          "somme_si_ens": "=SOMME.SI.ENS(plage_somme;plage1;critère1;plage2;critère2)"
+        }
+      },
+      {
+        "phase": "B. Somme avec 2 critères",
+        "consignes": [
+          "CA des SUV vendus dans le Nord ?",
+          "Plage somme : colonne Prix (F)",
+          "Critère 1 : Région = Nord",
+          "Critère 2 : Type = SUV",
+          "=SOMME.SI.ENS(F2:F16;C2:C16;\"Nord\";D2:D16;\"SUV\")"
+        ]
+      },
+      {
+        "phase": "C. Somme avec critère numérique",
+        "consignes": [
+          "CA des ventes > 30000€ ?",
+          "=SOMME.SI.ENS(F2:F16;F2:F16;\">30000\")",
+          "Ici la plage_somme et la plage_critère sont les mêmes !"
+        ]
+      },
+      {
+        "phase": "D. Analyse par vendeur et période",
+        "consignes": [
+          "CA de Dupont au T1 (janvier-mars) ?",
+          "Critère 1 : Vendeur = Dupont",
+          "Critère 2 : Date >= 01/01/2024",
+          "Critère 3 : Date <= 31/03/2024",
+          "=SOMME.SI.ENS(F:F;B:B;\"Dupont\";A:A;\">=\"&DATE(2024;1;1);A:A;\"<=\"&DATE(2024;3;31))"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_ca_nord_suv",
+        "cellule": "J2",
+        "type": "valeur",
+        "description": "CA des SUV vendus dans le Nord",
+        "competence_id": 14,
+        "expected_value": 77000,
+        "points": 20,
+        "indices": [
+          "Plage somme = Prix (F2:F16)",
+          "Critère 1 : Région = \"Nord\"",
+          "Critère 2 : Type = \"SUV\"",
+          "=SOMME.SI.ENS(F2:F16;C2:C16;\"Nord\";D2:D16;\"SUV\")"
+        ]
+      },
+      {
+        "id": "cp_2_ca_sud_total",
+        "cellule": "J3",
+        "type": "valeur",
+        "description": "CA total région Sud",
+        "competence_id": 14,
+        "expected_value": 107000,
+        "points": 15,
+        "indices": [
+          "Un seul critère suffit ici",
+          "=SOMME.SI.ENS(F2:F16;C2:C16;\"Sud\")",
+          "Ou =SOMME.SI(C2:C16;\"Sud\";F2:F16)"
+        ]
+      },
+      {
+        "id": "cp_3_ca_est_citadine",
+        "cellule": "J4",
+        "type": "valeur",
+        "description": "CA des citadines vendues dans l'Est",
+        "competence_id": 14,
+        "expected_value": 15000,
+        "points": 15,
+        "indices": [
+          "Région = \"Est\" ET Type = \"Citadine\"",
+          "=SOMME.SI.ENS(F2:F16;C2:C16;\"Est\";D2:D16;\"Citadine\")",
+          "Une seule vente : Twingo à 15000€"
+        ]
+      },
+      {
+        "id": "cp_4_marge_ouest",
+        "cellule": "J5",
+        "type": "valeur",
+        "description": "Marge totale région Ouest",
+        "competence_id": 14,
+        "expected_value": 10600,
+        "points": 15,
+        "indices": [
+          "Attention : somme sur la MARGE (colonne G), pas le prix",
+          "=SOMME.SI.ENS(G2:G16;C2:C16;\"Ouest\")",
+          "3 ventes Leroy : 3600 + 3800 + 3200"
+        ]
+      },
+      {
+        "id": "cp_5_ca_dupont",
+        "cellule": "J6",
+        "type": "valeur",
+        "description": "CA total de Dupont",
+        "competence_id": 14,
+        "expected_value": 151000,
+        "points": 10,
+        "indices": [
+          "Critère : Vendeur = \"Dupont\"",
+          "=SOMME.SI.ENS(F2:F16;B2:B16;\"Dupont\")",
+          "5 ventes : 35000+18000+38000+42000+18000"
+        ]
+      },
+      {
+        "id": "cp_6_ca_sup_30k",
+        "cellule": "J7",
+        "type": "valeur",
+        "description": "CA des ventes supérieures à 30000€",
+        "competence_id": 14,
+        "expected_value": 288000,
+        "points": 15,
+        "indices": [
+          "Critère numérique : \">30000\"",
+          "La plage critère = plage somme",
+          "=SOMME.SI.ENS(F2:F16;F2:F16;\">30000\")"
+        ]
+      },
+      {
+        "id": "cp_7_marge_suv_nord_est",
+        "cellule": "J8",
+        "type": "valeur",
+        "description": "Marge des SUV vendus dans le Nord OU l'Est",
+        "competence_id": 14,
+        "expected_value": 13700,
+        "points": 10,
+        "indices": [
+          "Attention : OU nécessite 2 formules",
+          "=SOMME.SI.ENS(G:G;C:C;\"Nord\";D:D;\"SUV\")+SOMME.SI.ENS(G:G;C:C;\"Est\";D:D;\"SUV\")",
+          "Nord SUV : 7700€ + Est SUV : 6000€"
+        ]
+      }
+    ],
+  
+    "differences_syntaxe": {
+      "somme_si": "=SOMME.SI(plage_critère; critère; plage_somme)",
+      "somme_si_ens": "=SOMME.SI.ENS(plage_somme; plage_critère1; critère1; plage_critère2; critère2)",
+      "attention": "L'ordre des arguments est INVERSÉ entre SOMME.SI et SOMME.SI.ENS !"
+    },
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Plage somme à la mauvaise position",
+        "exemple": "=SOMME.SI.ENS(C:C;\"Nord\";F:F)",
+        "correction": "=SOMME.SI.ENS(F:F;C:C;\"Nord\") - la plage somme vient EN PREMIER"
+      },
+      {
+        "erreur": "Confondre avec SOMME.SI",
+        "exemple": "SOMME.SI a l'ordre : plage_critère, critère, plage_somme",
+        "correction": "SOMME.SI.ENS a l'ordre : plage_somme, puis paires plage/critère"
+      },
+      {
+        "erreur": "Critère OU au lieu de ET",
+        "exemple": "SOMME.SI.ENS ne fait que des ET",
+        "correction": "Pour un OU, additionne plusieurs SOMME.SI.ENS"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises SOMME.SI.ENS. Tu peux maintenant créer des tableaux de bord analytiques puissants ! 📈",
+      "partiel": "Attention à l'ordre des arguments : plage_somme EN PREMIER, puis les paires plage/critère.",
+      "echec": "SOMME.SI.ENS est puissant mais sa syntaxe est piégeuse. Retiens : somme d'abord, critères ensuite."
+    },
+  
+    "socrate_message": {
+      "intro": "SOMME.SI.ENS combine la puissance de SOMME.SI avec celle des critères multiples. Attention à l'ordre des arguments ! 🎯",
+      "conclusion": "Tu sais maintenant faire des sommes conditionnelles croisées. C'est la base des tableaux de bord Excel professionnels ! 💼"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["SOMME.SI.ENS", "multi-critères", "somme conditionnelle", "ventes", "analyse", "intermédiaire"],
+      "prerequis": ["SOMME.SI", "NB.SI.ENS"],
+      "ouvre_vers": ["MOYENNE.SI.ENS", "Tableaux de bord"]
+    }
+  }

@@ -1,0 +1,214 @@
+{
+  "id": "tcd_35_01_somme_categorie",
+  "version": "1.0",
+  "titre": "📊 TCD : ton premier tableau croisé dynamique",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "15 min",
+    "competences_ids": [35],
+    "competences_noms": ["Tableaux croisés dynamiques"],
+    "prerequis": [1, 3, 7],
+    "objectif_pedagogique": "Créer un TCD simple avec une dimension en ligne et une mesure en valeur",
+    "source_pdf": "Chapter 13: Pivot Tables - Section 13.1-13.2",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu as un fichier de ventes avec des milliers de lignes. Le directeur veut savoir combien rapporte chaque catégorie de produit. Impossible de faire ça manuellement !",
+    
+    "personnage": "Toi, analyste commercial chez MegaStore.",
+    
+    "objectif": "Créer un tableau croisé dynamique qui affiche le CA total par catégorie de produit.",
+    
+    "motivation": "Le TCD est l'outil le plus puissant d'Excel pour analyser des données. Il résume des millions de lignes en quelques clics.",
+    
+    "ton": "Le TCD fait peur au début, mais c'est en fait très simple. Promis !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Extrait des ventes du trimestre avec catégorie, produit et montant.",
+    "periode": "Q4 2024",
+    "source_fictive": "Export CRM MegaStore"
+  },
+
+  "donnees": {
+    "headers": ["Date", "Catégorie", "Produit", "Quantité", "CA (€)"],
+    "rows": [
+      ["01/10/2024", "Électronique", "Smartphone", 5, 2500],
+      ["02/10/2024", "Mode", "Jean", 12, 720],
+      ["03/10/2024", "Électronique", "Tablette", 3, 900],
+      ["04/10/2024", "Maison", "Lampe", 8, 320],
+      ["05/10/2024", "Mode", "T-shirt", 25, 500],
+      ["06/10/2024", "Électronique", "Écouteurs", 15, 750],
+      ["07/10/2024", "Maison", "Coussin", 20, 400],
+      ["08/10/2024", "Mode", "Pull", 10, 600],
+      ["09/10/2024", "Électronique", "Smartphone", 8, 4000],
+      ["10/10/2024", "Maison", "Vase", 6, 180],
+      ["11/10/2024", "Mode", "Chaussures", 7, 560],
+      ["12/10/2024", "Électronique", "Tablette", 4, 1200]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les données",
+      "consigne": "Clique sur une cellule dans tes données (ex: A1). Excel détectera automatiquement la plage.",
+      "aide_contextuelle": "Pas besoin de tout sélectionner. Excel est intelligent !",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Insérer le TCD",
+      "consigne": "Insertion > Tableau croisé dynamique. Dans la boîte de dialogue, choisis 'Nouvelle feuille de calcul' puis OK.",
+      "aide_contextuelle": "Le TCD sera créé sur une nouvelle feuille pour ne pas mélanger avec tes données.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter le champ Catégorie en lignes",
+      "description": "Le volet 'Champs de tableau croisé' apparaît à droite.",
+      "consigne": "Glisse le champ 'Catégorie' dans la zone 'Lignes' (ou coche-le).",
+      "aide_contextuelle": "Les lignes définissent les catégories d'analyse. Ici, on veut voir par catégorie de produit.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Ajouter le CA en valeurs",
+      "consigne": "Glisse le champ 'CA (€)' dans la zone 'Valeurs'. Il devient 'Somme de CA (€)'.",
+      "aide_contextuelle": "Par défaut, Excel fait une SOMME pour les nombres. C'est exactement ce qu'on veut !",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier le résultat",
+      "description": "Le TCD affiche maintenant le CA total par catégorie.",
+      "consigne": "Tu dois voir 3 lignes : Électronique, Maison, Mode avec leurs totaux respectifs.",
+      "aide_contextuelle": "Électronique = 9350€, Maison = 900€, Mode = 2380€, Total = 12630€",
+      "temps": "2 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "TCD sur nouvelle feuille",
+    "structure": [
+      { "cellule": "A1:E13", "label": "Données source", "style": "data" },
+      { "cellule": "Feuil2!A3:B7", "label": "TCD résultat", "style": "pivot" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_tcd_1",
+      "type": "pivot_table",
+      "description": "TCD créé",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "pivot_exists": true,
+        "on_new_sheet": true
+      },
+      "points": 25,
+      "indices": [
+        "Le TCD doit être sur une nouvelle feuille de calcul.",
+        "Tu dois voir le volet 'Champs de tableau croisé' à droite.",
+        "Si le volet n'apparaît pas, clique sur le TCD pour l'activer."
+      ],
+      "erreurs_probables": [
+        { "type": "no_pivot", "message": "Pas de TCD créé. Va dans Insertion > Tableau croisé dynamique." },
+        { "type": "same_sheet", "message": "Le TCD est sur la même feuille que les données. Choisis 'Nouvelle feuille'." }
+      ]
+    },
+    {
+      "id": "cp_tcd_2",
+      "type": "pivot_table",
+      "description": "Champ Catégorie en lignes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "row_fields": ["Catégorie"],
+        "row_count": 3
+      },
+      "points": 25,
+      "indices": [
+        "Le champ 'Catégorie' doit être dans la zone 'Lignes'.",
+        "Tu dois voir Électronique, Maison, Mode dans la colonne A.",
+        "Glisse 'Catégorie' depuis la liste des champs vers 'Lignes'."
+      ]
+    },
+    {
+      "id": "cp_tcd_3",
+      "type": "pivot_table",
+      "description": "Somme de CA en valeurs",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "value_fields": ["Somme de CA"],
+        "function": "sum"
+      },
+      "points": 25,
+      "indices": [
+        "Le champ 'CA (€)' doit être dans la zone 'Valeurs'.",
+        "L'en-tête de colonne doit afficher 'Somme de CA (€)' ou similaire.",
+        "Si tu vois 'Nombre de CA', change la fonction en Somme (clic droit > Paramètres)."
+      ],
+      "erreurs_probables": [
+        { "type": "count_instead_sum", "message": "Tu affiches le NOMBRE au lieu de la SOMME. Clic droit sur le champ > Paramètres > Somme." }
+      ]
+    },
+    {
+      "id": "cp_tcd_4",
+      "type": "pivot_table",
+      "description": "Valeurs correctes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "values": {
+          "Électronique": 9350,
+          "Maison": 900,
+          "Mode": 2380
+        },
+        "total": 12630
+      },
+      "points": 25,
+      "indices": [
+        "Électronique = 2500+900+750+4000+1200 = 9350€",
+        "Maison = 320+400+180 = 900€",
+        "Mode = 720+500+600+560 = 2380€",
+        "Total général = 12630€"
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "TCD sur nouvelle feuille avec Catégorie en lignes, Somme de CA en valeurs. 3 catégories + total.",
+    "etapes_cles": [
+      "Clic dans données > Insertion > TCD",
+      "Nouvelle feuille",
+      "Catégorie → Lignes",
+      "CA → Valeurs (Somme)"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Félicitations ! Tu viens de créer ton premier TCD. C'est une compétence qui change la vie !",
+    "bien": "👍 Très bien ! Le TCD fonctionne. Vérifie que les totaux sont corrects.",
+    "ameliorer": "📊 Presque ! Assure-toi que Catégorie est en lignes et CA en valeurs.",
+    "revoir": "🔄 Recommence : Insertion > TCD > glisse Catégorie vers Lignes et CA vers Valeurs."
+  },
+
+  "pour_aller_plus_loin": [
+    "Ajoute le champ 'Produit' en lignes sous Catégorie pour plus de détails.",
+    "Change la fonction de Somme à Moyenne pour voir le panier moyen.",
+    "Ajoute un filtre sur la Date pour analyser période par période."
+  ]
+}

@@ -1,0 +1,640 @@
+{
+  "id": "debutant_06_alerte_stock",
+  "titre": "Alertes de Stock avec Fonction SI",
+  "niveau": "debutant",
+  "duree_estimee": "20 min",
+  "competences": [
+    "SI"
+  ],
+  "contexte": {
+    "situation": "Tu gères le stock d'un magasin et tu dois identifier les produits à réapprovisionner (stock < 20).",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Créer une alerte si stock faible",
+    "Compter les produits en alerte",
+    "Marquer les ruptures de stock"
+  ],
+  "consignes": [
+    "Dans G2, écris: =SI(F2<20;\"ALERTE\";\"OK\") et recopie jusqu'à G46",
+    "Dans H2, écris: =SI(F2=0;\"RUPTURE\";\"En stock\") et recopie jusqu'à H46",
+    "Compte combien de produits sont en ALERTE",
+    "Compte combien de produits sont en RUPTURE",
+    "Applique une couleur rouge aux cellules \"ALERTE\" et \"RUPTURE\""
+  ],
+  "donnees": {
+    "headers": [
+      "Référence",
+      "Nom",
+      "Catégorie",
+      "Prix HT",
+      "TVA %",
+      "Stock",
+      "Statut Stock",
+      "Disponibilité"
+    ],
+    "rows": [
+      [
+        "PROD001",
+        "Chargeur",
+        "Informatique",
+        99,
+        20,
+        92,
+        "",
+        ""
+      ],
+      [
+        "PROD002",
+        "Ordinateur portable",
+        "Informatique",
+        399,
+        20,
+        79,
+        "",
+        ""
+      ],
+      [
+        "PROD003",
+        "Clavier",
+        "Électronique",
+        199,
+        20,
+        14,
+        "",
+        ""
+      ],
+      [
+        "PROD004",
+        "Router",
+        "Électronique",
+        399,
+        20,
+        68,
+        "",
+        ""
+      ],
+      [
+        "PROD005",
+        "Clavier",
+        "Électronique",
+        149,
+        20,
+        4,
+        "",
+        ""
+      ],
+      [
+        "PROD006",
+        "Écran",
+        "Accessoires",
+        499,
+        20,
+        67,
+        "",
+        ""
+      ],
+      [
+        "PROD007",
+        "Support",
+        "Informatique",
+        399,
+        20,
+        44,
+        "",
+        ""
+      ],
+      [
+        "PROD008",
+        "Câble USB",
+        "Accessoires",
+        199,
+        20,
+        62,
+        "",
+        ""
+      ],
+      [
+        "PROD009",
+        "Webcam",
+        "Accessoires",
+        149,
+        20,
+        62,
+        "",
+        ""
+      ],
+      [
+        "PROD010",
+        "Ordinateur portable",
+        "Accessoires",
+        399,
+        20,
+        36,
+        "",
+        ""
+      ],
+      [
+        "PROD011",
+        "Câble USB",
+        "Accessoires",
+        99,
+        20,
+        45,
+        "",
+        ""
+      ],
+      [
+        "PROD012",
+        "Imprimante",
+        "Électronique",
+        299,
+        20,
+        97,
+        "",
+        ""
+      ],
+      [
+        "PROD013",
+        "Webcam",
+        "Informatique",
+        499,
+        20,
+        17,
+        "",
+        ""
+      ],
+      [
+        "PROD014",
+        "Switch",
+        "Électronique",
+        99,
+        20,
+        100,
+        "",
+        ""
+      ],
+      [
+        "PROD015",
+        "Câble USB",
+        "Accessoires",
+        399,
+        20,
+        62,
+        "",
+        ""
+      ],
+      [
+        "PROD016",
+        "Support",
+        "Électronique",
+        199,
+        20,
+        76,
+        "",
+        ""
+      ],
+      [
+        "PROD017",
+        "Souris",
+        "Informatique",
+        399,
+        20,
+        3,
+        "",
+        ""
+      ],
+      [
+        "PROD018",
+        "Housse",
+        "Électronique",
+        199,
+        20,
+        62,
+        "",
+        ""
+      ],
+      [
+        "PROD019",
+        "Housse",
+        "Électronique",
+        99,
+        20,
+        52,
+        "",
+        ""
+      ],
+      [
+        "PROD020",
+        "Casque",
+        "Accessoires",
+        499,
+        20,
+        30,
+        "",
+        ""
+      ],
+      [
+        "PROD021",
+        "Switch",
+        "Accessoires",
+        99,
+        20,
+        67,
+        "",
+        ""
+      ],
+      [
+        "PROD022",
+        "Ordinateur portable",
+        "Accessoires",
+        299,
+        20,
+        9,
+        "",
+        ""
+      ],
+      [
+        "PROD023",
+        "Batterie",
+        "Électronique",
+        499,
+        20,
+        35,
+        "",
+        ""
+      ],
+      [
+        "PROD024",
+        "Adaptateur",
+        "Accessoires",
+        499,
+        20,
+        5,
+        "",
+        ""
+      ],
+      [
+        "PROD025",
+        "Imprimante",
+        "Accessoires",
+        99,
+        20,
+        7,
+        "",
+        ""
+      ],
+      [
+        "PROD026",
+        "Écran",
+        "Électronique",
+        99,
+        20,
+        41,
+        "",
+        ""
+      ],
+      [
+        "PROD027",
+        "Support",
+        "Informatique",
+        399,
+        20,
+        90,
+        "",
+        ""
+      ],
+      [
+        "PROD028",
+        "Téléphone",
+        "Informatique",
+        299,
+        20,
+        75,
+        "",
+        ""
+      ],
+      [
+        "PROD029",
+        "Clavier",
+        "Informatique",
+        499,
+        20,
+        38,
+        "",
+        ""
+      ],
+      [
+        "PROD030",
+        "Disque dur",
+        "Informatique",
+        399,
+        20,
+        36,
+        "",
+        ""
+      ],
+      [
+        "PROD031",
+        "Support",
+        "Informatique",
+        149,
+        20,
+        48,
+        "",
+        ""
+      ],
+      [
+        "PROD032",
+        "Câble USB",
+        "Informatique",
+        499,
+        20,
+        89,
+        "",
+        ""
+      ],
+      [
+        "PROD033",
+        "Webcam",
+        "Accessoires",
+        99,
+        20,
+        40,
+        "",
+        ""
+      ],
+      [
+        "PROD034",
+        "Disque dur",
+        "Accessoires",
+        299,
+        20,
+        50,
+        "",
+        ""
+      ],
+      [
+        "PROD035",
+        "Adaptateur",
+        "Informatique",
+        199,
+        20,
+        42,
+        "",
+        ""
+      ],
+      [
+        "PROD036",
+        "Batterie",
+        "Électronique",
+        399,
+        20,
+        47,
+        "",
+        ""
+      ],
+      [
+        "PROD037",
+        "Housse",
+        "Informatique",
+        299,
+        20,
+        34,
+        "",
+        ""
+      ],
+      [
+        "PROD038",
+        "Adaptateur",
+        "Accessoires",
+        199,
+        20,
+        8,
+        "",
+        ""
+      ],
+      [
+        "PROD039",
+        "Webcam",
+        "Informatique",
+        149,
+        20,
+        44,
+        "",
+        ""
+      ],
+      [
+        "PROD040",
+        "Disque dur",
+        "Électronique",
+        149,
+        20,
+        32,
+        "",
+        ""
+      ],
+      [
+        "PROD041",
+        "Adaptateur",
+        "Accessoires",
+        499,
+        20,
+        22,
+        "",
+        ""
+      ],
+      [
+        "PROD042",
+        "Téléphone",
+        "Accessoires",
+        399,
+        20,
+        20,
+        "",
+        ""
+      ],
+      [
+        "PROD043",
+        "Batterie",
+        "Électronique",
+        299,
+        20,
+        94,
+        "",
+        ""
+      ],
+      [
+        "PROD044",
+        "Écran",
+        "Accessoires",
+        299,
+        20,
+        42,
+        "",
+        ""
+      ],
+      [
+        "PROD045",
+        "Écran",
+        "Informatique",
+        299,
+        20,
+        87,
+        "",
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "formule_si_presente": true,
+    "comptage_correct": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Alerte de stock si inférieur à 20 (première ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "F2",
+        "<",
+        "20",
+        "ALERTE",
+        "OK"
+      ],
+      "recopie_jusqua": "G46",
+      "points": 20,
+      "indices": [
+        "Tu dois comparer le stock à 20 et afficher un message selon le résultat.",
+        "Utilise la fonction SI pour tester si F2 est inférieur à 20.",
+        "=SI(F2<20;\"ALERTE\";\"OK\")"
+      ],
+      "id": "cp_1",
+      "competence_id": 9
+    },
+    {
+      "cellule": "G46",
+      "type": "formule",
+      "description": "Alerte de stock si inférieur à 20 (dernière ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "F46",
+        "<",
+        "20",
+        "ALERTE",
+        "OK"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée à la dernière ligne.",
+        "La référence de cellule doit avoir changé automatiquement.",
+        "=SI(F46<20;\"ALERTE\";\"OK\")"
+      ],
+      "id": "cp_2",
+      "competence_id": 9
+    },
+    {
+      "cellule": "H2",
+      "type": "formule",
+      "description": "Statut de rupture si stock égal à 0 (première ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "F2",
+        "=",
+        "0",
+        "RUPTURE",
+        "En stock"
+      ],
+      "recopie_jusqua": "H46",
+      "points": 20,
+      "indices": [
+        "Tu dois vérifier si le stock est exactement égal à zéro.",
+        "Utilise la fonction SI pour tester si F2 égale 0.",
+        "=SI(F2=0;\"RUPTURE\";\"En stock\")"
+      ],
+      "id": "cp_3",
+      "competence_id": 9
+    },
+    {
+      "cellule": "H46",
+      "type": "formule",
+      "description": "Statut de rupture si stock égal à 0 (dernière ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "F46",
+        "=",
+        "0",
+        "RUPTURE",
+        "En stock"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que la formule de rupture s'est bien recopiée jusqu'à la fin.",
+        "La référence doit pointer sur F46 maintenant.",
+        "=SI(F46=0;\"RUPTURE\";\"En stock\")"
+      ],
+      "id": "cp_4",
+      "competence_id": 9
+    },
+    {
+      "cellule": "libre",
+      "type": "formule",
+      "description": "Comptage des produits en ALERTE",
+      "fonction": "NB.SI",
+      "pattern": [
+        "G2:G46",
+        "ALERTE"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Tu dois compter combien de fois le mot 'ALERTE' apparaît dans la colonne G.",
+        "Utilise une fonction de comptage conditionnel sur la plage G2:G46.",
+        "=NB.SI(G2:G46;\"ALERTE\")"
+      ],
+      "id": "cp_5",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 9
+    },
+    {
+      "cellule": "libre",
+      "type": "formule",
+      "description": "Comptage des produits en RUPTURE",
+      "fonction": "NB.SI",
+      "pattern": [
+        "H2:H46",
+        "RUPTURE"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Tu dois compter combien de fois le mot 'RUPTURE' apparaît dans la colonne H.",
+        "Utilise une fonction de comptage conditionnel sur la plage H2:H46.",
+        "=NB.SI(H2:H46;\"RUPTURE\")"
+      ],
+      "id": "cp_6",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 9
+    }
+  ],
+  "competence_ids": [
+    9
+  ]
+}

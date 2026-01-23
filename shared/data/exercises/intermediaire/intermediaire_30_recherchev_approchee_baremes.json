@@ -1,0 +1,282 @@
+{
+    "id": "intermediaire_30_recherchev_approchee_baremes",
+    "titre": "RECHERCHEV Approchée : Barèmes et Tranches Automatiques",
+    "niveau": "intermediaire",
+    "duree_estimee": "20 min",
+    "competences": ["RECHERCHEV approchée", "Barèmes", "Tranches"],
+    "competence_ids": [53],
+  
+    "contexte": {
+      "situation": "Tu travailles au service paie de TechSolutions. L'entreprise applique des primes d'ancienneté selon un barème progressif. Tu dois automatiser le calcul des primes pour 150 employés.",
+      "manager": {
+        "nom": "Stéphane Morel",
+        "poste": "Responsable Paie",
+        "personnalite": "Méthodique, il veut des calculs 100% fiables pour éviter les erreurs de paie.",
+        "demande": "Notre barème de prime d'ancienneté a 6 tranches. Je ne veux pas faire 150 SI imbriqués ! Il doit y avoir une méthode plus simple avec RECHERCHEV, non ?"
+      },
+      "enjeux": "Erreur de paie = mécontentement des employés + risque prud'homal.",
+      "deadline": "Avant la clôture de paie vendredi"
+    },
+  
+    "objectifs": [
+      "Comprendre la différence entre RECHERCHEV exacte (FAUX) et approchée (VRAI)",
+      "Utiliser RECHERCHEV approchée pour des barèmes à tranches",
+      "Construire une table de référence triée correctement",
+      "Appliquer cette technique aux impôts, commissions, remises..."
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec la liste des employés et le barème de primes",
+      "Utilise RECHERCHEV approchée pour trouver automatiquement la tranche",
+      "Calcule la prime pour chaque employé",
+      "Vérifie les cas limites (0 an, 5 ans exactement, 20+ ans)"
+    ],
+  
+    "donnees": {
+      "feuille": "Paie",
+      "bareme_primes": {
+        "description": "Prime mensuelle selon ancienneté",
+        "table": [
+          {"anciennete_min": 0, "prime": 0, "description": "Moins de 2 ans"},
+          {"anciennete_min": 2, "prime": 50, "description": "2 à 4 ans"},
+          {"anciennete_min": 5, "prime": 100, "description": "5 à 9 ans"},
+          {"anciennete_min": 10, "prime": 200, "description": "10 à 14 ans"},
+          {"anciennete_min": 15, "prime": 350, "description": "15 à 19 ans"},
+          {"anciennete_min": 20, "prime": 500, "description": "20 ans et plus"}
+        ],
+        "position": "G1:H7"
+      },
+      "employes": {
+        "headers": ["ID", "Nom", "Date embauche", "Ancienneté", "Prime"],
+        "rows": [
+          ["E001", "Martin Alice", "15/03/2023", 1.8, null],
+          ["E002", "Dubois Pierre", "01/09/2019", 5.4, null],
+          ["E003", "Bernard Marie", "20/06/2010", 14.6, null],
+          ["E004", "Thomas Lucas", "05/01/2004", 21.0, null],
+          ["E005", "Robert Emma", "30/11/2021", 3.1, null],
+          ["E006", "Petit Jean", "15/07/2017", 7.5, null],
+          ["E007", "Durand Sophie", "01/03/2015", 9.8, null],
+          ["E008", "Leroy Hugo", "20/08/2009", 15.4, null],
+          ["E009", "Moreau Claire", "10/04/2022", 2.8, null],
+          ["E010", "Simon Antoine", "25/12/1999", 25.1, null]
+        ]
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Comprendre RECHERCHEV approchée",
+        "explications": [
+          "RECHERCHEV exacte (FAUX) : cherche une correspondance EXACTE, sinon #N/A",
+          "RECHERCHEV approchée (VRAI) : cherche la plus grande valeur <= à ta recherche",
+          "Parfait pour les tranches : 7 ans → trouve 5 (car 5 <= 7 < 10)"
+        ],
+        "condition_critique": "⚠️ La table DOIT être triée par ordre CROISSANT sur la 1ère colonne !"
+      },
+      {
+        "phase": "B. Construire la table de barème",
+        "consignes": [
+          "En G1:H1, mets les en-têtes : Ancienneté, Prime",
+          "En G2:H7, saisis le barème (valeurs minimales de chaque tranche)",
+          "IMPORTANT : les valeurs de G doivent être triées croissant (0, 2, 5, 10, 15, 20)"
+        ],
+        "table": [
+          ["0", "0"],
+          ["2", "50"],
+          ["5", "100"],
+          ["10", "200"],
+          ["15", "350"],
+          ["20", "500"]
+        ]
+      },
+      {
+        "phase": "C. Appliquer RECHERCHEV approchée",
+        "syntaxe": "=RECHERCHEV(valeur; table; colonne; VRAI)",
+        "consignes": [
+          "En E2 (Prime de Martin), tape :",
+          "=RECHERCHEV(D2;$G$2:$H$7;2;VRAI)",
+          "D2 = ancienneté (1.8 ans)",
+          "VRAI = mode approché",
+          "Résultat : 0€ (car 1.8 < 2, donc tranche 0)"
+        ]
+      },
+      {
+        "phase": "D. Vérifier les cas limites",
+        "tests": [
+          "1.8 ans → 0€ (tranche 0-2)",
+          "5.0 ans exactement → 100€ (tranche 5-10, inclus)",
+          "9.8 ans → 100€ (encore tranche 5-10)",
+          "10.0 ans → 200€ (passe à tranche 10-15)",
+          "25 ans → 500€ (tranche 20+)"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_bareme_table",
+        "cellule": "H3",
+        "type": "valeur",
+        "description": "Table barème correcte (prime 2-5 ans)",
+        "competence_id": 53,
+        "expected_value": 50,
+        "points": 10,
+        "indices": [
+          "La tranche 2-5 ans donne 50€",
+          "En G3 tu dois avoir 2, en H3 tu dois avoir 50",
+          "Vérifie que la table est triée croissant"
+        ]
+      },
+      {
+        "id": "cp_2_prime_moins_2ans",
+        "cellule": "E2",
+        "type": "valeur",
+        "description": "Prime pour ancienneté < 2 ans (0€)",
+        "competence_id": 53,
+        "expected_value": 0,
+        "points": 15,
+        "indices": [
+          "Martin a 1.8 ans d'ancienneté",
+          "1.8 < 2, donc tranche 0 → prime 0€",
+          "=RECHERCHEV(D2;$G$2:$H$7;2;VRAI)"
+        ]
+      },
+      {
+        "id": "cp_3_prime_5ans",
+        "cellule": "E3",
+        "type": "valeur",
+        "description": "Prime pour ancienneté 5+ ans",
+        "competence_id": 53,
+        "expected_value": 100,
+        "points": 15,
+        "indices": [
+          "Dubois a 5.4 ans",
+          "5.4 >= 5 mais < 10 → tranche 5 → 100€",
+          "RECHERCHEV trouve 5 (plus grande valeur <= 5.4)"
+        ]
+      },
+      {
+        "id": "cp_4_prime_14ans",
+        "cellule": "E4",
+        "type": "valeur",
+        "description": "Prime pour ancienneté 14+ ans",
+        "competence_id": 53,
+        "expected_value": 200,
+        "points": 15,
+        "indices": [
+          "Bernard a 14.6 ans",
+          "14.6 >= 10 mais < 15 → tranche 10 → 200€",
+          "Pas encore dans la tranche 15"
+        ]
+      },
+      {
+        "id": "cp_5_prime_20plus",
+        "cellule": "E5",
+        "type": "valeur",
+        "description": "Prime pour ancienneté 20+ ans",
+        "competence_id": 53,
+        "expected_value": 500,
+        "points": 15,
+        "indices": [
+          "Thomas a 21 ans d'ancienneté",
+          "21 >= 20 → tranche maximale → 500€",
+          "C'est le plafond du barème"
+        ]
+      },
+      {
+        "id": "cp_6_formule_recherchev",
+        "cellule": "E2",
+        "type": "formule",
+        "description": "Formule RECHERCHEV approchée correcte",
+        "competence_id": 53,
+        "fonction": "RECHERCHEV",
+        "pattern": ["RECHERCHEV", "D2", "VRAI"],
+        "points": 20,
+        "indices": [
+          "Ta formule doit contenir RECHERCHEV",
+          "Le 4ème argument doit être VRAI (approché)",
+          "=RECHERCHEV(D2;$G$2:$H$7;2;VRAI)"
+        ]
+      },
+      {
+        "id": "cp_7_prime_dernier",
+        "cellule": "E11",
+        "type": "valeur",
+        "description": "Prime du dernier employé (25+ ans)",
+        "competence_id": 53,
+        "expected_value": 500,
+        "points": 10,
+        "indices": [
+          "Simon a 25.1 ans d'ancienneté",
+          "Maximum du barème",
+          "Vérifie que la formule est recopiée"
+        ]
+      }
+    ],
+  
+    "comparaison_modes": {
+      "faux_exact": {
+        "usage": "Codes, identifiants, noms exacts",
+        "comportement": "Cherche correspondance exacte ou #N/A",
+        "exemple": "Trouver le prix du produit 'ABC123'"
+      },
+      "vrai_approche": {
+        "usage": "Barèmes, tranches, seuils",
+        "comportement": "Trouve la plus grande valeur <= recherche",
+        "exemple": "Trouver la tranche d'impôt pour 35000€",
+        "condition": "Table OBLIGATOIREMENT triée croissant"
+      }
+    },
+  
+    "applications_courantes": [
+      "Barèmes d'impôt sur le revenu",
+      "Grilles de commissions commerciales",
+      "Remises par volume d'achat",
+      "Frais de port par poids",
+      "Notes et mentions selon les points",
+      "Tarifs dégressifs"
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Table non triée",
+        "symptome": "Résultats incohérents ou erronés",
+        "solution": "Trier la table par ordre CROISSANT sur la 1ère colonne"
+      },
+      {
+        "erreur": "Oublier VRAI",
+        "symptome": "#N/A car valeur exacte non trouvée",
+        "solution": "Ajouter VRAI comme 4ème argument"
+      },
+      {
+        "erreur": "Commencer à 1 au lieu de 0",
+        "symptome": "Valeurs < 1 renvoient #N/A",
+        "solution": "La 1ère ligne du barème doit commencer à 0"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises RECHERCHEV approchée. Fini les SI imbriqués pour les barèmes ! Cette technique marche pour les impôts, commissions, remises... 🎯",
+      "partiel": "Tu as compris le principe. Vérifie que ta table est triée croissant et que tu utilises bien VRAI.",
+      "echec": "RECHERCHEV approchée trouve la tranche automatiquement. Clé : table triée + VRAI en 4ème argument."
+    },
+  
+    "socrate_message": {
+      "intro": "RECHERCHEV approchée, c'est magique pour les barèmes ! 🪄 Plus besoin de 10 SI imbriqués pour trouver une tranche.",
+      "conclusion": "Tu connais maintenant les deux modes de RECHERCHEV : exact (FAUX) pour les codes, approché (VRAI) pour les tranches. Combo puissant ! 💪"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["RECHERCHEV", "approchée", "barème", "tranches", "paie", "intermédiaire"],
+      "prerequis": ["RECHERCHEV exacte"],
+      "ouvre_vers": ["INDEX+EQUIV", "Barèmes complexes"]
+    }
+  }

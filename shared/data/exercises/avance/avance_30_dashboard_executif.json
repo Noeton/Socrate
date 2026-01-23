@@ -1,0 +1,1169 @@
+{
+  "id": "avance_30_dashboard_executif",
+  "titre": "Dashboard Exécutif Complet Multi-Compétences",
+  "niveau": "avance",
+  "duree_estimee": "90 min",
+  "competences": [
+    "INDEX+EQUIV",
+    "tableaux_structures",
+    "graphiques",
+    "formules_matricielles",
+    "TCD"
+  ],
+  "contexte": {
+    "situation": "Tu crées un dashboard complet pour la direction combinant toutes les techniques avancées.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Intégrer toutes les compétences dans un seul projet",
+    "Créer un outil professionnel réutilisable",
+    "Automatiser l'analyse complète"
+  ],
+  "consignes": [
+    "Feuille 'Données': Convertis en tableau structuré 'VentesData'",
+    "Feuille 'KPIs': Calcule CA total, Marge moyenne, Nb clients, Panier moyen (formules dynamiques)",
+    "Feuille 'Top_Regions': Top 5 régions avec SORT+FILTRE",
+    "Feuille 'Top_Vendeurs': Top 10 vendeurs avec tableau",
+    "Feuille 'Dashboard': Assemble 5 graphiques (KPIs, évolution, régions, vendeurs, produits)",
+    "Ajoute des segments pour filtrer tout le dashboard",
+    "Crée un TCD: Région × Produit avec graphique",
+    "Automatise tout pour qu'1 clic sur segment rafraîchisse tout"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Produit",
+      "Vendeur",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Switch",
+        "Paul",
+        "Grand Est",
+        39,
+        999,
+        38961
+      ],
+      [
+        "02/01/2024",
+        "Batterie",
+        "Henry",
+        "Bretagne",
+        23,
+        149,
+        3427
+      ],
+      [
+        "03/01/2024",
+        "Disque dur",
+        "Nathan",
+        "Nouvelle-Aquitaine",
+        33,
+        1299,
+        42867
+      ],
+      [
+        "04/01/2024",
+        "Ordinateur portable",
+        "Quentin",
+        "Provence-Alpes-Côte d'Azur",
+        42,
+        799,
+        33558
+      ],
+      [
+        "05/01/2024",
+        "Disque dur",
+        "Olivia",
+        "Île-de-France",
+        14,
+        99,
+        1386
+      ],
+      [
+        "06/01/2024",
+        "Imprimante",
+        "Rose",
+        "Île-de-France",
+        4,
+        299,
+        1196
+      ],
+      [
+        "07/01/2024",
+        "Webcam",
+        "Frank",
+        "Bourgogne-Franche-Comté",
+        41,
+        149,
+        6109
+      ],
+      [
+        "08/01/2024",
+        "Router",
+        "Bob",
+        "Grand Est",
+        50,
+        1299,
+        64950
+      ],
+      [
+        "09/01/2024",
+        "Housse",
+        "Olivia",
+        "Bretagne",
+        26,
+        149,
+        3874
+      ],
+      [
+        "10/01/2024",
+        "Webcam",
+        "Kate",
+        "Hauts-de-France",
+        47,
+        399,
+        18753
+      ],
+      [
+        "11/01/2024",
+        "Chargeur",
+        "Alice",
+        "Grand Est",
+        41,
+        1299,
+        53259
+      ],
+      [
+        "12/01/2024",
+        "Switch",
+        "Paul",
+        "Grand Est",
+        43,
+        999,
+        42957
+      ],
+      [
+        "13/01/2024",
+        "Téléphone",
+        "Eve",
+        "Nouvelle-Aquitaine",
+        31,
+        999,
+        30969
+      ],
+      [
+        "14/01/2024",
+        "Clavier",
+        "Diana",
+        "Grand Est",
+        11,
+        399,
+        4389
+      ],
+      [
+        "15/01/2024",
+        "Écouteurs",
+        "Bob",
+        "Centre-Val de Loire",
+        26,
+        199,
+        5174
+      ],
+      [
+        "16/01/2024",
+        "Disque dur",
+        "Grace",
+        "Pays de la Loire",
+        49,
+        599,
+        29351
+      ],
+      [
+        "17/01/2024",
+        "Téléphone",
+        "Marie",
+        "Nouvelle-Aquitaine",
+        37,
+        1299,
+        48063
+      ],
+      [
+        "18/01/2024",
+        "Souris",
+        "Diana",
+        "Occitanie",
+        8,
+        99,
+        792
+      ],
+      [
+        "19/01/2024",
+        "Chargeur",
+        "Kate",
+        "Pays de la Loire",
+        6,
+        99,
+        594
+      ],
+      [
+        "20/01/2024",
+        "Disque dur",
+        "Sam",
+        "Provence-Alpes-Côte d'Azur",
+        49,
+        999,
+        48951
+      ],
+      [
+        "21/01/2024",
+        "Moniteur",
+        "Olivia",
+        "Bourgogne-Franche-Comté",
+        48,
+        799,
+        38352
+      ],
+      [
+        "22/01/2024",
+        "Souris",
+        "Sam",
+        "Occitanie",
+        37,
+        999,
+        36963
+      ],
+      [
+        "23/01/2024",
+        "Support",
+        "Uma",
+        "Hauts-de-France",
+        38,
+        1299,
+        49362
+      ],
+      [
+        "24/01/2024",
+        "Moniteur",
+        "Paul",
+        "Île-de-France",
+        35,
+        1299,
+        45465
+      ],
+      [
+        "25/01/2024",
+        "Téléphone",
+        "Tom",
+        "Centre-Val de Loire",
+        10,
+        499,
+        4990
+      ],
+      [
+        "26/01/2024",
+        "Imprimante",
+        "Marie",
+        "Occitanie",
+        4,
+        1299,
+        5196
+      ],
+      [
+        "27/01/2024",
+        "Souris",
+        "Grace",
+        "Auvergne-Rhône-Alpes",
+        5,
+        799,
+        3995
+      ],
+      [
+        "28/01/2024",
+        "Support",
+        "Iris",
+        "Nouvelle-Aquitaine",
+        9,
+        599,
+        5391
+      ],
+      [
+        "29/01/2024",
+        "Support",
+        "Sam",
+        "Bretagne",
+        42,
+        999,
+        41958
+      ],
+      [
+        "30/01/2024",
+        "Support",
+        "Henry",
+        "Occitanie",
+        33,
+        499,
+        16467
+      ],
+      [
+        "31/01/2024",
+        "Webcam",
+        "Grace",
+        "Normandie",
+        38,
+        399,
+        15162
+      ],
+      [
+        "01/02/2024",
+        "Écran",
+        "Xavier",
+        "Occitanie",
+        3,
+        199,
+        597
+      ],
+      [
+        "02/02/2024",
+        "Imprimante",
+        "Sam",
+        "Pays de la Loire",
+        36,
+        299,
+        10764
+      ],
+      [
+        "03/02/2024",
+        "Tablette",
+        "Wendy",
+        "Auvergne-Rhône-Alpes",
+        3,
+        999,
+        2997
+      ],
+      [
+        "04/02/2024",
+        "Écran",
+        "Paul",
+        "Pays de la Loire",
+        32,
+        99,
+        3168
+      ],
+      [
+        "05/02/2024",
+        "Batterie",
+        "Rose",
+        "Occitanie",
+        37,
+        599,
+        22163
+      ],
+      [
+        "06/02/2024",
+        "Clavier",
+        "Sam",
+        "Provence-Alpes-Côte d'Azur",
+        6,
+        799,
+        4794
+      ],
+      [
+        "07/02/2024",
+        "Tablette",
+        "Eve",
+        "Grand Est",
+        43,
+        299,
+        12857
+      ],
+      [
+        "08/02/2024",
+        "Chargeur",
+        "Zoé",
+        "Hauts-de-France",
+        11,
+        599,
+        6589
+      ],
+      [
+        "09/02/2024",
+        "Écran",
+        "Paul",
+        "Occitanie",
+        18,
+        799,
+        14382
+      ],
+      [
+        "10/02/2024",
+        "Souris",
+        "Grace",
+        "Nouvelle-Aquitaine",
+        44,
+        799,
+        35156
+      ],
+      [
+        "11/02/2024",
+        "Support",
+        "Diana",
+        "Occitanie",
+        5,
+        149,
+        745
+      ],
+      [
+        "12/02/2024",
+        "Écouteurs",
+        "Iris",
+        "Nouvelle-Aquitaine",
+        4,
+        299,
+        1196
+      ],
+      [
+        "13/02/2024",
+        "Câble USB",
+        "Iris",
+        "Bretagne",
+        42,
+        299,
+        12558
+      ],
+      [
+        "14/02/2024",
+        "Ordinateur portable",
+        "Victor",
+        "Bourgogne-Franche-Comté",
+        16,
+        499,
+        7984
+      ],
+      [
+        "15/02/2024",
+        "Adaptateur",
+        "Kate",
+        "Nouvelle-Aquitaine",
+        15,
+        149,
+        2235
+      ],
+      [
+        "16/02/2024",
+        "Téléphone",
+        "Eve",
+        "Bourgogne-Franche-Comté",
+        49,
+        199,
+        9751
+      ],
+      [
+        "17/02/2024",
+        "Tablette",
+        "Grace",
+        "Hauts-de-France",
+        23,
+        399,
+        9177
+      ],
+      [
+        "18/02/2024",
+        "Support",
+        "Tom",
+        "Bourgogne-Franche-Comté",
+        40,
+        299,
+        11960
+      ],
+      [
+        "19/02/2024",
+        "Clavier",
+        "Uma",
+        "Normandie",
+        5,
+        299,
+        1495
+      ],
+      [
+        "20/02/2024",
+        "Câble USB",
+        "Wendy",
+        "Bourgogne-Franche-Comté",
+        44,
+        99,
+        4356
+      ],
+      [
+        "21/02/2024",
+        "Ordinateur portable",
+        "Olivia",
+        "Grand Est",
+        17,
+        399,
+        6783
+      ],
+      [
+        "22/02/2024",
+        "Imprimante",
+        "Sam",
+        "Île-de-France",
+        12,
+        199,
+        2388
+      ],
+      [
+        "23/02/2024",
+        "Écran",
+        "Victor",
+        "Centre-Val de Loire",
+        28,
+        1299,
+        36372
+      ],
+      [
+        "24/02/2024",
+        "Clavier",
+        "Yves",
+        "Nouvelle-Aquitaine",
+        16,
+        99,
+        1584
+      ],
+      [
+        "25/02/2024",
+        "Téléphone",
+        "Iris",
+        "Provence-Alpes-Côte d'Azur",
+        32,
+        599,
+        19168
+      ],
+      [
+        "26/02/2024",
+        "Écran",
+        "Uma",
+        "Pays de la Loire",
+        6,
+        799,
+        4794
+      ],
+      [
+        "27/02/2024",
+        "Casque",
+        "Rose",
+        "Normandie",
+        45,
+        149,
+        6705
+      ],
+      [
+        "28/02/2024",
+        "Adaptateur",
+        "Frank",
+        "Occitanie",
+        7,
+        199,
+        1393
+      ],
+      [
+        "29/02/2024",
+        "Tablette",
+        "Zoé",
+        "Provence-Alpes-Côte d'Azur",
+        15,
+        599,
+        8985
+      ],
+      [
+        "01/03/2024",
+        "Téléphone",
+        "Paul",
+        "Occitanie",
+        19,
+        399,
+        7581
+      ],
+      [
+        "02/03/2024",
+        "Disque dur",
+        "Yves",
+        "Centre-Val de Loire",
+        46,
+        599,
+        27554
+      ],
+      [
+        "03/03/2024",
+        "Ordinateur portable",
+        "Yves",
+        "Île-de-France",
+        30,
+        199,
+        5970
+      ],
+      [
+        "04/03/2024",
+        "Écran",
+        "Eve",
+        "Occitanie",
+        23,
+        599,
+        13777
+      ],
+      [
+        "05/03/2024",
+        "Écouteurs",
+        "Frank",
+        "Île-de-France",
+        22,
+        199,
+        4378
+      ],
+      [
+        "06/03/2024",
+        "Câble USB",
+        "Bob",
+        "Bourgogne-Franche-Comté",
+        22,
+        149,
+        3278
+      ],
+      [
+        "07/03/2024",
+        "Téléphone",
+        "Yves",
+        "Grand Est",
+        48,
+        399,
+        19152
+      ],
+      [
+        "08/03/2024",
+        "Écran",
+        "Iris",
+        "Grand Est",
+        29,
+        99,
+        2871
+      ],
+      [
+        "09/03/2024",
+        "Adaptateur",
+        "Diana",
+        "Grand Est",
+        24,
+        99,
+        2376
+      ],
+      [
+        "10/03/2024",
+        "Tablette",
+        "Nathan",
+        "Grand Est",
+        3,
+        599,
+        1797
+      ],
+      [
+        "11/03/2024",
+        "Tablette",
+        "Leo",
+        "Nouvelle-Aquitaine",
+        20,
+        499,
+        9980
+      ],
+      [
+        "12/03/2024",
+        "Souris",
+        "Diana",
+        "Hauts-de-France",
+        15,
+        99,
+        1485
+      ],
+      [
+        "13/03/2024",
+        "Clavier",
+        "Alice",
+        "Occitanie",
+        5,
+        149,
+        745
+      ],
+      [
+        "14/03/2024",
+        "Disque dur",
+        "Henry",
+        "Occitanie",
+        30,
+        499,
+        14970
+      ],
+      [
+        "15/03/2024",
+        "Adaptateur",
+        "Alice",
+        "Île-de-France",
+        48,
+        299,
+        14352
+      ],
+      [
+        "16/03/2024",
+        "Écouteurs",
+        "Uma",
+        "Bourgogne-Franche-Comté",
+        2,
+        599,
+        1198
+      ],
+      [
+        "17/03/2024",
+        "Adaptateur",
+        "Alice",
+        "Hauts-de-France",
+        49,
+        599,
+        29351
+      ],
+      [
+        "18/03/2024",
+        "Adaptateur",
+        "Uma",
+        "Nouvelle-Aquitaine",
+        15,
+        199,
+        2985
+      ],
+      [
+        "19/03/2024",
+        "Écran",
+        "Xavier",
+        "Auvergne-Rhône-Alpes",
+        1,
+        99,
+        99
+      ],
+      [
+        "20/03/2024",
+        "Clavier",
+        "Bob",
+        "Pays de la Loire",
+        33,
+        499,
+        16467
+      ],
+      [
+        "21/03/2024",
+        "Disque dur",
+        "Xavier",
+        "Auvergne-Rhône-Alpes",
+        32,
+        99,
+        3168
+      ],
+      [
+        "22/03/2024",
+        "Moniteur",
+        "Bob",
+        "Nouvelle-Aquitaine",
+        19,
+        199,
+        3781
+      ],
+      [
+        "23/03/2024",
+        "Tablette",
+        "Grace",
+        "Normandie",
+        35,
+        499,
+        17465
+      ],
+      [
+        "24/03/2024",
+        "Adaptateur",
+        "Iris",
+        "Bretagne",
+        11,
+        99,
+        1089
+      ],
+      [
+        "25/03/2024",
+        "Clavier",
+        "Sam",
+        "Bourgogne-Franche-Comté",
+        28,
+        999,
+        27972
+      ],
+      [
+        "26/03/2024",
+        "Clavier",
+        "Yves",
+        "Occitanie",
+        47,
+        1299,
+        61053
+      ],
+      [
+        "27/03/2024",
+        "Casque",
+        "Yves",
+        "Grand Est",
+        5,
+        1299,
+        6495
+      ],
+      [
+        "28/03/2024",
+        "Clavier",
+        "Olivia",
+        "Centre-Val de Loire",
+        29,
+        149,
+        4321
+      ],
+      [
+        "29/03/2024",
+        "Casque",
+        "Victor",
+        "Grand Est",
+        35,
+        1299,
+        45465
+      ],
+      [
+        "30/03/2024",
+        "Souris",
+        "Sam",
+        "Nouvelle-Aquitaine",
+        17,
+        1299,
+        22083
+      ],
+      [
+        "31/03/2024",
+        "Ordinateur portable",
+        "Xavier",
+        "Bretagne",
+        21,
+        299,
+        6279
+      ],
+      [
+        "01/04/2024",
+        "Switch",
+        "Diana",
+        "Île-de-France",
+        11,
+        149,
+        1639
+      ],
+      [
+        "02/04/2024",
+        "Webcam",
+        "Sam",
+        "Grand Est",
+        33,
+        99,
+        3267
+      ],
+      [
+        "03/04/2024",
+        "Tablette",
+        "Nathan",
+        "Auvergne-Rhône-Alpes",
+        47,
+        299,
+        14053
+      ],
+      [
+        "04/04/2024",
+        "Housse",
+        "Xavier",
+        "Nouvelle-Aquitaine",
+        13,
+        99,
+        1287
+      ],
+      [
+        "05/04/2024",
+        "Clavier",
+        "Sam",
+        "Hauts-de-France",
+        45,
+        999,
+        44955
+      ],
+      [
+        "06/04/2024",
+        "Webcam",
+        "Wendy",
+        "Pays de la Loire",
+        26,
+        199,
+        5174
+      ],
+      [
+        "07/04/2024",
+        "Moniteur",
+        "Quentin",
+        "Grand Est",
+        4,
+        299,
+        1196
+      ],
+      [
+        "08/04/2024",
+        "Housse",
+        "Wendy",
+        "Bourgogne-Franche-Comté",
+        30,
+        399,
+        11970
+      ],
+      [
+        "09/04/2024",
+        "Téléphone",
+        "Olivia",
+        "Nouvelle-Aquitaine",
+        31,
+        1299,
+        40269
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "dashboard_complet": true,
+    "toutes_techniques": true,
+    "interactif": true,
+    "professionnel": true,
+    "score_minimum": 9.5
+  },
+  "checkpoints": [
+    {
+      "cellule": "Données!A1",
+      "type": "tableau_structure",
+      "description": "Conversion des données en tableau structuré nommé 'VentesData'",
+      "fonction": null,
+      "pattern": [
+        "VentesData"
+      ],
+      "recopie_jusqua": null,
+      "points": 8,
+      "indices": [
+        "Les données doivent être organisées dans une structure particulière pour être dynamiques.",
+        "Utilise Ctrl+T pour créer un tableau structuré avec un nom personnalisé.",
+        "Sélectionne A1:G101, Ctrl+T, puis nomme le tableau 'VentesData' dans l'onglet Création."
+      ],
+      "id": "cp_1",
+      "competence_id": 24
+    },
+    {
+      "cellule": "KPIs!B2",
+      "type": "formule",
+      "description": "Calcul du CA total avec référence dynamique au tableau",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "VentesData",
+        "Total"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Le CA total doit se calculer automatiquement même si le tableau grandit.",
+        "Utilise une référence structurée vers la colonne Total du tableau VentesData.",
+        "=SOMME(VentesData[Total])"
+      ],
+      "id": "cp_2",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 24
+    },
+    {
+      "cellule": "KPIs!B3",
+      "type": "formule",
+      "description": "Calcul de la marge moyenne avec formule dynamique",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "VentesData",
+        "Prix Unitaire"
+      ],
+      "recopie_jusqua": null,
+      "points": 8,
+      "indices": [
+        "La marge moyenne doit être calculée sur tous les prix unitaires du tableau.",
+        "Utilise MOYENNE avec une référence structurée.",
+        "=MOYENNE(VentesData[Prix Unitaire])"
+      ],
+      "id": "cp_3",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 24
+    },
+    {
+      "cellule": "KPIs!B4",
+      "type": "formule",
+      "description": "Calcul du nombre de clients uniques",
+      "fonction": "NB.SI.ENS",
+      "pattern": [
+        "NB",
+        "VentesData",
+        "Vendeur"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Il faut compter les vendeurs uniques, pas toutes les lignes.",
+        "Combine une fonction de comptage avec une logique d'unicité.",
+        "=LIGNES(UNIQUE(VentesData[Vendeur])) ou utilise NB.SI.ENS avec critères"
+      ],
+      "id": "cp_4",
+      "competence_id": 24
+    },
+    {
+      "cellule": "KPIs!B5",
+      "type": "formule",
+      "description": "Calcul du panier moyen (CA/Nb transactions)",
+      "fonction": null,
+      "pattern": [
+        "B2",
+        "LIGNES",
+        "VentesData"
+      ],
+      "recopie_jusqua": null,
+      "points": 8,
+      "indices": [
+        "Le panier moyen = CA total divisé par le nombre de transactions.",
+        "Divise le CA total par le nombre de lignes du tableau.",
+        "=B2/LIGNES(VentesData[Total])"
+      ],
+      "id": "cp_5",
+      "competence_id": 24
+    },
+    {
+      "cellule": "Top_Regions!A2",
+      "type": "formule",
+      "description": "Top 5 régions avec fonction SORT et agrégation",
+      "fonction": "SORT",
+      "pattern": [
+        "SORT",
+        "SOMME.SI.ENS",
+        "VentesData",
+        "Région"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Il faut d'abord agréger les ventes par région, puis trier les 5 meilleures.",
+        "Combine SORT avec SOMME.SI.ENS pour grouper et trier par CA décroissant.",
+        "=SORT(SOMME.SI.ENS(VentesData[Total],VentesData[Région],UNIQUE(VentesData[Région])),-1) puis limite à 5"
+      ],
+      "id": "cp_6",
+      "competence_id": 24
+    },
+    {
+      "cellule": "Top_Vendeurs!A2",
+      "type": "formule",
+      "description": "Top 10 vendeurs avec INDEX+EQUIV (première ligne)",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "EQUIV",
+        "VentesData",
+        "Vendeur"
+      ],
+      "recopie_jusqua": "A11",
+      "points": 12,
+      "indices": [
+        "Utilise INDEX+EQUIV pour extraire les vendeurs classés par performance.",
+        "Crée d'abord un classement des vendeurs, puis utilise INDEX pour les extraire.",
+        "=INDEX(vendeurs_triés,LIGNE(A1)) avec une logique de tri préalable"
+      ],
+      "id": "cp_7",
+      "competence_id": 24
+    },
+    {
+      "cellule": "Dashboard!A1",
+      "type": "graphique",
+      "description": "Présence de 5 graphiques distincts sur le dashboard",
+      "fonction": null,
+      "pattern": [
+        "graphique"
+      ],
+      "recopie_jusqua": null,
+      "points": 12,
+      "indices": [
+        "Le dashboard doit contenir exactement 5 visualisations différentes.",
+        "Crée des graphiques pour KPIs, évolution temporelle, régions, vendeurs et produits.",
+        "Utilise différents types : barres, courbes, secteurs selon les données à représenter."
+      ],
+      "id": "cp_8",
+      "competence_id": 24
+    },
+    {
+      "cellule": "Dashboard!Segment1",
+      "type": "segment",
+      "description": "Segments connectés pour filtrage global du dashboard",
+      "fonction": null,
+      "pattern": [
+        "segment",
+        "filtre"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Les segments doivent pouvoir filtrer tous les éléments du dashboard d'un coup.",
+        "Connecte les segments aux tableaux croisés dynamiques et graphiques.",
+        "Insertion > Segment, puis connecte-le à toutes les sources de données via Connexions de segment."
+      ],
+      "id": "cp_9",
+      "competence_id": 24
+    },
+    {
+      "cellule": "TCD!A1",
+      "type": "tcd",
+      "description": "Tableau croisé dynamique Région × Produit avec graphique associé",
+      "fonction": null,
+      "pattern": [
+        "TCD",
+        "Région",
+        "Produit",
+        "Total"
+      ],
+      "recopie_jusqua": null,
+      "points": 7,
+      "indices": [
+        "Crée un TCD avec les régions en lignes et les produits en colonnes.",
+        "Place Région en lignes, Produit en colonnes, et Total en valeurs (somme).",
+        "Insertion > Tableau croisé dynamique, puis ajoute un graphique croisé dynamique associé."
+      ],
+      "id": "cp_10",
+      "competence_id": 24
+    }
+  ],
+  "competence_ids": [
+    24,
+    23
+  ]
+}

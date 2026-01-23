@@ -1,0 +1,570 @@
+{
+  "id": "avance_24_tarification_dynamique",
+  "titre": "Tarification Dynamique avec INDEX+EQUIV Bidirectionnel",
+  "niveau": "avance",
+  "duree_estimee": "45 min",
+  "competences": [
+    "INDEX+EQUIV_avance"
+  ],
+  "contexte": {
+    "situation": "Les prix varient selon la catégorie produit ET la région. Tu dois chercher dans une matrice.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Maîtriser INDEX avec 2 EQUIV imbriqués",
+    "Rechercher dans une matrice 2D",
+    "Automatiser la tarification"
+  ],
+  "consignes": [
+    "Feuille 'Grille_Prix': Matrice Catégories (lignes) × Régions (colonnes)",
+    "Dans E2, cherche le prix: =INDEX(Grille_Prix!$B$2:$E$4;EQUIV(B2;Grille_Prix!$A$2:$A$4;0);EQUIV(C2;Grille_Prix!$B$1:$E$1;0))",
+    "Dans F2, calcule le total: =D2*E2",
+    "Crée un tableau de bord: Total ventes par région et catégorie",
+    "Identifie la combinaison la plus rentable",
+    "Simule un changement de tarif et observe l'impact"
+  ],
+  "donnees": {
+    "headers": [
+      "N° Commande",
+      "Catégorie",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "CMD001",
+        "Premium",
+        "Sud",
+        6,
+        "",
+        ""
+      ],
+      [
+        "CMD002",
+        "Premium",
+        "Nord",
+        46,
+        "",
+        ""
+      ],
+      [
+        "CMD003",
+        "Premium",
+        "Est",
+        39,
+        "",
+        ""
+      ],
+      [
+        "CMD004",
+        "Premium",
+        "Ouest",
+        12,
+        "",
+        ""
+      ],
+      [
+        "CMD005",
+        "Luxe",
+        "Nord",
+        43,
+        "",
+        ""
+      ],
+      [
+        "CMD006",
+        "Premium",
+        "Sud",
+        48,
+        "",
+        ""
+      ],
+      [
+        "CMD007",
+        "Luxe",
+        "Est",
+        15,
+        "",
+        ""
+      ],
+      [
+        "CMD008",
+        "Standard",
+        "Ouest",
+        32,
+        "",
+        ""
+      ],
+      [
+        "CMD009",
+        "Standard",
+        "Nord",
+        27,
+        "",
+        ""
+      ],
+      [
+        "CMD010",
+        "Luxe",
+        "Nord",
+        21,
+        "",
+        ""
+      ],
+      [
+        "CMD011",
+        "Premium",
+        "Ouest",
+        32,
+        "",
+        ""
+      ],
+      [
+        "CMD012",
+        "Luxe",
+        "Ouest",
+        43,
+        "",
+        ""
+      ],
+      [
+        "CMD013",
+        "Luxe",
+        "Ouest",
+        46,
+        "",
+        ""
+      ],
+      [
+        "CMD014",
+        "Standard",
+        "Ouest",
+        13,
+        "",
+        ""
+      ],
+      [
+        "CMD015",
+        "Luxe",
+        "Sud",
+        39,
+        "",
+        ""
+      ],
+      [
+        "CMD016",
+        "Premium",
+        "Sud",
+        29,
+        "",
+        ""
+      ],
+      [
+        "CMD017",
+        "Standard",
+        "Est",
+        42,
+        "",
+        ""
+      ],
+      [
+        "CMD018",
+        "Premium",
+        "Ouest",
+        26,
+        "",
+        ""
+      ],
+      [
+        "CMD019",
+        "Premium",
+        "Nord",
+        7,
+        "",
+        ""
+      ],
+      [
+        "CMD020",
+        "Standard",
+        "Sud",
+        28,
+        "",
+        ""
+      ],
+      [
+        "CMD021",
+        "Premium",
+        "Est",
+        20,
+        "",
+        ""
+      ],
+      [
+        "CMD022",
+        "Standard",
+        "Ouest",
+        22,
+        "",
+        ""
+      ],
+      [
+        "CMD023",
+        "Premium",
+        "Sud",
+        10,
+        "",
+        ""
+      ],
+      [
+        "CMD024",
+        "Luxe",
+        "Nord",
+        5,
+        "",
+        ""
+      ],
+      [
+        "CMD025",
+        "Standard",
+        "Ouest",
+        41,
+        "",
+        ""
+      ],
+      [
+        "CMD026",
+        "Luxe",
+        "Ouest",
+        5,
+        "",
+        ""
+      ],
+      [
+        "CMD027",
+        "Luxe",
+        "Est",
+        46,
+        "",
+        ""
+      ],
+      [
+        "CMD028",
+        "Luxe",
+        "Ouest",
+        46,
+        "",
+        ""
+      ],
+      [
+        "CMD029",
+        "Standard",
+        "Nord",
+        36,
+        "",
+        ""
+      ],
+      [
+        "CMD030",
+        "Luxe",
+        "Ouest",
+        44,
+        "",
+        ""
+      ],
+      [
+        "CMD031",
+        "Standard",
+        "Est",
+        43,
+        "",
+        ""
+      ],
+      [
+        "CMD032",
+        "Standard",
+        "Nord",
+        48,
+        "",
+        ""
+      ],
+      [
+        "CMD033",
+        "Standard",
+        "Est",
+        47,
+        "",
+        ""
+      ],
+      [
+        "CMD034",
+        "Luxe",
+        "Sud",
+        41,
+        "",
+        ""
+      ],
+      [
+        "CMD035",
+        "Luxe",
+        "Nord",
+        38,
+        "",
+        ""
+      ],
+      [
+        "CMD036",
+        "Luxe",
+        "Nord",
+        17,
+        "",
+        ""
+      ],
+      [
+        "CMD037",
+        "Standard",
+        "Est",
+        19,
+        "",
+        ""
+      ],
+      [
+        "CMD038",
+        "Premium",
+        "Sud",
+        36,
+        "",
+        ""
+      ],
+      [
+        "CMD039",
+        "Premium",
+        "Est",
+        7,
+        "",
+        ""
+      ],
+      [
+        "CMD040",
+        "Premium",
+        "Nord",
+        16,
+        "",
+        ""
+      ]
+    ],
+    "grille_prix": {
+      "headers": [
+        "Catégorie",
+        "Nord",
+        "Sud",
+        "Est",
+        "Ouest"
+      ],
+      "rows": [
+        [
+          "Standard",
+          116,
+          82,
+          85,
+          99
+        ],
+        [
+          "Premium",
+          184,
+          217,
+          198,
+          248
+        ],
+        [
+          "Luxe",
+          448,
+          440,
+          389,
+          442
+        ]
+      ]
+    }
+  },
+  "criteres_reussite": {
+    "index_equiv_2d": true,
+    "tarification_automatique": true,
+    "tableau_bord": true,
+    "score_minimum": 9
+  },
+  "checkpoints": [
+    {
+      "cellule": "E2",
+      "type": "formule",
+      "description": "Recherche bidirectionnelle du prix unitaire (première ligne)",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "EQUIV",
+        "Grille_Prix",
+        "$B$2:$E$4",
+        "$A$2:$A$4",
+        "$B$1:$E$1",
+        "B2",
+        "C2"
+      ],
+      "recopie_jusqua": "E41",
+      "points": 25,
+      "indices": [
+        "Tu dois croiser deux critères pour trouver le prix dans une matrice. Quelle fonction permet de récupérer une valeur à l'intersection de deux axes ?",
+        "Utilise INDEX avec deux EQUIV : un pour la ligne (catégorie) et un pour la colonne (région). Pense aux références absolues pour la matrice.",
+        "=INDEX(Grille_Prix!$B$2:$E$4;EQUIV(B2;Grille_Prix!$A$2:$A$4;0);EQUIV(C2;Grille_Prix!$B$1:$E$1;0))"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "E41",
+      "type": "formule",
+      "description": "Recherche bidirectionnelle du prix unitaire (dernière ligne)",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "EQUIV",
+        "Grille_Prix",
+        "$B$2:$E$4",
+        "$A$2:$A$4",
+        "$B$1:$E$1",
+        "B41",
+        "C41"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que ta formule s'adapte correctement aux dernières lignes.",
+        "Les références relatives (B41, C41) doivent changer, mais pas les références absolues de la matrice.",
+        "La formule doit référencer B41 et C41 tout en gardant les plages de la grille fixes."
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Calcul du total (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "D2",
+        "E2",
+        "*"
+      ],
+      "recopie_jusqua": "F41",
+      "points": 10,
+      "indices": [
+        "Le total, c'est le résultat d'une multiplication entre deux colonnes.",
+        "Multiplie la quantité par le prix unitaire.",
+        "=D2*E2"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "F41",
+      "type": "formule",
+      "description": "Calcul du total (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "D41",
+        "E41",
+        "*"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que le calcul du total fonctionne sur toutes les lignes.",
+        "La formule doit s'adapter aux références de la ligne 41.",
+        "=D41*E41"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "H2",
+      "type": "formule",
+      "description": "Tableau de bord - Total ventes par région (première région)",
+      "fonction": "SOMMEPROD",
+      "pattern": [
+        "SOMMEPROD",
+        "C$2:C$41",
+        "H$1",
+        "F$2:F$41"
+      ],
+      "recopie_jusqua": "K2",
+      "points": 20,
+      "indices": [
+        "Pour totaliser les ventes par région, tu dois additionner tous les totaux où la région correspond. Quelle fonction permet de sommer avec condition ?",
+        "Utilise SOMMEPROD ou SOMME.SI pour additionner la colonne Total (F) quand la région (C) correspond à celle du tableau de bord.",
+        "=SOMMEPROD((C$2:C$41=H$1)*F$2:F$41) ou =SOMME.SI(C$2:C$41;H$1;F$2:F$41)"
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "H3",
+      "type": "formule",
+      "description": "Tableau de bord - Total ventes par catégorie (première catégorie)",
+      "fonction": "SOMMEPROD",
+      "pattern": [
+        "SOMMEPROD",
+        "B$2:B$41",
+        "$G3",
+        "F$2:F$41"
+      ],
+      "recopie_jusqua": "H5",
+      "points": 15,
+      "indices": [
+        "Même principe que pour les régions, mais cette fois avec les catégories.",
+        "Additionne les totaux où la catégorie correspond à celle de la ligne du tableau de bord.",
+        "=SOMMEPROD((B$2:B$41=$G3)*F$2:F$41) ou =SOMME.SI(B$2:B$41;$G3;F$2:F$41)"
+      ],
+      "id": "cp_6"
+    },
+    {
+      "cellule": "H7",
+      "type": "formule",
+      "description": "Identification de la combinaison la plus rentable",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "MAX",
+        "Grille_Prix"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Pour trouver la combinaison la plus rentable, cherche d'abord la valeur maximale dans ta grille de prix.",
+        "Utilise MAX pour trouver le prix le plus élevé, puis INDEX/EQUIV pour identifier la catégorie et région correspondantes.",
+        "Combine MAX avec INDEX/EQUIV pour localiser et afficher la combinaison optimale."
+      ],
+      "id": "cp_7"
+    },
+    {
+      "cellule": "H9",
+      "type": "valeur",
+      "description": "Simulation d'impact après changement de tarif",
+      "fonction": null,
+      "pattern": [
+        "différence",
+        "impact",
+        "%"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Après avoir modifié un prix dans la grille, observe comment les totaux changent.",
+        "Calcule la différence ou le pourcentage d'évolution des ventes totales.",
+        "Compare la situation avant/après le changement de tarif pour quantifier l'impact."
+      ],
+      "id": "cp_8"
+    }
+  ],
+  "competence_ids": [
+    24
+  ]
+}

@@ -1,0 +1,283 @@
+{
+    "id": "reference_01_budget_personnel",
+    "version": "2.0",
+    "titre": "Ton premier budget mensuel",
+    
+    "metadata": {
+      "niveau": "debutant",
+      "duree_estimee": "20 min",
+      "competences_ids": [1, 3, 4, 5, 9],
+      "competences_noms": ["Saisie de données", "SOMME", "MOYENNE", "MIN/MAX", "SI simple"],
+      "prerequis": [],
+      "objectif_pedagogique": "Maîtriser les fonctions de base dans un contexte personnel et motivant"
+    },
+  
+    "contexte": {
+      "situation": "C'est le 1er janvier. Tu as pris une bonne résolution : cette année, tu vas ENFIN gérer ton argent correctement. Fini les fins de mois difficiles et les 'mais où est passé mon argent ?!'",
+      
+      "personnage": "Toi-même, avec tes vraies dépenses du mois dernier (enfin, des dépenses réalistes qu'on a inventées pour toi).",
+      
+      "objectif": "Créer un tableau de suivi qui te dit automatiquement combien tu peux dépenser, si tu es dans le rouge, et où part ton argent.",
+      
+      "motivation": "À la fin de cet exercice, tu auras un vrai outil que tu pourras réutiliser chaque mois. Et tu maîtriseras les bases d'Excel qui te serviront toute ta vie.",
+      
+      "ton": "On va y aller tranquillement, étape par étape. Pas de panique, Excel c'est plus simple qu'il n'y paraît !"
+    },
+  
+    "histoire_des_donnees": {
+      "description": "Ce sont les dépenses d'un mois typique d'étudiant/jeune actif à Paris. Tu reconnaîtras sûrement certaines lignes...",
+      "periode": "Décembre 2025",
+      "source_fictive": "Relevé bancaire simplifié"
+    },
+  
+    "donnees": {
+      "headers": ["Date", "Description", "Catégorie", "Montant"],
+      "rows": [
+        ["01/12/2025", "Salaire", "Revenu", 1850],
+        ["01/12/2025", "Loyer", "Logement", -750],
+        ["01/12/2025", "Électricité", "Logement", -45],
+        ["02/12/2025", "Courses Monoprix", "Alimentation", -67.50],
+        ["03/12/2025", "Abonnement Netflix", "Loisirs", -13.49],
+        ["03/12/2025", "Abonnement Spotify", "Loisirs", -9.99],
+        ["05/12/2025", "Restaurant avec amis", "Alimentation", -42],
+        ["06/12/2025", "Métro - Pass Navigo", "Transport", -86.40],
+        ["07/12/2025", "Courses Carrefour", "Alimentation", -53.20],
+        ["08/12/2025", "Pharmacie", "Santé", -12.50],
+        ["10/12/2025", "Cadeau anniversaire Marie", "Loisirs", -35],
+        ["12/12/2025", "Uber soirée", "Transport", -18.50],
+        ["13/12/2025", "Brunch dimanche", "Alimentation", -28],
+        ["14/12/2025", "Courses Franprix", "Alimentation", -31.80],
+        ["15/12/2025", "Prime fin d'année", "Revenu", 200],
+        ["15/12/2025", "Assurance habitation", "Logement", -25],
+        ["17/12/2025", "Ciné + popcorn", "Loisirs", -16.50],
+        ["18/12/2025", "Médecin (non remboursé)", "Santé", -25],
+        ["20/12/2025", "Internet Free", "Logement", -29.99],
+        ["21/12/2025", "Courses marché", "Alimentation", -45],
+        ["22/12/2025", "Cadeaux Noël famille", "Loisirs", -120],
+        ["23/12/2025", "Train Paris-Lyon", "Transport", -65],
+        ["24/12/2025", "Resto réveillon", "Alimentation", -55],
+        ["28/12/2025", "Soldes vêtements", "Loisirs", -89],
+        ["29/12/2025", "Courses Lidl", "Alimentation", -38.40],
+        ["30/12/2025", "Mutuelle", "Santé", -45],
+        ["31/12/2025", "Cotisation salle sport", "Santé", -35]
+      ]
+    },
+  
+    "etapes": [
+      {
+        "numero": 1,
+        "titre": "Découverte des données",
+        "description": "Avant de calculer quoi que ce soit, prends 2 minutes pour regarder les données. Tu remarques que les revenus sont positifs et les dépenses négatives ? C'est une convention classique en compta.",
+        "action_requise": false,
+        "temps": "2 min"
+      },
+      {
+        "numero": 2,
+        "titre": "Calculer le total",
+        "description": "La question la plus importante : à la fin du mois, il te reste combien ?",
+        "consigne": "En cellule E2, calcule le total de tous les montants (revenus - dépenses) avec la fonction SOMME.",
+        "aide_contextuelle": "SOMME additionne tout ce que tu lui donnes. Comme les dépenses sont déjà négatives, le calcul se fait automatiquement !",
+        "temps": "2 min"
+      },
+      {
+        "numero": 3,
+        "titre": "Dépense moyenne",
+        "description": "Pour mieux comprendre tes habitudes, calculons combien tu dépenses en moyenne par transaction.",
+        "consigne": "En cellule E3, calcule la moyenne de TOUTES les lignes (revenus inclus) avec MOYENNE.",
+        "aide_contextuelle": "La moyenne inclut les revenus, donc elle sera moins négative que si on ne comptait que les dépenses. C'est normal !",
+        "temps": "2 min"
+      },
+      {
+        "numero": 4,
+        "titre": "Plus grosse dépense",
+        "description": "Identifions où part le plus d'argent d'un coup.",
+        "consigne": "En cellule E4, trouve le montant minimum (= la plus grosse dépense, car les dépenses sont négatives) avec MIN.",
+        "aide_contextuelle": "Attention au piège : MIN trouve le plus petit nombre. Comme les dépenses sont négatives, MIN te donne la plus grosse dépense !",
+        "temps": "2 min"
+      },
+      {
+        "numero": 5,
+        "titre": "Alerte budget",
+        "description": "Maintenant, créons une alerte automatique qui te dit si tu es dans le vert ou dans le rouge.",
+        "consigne": "En cellule E5, écris une formule SI qui affiche '✅ Positif' si le total (E2) est positif, sinon '🔴 Attention'.",
+        "aide_contextuelle": "La fonction SI teste une condition. Si elle est vraie, elle affiche un texte. Sinon, un autre.",
+        "temps": "3 min"
+      },
+      {
+        "numero": 6,
+        "titre": "Bonus - Total par catégorie",
+        "description": "Pour aller plus loin, calculons combien tu as dépensé en alimentation.",
+        "consigne": "En cellule E6, utilise SOMME.SI pour additionner uniquement les montants où la catégorie est 'Alimentation'.",
+        "aide_contextuelle": "SOMME.SI, c'est SOMME + une condition. Tu lui dis : 'Additionne les montants, mais seulement si la catégorie = Alimentation'.",
+        "temps": "4 min",
+        "optionnel": true
+      }
+    ],
+  
+    "zone_travail": {
+      "description": "Tes résultats iront dans la colonne E, à droite des données",
+      "structure": [
+        { "cellule": "E1", "label": "RÉSUMÉ", "style": "header" },
+        { "cellule": "D2", "label": "Solde fin de mois :", "style": "label" },
+        { "cellule": "E2", "label": "", "style": "result", "format": "currency" },
+        { "cellule": "D3", "label": "Moyenne par opération :", "style": "label" },
+        { "cellule": "E3", "label": "", "style": "result", "format": "currency" },
+        { "cellule": "D4", "label": "Plus grosse dépense :", "style": "label" },
+        { "cellule": "E4", "label": "", "style": "result", "format": "currency" },
+        { "cellule": "D5", "label": "Statut budget :", "style": "label" },
+        { "cellule": "E5", "label": "", "style": "result", "format": "text" },
+        { "cellule": "D6", "label": "Total Alimentation :", "style": "label" },
+        { "cellule": "E6", "label": "", "style": "result", "format": "currency" }
+      ]
+    },
+  
+    "checkpoints": [
+      {
+        "id": "cp_1",
+        "cellule": "E2",
+        "type": "formule",
+        "description": "Calcul du solde fin de mois",
+        "competence_id": 3,
+        "fonction": "SOMME",
+        "computation": {
+          "type": "sum",
+          "column": "Montant"
+        },
+        "expected_value": 147.73,
+        "tolerance": 0.01,
+        "reference_formula": "=SOMME(D2:D28)",
+        "pattern": ["SOMME", "D2", "D28"],
+        "points": 20,
+        "indices": [
+          "Tu dois additionner tous les montants de la colonne D.",
+          "La fonction SOMME prend une plage de cellules : SOMME(première:dernière)",
+          "=SOMME(D2:D28)"
+        ],
+        "erreurs_probables": [
+          { "type": "plage_incomplete", "message": "Tu n'as pas sélectionné toutes les lignes" },
+          { "type": "mauvaise_colonne", "message": "Tu as sélectionné la mauvaise colonne" }
+        ]
+      },
+      {
+        "id": "cp_2",
+        "cellule": "E3",
+        "type": "formule",
+        "description": "Calcul de la moyenne par opération",
+        "competence_id": 4,
+        "fonction": "MOYENNE",
+        "computation": {
+          "type": "average",
+          "column": "Montant"
+        },
+        "expected_value": 5.47,
+        "tolerance": 0.01,
+        "reference_formula": "=MOYENNE(D2:D28)",
+        "pattern": ["MOYENNE", "D2", "D28"],
+        "points": 20,
+        "indices": [
+          "MOYENNE fonctionne exactement comme SOMME, mais calcule la moyenne.",
+          "Utilise la même plage que pour le total.",
+          "=MOYENNE(D2:D28)"
+        ]
+      },
+      {
+        "id": "cp_3",
+        "cellule": "E4",
+        "type": "formule",
+        "description": "Identification de la plus grosse dépense",
+        "competence_id": 5,
+        "fonction": "MIN",
+        "computation": {
+          "type": "min",
+          "column": "Montant"
+        },
+        "expected_value": -750,
+        "tolerance": 0,
+        "reference_formula": "=MIN(D2:D28)",
+        "pattern": ["MIN", "D"],
+        "points": 15,
+        "indices": [
+          "Les dépenses sont négatives, donc la 'plus grosse' est le nombre le plus petit.",
+          "MIN trouve la valeur minimum dans une plage.",
+          "=MIN(D2:D28)"
+        ],
+        "erreurs_probables": [
+          { "type": "max_au_lieu_de_min", "message": "Tu as utilisé MAX au lieu de MIN. Rappelle-toi : les dépenses sont négatives !" }
+        ]
+      },
+      {
+        "id": "cp_4",
+        "cellule": "E5",
+        "type": "formule",
+        "description": "Alerte automatique sur le budget",
+        "competence_id": 9,
+        "fonction": "SI",
+        "computation": {
+          "type": "conditional",
+          "column": null,
+          "condition": "E2>0",
+          "value_if_true": "✅ Positif",
+          "value_if_false": "🔴 Attention"
+        },
+        "expected_value": "✅ Positif",
+        "tolerance": 0,
+        "reference_formula": "=SI(E2>0;\"✅ Positif\";\"🔴 Attention\")",
+        "pattern": ["SI", "E2", ">", "0"],
+        "points": 25,
+        "indices": [
+          "SI teste une condition : SI(test; valeur_si_vrai; valeur_si_faux)",
+          "Le test est : E2 > 0 (le solde est-il positif ?)",
+          "=SI(E2>0;\"✅ Positif\";\"🔴 Attention\")"
+        ],
+        "erreurs_probables": [
+          { "type": "guillemets_manquants", "message": "Les textes doivent être entre guillemets" },
+          { "type": "point_virgule", "message": "En français, on utilise ; pour séparer les arguments, pas ," }
+        ]
+      },
+      {
+        "id": "cp_5",
+        "cellule": "E6",
+        "type": "formule",
+        "description": "Total des dépenses alimentaires",
+        "competence_id": 13,
+        "fonction": "SOMME.SI",
+        "computation": {
+          "type": "sumif",
+          "criteria_column": "Catégorie",
+          "criteria": "Alimentation",
+          "sum_column": "Montant"
+        },
+        "expected_value": -360.90,
+        "tolerance": 0.01,
+        "reference_formula": "=SOMME.SI(C2:C28;\"Alimentation\";D2:D28)",
+        "pattern": ["SOMME.SI", "Alimentation"],
+        "points": 20,
+        "indices": [
+          "SOMME.SI additionne selon une condition : SOMME.SI(plage_critère; critère; plage_somme)",
+          "La plage_critère est la colonne Catégorie, le critère est \"Alimentation\", la plage_somme est la colonne Montant.",
+          "=SOMME.SI(C2:C28;\"Alimentation\";D2:D28)"
+        ],
+        "optionnel": true
+      }
+    ],
+  
+    "messages_socrate": {
+      "intro": "Salut ! Aujourd'hui on va créer ton tableau de budget. C'est un classique, mais c'est surtout UTILE. Tu verras, à la fin tu auras un outil que tu pourras vraiment utiliser chaque mois.",
+      
+      "encouragement_mi_parcours": "Tu t'en sors bien ! Les formules de base (SOMME, MOYENNE) sont les fondations de tout ce qu'on fera ensuite. Une fois que tu les maîtrises, le reste c'est du détail.",
+      
+      "conclusion_succes": "Bravo ! 🎉 Tu viens de créer ton premier vrai outil Excel. Ce qui est cool, c'est que tu peux maintenant copier ce fichier chaque mois et juste changer les données. Excel fera les calculs tout seul.",
+      
+      "conclusion_partiel": "Pas mal ! Tu as compris les bases. Les points où tu as bloqué sont normaux au début - revois les indices et réessaie. La répétition, c'est la clé.",
+      
+      "teaser_prochain": "La prochaine fois, on verra comment analyser tes dépenses par catégorie avec des tableaux croisés dynamiques. Tu pourras voir en un clic où part vraiment ton argent !"
+    },
+  
+    "criteres_qualite": {
+      "contexte_immersif": true,
+      "donnees_realistes": true,
+      "progression_logique": true,
+      "indices_utiles": true,
+      "feedback_personnalise": true
+    }
+  }

@@ -1,0 +1,478 @@
+{
+  "id": "debutant_08_annuaire_entreprise",
+  "titre": "Annuaire Entreprise - Formatage Professionnel",
+  "niveau": "debutant",
+  "duree_estimee": "20 min",
+  "competences": [
+    "formatage"
+  ],
+  "contexte": {
+    "situation": "Tu dois créer un annuaire d'entreprise propre et professionnel pour 35 employés.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Formater les en-têtes de manière professionnelle",
+    "Appliquer des formats de nombres aux salaires",
+    "Alterner les couleurs de lignes",
+    "Créer des bordures propres"
+  ],
+  "consignes": [
+    "Formate la ligne d'en-tête: fond bleu foncé, texte blanc, gras, centré",
+    "Formate les salaires avec séparateur de milliers et symbole €",
+    "Applique des bordures fines autour de chaque cellule",
+    "Alterne les couleurs de lignes (blanc / gris clair)",
+    "Centre le texte des colonnes ID et Service",
+    "Ajuste la largeur de toutes les colonnes automatiquement"
+  ],
+  "donnees": {
+    "headers": [
+      "ID",
+      "Prénom",
+      "Nom",
+      "Email",
+      "Service",
+      "Salaire",
+      "Ancienneté"
+    ],
+    "rows": [
+      [
+        "EMP001",
+        "Rose",
+        "Bertrand",
+        "rose.bertrand@entreprise.fr",
+        "R&D",
+        5500,
+        1
+      ],
+      [
+        "EMP002",
+        "Xavier",
+        "Vincent",
+        "xavier.vincent@entreprise.fr",
+        "Production",
+        5448,
+        12
+      ],
+      [
+        "EMP003",
+        "Henry",
+        "Lefebvre",
+        "henry.lefebvre@entreprise.fr",
+        "Support",
+        2759,
+        15
+      ],
+      [
+        "EMP004",
+        "Charlie",
+        "Laurent",
+        "charlie.laurent@entreprise.fr",
+        "Commercial",
+        5133,
+        6
+      ],
+      [
+        "EMP005",
+        "Wendy",
+        "David",
+        "wendy.david@entreprise.fr",
+        "RH",
+        5859,
+        6
+      ],
+      [
+        "EMP006",
+        "Paul",
+        "Vincent",
+        "paul.vincent@entreprise.fr",
+        "Finance",
+        3693,
+        5
+      ],
+      [
+        "EMP007",
+        "Henry",
+        "Michel",
+        "henry.michel@entreprise.fr",
+        "Finance",
+        3138,
+        2
+      ],
+      [
+        "EMP008",
+        "Grace",
+        "Michel",
+        "grace.michel@entreprise.fr",
+        "RH",
+        4519,
+        6
+      ],
+      [
+        "EMP009",
+        "Uma",
+        "Roux",
+        "uma.roux@entreprise.fr",
+        "Finance",
+        4214,
+        4
+      ],
+      [
+        "EMP010",
+        "Zoé",
+        "Petit",
+        "zoé.petit@entreprise.fr",
+        "Logistique",
+        4597,
+        13
+      ],
+      [
+        "EMP011",
+        "Diana",
+        "Richard",
+        "diana.richard@entreprise.fr",
+        "Marketing",
+        2591,
+        11
+      ],
+      [
+        "EMP012",
+        "Leo",
+        "Fournier",
+        "leo.fournier@entreprise.fr",
+        "RH",
+        3231,
+        11
+      ],
+      [
+        "EMP013",
+        "Xavier",
+        "David",
+        "xavier.david@entreprise.fr",
+        "Logistique",
+        3602,
+        8
+      ],
+      [
+        "EMP014",
+        "Nathan",
+        "Lefebvre",
+        "nathan.lefebvre@entreprise.fr",
+        "Marketing",
+        5609,
+        12
+      ],
+      [
+        "EMP015",
+        "Yves",
+        "Moreau",
+        "yves.moreau@entreprise.fr",
+        "IT",
+        5985,
+        12
+      ],
+      [
+        "EMP016",
+        "Xavier",
+        "Richard",
+        "xavier.richard@entreprise.fr",
+        "IT",
+        3709,
+        4
+      ],
+      [
+        "EMP017",
+        "Diana",
+        "Moreau",
+        "diana.moreau@entreprise.fr",
+        "Finance",
+        5309,
+        13
+      ],
+      [
+        "EMP018",
+        "Iris",
+        "Richard",
+        "iris.richard@entreprise.fr",
+        "Logistique",
+        4121,
+        11
+      ],
+      [
+        "EMP019",
+        "Paul",
+        "Martin",
+        "paul.martin@entreprise.fr",
+        "Logistique",
+        4563,
+        10
+      ],
+      [
+        "EMP020",
+        "Henry",
+        "David",
+        "henry.david@entreprise.fr",
+        "Logistique",
+        3699,
+        8
+      ],
+      [
+        "EMP021",
+        "Charlie",
+        "Moreau",
+        "charlie.moreau@entreprise.fr",
+        "Logistique",
+        4443,
+        15
+      ],
+      [
+        "EMP022",
+        "Leo",
+        "Dubois",
+        "leo.dubois@entreprise.fr",
+        "Finance",
+        5622,
+        6
+      ],
+      [
+        "EMP023",
+        "Charlie",
+        "Garcia",
+        "charlie.garcia@entreprise.fr",
+        "Marketing",
+        5575,
+        10
+      ],
+      [
+        "EMP024",
+        "Victor",
+        "Michel",
+        "victor.michel@entreprise.fr",
+        "Support",
+        3944,
+        9
+      ],
+      [
+        "EMP025",
+        "Grace",
+        "Bernard",
+        "grace.bernard@entreprise.fr",
+        "Logistique",
+        4673,
+        5
+      ],
+      [
+        "EMP026",
+        "Kate",
+        "Bertrand",
+        "kate.bertrand@entreprise.fr",
+        "Marketing",
+        5768,
+        14
+      ],
+      [
+        "EMP027",
+        "Uma",
+        "Petit",
+        "uma.petit@entreprise.fr",
+        "Support",
+        5051,
+        5
+      ],
+      [
+        "EMP028",
+        "Uma",
+        "David",
+        "uma.david@entreprise.fr",
+        "RH",
+        5864,
+        8
+      ],
+      [
+        "EMP029",
+        "Diana",
+        "Simon",
+        "diana.simon@entreprise.fr",
+        "IT",
+        2580,
+        13
+      ],
+      [
+        "EMP030",
+        "Leo",
+        "Vincent",
+        "leo.vincent@entreprise.fr",
+        "RH",
+        4015,
+        4
+      ],
+      [
+        "EMP031",
+        "Frank",
+        "David",
+        "frank.david@entreprise.fr",
+        "Marketing",
+        3719,
+        8
+      ],
+      [
+        "EMP032",
+        "Jack",
+        "Leroy",
+        "jack.leroy@entreprise.fr",
+        "Logistique",
+        4165,
+        14
+      ],
+      [
+        "EMP033",
+        "Jack",
+        "Leroy",
+        "jack.leroy@entreprise.fr",
+        "Support",
+        4004,
+        14
+      ],
+      [
+        "EMP034",
+        "Charlie",
+        "Roux",
+        "charlie.roux@entreprise.fr",
+        "Marketing",
+        3019,
+        12
+      ],
+      [
+        "EMP035",
+        "Frank",
+        "Bertrand",
+        "frank.bertrand@entreprise.fr",
+        "Production",
+        3856,
+        10
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "formatage_complet": true,
+    "presentation_pro": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "A1",
+      "type": "formatage",
+      "description": "En-tête avec fond bleu foncé, texte blanc, gras et centré",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "G1",
+      "points": 20,
+      "indices": [
+        "L'en-tête doit ressortir visuellement avec une couleur foncée et du texte contrasté.",
+        "Utilise le menu Format de cellule pour changer la couleur de fond et la police.",
+        "Fond bleu foncé + texte blanc + gras + alignement centré sur toute la ligne 1"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "F2",
+      "type": "formatage",
+      "description": "Format monétaire avec séparateur de milliers et symbole €",
+      "fonction": null,
+      "pattern": [
+        "€",
+        "milliers"
+      ],
+      "recopie_jusqua": "F36",
+      "points": 15,
+      "indices": [
+        "Les salaires doivent être lisibles avec le bon format monétaire.",
+        "Utilise Format de cellule > Nombre pour ajouter le symbole € et les séparateurs.",
+        "Format Monétaire ou Comptabilité avec € et séparateur de milliers sur F2:F36"
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "A1",
+      "type": "formatage",
+      "description": "Bordures fines autour de toutes les cellules",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "G36",
+      "points": 15,
+      "indices": [
+        "Chaque cellule du tableau doit être délimitée par des contours.",
+        "Sélectionne tout le tableau et applique des bordures via Format de cellule.",
+        "Bordures fines sur toutes les cellules de A1:G36"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "A2",
+      "type": "formatage",
+      "description": "Alternance des couleurs de lignes (blanc/gris clair)",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "G36",
+      "points": 20,
+      "indices": [
+        "Les lignes doivent alterner entre deux couleurs pour faciliter la lecture.",
+        "Utilise la mise en forme conditionnelle ou colorie manuellement une ligne sur deux.",
+        "Lignes paires en gris clair, lignes impaires en blanc (ou inversement)"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "A2",
+      "type": "formatage",
+      "description": "Centrage du texte pour les colonnes ID et Service",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "A36",
+      "points": 10,
+      "indices": [
+        "Les colonnes ID et Service doivent avoir leur contenu centré horizontalement.",
+        "Sélectionne les colonnes A et E puis utilise l'alignement centré.",
+        "Alignement centré sur les colonnes A (ID) et E (Service)"
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "E2",
+      "type": "formatage",
+      "description": "Centrage du texte pour la colonne Service",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "E36",
+      "points": 10,
+      "indices": [
+        "La colonne Service doit avoir son contenu centré horizontalement.",
+        "Sélectionne la colonne E puis utilise l'alignement centré.",
+        "Alignement centré sur la colonne E (Service)"
+      ],
+      "id": "cp_6"
+    },
+    {
+      "cellule": "A1",
+      "type": "formatage",
+      "description": "Ajustement automatique de la largeur des colonnes",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": "G1",
+      "points": 10,
+      "indices": [
+        "Toutes les colonnes doivent avoir une largeur adaptée à leur contenu.",
+        "Sélectionne toutes les colonnes et utilise l'ajustement automatique.",
+        "Double-clic sur les séparateurs de colonnes ou Format > Largeur de colonne > Ajustement automatique"
+      ],
+      "id": "cp_7"
+    }
+  ],
+  "competence_ids": [
+    2
+  ]
+}

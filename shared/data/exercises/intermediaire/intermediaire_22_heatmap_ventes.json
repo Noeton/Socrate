@@ -1,0 +1,711 @@
+{
+  "id": "intermediaire_22_heatmap_ventes",
+  "titre": "Heatmap des Ventes avec Mise en Forme Avancée",
+  "niveau": "intermediaire",
+  "duree_estimee": "32 min",
+  "competences": [
+    "mise_forme_conditionnelle_avancee"
+  ],
+  "contexte": {
+    "situation": "Tu crées une heatmap colorée pour visualiser instantanément les meilleures ventes.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Créer des échelles de couleurs",
+    "Utiliser des barres de données",
+    "Mettre en évidence les valeurs extrêmes"
+  ],
+  "consignes": [
+    "Sur la colonne Total (G), applique une échelle de couleurs (vert-jaune-rouge)",
+    "Sur la colonne Quantité (E), applique des barres de données bleues",
+    "Sur toute la ligne, met en gras les ventes >20 000€",
+    "Applique une icône (feu tricolore) selon le montant: >15000=vert, 5000-15000=orange, <5000=rouge",
+    "Crée une règle: si Région='Île-de-France' ET Total>10000 → fond or",
+    "Formate les 10 meilleures ventes avec bordure épaisse"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Produit",
+      "Vendeur",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Batterie",
+        "Alice",
+        "Pays de la Loire",
+        41,
+        299,
+        12259
+      ],
+      [
+        "02/01/2024",
+        "Écran",
+        "Quentin",
+        "Bourgogne-Franche-Comté",
+        10,
+        499,
+        4990
+      ],
+      [
+        "03/01/2024",
+        "Câble USB",
+        "Yves",
+        "Auvergne-Rhône-Alpes",
+        18,
+        199,
+        3582
+      ],
+      [
+        "04/01/2024",
+        "Webcam",
+        "Henry",
+        "Auvergne-Rhône-Alpes",
+        48,
+        599,
+        28752
+      ],
+      [
+        "05/01/2024",
+        "Batterie",
+        "Paul",
+        "Centre-Val de Loire",
+        27,
+        799,
+        21573
+      ],
+      [
+        "06/01/2024",
+        "Écran",
+        "Leo",
+        "Hauts-de-France",
+        5,
+        599,
+        2995
+      ],
+      [
+        "07/01/2024",
+        "Disque dur",
+        "Rose",
+        "Bourgogne-Franche-Comté",
+        37,
+        1299,
+        48063
+      ],
+      [
+        "08/01/2024",
+        "Adaptateur",
+        "Uma",
+        "Nouvelle-Aquitaine",
+        49,
+        299,
+        14651
+      ],
+      [
+        "09/01/2024",
+        "Écran",
+        "Grace",
+        "Hauts-de-France",
+        28,
+        799,
+        22372
+      ],
+      [
+        "10/01/2024",
+        "Support",
+        "Victor",
+        "Centre-Val de Loire",
+        18,
+        999,
+        17982
+      ],
+      [
+        "11/01/2024",
+        "Ordinateur portable",
+        "Bob",
+        "Nouvelle-Aquitaine",
+        30,
+        1299,
+        38970
+      ],
+      [
+        "12/01/2024",
+        "Tablette",
+        "Olivia",
+        "Bourgogne-Franche-Comté",
+        27,
+        1299,
+        35073
+      ],
+      [
+        "13/01/2024",
+        "Imprimante",
+        "Olivia",
+        "Occitanie",
+        16,
+        499,
+        7984
+      ],
+      [
+        "14/01/2024",
+        "Router",
+        "Eve",
+        "Auvergne-Rhône-Alpes",
+        13,
+        599,
+        7787
+      ],
+      [
+        "15/01/2024",
+        "Téléphone",
+        "Quentin",
+        "Bretagne",
+        24,
+        799,
+        19176
+      ],
+      [
+        "16/01/2024",
+        "Casque",
+        "Olivia",
+        "Île-de-France",
+        21,
+        149,
+        3129
+      ],
+      [
+        "17/01/2024",
+        "Imprimante",
+        "Xavier",
+        "Centre-Val de Loire",
+        41,
+        799,
+        32759
+      ],
+      [
+        "18/01/2024",
+        "Support",
+        "Xavier",
+        "Grand Est",
+        21,
+        599,
+        12579
+      ],
+      [
+        "19/01/2024",
+        "Housse",
+        "Rose",
+        "Grand Est",
+        43,
+        199,
+        8557
+      ],
+      [
+        "20/01/2024",
+        "Housse",
+        "Uma",
+        "Pays de la Loire",
+        22,
+        599,
+        13178
+      ],
+      [
+        "21/01/2024",
+        "Adaptateur",
+        "Sam",
+        "Grand Est",
+        12,
+        299,
+        3588
+      ],
+      [
+        "22/01/2024",
+        "Écouteurs",
+        "Xavier",
+        "Nouvelle-Aquitaine",
+        18,
+        799,
+        14382
+      ],
+      [
+        "23/01/2024",
+        "Router",
+        "Eve",
+        "Hauts-de-France",
+        33,
+        299,
+        9867
+      ],
+      [
+        "24/01/2024",
+        "Souris",
+        "Jack",
+        "Bretagne",
+        5,
+        499,
+        2495
+      ],
+      [
+        "25/01/2024",
+        "Casque",
+        "Leo",
+        "Normandie",
+        19,
+        299,
+        5681
+      ],
+      [
+        "26/01/2024",
+        "Casque",
+        "Nathan",
+        "Hauts-de-France",
+        26,
+        399,
+        10374
+      ],
+      [
+        "27/01/2024",
+        "Disque dur",
+        "Sam",
+        "Auvergne-Rhône-Alpes",
+        21,
+        99,
+        2079
+      ],
+      [
+        "28/01/2024",
+        "Tablette",
+        "Tom",
+        "Occitanie",
+        24,
+        599,
+        14376
+      ],
+      [
+        "29/01/2024",
+        "Support",
+        "Xavier",
+        "Normandie",
+        1,
+        299,
+        299
+      ],
+      [
+        "30/01/2024",
+        "Souris",
+        "Henry",
+        "Nouvelle-Aquitaine",
+        38,
+        99,
+        3762
+      ],
+      [
+        "31/01/2024",
+        "Disque dur",
+        "Quentin",
+        "Bretagne",
+        25,
+        199,
+        4975
+      ],
+      [
+        "01/02/2024",
+        "Switch",
+        "Grace",
+        "Provence-Alpes-Côte d'Azur",
+        30,
+        199,
+        5970
+      ],
+      [
+        "02/02/2024",
+        "Batterie",
+        "Charlie",
+        "Hauts-de-France",
+        41,
+        1299,
+        53259
+      ],
+      [
+        "03/02/2024",
+        "Webcam",
+        "Jack",
+        "Auvergne-Rhône-Alpes",
+        23,
+        99,
+        2277
+      ],
+      [
+        "04/02/2024",
+        "Support",
+        "Kate",
+        "Grand Est",
+        33,
+        799,
+        26367
+      ],
+      [
+        "05/02/2024",
+        "Housse",
+        "Uma",
+        "Centre-Val de Loire",
+        11,
+        1299,
+        14289
+      ],
+      [
+        "06/02/2024",
+        "Batterie",
+        "Yves",
+        "Normandie",
+        42,
+        99,
+        4158
+      ],
+      [
+        "07/02/2024",
+        "Clavier",
+        "Wendy",
+        "Provence-Alpes-Côte d'Azur",
+        49,
+        799,
+        39151
+      ],
+      [
+        "08/02/2024",
+        "Batterie",
+        "Iris",
+        "Bourgogne-Franche-Comté",
+        33,
+        399,
+        13167
+      ],
+      [
+        "09/02/2024",
+        "Chargeur",
+        "Sam",
+        "Pays de la Loire",
+        12,
+        149,
+        1788
+      ],
+      [
+        "10/02/2024",
+        "Support",
+        "Quentin",
+        "Nouvelle-Aquitaine",
+        6,
+        149,
+        894
+      ],
+      [
+        "11/02/2024",
+        "Chargeur",
+        "Yves",
+        "Grand Est",
+        8,
+        1299,
+        10392
+      ],
+      [
+        "12/02/2024",
+        "Moniteur",
+        "Jack",
+        "Bretagne",
+        39,
+        999,
+        38961
+      ],
+      [
+        "13/02/2024",
+        "Téléphone",
+        "Leo",
+        "Nouvelle-Aquitaine",
+        41,
+        499,
+        20459
+      ],
+      [
+        "14/02/2024",
+        "Webcam",
+        "Kate",
+        "Grand Est",
+        20,
+        999,
+        19980
+      ],
+      [
+        "15/02/2024",
+        "Clavier",
+        "Olivia",
+        "Centre-Val de Loire",
+        20,
+        599,
+        11980
+      ],
+      [
+        "16/02/2024",
+        "Téléphone",
+        "Bob",
+        "Bretagne",
+        25,
+        599,
+        14975
+      ],
+      [
+        "17/02/2024",
+        "Disque dur",
+        "Zoé",
+        "Provence-Alpes-Côte d'Azur",
+        13,
+        1299,
+        16887
+      ],
+      [
+        "18/02/2024",
+        "Écouteurs",
+        "Kate",
+        "Auvergne-Rhône-Alpes",
+        45,
+        299,
+        13455
+      ],
+      [
+        "19/02/2024",
+        "Imprimante",
+        "Quentin",
+        "Bourgogne-Franche-Comté",
+        49,
+        499,
+        24451
+      ],
+      [
+        "20/02/2024",
+        "Batterie",
+        "Nathan",
+        "Hauts-de-France",
+        29,
+        499,
+        14471
+      ],
+      [
+        "21/02/2024",
+        "Support",
+        "Marie",
+        "Île-de-France",
+        17,
+        999,
+        16983
+      ],
+      [
+        "22/02/2024",
+        "Disque dur",
+        "Grace",
+        "Bretagne",
+        36,
+        499,
+        17964
+      ],
+      [
+        "23/02/2024",
+        "Tablette",
+        "Nathan",
+        "Provence-Alpes-Côte d'Azur",
+        9,
+        999,
+        8991
+      ],
+      [
+        "24/02/2024",
+        "Écouteurs",
+        "Bob",
+        "Pays de la Loire",
+        13,
+        299,
+        3887
+      ],
+      [
+        "25/02/2024",
+        "Ordinateur portable",
+        "Jack",
+        "Grand Est",
+        29,
+        499,
+        14471
+      ],
+      [
+        "26/02/2024",
+        "Écran",
+        "Iris",
+        "Occitanie",
+        10,
+        799,
+        7990
+      ],
+      [
+        "27/02/2024",
+        "Téléphone",
+        "Henry",
+        "Nouvelle-Aquitaine",
+        29,
+        99,
+        2871
+      ],
+      [
+        "28/02/2024",
+        "Switch",
+        "Frank",
+        "Provence-Alpes-Côte d'Azur",
+        18,
+        499,
+        8982
+      ],
+      [
+        "29/02/2024",
+        "Câble USB",
+        "Eve",
+        "Hauts-de-France",
+        38,
+        199,
+        7562
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "mise_forme_avancee": true,
+    "regles_multiples": true,
+    "visualisation_claire": true,
+    "score_minimum": 8.5
+  },
+  "checkpoints": [
+    {
+      "cellule": "G2:G61",
+      "type": "mise_forme_conditionnelle",
+      "description": "Échelle de couleurs vert-jaune-rouge sur la colonne Total",
+      "fonction": null,
+      "pattern": [
+        "échelle_couleurs",
+        "vert",
+        "jaune",
+        "rouge"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Tu dois appliquer une mise en forme qui change selon la valeur. Regarde dans l'onglet Accueil.",
+        "Cherche 'Mise en forme conditionnelle' puis 'Échelles de couleurs'.",
+        "Sélectionne G2:G61 → Mise en forme conditionnelle → Échelles de couleurs → Vert-Jaune-Rouge"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "E2:E61",
+      "type": "mise_forme_conditionnelle",
+      "description": "Barres de données bleues sur la colonne Quantité",
+      "fonction": null,
+      "pattern": [
+        "barres_donnees",
+        "bleu"
+      ],
+      "recopie_jusqua": null,
+      "points": 12,
+      "indices": [
+        "Il faut ajouter des barres qui représentent visuellement les quantités.",
+        "Dans Mise en forme conditionnelle, cherche l'option avec des barres.",
+        "Sélectionne E2:E61 → Mise en forme conditionnelle → Barres de données → Bleue"
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "A2:G61",
+      "type": "mise_forme_conditionnelle",
+      "description": "Mise en gras des lignes avec ventes >20 000€",
+      "fonction": null,
+      "pattern": [
+        ">20000",
+        "gras",
+        "formule"
+      ],
+      "recopie_jusqua": null,
+      "points": 18,
+      "indices": [
+        "Tu dois créer une règle personnalisée qui met en gras toute la ligne selon une condition.",
+        "Utilise 'Nouvelle règle' avec une formule, et pense à la référence absolue/relative.",
+        "Formule: =$G2>20000, puis Format → Police → Gras"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "G2:G61",
+      "type": "mise_forme_conditionnelle",
+      "description": "Icônes feu tricolore selon montant (>15000=vert, 5000-15000=orange, <5000=rouge)",
+      "fonction": null,
+      "pattern": [
+        "icones",
+        "feu_tricolore",
+        "15000",
+        "5000"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Il faut des icônes qui changent selon 3 seuils de valeurs différents.",
+        "Dans Mise en forme conditionnelle, cherche 'Jeux d'icônes' puis personnalise les seuils.",
+        "Jeux d'icônes → Feu tricolore, puis modifie les valeurs: >=15000 et >=5000"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "A2:G61",
+      "type": "mise_forme_conditionnelle",
+      "description": "Fond or si Région='Île-de-France' ET Total>10000",
+      "fonction": null,
+      "pattern": [
+        "ET",
+        "Île-de-France",
+        "10000",
+        "or"
+      ],
+      "recopie_jusqua": null,
+      "points": 22,
+      "indices": [
+        "Tu dois créer une règle avec deux conditions simultanées. Il faut une fonction logique.",
+        "Utilise la fonction ET() dans une nouvelle règle avec formule personnalisée.",
+        "Formule: =ET($D2=\"Île-de-France\";$G2>10000), puis fond couleur or"
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "A2:G61",
+      "type": "mise_forme_conditionnelle",
+      "description": "Bordure épaisse sur les 10 meilleures ventes",
+      "fonction": null,
+      "pattern": [
+        "10",
+        "meilleures",
+        "bordure"
+      ],
+      "recopie_jusqua": null,
+      "points": 13,
+      "indices": [
+        "Il existe une règle prédéfinie pour mettre en forme les valeurs les plus élevées.",
+        "Cherche dans les règles prédéfinies celle qui concerne le classement.",
+        "Mise en forme conditionnelle → Règles des valeurs plus/moins élevées → 10 valeurs les plus élevées → Bordure épaisse"
+      ],
+      "id": "cp_6"
+    }
+  ],
+  "competence_ids": [
+    32
+  ]
+}

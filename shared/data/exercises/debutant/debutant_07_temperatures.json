@@ -1,0 +1,354 @@
+{
+  "id": "debutant_07_temperatures",
+  "titre": "Suivi Températures avec Mise en Forme Conditionnelle",
+  "niveau": "debutant",
+  "duree_estimee": "18 min",
+  "competences": [
+    "mise_en_forme_conditionnelle"
+  ],
+  "contexte": {
+    "situation": "Tu analyses les températures quotidiennes pour identifier les jours de canicule et de gel.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Colorer en rouge les températures > 30°C",
+    "Colorer en bleu les températures < 5°C",
+    "Identifier visuellement les tendances"
+  ],
+  "consignes": [
+    "Applique une mise en forme conditionnelle sur B2:B41",
+    "Règle 1: Cellule > 30 → fond rouge, texte blanc",
+    "Règle 2: Cellule < 5 → fond bleu clair, texte bleu foncé",
+    "Règle 3: Cellule entre 20 et 25 → fond vert clair",
+    "Calcule la température moyenne en B42",
+    "Compte les jours de canicule (>30°) et les jours de gel (<0°)"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Température (°C)",
+      "Observations"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        27.8,
+        ""
+      ],
+      [
+        "02/01/2024",
+        -1.9,
+        ""
+      ],
+      [
+        "03/01/2024",
+        21.2,
+        ""
+      ],
+      [
+        "04/01/2024",
+        7.1,
+        ""
+      ],
+      [
+        "05/01/2024",
+        25.1,
+        ""
+      ],
+      [
+        "06/01/2024",
+        -4,
+        ""
+      ],
+      [
+        "07/01/2024",
+        18.5,
+        ""
+      ],
+      [
+        "08/01/2024",
+        20.3,
+        ""
+      ],
+      [
+        "09/01/2024",
+        18.9,
+        ""
+      ],
+      [
+        "10/01/2024",
+        29.5,
+        ""
+      ],
+      [
+        "11/01/2024",
+        34,
+        ""
+      ],
+      [
+        "12/01/2024",
+        11.9,
+        ""
+      ],
+      [
+        "13/01/2024",
+        4.5,
+        ""
+      ],
+      [
+        "14/01/2024",
+        32.4,
+        ""
+      ],
+      [
+        "15/01/2024",
+        33.6,
+        ""
+      ],
+      [
+        "16/01/2024",
+        19.8,
+        ""
+      ],
+      [
+        "17/01/2024",
+        12.1,
+        ""
+      ],
+      [
+        "18/01/2024",
+        2.5,
+        ""
+      ],
+      [
+        "19/01/2024",
+        15.6,
+        ""
+      ],
+      [
+        "20/01/2024",
+        12.6,
+        ""
+      ],
+      [
+        "21/01/2024",
+        4.7,
+        ""
+      ],
+      [
+        "22/01/2024",
+        13.8,
+        ""
+      ],
+      [
+        "23/01/2024",
+        27.5,
+        ""
+      ],
+      [
+        "24/01/2024",
+        17.5,
+        ""
+      ],
+      [
+        "25/01/2024",
+        13.7,
+        ""
+      ],
+      [
+        "26/01/2024",
+        -4.8,
+        ""
+      ],
+      [
+        "27/01/2024",
+        13.9,
+        ""
+      ],
+      [
+        "28/01/2024",
+        -3.6,
+        ""
+      ],
+      [
+        "29/01/2024",
+        0,
+        ""
+      ],
+      [
+        "30/01/2024",
+        9.3,
+        ""
+      ],
+      [
+        "31/01/2024",
+        13.5,
+        ""
+      ],
+      [
+        "01/02/2024",
+        19.1,
+        ""
+      ],
+      [
+        "02/02/2024",
+        0.1,
+        ""
+      ],
+      [
+        "03/02/2024",
+        17.6,
+        ""
+      ],
+      [
+        "04/02/2024",
+        2.8,
+        ""
+      ],
+      [
+        "05/02/2024",
+        -4.3,
+        ""
+      ],
+      [
+        "06/02/2024",
+        13.2,
+        ""
+      ],
+      [
+        "07/02/2024",
+        19.6,
+        ""
+      ],
+      [
+        "08/02/2024",
+        3.1,
+        ""
+      ],
+      [
+        "09/02/2024",
+        3,
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "mise_forme_appliquee": true,
+    "comptages_corrects": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "B42",
+      "type": "formule",
+      "description": "Calcul de la température moyenne",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "B2:B41"
+      ],
+      "recopie_jusqua": null,
+      "points": 25,
+      "indices": [
+        "Pour calculer une moyenne, il existe une fonction Excel spécifique.",
+        "Utilise la fonction MOYENNE sur toutes les températures.",
+        "=MOYENNE(B2:B41)"
+      ],
+      "id": "cp_1",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      }
+    },
+    {
+      "cellule": "B43",
+      "type": "formule",
+      "description": "Comptage des jours de canicule (>30°)",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "B2:B41",
+        ">30"
+      ],
+      "recopie_jusqua": null,
+      "points": 25,
+      "indices": [
+        "Pour compter selon une condition, utilise une fonction de comptage conditionnel.",
+        "La fonction NB.SI permet de compter les cellules qui respectent un critère.",
+        "=NB.SI(B2:B41,\">30\")"
+      ],
+      "id": "cp_2",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      }
+    },
+    {
+      "cellule": "B44",
+      "type": "formule",
+      "description": "Comptage des jours de gel (<0°)",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "B2:B41",
+        "<0"
+      ],
+      "recopie_jusqua": null,
+      "points": 25,
+      "indices": [
+        "Même principe que pour la canicule, mais avec une condition différente.",
+        "Utilise NB.SI pour compter les températures négatives.",
+        "=NB.SI(B2:B41,\"<0\")"
+      ],
+      "id": "cp_3",
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      }
+    },
+    {
+      "cellule": "B2",
+      "type": "mise_en_forme",
+      "description": "Vérification de la mise en forme conditionnelle (première cellule)",
+      "fonction": null,
+      "pattern": [
+        "mise_en_forme_conditionnelle"
+      ],
+      "recopie_jusqua": "B41",
+      "points": 15,
+      "indices": [
+        "Va dans l'onglet Accueil, cherche 'Mise en forme conditionnelle'.",
+        "Tu dois créer 3 règles : >30 (rouge), <5 (bleu), entre 20-25 (vert).",
+        "Sélectionne B2:B41, puis 'Nouvelle règle' pour chaque condition."
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "B41",
+      "type": "mise_en_forme",
+      "description": "Vérification de la mise en forme conditionnelle (dernière cellule)",
+      "fonction": null,
+      "pattern": [
+        "mise_en_forme_conditionnelle"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "La mise en forme doit s'appliquer à toute la plage B2:B41.",
+        "Vérifie que les règles fonctionnent sur toutes les cellules.",
+        "Les 3 règles doivent être actives : >30, <5, et entre 20-25."
+      ],
+      "id": "cp_5"
+    }
+  ],
+  "competence_ids": [
+    10
+  ]
+}

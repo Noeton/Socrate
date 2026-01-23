@@ -1,0 +1,139 @@
+{
+    "xpRewards": {
+      "lessonComplete": {
+        "debutant": 15,
+        "intermediaire": 25,
+        "avance": 40
+      },
+      "exerciseComplete": {
+        "easy": 10,
+        "medium": 20,
+        "hard": 35
+      },
+      "perfectScore": 10,
+      "noHintsBonus": 5,
+      "firstTryBonus": 10
+    },
+    
+    "streakBonuses": {
+      "3days": 1.1,
+      "7days": 1.25,
+      "30days": 1.5,
+      "100days": 2.0
+    },
+    
+    "levelThresholds": {
+      "debutant": { "minXP": 0, "maxXP": 200 },
+      "intermediaire": { "minXP": 201, "maxXP": 600 },
+      "avance": { "minXP": 601, "maxXP": 1500 },
+      "expert": { "minXP": 1501, "maxXP": null }
+    },
+    
+    "badges": {
+      "first_lesson": {
+        "id": "first_lesson",
+        "name": "Premier pas",
+        "description": "Complète ta première leçon",
+        "icon": "🎓",
+        "condition": { "type": "lessons_completed", "value": 1 }
+      },
+      "streak_3": {
+        "id": "streak_3",
+        "name": "Régulier",
+        "description": "3 jours de suite",
+        "icon": "🔥",
+        "condition": { "type": "streak", "value": 3 }
+      },
+      "streak_7": {
+        "id": "streak_7",
+        "name": "Assidu",
+        "description": "7 jours de suite",
+        "icon": "⚡",
+        "condition": { "type": "streak", "value": 7 }
+      },
+      "streak_30": {
+        "id": "streak_30",
+        "name": "Infatigable",
+        "description": "30 jours de suite",
+        "icon": "💪",
+        "condition": { "type": "streak", "value": 30 }
+      },
+      "unit_1_complete": {
+        "id": "unit_1_complete",
+        "name": "Les bases maîtrisées",
+        "description": "Termine l'unité 1",
+        "icon": "🌱",
+        "condition": { "type": "unit_complete", "value": 1 }
+      },
+      "unit_2_complete": {
+        "id": "unit_2_complete",
+        "name": "Calculateur",
+        "description": "Termine l'unité 2",
+        "icon": "🧮",
+        "condition": { "type": "unit_complete", "value": 2 }
+      },
+      "unit_3_complete": {
+        "id": "unit_3_complete",
+        "name": "Logicien",
+        "description": "Termine l'unité 3",
+        "icon": "🔀",
+        "condition": { "type": "unit_complete", "value": 3 }
+      },
+      "all_basics": {
+        "id": "all_basics",
+        "name": "Fondations solides",
+        "description": "Complète toutes les leçons débutant",
+        "icon": "🏆",
+        "condition": { "type": "units_complete", "value": [1, 2, 3] }
+      },
+      "recherchev_master": {
+        "id": "recherchev_master",
+        "name": "Maître RECHERCHEV",
+        "description": "Maîtrise les fonctions de recherche",
+        "icon": "🔍",
+        "condition": { "type": "unit_complete", "value": 5 }
+      },
+      "xp_100": {
+        "id": "xp_100",
+        "name": "Centurion",
+        "description": "Accumule 100 XP",
+        "icon": "⭐",
+        "condition": { "type": "total_xp", "value": 100 }
+      },
+      "xp_500": {
+        "id": "xp_500",
+        "name": "Demi-millénaire",
+        "description": "Accumule 500 XP",
+        "icon": "🌟",
+        "condition": { "type": "total_xp", "value": 500 }
+      },
+      "xp_1000": {
+        "id": "xp_1000",
+        "name": "Millénaire",
+        "description": "Accumule 1000 XP",
+        "icon": "💎",
+        "condition": { "type": "total_xp", "value": 1000 }
+      },
+      "perfect_lesson": {
+        "id": "perfect_lesson",
+        "name": "Sans faute",
+        "description": "Complète une leçon sans utiliser d'indice",
+        "icon": "✨",
+        "condition": { "type": "perfect_lesson", "value": 1 }
+      },
+      "speed_demon": {
+        "id": "speed_demon",
+        "name": "Rapide comme l'éclair",
+        "description": "Complète 3 leçons en une journée",
+        "icon": "⚡",
+        "condition": { "type": "lessons_per_day", "value": 3 }
+      }
+    },
+    
+    "dailyGoals": {
+      "easy": { "xp": 20, "name": "Décontracté" },
+      "medium": { "xp": 50, "name": "Normal" },
+      "hard": { "xp": 100, "name": "Intense" },
+      "extreme": { "xp": 200, "name": "Hardcore" }
+    }
+  }

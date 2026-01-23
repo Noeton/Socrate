@@ -1,0 +1,551 @@
+{
+  "id": "debutant_01_budget_mensuel",
+  "titre": "Gestion Budget Personnel Mensuel",
+  "niveau": "debutant",
+  "duree_estimee": "20 min",
+  "competences": [
+    "SOMME",
+    "MOYENNE",
+    "SI"
+  ],
+  "contexte": {
+    "situation": "Tu es étudiant à HEC et tu dois gérer ton budget mensuel pour éviter les découverts bancaires.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer le reste disponible pour chaque ligne",
+    "Identifier les dépassements budgétaires",
+    "Calculer le total des dépenses et la moyenne",
+    "Calculer le solde final"
+  ],
+  "consignes": [
+    "Dans F2, calcule le reste: =D2-E2 et recopie jusqu'à F36",
+    "Dans G2, écris: =SI(E2>D2;\"Dépassé\";\"OK\") et recopie jusqu'à G36",
+    "En E37, calcule le total dépensé: =SOMME(E2:E36)",
+    "En D37, calcule le budget total: =SOMME(D2:D36)",
+    "En F37, calcule le solde final: =D37-E37",
+    "En E38, calcule la moyenne des dépenses: =MOYENNE(E2:E36)",
+    "Applique une mise en forme conditionnelle: rouge si \"Dépassé\""
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Catégorie",
+      "Description",
+      "Budget",
+      "Dépensé",
+      "Reste",
+      "Statut"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Loisirs",
+        "Loisirs 01/01/2024",
+        503,
+        409,
+        "",
+        ""
+      ],
+      [
+        "03/01/2024",
+        "Divers",
+        "Divers 03/01/2024",
+        306,
+        316,
+        "",
+        ""
+      ],
+      [
+        "05/01/2024",
+        "Internet",
+        "Internet 05/01/2024",
+        753,
+        601,
+        "",
+        ""
+      ],
+      [
+        "07/01/2024",
+        "Assurance",
+        "Assurance 07/01/2024",
+        790,
+        926,
+        "",
+        ""
+      ],
+      [
+        "09/01/2024",
+        "Culture",
+        "Culture 09/01/2024",
+        142,
+        148,
+        "",
+        ""
+      ],
+      [
+        "11/01/2024",
+        "Alimentation",
+        "Alimentation 11/01/2024",
+        142,
+        142,
+        "",
+        ""
+      ],
+      [
+        "13/01/2024",
+        "Alimentation",
+        "Alimentation 13/01/2024",
+        333,
+        360,
+        "",
+        ""
+      ],
+      [
+        "15/01/2024",
+        "Internet",
+        "Internet 15/01/2024",
+        787,
+        600,
+        "",
+        ""
+      ],
+      [
+        "17/01/2024",
+        "Culture",
+        "Culture 17/01/2024",
+        477,
+        455,
+        "",
+        ""
+      ],
+      [
+        "19/01/2024",
+        "Logement",
+        "Logement 19/01/2024",
+        867,
+        1017,
+        "",
+        ""
+      ],
+      [
+        "21/01/2024",
+        "Téléphone",
+        "Téléphone 21/01/2024",
+        679,
+        506,
+        "",
+        ""
+      ],
+      [
+        "23/01/2024",
+        "Santé",
+        "Santé 23/01/2024",
+        901,
+        727,
+        "",
+        ""
+      ],
+      [
+        "25/01/2024",
+        "Divers",
+        "Divers 25/01/2024",
+        570,
+        542,
+        "",
+        ""
+      ],
+      [
+        "27/01/2024",
+        "Éducation",
+        "Éducation 27/01/2024",
+        123,
+        131,
+        "",
+        ""
+      ],
+      [
+        "29/01/2024",
+        "Abonnements",
+        "Abonnements 29/01/2024",
+        597,
+        453,
+        "",
+        ""
+      ],
+      [
+        "31/01/2024",
+        "Santé",
+        "Santé 31/01/2024",
+        969,
+        1082,
+        "",
+        ""
+      ],
+      [
+        "02/02/2024",
+        "Assurance",
+        "Assurance 02/02/2024",
+        601,
+        583,
+        "",
+        ""
+      ],
+      [
+        "04/02/2024",
+        "Divers",
+        "Divers 04/02/2024",
+        106,
+        114,
+        "",
+        ""
+      ],
+      [
+        "06/02/2024",
+        "Logement",
+        "Logement 06/02/2024",
+        457,
+        345,
+        "",
+        ""
+      ],
+      [
+        "08/02/2024",
+        "Divers",
+        "Divers 08/02/2024",
+        225,
+        180,
+        "",
+        ""
+      ],
+      [
+        "10/02/2024",
+        "Santé",
+        "Santé 10/02/2024",
+        503,
+        503,
+        "",
+        ""
+      ],
+      [
+        "12/02/2024",
+        "Téléphone",
+        "Téléphone 12/02/2024",
+        373,
+        433,
+        "",
+        ""
+      ],
+      [
+        "14/02/2024",
+        "Transport",
+        "Transport 14/02/2024",
+        225,
+        158,
+        "",
+        ""
+      ],
+      [
+        "16/02/2024",
+        "Divers",
+        "Divers 16/02/2024",
+        927,
+        873,
+        "",
+        ""
+      ],
+      [
+        "18/02/2024",
+        "Santé",
+        "Santé 18/02/2024",
+        978,
+        873,
+        "",
+        ""
+      ],
+      [
+        "20/02/2024",
+        "Vêtements",
+        "Vêtements 20/02/2024",
+        566,
+        423,
+        "",
+        ""
+      ],
+      [
+        "22/02/2024",
+        "Abonnements",
+        "Abonnements 22/02/2024",
+        168,
+        190,
+        "",
+        ""
+      ],
+      [
+        "24/02/2024",
+        "Vêtements",
+        "Vêtements 24/02/2024",
+        302,
+        269,
+        "",
+        ""
+      ],
+      [
+        "26/02/2024",
+        "Divers",
+        "Divers 26/02/2024",
+        597,
+        589,
+        "",
+        ""
+      ],
+      [
+        "28/02/2024",
+        "Éducation",
+        "Éducation 28/02/2024",
+        410,
+        294,
+        "",
+        ""
+      ],
+      [
+        "01/03/2024",
+        "Sport",
+        "Sport 01/03/2024",
+        933,
+        878,
+        "",
+        ""
+      ],
+      [
+        "03/03/2024",
+        "Transport",
+        "Transport 03/03/2024",
+        600,
+        659,
+        "",
+        ""
+      ],
+      [
+        "05/03/2024",
+        "Logement",
+        "Logement 05/03/2024",
+        361,
+        421,
+        "",
+        ""
+      ],
+      [
+        "07/03/2024",
+        "Abonnements",
+        "Abonnements 07/03/2024",
+        514,
+        466,
+        "",
+        ""
+      ],
+      [
+        "09/03/2024",
+        "Santé",
+        "Santé 09/03/2024",
+        124,
+        144,
+        "",
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "formule_somme_presente": true,
+    "formule_moyenne_presente": true,
+    "formule_si_presente": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Calcul du reste (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "D2",
+        "E2",
+        "-"
+      ],
+      "recopie_jusqua": "F36",
+      "points": 10,
+      "indices": [
+        "Le reste, c'est ce qui reste après avoir dépensé. Quelle opération ?",
+        "Tu dois soustraire une colonne d'une autre.",
+        "=D2-E2"
+      ],
+      "id": "cp_1",
+      "competence_id": 3
+    },
+    {
+      "cellule": "F36",
+      "type": "formule",
+      "description": "Calcul du reste (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "D36",
+        "E36",
+        "-"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée en recopiant.",
+        "Les références de cellules doivent avoir changé automatiquement.",
+        "=D36-E36"
+      ],
+      "id": "cp_2",
+      "competence_id": 3
+    },
+    {
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Fonction SI pour le statut (première ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "E2",
+        "D2",
+        ">",
+        "Dépassé",
+        "OK"
+      ],
+      "recopie_jusqua": "G36",
+      "points": 15,
+      "indices": [
+        "Il faut comparer les dépenses au budget et afficher un texte selon le résultat.",
+        "Utilise la fonction SI avec une condition de comparaison.",
+        "=SI(E2>D2;\"Dépassé\";\"OK\")"
+      ],
+      "id": "cp_3",
+      "competence_id": 3
+    },
+    {
+      "cellule": "G36",
+      "type": "formule",
+      "description": "Fonction SI pour le statut (dernière ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "E36",
+        "D36",
+        ">",
+        "Dépassé",
+        "OK"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que la fonction SI s'est bien recopiée.",
+        "Les références doivent pointer vers la ligne 36.",
+        "=SI(E36>D36;\"Dépassé\";\"OK\")"
+      ],
+      "id": "cp_4",
+      "competence_id": 3
+    },
+    {
+      "cellule": "E37",
+      "type": "formule",
+      "description": "Total des dépenses",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "E2:E36"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Tu dois additionner toutes les dépenses de la colonne E.",
+        "Utilise la fonction SOMME avec une plage de cellules.",
+        "=SOMME(E2:E36)"
+      ],
+      "id": "cp_5",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 3
+    },
+    {
+      "cellule": "D37",
+      "type": "formule",
+      "description": "Total du budget",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "D2:D36"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Tu dois additionner tous les budgets de la colonne D.",
+        "Utilise la fonction SOMME avec une plage de cellules.",
+        "=SOMME(D2:D36)"
+      ],
+      "id": "cp_6",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 3
+    },
+    {
+      "cellule": "F37",
+      "type": "formule",
+      "description": "Solde final",
+      "fonction": null,
+      "pattern": [
+        "D37",
+        "E37",
+        "-"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Le solde final, c'est la différence entre le budget total et les dépenses totales.",
+        "Tu dois soustraire le total des dépenses du budget total.",
+        "=D37-E37"
+      ],
+      "id": "cp_7",
+      "competence_id": 3
+    },
+    {
+      "cellule": "E38",
+      "type": "formule",
+      "description": "Moyenne des dépenses",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "E2:E36"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Tu dois calculer la moyenne de toutes les dépenses.",
+        "Utilise la fonction MOYENNE avec la plage des dépenses.",
+        "=MOYENNE(E2:E36)"
+      ],
+      "id": "cp_8",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 3
+    }
+  ],
+  "competence_ids": [
+    3,
+    4,
+    9
+  ]
+}

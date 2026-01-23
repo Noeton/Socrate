@@ -1,0 +1,250 @@
+{
+    "id": "intermediaire_34_references_absolues_mixtes",
+    "titre": "Références Absolues ($) et Mixtes : Maîtriser la Recopie",
+    "niveau": "intermediaire",
+    "duree_estimee": "20 min",
+    "competences": ["Références absolues", "Références mixtes", "Recopie de formules"],
+    "competence_ids": [15, 51],
+  
+    "contexte": {
+      "situation": "Tu es assistant(e) comptable chez ImportExport SA. Tu dois créer une grille de conversion de devises qui se met à jour automatiquement quand le taux change. Le problème : quand tu recopies ta formule, les références se décalent et tout devient faux !",
+      "manager": {
+        "nom": "Christine Lagarde",
+        "poste": "Directrice Financière",
+        "personnalite": "Précise et méthodique, elle ne tolère aucune erreur de calcul.",
+        "demande": "Je veux une grille de conversion EUR vers USD, GBP, JPY. Quand je change le taux, TOUTES les conversions doivent se mettre à jour. Et je veux pouvoir recopier les formules sans tout casser."
+      },
+      "enjeux": "Erreur de conversion = perte financière potentielle.",
+      "deadline": "Pour le rapport mensuel"
+    },
+  
+    "objectifs": [
+      "Comprendre la différence entre références relatives, absolues et mixtes",
+      "Utiliser $ pour figer une ligne, une colonne, ou les deux",
+      "Créer des formules qui se recopient correctement",
+      "Construire une table de conversion dynamique"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les montants et les taux de change",
+      "Crée des formules de conversion qui se recopient sans erreur",
+      "Utilise les références absolues pour figer les taux",
+      "Utilise les références mixtes pour la grille de multiplication"
+    ],
+  
+    "donnees": {
+      "feuille": "Conversions",
+      "taux_change": {
+        "position": "F1:G4",
+        "headers": ["Devise", "Taux"],
+        "rows": [
+          ["USD", 1.08],
+          ["GBP", 0.86],
+          ["JPY", 162.50]
+        ]
+      },
+      "montants_eur": {
+        "position": "A1:A6",
+        "values": ["Montant EUR", 100, 250, 500, 1000, 5000]
+      },
+      "grille_conversion": {
+        "position": "A1:D6",
+        "description": "Grille avec montants en lignes, devises en colonnes"
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Types de références",
+        "types": [
+          "A1 → Relative : se décale quand on recopie",
+          "$A$1 → Absolue : ne bouge JAMAIS",
+          "$A1 → Mixte colonne : colonne figée, ligne se décale",
+          "A$1 → Mixte ligne : ligne figée, colonne se décale"
+        ],
+        "raccourci": "F4 pour basculer entre les modes (A1 → $A$1 → A$1 → $A1 → A1)"
+      },
+      {
+        "phase": "B. Référence relative (par défaut)",
+        "exemple": "=A1*2 recopié vers le bas devient =A2*2, =A3*2...",
+        "usage": "Quand tu veux que la formule s'adapte à chaque ligne"
+      },
+      {
+        "phase": "C. Référence absolue ($A$1)",
+        "exemple": "=A1*$G$2 → le taux en G2 reste fixe même si on recopie",
+        "usage": "Pour figer une cellule de paramètre (taux, TVA, constante)"
+      },
+      {
+        "phase": "D. Référence mixte colonne ($A1)",
+        "exemple": "=$A1*B$1 → A est figé, la ligne se décale",
+        "usage": "Grille de multiplication : figer la colonne des montants"
+      },
+      {
+        "phase": "E. Référence mixte ligne (A$1)",
+        "exemple": "=$A1*B$1 → la ligne 1 (taux) est figée",
+        "usage": "Grille de multiplication : figer la ligne des taux"
+      },
+      {
+        "phase": "F. Combiner pour une grille",
+        "formule": "=$A2*B$1",
+        "explication": [
+          "$A2 : colonne A figée (montants), ligne se décale",
+          "B$1 : ligne 1 figée (taux), colonne se décale",
+          "Recopie vers droite ET vers bas = grille complète !"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_conversion_simple",
+        "cellule": "B2",
+        "type": "valeur",
+        "description": "100 EUR en USD",
+        "competence_id": 15,
+        "expected_value": 108,
+        "points": 10,
+        "indices": [
+          "100 EUR × 1.08 = 108 USD",
+          "=A2*taux_USD",
+          "Le taux USD est en G2"
+        ]
+      },
+      {
+        "id": "cp_2_reference_absolue",
+        "cellule": "B2",
+        "type": "formule",
+        "description": "Formule avec référence absolue pour le taux",
+        "competence_id": 15,
+        "pattern": ["$G$2", "A2"],
+        "alternative_patterns": [["$", "G", "2"]],
+        "points": 20,
+        "indices": [
+          "Le taux doit être en référence absolue",
+          "=A2*$G$2",
+          "$ avant G ET avant 2"
+        ]
+      },
+      {
+        "id": "cp_3_recopie_bas",
+        "cellule": "B6",
+        "type": "valeur",
+        "description": "5000 EUR en USD (recopié)",
+        "competence_id": 15,
+        "expected_value": 5400,
+        "points": 15,
+        "indices": [
+          "5000 × 1.08 = 5400",
+          "La formule recopiée doit garder $G$2",
+          "Mais A2 devient A6"
+        ]
+      },
+      {
+        "id": "cp_4_grille_mixte",
+        "cellule": "B2",
+        "type": "formule",
+        "description": "Formule mixte pour grille (si grille en B2:D6)",
+        "competence_id": 51,
+        "pattern": ["$A", "B$1"],
+        "alternative_patterns": [["$A2", "$1"]],
+        "points": 25,
+        "indices": [
+          "Colonne A figée : $A2",
+          "Ligne 1 figée : B$1",
+          "=$A2*B$1"
+        ]
+      },
+      {
+        "id": "cp_5_coin_grille",
+        "cellule": "D6",
+        "type": "valeur",
+        "description": "5000 EUR en JPY (coin de grille)",
+        "competence_id": 51,
+        "expected_value": 812500,
+        "points": 15,
+        "indices": [
+          "5000 × 162.50 = 812500",
+          "La formule en D6 doit être =$A6*D$1",
+          "Vérifie que ta grille est cohérente"
+        ]
+      },
+      {
+        "id": "cp_6_milieu_grille",
+        "cellule": "C4",
+        "type": "valeur",
+        "description": "500 EUR en GBP",
+        "competence_id": 51,
+        "expected_value": 430,
+        "points": 15,
+        "indices": [
+          "500 × 0.86 = 430",
+          "Formule : =$A4*C$1",
+          "A4=500, C1=0.86"
+        ]
+      }
+    ],
+  
+    "tableau_recap": {
+      "titre": "Quand utiliser quoi ?",
+      "cas": [
+        {
+          "situation": "Paramètre fixe (TVA, taux, constante)",
+          "reference": "$A$1",
+          "exemple": "=B2*$G$1 où G1 contient la TVA"
+        },
+        {
+          "situation": "Grille : colonne de référence",
+          "reference": "$A1",
+          "exemple": "=$A2*B1 → colonne A figée"
+        },
+        {
+          "situation": "Grille : ligne de référence",
+          "reference": "A$1",
+          "exemple": "=A2*B$1 → ligne 1 figée"
+        },
+        {
+          "situation": "Formule standard à recopier",
+          "reference": "A1",
+          "exemple": "=A1+B1 → s'adapte à chaque ligne"
+        }
+      ]
+    },
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Oublier $ et voir #REF! ou 0",
+        "cause": "La référence se décale vers une cellule vide ou invalide",
+        "solution": "Ajoute $ avant la lettre et/ou le chiffre à figer"
+      },
+      {
+        "erreur": "Mettre $ partout",
+        "cause": "La formule ne s'adapte plus du tout",
+        "solution": "Réfléchis : qu'est-ce qui doit bouger, qu'est-ce qui doit rester fixe ?"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises les références absolues et mixtes. Tes formules se recopient parfaitement maintenant ! 🔒",
+      "partiel": "Tu as compris le principe. Rappel : $ fige ce qui suit. $A = colonne figée, $1 = ligne figée, $A$1 = tout figé.",
+      "echec": "Les $ sont essentiels pour les formules qui se recopient. F4 est ton ami pour basculer entre les modes !"
+    },
+  
+    "socrate_message": {
+      "intro": "Les références absolues, c'est LE concept qui fait la différence entre débutant et intermédiaire ! 🎯 Sans ça, impossible de créer des formules robustes.",
+      "conclusion": "Tu maîtrises maintenant le $. Relatif, absolu, mixte... tu sais quand utiliser quoi. Tes tableaux Excel vont devenir beaucoup plus puissants ! 💪"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["références absolues", "références mixtes", "$", "recopie", "intermédiaire"],
+      "prerequis": ["Formules de base", "Recopie"],
+      "ouvre_vers": ["Grilles complexes", "Tableaux de bord", "INDIRECT"]
+    }
+  }

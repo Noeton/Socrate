@@ -1,0 +1,199 @@
+{
+  "id": "mfc_10_03_barres_donnees",
+  "version": "1.0",
+  "titre": "📊 MFC : barres de données pour comparer visuellement",
+
+  "metadata": {
+    "niveau": "debutant",
+    "duree_estimee": "10 min",
+    "competences_ids": [10],
+    "competences_noms": ["Mise en forme conditionnelle simple"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Appliquer des barres de données pour représenter visuellement les valeurs directement dans les cellules",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.1 (xlDatabar)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu prépares l'évaluation annuelle de ton équipe. Tu veux un tableau qui montre visuellement les performances de chacun, comme un mini-graphique dans chaque cellule.",
+    
+    "personnage": "Toi, RH chez TechCorp préparant les entretiens annuels.",
+    
+    "objectif": "Ajouter des barres horizontales dans les cellules qui représentent proportionnellement chaque score.",
+    
+    "motivation": "Les barres de données créent un mini-histogramme dans chaque cellule. Ultra efficace pour comparer des valeurs sans créer de graphique séparé.",
+    
+    "ton": "C'est comme avoir un graphique intégré directement dans ton tableau !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Scores d'évaluation annuelle de l'équipe Tech (note sur 100).",
+    "periode": "Évaluation 2024",
+    "source_fictive": "SIRH TechCorp"
+  },
+
+  "donnees": {
+    "headers": ["Employé", "Département", "Score"],
+    "rows": [
+      ["Martin D.", "Dev", 82],
+      ["Sophie L.", "Dev", 91],
+      ["Thomas B.", "QA", 75],
+      ["Julie M.", "Design", 88],
+      ["Pierre R.", "Dev", 69],
+      ["Emma C.", "PM", 94],
+      ["Lucas F.", "QA", 78],
+      ["Léa S.", "Design", 85]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les scores",
+      "consigne": "Sélectionne C2:C9 (les scores d'évaluation).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Appliquer les barres de données",
+      "consigne": "Accueil > Mise en forme conditionnelle > Barres de données > Remplissage dégradé bleu (ou une autre couleur).",
+      "aide_contextuelle": "Tu peux choisir un remplissage uni ou dégradé. Le dégradé est plus joli.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Vérifier le résultat",
+      "description": "Chaque cellule doit avoir une barre horizontale proportionnelle à sa valeur.",
+      "consigne": "Emma (94) doit avoir la barre la plus longue, Pierre (69) la plus courte.",
+      "aide_contextuelle": "Les barres sont calculées automatiquement : la valeur max = barre complète.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Ajuster (optionnel)",
+      "description": "Par défaut, Excel ajuste entre le min et le max des données. Tu peux fixer les bornes.",
+      "consigne": "Clic droit sur une cellule > Gérer les règles > Modifier la règle > Définir Min=0 et Max=100.",
+      "aide_contextuelle": "Avec Min=0 et Max=100, un score de 50 aura une barre à mi-largeur.",
+      "temps": "3 min",
+      "optionnel": true
+    }
+  ],
+
+  "zone_travail": {
+    "description": "Barres de données sur la colonne Score",
+    "structure": [
+      { "cellule": "A1:C9", "label": "Données", "style": "data" },
+      { "cellule": "C2:C9", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_databar_1",
+      "type": "format",
+      "subtype": "mfc_databar",
+      "description": "Barres de données appliquées",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "databar",
+        "has_bars": true
+      },
+      "points": 40,
+      "indices": [
+        "Tu dois voir des barres horizontales dans chaque cellule de la colonne Score.",
+        "Accueil > MFC > Barres de données",
+        "Les barres doivent varier en longueur selon la valeur."
+      ],
+      "erreurs_probables": [
+        { "type": "no_bars", "message": "Pas de barres visibles. As-tu bien appliqué 'Barres de données' et pas une autre règle ?" },
+        { "type": "same_length", "message": "Toutes les barres ont la même longueur. C'est anormal, vérifie la règle." }
+      ]
+    },
+    {
+      "id": "cp_databar_2",
+      "type": "format",
+      "subtype": "mfc_databar_color",
+      "description": "Couleur cohérente (bleu recommandé)",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "bar_color": "blue",
+        "bar_color_variants": ["bleu", "blue", "lightblue", "cyan"]
+      },
+      "points": 20,
+      "indices": [
+        "Le bleu est la couleur standard pour les barres de données.",
+        "Tu peux choisir une autre couleur, mais évite le rouge (connotation négative).",
+        "Les barres peuvent être en dégradé ou en uni."
+      ]
+    },
+    {
+      "id": "cp_databar_3",
+      "type": "format",
+      "subtype": "mfc_databar_proportion",
+      "description": "Barres proportionnelles aux valeurs",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "max_bar_employee": "Emma C.",
+        "min_bar_employee": "Pierre R.",
+        "bars_proportional": true
+      },
+      "points": 25,
+      "indices": [
+        "Emma (94) doit avoir la barre la plus longue.",
+        "Pierre (69) doit avoir la barre la plus courte.",
+        "Les autres doivent être proportionnelles entre ces deux extrêmes."
+      ]
+    },
+    {
+      "id": "cp_databar_4",
+      "type": "format",
+      "subtype": "mfc_range",
+      "description": "MFC sur la bonne plage",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "range": "C2:C9",
+        "excludes_header": true
+      },
+      "points": 15,
+      "indices": [
+        "Les barres doivent être uniquement sur C2:C9.",
+        "L'en-tête 'Score' ne doit pas avoir de barre."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Barres de données bleues (dégradé) sur C2:C9. Emma (94) a la barre la plus longue, Pierre (69) la plus courte.",
+    "etapes_cles": [
+      "Sélection C2:C9",
+      "Accueil > MFC > Barres de données",
+      "Choisir dégradé bleu"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Ton tableau est devenu un dashboard visuel. On voit immédiatement qu'Emma et Sophie sont les top performers !",
+    "bien": "👍 Très bien ! Les barres sont là. Vérifie qu'elles sont bien proportionnelles (Emma > Sophie > Julie...).",
+    "ameliorer": "📊 Presque ! Les barres doivent être de longueurs différentes selon les scores.",
+    "revoir": "🔄 Recommence : sélectionne C2:C9, puis MFC > Barres de données > Bleu. Tu dois voir des barres horizontales."
+  },
+
+  "pour_aller_plus_loin": [
+    "Fixe les bornes Min=0 et Max=100 pour une échelle absolue.",
+    "Ajoute une bordure aux barres via 'Modifier la règle'.",
+    "Masque les valeurs pour ne voir que les barres (Format personnalisé : ;;;)."
+  ]
+}

@@ -1,0 +1,246 @@
+{
+    "id": "avance_05_decaler_plages_dynamiques",
+    "titre": "DECALER : Créer des Plages Dynamiques",
+    "niveau": "avance",
+    "duree_estimee": "25 min",
+    "competences": ["DECALER", "Plages dynamiques", "Graphiques dynamiques"],
+    "competence_ids": [28],
+  
+    "contexte": {
+      "situation": "Tu es analyste chez TrendWatch, une société d'études de marché. Tu dois créer des graphiques qui s'adaptent automatiquement quand on ajoute des données. Le problème : les plages fixes (A1:A12) ne s'étendent pas. DECALER permet de créer des plages qui grandissent avec tes données.",
+      "manager": {
+        "nom": "Nicolas Fouquet",
+        "poste": "Directeur des Études",
+        "personnalite": "Visionnaire, il veut des tableaux de bord qui vivent.",
+        "demande": "Chaque mois on ajoute des données. Je ne veux plus avoir à modifier les plages de mes graphiques et formules. Ça doit s'adapter tout seul !"
+      },
+      "enjeux": "Automatisation du reporting mensuel.",
+      "deadline": "Avant la prochaine livraison de données"
+    },
+  
+    "objectifs": [
+      "Comprendre la syntaxe de DECALER",
+      "Créer des plages qui s'étendent automatiquement",
+      "Utiliser DECALER avec NBVAL pour des plages dynamiques",
+      "Appliquer aux graphiques et aux formules de synthèse"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les données de ventes mensuelles",
+      "Crée une formule SOMME avec plage dynamique",
+      "Calcule une moyenne mobile avec DECALER",
+      "Crée des plages nommées dynamiques pour les graphiques"
+    ],
+  
+    "donnees": {
+      "feuille": "Ventes",
+      "headers": ["Mois", "CA", "Objectif"],
+      "rows": [
+        ["Jan", 45000, 40000],
+        ["Fév", 52000, 45000],
+        ["Mar", 48000, 50000],
+        ["Avr", 61000, 55000],
+        ["Mai", 58000, 55000],
+        ["Jun", 67000, 60000],
+        ["Jul", 54000, 60000],
+        ["Aoû", 49000, 50000],
+        ["Sep", 72000, 65000],
+        ["Oct", 78000, 70000],
+        ["Nov", 85000, 75000],
+        ["Déc", 92000, 80000]
+      ],
+      "position": "A1:C13",
+      "note": "On peut ajouter des lignes en bas"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Syntaxe DECALER",
+        "syntaxe": "=DECALER(référence; lignes; colonnes; [hauteur]; [largeur])",
+        "arguments": [
+          "référence : point de départ (cellule ou plage)",
+          "lignes : décalage vertical (+ = bas, - = haut)",
+          "colonnes : décalage horizontal (+ = droite, - = gauche)",
+          "hauteur : nombre de lignes de la plage résultante",
+          "largeur : nombre de colonnes de la plage résultante"
+        ]
+      },
+      {
+        "phase": "B. DECALER simple - Décaler une cellule",
+        "exemple": "=DECALER(A1;2;1) → cellule 2 lignes en bas, 1 colonne à droite = B3",
+        "usage": "Référencer une cellule relative à une autre"
+      },
+      {
+        "phase": "C. DECALER avec dimensions - Créer une plage",
+        "exemple": "=DECALER(A1;0;0;5;1) → plage de 5 lignes × 1 colonne à partir de A1 = A1:A5",
+        "usage": "Créer une plage de taille spécifique"
+      },
+      {
+        "phase": "D. Plage dynamique avec NBVAL",
+        "formule": "=DECALER(A1;0;0;NBVAL(A:A);1)",
+        "explication": [
+          "NBVAL(A:A) compte les cellules non vides en colonne A",
+          "La hauteur de la plage = nombre de données",
+          "Quand on ajoute des lignes, la plage s'agrandit !"
+        ]
+      },
+      {
+        "phase": "E. Moyenne mobile avec DECALER",
+        "formule": "=MOYENNE(DECALER(B2;LIGNE()-2;0;-3;1))",
+        "explication": "Moyenne des 3 derniers mois, qui se décale avec la ligne"
+      },
+      {
+        "phase": "F. Plage nommée dynamique",
+        "etapes": [
+          "Formules > Gestionnaire de noms > Nouveau",
+          "Nom : CA_Dynamique",
+          "Fait référence à : =DECALER(Ventes!$B$2;0;0;NBVAL(Ventes!$B:$B)-1;1)",
+          "Utilise CA_Dynamique dans tes graphiques"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_decaler_simple",
+        "cellule": "F2",
+        "type": "valeur",
+        "description": "Valeur décalée de 2 lignes, 1 colonne depuis A1",
+        "competence_id": 28,
+        "expected_value": 52000,
+        "points": 10,
+        "indices": [
+          "=DECALER(A1;2;1) → 2 lignes bas, 1 colonne droite",
+          "A1 + 2 lignes = A3 (Mar), + 1 colonne = B3",
+          "B3 = 48000... non, A1=header, donc A3=Fév, B3=52000"
+        ]
+      },
+      {
+        "id": "cp_2_somme_dynamique",
+        "cellule": "F3",
+        "type": "formule",
+        "description": "SOMME avec plage dynamique DECALER",
+        "competence_id": 28,
+        "fonction": "DECALER",
+        "pattern": ["SOMME", "DECALER", "NBVAL"],
+        "points": 25,
+        "indices": [
+          "=SOMME(DECALER(B1;1;0;NBVAL(B:B)-1;1))",
+          "Commence en B2 (B1 décalé de 1)",
+          "Hauteur = NBVAL(B:B)-1 pour exclure l'en-tête"
+        ]
+      },
+      {
+        "id": "cp_3_somme_resultat",
+        "cellule": "F3",
+        "type": "valeur",
+        "description": "Somme totale CA (761000)",
+        "competence_id": 28,
+        "expected_value": 761000,
+        "points": 10,
+        "indices": [
+          "Somme de Jan à Déc",
+          "45000+52000+...+92000 = 761000",
+          "Ta plage dynamique doit inclure toutes les données"
+        ]
+      },
+      {
+        "id": "cp_4_derniere_valeur",
+        "cellule": "F4",
+        "type": "valeur",
+        "description": "Dernière valeur de CA (dynamique)",
+        "competence_id": 28,
+        "expected_value": 92000,
+        "points": 20,
+        "indices": [
+          "=DECALER(B1;NBVAL(B:B)-1;0)",
+          "Décale de (nombre de valeurs - 1) lignes",
+          "Décembre = 92000"
+        ]
+      },
+      {
+        "id": "cp_5_moyenne_3mois",
+        "cellule": "F5",
+        "type": "valeur",
+        "description": "Moyenne des 3 derniers mois",
+        "competence_id": 28,
+        "expected_value": 85000,
+        "points": 20,
+        "indices": [
+          "Oct + Nov + Déc = 78000 + 85000 + 92000 = 255000",
+          "255000 / 3 = 85000",
+          "=MOYENNE(DECALER(B1;NBVAL(B:B)-3;0;3;1))"
+        ]
+      },
+      {
+        "id": "cp_6_nb_mois",
+        "cellule": "F6",
+        "type": "valeur",
+        "description": "Nombre de mois de données",
+        "competence_id": 28,
+        "expected_value": 12,
+        "points": 15,
+        "indices": [
+          "=NBVAL(A:A)-1 ou =NBVAL(B:B)-1",
+          "On enlève 1 pour l'en-tête",
+          "12 mois de données"
+        ]
+      }
+    ],
+  
+    "applications_avancees": [
+      {
+        "cas": "Graphique dynamique",
+        "methode": "Créer une plage nommée avec DECALER, l'utiliser comme source du graphique",
+        "avantage": "Le graphique s'étend automatiquement"
+      },
+      {
+        "cas": "Validation de données dynamique",
+        "methode": "Source de liste = plage nommée DECALER",
+        "avantage": "Les nouvelles valeurs apparaissent dans la liste"
+      },
+      {
+        "cas": "Top N dynamique",
+        "methode": "=GRANDE.VALEUR(DECALER(...);N)",
+        "avantage": "Top N sur une plage qui grandit"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "DECALER renvoie une valeur, pas une plage",
+        "cause": "Hauteur et largeur non spécifiées",
+        "solution": "Ajoute les arguments 4 et 5 pour créer une vraie plage"
+      },
+      {
+        "erreur": "Décalage de 1 en trop",
+        "cause": "Oublier que DECALER(A1;1;0) va en A2, pas A1+1 lignes de données",
+        "solution": "DECALER(A1;1;0) = A2. Pour N lignes de données depuis A2 : DECALER(A1;1;0;N;1)"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Impressionnant ! DECALER n'a plus de secrets pour toi. Tes plages sont maintenant dynamiques et tes fichiers s'adaptent automatiquement ! 🚀",
+      "partiel": "Tu as compris le principe. DECALER crée des plages flexibles. Combine avec NBVAL pour les rendre vraiment dynamiques.",
+      "echec": "DECALER = créer une plage à partir d'un point de référence. Les 2 derniers arguments (hauteur, largeur) sont essentiels pour créer des plages."
+    },
+  
+    "socrate_message": {
+      "intro": "DECALER, c'est la magie des plages dynamiques ! ✨ Tes formules et graphiques s'adaptent automatiquement quand les données changent.",
+      "conclusion": "Tu maîtrises DECALER ! Combiné avec NBVAL, c'est l'outil ultime pour des fichiers qui vivent. Fini les plages à modifier à la main ! 🎯"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["DECALER", "OFFSET", "plages dynamiques", "graphiques", "avancé"],
+      "prerequis": ["NBVAL", "Références absolues", "Plages nommées"],
+      "ouvre_vers": ["INDIRECT", "Tableaux structurés", "Power Query"]
+    }
+  }

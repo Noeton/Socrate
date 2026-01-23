@@ -1,0 +1,856 @@
+{
+  "id": "avance_25_tableaux_structures",
+  "titre": "Gestion de Données avec Tableaux Structurés",
+  "niveau": "avance",
+  "duree_estimee": "40 min",
+  "competences": [
+    "tableaux_structures"
+  ],
+  "contexte": {
+    "situation": "Tu utilises les tableaux structurés Excel pour gérer dynamiquement une base de ventes.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Convertir une plage en tableau structuré",
+    "Utiliser les références structurées",
+    "Ajouter des colonnes calculées automatiques"
+  ],
+  "consignes": [
+    "Sélectionne A1:G71 et convertis en tableau structuré (Ctrl+T)",
+    "Nomme le tableau 'VentesData'",
+    "Ajoute une colonne 'Marge': =[Total]*0.3 (référence structurée)",
+    "Ajoute une colonne 'Commission': =SI([Total]>5000;[Total]*0.05;0)",
+    "Crée une ligne de total avec SOUS.TOTAL",
+    "Utilise les segments pour filtrer par Région et Vendeur",
+    "Crée une formule externe: =SOMME(VentesData[Total])"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Produit",
+      "Vendeur",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Moniteur",
+        "Diana",
+        "Île-de-France",
+        46,
+        399,
+        18354
+      ],
+      [
+        "02/01/2024",
+        "Écran",
+        "Sam",
+        "Auvergne-Rhône-Alpes",
+        44,
+        199,
+        8756
+      ],
+      [
+        "03/01/2024",
+        "Switch",
+        "Charlie",
+        "Île-de-France",
+        44,
+        499,
+        21956
+      ],
+      [
+        "04/01/2024",
+        "Ordinateur portable",
+        "Eve",
+        "Nouvelle-Aquitaine",
+        8,
+        199,
+        1592
+      ],
+      [
+        "05/01/2024",
+        "Router",
+        "Xavier",
+        "Occitanie",
+        48,
+        999,
+        47952
+      ],
+      [
+        "06/01/2024",
+        "Ordinateur portable",
+        "Leo",
+        "Centre-Val de Loire",
+        50,
+        149,
+        7450
+      ],
+      [
+        "07/01/2024",
+        "Casque",
+        "Paul",
+        "Grand Est",
+        19,
+        499,
+        9481
+      ],
+      [
+        "08/01/2024",
+        "Écouteurs",
+        "Bob",
+        "Provence-Alpes-Côte d'Azur",
+        16,
+        599,
+        9584
+      ],
+      [
+        "09/01/2024",
+        "Adaptateur",
+        "Tom",
+        "Nouvelle-Aquitaine",
+        41,
+        999,
+        40959
+      ],
+      [
+        "10/01/2024",
+        "Router",
+        "Frank",
+        "Nouvelle-Aquitaine",
+        27,
+        499,
+        13473
+      ],
+      [
+        "11/01/2024",
+        "Téléphone",
+        "Jack",
+        "Nouvelle-Aquitaine",
+        23,
+        599,
+        13777
+      ],
+      [
+        "12/01/2024",
+        "Câble USB",
+        "Rose",
+        "Normandie",
+        12,
+        199,
+        2388
+      ],
+      [
+        "13/01/2024",
+        "Téléphone",
+        "Diana",
+        "Occitanie",
+        4,
+        299,
+        1196
+      ],
+      [
+        "14/01/2024",
+        "Imprimante",
+        "Kate",
+        "Île-de-France",
+        5,
+        499,
+        2495
+      ],
+      [
+        "15/01/2024",
+        "Souris",
+        "Diana",
+        "Pays de la Loire",
+        34,
+        399,
+        13566
+      ],
+      [
+        "16/01/2024",
+        "Écouteurs",
+        "Marie",
+        "Île-de-France",
+        5,
+        599,
+        2995
+      ],
+      [
+        "17/01/2024",
+        "Casque",
+        "Leo",
+        "Pays de la Loire",
+        29,
+        999,
+        28971
+      ],
+      [
+        "18/01/2024",
+        "Téléphone",
+        "Frank",
+        "Auvergne-Rhône-Alpes",
+        7,
+        799,
+        5593
+      ],
+      [
+        "19/01/2024",
+        "Imprimante",
+        "Victor",
+        "Pays de la Loire",
+        49,
+        99,
+        4851
+      ],
+      [
+        "20/01/2024",
+        "Câble USB",
+        "Zoé",
+        "Provence-Alpes-Côte d'Azur",
+        45,
+        299,
+        13455
+      ],
+      [
+        "21/01/2024",
+        "Housse",
+        "Olivia",
+        "Hauts-de-France",
+        37,
+        299,
+        11063
+      ],
+      [
+        "22/01/2024",
+        "Chargeur",
+        "Leo",
+        "Provence-Alpes-Côte d'Azur",
+        5,
+        1299,
+        6495
+      ],
+      [
+        "23/01/2024",
+        "Clavier",
+        "Zoé",
+        "Provence-Alpes-Côte d'Azur",
+        13,
+        599,
+        7787
+      ],
+      [
+        "24/01/2024",
+        "Souris",
+        "Sam",
+        "Pays de la Loire",
+        26,
+        199,
+        5174
+      ],
+      [
+        "25/01/2024",
+        "Casque",
+        "Sam",
+        "Île-de-France",
+        4,
+        1299,
+        5196
+      ],
+      [
+        "26/01/2024",
+        "Switch",
+        "Zoé",
+        "Grand Est",
+        36,
+        399,
+        14364
+      ],
+      [
+        "27/01/2024",
+        "Chargeur",
+        "Zoé",
+        "Occitanie",
+        32,
+        99,
+        3168
+      ],
+      [
+        "28/01/2024",
+        "Chargeur",
+        "Paul",
+        "Occitanie",
+        1,
+        999,
+        999
+      ],
+      [
+        "29/01/2024",
+        "Imprimante",
+        "Tom",
+        "Nouvelle-Aquitaine",
+        42,
+        399,
+        16758
+      ],
+      [
+        "30/01/2024",
+        "Souris",
+        "Victor",
+        "Pays de la Loire",
+        20,
+        599,
+        11980
+      ],
+      [
+        "31/01/2024",
+        "Batterie",
+        "Charlie",
+        "Nouvelle-Aquitaine",
+        45,
+        399,
+        17955
+      ],
+      [
+        "01/02/2024",
+        "Imprimante",
+        "Grace",
+        "Occitanie",
+        36,
+        1299,
+        46764
+      ],
+      [
+        "02/02/2024",
+        "Ordinateur portable",
+        "Uma",
+        "Pays de la Loire",
+        12,
+        299,
+        3588
+      ],
+      [
+        "03/02/2024",
+        "Adaptateur",
+        "Marie",
+        "Île-de-France",
+        27,
+        199,
+        5373
+      ],
+      [
+        "04/02/2024",
+        "Téléphone",
+        "Rose",
+        "Auvergne-Rhône-Alpes",
+        24,
+        499,
+        11976
+      ],
+      [
+        "05/02/2024",
+        "Casque",
+        "Alice",
+        "Grand Est",
+        11,
+        799,
+        8789
+      ],
+      [
+        "06/02/2024",
+        "Disque dur",
+        "Zoé",
+        "Auvergne-Rhône-Alpes",
+        28,
+        799,
+        22372
+      ],
+      [
+        "07/02/2024",
+        "Écran",
+        "Marie",
+        "Auvergne-Rhône-Alpes",
+        24,
+        799,
+        19176
+      ],
+      [
+        "08/02/2024",
+        "Switch",
+        "Olivia",
+        "Bourgogne-Franche-Comté",
+        44,
+        1299,
+        57156
+      ],
+      [
+        "09/02/2024",
+        "Chargeur",
+        "Iris",
+        "Auvergne-Rhône-Alpes",
+        40,
+        149,
+        5960
+      ],
+      [
+        "10/02/2024",
+        "Housse",
+        "Iris",
+        "Provence-Alpes-Côte d'Azur",
+        42,
+        999,
+        41958
+      ],
+      [
+        "11/02/2024",
+        "Housse",
+        "Zoé",
+        "Centre-Val de Loire",
+        19,
+        299,
+        5681
+      ],
+      [
+        "12/02/2024",
+        "Câble USB",
+        "Quentin",
+        "Provence-Alpes-Côte d'Azur",
+        31,
+        499,
+        15469
+      ],
+      [
+        "13/02/2024",
+        "Router",
+        "Grace",
+        "Nouvelle-Aquitaine",
+        2,
+        1299,
+        2598
+      ],
+      [
+        "14/02/2024",
+        "Clavier",
+        "Yves",
+        "Île-de-France",
+        10,
+        99,
+        990
+      ],
+      [
+        "15/02/2024",
+        "Écouteurs",
+        "Marie",
+        "Occitanie",
+        35,
+        399,
+        13965
+      ],
+      [
+        "16/02/2024",
+        "Housse",
+        "Marie",
+        "Bourgogne-Franche-Comté",
+        5,
+        299,
+        1495
+      ],
+      [
+        "17/02/2024",
+        "Écouteurs",
+        "Kate",
+        "Normandie",
+        12,
+        999,
+        11988
+      ],
+      [
+        "18/02/2024",
+        "Webcam",
+        "Marie",
+        "Auvergne-Rhône-Alpes",
+        18,
+        999,
+        17982
+      ],
+      [
+        "19/02/2024",
+        "Support",
+        "Sam",
+        "Grand Est",
+        35,
+        399,
+        13965
+      ],
+      [
+        "20/02/2024",
+        "Chargeur",
+        "Kate",
+        "Nouvelle-Aquitaine",
+        47,
+        499,
+        23453
+      ],
+      [
+        "21/02/2024",
+        "Ordinateur portable",
+        "Grace",
+        "Pays de la Loire",
+        8,
+        199,
+        1592
+      ],
+      [
+        "22/02/2024",
+        "Housse",
+        "Yves",
+        "Provence-Alpes-Côte d'Azur",
+        20,
+        149,
+        2980
+      ],
+      [
+        "23/02/2024",
+        "Webcam",
+        "Zoé",
+        "Nouvelle-Aquitaine",
+        41,
+        599,
+        24559
+      ],
+      [
+        "24/02/2024",
+        "Souris",
+        "Zoé",
+        "Grand Est",
+        31,
+        149,
+        4619
+      ],
+      [
+        "25/02/2024",
+        "Téléphone",
+        "Zoé",
+        "Nouvelle-Aquitaine",
+        22,
+        499,
+        10978
+      ],
+      [
+        "26/02/2024",
+        "Switch",
+        "Yves",
+        "Bourgogne-Franche-Comté",
+        45,
+        499,
+        22455
+      ],
+      [
+        "27/02/2024",
+        "Support",
+        "Diana",
+        "Grand Est",
+        47,
+        999,
+        46953
+      ],
+      [
+        "28/02/2024",
+        "Écouteurs",
+        "Leo",
+        "Occitanie",
+        46,
+        399,
+        18354
+      ],
+      [
+        "29/02/2024",
+        "Clavier",
+        "Paul",
+        "Pays de la Loire",
+        21,
+        99,
+        2079
+      ],
+      [
+        "01/03/2024",
+        "Chargeur",
+        "Charlie",
+        "Occitanie",
+        28,
+        599,
+        16772
+      ],
+      [
+        "02/03/2024",
+        "Ordinateur portable",
+        "Bob",
+        "Nouvelle-Aquitaine",
+        27,
+        499,
+        13473
+      ],
+      [
+        "03/03/2024",
+        "Clavier",
+        "Bob",
+        "Grand Est",
+        9,
+        999,
+        8991
+      ],
+      [
+        "04/03/2024",
+        "Tablette",
+        "Leo",
+        "Occitanie",
+        6,
+        799,
+        4794
+      ],
+      [
+        "05/03/2024",
+        "Câble USB",
+        "Tom",
+        "Bourgogne-Franche-Comté",
+        7,
+        599,
+        4193
+      ],
+      [
+        "06/03/2024",
+        "Imprimante",
+        "Henry",
+        "Île-de-France",
+        2,
+        299,
+        598
+      ],
+      [
+        "07/03/2024",
+        "Imprimante",
+        "Victor",
+        "Pays de la Loire",
+        9,
+        999,
+        8991
+      ],
+      [
+        "08/03/2024",
+        "Support",
+        "Charlie",
+        "Occitanie",
+        47,
+        399,
+        18753
+      ],
+      [
+        "09/03/2024",
+        "Câble USB",
+        "Tom",
+        "Normandie",
+        8,
+        599,
+        4792
+      ],
+      [
+        "10/03/2024",
+        "Souris",
+        "Olivia",
+        "Bretagne",
+        48,
+        399,
+        19152
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "tableau_structure": true,
+    "references_structurees": true,
+    "colonnes_calculees": true,
+    "score_minimum": 9
+  },
+  "checkpoints": [
+    {
+      "cellule": "A1",
+      "type": "tableau",
+      "description": "Conversion en tableau structuré",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Il faut transformer la plage de données en objet tableau Excel.",
+        "Sélectionne la plage A1:G71 puis utilise l'onglet Insertion ou un raccourci clavier.",
+        "Ctrl+T après avoir sélectionné A1:G71"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "nom_tableau",
+      "type": "propriete",
+      "description": "Nom du tableau 'VentesData'",
+      "fonction": null,
+      "pattern": [
+        "VentesData"
+      ],
+      "recopie_jusqua": null,
+      "points": 8,
+      "indices": [
+        "Chaque tableau structuré doit avoir un nom unique pour être référencé.",
+        "Va dans les Outils de tableau > Création pour modifier le nom.",
+        "Remplace 'Tableau1' par 'VentesData' dans la zone Nom du tableau"
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "H2",
+      "type": "formule",
+      "description": "Colonne Marge avec référence structurée (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "[Total]",
+        "0.3",
+        "*"
+      ],
+      "recopie_jusqua": "H71",
+      "points": 15,
+      "indices": [
+        "La marge représente 30% du total. Utilise la syntaxe des tableaux structurés.",
+        "Les références structurées utilisent les crochets avec le nom de la colonne.",
+        "=[Total]*0.3"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "H71",
+      "type": "formule",
+      "description": "Colonne Marge avec référence structurée (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "[Total]",
+        "0.3",
+        "*"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que la formule s'est bien recopiée jusqu'à la dernière ligne.",
+        "La référence structurée doit être identique sur toutes les lignes.",
+        "=[Total]*0.3"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "I2",
+      "type": "formule",
+      "description": "Colonne Commission avec condition (première ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "[Total]",
+        "5000",
+        "0.05",
+        "0"
+      ],
+      "recopie_jusqua": "I71",
+      "points": 18,
+      "indices": [
+        "La commission dépend du montant total. Si supérieur à 5000, alors 5% sinon rien.",
+        "Utilise une fonction conditionnelle avec les références structurées.",
+        "=SI([Total]>5000;[Total]*0.05;0)"
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "I71",
+      "type": "formule",
+      "description": "Colonne Commission avec condition (dernière ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "[Total]",
+        "5000",
+        "0.05",
+        "0"
+      ],
+      "recopie_jusqua": null,
+      "points": 7,
+      "indices": [
+        "Vérifie que la formule conditionnelle est correcte sur la dernière ligne.",
+        "La structure SI doit être identique avec les références structurées.",
+        "=SI([Total]>5000;[Total]*0.05;0)"
+      ],
+      "id": "cp_6"
+    },
+    {
+      "cellule": "ligne_total",
+      "type": "propriete",
+      "description": "Ligne de total avec SOUS.TOTAL",
+      "fonction": "SOUS.TOTAL",
+      "pattern": [
+        "SOUS.TOTAL"
+      ],
+      "recopie_jusqua": null,
+      "points": 12,
+      "indices": [
+        "Les tableaux structurés peuvent afficher une ligne de totaux automatique.",
+        "Active l'option dans Outils de tableau > Création > Ligne de total.",
+        "Coche 'Ligne de total' et vérifie que SOUS.TOTAL est utilisé"
+      ],
+      "id": "cp_7"
+    },
+    {
+      "cellule": "segments",
+      "type": "propriete",
+      "description": "Segments pour Région et Vendeur",
+      "fonction": null,
+      "pattern": [
+        "Région",
+        "Vendeur"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Les segments permettent de filtrer visuellement les données du tableau.",
+        "Va dans Outils de tableau > Création > Insérer un segment.",
+        "Sélectionne les colonnes 'Région' et 'Vendeur' pour créer les segments"
+      ],
+      "id": "cp_8"
+    },
+    {
+      "cellule": "K2",
+      "type": "formule",
+      "description": "Formule externe référençant le tableau",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "VentesData",
+        "[Total]"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Une formule externe doit référencer une colonne du tableau structuré.",
+        "Utilise le nom du tableau suivi de la colonne entre crochets.",
+        "=SOMME(VentesData[Total])"
+      ],
+      "id": "cp_9",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      }
+    }
+  ],
+  "competence_ids": [
+    27
+  ]
+}

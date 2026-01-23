@@ -1,0 +1,172 @@
+{
+  "id": "intermediaire_46_references_table_multiplication",
+  "titre": "Table de Multiplication - Maîtriser les Références",
+  "niveau": "intermediaire",
+  "competences": ["Références absolues ($)", "Références mixtes", "Recopie de formules"],
+  "competence_ids": [15, 51],
+  "duree_estimee": "20 min",
+  
+  "contexte": {
+    "situation": "Pour former les nouveaux comptables, tu dois créer une table de multiplication interactive. Une seule formule, recopiée partout, doit fonctionner grâce aux références mixtes.",
+    "manager": {
+      "nom": "Hélène Garnier",
+      "poste": "Responsable Formation"
+    },
+    "enjeux": "Comprendre vraiment le $ est essentiel pour toutes les formules Excel.",
+    "deadline": "Formation demain matin"
+  },
+  
+  "objectifs": [
+    "Comprendre quand figer la ligne vs la colonne",
+    "Créer une formule unique recopiable en X et Y",
+    "Maîtriser les 4 types de références : A1, $A1, A$1, $A$1"
+  ],
+  
+  "consignes": [
+    "La ligne 1 contient les multiplicateurs (1-10 en B1:K1)",
+    "La colonne A contient les multiplicandes (1-10 en A2:A11)",
+    "En B2, crée une formule qui multiplie le multiplicateur par le multiplicande",
+    "La formule doit utiliser des références MIXTES pour être recopiable",
+    "Recopie en B2:K11 avec une SEULE formule"
+  ],
+  
+  "donnees": {
+    "headers": ["×", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "rows": [
+      [1, "", "", "", "", "", "", "", "", "", ""],
+      [2, "", "", "", "", "", "", "", "", "", ""],
+      [3, "", "", "", "", "", "", "", "", "", ""],
+      [4, "", "", "", "", "", "", "", "", "", ""],
+      [5, "", "", "", "", "", "", "", "", "", ""],
+      [6, "", "", "", "", "", "", "", "", "", ""],
+      [7, "", "", "", "", "", "", "", "", "", ""],
+      [8, "", "", "", "", "", "", "", "", "", ""],
+      [9, "", "", "", "", "", "", "", "", "", ""],
+      [10, "", "", "", "", "", "", "", "", "", ""]
+    ]
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "B2",
+      "description": "Formule avec références mixtes",
+      "pattern": ["$A2", "B$1", "*"],
+      "points": 40,
+      "indices": [
+        "Tu dois multiplier la valeur de la colonne A (multiplicande) par la valeur de la ligne 1 (multiplicateur)",
+        "$A2 : la colonne A est figée, la ligne peut changer",
+        "B$1 : la ligne 1 est figée, la colonne peut changer",
+        "=$A2*B$1"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "B2",
+      "description": "1×1 = 1",
+      "valeur_attendue": 1,
+      "points": 10
+    },
+    {
+      "id": "cp_3",
+      "type": "valeur",
+      "cellule": "K2",
+      "description": "1×10 = 10 (recopie horizontale OK)",
+      "valeur_attendue": 10,
+      "points": 15
+    },
+    {
+      "id": "cp_4",
+      "type": "valeur",
+      "cellule": "B11",
+      "description": "10×1 = 10 (recopie verticale OK)",
+      "valeur_attendue": 10,
+      "points": 15
+    },
+    {
+      "id": "cp_5",
+      "type": "valeur",
+      "cellule": "K11",
+      "description": "10×10 = 100 (coin opposé)",
+      "valeur_attendue": 100,
+      "points": 10
+    },
+    {
+      "id": "cp_6",
+      "type": "valeur",
+      "cellule": "F7",
+      "description": "6×5 = 30 (milieu de table)",
+      "valeur_attendue": 30,
+      "points": 10
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 80,
+    "formule_unique": true
+  },
+  
+  "theorie": {
+    "concept": "Les 4 types de références Excel",
+    "types": [
+      {
+        "reference": "A1",
+        "nom": "Relative",
+        "comportement": "Change en X et Y lors de la recopie",
+        "exemple": "A1 → B2 si recopié d'une ligne et une colonne"
+      },
+      {
+        "reference": "$A$1",
+        "nom": "Absolue",
+        "comportement": "Ne change JAMAIS",
+        "exemple": "$A$1 reste $A$1 partout"
+      },
+      {
+        "reference": "$A1",
+        "nom": "Mixte colonne",
+        "comportement": "Colonne fixe, ligne change",
+        "exemple": "$A1 → $A2 si recopié vers le bas"
+      },
+      {
+        "reference": "A$1",
+        "nom": "Mixte ligne",
+        "comportement": "Ligne fixe, colonne change",
+        "exemple": "A$1 → B$1 si recopié vers la droite"
+      }
+    ],
+    "astuce_f4": "Appuie sur F4 pour cycler : A1 → $A$1 → A$1 → $A1 → A1"
+  },
+  
+  "indices": [
+    "Pense à ce qui doit rester fixe quand tu recopies vers la DROITE",
+    "Pense à ce qui doit rester fixe quand tu recopies vers le BAS",
+    "La colonne A doit rester A partout → $A",
+    "La ligne 1 doit rester 1 partout → $1",
+    "Résultat : =$A2*B$1"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "Toute la table affiche la même valeur",
+      "cause": "Tu as utilisé $A$1*$B$1 (tout figé)",
+      "solution": "Utilise des références MIXTES, pas absolues"
+    },
+    {
+      "erreur": "Les lignes sont correctes mais pas les colonnes (ou inversement)",
+      "cause": "Tu as figé la mauvaise coordonnée",
+      "solution": "$A2 fige la colonne A, B$1 fige la ligne 1"
+    },
+    {
+      "erreur": "#REF! en recopiant",
+      "cause": "La référence sort du tableau",
+      "solution": "Vérifie que tu as bien figé ce qui doit l'être"
+    }
+  ],
+  
+  "exercice_bonus": {
+    "description": "Crée une table de conversion EUR→USD avec un taux en $F$1",
+    "formule": "=$A2*$F$1 (référence absolue pour le taux)"
+  }
+}

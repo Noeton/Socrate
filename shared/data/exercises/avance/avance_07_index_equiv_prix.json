@@ -1,0 +1,136 @@
+{
+  "id": "avance_07_index_equiv_prix",
+  "titre": "Grille Tarifaire Dynamique avec INDEX+EQUIV",
+  "niveau": "avance",
+  "competences": ["INDEX+EQUIV", "Recherche bidirectionnelle", "Références absolues"],
+  "competence_ids": [26, 15],
+  "duree_estimee": "20 min",
+  
+  "contexte": {
+    "situation": "Tu travailles chez un transporteur. Les prix dépendent de la zone de départ ET de la zone d'arrivée. Tu dois créer une formule qui trouve automatiquement le prix dans une grille.",
+    "manager": {
+      "nom": "Karim Benali",
+      "poste": "Responsable Logistique"
+    },
+    "enjeux": "Les commerciaux perdent du temps à chercher les tarifs manuellement. Une formule automatique leur ferait gagner 2h/jour.",
+    "deadline": "Fin de semaine"
+  },
+  
+  "objectifs": [
+    "Comprendre la recherche bidirectionnelle (ligne ET colonne)",
+    "Combiner INDEX et EQUIV pour remplacer RECHERCHEV",
+    "Figer correctement les références pour recopier"
+  ],
+  
+  "consignes": [
+    "La grille tarifaire est en A1:E6 (zones en ligne 1 et colonne A)",
+    "En H2, trouve le prix pour Zone départ (G2) vers Zone arrivée (H1)",
+    "Utilise =INDEX(grille;EQUIV(départ;colA;0);EQUIV(arrivée;ligne1;0))",
+    "Fige les références pour pouvoir recopier la formule"
+  ],
+  
+  "donnees": {
+    "headers": ["", "Paris", "Lyon", "Marseille", "Bordeaux"],
+    "rows": [
+      ["Paris", 0, 45, 75, 55],
+      ["Lyon", 45, 0, 35, 60],
+      ["Marseille", 75, 35, 0, 85],
+      ["Bordeaux", 55, 60, 85, 0],
+      ["Lille", 25, 70, 95, 80]
+    ]
+  },
+  
+  "grille_recherche": {
+    "depart": "Lyon",
+    "arrivee": "Marseille",
+    "resultat_attendu": 35
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "H2",
+      "description": "Formule INDEX+EQUIV pour trouver le prix",
+      "fonction": "INDEX",
+      "pattern": ["INDEX", "EQUIV", "B2:E6", "A2:A6", "B1:E1"],
+      "points": 40,
+      "indices": [
+        "INDEX retourne la valeur à l'intersection d'une ligne et d'une colonne",
+        "EQUIV trouve la position d'une valeur dans une plage",
+        "=INDEX(grille_prix; EQUIV(zone_depart;zones_verticales;0); EQUIV(zone_arrivee;zones_horizontales;0))"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "H2",
+      "description": "Le résultat doit être 35 (Lyon → Marseille)",
+      "valeur_attendue": 35,
+      "points": 20
+    },
+    {
+      "id": "cp_3",
+      "type": "formule",
+      "cellule": "H2",
+      "description": "Les références de la grille sont figées ($)",
+      "pattern": ["$B$2:$E$6", "$A$2:$A$6", "$B$1:$E$1"],
+      "points": 25,
+      "indices": [
+        "Pour pouvoir recopier la formule, les plages de la grille doivent être figées",
+        "Utilise F4 pour ajouter les $ ou tape-les manuellement"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "formule",
+      "cellule": "H3",
+      "description": "La formule est recopiable (test avec Paris → Bordeaux)",
+      "valeur_attendue": 55,
+      "points": 15
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70,
+    "formule_index_presente": true,
+    "formule_equiv_presente": true
+  },
+  
+  "theorie": {
+    "concept": "Recherche bidirectionnelle avec INDEX+EQUIV",
+    "explication": "RECHERCHEV ne peut chercher que vers la droite. INDEX+EQUIV permet de chercher dans n'importe quelle direction et de croiser ligne ET colonne.",
+    "formule_type": "=INDEX(plage_données; EQUIV(valeur_ligne;plage_ligne;0); EQUIV(valeur_colonne;plage_colonne;0))",
+    "avantages": [
+      "Cherche dans n'importe quelle direction",
+      "Croise deux dimensions (ligne + colonne)", 
+      "Plus flexible que RECHERCHEV",
+      "Fonctionne avec des grilles tarifaires"
+    ]
+  },
+  
+  "indices": [
+    "INDEX(plage;ligne;colonne) retourne la valeur à l'intersection",
+    "EQUIV(valeur;plage;0) retourne la POSITION (pas la valeur)",
+    "Combine les deux : INDEX utilise les positions retournées par EQUIV",
+    "N'oublie pas le 0 dans EQUIV pour une correspondance exacte"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "#N/A",
+      "cause": "La zone de départ ou d'arrivée n'existe pas dans la grille",
+      "solution": "Vérifie l'orthographe exacte des zones"
+    },
+    {
+      "erreur": "Mauvais prix retourné",
+      "cause": "Les plages d'EQUIV sont inversées (ligne vs colonne)",
+      "solution": "Le 1er EQUIV cherche en vertical (colonne A), le 2ème en horizontal (ligne 1)"
+    },
+    {
+      "erreur": "La formule ne se recopie pas bien",
+      "cause": "Les références de la grille ne sont pas figées",
+      "solution": "Ajoute des $ : $B$2:$E$6, $A$2:$A$6, $B$1:$E$1"
+    }
+  ]
+}

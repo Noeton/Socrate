@@ -1,0 +1,266 @@
+{
+    "id": "debutant_23_graphiques_visualisation",
+    "titre": "Graphiques : Visualiser ses Données",
+    "niveau": "debutant",
+    "duree_estimee": "20 min",
+    "competences": ["Graphiques simples", "Histogrammes", "Courbes", "Secteurs"],
+    "competence_ids": [25],
+  
+    "contexte": {
+      "situation": "Tu es assistant(e) marketing chez FreshFood, une entreprise agroalimentaire. Le directeur marketing prépare une présentation pour les investisseurs. Il veut des graphiques clairs et professionnels pour illustrer l'évolution des ventes et la répartition par produit.",
+      "manager": {
+        "nom": "Sophie Laurent",
+        "poste": "Directrice Marketing",
+        "personnalite": "Visuelle et orientée communication, elle veut des graphiques qui parlent.",
+        "demande": "Un tableau de chiffres, personne ne le lit. Un graphique, tout le monde comprend en 2 secondes. Peux-tu transformer nos données en visuels percutants ?"
+      },
+      "enjeux": "Présentation aux investisseurs - image de l'entreprise.",
+      "deadline": "Avant la réunion de jeudi"
+    },
+  
+    "objectifs": [
+      "Créer un histogramme (barres) pour comparer des valeurs",
+      "Créer une courbe pour montrer une évolution",
+      "Créer un graphique en secteurs (camembert) pour les proportions",
+      "Personnaliser les graphiques (titres, couleurs, légende)"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les données de ventes",
+      "Crée un histogramme du CA par produit",
+      "Crée une courbe d'évolution mensuelle",
+      "Crée un camembert de répartition par catégorie",
+      "Personnalise les titres et les couleurs"
+    ],
+  
+    "donnees": {
+      "feuille": "Ventes",
+      "donnees_produits": {
+        "headers": ["Produit", "CA"],
+        "rows": [
+          ["Jus d'orange", 45000],
+          ["Jus de pomme", 38000],
+          ["Smoothie mangue", 52000],
+          ["Smoothie fraise", 41000],
+          ["Eau aromatisée", 28000]
+        ],
+        "position": "A1:B6"
+      },
+      "donnees_mensuelles": {
+        "headers": ["Mois", "CA"],
+        "rows": [
+          ["Jan", 32000],
+          ["Fév", 35000],
+          ["Mar", 41000],
+          ["Avr", 48000],
+          ["Mai", 52000],
+          ["Jun", 58000]
+        ],
+        "position": "D1:E7"
+      },
+      "donnees_categories": {
+        "headers": ["Catégorie", "CA"],
+        "rows": [
+          ["Jus", 83000],
+          ["Smoothies", 93000],
+          ["Eaux", 28000]
+        ],
+        "position": "G1:H4"
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Créer un graphique",
+        "etapes": [
+          "Sélectionne tes données (avec les en-têtes)",
+          "Insertion > Graphiques recommandés",
+          "Ou choisis directement un type de graphique",
+          "Le graphique apparaît sur ta feuille"
+        ]
+      },
+      {
+        "phase": "B. Histogramme (barres) - Comparer des valeurs",
+        "usage": "Comparer des catégories entre elles",
+        "exemple": "CA par produit",
+        "creation": "Insertion > Graphique > Histogramme groupé",
+        "quand_utiliser": "Quand tu veux comparer des valeurs distinctes"
+      },
+      {
+        "phase": "C. Courbe (ligne) - Montrer une évolution",
+        "usage": "Visualiser une tendance dans le temps",
+        "exemple": "Évolution mensuelle du CA",
+        "creation": "Insertion > Graphique > Courbe",
+        "quand_utiliser": "Données chronologiques, tendances"
+      },
+      {
+        "phase": "D. Secteurs (camembert) - Montrer des proportions",
+        "usage": "Visualiser la répartition d'un tout",
+        "exemple": "Part de chaque catégorie dans le CA total",
+        "creation": "Insertion > Graphique > Secteurs",
+        "quand_utiliser": "Quand tu veux montrer des % d'un total",
+        "limite": "Pas plus de 5-7 catégories, sinon illisible"
+      },
+      {
+        "phase": "E. Personnaliser le graphique",
+        "elements": [
+          "Titre : clic sur le titre > modifier",
+          "Légende : + > Légende > choisir position",
+          "Étiquettes : + > Étiquettes de données",
+          "Couleurs : clic sur une série > Format > Remplissage"
+        ]
+      },
+      {
+        "phase": "F. Déplacer et redimensionner",
+        "deplacer": "Clic-glisser sur le graphique",
+        "redimensionner": "Glisser les poignées aux coins",
+        "nouvelle_feuille": "Clic droit > Déplacer le graphique > Nouvelle feuille"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_histogramme_cree",
+        "type": "graphique_existe",
+        "description": "Histogramme du CA par produit créé",
+        "competence_id": 25,
+        "expected_chart_type": "histogramme",
+        "points": 20,
+        "indices": [
+          "Sélectionne A1:B6 (produits et CA)",
+          "Insertion > Histogramme groupé",
+          "5 barres doivent apparaître"
+        ]
+      },
+      {
+        "id": "cp_2_courbe_cree",
+        "type": "graphique_existe",
+        "description": "Courbe d'évolution mensuelle créée",
+        "competence_id": 25,
+        "expected_chart_type": "courbe",
+        "points": 20,
+        "indices": [
+          "Sélectionne D1:E7 (mois et CA)",
+          "Insertion > Courbe",
+          "La tendance doit être visible"
+        ]
+      },
+      {
+        "id": "cp_3_secteurs_cree",
+        "type": "graphique_existe",
+        "description": "Graphique en secteurs créé",
+        "competence_id": 25,
+        "expected_chart_type": "secteurs",
+        "points": 20,
+        "indices": [
+          "Sélectionne G1:H4 (catégories)",
+          "Insertion > Secteurs",
+          "3 parts de camembert"
+        ]
+      },
+      {
+        "id": "cp_4_titre_histogramme",
+        "type": "graphique_titre",
+        "description": "Titre ajouté à l'histogramme",
+        "competence_id": 25,
+        "expected_has_title": true,
+        "points": 10,
+        "indices": [
+          "Clic sur le titre par défaut",
+          "Remplace par un titre explicite",
+          "Ex: 'CA par produit (€)'"
+        ]
+      },
+      {
+        "id": "cp_5_etiquettes_secteurs",
+        "type": "graphique_etiquettes",
+        "description": "Étiquettes de données sur le camembert",
+        "competence_id": 25,
+        "expected_has_labels": true,
+        "points": 15,
+        "indices": [
+          "Clic sur le graphique > + > Étiquettes de données",
+          "Les valeurs ou % apparaissent sur chaque part",
+          "Aide à la lecture"
+        ]
+      },
+      {
+        "id": "cp_6_legende_courbe",
+        "type": "graphique_legende",
+        "description": "Légende positionnée sur la courbe",
+        "competence_id": 25,
+        "expected_has_legend": true,
+        "points": 15,
+        "indices": [
+          "Clic sur le graphique > + > Légende",
+          "Choisis la position (droite, bas...)",
+          "Utile si plusieurs séries"
+        ]
+      }
+    ],
+  
+    "choix_graphique": {
+      "histogramme": {
+        "quand": "Comparer des catégories",
+        "exemple": "CA par région, notes par élève",
+        "pas_pour": "Évolution dans le temps (utilise courbe)"
+      },
+      "courbe": {
+        "quand": "Montrer une évolution, tendance",
+        "exemple": "CA mensuel, température journalière",
+        "pas_pour": "Comparer des catégories sans lien temporel"
+      },
+      "secteurs": {
+        "quand": "Montrer la répartition d'un tout (100%)",
+        "exemple": "Parts de marché, répartition budget",
+        "pas_pour": "Plus de 7 catégories, comparaison précise"
+      },
+      "barres_horizontales": {
+        "quand": "Catégories avec noms longs",
+        "exemple": "Classement pays, comparaison produits"
+      }
+    },
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Camembert avec trop de catégories",
+        "consequence": "Illisible, parts minuscules",
+        "solution": "Groupe les petites catégories en 'Autres' ou utilise un histogramme"
+      },
+      {
+        "erreur": "Courbe pour données non chronologiques",
+        "consequence": "Suggère une évolution qui n'existe pas",
+        "solution": "Utilise un histogramme pour des catégories"
+      },
+      {
+        "erreur": "Pas de titre",
+        "consequence": "Le lecteur ne comprend pas ce qu'il regarde",
+        "solution": "Toujours ajouter un titre explicite"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Bravo ! Tu sais créer des graphiques professionnels. Tes données prennent vie et racontent une histoire ! 📊",
+      "partiel": "Bon début ! N'oublie pas : histogramme pour comparer, courbe pour l'évolution, secteurs pour les proportions.",
+      "echec": "Créer un graphique est simple : sélectionne tes données, Insertion > Graphique. Choisis le type adapté à ton message."
+    },
+  
+    "socrate_message": {
+      "intro": "Un graphique vaut mille mots ! 📈 Les données brutes endorment, les graphiques réveillent. C'est l'art de raconter une histoire avec des chiffres.",
+      "conclusion": "Tu sais maintenant transformer des tableaux en visuels percutants. Histogramme, courbe, secteurs... à toi de choisir le bon outil pour le bon message ! 🎨"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["graphiques", "visualisation", "histogramme", "courbe", "secteurs", "débutant"],
+      "prerequis": ["Manipulation données"],
+      "ouvre_vers": ["Graphiques combinés", "Sparklines", "Mise en forme conditionnelle"]
+    }
+  }

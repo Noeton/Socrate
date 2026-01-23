@@ -1,0 +1,194 @@
+{
+  "id": "intermediaire_42_mfc_formule",
+  "titre": "Mise en forme conditionnelle avec formules",
+  "niveau": "intermediaire",
+  "competences": ["MFC avancée", "Formules MFC", "Mise en forme conditionnelle"],
+  "competence_ids": [24],
+  "duree_estimee": "25 min",
+  
+  "contexte": {
+    "situation": "Tu gères le suivi des commandes clients. Tu dois mettre en place un système visuel pour identifier rapidement les commandes en retard, les gros montants, et les clients VIP.",
+    "manager": {
+      "nom": "Thomas Bernard",
+      "poste": "Responsable ADV"
+    },
+    "enjeux": "Permettre une lecture rapide du tableau sans avoir à analyser chaque ligne.",
+    "deadline": "Aujourd'hui"
+  },
+  
+  "objectifs": [
+    "Créer une règle MFC basée sur une formule personnalisée",
+    "Colorier une ligne entière selon une condition dans une colonne",
+    "Comprendre les références relatives vs absolues dans les formules MFC",
+    "Combiner plusieurs règles MFC"
+  ],
+  
+  "consignes": [
+    "1. Sélectionnez la plage de données A2:F21 (sans les en-têtes)",
+    "2. Créez une règle MFC pour colorer en ROUGE les lignes où Statut = 'En retard'",
+    "3. Créez une règle pour colorer en VERT CLAIR les lignes où Montant > 5000",
+    "4. Créez une règle pour mettre en GRAS les lignes où Client contient 'VIP'",
+    "5. Vérifiez l'ordre des règles (les retards doivent primer sur les gros montants)"
+  ],
+  
+  "donnees": {
+    "headers": ["N° Commande", "Client", "Date", "Montant", "Statut", "Priorité"],
+    "rows": [
+      ["CMD001", "Dupont SA", "2024-01-15", 2500, "Livré", "Normale"],
+      ["CMD002", "Martin VIP Corp", "2024-01-16", 8500, "Livré", "Haute"],
+      ["CMD003", "Durand & Fils", "2024-01-17", 1200, "En retard", "Normale"],
+      ["CMD004", "Tech Solutions", "2024-01-18", 15000, "En cours", "Haute"],
+      ["CMD005", "Petit Commerce", "2024-01-19", 450, "Livré", "Basse"],
+      ["CMD006", "Global VIP Services", "2024-01-20", 6200, "En retard", "Haute"],
+      ["CMD007", "ABC Distribution", "2024-01-21", 3400, "En cours", "Normale"],
+      ["CMD008", "XYZ Industries", "2024-01-22", 7800, "Livré", "Haute"],
+      ["CMD009", "Micro Startup", "2024-01-23", 890, "En retard", "Basse"],
+      ["CMD010", "Premium VIP Client", "2024-01-24", 12500, "En cours", "Haute"],
+      ["CMD011", "Local Shop", "2024-01-25", 320, "Livré", "Basse"],
+      ["CMD012", "Big Corporation", "2024-01-26", 9500, "Livré", "Haute"],
+      ["CMD013", "Family Business", "2024-01-27", 1800, "En cours", "Normale"],
+      ["CMD014", "Express Delivery", "2024-01-28", 4200, "En retard", "Normale"],
+      ["CMD015", "Quality VIP First", "2024-01-29", 5500, "Livré", "Haute"],
+      ["CMD016", "Budget Store", "2024-01-30", 650, "En cours", "Basse"],
+      ["CMD017", "Luxury Goods", "2024-02-01", 18000, "Livré", "Haute"],
+      ["CMD018", "Standard Co", "2024-02-02", 2100, "En retard", "Normale"],
+      ["CMD019", "Elite VIP Partners", "2024-02-03", 11000, "En cours", "Haute"],
+      ["CMD020", "Quick Service", "2024-02-04", 980, "Livré", "Normale"]
+    ]
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "mfc",
+      "description": "Règle MFC pour les commandes en retard (ligne rouge)",
+      "validation": {
+        "formula_pattern": "$E",
+        "condition": "En retard",
+        "format_fill_color": "red"
+      },
+      "points": 25,
+      "indices": [
+        "Accueil > MFC > Nouvelle règle > Utiliser une formule",
+        "La formule doit tester la colonne E (Statut)",
+        "Formule : =$E2=\"En retard\" (notez le $ devant E seulement)",
+        "Le $ devant E fige la colonne mais pas la ligne"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "mfc",
+      "description": "Règle MFC pour les gros montants > 5000 (vert clair)",
+      "validation": {
+        "formula_pattern": "$D",
+        "condition": ">5000",
+        "format_fill_color": "green"
+      },
+      "points": 25,
+      "indices": [
+        "Même méthode : nouvelle règle avec formule",
+        "Formule : =$D2>5000",
+        "Choisissez un vert clair pour le remplissage"
+      ]
+    },
+    {
+      "id": "cp_3",
+      "type": "mfc",
+      "description": "Règle MFC pour les clients VIP (texte gras)",
+      "validation": {
+        "formula_pattern": "CHERCHE",
+        "condition": "VIP",
+        "format_bold": true
+      },
+      "points": 25,
+      "indices": [
+        "Pour chercher un texte dans une cellule, utilisez CHERCHE ou TROUVE",
+        "Formule : =CHERCHE(\"VIP\";$B2)>0 ou =SIERREUR(CHERCHE(\"VIP\";$B2);0)>0",
+        "CHERCHE retourne la position ou une erreur si non trouvé"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "mfc",
+      "description": "Ordre des règles correct (retard > montant)",
+      "validation": {
+        "rule_order": ["retard", "montant", "vip"]
+      },
+      "points": 15,
+      "indices": [
+        "Accueil > MFC > Gérer les règles",
+        "Les règles en haut sont prioritaires",
+        "Une ligne en retard doit rester rouge même si montant > 5000",
+        "Cochez 'Interrompre si Vrai' si nécessaire"
+      ]
+    },
+    {
+      "id": "cp_5",
+      "type": "mfc",
+      "description": "La MFC s'applique à la ligne entière (pas juste une cellule)",
+      "validation": {
+        "applies_to": "A2:F21",
+        "row_based": true
+      },
+      "points": 10,
+      "indices": [
+        "Vérifiez que la plage d'application est bien A2:F21",
+        "Si vous avez sélectionné juste une colonne, modifiez dans 'Gérer les règles'",
+        "Le $ devant la lettre de colonne dans la formule est essentiel"
+      ]
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70,
+    "checkpoints_requis": ["cp_1", "cp_2"]
+  },
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "Oublier le $ devant la lettre de colonne ($E2 vs E2)",
+      "explication": "Sans $, la colonne testée change pour chaque colonne de la plage",
+      "solution": "=$E2 teste toujours la colonne E, quelle que soit la colonne formatée"
+    },
+    {
+      "erreur": "Mettre $E$2 au lieu de $E2 (tout figer)",
+      "explication": "Si vous figez aussi la ligne, toutes les lignes testent E2",
+      "solution": "$E2 = colonne figée, ligne variable (c'est ce qu'on veut)"
+    },
+    {
+      "erreur": "Formule qui s'applique à une seule colonne",
+      "explication": "Vous avez sélectionné une colonne au lieu de la plage entière",
+      "solution": "Modifiez 'S'applique à' dans Gérer les règles → $A$2:$F$21"
+    },
+    {
+      "erreur": "Mauvais ordre des règles",
+      "explication": "La première règle vraie est appliquée, les autres sont ignorées",
+      "solution": "Réorganisez dans 'Gérer les règles' par glisser-déposer"
+    },
+    {
+      "erreur": "CHERCHE sensible à la casse",
+      "explication": "CHERCHE n'est PAS sensible, mais TROUVE l'est",
+      "solution": "Utilisez CHERCHE pour une recherche insensible à la casse"
+    }
+  ],
+  
+  "theorie": {
+    "concept": "MFC avec formules",
+    "explication": "Les formules dans les règles MFC permettent des conditions complexes impossibles avec les règles prédéfinies. La clé est de comprendre les références.",
+    "principe_cle": "La formule est évaluée pour la cellule en haut à gauche de la plage, puis 'recopiée' pour les autres cellules.",
+    "references": {
+      "$E2": "Colonne E fixe, ligne variable → teste la colonne E pour chaque ligne",
+      "E$2": "Colonne variable, ligne 2 fixe → teste la ligne 2 pour chaque colonne",
+      "$E$2": "Tout fixe → teste toujours E2 (rarement utile)",
+      "E2": "Tout variable → change selon la position (rarement voulu)"
+    },
+    "astuce": "Pensez : 'Je veux tester QUELLE colonne ?' → Figez cette colonne avec $"
+  },
+  
+  "indices": [
+    "Pour colorier une ligne entière, sélectionnez plusieurs colonnes AVANT de créer la règle",
+    "Le $ fige ce qui est après lui : $E fige la colonne E",
+    "Testez votre formule dans une cellule normale d'abord si vous n'êtes pas sûr",
+    "CHERCHE retourne #VALEUR! si non trouvé → utilisez SIERREUR si besoin"
+  ]
+}

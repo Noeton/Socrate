@@ -1,0 +1,191 @@
+{
+  "id": "mfc_25_02_above_average",
+  "version": "1.0",
+  "titre": "📊 MFC avancée : au-dessus de la moyenne",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "10 min",
+    "competences_ids": [25],
+    "competences_noms": ["MFC avancée"],
+    "prerequis": [10],
+    "objectif_pedagogique": "Utiliser la règle 'Supérieur à la moyenne' pour identifier les valeurs au-dessus de la norme",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.5 (FormatConditions.AddAboveAverage)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu analyses les performances de ton équipe de support client. Tu veux identifier les agents qui traitent plus de tickets que la moyenne pour les féliciter.",
+    
+    "personnage": "Toi, superviseur du service client.",
+    
+    "objectif": "Colorer automatiquement les performances supérieures à la moyenne de l'équipe.",
+    
+    "motivation": "La moyenne est calculée automatiquement par Excel. Pas besoin de formule MOYENNE() séparée !",
+    
+    "ton": "Excel fait le calcul pour toi. Malin, non ?"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Nombre de tickets traités par agent ce mois-ci.",
+    "periode": "Janvier 2025",
+    "source_fictive": "CRM Support"
+  },
+
+  "donnees": {
+    "headers": ["Agent", "Tickets traités"],
+    "rows": [
+      ["Marie D.", 145],
+      ["Paul L.", 112],
+      ["Sophie M.", 168],
+      ["Lucas B.", 98],
+      ["Emma R.", 134],
+      ["Thomas K.", 156],
+      ["Julie F.", 121],
+      ["Antoine P.", 142],
+      ["Léa S.", 108],
+      ["Marc V.", 176]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les données",
+      "consigne": "Sélectionne B2:B11 (nombre de tickets).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Appliquer la règle",
+      "consigne": "Accueil > MFC > Règles des valeurs plus/moins élevées > Supérieur à la moyenne...",
+      "aide_contextuelle": "Excel calcule automatiquement la moyenne de ta sélection.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Choisir le format",
+      "consigne": "Choisis un format vert clair pour indiquer la bonne performance.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Vérifier le résultat",
+      "description": "La moyenne est 136. Les agents > 136 doivent être verts.",
+      "consigne": "Vérifie que Marie (145), Sophie (168), Thomas (156), Antoine (142) et Marc (176) sont colorés.",
+      "aide_contextuelle": "5 agents sur 10 sont au-dessus de la moyenne.",
+      "temps": "1 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "MFC sur la colonne Tickets",
+    "structure": [
+      { "cellule": "A1:B11", "label": "Données", "style": "data" },
+      { "cellule": "B2:B11", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_avg_1",
+      "type": "format",
+      "subtype": "mfc_above_average",
+      "description": "Règle 'Supérieur à la moyenne' appliquée",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "above_average"
+      },
+      "points": 40,
+      "indices": [
+        "Utilise 'Règles des valeurs plus/moins élevées > Supérieur à la moyenne'.",
+        "Ne confonds pas avec 'Supérieur à...' qui demande une valeur fixe.",
+        "Excel calcule la moyenne automatiquement."
+      ],
+      "erreurs_probables": [
+        { "type": "fixed_value_rule", "message": "Tu as utilisé 'Supérieur à' avec une valeur fixe. Utilise 'Supérieur à la moyenne'." },
+        { "type": "below_average", "message": "Tu as sélectionné 'Inférieur à la moyenne' au lieu de 'Supérieur'." }
+      ]
+    },
+    {
+      "id": "cp_avg_2",
+      "type": "format",
+      "subtype": "mfc_color",
+      "description": "Format vert appliqué",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "fill_color": "green",
+        "fill_color_variants": ["vert", "green", "lightgreen", "vert clair"]
+      },
+      "points": 20,
+      "indices": [
+        "Le vert indique une bonne performance.",
+        "Choisis 'Remplissage vert clair' ou personnalise."
+      ]
+    },
+    {
+      "id": "cp_avg_3",
+      "type": "format",
+      "subtype": "mfc_coverage",
+      "description": "5 cellules colorées (> moyenne 136)",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "colored_cells_count": 5,
+        "average_value": 136,
+        "colored_agents": ["Marie D.", "Sophie M.", "Thomas K.", "Antoine P.", "Marc V."]
+      },
+      "points": 30,
+      "indices": [
+        "La moyenne est (145+112+168+98+134+156+121+142+108+176)/10 = 136.",
+        "5 agents ont plus de 136 tickets : Marie, Sophie, Thomas, Antoine, Marc.",
+        "Les 5 autres (Paul, Lucas, Emma, Julie, Léa) ne doivent PAS être colorés."
+      ]
+    },
+    {
+      "id": "cp_avg_4",
+      "type": "format",
+      "subtype": "mfc_range",
+      "description": "MFC sur la bonne plage",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "range": "B2:B11"
+      },
+      "points": 10
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Règle 'Supérieur à la moyenne' avec format vert sur B2:B11. 5 agents sur 10 sont mis en évidence.",
+    "etapes_cles": [
+      "Sélection B2:B11",
+      "MFC > Supérieur à la moyenne",
+      "Format vert"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Tu as identifié les 5 agents les plus performants sans aucun calcul manuel !",
+    "bien": "👍 Très bien ! La règle est appliquée. Vérifie que seuls les agents > 136 sont verts.",
+    "ameliorer": "📊 Presque ! Utilise bien 'Supérieur à la moyenne', pas une valeur fixe.",
+    "revoir": "🔄 Recommence : MFC > Valeurs plus élevées > Supérieur à la moyenne."
+  },
+
+  "pour_aller_plus_loin": [
+    "Ajoute 'Inférieur à la moyenne' en rouge pour voir les deux groupes.",
+    "Essaie '1 écart-type au-dessus de la moyenne' pour les vraies stars.",
+    "Combine avec des icônes pour un effet visuel renforcé."
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "id": "intermediaire_32_nbsi_comptage_conditionnel",
+  "titre": "NB.SI : Compter avec des Critères",
+  "niveau": "intermediaire",
+  "duree_estimee": "18 min",
+  "competences": [
+    "NB.SI",
+    "Comptage conditionnel",
+    "Critères"
+  ],
+  "competence_ids": [
+    11
+  ],
+  "contexte": {
+    "situation": "Tu es assistant(e) de direction chez EventConnect, une agence événementielle. Le directeur te demande des statistiques rapides sur les événements de l'année : combien d'événements par type, par statut, par ville... Tu dois maîtriser NB.SI pour répondre en quelques secondes.",
+    "manager": {
+      "nom": "Olivier Blanchard",
+      "poste": "Directeur Général",
+      "personnalite": "Impatient, il veut des chiffres instantanément pendant les réunions.",
+      "demande": "Combien de mariages cette année ? Combien d'événements annulés ? Combien à Paris ? Je veux pouvoir répondre à ces questions en 2 secondes, pas en fouillant dans le tableau pendant 5 minutes."
+    },
+    "enjeux": "Crédibilité en réunion client et en CODIR.",
+    "deadline": "Avant la réunion de 14h"
+  },
+  "objectifs": [
+    "Maîtriser la syntaxe de NB.SI",
+    "Compter avec des critères texte (exact, partiel)",
+    "Compter avec des critères numériques (>, <, >=, <>)",
+    "Utiliser des références de cellules comme critères",
+    "Comprendre la différence NB.SI vs NB.SI.ENS"
+  ],
+  "consignes": [
+    "Ouvre le fichier avec la liste des événements 2025",
+    "Utilise NB.SI pour compter les événements par type",
+    "Compte les événements par statut et par ville",
+    "Crée un mini-tableau de bord avec les statistiques clés"
+  ],
+  "donnees": {
+    "feuille": "Evenements",
+    "headers": [
+      "ID",
+      "Nom_Evenement",
+      "Type",
+      "Ville",
+      "Date",
+      "Budget",
+      "Statut"
+    ],
+    "rows": [
+      [
+        "EV001",
+        "Mariage Dupont-Martin",
+        "Mariage",
+        "Paris",
+        "15/03/2025",
+        25000,
+        "Confirmé"
+      ],
+      [
+        "EV002",
+        "Séminaire TechCorp",
+        "Séminaire",
+        "Lyon",
+        "22/04/2025",
+        15000,
+        "Confirmé"
+      ],
+      [
+        "EV003",
+        "Anniversaire 50 ans",
+        "Anniversaire",
+        "Paris",
+        "10/05/2025",
+        8000,
+        "En attente"
+      ],
+      [
+        "EV004",
+        "Mariage Laurent-Petit",
+        "Mariage",
+        "Bordeaux",
+        "28/06/2025",
+        32000,
+        "Confirmé"
+      ],
+      [
+        "EV005",
+        "Conférence IA 2025",
+        "Conférence",
+        "Paris",
+        "15/09/2025",
+        45000,
+        "Confirmé"
+      ],
+      [
+        "EV006",
+        "Gala de charité",
+        "Gala",
+        "Lyon",
+        "20/10/2025",
+        60000,
+        "En attente"
+      ],
+      [
+        "EV007",
+        "Séminaire StartupNation",
+        "Séminaire",
+        "Paris",
+        "05/11/2025",
+        12000,
+        "Annulé"
+      ],
+      [
+        "EV008",
+        "Mariage Chen-Dubois",
+        "Mariage",
+        "Paris",
+        "12/12/2025",
+        28000,
+        "Confirmé"
+      ],
+      [
+        "EV009",
+        "Anniversaire entreprise",
+        "Anniversaire",
+        "Marseille",
+        "18/01/2025",
+        18000,
+        "Confirmé"
+      ],
+      [
+        "EV010",
+        "Conférence DevOps",
+        "Conférence",
+        "Lyon",
+        "25/02/2025",
+        35000,
+        "Annulé"
+      ],
+      [
+        "EV011",
+        "Mariage Moreau-Leroy",
+        "Mariage",
+        "Lille",
+        "08/07/2025",
+        22000,
+        "En attente"
+      ],
+      [
+        "EV012",
+        "Séminaire RH Avenir",
+        "Séminaire",
+        "Paris",
+        "30/08/2025",
+        9500,
+        "Confirmé"
+      ]
+    ],
+    "position": "A1:G13"
+  },
+  "etapes": [
+    {
+      "phase": "A. Syntaxe de base NB.SI",
+      "syntaxe": "=NB.SI(plage; critère)",
+      "arguments": [
+        "plage : la colonne où chercher",
+        "critère : ce qu'on cherche (texte, nombre, ou condition)"
+      ],
+      "exemple": "=NB.SI(C2:C13;\"Mariage\") → compte les mariages"
+    },
+    {
+      "phase": "B. Critères texte",
+      "types": [
+        "Exact : \"Mariage\" → compte exactement 'Mariage'",
+        "Partiel avec * : \"*Paris*\" → contient 'Paris'",
+        "Commence par : \"Mar*\" → commence par 'Mar'",
+        "Finit par : \"*2025\" → finit par '2025'"
+      ]
+    },
+    {
+      "phase": "C. Critères numériques",
+      "types": [
+        "Égal : 25000 ou \"=25000\"",
+        "Supérieur : \">20000\"",
+        "Inférieur ou égal : \"<=15000\"",
+        "Différent : \"<>0\" ou \"<>Annulé\""
+      ],
+      "attention": "Les opérateurs doivent être entre guillemets : \">20000\" pas >20000"
+    },
+    {
+      "phase": "D. Critère dynamique (référence cellule)",
+      "consignes": [
+        "Si le critère est dans une cellule (ex: J2 contient 'Paris')",
+        "=NB.SI(D2:D13;J2)",
+        "Pour combiner avec opérateur : \">\"&J2 ou \"<=\"&K2"
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp_1_nb_mariages",
+      "cellule": "J3",
+      "type": "valeur",
+      "description": "Nombre de mariages",
+      "competence_id": 11,
+      "expected_value": 4,
+      "points": 15,
+      "indices": [
+        "Compte dans la colonne Type (C)",
+        "Critère : \"Mariage\"",
+        "=NB.SI(C2:C13;\"Mariage\")"
+      ]
+    },
+    {
+      "id": "cp_2_formule_nbsi",
+      "cellule": "J3",
+      "type": "formule",
+      "description": "Formule NB.SI correcte",
+      "competence_id": 11,
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "Mariage"
+      ],
+      "points": 10,
+      "indices": [
+        "La formule doit utiliser NB.SI",
+        "Le critère doit être entre guillemets",
+        "=NB.SI(plage;\"Mariage\")"
+      ],
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      }
+    },
+    {
+      "id": "cp_3_nb_paris",
+      "cellule": "J4",
+      "type": "valeur",
+      "description": "Nombre d'événements à Paris",
+      "competence_id": 11,
+      "expected_value": 5,
+      "points": 15,
+      "indices": [
+        "Compte dans la colonne Ville (D)",
+        "=NB.SI(D2:D13;\"Paris\")",
+        "5 événements sont à Paris"
+      ]
+    },
+    {
+      "id": "cp_4_nb_confirmes",
+      "cellule": "J5",
+      "type": "valeur",
+      "description": "Nombre d'événements confirmés",
+      "competence_id": 11,
+      "expected_value": 7,
+      "points": 15,
+      "indices": [
+        "Compte dans la colonne Statut (G)",
+        "=NB.SI(G2:G13;\"Confirmé\")",
+        "7 événements sont confirmés"
+      ]
+    },
+    {
+      "id": "cp_5_nb_annules",
+      "cellule": "J6",
+      "type": "valeur",
+      "description": "Nombre d'événements annulés",
+      "competence_id": 11,
+      "expected_value": 2,
+      "points": 10,
+      "indices": [
+        "=NB.SI(G2:G13;\"Annulé\")",
+        "2 événements ont été annulés",
+        "Séminaire et Conférence DevOps"
+      ]
+    },
+    {
+      "id": "cp_6_budget_sup_20k",
+      "cellule": "J7",
+      "type": "valeur",
+      "description": "Événements avec budget > 20000€",
+      "competence_id": 11,
+      "expected_value": 7,
+      "points": 15,
+      "indices": [
+        "Critère numérique avec opérateur",
+        "L'opérateur doit être entre guillemets",
+        "=NB.SI(F2:F13;\">20000\")"
+      ]
+    },
+    {
+      "id": "cp_7_seminaires",
+      "cellule": "J8",
+      "type": "valeur",
+      "description": "Nombre de séminaires",
+      "competence_id": 11,
+      "expected_value": 3,
+      "points": 10,
+      "indices": [
+        "=NB.SI(C2:C13;\"Séminaire\")",
+        "3 séminaires dans la liste",
+        "TechCorp, StartupNation, RH Avenir"
+      ]
+    },
+    {
+      "id": "cp_8_critere_dynamique",
+      "cellule": "J10",
+      "type": "formule",
+      "description": "NB.SI avec critère dynamique",
+      "competence_id": 11,
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "I10"
+      ],
+      "points": 10,
+      "indices": [
+        "Le critère doit référencer une cellule",
+        "Si I10 contient 'Lyon', compte les Lyon",
+        "=NB.SI(D2:D13;I10)"
+      ],
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      }
+    }
+  ],
+  "difference_nbsi_nbsiens": {
+    "nbsi": {
+      "usage": "UN seul critère",
+      "syntaxe": "=NB.SI(plage;critère)",
+      "exemple": "Combien de mariages ?"
+    },
+    "nbsiens": {
+      "usage": "PLUSIEURS critères (ET logique)",
+      "syntaxe": "=NB.SI.ENS(plage1;crit1;plage2;crit2;...)",
+      "exemple": "Combien de mariages À PARIS ?"
+    }
+  },
+  "erreurs_frequentes": [
+    {
+      "erreur": "Oublier les guillemets autour du critère texte",
+      "incorrect": "=NB.SI(C:C;Mariage)",
+      "correct": "=NB.SI(C:C;\"Mariage\")"
+    },
+    {
+      "erreur": "Oublier les guillemets autour de l'opérateur",
+      "incorrect": "=NB.SI(F:F;>20000)",
+      "correct": "=NB.SI(F:F;\">20000\")"
+    },
+    {
+      "erreur": "Utiliser NB.SI pour plusieurs critères",
+      "probleme": "=NB.SI(C:C;\"Mariage\";D:D;\"Paris\") → ERREUR",
+      "solution": "Utilise NB.SI.ENS pour plusieurs critères"
+    }
+  ],
+  "scoring": {
+    "total_points": 100,
+    "seuil_reussite": 70,
+    "seuil_maitrise": 90
+  },
+  "feedback_manager": {
+    "succes": "Parfait ! Tu maîtrises NB.SI. Tu peux maintenant compter n'importe quoi en quelques secondes. Le directeur sera impressionné ! 📊",
+    "partiel": "Bon début ! N'oublie pas : les critères texte ET les opérateurs numériques doivent être entre guillemets.",
+    "echec": "NB.SI est simple : =NB.SI(où_chercher;\"quoi_chercher\"). Les guillemets sont essentiels !"
+  },
+  "socrate_message": {
+    "intro": "NB.SI, c'est la fonction de comptage intelligent ! 🔢 Combien de X ? Combien de Y ? Réponse instantanée.",
+    "conclusion": "Tu sais maintenant compter avec des critères. NB.SI pour un critère, NB.SI.ENS pour plusieurs. Simple et puissant ! 🎯"
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-21",
+    "tags": [
+      "NB.SI",
+      "COUNTIF",
+      "comptage",
+      "critères",
+      "intermédiaire"
+    ],
+    "prerequis": [
+      "Formules de base"
+    ],
+    "ouvre_vers": [
+      "NB.SI.ENS",
+      "SOMME.SI",
+      "SOMMEPROD"
+    ]
+  }
+}

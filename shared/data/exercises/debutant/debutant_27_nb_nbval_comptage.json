@@ -1,0 +1,151 @@
+{
+  "id": "debutant_27_nb_nbval_comptage",
+  "titre": "Compter avec NB et NBVAL",
+  "niveau": "debutant",
+  "competences": ["NB", "NBVAL", "Comptage", "Différence nombres/valeurs"],
+  "competence_ids": [3],
+  "duree_estimee": "15 min",
+  
+  "contexte": {
+    "situation": "Tu gères la liste des participants à un séminaire. Certains n'ont pas encore confirmé (cellules vides) et tu dois faire le point.",
+    "manager": {
+      "nom": "Claire Dupont",
+      "poste": "Responsable Événementiel"
+    },
+    "enjeux": "Savoir exactement combien de personnes ont confirmé pour réserver la salle.",
+    "deadline": "Aujourd'hui 17h"
+  },
+  
+  "objectifs": [
+    "Comprendre la différence entre NB et NBVAL",
+    "NB compte uniquement les NOMBRES",
+    "NBVAL compte toutes les cellules NON VIDES",
+    "Utiliser NB.VIDE pour compter les cellules vides"
+  ],
+  
+  "consignes": [
+    "En E2, compte le nombre total de participants inscrits avec NBVAL sur la colonne Nom",
+    "En E3, compte combien ont indiqué leur âge (nombre) avec NB",
+    "En E4, compte les cellules vides dans la colonne Email avec NB.VIDE",
+    "En E5, calcule le pourcentage de confirmations (E3/E2)"
+  ],
+  
+  "donnees": {
+    "headers": ["Nom", "Prénom", "Âge", "Email"],
+    "rows": [
+      ["Martin", "Sophie", 34, "sophie.m@email.com"],
+      ["Durand", "Pierre", "", "pierre.d@email.com"],
+      ["Petit", "Marie", 28, ""],
+      ["Robert", "Jean", 45, "jean.r@email.com"],
+      ["Bernard", "Lucie", "", ""],
+      ["Thomas", "Marc", 31, "marc.t@email.com"],
+      ["Richard", "Anne", 29, "anne.r@email.com"],
+      ["Leroy", "Paul", "", "paul.l@email.com"],
+      ["Moreau", "Julie", 38, ""],
+      ["Simon", "David", 42, "david.s@email.com"],
+      ["Laurent", "Emma", "", "emma.l@email.com"],
+      ["Lefebvre", "Lucas", 27, "lucas.l@email.com"]
+    ]
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "E2",
+      "description": "NBVAL pour compter les noms (cellules non vides)",
+      "fonction": "NBVAL",
+      "pattern": ["NBVAL", "A2:A13"],
+      "points": 25,
+      "indices": [
+        "NBVAL compte toutes les cellules qui contiennent quelque chose",
+        "=NBVAL(A2:A13) compte les noms présents"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "E2",
+      "description": "12 personnes inscrites",
+      "valeur_attendue": 12,
+      "points": 10
+    },
+    {
+      "id": "cp_3",
+      "type": "formule",
+      "cellule": "E3",
+      "description": "NB pour compter uniquement les nombres (âges renseignés)",
+      "fonction": "NB",
+      "pattern": ["NB", "C2:C13"],
+      "points": 25,
+      "indices": [
+        "NB compte UNIQUEMENT les cellules contenant des nombres",
+        "Les cellules vides ou avec du texte ne sont pas comptées",
+        "=NB(C2:C13)"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "valeur",
+      "cellule": "E3",
+      "description": "8 âges renseignés",
+      "valeur_attendue": 8,
+      "points": 10
+    },
+    {
+      "id": "cp_5",
+      "type": "formule",
+      "cellule": "E4",
+      "description": "NB.VIDE pour compter les emails manquants",
+      "fonction": "NB.VIDE",
+      "pattern": ["NB.VIDE", "D2:D13"],
+      "points": 20,
+      "indices": [
+        "NB.VIDE compte les cellules vides",
+        "=NB.VIDE(D2:D13)"
+      ]
+    },
+    {
+      "id": "cp_6",
+      "type": "valeur",
+      "cellule": "E4",
+      "description": "3 emails manquants",
+      "valeur_attendue": 3,
+      "points": 10
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70
+  },
+  
+  "theorie": {
+    "concept": "Les fonctions de comptage",
+    "tableau_comparatif": [
+      {"fonction": "NB", "compte": "Uniquement les nombres", "exemple": "NB(1,\"a\",3,\"\") = 2"},
+      {"fonction": "NBVAL", "compte": "Toutes les cellules non vides", "exemple": "NBVAL(1,\"a\",3,\"\") = 3"},
+      {"fonction": "NB.VIDE", "compte": "Les cellules vides", "exemple": "NB.VIDE(1,\"\",3,\"\") = 2"}
+    ],
+    "astuce": "NBVAL - NB = nombre de cellules avec du texte (non numérique)"
+  },
+  
+  "indices": [
+    "NB = compte les Nombres uniquement",
+    "NBVAL = compte les VALeurs (tout ce qui n'est pas vide)",
+    "NB.VIDE = compte les cellules vides",
+    "Moyen mnémotechnique : NBVAL a plus de lettres → compte plus de choses"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "Confondre NB et NBVAL",
+      "cause": "NB ne compte que les nombres, pas le texte",
+      "solution": "Pour compter tout ce qui est rempli, utilise NBVAL"
+    },
+    {
+      "erreur": "NB retourne 0 sur une colonne de noms",
+      "cause": "Les noms sont du texte, pas des nombres",
+      "solution": "Utilise NBVAL pour compter le texte"
+    }
+  ]
+}

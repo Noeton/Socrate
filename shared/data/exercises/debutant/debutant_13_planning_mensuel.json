@@ -1,0 +1,282 @@
+{
+  "id": "debutant_13_planning_mensuel",
+  "titre": "Génération Planning Mensuel - Séries et Dates",
+  "niveau": "debutant",
+  "duree_estimee": "20 min",
+  "competences": [
+    "Génération de séries",
+    "Formules date (AUJOURDHUI, MOIS)"
+  ],
+  "contexte": {
+    "situation": "Tu es assistant RH chez MediCare, une clinique qui fonctionne 7j/7. Tu dois créer le planning de garde du mois de février 2025. Le planning doit afficher automatiquement les dates, les jours de la semaine, et identifier les week-ends pour appliquer la majoration.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Générer une série de dates automatiquement",
+    "Extraire le jour de la semaine avec JOURSEM ou TEXTE",
+    "Identifier les samedis et dimanches",
+    "Utiliser la mise en forme conditionnelle (bonus)"
+  ],
+  "consignes": [
+    "En A1, écris la date de départ : 01/02/2025",
+    "En A2, écris la formule =A1+1 pour incrémenter",
+    "Recopie A2 jusqu'à A28 (28 jours de février)",
+    "En B1, extrais le jour : =TEXTE(A1;\"dddd\") ou =JOURSEM(A1;2)",
+    "Recopie B jusqu'à B28",
+    "En C1, détecte le week-end : =SI(JOURSEM(A1;2)>5;\"WEEK-END\";\"\")",
+    "Recopie C jusqu'à C28",
+    "En D1, écris 'Garde' comme en-tête pour les noms (à remplir manuellement)",
+    "BONUS : Applique une mise en forme conditionnelle pour colorer les week-ends"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Jour",
+      "Type",
+      "Garde"
+    ],
+    "date_depart": "2025-02-01",
+    "nb_jours": 28,
+    "resultats_attendus": {
+      "A1": "01/02/2025",
+      "A2": "02/02/2025",
+      "A28": "28/02/2025",
+      "B1": "samedi",
+      "B2": "dimanche",
+      "B3": "lundi",
+      "C1": "WEEK-END",
+      "C2": "WEEK-END",
+      "C3": ""
+    },
+    "jours_weekend": [
+      1,
+      2,
+      8,
+      9,
+      15,
+      16,
+      22,
+      23
+    ]
+  },
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "cellule": "A1",
+      "type": "valeur",
+      "description": "Date de départ correcte",
+      "valeur_attendue": "2025-02-01",
+      "points": 5,
+      "indices": [
+        "Saisis 01/02/2025 en A1",
+        "Excel reconnaît automatiquement que c'est une date",
+        "Formate en date si ça affiche un nombre (clic droit > Format)"
+      ]
+    },
+    {
+      "id": "cp2",
+      "cellule": "A2",
+      "type": "formule",
+      "description": "Formule d'incrémentation de date",
+      "pattern": [
+        "A1",
+        "+",
+        "1"
+      ],
+      "points": 10,
+      "indices": [
+        "Une date Excel est un nombre (1 = 1 jour)",
+        "Donc =A1+1 donne le lendemain",
+        "Simple mais efficace !"
+      ]
+    },
+    {
+      "id": "cp3",
+      "cellule": "A28",
+      "type": "valeur",
+      "description": "Série complète jusqu'au 28 février",
+      "valeur_attendue": "2025-02-28",
+      "points": 10,
+      "indices": [
+        "Sélectionne A2, recopie vers le bas jusqu'à A28",
+        "Tu dois avoir 28 dates (février 2025 a 28 jours)",
+        "La dernière date doit être le 28/02/2025"
+      ]
+    },
+    {
+      "id": "cp4",
+      "cellule": "B1",
+      "type": "formule",
+      "description": "Extraction du jour de la semaine",
+      "pattern_ou": [
+        [
+          "TEXTE",
+          "A1",
+          "dddd"
+        ],
+        [
+          "JOURSEM",
+          "A1"
+        ]
+      ],
+      "points": 20,
+      "indices": [
+        "Deux options possibles :",
+        "=TEXTE(A1;\"dddd\") → affiche 'samedi', 'dimanche', etc.",
+        "=JOURSEM(A1;2) → affiche 1 (lundi) à 7 (dimanche)",
+        "TEXTE est plus lisible pour un planning"
+      ]
+    },
+    {
+      "id": "cp5",
+      "cellule": "B1",
+      "type": "valeur",
+      "description": "Premier jour correct (samedi)",
+      "valeur_attendue_ou": [
+        "samedi",
+        "Samedi",
+        6
+      ],
+      "points": 5,
+      "indices": [
+        "Le 1er février 2025 est un samedi",
+        "Si tu utilises TEXTE, tu dois voir 'samedi'",
+        "Si tu utilises JOURSEM(A1;2), tu dois voir 6"
+      ]
+    },
+    {
+      "id": "cp6",
+      "cellule": "C1",
+      "type": "formule",
+      "description": "Détection du week-end",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "JOURSEM",
+        "A1",
+        ">5",
+        "WEEK-END"
+      ],
+      "points": 20,
+      "validation_avancee": {
+        "logique": "JOURSEM avec type 2 retourne 6 (samedi) ou 7 (dimanche) pour les week-ends"
+      },
+      "indices": [
+        "=SI(JOURSEM(A1;2)>5;\"WEEK-END\";\"\")",
+        "JOURSEM(date;2) → 1=lundi ... 6=samedi, 7=dimanche",
+        "Si >5, c'est samedi ou dimanche → WEEK-END",
+        "Sinon, on laisse vide"
+      ]
+    },
+    {
+      "id": "cp7",
+      "cellule": "C1",
+      "type": "valeur",
+      "description": "1er février détecté comme week-end",
+      "valeur_attendue": "WEEK-END",
+      "points": 5,
+      "indices": [
+        "Le 1er février 2025 est un samedi",
+        "La cellule C1 doit afficher WEEK-END"
+      ]
+    },
+    {
+      "id": "cp8",
+      "cellule": "C3",
+      "type": "valeur",
+      "description": "3 février détecté comme semaine",
+      "valeur_attendue": "",
+      "points": 5,
+      "indices": [
+        "Le 3 février 2025 est un lundi",
+        "La cellule C3 doit être vide"
+      ]
+    },
+    {
+      "id": "cp9",
+      "cellule": "B28",
+      "type": "formule",
+      "description": "Formule jour recopiée jusqu'à la fin",
+      "pattern_ou": [
+        [
+          "TEXTE",
+          "A28"
+        ],
+        [
+          "JOURSEM",
+          "A28"
+        ]
+      ],
+      "points": 10,
+      "indices": [
+        "La formule en B28 doit référencer A28",
+        "Vérifie que toute la colonne B est remplie"
+      ]
+    },
+    {
+      "id": "cp10",
+      "cellule": "C28",
+      "type": "formule",
+      "description": "Formule week-end recopiée jusqu'à la fin",
+      "fonction": "SI",
+      "pattern": [
+        "JOURSEM",
+        "A28"
+      ],
+      "points": 10,
+      "indices": [
+        "La formule en C28 doit référencer A28",
+        "Le 28 février 2025 est un vendredi (pas week-end)"
+      ]
+    }
+  ],
+  "erreurs_pedagogiques": [
+    {
+      "erreur": "Saisir les dates manuellement au lieu d'une formule",
+      "consequence": "Perte de temps énorme et risque d'erreurs",
+      "explication": "Une formule =A1+1 est instantanée à recopier"
+    },
+    {
+      "erreur": "Utiliser JOURSEM sans le 2ème argument",
+      "consequence": "Dimanche = 1 au lieu de 7, calculs faux",
+      "explication": "JOURSEM(date) par défaut : dimanche=1. Avec JOURSEM(date;2) : lundi=1, dimanche=7"
+    },
+    {
+      "erreur": "Oublier les guillemets dans TEXTE",
+      "consequence": "#VALEUR! ou résultat inattendu",
+      "explication": "Le format doit être entre guillemets : \"dddd\" et non dddd"
+    },
+    {
+      "erreur": "Condition >6 au lieu de >5 pour le week-end",
+      "consequence": "Seuls les dimanches sont détectés, pas les samedis",
+      "explication": "Samedi = 6, Dimanche = 7. Pour avoir les deux : >5"
+    }
+  ],
+  "bonus": {
+    "mise_en_forme_conditionnelle": {
+      "description": "Colorer les lignes de week-end en orange",
+      "etapes": [
+        "Sélectionne A1:D28",
+        "Accueil > Mise en forme conditionnelle > Nouvelle règle",
+        "Utiliser une formule : =$C1=\"WEEK-END\"",
+        "Choisis un remplissage orange"
+      ],
+      "points_bonus": 10
+    }
+  },
+  "criteres_reussite": {
+    "serie_dates_complete": true,
+    "jour_semaine_correct": true,
+    "detection_weekend": true,
+    "score_minimum": 7
+  },
+  "competence_ids": [
+    52,
+    20
+  ]
+}

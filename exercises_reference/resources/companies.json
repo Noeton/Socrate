@@ -1,0 +1,219 @@
+{
+    "meta": {
+      "version": "1.0",
+      "description": "Entreprises fictives pour les contextes d'exercices Socrate",
+      "usage": "Claude pioche une entreprise adaptée au métier et génère des données cohérentes"
+    },
+  
+    "entreprises": {
+      "tech_saas": [
+        {
+          "id": "tech_01",
+          "nom": "DataFlow",
+          "secteur": "SaaS B2B - Data Analytics",
+          "description": "Plateforme de business intelligence no-code",
+          "creation": 2021,
+          "effectif": 35,
+          "localisation": "Paris",
+          "stade": "Série A",
+          "metriques_type": {
+            "ARR": "4-8M€",
+            "croissance": "50-70%",
+            "churn": "5-10%",
+            "NPS": "40-60"
+          },
+          "vocabulaire": ["ARR", "MRR", "churn", "NPS", "CAC", "LTV", "cohort"],
+          "clients_type": "PME et ETI"
+        },
+        {
+          "id": "tech_02",
+          "nom": "CloudSecure",
+          "secteur": "SaaS B2B - Cybersécurité",
+          "description": "Solution de protection des endpoints",
+          "creation": 2019,
+          "effectif": 85,
+          "localisation": "Lyon",
+          "stade": "Série B",
+          "metriques_type": {
+            "ARR": "12-18M€",
+            "croissance": "40-60%",
+            "churn": "3-7%"
+          },
+          "vocabulaire": ["endpoint", "threat", "SOC", "SIEM", "compliance"],
+          "clients_type": "ETI et Grands comptes"
+        },
+        {
+          "id": "tech_03",
+          "nom": "TalentHub",
+          "secteur": "SaaS B2B - HR Tech",
+          "description": "Plateforme de recrutement et gestion des talents",
+          "creation": 2020,
+          "effectif": 45,
+          "localisation": "Paris",
+          "stade": "Série A",
+          "metriques_type": {
+            "ARR": "3-6M€",
+            "croissance": "60-80%"
+          },
+          "vocabulaire": ["ATS", "onboarding", "HRIS", "employee experience"],
+          "clients_type": "Scale-ups et ETI"
+        }
+      ],
+  
+      "distribution_b2b": [
+        {
+          "id": "dist_01",
+          "nom": "FrenchTech Solutions",
+          "secteur": "Distribution matériel informatique B2B",
+          "description": "Distributeur de matériel IT pour entreprises",
+          "creation": 2010,
+          "effectif": 45,
+          "localisation": "Paris + 6 agences régionales",
+          "stade": "PME rentable",
+          "metriques_type": {
+            "CA": "15-25M€",
+            "marge_brute": "18-25%",
+            "panier_moyen": "3000-8000€"
+          },
+          "vocabulaire": ["panier moyen", "marge", "stock", "rotation", "délai livraison"],
+          "clients_type": "PME et ETI",
+          "commerciaux": 6,
+          "regions": ["Île-de-France", "Auvergne-Rhône-Alpes", "PACA", "Nouvelle-Aquitaine", "Occitanie", "Hauts-de-France"]
+        },
+        {
+          "id": "dist_02",
+          "nom": "MedSupply",
+          "secteur": "Distribution matériel médical",
+          "description": "Fournitures médicales pour cliniques et hôpitaux",
+          "creation": 2005,
+          "effectif": 120,
+          "localisation": "Bordeaux + national",
+          "stade": "ETI",
+          "metriques_type": {
+            "CA": "45-60M€",
+            "marge_brute": "22-28%"
+          },
+          "vocabulaire": ["DM", "marquage CE", "traçabilité", "appel d'offres"],
+          "clients_type": "Hôpitaux, cliniques, EHPAD"
+        }
+      ],
+  
+      "conseil_finance": [
+        {
+          "id": "fin_01",
+          "nom": "Elaia Partners",
+          "secteur": "Venture Capital",
+          "description": "Fonds VC early-stage tech",
+          "creation": 2002,
+          "effectif": 25,
+          "localisation": "Paris",
+          "stade": "Fonds établi",
+          "metriques_type": {
+            "AUM": "500M€",
+            "deals_par_an": "8-12",
+            "ticket_moyen": "2-10M€"
+          },
+          "vocabulaire": ["deal flow", "due diligence", "term sheet", "cap table", "IRR"],
+          "clients_type": "LPs (institutionnels, family offices)"
+        },
+        {
+          "id": "fin_02",
+          "nom": "Nexus Advisory",
+          "secteur": "M&A Advisory",
+          "description": "Boutique de conseil en fusions-acquisitions",
+          "creation": 2015,
+          "effectif": 18,
+          "localisation": "Paris",
+          "stade": "Boutique établie",
+          "metriques_type": {
+            "deals_par_an": "6-10",
+            "taille_deals": "20-200M€"
+          },
+          "vocabulaire": ["teaser", "info memo", "VDD", "SPA", "closing"],
+          "clients_type": "Fonds PE, corporates"
+        }
+      ],
+  
+      "industrie": [
+        {
+          "id": "ind_01",
+          "nom": "PrecisionTech",
+          "secteur": "Industrie - Mécanique de précision",
+          "description": "Fabricant de pièces pour aéronautique et défense",
+          "creation": 1985,
+          "effectif": 250,
+          "localisation": "Toulouse",
+          "stade": "ETI",
+          "metriques_type": {
+            "CA": "35-50M€",
+            "marge_operationnelle": "8-12%"
+          },
+          "vocabulaire": ["OF", "gamme", "nomenclature", "rebut", "TRS"],
+          "clients_type": "Airbus, Safran, Thales"
+        }
+      ],
+  
+      "retail_ecommerce": [
+        {
+          "id": "ret_01",
+          "nom": "GreenMarket",
+          "secteur": "E-commerce - Alimentaire bio",
+          "description": "Épicerie bio en ligne avec livraison",
+          "creation": 2018,
+          "effectif": 60,
+          "localisation": "Paris + 3 entrepôts",
+          "stade": "Scale-up",
+          "metriques_type": {
+            "GMV": "15-25M€",
+            "panier_moyen": "65-85€",
+            "frequence_achat": "2.5/mois"
+          },
+          "vocabulaire": ["GMV", "panier moyen", "rétention", "coût logistique", "DLC"],
+          "clients_type": "B2C, particuliers urbains CSP+"
+        },
+        {
+          "id": "ret_02",
+          "nom": "StyleBox",
+          "secteur": "E-commerce - Mode",
+          "description": "Box mensuelle de vêtements personnalisés",
+          "creation": 2019,
+          "effectif": 40,
+          "localisation": "Lyon",
+          "stade": "Série A",
+          "metriques_type": {
+            "MRR": "400-700K€",
+            "churn": "8-15%",
+            "ARPU": "45-65€"
+          },
+          "vocabulaire": ["MRR", "ARPU", "churn", "NPS", "unboxing"],
+          "clients_type": "B2C, femmes 25-45 ans"
+        }
+      ],
+  
+      "services": [
+        {
+          "id": "srv_01",
+          "nom": "ConsultingPlus",
+          "secteur": "Conseil en stratégie et organisation",
+          "description": "Cabinet de conseil mid-market",
+          "creation": 2012,
+          "effectif": 80,
+          "localisation": "Paris",
+          "stade": "Cabinet établi",
+          "metriques_type": {
+            "CA": "12-18M€",
+            "TJM_moyen": "1200-1800€",
+            "taux_occupation": "75-85%"
+          },
+          "vocabulaire": ["TJM", "staffing", "utilisation", "pipe", "proposal"],
+          "clients_type": "ETI et Grands comptes"
+        }
+      ]
+    },
+  
+    "helpers": {
+      "getEntrepriseByMetier": "function(metier) { ... }",
+      "getEntrepriseById": "function(id) { ... }",
+      "generateCoherentData": "function(entreprise, nbRows) { ... }"
+    }
+  }

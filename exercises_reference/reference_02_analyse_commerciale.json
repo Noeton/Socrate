@@ -1,0 +1,560 @@
+{
+    "id": "reference_02_analyse_commerciale",
+    "version": "2.0",
+    "titre": "Analyse des performances commerciales Q4",
+    
+    "metadata": {
+      "niveau": "intermediaire",
+      "duree_estimee": "35 min",
+      "competences_ids": [3, 11, 13, 14, 15, 18],
+      "competences_noms": ["SOMME", "NB.SI", "SOMME.SI", "SOMME.SI.ENS", "Références absolues", "RECHERCHEV"],
+      "prerequis": [3, 4, 9],
+      "objectif_pedagogique": "Maîtriser les fonctions conditionnelles et les recherches dans un contexte business réel"
+    },
+  
+    "contexte": {
+      "entreprise": {
+        "nom": "FrenchTech Solutions",
+        "secteur": "Distribution de matériel informatique B2B",
+        "taille": "PME, 45 personnes",
+        "localisation": "Paris, avec clients dans toute la France"
+      },
+      
+      "situation": "Nous sommes le 8 janvier 2026. La directrice commerciale, Sophie Marchand, prépare le bilan Q4 2025 pour le comité de direction de vendredi. Elle a besoin de chiffres précis et fiables.",
+      
+      "ton_role": "Tu es Business Analyst junior, arrivé il y a 6 mois. C'est ta première analyse trimestrielle en autonomie. Sophie compte sur toi.",
+      
+      "manager": {
+        "nom": "Sophie Marchand",
+        "poste": "Directrice Commerciale",
+        "personnalite": "Exigeante mais juste. Elle vérifie toujours les chiffres. Elle déteste les approximations et les 'à peu près'.",
+        "citation": "Je veux des chiffres, pas des impressions. Et si tu n'es pas sûr d'un calcul, dis-le moi plutôt que d'inventer."
+      },
+      
+      "enjeux": "Le comité de direction doit valider le budget commercial 2026. Si les résultats Q4 sont bons, l'équipe commerciale obtiendra 2 recrutements. Sophie défend son équipe, mais elle a besoin de données solides.",
+      
+      "deadline": "Jeudi 18h - Sophie veut relire ton analyse vendredi matin avant le CODIR de 10h.",
+      
+      "email_sophie": {
+        "objet": "Analyse Q4 - besoin pour vendredi",
+        "contenu": "Salut,\n\nJ'ai besoin que tu me sortes l'analyse Q4 avant jeudi soir. Voici ce qu'il me faut :\n\n1. CA total du trimestre\n2. Répartition par commercial (qui a vendu combien)\n3. Répartition par région\n4. Nombre de commandes par commercial\n5. Comparaison avec les objectifs (j'ai mis la table des objectifs dans l'onglet 'Objectifs')\n6. Qui a atteint son objectif, qui ne l'a pas atteint\n\nMets-moi tout ça proprement dans l'onglet 'Analyse'.\n\nMerci !\nSophie"
+      }
+    },
+  
+    "histoire_des_donnees": {
+      "description": "Export du CRM (Salesforce) avec toutes les commandes validées du Q4 2025. Chaque ligne = une commande client.",
+      "source": "Export Salesforce du 02/01/2026",
+      "periode": "01/10/2025 au 31/12/2025",
+      "nettoyage": "Les données ont été nettoyées par l'équipe IT. Pas de doublons, pas de valeurs manquantes."
+    },
+  
+    "feuilles": [
+      {
+        "nom": "Commandes_Q4",
+        "description": "Les 156 commandes du trimestre",
+        "donnees": true
+      },
+      {
+        "nom": "Objectifs",
+        "description": "Objectifs trimestriels par commercial",
+        "reference": true
+      },
+      {
+        "nom": "Analyse",
+        "description": "Ton espace de travail",
+        "travail": true
+      }
+    ],
+  
+    "donnees": {
+      "Commandes_Q4": {
+        "headers": ["ID_Commande", "Date", "Commercial", "Region", "Client", "Categorie_Produit", "Montant_HT"],
+        "rows_count": 156,
+        "sample_rows": [
+          ["CMD-2025-1001", "2025-10-02", "Marie Dubois", "Île-de-France", "TechStartup SAS", "Ordinateurs", 12500],
+          ["CMD-2025-1002", "2025-10-02", "Thomas Martin", "Auvergne-Rhône-Alpes", "Comptoir Digital", "Périphériques", 3200],
+          ["CMD-2025-1003", "2025-10-03", "Marie Dubois", "Île-de-France", "AgenceWeb Paris", "Ordinateurs", 8900],
+          ["CMD-2025-1004", "2025-10-03", "Julie Leroy", "PACA", "MedTech Marseille", "Réseau", 6700],
+          ["CMD-2025-1005", "2025-10-04", "Antoine Petit", "Nouvelle-Aquitaine", "VinTech Bordeaux", "Ordinateurs", 15200]
+        ],
+        "commerciaux": ["Marie Dubois", "Thomas Martin", "Julie Leroy", "Antoine Petit", "Sarah Chen", "Nicolas Roux"],
+        "regions": ["Île-de-France", "Auvergne-Rhône-Alpes", "PACA", "Nouvelle-Aquitaine", "Occitanie", "Hauts-de-France"],
+        "categories": ["Ordinateurs", "Périphériques", "Réseau", "Stockage", "Logiciels"],
+        "stats_reelles": {
+          "total_ca": 847500,
+          "nb_commandes": 156,
+          "panier_moyen": 5432.69,
+          "ca_par_commercial": {
+            "Marie Dubois": 198500,
+            "Thomas Martin": 145200,
+            "Julie Leroy": 132800,
+            "Antoine Petit": 156700,
+            "Sarah Chen": 121400,
+            "Nicolas Roux": 92900
+          },
+          "ca_par_region": {
+            "Île-de-France": 287300,
+            "Auvergne-Rhône-Alpes": 156800,
+            "PACA": 143500,
+            "Nouvelle-Aquitaine": 134200,
+            "Occitanie": 78400,
+            "Hauts-de-France": 47300
+          }
+        }
+      },
+      "Objectifs": {
+        "headers": ["Commercial", "Region", "Objectif_Q4", "Taux_Commission"],
+        "rows": [
+          ["Marie Dubois", "Île-de-France", 180000, 0.025],
+          ["Thomas Martin", "Auvergne-Rhône-Alpes", 140000, 0.025],
+          ["Julie Leroy", "PACA", 130000, 0.025],
+          ["Antoine Petit", "Nouvelle-Aquitaine", 150000, 0.025],
+          ["Sarah Chen", "Occitanie", 120000, 0.020],
+          ["Nicolas Roux", "Hauts-de-France", 100000, 0.020]
+        ]
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Vue d'ensemble",
+        "objectif": "Comprendre le volume global avant de détailler",
+        "questions": [
+          {
+            "numero": 1,
+            "consigne": "En B3, calcule le chiffre d'affaires TOTAL du Q4 (somme de tous les montants).",
+            "cellule": "Analyse!B3",
+            "competence_id": 3,
+            "temps": "1 min"
+          },
+          {
+            "numero": 2,
+            "consigne": "En B4, calcule le nombre TOTAL de commandes.",
+            "cellule": "Analyse!B4",
+            "competence_id": 3,
+            "temps": "1 min"
+          },
+          {
+            "numero": 3,
+            "consigne": "En B5, calcule le panier moyen (CA / nb commandes).",
+            "cellule": "Analyse!B5",
+            "competence_id": 4,
+            "temps": "1 min"
+          }
+        ]
+      },
+      {
+        "phase": "B. Analyse par commercial",
+        "objectif": "Détailler la performance de chaque commercial",
+        "layout": {
+          "structure": "Tableau avec colonnes : Commercial | CA Réalisé | Nb Commandes | Objectif | % Atteinte | Statut",
+          "debut": "Ligne 8",
+          "fin": "Ligne 13"
+        },
+        "questions": [
+          {
+            "numero": 4,
+            "consigne": "En B8, calcule le CA réalisé par Marie Dubois avec SOMME.SI.",
+            "cellule": "Analyse!B8",
+            "competence_id": 13,
+            "temps": "3 min"
+          },
+          {
+            "numero": 5,
+            "consigne": "En B9:B13, calcule le CA des autres commerciaux. ATTENTION : utilise des références absolues ($) sur les plages pour pouvoir recopier ta formule.",
+            "cellule": "Analyse!B9:B13",
+            "competence_id": 15,
+            "temps": "2 min"
+          },
+          {
+            "numero": 6,
+            "consigne": "En C8:C13, calcule le NOMBRE de commandes par commercial avec NB.SI.",
+            "cellule": "Analyse!C8:C13",
+            "competence_id": 11,
+            "temps": "2 min"
+          },
+          {
+            "numero": 7,
+            "consigne": "En D8:D13, récupère l'objectif de chaque commercial depuis la feuille 'Objectifs' avec RECHERCHEV.",
+            "cellule": "Analyse!D8:D13",
+            "competence_id": 18,
+            "temps": "4 min"
+          },
+          {
+            "numero": 8,
+            "consigne": "En E8:E13, calcule le pourcentage d'atteinte (CA / Objectif).",
+            "cellule": "Analyse!E8:E13",
+            "competence_id": 3,
+            "temps": "1 min"
+          },
+          {
+            "numero": 9,
+            "consigne": "En F8:F13, affiche '✅ Atteint' si le % >= 100%, sinon '❌ En-dessous'.",
+            "cellule": "Analyse!F8:F13",
+            "competence_id": 9,
+            "temps": "2 min"
+          }
+        ]
+      },
+      {
+        "phase": "C. Synthèse pour Sophie",
+        "objectif": "Préparer les chiffres clés du CODIR",
+        "questions": [
+          {
+            "numero": 10,
+            "consigne": "En B16, calcule le nombre de commerciaux ayant atteint leur objectif.",
+            "cellule": "Analyse!B16",
+            "competence_id": 11,
+            "temps": "2 min"
+          },
+          {
+            "numero": 11,
+            "consigne": "En B17, calcule le CA total de l'Île-de-France (notre plus gros marché).",
+            "cellule": "Analyse!B17",
+            "competence_id": 13,
+            "temps": "2 min"
+          },
+          {
+            "numero": 12,
+            "consigne": "BONUS : En B18, calcule le CA des Ordinateurs vendus en Île-de-France (2 critères simultanés) avec SOMME.SI.ENS.",
+            "cellule": "Analyse!B18",
+            "competence_id": 14,
+            "temps": "3 min",
+            "optionnel": true
+          }
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1",
+        "cellule": "Analyse!B3",
+        "type": "formule",
+        "description": "CA total Q4",
+        "competence_id": 3,
+        "fonction": "SOMME",
+        "computation": {
+          "type": "sum",
+          "sheet": "Commandes_Q4",
+          "column": "Montant_HT"
+        },
+        "expected_value": 847500,
+        "tolerance": 0.01,
+        "reference_formula": "=SOMME(Commandes_Q4!G2:G157)",
+        "pattern": ["SOMME", "Commandes_Q4", "G"],
+        "points": 8,
+        "indices": [
+          "Tu dois additionner tous les montants de la feuille Commandes_Q4.",
+          "La colonne des montants est G. N'oublie pas de préfixer avec le nom de la feuille !",
+          "=SOMME(Commandes_Q4!G2:G157) ou =SOMME(Commandes_Q4!G:G)"
+        ]
+      },
+      {
+        "id": "cp_2",
+        "cellule": "Analyse!B4",
+        "type": "formule",
+        "description": "Nombre total de commandes",
+        "competence_id": 3,
+        "fonction": "NB",
+        "computation": {
+          "type": "count",
+          "sheet": "Commandes_Q4",
+          "column": "Montant_HT"
+        },
+        "expected_value": 156,
+        "tolerance": 0,
+        "reference_formula": "=NB(Commandes_Q4!G2:G157)",
+        "pattern": ["NB", "Commandes_Q4"],
+        "points": 5,
+        "indices": [
+          "NB compte les cellules contenant des nombres.",
+          "Utilise la même colonne que pour le total.",
+          "=NB(Commandes_Q4!G2:G157) ou =NBVAL(Commandes_Q4!A2:A157)"
+        ]
+      },
+      {
+        "id": "cp_3",
+        "cellule": "Analyse!B5",
+        "type": "formule",
+        "description": "Panier moyen",
+        "competence_id": 4,
+        "fonction": "MOYENNE",
+        "computation": {
+          "type": "average",
+          "sheet": "Commandes_Q4",
+          "column": "Montant_HT"
+        },
+        "expected_value": 5432.69,
+        "tolerance": 0.01,
+        "reference_formula": "=MOYENNE(Commandes_Q4!G2:G157)",
+        "pattern": ["MOYENNE"],
+        "points": 5,
+        "indices": [
+          "Le panier moyen = CA total / nombre de commandes. Tu peux aussi utiliser MOYENNE directement.",
+          "MOYENNE sur la colonne des montants te donne directement le résultat.",
+          "=MOYENNE(Commandes_Q4!G2:G157) ou =B3/B4"
+        ]
+      },
+      {
+        "id": "cp_4",
+        "cellule": "Analyse!B8",
+        "type": "formule",
+        "description": "CA Marie Dubois",
+        "competence_id": 13,
+        "fonction": "SOMME.SI",
+        "computation": {
+          "type": "sumif",
+          "sheet": "Commandes_Q4",
+          "criteria_column": "Commercial",
+          "criteria": "Marie Dubois",
+          "sum_column": "Montant_HT"
+        },
+        "expected_value": 198500,
+        "tolerance": 0.01,
+        "reference_formula": "=SOMME.SI(Commandes_Q4!C:C;A8;Commandes_Q4!G:G)",
+        "pattern": ["SOMME.SI", "Marie Dubois"],
+        "points": 10,
+        "indices": [
+          "SOMME.SI additionne les valeurs qui correspondent à un critère.",
+          "Syntaxe : SOMME.SI(plage_critère; critère; plage_somme). Ici, critère = le nom du commercial.",
+          "=SOMME.SI(Commandes_Q4!C:C;A8;Commandes_Q4!G:G) où A8 contient 'Marie Dubois'"
+        ]
+      },
+      {
+        "id": "cp_5",
+        "cellule": "Analyse!B13",
+        "type": "formule",
+        "description": "CA Nicolas Roux (vérification recopie avec $)",
+        "competence_id": 15,
+        "fonction": "SOMME.SI",
+        "computation": {
+          "type": "sumif",
+          "sheet": "Commandes_Q4",
+          "criteria_column": "Commercial",
+          "criteria": "Nicolas Roux",
+          "sum_column": "Montant_HT"
+        },
+        "expected_value": 92900,
+        "tolerance": 0.01,
+        "reference_formula": "=SOMME.SI(Commandes_Q4!$C:$C;A13;Commandes_Q4!$G:$G)",
+        "pattern": ["SOMME.SI", "$"],
+        "points": 10,
+        "indices": [
+          "Pour recopier une formule, les plages fixes doivent avoir des $ (références absolues).",
+          "Seule la cellule du critère (A13) doit être relative pour s'adapter à chaque ligne.",
+          "=SOMME.SI(Commandes_Q4!$C:$C;A13;Commandes_Q4!$G:$G)"
+        ],
+        "erreurs_probables": [
+          { "type": "pas_de_dollar", "message": "Sans les $, la plage se décale et tu obtiens des valeurs fausses ou des erreurs" }
+        ]
+      },
+      {
+        "id": "cp_6",
+        "cellule": "Analyse!C8",
+        "type": "formule",
+        "description": "Nombre de commandes Marie Dubois",
+        "competence_id": 11,
+        "fonction": "NB.SI",
+        "computation": {
+          "type": "countif",
+          "sheet": "Commandes_Q4",
+          "column": "Commercial",
+          "criteria": "Marie Dubois"
+        },
+        "expected_value": 28,
+        "tolerance": 0,
+        "reference_formula": "=NB.SI(Commandes_Q4!C:C;A8)",
+        "pattern": ["NB.SI"],
+        "points": 8,
+        "indices": [
+          "NB.SI compte les cellules qui correspondent au critère.",
+          "Syntaxe : NB.SI(plage; critère)",
+          "=NB.SI(Commandes_Q4!$C:$C;A8)"
+        ]
+      },
+      {
+        "id": "cp_7",
+        "cellule": "Analyse!D8",
+        "type": "formule",
+        "description": "Objectif Marie Dubois (RECHERCHEV)",
+        "competence_id": 18,
+        "fonction": "RECHERCHEV",
+        "computation": {
+          "type": "lookup",
+          "search_value": "Marie Dubois",
+          "lookup_table": "Objectifs",
+          "return_column_index": 3,
+          "approximate": false
+        },
+        "expected_value": 180000,
+        "tolerance": 0,
+        "reference_formula": "=RECHERCHEV(A8;Objectifs!A:D;3;FAUX)",
+        "pattern": ["RECHERCHEV", "Objectifs", "FAUX"],
+        "points": 12,
+        "indices": [
+          "RECHERCHEV cherche une valeur dans la 1ère colonne d'une table et retourne une valeur d'une autre colonne.",
+          "Syntaxe : RECHERCHEV(valeur_cherchée; table; n°_colonne; FAUX). L'objectif est en colonne 3.",
+          "=RECHERCHEV(A8;Objectifs!$A:$D;3;FAUX)"
+        ],
+        "erreurs_probables": [
+          { "type": "vrai_au_lieu_de_faux", "message": "FAUX = correspondance exacte. VRAI donnerait des résultats approximatifs (dangereux ici)" },
+          { "type": "mauvais_numero_colonne", "message": "L'objectif est en 3ème colonne de la table Objectifs (A, B, C = 1, 2, 3)" }
+        ]
+      },
+      {
+        "id": "cp_8",
+        "cellule": "Analyse!E8",
+        "type": "formule",
+        "description": "Pourcentage d'atteinte objectif",
+        "competence_id": 3,
+        "computation": {
+          "type": "manual",
+          "formula": "B8/D8"
+        },
+        "expected_value": 1.1028,
+        "tolerance": 0.01,
+        "reference_formula": "=B8/D8",
+        "points": 5,
+        "indices": [
+          "% atteinte = réalisé / objectif",
+          "Divise le CA (B8) par l'objectif (D8).",
+          "=B8/D8 puis formate en pourcentage"
+        ]
+      },
+      {
+        "id": "cp_9",
+        "cellule": "Analyse!F8",
+        "type": "formule",
+        "description": "Statut atteinte objectif",
+        "competence_id": 9,
+        "fonction": "SI",
+        "computation": {
+          "type": "conditional",
+          "condition": "E8>=1",
+          "value_if_true": "✅ Atteint",
+          "value_if_false": "❌ En-dessous"
+        },
+        "expected_value": "✅ Atteint",
+        "tolerance": 0,
+        "reference_formula": "=SI(E8>=1;\"✅ Atteint\";\"❌ En-dessous\")",
+        "pattern": ["SI", ">="],
+        "points": 8,
+        "indices": [
+          "SI teste une condition et retourne un texte différent selon le résultat.",
+          "Condition : E8 >= 1 (soit >= 100%)",
+          "=SI(E8>=1;\"✅ Atteint\";\"❌ En-dessous\")"
+        ]
+      },
+      {
+        "id": "cp_10",
+        "cellule": "Analyse!B16",
+        "type": "formule",
+        "description": "Nombre de commerciaux ayant atteint l'objectif",
+        "competence_id": 11,
+        "fonction": "NB.SI",
+        "computation": {
+          "type": "countif",
+          "column": "Statut",
+          "criteria": "✅ Atteint"
+        },
+        "expected_value": 4,
+        "tolerance": 0,
+        "reference_formula": "=NB.SI(F8:F13;\"✅ Atteint\")",
+        "pattern": ["NB.SI", "Atteint"],
+        "points": 8,
+        "indices": [
+          "Compte les '✅ Atteint' dans la colonne Statut.",
+          "NB.SI peut chercher du texte aussi.",
+          "=NB.SI(F8:F13;\"✅ Atteint\") ou =NB.SI(F8:F13;\"*Atteint*\")"
+        ]
+      },
+      {
+        "id": "cp_11",
+        "cellule": "Analyse!B17",
+        "type": "formule",
+        "description": "CA Île-de-France",
+        "competence_id": 13,
+        "fonction": "SOMME.SI",
+        "computation": {
+          "type": "sumif",
+          "sheet": "Commandes_Q4",
+          "criteria_column": "Region",
+          "criteria": "Île-de-France",
+          "sum_column": "Montant_HT"
+        },
+        "expected_value": 287300,
+        "tolerance": 0.01,
+        "reference_formula": "=SOMME.SI(Commandes_Q4!D:D;\"Île-de-France\";Commandes_Q4!G:G)",
+        "pattern": ["SOMME.SI", "Île-de-France"],
+        "points": 8,
+        "indices": [
+          "Même logique que pour les commerciaux, mais sur la colonne Région.",
+          "Attention à l'orthographe exacte : 'Île-de-France' avec l'accent.",
+          "=SOMME.SI(Commandes_Q4!D:D;\"Île-de-France\";Commandes_Q4!G:G)"
+        ]
+      },
+      {
+        "id": "cp_12",
+        "cellule": "Analyse!B18",
+        "type": "formule",
+        "description": "CA Ordinateurs en Île-de-France (SOMME.SI.ENS)",
+        "competence_id": 14,
+        "fonction": "SOMME.SI.ENS",
+        "computation": {
+          "type": "sumifs",
+          "sheet": "Commandes_Q4",
+          "sum_column": "Montant_HT",
+          "criteria_list": [
+            { "column": "Region", "criteria": "Île-de-France" },
+            { "column": "Categorie_Produit", "criteria": "Ordinateurs" }
+          ]
+        },
+        "expected_value": 156200,
+        "tolerance": 0.01,
+        "reference_formula": "=SOMME.SI.ENS(Commandes_Q4!G:G;Commandes_Q4!D:D;\"Île-de-France\";Commandes_Q4!F:F;\"Ordinateurs\")",
+        "pattern": ["SOMME.SI.ENS"],
+        "points": 13,
+        "optionnel": true,
+        "indices": [
+          "SOMME.SI.ENS permet plusieurs critères. Attention : la plage_somme est en PREMIER !",
+          "Syntaxe : SOMME.SI.ENS(plage_somme; plage1;critère1; plage2;critère2)",
+          "=SOMME.SI.ENS(Commandes_Q4!G:G;Commandes_Q4!D:D;\"Île-de-France\";Commandes_Q4!F:F;\"Ordinateurs\")"
+        ],
+        "erreurs_probables": [
+          { "type": "ordre_arguments", "message": "Contrairement à SOMME.SI, dans SOMME.SI.ENS la plage_somme est en PREMIER !" }
+        ]
+      }
+    ],
+  
+    "email_final_sophie": {
+      "succes": {
+        "objet": "RE: Analyse Q4 - besoin pour vendredi",
+        "contenu": "Parfait, c'est exactement ce qu'il me fallait !\n\n4 commerciaux sur 6 ont atteint leurs objectifs, c'est solide. L'IdF représente 34% du CA, ce qui confirme qu'on doit renforcer cette région.\n\nJe présente ça demain. Merci pour la réactivité !\n\nSophie"
+      },
+      "partiel": {
+        "objet": "RE: Analyse Q4 - quelques ajustements",
+        "contenu": "Merci pour le travail. J'ai quelques questions sur certains chiffres - tu peux vérifier les formules en rouge ?\n\nOn en reparle demain matin.\n\nSophie"
+      }
+    },
+  
+    "messages_socrate": {
+      "intro": "Sophie compte sur toi pour cette analyse. C'est un exercice classique en entreprise : transformer des données brutes en insights actionnables. Les fonctions qu'on va utiliser (SOMME.SI, NB.SI, RECHERCHEV) sont le quotidien de tout analyste.",
+      
+      "encouragement_phase_b": "La partie analyse par commercial est le cœur de l'exercice. Prends le temps de bien comprendre SOMME.SI et les références absolues - c'est ce qui fait la différence entre un Excel fragile et un Excel robuste.",
+      
+      "conclusion_succes": "Excellent travail ! Tu as produit une analyse complète et fiable. Sophie peut présenter ces chiffres en CODIR en toute confiance. Ce type d'analyse, tu le referas des dizaines de fois dans ta carrière - maintenant tu sais faire.",
+      
+      "teaser_prochain": "La prochaine étape : les tableaux croisés dynamiques. Ce que tu viens de faire en 35 minutes avec des formules, un TCD le fait en 2 minutes. Mais comprendre les formules d'abord, c'est essentiel pour débugger quand le TCD ne donne pas ce qu'on attend."
+    },
+  
+    "criteres_qualite": {
+      "contexte_immersif": true,
+      "donnees_realistes": true,
+      "progression_logique": true,
+      "enjeux_professionnels": true,
+      "manager_credible": true,
+      "deadline_realiste": true,
+      "feedback_personnalise": true
+    }
+  }

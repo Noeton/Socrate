@@ -1,0 +1,288 @@
+{
+    "id": "avance_06_power_query_intro",
+    "titre": "Power Query : Automatiser le Nettoyage de Données",
+    "niveau": "avance",
+    "duree_estimee": "30 min",
+    "competences": ["Power Query", "ETL", "Nettoyage données", "Transformation"],
+    "competence_ids": [30],
+  
+    "contexte": {
+      "situation": "Tu es data analyst chez DataClean Corp. Chaque mois, tu reçois des fichiers de données mal formatés : colonnes inutiles, types incorrects, valeurs manquantes, formats incohérents... Avant, tu passais des heures à nettoyer manuellement. Power Query automatise tout ça et garde un historique des transformations !",
+      "manager": {
+        "nom": "Thomas Leclerc",
+        "poste": "Directeur Data",
+        "personnalite": "Passionné d'automatisation, il déteste les tâches répétitives.",
+        "demande": "Chaque mois c'est la même galère : nettoyer les données avant de les analyser. Je veux que tu crées un processus reproductible. Power Query garde toutes les étapes en mémoire - le mois prochain, un clic et c'est fait !"
+      },
+      "enjeux": "Automatisation du reporting mensuel.",
+      "deadline": "Processus à mettre en place cette semaine"
+    },
+  
+    "objectifs": [
+      "Importer des données dans Power Query",
+      "Nettoyer les données (supprimer colonnes, filtrer, remplacer)",
+      "Transformer les types de données",
+      "Fusionner des requêtes (VLOOKUP amélioré)",
+      "Charger le résultat dans Excel"
+    ],
+  
+    "prerequis_excel": {
+      "version_minimum": "Excel 2016",
+      "acces": "Données > Obtenir et transformer",
+      "note": "Power Query est intégré depuis Excel 2016. Avant, c'était un add-in."
+    },
+  
+    "donnees": {
+      "fichier_ventes": {
+        "nom": "ventes_brutes.csv",
+        "problemes": [
+          "Colonnes inutiles (ID_interne, Code_legacy)",
+          "Dates au format texte américain (MM/DD/YYYY)",
+          "Montants avec symbole $ à enlever",
+          "Valeurs nulles représentées par 'N/A' ou '-'"
+        ],
+        "apercu": [
+          ["ID_interne", "Code_legacy", "Date", "Produit", "Montant", "Région"],
+          ["X001", "OLD_1", "01/15/2025", "Widget A", "$1,250.00", "North"],
+          ["X002", "OLD_2", "01/20/2025", "Widget B", "N/A", "South"],
+          ["X003", "OLD_3", "02/01/2025", "Widget A", "$890.50", "North"]
+        ]
+      },
+      "fichier_regions": {
+        "nom": "regions.xlsx",
+        "contenu": [
+          ["Code", "Nom_FR"],
+          ["North", "Nord"],
+          ["South", "Sud"],
+          ["East", "Est"],
+          ["West", "Ouest"]
+        ]
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Accéder à Power Query",
+        "acces": "Données > Obtenir des données > À partir d'un fichier",
+        "sources_possibles": [
+          "Fichier Excel (.xlsx)",
+          "Fichier CSV/Texte",
+          "Dossier (plusieurs fichiers)",
+          "Base de données, Web, API..."
+        ]
+      },
+      {
+        "phase": "B. L'éditeur Power Query",
+        "interface": [
+          "Aperçu des données au centre",
+          "Étapes appliquées à droite",
+          "Ruban avec les transformations",
+          "Barre de formules M (optionnel)"
+        ],
+        "principe": "Chaque action crée une étape. Tu peux modifier/supprimer des étapes à tout moment."
+      },
+      {
+        "phase": "C. Supprimer des colonnes",
+        "methode_1": "Clic droit sur en-tête > Supprimer",
+        "methode_2": "Sélection > Accueil > Supprimer les colonnes",
+        "methode_3": "Choisir les colonnes > Garder uniquement les colonnes sélectionnées"
+      },
+      {
+        "phase": "D. Changer les types de données",
+        "acces": "Clic sur l'icône type dans l'en-tête (ABC, 123, 📅)",
+        "types": [
+          "Texte",
+          "Nombre entier / Décimal",
+          "Date / Date et heure",
+          "Vrai/Faux"
+        ]
+      },
+      {
+        "phase": "E. Remplacer des valeurs",
+        "acces": "Accueil > Remplacer les valeurs",
+        "exemples": [
+          "Remplacer 'N/A' par null",
+          "Remplacer '$' par '' (rien)",
+          "Remplacer ',' par '.' pour les décimales"
+        ]
+      },
+      {
+        "phase": "F. Filtrer les lignes",
+        "acces": "Clic sur la flèche de l'en-tête > Filtres",
+        "options": [
+          "Filtres texte : contient, commence par...",
+          "Filtres numériques : supérieur à, entre...",
+          "Supprimer les lignes vides"
+        ]
+      },
+      {
+        "phase": "G. Fusionner des requêtes",
+        "acces": "Accueil > Fusionner des requêtes",
+        "principe": "Comme RECHERCHEV mais plus puissant",
+        "types_jointure": [
+          "Externe gauche : garde tout à gauche",
+          "Interne : uniquement les correspondances",
+          "Externe complète : tout des deux côtés"
+        ]
+      },
+      {
+        "phase": "H. Charger dans Excel",
+        "acces": "Accueil > Fermer et charger",
+        "options": [
+          "Tableau : crée un tableau Excel",
+          "Connexion uniquement : garde en mémoire sans charger",
+          "Modèle de données : pour Power Pivot"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_importer",
+        "type": "power_query",
+        "description": "Importer le fichier CSV dans Power Query",
+        "competence_id": 30,
+        "expected_action": "import",
+        "points": 10,
+        "indices": [
+          "Données > Obtenir des données > À partir d'un fichier CSV",
+          "L'éditeur Power Query s'ouvre",
+          "Tu vois un aperçu des données"
+        ]
+      },
+      {
+        "id": "cp_2_supprimer_colonnes",
+        "type": "power_query",
+        "description": "Supprimer les colonnes inutiles",
+        "competence_id": 30,
+        "expected_columns_removed": ["ID_interne", "Code_legacy"],
+        "points": 15,
+        "indices": [
+          "Sélectionne les colonnes à supprimer",
+          "Clic droit > Supprimer les colonnes",
+          "Ou : garder uniquement les colonnes utiles"
+        ]
+      },
+      {
+        "id": "cp_3_remplacer_na",
+        "type": "power_query",
+        "description": "Remplacer 'N/A' par null",
+        "competence_id": 30,
+        "expected_replacement": {"from": "N/A", "to": "null"},
+        "points": 15,
+        "indices": [
+          "Sélectionne la colonne Montant",
+          "Accueil > Remplacer les valeurs",
+          "'N/A' → laisser vide (null)"
+        ]
+      },
+      {
+        "id": "cp_4_supprimer_dollar",
+        "type": "power_query",
+        "description": "Supprimer le symbole $ des montants",
+        "competence_id": 30,
+        "expected_replacement": {"from": "$", "to": ""},
+        "points": 15,
+        "indices": [
+          "Remplacer '$' par '' (rien)",
+          "Puis remplacer ',' par '.' si besoin",
+          "Puis changer le type en Nombre"
+        ]
+      },
+      {
+        "id": "cp_5_type_date",
+        "type": "power_query",
+        "description": "Convertir la colonne Date en type Date",
+        "competence_id": 30,
+        "expected_type": "date",
+        "points": 15,
+        "indices": [
+          "Clique sur l'icône ABC dans l'en-tête Date",
+          "Change en Date",
+          "Power Query détecte le format automatiquement"
+        ]
+      },
+      {
+        "id": "cp_6_fusionner",
+        "type": "power_query",
+        "description": "Fusionner avec la table Régions",
+        "competence_id": 30,
+        "expected_action": "merge",
+        "points": 20,
+        "indices": [
+          "Accueil > Fusionner des requêtes",
+          "Sélectionne la colonne Région dans les deux tables",
+          "Jointure externe gauche",
+          "Développe pour récupérer Nom_FR"
+        ]
+      },
+      {
+        "id": "cp_7_charger",
+        "type": "power_query",
+        "description": "Charger le résultat dans Excel",
+        "competence_id": 30,
+        "expected_action": "load",
+        "points": 10,
+        "indices": [
+          "Accueil > Fermer et charger",
+          "Un tableau Excel est créé",
+          "La connexion est sauvegardée pour actualisation future"
+        ]
+      }
+    ],
+  
+    "avantages_power_query": [
+      "Reproductibilité : les étapes sont enregistrées",
+      "Actualisation : un clic pour mettre à jour",
+      "Traçabilité : historique des transformations",
+      "Puissance : gère des millions de lignes",
+      "Fusion : jointures comme en SQL"
+    ],
+  
+    "etapes_courantes": {
+      "nettoyage": [
+        "Supprimer colonnes inutiles",
+        "Supprimer lignes vides",
+        "Supprimer doublons",
+        "Remplacer erreurs"
+      ],
+      "transformation": [
+        "Changer types de données",
+        "Fractionner colonnes",
+        "Pivoter/Dépivoter",
+        "Grouper par"
+      ],
+      "enrichissement": [
+        "Fusionner des tables",
+        "Ajouter colonnes calculées",
+        "Ajouter depuis exemples"
+      ]
+    },
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Félicitations ! Tu maîtrises Power Query. Fini le nettoyage manuel répétitif. Un processus créé une fois, utilisé pour toujours ! 🔄",
+      "partiel": "Bon début ! Power Query est puissant. L'essentiel : importer, nettoyer, charger. Les étapes sont sauvegardées.",
+      "echec": "Power Query automatise le nettoyage. Données > Obtenir des données pour commencer. Chaque transformation devient une étape réutilisable."
+    },
+  
+    "socrate_message": {
+      "intro": "Power Query, c'est la révolution du nettoyage de données ! 🧹 Ce qui prenait des heures se fait en quelques clics, et surtout c'est reproductible.",
+      "conclusion": "Tu connais maintenant l'outil ETL intégré à Excel. Importer, transformer, charger - le workflow data analyst moderne. Game changer ! 🎯"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["Power Query", "ETL", "nettoyage", "transformation", "automatisation", "avancé"],
+      "prerequis": ["Excel intermédiaire", "Tableaux structurés"],
+      "ouvre_vers": ["Power Query M", "Power Pivot", "Modèles de données"],
+      "requires_excel": true,
+      "excel_version": "2016+"
+    }
+  }

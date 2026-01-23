@@ -1,0 +1,270 @@
+{
+    "id": "debutant_19_collage_special",
+    "titre": "Maîtriser le Collage Spécial",
+    "niveau": "debutant",
+    "duree_estimee": "18 min",
+    "competences": ["Collage spécial", "Valeurs", "Transposition"],
+    "competence_ids": [58],
+  
+    "contexte": {
+      "situation": "Tu es assistant(e) de direction chez NordImmo, une agence immobilière. Le directeur te demande de préparer un rapport pour les investisseurs. Le problème : le fichier source contient des formules qui se cassent quand on les copie ailleurs, et certaines données sont dans le mauvais sens.",
+      "manager": {
+        "nom": "Philippe Mercier",
+        "poste": "Directeur d'agence",
+        "personnalite": "Exigeant sur la présentation. Il veut des chiffres propres, pas des erreurs #REF!",
+        "demande": "J'ai besoin que tu extraies les chiffres du trimestre pour le rapport. Attention, je veux les VALEURS, pas les formules ! Et inverse le tableau des performances pour qu'il soit plus lisible."
+      },
+      "enjeux": "Le rapport part aux investisseurs demain. Des erreurs de formules feraient très mauvaise impression.",
+      "deadline": "Ce soir 18h"
+    },
+  
+    "objectifs": [
+      "Comprendre la différence entre coller une formule et coller une valeur",
+      "Utiliser Collage spécial > Valeurs pour figer des résultats",
+      "Utiliser Collage spécial > Transposé pour inverser lignes/colonnes",
+      "Combiner les options de collage spécial"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les données du trimestre",
+      "Copie les résultats de ventes (qui contiennent des formules) vers une nouvelle feuille",
+      "Utilise Collage spécial > Valeurs pour ne garder que les chiffres",
+      "Copie le tableau des performances mensuelles",
+      "Utilise Collage spécial > Transposé pour l'inverser",
+      "Applique un format monétaire via Collage spécial > Formats"
+    ],
+  
+    "donnees": {
+      "feuille_source": "Données_Q4",
+      "headers_ventes": ["Agent", "Oct", "Nov", "Déc", "Total", "Commission"],
+      "rows_ventes": [
+        ["Marie Dupont", 85000, 92000, 78000, "=SOMME(B2:D2)", "=E2*0.03"],
+        ["Jean Martin", 67000, 71000, 89000, "=SOMME(B3:D3)", "=E3*0.03"],
+        ["Sophie Bernard", 93000, 88000, 95000, "=SOMME(B4:D4)", "=E4*0.03"],
+        ["Luc Petit", 72000, 79000, 81000, "=SOMME(B5:D5)", "=E5*0.03"]
+      ],
+      "donnees_performances": {
+        "headers_ligne": ["Métrique", "Marie", "Jean", "Sophie", "Luc"],
+        "rows": [
+          ["Nb visites", 45, 38, 52, 41],
+          ["Nb ventes", 12, 9, 15, 11],
+          ["Taux conv.", "27%", "24%", "29%", "27%"],
+          ["Satisfaction", "4.8", "4.5", "4.9", "4.6"]
+        ]
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Comprendre le problème",
+        "explications": [
+          "Quand tu copies une cellule avec formule, tu copies LA FORMULE, pas le résultat.",
+          "Si tu colles ailleurs, les références changent et peuvent créer des erreurs #REF!",
+          "Le Collage spécial permet de coller uniquement ce que tu veux."
+        ],
+        "demo": [
+          "Copie E2 (qui contient =SOMME(B2:D2))",
+          "Colle en H2 : tu obtiens =SOMME(E2:G2) → probablement #REF! ou mauvais résultat",
+          "C'est pour ça qu'on utilise Collage spécial > Valeurs"
+        ]
+      },
+      {
+        "phase": "B. Collage spécial - Valeurs",
+        "consignes": [
+          "Sélectionne E2:F5 (les totaux et commissions)",
+          "Copie (Ctrl+C)",
+          "Va dans la feuille 'Rapport'",
+          "Clic-droit > Collage spécial (ou Ctrl+Alt+V)",
+          "Coche 'Valeurs' puis OK",
+          "Vérifie : les cellules contiennent des nombres, plus de formules !"
+        ],
+        "raccourci": "Ctrl+Alt+V puis V puis Entrée = Coller valeurs ultra rapide"
+      },
+      {
+        "phase": "C. Collage spécial - Transposé",
+        "explications": [
+          "Transposer = inverser lignes et colonnes",
+          "Un tableau 4 lignes × 5 colonnes devient 5 lignes × 4 colonnes"
+        ],
+        "consignes": [
+          "Sélectionne le tableau des performances (A8:E12)",
+          "Copie (Ctrl+C)",
+          "Place-toi en A15",
+          "Clic-droit > Collage spécial",
+          "Coche 'Transposé' puis OK",
+          "Le tableau est maintenant inversé !"
+        ]
+      },
+      {
+        "phase": "D. Collage spécial - Formats uniquement",
+        "consignes": [
+          "Sélectionne une cellule bien formatée (€, couleur, bordure)",
+          "Copie-la",
+          "Sélectionne la plage à formater",
+          "Collage spécial > Formats",
+          "Seul le format est appliqué, pas la valeur !"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_valeur_total",
+        "cellule": "Rapport!A2",
+        "type": "valeur",
+        "description": "Total Marie collé en valeur (pas de formule)",
+        "competence_id": 58,
+        "expected_value": 255000,
+        "check_no_formula": true,
+        "points": 20,
+        "indices": [
+          "La cellule doit contenir 255000, pas une formule",
+          "Utilise Collage spécial > Valeurs",
+          "Ctrl+Alt+V puis V"
+        ]
+      },
+      {
+        "id": "cp_2_valeur_commission",
+        "cellule": "Rapport!B2",
+        "type": "valeur",
+        "description": "Commission Marie collée en valeur",
+        "competence_id": 58,
+        "expected_value": 7650,
+        "check_no_formula": true,
+        "points": 15,
+        "indices": [
+          "Commission = Total × 3% = 255000 × 0.03 = 7650",
+          "Doit être une valeur, pas =E2*0.03",
+          "Vérifie dans la barre de formule"
+        ]
+      },
+      {
+        "id": "cp_3_toutes_valeurs",
+        "cellule": "Rapport!A5",
+        "type": "valeur",
+        "description": "Total Luc collé en valeur",
+        "competence_id": 58,
+        "expected_value": 232000,
+        "check_no_formula": true,
+        "points": 15,
+        "indices": [
+          "Luc : 72000 + 79000 + 81000 = 232000",
+          "Toutes les cellules doivent être des valeurs",
+          "Sélectionne toute la plage avant de coller"
+        ]
+      },
+      {
+        "id": "cp_4_transpose_header",
+        "cellule": "Rapport!A10",
+        "type": "valeur",
+        "description": "En-tête transposé correctement",
+        "competence_id": 58,
+        "expected_value": "Métrique",
+        "points": 15,
+        "indices": [
+          "Après transposition, 'Métrique' doit être en A10",
+          "Les en-têtes de colonnes deviennent des lignes",
+          "Collage spécial > Transposé"
+        ]
+      },
+      {
+        "id": "cp_5_transpose_nom",
+        "cellule": "Rapport!A11",
+        "type": "valeur",
+        "description": "Premier nom transposé",
+        "competence_id": 58,
+        "expected_value": "Marie",
+        "points": 10,
+        "indices": [
+          "'Marie' était en colonne, maintenant en ligne",
+          "Vérifier que la transposition est correcte",
+          "A11 doit contenir 'Marie'"
+        ]
+      },
+      {
+        "id": "cp_6_transpose_donnee",
+        "cellule": "Rapport!B11",
+        "type": "valeur",
+        "description": "Donnée transposée correctement",
+        "competence_id": 58,
+        "expected_value": 45,
+        "points": 10,
+        "indices": [
+          "Le nombre de visites de Marie (45) doit être en B11",
+          "Ligne Marie × Colonne Nb visites",
+          "Vérifie l'alignement après transposition"
+        ]
+      },
+      {
+        "id": "cp_7_transpose_complet",
+        "cellule": "Rapport!E14",
+        "type": "valeur",
+        "description": "Dernière cellule transposée",
+        "competence_id": 58,
+        "expected_value": "4.6",
+        "points": 15,
+        "indices": [
+          "Satisfaction de Luc = 4.6",
+          "Dernière valeur du tableau transposé",
+          "Vérifie que tout le tableau est transposé"
+        ]
+      }
+    ],
+  
+    "options_collage_special": [
+      {
+        "option": "Tout",
+        "description": "Colle tout : valeurs, formules, formats, commentaires"
+      },
+      {
+        "option": "Valeurs",
+        "description": "Colle uniquement les résultats (pas les formules)",
+        "raccourci": "Ctrl+Alt+V puis V"
+      },
+      {
+        "option": "Formules",
+        "description": "Colle les formules (références s'adaptent)"
+      },
+      {
+        "option": "Formats",
+        "description": "Colle uniquement la mise en forme (couleurs, bordures, police)"
+      },
+      {
+        "option": "Largeurs de colonnes",
+        "description": "Colle les largeurs de colonnes sources"
+      },
+      {
+        "option": "Transposé",
+        "description": "Inverse lignes et colonnes"
+      },
+      {
+        "option": "Collage avec opération",
+        "description": "Additionner, soustraire, multiplier, diviser avec les valeurs existantes"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Parfait ! Tu maîtrises le collage spécial. C'est une compétence essentielle pour travailler proprement avec Excel et éviter les erreurs #REF! 🎯",
+      "partiel": "Tu as compris le principe. Vérifie que tes cellules ne contiennent vraiment plus de formules (regarde la barre de formule).",
+      "echec": "Le collage spécial est crucial pour partager des données proprement. Reprends l'exercice en utilisant Ctrl+Alt+V pour accéder aux options."
+    },
+  
+    "socrate_message": {
+      "intro": "Le collage spécial, c'est le couteau suisse du copier-coller ! 🔧 Tu vas apprendre à coller exactement ce que tu veux : valeurs, formats, ou même transposer un tableau.",
+      "conclusion": "Ctrl+Alt+V est ton nouvel ami ! Maintenant tu sais figer des résultats, transposer des tableaux, et copier uniquement les formats. Des compétences pro ! 💼"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["collage spécial", "valeurs", "transposé", "formats", "fondamental"],
+      "prerequis": ["Copier-coller basique", "Formules de base"],
+      "ouvre_vers": ["Rapports professionnels", "Export de données"]
+    }
+  }

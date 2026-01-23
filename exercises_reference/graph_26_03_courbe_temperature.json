@@ -1,0 +1,219 @@
+{
+  "id": "graph_26_03_courbe_temperature",
+  "version": "1.0",
+  "titre": "📈 Courbe : suivre une évolution",
+
+  "metadata": {
+    "niveau": "debutant",
+    "duree_estimee": "15 min",
+    "competences_ids": [26],
+    "competences_noms": ["Graphiques simples"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Créer un graphique en courbe pour visualiser une évolution temporelle avec marqueurs",
+    "source_pdf": "Chapter 15: Charts and Charting",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu travailles dans une serre de production de tomates. Le chef de culture te demande de visualiser l'évolution de la température sur une semaine pour vérifier qu'elle reste dans les normes (15-25°C).",
+    
+    "personnage": "Toi, assistant(e) technique dans une exploitation agricole.",
+    
+    "objectif": "Créer une courbe qui montre clairement l'évolution jour par jour avec des points marqués.",
+    
+    "motivation": "La courbe est LE graphique pour montrer une évolution dans le temps. Elle révèle les tendances que les chiffres cachent.",
+    
+    "ton": "Simple et pratique. La courbe, c'est l'outil indispensable pour suivre n'importe quelle évolution."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Relevé de température moyenne quotidienne dans la serre pendant une semaine de mai.",
+    "periode": "Semaine du 5 au 11 mai 2025",
+    "source_fictive": "Capteur température serre n°3"
+  },
+
+  "donnees": {
+    "headers": ["Jour", "Température (°C)"],
+    "rows": [
+      ["Lundi", 18],
+      ["Mardi", 21],
+      ["Mercredi", 19],
+      ["Jeudi", 23],
+      ["Vendredi", 25],
+      ["Samedi", 22],
+      ["Dimanche", 20]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les données",
+      "consigne": "Sélectionne la plage A1:B8 (jours + températures).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Insérer la courbe",
+      "consigne": "Va dans Insertion > Graphiques > Courbes > Courbes avec marqueurs (2ème option).",
+      "aide_contextuelle": "Les marqueurs sont les petits points sur la courbe. Ils facilitent la lecture des valeurs exactes.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter un titre",
+      "consigne": "Titre : 'Température serre - Mai 2025'.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Ajouter un titre d'axe Y",
+      "description": "Pour qu'on sache que c'est en degrés Celsius.",
+      "consigne": "Création > Ajouter un élément > Titres des axes > Axe vertical principal. Écris '°C'.",
+      "aide_contextuelle": "Le titre d'axe évite les confusions : est-ce des euros, des kilos, des degrés ?",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Afficher le quadrillage",
+      "description": "Le quadrillage aide à lire les valeurs sur la courbe.",
+      "consigne": "Vérifie que le quadrillage horizontal est visible. Sinon : Création > Ajouter un élément > Quadrillage.",
+      "temps": "1 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "Graphique à créer à côté des données",
+    "structure": [
+      { "cellule": "A1:B8", "label": "Données source", "style": "data" },
+      { "cellule": "D2:L18", "label": "Zone graphique", "style": "chart_area" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_line_1",
+      "type": "graphique",
+      "description": "Courbe créée avec le bon type",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "type": "courbe",
+        "type_variants": ["line", "ligne", "lignes", "courbes", "xy"],
+        "series_count": 1,
+        "categories_count": 7,
+        "tolerance_categories": 0
+      },
+      "points": 30,
+      "indices": [
+        "Tu dois créer un graphique en courbes, pas un histogramme.",
+        "Insertion > Graphiques > Courbes",
+        "La courbe doit passer par 7 points (un par jour)."
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_chart_type", "message": "Tu as créé un histogramme ou un camembert. Choisis 'Courbes' dans le menu." },
+        { "type": "missing_points", "message": "La courbe n'a pas 7 points. Vérifie que tu as sélectionné toutes les lignes." }
+      ]
+    },
+    {
+      "id": "cp_line_2",
+      "type": "graphique",
+      "description": "Marqueurs visibles sur la courbe",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_markers": true
+      },
+      "points": 20,
+      "indices": [
+        "Les marqueurs sont les petits points/carrés/losanges sur la courbe.",
+        "Choisis 'Courbes avec marqueurs' lors de l'insertion.",
+        "Ou clic droit sur la courbe > Mettre en forme > Marqueur > Automatique."
+      ],
+      "erreurs_probables": [
+        { "type": "no_markers", "message": "Ta courbe n'a pas de marqueurs. Ils aident à identifier chaque point de données." }
+      ]
+    },
+    {
+      "id": "cp_line_3",
+      "type": "graphique",
+      "description": "Titre présent",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_title": true,
+        "title_contains": ["Température", "serre", "Mai"],
+        "title_contains_any": true
+      },
+      "points": 15,
+      "indices": [
+        "Le titre doit indiquer le sujet et la période.",
+        "Exemple : 'Température serre - Mai 2025'"
+      ]
+    },
+    {
+      "id": "cp_line_4",
+      "type": "graphique",
+      "description": "Axe X avec les jours",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_x_axis": true,
+        "x_axis_labels": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+      },
+      "points": 15,
+      "indices": [
+        "L'axe horizontal doit afficher les jours de la semaine.",
+        "Si tu vois des chiffres (1, 2, 3...) au lieu des jours, revérifie ta sélection."
+      ]
+    },
+    {
+      "id": "cp_line_5",
+      "type": "graphique",
+      "description": "Axe Y avec titre ou unité",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_y_axis": true,
+        "has_y_axis_title": true
+      },
+      "points": 20,
+      "indices": [
+        "L'axe vertical doit avoir un titre comme '°C' ou 'Température (°C)'.",
+        "Création > Ajouter un élément > Titres des axes > Axe vertical principal"
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Courbe avec marqueurs, 7 points pour les 7 jours, titre 'Température serre - Mai 2025', axe Y titré '°C'.",
+    "etapes_cles": [
+      "Sélection A1:B8",
+      "Insertion > Courbes avec marqueurs",
+      "Titre personnalisé",
+      "Titre axe Y"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Ta courbe montre clairement l'évolution avec les marqueurs. Le chef de culture peut vérifier la conformité en un coup d'œil !",
+    "bien": "👍 Très bien ! La courbe est fonctionnelle. Ajoute les marqueurs et un titre d'axe pour la rendre parfaite.",
+    "ameliorer": "📈 C'est un bon début ! Vérifie que tu as une courbe (pas des barres) et ajoute un titre.",
+    "revoir": "🔄 Recommence : Insertion > Courbes avec marqueurs. Tu devrais voir une ligne qui monte et descend."
+  },
+
+  "pour_aller_plus_loin": [
+    "Ajoute une ligne horizontale à 25°C pour marquer le seuil maximum.",
+    "Change la couleur de la courbe en rouge pour les jours > 23°C.",
+    "Ajoute une courbe de tendance (linéaire) pour voir la direction générale."
+  ]
+}

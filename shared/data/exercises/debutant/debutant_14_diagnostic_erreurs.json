@@ -1,0 +1,420 @@
+{
+  "id": "debutant_14_diagnostic_erreurs",
+  "titre": "Diagnostic et Correction d'Erreurs Excel",
+  "niveau": "debutant",
+  "duree_estimee": "25 min",
+  "competences": [
+    "SOMME",
+    "MOYENNE",
+    "SI simple",
+    "RECHERCHEV",
+    "Références absolues ($)"
+  ],
+  "contexte": {
+    "situation": "Tu récupères un fichier Excel d'un collègue parti en vacances. Problème : le fichier est truffé d'erreurs ! Ton manager te demande de diagnostiquer chaque erreur et de la corriger. C'est l'occasion parfaite pour comprendre ce que signifient #REF!, #N/A, #DIV/0!, #VALEUR! et #NOM?",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Identifier les 5 types d'erreurs Excel courantes",
+    "Comprendre la CAUSE de chaque erreur",
+    "Corriger les formules",
+    "Apprendre à éviter ces erreurs"
+  ],
+  "consignes": [
+    "Le fichier contient 8 formules cassées dans la colonne C",
+    "Pour chaque erreur, identifie le TYPE d'erreur (colonne D)",
+    "Identifie la CAUSE probable (colonne E)",
+    "Écris la formule CORRIGÉE en colonne F",
+    "Vérifie que ta correction donne le bon résultat"
+  ],
+  "donnees": {
+    "headers": [
+      "N°",
+      "Formule cassée",
+      "Résultat",
+      "Type erreur",
+      "Cause",
+      "Formule corrigée",
+      "Résultat attendu"
+    ],
+    "rows": [
+      {
+        "numero": 1,
+        "cellule": "C2",
+        "formule_cassee": "=SOMME(A:A)",
+        "resultat_erreur": "#REF!",
+        "contexte": "La colonne A a été supprimée",
+        "type_erreur": "#REF!",
+        "cause": "Référence à une cellule/colonne supprimée",
+        "formule_corrigee": "=SOMME(B2:B10)",
+        "resultat_attendu": 450
+      },
+      {
+        "numero": 2,
+        "cellule": "C3",
+        "formule_cassee": "=B3/B4",
+        "resultat_erreur": "#DIV/0!",
+        "contexte": "B4 contient 0",
+        "type_erreur": "#DIV/0!",
+        "cause": "Division par zéro ou cellule vide",
+        "formule_corrigee": "=SI(B4=0;0;B3/B4)",
+        "resultat_attendu": 0
+      },
+      {
+        "numero": 3,
+        "cellule": "C4",
+        "formule_cassee": "=RECHERCHEV(\"Produit X\";A1:B5;2;FAUX)",
+        "resultat_erreur": "#N/A",
+        "contexte": "Produit X n'existe pas dans la liste",
+        "type_erreur": "#N/A",
+        "cause": "Valeur recherchée non trouvée",
+        "formule_corrigee": "=SIERREUR(RECHERCHEV(\"Produit X\";A1:B5;2;FAUX);\"Non trouvé\")",
+        "resultat_attendu": "Non trouvé"
+      },
+      {
+        "numero": 4,
+        "cellule": "C5",
+        "formule_cassee": "=A5+\"texte\"",
+        "resultat_erreur": "#VALEUR!",
+        "contexte": "Tentative d'additionner un nombre et du texte",
+        "type_erreur": "#VALEUR!",
+        "cause": "Opération impossible entre types différents",
+        "formule_corrigee": "=A5&\" texte\"",
+        "resultat_attendu": "100 texte"
+      },
+      {
+        "numero": 5,
+        "cellule": "C6",
+        "formule_cassee": "=SOME(B2:B10)",
+        "resultat_erreur": "#NOM?",
+        "contexte": "Faute de frappe dans le nom de fonction",
+        "type_erreur": "#NOM?",
+        "cause": "Fonction mal orthographiée ou inexistante",
+        "formule_corrigee": "=SOMME(B2:B10)",
+        "resultat_attendu": 450
+      },
+      {
+        "numero": 6,
+        "cellule": "C7",
+        "formule_cassee": "=SI(A7>10 Oui Non)",
+        "resultat_erreur": "#NOM?",
+        "contexte": "Texte sans guillemets + points-virgules manquants",
+        "type_erreur": "#NOM?",
+        "cause": "Syntaxe incorrecte (guillemets et séparateurs)",
+        "formule_corrigee": "=SI(A7>10;\"Oui\";\"Non\")",
+        "resultat_attendu": "Oui"
+      },
+      {
+        "numero": 7,
+        "cellule": "C8",
+        "formule_cassee": "=RECHERCHEV(A8;$B$1:$C$5;3;FAUX)",
+        "resultat_erreur": "#REF!",
+        "contexte": "Demande la colonne 3 d'une table de 2 colonnes",
+        "type_erreur": "#REF!",
+        "cause": "Numéro de colonne > nombre de colonnes de la table",
+        "formule_corrigee": "=RECHERCHEV(A8;$B$1:$C$5;2;FAUX)",
+        "resultat_attendu": 75
+      },
+      {
+        "numero": 8,
+        "cellule": "C9",
+        "formule_cassee": "=MOYENNE(B2:B10;C2:C10)",
+        "resultat_erreur": "#VALEUR!",
+        "contexte": "MOYENNE n'accepte pas plusieurs plages séparées par ;",
+        "type_erreur": "Résultat faux",
+        "cause": "Mauvaise syntaxe (utiliser , ou une seule plage)",
+        "formule_corrigee": "=MOYENNE(B2:C10)",
+        "resultat_attendu": 52.5
+      }
+    ],
+    "donnees_support": {
+      "description": "Données présentes dans le fichier pour tester les formules",
+      "B2_B10": [
+        50,
+        60,
+        40,
+        70,
+        30,
+        55,
+        45,
+        65,
+        35
+      ],
+      "C2_C10": [
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "A7": 15,
+      "table_produits": [
+        [
+          "Produit A",
+          50
+        ],
+        [
+          "Produit B",
+          75
+        ],
+        [
+          "Produit C",
+          100
+        ],
+        [
+          "Produit D",
+          125
+        ]
+      ]
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "cellule": "D2",
+      "type": "valeur",
+      "description": "Identification erreur #REF!",
+      "valeur_attendue": "#REF!",
+      "points": 5,
+      "indices": [
+        "Regarde le message d'erreur affiché",
+        "#REF! = référence invalide"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp2",
+      "cellule": "E2",
+      "type": "texte_contient",
+      "description": "Cause de l'erreur #REF! identifiée",
+      "contient": [
+        "supprim",
+        "colonne",
+        "référence"
+      ],
+      "points": 10,
+      "indices": [
+        "Pourquoi une référence devient-elle invalide ?",
+        "Que se passe-t-il si on supprime une colonne utilisée dans une formule ?"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp3",
+      "cellule": "D3",
+      "type": "valeur",
+      "description": "Identification erreur #DIV/0!",
+      "valeur_attendue": "#DIV/0!",
+      "points": 5,
+      "indices": [
+        "#DIV/0! = division par zéro"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp4",
+      "cellule": "F3",
+      "type": "formule",
+      "description": "Correction avec SI pour éviter division par zéro",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "B4",
+        "0",
+        "B3",
+        "B4"
+      ],
+      "points": 15,
+      "indices": [
+        "Il faut tester si le diviseur est 0 AVANT de diviser",
+        "=SI(diviseur=0; valeur_si_zero; division_normale)",
+        "=SI(B4=0;0;B3/B4)"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp5",
+      "cellule": "D4",
+      "type": "valeur",
+      "description": "Identification erreur #N/A",
+      "valeur_attendue": "#N/A",
+      "points": 5,
+      "indices": [
+        "#N/A = Not Available = valeur non trouvée"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp6",
+      "cellule": "F4",
+      "type": "formule",
+      "description": "Correction avec SIERREUR",
+      "fonction": "SIERREUR",
+      "pattern": [
+        "SIERREUR",
+        "RECHERCHEV"
+      ],
+      "points": 15,
+      "indices": [
+        "SIERREUR permet de gérer proprement les erreurs",
+        "=SIERREUR(formule_qui_peut_planter; valeur_de_secours)",
+        "=SIERREUR(RECHERCHEV(...);\"Non trouvé\")"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp7",
+      "cellule": "D5",
+      "type": "valeur",
+      "description": "Identification erreur #VALEUR!",
+      "valeur_attendue": "#VALEUR!",
+      "points": 5,
+      "indices": [
+        "#VALEUR! = types de données incompatibles"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp8",
+      "cellule": "D6",
+      "type": "valeur",
+      "description": "Identification erreur #NOM?",
+      "valeur_attendue": "#NOM?",
+      "points": 5,
+      "indices": [
+        "#NOM? = Excel ne reconnaît pas un nom",
+        "Souvent une faute de frappe dans une fonction"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp9",
+      "cellule": "F6",
+      "type": "formule",
+      "description": "Correction orthographe SOMME",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "B2:B10"
+      ],
+      "points": 10,
+      "indices": [
+        "SOME n'existe pas, c'est SOMME",
+        "En anglais c'est SUM"
+      ],
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 3
+    },
+    {
+      "id": "cp10",
+      "cellule": "F7",
+      "type": "formule",
+      "description": "Correction syntaxe SI",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "A7",
+        ">",
+        "10",
+        "\"Oui\"",
+        "\"Non\""
+      ],
+      "points": 15,
+      "indices": [
+        "Syntaxe correcte : =SI(condition;valeur_si_vrai;valeur_si_faux)",
+        "Les textes entre guillemets : \"Oui\" et \"Non\"",
+        "Séparateur = point-virgule (;) en français"
+      ],
+      "competence_id": 3
+    },
+    {
+      "id": "cp11",
+      "cellule": "F8",
+      "type": "formule",
+      "description": "Correction RECHERCHEV numéro colonne",
+      "fonction": "RECHERCHEV",
+      "pattern": [
+        "RECHERCHEV",
+        "2",
+        "FAUX"
+      ],
+      "points": 10,
+      "indices": [
+        "La table a 2 colonnes (B et C)",
+        "On ne peut pas demander la colonne 3 !",
+        "Remplace 3 par 2"
+      ],
+      "competence_id": 3
+    }
+  ],
+  "resume_erreurs": {
+    "#REF!": {
+      "signification": "Référence invalide",
+      "causes_frequentes": [
+        "Cellule/ligne/colonne supprimée",
+        "Numéro de colonne trop grand dans RECHERCHEV",
+        "Formule recopiée hors limites"
+      ],
+      "prevention": "Utiliser des noms de plages, vérifier avant suppression"
+    },
+    "#DIV/0!": {
+      "signification": "Division par zéro",
+      "causes_frequentes": [
+        "Diviseur = 0",
+        "Cellule diviseur vide"
+      ],
+      "prevention": "Toujours tester avec SI avant de diviser"
+    },
+    "#N/A": {
+      "signification": "Valeur non disponible",
+      "causes_frequentes": [
+        "RECHERCHEV ne trouve pas la valeur",
+        "Espaces invisibles dans les données",
+        "Types différents (nombre vs texte)"
+      ],
+      "prevention": "Utiliser SIERREUR, vérifier les données"
+    },
+    "#VALEUR!": {
+      "signification": "Type de valeur incorrect",
+      "causes_frequentes": [
+        "Calcul sur du texte",
+        "Arguments de mauvais type",
+        "Plages de tailles différentes"
+      ],
+      "prevention": "Vérifier les types de données"
+    },
+    "#NOM?": {
+      "signification": "Nom non reconnu",
+      "causes_frequentes": [
+        "Faute de frappe dans fonction",
+        "Texte sans guillemets",
+        "Nom de plage inexistant"
+      ],
+      "prevention": "Utiliser l'autocomplétion, guillemets pour le texte"
+    }
+  },
+  "criteres_reussite": {
+    "identification_erreurs": true,
+    "corrections_valides": true,
+    "comprehension_causes": true,
+    "score_minimum": 7
+  },
+  "competence_ids": [
+    3,
+    4,
+    9,
+    18
+  ]
+}

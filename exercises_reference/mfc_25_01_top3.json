@@ -1,0 +1,192 @@
+{
+  "id": "mfc_25_01_top3",
+  "version": "1.0",
+  "titre": "🏆 MFC avancée : mettre en évidence le Top 3",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "12 min",
+    "competences_ids": [25],
+    "competences_noms": ["MFC avancée"],
+    "prerequis": [10],
+    "objectif_pedagogique": "Utiliser la règle Top 10 pour mettre en surbrillance les N meilleures valeurs",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.4 (FormatConditions.AddTop10)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu prépares la cérémonie des awards de fin d'année chez RegionSales. Tu dois identifier les 3 régions les plus performantes pour leur remettre un trophée.",
+    
+    "personnage": "Toi, responsable des ventes nationales.",
+    
+    "objectif": "Mettre automatiquement en doré les 3 meilleures régions en termes de CA.",
+    
+    "motivation": "La règle Top N est parfaite pour identifier les champions sans avoir à trier les données.",
+    
+    "ton": "On passe au niveau supérieur avec les règles MFC avancées !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Chiffre d'affaires annuel par région commerciale.",
+    "periode": "Année 2024",
+    "source_fictive": "Consolidation régionale"
+  },
+
+  "donnees": {
+    "headers": ["Région", "CA (k€)"],
+    "rows": [
+      ["Nord", 125],
+      ["Sud", 98],
+      ["Est", 142],
+      ["Ouest", 87],
+      ["Centre", 156],
+      ["Île-de-France", 201],
+      ["PACA", 134],
+      ["Bretagne", 76]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les CA",
+      "consigne": "Sélectionne B2:B9 (les chiffres d'affaires).",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Ouvrir la règle Top 10",
+      "consigne": "Accueil > MFC > Règles des valeurs plus/moins élevées > 10 valeurs les plus élevées...",
+      "aide_contextuelle": "Malgré son nom, cette règle permet de définir N valeurs, pas forcément 10.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Configurer le Top 3",
+      "consigne": "Dans la boîte de dialogue, change '10' en '3'. Choisis un format doré/jaune.",
+      "aide_contextuelle": "Tu peux mettre n'importe quel nombre. Top 3, Top 5, Top 1... à toi de choisir.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Vérifier le résultat",
+      "description": "Les 3 plus gros CA doivent être mis en évidence.",
+      "consigne": "Vérifie que Île-de-France (201), Centre (156) et Est (142) sont colorés.",
+      "temps": "1 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "MFC sur la colonne CA",
+    "structure": [
+      { "cellule": "A1:B9", "label": "Données", "style": "data" },
+      { "cellule": "B2:B9", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_top_1",
+      "type": "format",
+      "subtype": "mfc_top10",
+      "description": "Règle Top 3 appliquée",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "top10",
+        "count": 3,
+        "type": "top"
+      },
+      "points": 40,
+      "indices": [
+        "Utilise 'Règles des valeurs plus/moins élevées > 10 valeurs les plus élevées'.",
+        "Change le nombre de 10 à 3 dans la boîte de dialogue.",
+        "C'est bien 'plus élevées', pas 'moins élevées'."
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_count", "message": "Tu as laissé 10 au lieu de 3. Modifie le nombre." },
+        { "type": "bottom_instead", "message": "Tu as sélectionné 'moins élevées' au lieu de 'plus élevées'." }
+      ]
+    },
+    {
+      "id": "cp_top_2",
+      "type": "format",
+      "subtype": "mfc_color",
+      "description": "Format doré/jaune appliqué",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "fill_color": "gold",
+        "fill_color_variants": ["doré", "gold", "yellow", "jaune", "orange"]
+      },
+      "points": 20,
+      "indices": [
+        "Choisis un format qui évoque le podium : doré, jaune ou orange.",
+        "Tu peux personnaliser via 'Format personnalisé'."
+      ]
+    },
+    {
+      "id": "cp_top_3",
+      "type": "format",
+      "subtype": "mfc_coverage",
+      "description": "Exactement 3 cellules colorées",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "colored_cells_count": 3,
+        "colored_values": [201, 156, 142],
+        "colored_regions": ["Île-de-France", "Centre", "Est"]
+      },
+      "points": 30,
+      "indices": [
+        "Seuls Île-de-France (201), Centre (156) et Est (142) doivent être colorés.",
+        "Les 5 autres régions ne doivent PAS être colorées.",
+        "Si plus de 3 sont colorées, vérifie ton paramètre."
+      ]
+    },
+    {
+      "id": "cp_top_4",
+      "type": "format",
+      "subtype": "mfc_range",
+      "description": "MFC sur la bonne plage",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "range": "B2:B9"
+      },
+      "points": 10
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Règle 'Top 3' avec format doré sur B2:B9. Île-de-France, Centre et Est sont mis en évidence.",
+    "etapes_cles": [
+      "Sélection B2:B9",
+      "MFC > Valeurs plus élevées > Top 10",
+      "Modifier 10 → 3",
+      "Format doré"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🏆 Parfait ! Les 3 champions régionaux sont identifiés. Prépare les trophées !",
+    "bien": "👍 Très bien ! La règle fonctionne. Vérifie que seules 3 cellules sont colorées.",
+    "ameliorer": "🥇 Presque ! Assure-toi d'utiliser 'Top 3', pas 'Top 10'.",
+    "revoir": "🔄 Recommence : MFC > Valeurs plus élevées > change 10 en 3."
+  },
+
+  "pour_aller_plus_loin": [
+    "Ajoute une 2ème règle pour le Bottom 3 (en rouge).",
+    "Utilise 'Top 10%' au lieu de 'Top 3' pour les grandes listes.",
+    "Combine avec une échelle de couleurs pour voir la distribution complète."
+  ]
+}

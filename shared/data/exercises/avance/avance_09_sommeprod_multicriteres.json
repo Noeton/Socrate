@@ -1,0 +1,159 @@
+{
+  "id": "avance_09_sommeprod_multicriteres",
+  "titre": "Analyse Multicritères avec SOMMEPROD",
+  "niveau": "avance",
+  "competences": ["SOMMEPROD", "Calculs matriciels", "Conditions multiples", "Alternative aux formules ENS"],
+  "competence_ids": [23],
+  "duree_estimee": "25 min",
+  
+  "contexte": {
+    "situation": "Le DAF veut une analyse fine des ventes : CA par commercial ET par région ET par trimestre. SOMME.SI.ENS ne suffit plus car il veut aussi des moyennes pondérées.",
+    "manager": {
+      "nom": "Vincent Moreau",
+      "poste": "Directeur Administratif et Financier"
+    },
+    "enjeux": "Comprendre quels commerciaux performent dans quelles régions.",
+    "deadline": "Comité de direction vendredi"
+  },
+  
+  "objectifs": [
+    "Maîtriser SOMMEPROD pour des sommes conditionnelles",
+    "Combiner plusieurs conditions avec la multiplication",
+    "Calculer des moyennes pondérées",
+    "Comprendre pourquoi SOMMEPROD est parfois meilleur que SOMME.SI.ENS"
+  ],
+  
+  "consignes": [
+    "Les ventes sont en A2:E51 (50 lignes)",
+    "En H2, calcule le CA total de Marie (B) en région Nord (C) au T1 (D)",
+    "Utilise SOMMEPROD avec conditions : =SOMMEPROD((B2:B51=\"Marie\")*(C2:C51=\"Nord\")*(D2:D51=\"T1\")*(E2:E51))",
+    "En H5, calcule la moyenne pondérée : CA moyen par vente pour Pierre en région Sud"
+  ],
+  
+  "donnees": {
+    "headers": ["ID", "Commercial", "Région", "Trimestre", "CA"],
+    "rows": [
+      [1, "Marie", "Nord", "T1", 12500],
+      [2, "Pierre", "Sud", "T1", 8900],
+      [3, "Marie", "Sud", "T1", 15200],
+      [4, "Lucas", "Nord", "T2", 11000],
+      [5, "Marie", "Nord", "T1", 9800],
+      [6, "Pierre", "Est", "T2", 7600],
+      [7, "Lucas", "Sud", "T1", 13400],
+      [8, "Marie", "Nord", "T2", 10500],
+      [9, "Pierre", "Sud", "T1", 12100],
+      [10, "Lucas", "Nord", "T1", 8200],
+      [11, "Marie", "Est", "T2", 14300],
+      [12, "Pierre", "Sud", "T2", 9500],
+      [13, "Lucas", "Sud", "T2", 11800],
+      [14, "Marie", "Nord", "T1", 13600],
+      [15, "Pierre", "Nord", "T1", 7200],
+      [16, "Lucas", "Est", "T1", 10100],
+      [17, "Marie", "Sud", "T2", 15800],
+      [18, "Pierre", "Sud", "T1", 8400],
+      [19, "Lucas", "Nord", "T2", 12700],
+      [20, "Marie", "Est", "T1", 9100],
+      [21, "Pierre", "Est", "T2", 11200],
+      [22, "Lucas", "Sud", "T1", 14600],
+      [23, "Marie", "Nord", "T2", 10800],
+      [24, "Pierre", "Sud", "T2", 13200],
+      [25, "Lucas", "Est", "T2", 8800],
+      [26, "Marie", "Sud", "T1", 16100],
+      [27, "Pierre", "Nord", "T2", 7900],
+      [28, "Lucas", "Nord", "T1", 11500],
+      [29, "Marie", "Est", "T2", 12400],
+      [30, "Pierre", "Sud", "T1", 9700]
+    ]
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "H2",
+      "description": "SOMMEPROD avec 3 conditions (Commercial + Région + Trimestre)",
+      "fonction": "SOMMEPROD",
+      "pattern": ["SOMMEPROD", "Marie", "Nord", "T1", "E2:E"],
+      "points": 30,
+      "indices": [
+        "Chaque condition entre parenthèses retourne VRAI/FAUX (1/0)",
+        "On multiplie les conditions : (cond1)*(cond2)*(cond3)*(valeurs)",
+        "=SOMMEPROD((B2:B51=\"Marie\")*(C2:C51=\"Nord\")*(D2:D51=\"T1\")*(E2:E51))"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "H2",
+      "description": "CA Marie/Nord/T1 = 35900",
+      "valeur_attendue": 35900,
+      "points": 20
+    },
+    {
+      "id": "cp_3",
+      "type": "formule",
+      "cellule": "H5",
+      "description": "Moyenne pondérée Pierre/Sud avec SOMMEPROD",
+      "fonction": "SOMMEPROD",
+      "pattern": ["SOMMEPROD", "/", "NB.SI.ENS"],
+      "points": 25,
+      "indices": [
+        "Moyenne = Somme / Nombre",
+        "=SOMMEPROD((cond1)*(cond2)*(valeurs)) / NB.SI.ENS(plage1;crit1;plage2;crit2)",
+        "Ou tout en SOMMEPROD : /SOMMEPROD((cond1)*(cond2)*1)"
+      ]
+    },
+    {
+      "id": "cp_4",
+      "type": "valeur",
+      "cellule": "H5",
+      "description": "CA moyen Pierre/Sud ≈ 10300",
+      "valeur_attendue": 10300,
+      "tolerance": 100,
+      "points": 15
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70,
+    "formule_sommeprod_presente": true
+  },
+  
+  "theorie": {
+    "concept": "SOMMEPROD - la fonction couteau suisse",
+    "explication": "SOMMEPROD multiplie des plages élément par élément puis additionne. Avec des conditions (VRAI=1, FAUX=0), elle devient un outil de somme/comptage conditionnel ultra-flexible.",
+    "astuce_conditions": "(A2:A10=\"X\") retourne {1;0;1;0;0;1;...}. Multiplié par une autre condition, seuls les 1×1=1 passent.",
+    "avantages_vs_somme_si_ens": [
+      "Pas de limite de 127 conditions",
+      "Peut faire des calculs complexes (moyennes pondérées)",
+      "Fonctionne sur anciennes versions d'Excel",
+      "Plus de flexibilité sur les critères"
+    ],
+    "formule_comptage": "=SOMMEPROD((cond1)*(cond2)*1) équivaut à NB.SI.ENS"
+  },
+  
+  "indices": [
+    "Chaque condition doit être entre parenthèses : (B2:B51=\"Marie\")",
+    "Les conditions se multiplient avec * : (cond1)*(cond2)*(cond3)",
+    "La dernière plage est celle des valeurs à sommer",
+    "Pour compter : remplace les valeurs par *1"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "#VALEUR!",
+      "cause": "Les plages n'ont pas la même taille",
+      "solution": "Toutes les plages doivent avoir le même nombre de lignes"
+    },
+    {
+      "erreur": "Résultat = 0",
+      "cause": "Critère avec mauvaise orthographe ou casse",
+      "solution": "\"Marie\" ≠ \"marie\" - vérifie la casse exacte"
+    },
+    {
+      "erreur": "Parenthèses mal placées",
+      "cause": "Chaque condition doit être isolée dans ses parenthèses",
+      "solution": "(cond1)*(cond2) et non pas cond1*cond2"
+    }
+  ]
+}

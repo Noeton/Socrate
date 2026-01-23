@@ -1,0 +1,570 @@
+{
+  "id": "avance_27_moyennes_mobiles",
+  "titre": "Moyennes Mobiles avec DECALER",
+  "niveau": "avance",
+  "duree_estimee": "42 min",
+  "competences": [
+    "DECALER"
+  ],
+  "contexte": {
+    "situation": "Tu analyses les ventes avec des moyennes mobiles sur 7 jours pour lisser les variations.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer une moyenne mobile avec DECALER",
+    "Comparer vente du jour vs tendance",
+    "Détecter les anomalies"
+  ],
+  "consignes": [
+    "Dans C8, calcule la moyenne mobile 7 jours: =MOYENNE(DECALER(B8;-6;0;7;1))",
+    "Recopie jusqu'à C51",
+    "Dans D8, calcule l'écart: =B8-C8",
+    "Dans E8, détecte anomalie: =SI(ABS(D8)>ECARTYPE($D$8:$D$51)*2;\"Anomalie\";\"Normal\")",
+    "Crée un graphique combiné: Ventes (colonnes) + Moyenne mobile (courbe)",
+    "Identifie les 5 plus grandes anomalies"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Ventes",
+      "Moyenne Mobile 7j",
+      "Écart",
+      "Statut"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        7463,
+        "",
+        "",
+        ""
+      ],
+      [
+        "02/01/2024",
+        5654,
+        "",
+        "",
+        ""
+      ],
+      [
+        "03/01/2024",
+        1497,
+        "",
+        "",
+        ""
+      ],
+      [
+        "04/01/2024",
+        7589,
+        "",
+        "",
+        ""
+      ],
+      [
+        "05/01/2024",
+        3832,
+        "",
+        "",
+        ""
+      ],
+      [
+        "06/01/2024",
+        5061,
+        "",
+        "",
+        ""
+      ],
+      [
+        "07/01/2024",
+        3114,
+        "",
+        "",
+        ""
+      ],
+      [
+        "08/01/2024",
+        7675,
+        "",
+        "",
+        ""
+      ],
+      [
+        "09/01/2024",
+        3922,
+        "",
+        "",
+        ""
+      ],
+      [
+        "10/01/2024",
+        3950,
+        "",
+        "",
+        ""
+      ],
+      [
+        "11/01/2024",
+        3808,
+        "",
+        "",
+        ""
+      ],
+      [
+        "12/01/2024",
+        5809,
+        "",
+        "",
+        ""
+      ],
+      [
+        "13/01/2024",
+        1533,
+        "",
+        "",
+        ""
+      ],
+      [
+        "14/01/2024",
+        7914,
+        "",
+        "",
+        ""
+      ],
+      [
+        "15/01/2024",
+        4471,
+        "",
+        "",
+        ""
+      ],
+      [
+        "16/01/2024",
+        5203,
+        "",
+        "",
+        ""
+      ],
+      [
+        "17/01/2024",
+        7392,
+        "",
+        "",
+        ""
+      ],
+      [
+        "18/01/2024",
+        3982,
+        "",
+        "",
+        ""
+      ],
+      [
+        "19/01/2024",
+        2172,
+        "",
+        "",
+        ""
+      ],
+      [
+        "20/01/2024",
+        4151,
+        "",
+        "",
+        ""
+      ],
+      [
+        "21/01/2024",
+        4415,
+        "",
+        "",
+        ""
+      ],
+      [
+        "22/01/2024",
+        6878,
+        "",
+        "",
+        ""
+      ],
+      [
+        "23/01/2024",
+        1405,
+        "",
+        "",
+        ""
+      ],
+      [
+        "24/01/2024",
+        7856,
+        "",
+        "",
+        ""
+      ],
+      [
+        "25/01/2024",
+        3006,
+        "",
+        "",
+        ""
+      ],
+      [
+        "26/01/2024",
+        1904,
+        "",
+        "",
+        ""
+      ],
+      [
+        "27/01/2024",
+        3588,
+        "",
+        "",
+        ""
+      ],
+      [
+        "28/01/2024",
+        7987,
+        "",
+        "",
+        ""
+      ],
+      [
+        "29/01/2024",
+        2818,
+        "",
+        "",
+        ""
+      ],
+      [
+        "30/01/2024",
+        5857,
+        "",
+        "",
+        ""
+      ],
+      [
+        "31/01/2024",
+        3235,
+        "",
+        "",
+        ""
+      ],
+      [
+        "01/02/2024",
+        6324,
+        "",
+        "",
+        ""
+      ],
+      [
+        "02/02/2024",
+        6206,
+        "",
+        "",
+        ""
+      ],
+      [
+        "03/02/2024",
+        7167,
+        "",
+        "",
+        ""
+      ],
+      [
+        "04/02/2024",
+        3524,
+        "",
+        "",
+        ""
+      ],
+      [
+        "05/02/2024",
+        3466,
+        "",
+        "",
+        ""
+      ],
+      [
+        "06/02/2024",
+        7202,
+        "",
+        "",
+        ""
+      ],
+      [
+        "07/02/2024",
+        6847,
+        "",
+        "",
+        ""
+      ],
+      [
+        "08/02/2024",
+        7240,
+        "",
+        "",
+        ""
+      ],
+      [
+        "09/02/2024",
+        3675,
+        "",
+        "",
+        ""
+      ],
+      [
+        "10/02/2024",
+        7402,
+        "",
+        "",
+        ""
+      ],
+      [
+        "11/02/2024",
+        6022,
+        "",
+        "",
+        ""
+      ],
+      [
+        "12/02/2024",
+        5420,
+        "",
+        "",
+        ""
+      ],
+      [
+        "13/02/2024",
+        1796,
+        "",
+        "",
+        ""
+      ],
+      [
+        "14/02/2024",
+        5458,
+        "",
+        "",
+        ""
+      ],
+      [
+        "15/02/2024",
+        5730,
+        "",
+        "",
+        ""
+      ],
+      [
+        "16/02/2024",
+        6745,
+        "",
+        "",
+        ""
+      ],
+      [
+        "17/02/2024",
+        2947,
+        "",
+        "",
+        ""
+      ],
+      [
+        "18/02/2024",
+        4303,
+        "",
+        "",
+        ""
+      ],
+      [
+        "19/02/2024",
+        1181,
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "decaler_correct": true,
+    "moyennes_mobiles": true,
+    "detection_anomalies": true,
+    "score_minimum": 9
+  },
+  "checkpoints": [
+    {
+      "cellule": "C8",
+      "type": "formule",
+      "description": "Calcul de la moyenne mobile 7 jours (première ligne)",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "DECALER",
+        "B8",
+        "-6",
+        "0",
+        "7",
+        "1"
+      ],
+      "recopie_jusqua": "C51",
+      "points": 25,
+      "indices": [
+        "La moyenne mobile utilise une plage dynamique qui se décale avec chaque ligne.",
+        "DECALER permet de créer une référence relative à partir d'une cellule de base.",
+        "=MOYENNE(DECALER(B8;-6;0;7;1)) - remonte de 6 lignes pour inclure 7 valeurs"
+      ],
+      "id": "cp_1",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 29
+    },
+    {
+      "cellule": "C51",
+      "type": "formule",
+      "description": "Vérification de la recopie de la moyenne mobile (dernière ligne)",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "DECALER",
+        "B51",
+        "-6",
+        "0",
+        "7",
+        "1"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "La formule doit s'adapter automatiquement à chaque ligne.",
+        "La référence B8 doit devenir B51 en dernière ligne.",
+        "Vérifiez que DECALER référence bien B51 et non B8"
+      ],
+      "id": "cp_2",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 29
+    },
+    {
+      "cellule": "D8",
+      "type": "formule",
+      "description": "Calcul de l'écart (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "B8",
+        "C8",
+        "-"
+      ],
+      "recopie_jusqua": "D51",
+      "points": 10,
+      "indices": [
+        "L'écart mesure la différence entre la valeur réelle et la tendance.",
+        "Il faut soustraire la moyenne mobile de la valeur observée.",
+        "=B8-C8"
+      ],
+      "id": "cp_3",
+      "competence_id": 29
+    },
+    {
+      "cellule": "E8",
+      "type": "formule",
+      "description": "Détection d'anomalie avec seuil statistique",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "ABS",
+        "D8",
+        "ECARTYPE",
+        "$D$8:$D$51",
+        "*2",
+        "Anomalie",
+        "Normal"
+      ],
+      "recopie_jusqua": "E51",
+      "points": 20,
+      "indices": [
+        "Une anomalie statistique dépasse généralement 2 écarts-types de la moyenne.",
+        "Utilisez ABS pour la valeur absolue et ECARTYPE sur toute la plage des écarts.",
+        "=SI(ABS(D8)>ECARTYPE($D$8:$D$51)*2;\"Anomalie\";\"Normal\")"
+      ],
+      "id": "cp_4",
+      "competence_id": 29
+    },
+    {
+      "cellule": "E51",
+      "type": "formule",
+      "description": "Vérification de la recopie de détection d'anomalie (dernière ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "ABS",
+        "D51",
+        "ECARTYPE",
+        "$D$8:$D$51",
+        "*2",
+        "Anomalie",
+        "Normal"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "La référence à la plage d'écart-type doit rester fixe avec les $ .",
+        "Seule la référence D8 doit changer en D51.",
+        "Vérifiez que $D$8:$D$51 n'a pas bougé"
+      ],
+      "id": "cp_5",
+      "competence_id": 29
+    },
+    {
+      "cellule": "GRAPHIQUE",
+      "type": "graphique",
+      "description": "Graphique combiné avec ventes en colonnes et moyenne mobile en courbe",
+      "fonction": null,
+      "pattern": [
+        "colonnes",
+        "courbe",
+        "ventes",
+        "moyenne mobile"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Un graphique combiné permet d'afficher deux types de données différemment.",
+        "Les ventes doivent être en histogramme, la moyenne mobile en ligne.",
+        "Utilisez 'Modifier le type de graphique' pour créer un graphique combiné"
+      ],
+      "id": "cp_6",
+      "competence_id": 29
+    },
+    {
+      "cellule": "ANALYSE",
+      "type": "analyse",
+      "description": "Identification des 5 plus grandes anomalies",
+      "fonction": null,
+      "pattern": [
+        "5",
+        "anomalies",
+        "plus grandes"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Triez ou filtrez les données pour identifier les écarts les plus importants.",
+        "Cherchez les valeurs 'Anomalie' avec les plus grands écarts absolus.",
+        "Utilisez un tri décroissant sur la colonne des écarts absolus"
+      ],
+      "id": "cp_7",
+      "competence_id": 29
+    }
+  ],
+  "competence_ids": [
+    29
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "id": "tcd_35_02_lignes_colonnes",
+  "version": "1.0",
+  "titre": "📊 TCD : croiser lignes et colonnes",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "15 min",
+    "competences_ids": [35],
+    "competences_noms": ["Tableaux croisés dynamiques"],
+    "prerequis": [35],
+    "objectif_pedagogique": "Créer un TCD avec deux dimensions : une en ligne et une en colonne",
+    "source_pdf": "Chapter 13: Pivot Tables - Section 13.1",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Le directeur régional veut voir le CA par catégorie ET par région. Un tableau à double entrée serait parfait pour comparer d'un coup d'œil.",
+    
+    "personnage": "Toi, contrôleur de gestion régional.",
+    
+    "objectif": "Créer un TCD qui croise catégories (lignes) et régions (colonnes).",
+    
+    "motivation": "Le croisement lignes/colonnes, c'est LA force du TCD. Un seul tableau remplace des dizaines de SOMME.SI.ENS !",
+    
+    "ton": "On monte d'un niveau. Le TCD à double entrée, c'est du lourd."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Ventes par catégorie et par région commerciale.",
+    "periode": "Année 2024",
+    "source_fictive": "Consolidation régionale"
+  },
+
+  "donnees": {
+    "headers": ["Région", "Catégorie", "CA (k€)"],
+    "rows": [
+      ["Nord", "Électronique", 85],
+      ["Nord", "Mode", 62],
+      ["Nord", "Maison", 41],
+      ["Sud", "Électronique", 72],
+      ["Sud", "Mode", 58],
+      ["Sud", "Maison", 35],
+      ["Est", "Électronique", 91],
+      ["Est", "Mode", 48],
+      ["Est", "Maison", 52],
+      ["Ouest", "Électronique", 68],
+      ["Ouest", "Mode", 71],
+      ["Ouest", "Maison", 29]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Créer le TCD",
+      "consigne": "Clic dans les données > Insertion > Tableau croisé dynamique > Nouvelle feuille.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Ajouter Catégorie en lignes",
+      "consigne": "Glisse 'Catégorie' dans la zone 'Lignes'.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter Région en colonnes",
+      "description": "C'est là que ça devient intéressant !",
+      "consigne": "Glisse 'Région' dans la zone 'Colonnes'.",
+      "aide_contextuelle": "Tu vas obtenir un tableau avec Catégories en lignes et Régions en colonnes.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Ajouter CA en valeurs",
+      "consigne": "Glisse 'CA (k€)' dans la zone 'Valeurs'.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Analyser le résultat",
+      "description": "Tu obtiens une matrice catégorie × région.",
+      "consigne": "Vérifie que tu vois 3 lignes (catégories) × 4 colonnes (régions) + totaux.",
+      "aide_contextuelle": "Électronique/Nord = 85, Mode/Ouest = 71, etc.",
+      "temps": "2 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "TCD croisé sur nouvelle feuille",
+    "structure": [
+      { "cellule": "A1:C13", "label": "Données source", "style": "data" },
+      { "cellule": "Feuil2!A3:F7", "label": "TCD résultat", "style": "pivot" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_cross_1",
+      "type": "pivot_table",
+      "description": "TCD créé avec structure croisée",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "pivot_exists": true,
+        "has_row_field": true,
+        "has_column_field": true
+      },
+      "points": 25,
+      "indices": [
+        "Le TCD doit avoir des champs en lignes ET en colonnes.",
+        "Tu dois voir une structure matricielle (tableau à double entrée).",
+        "Les régions doivent apparaître horizontalement en en-têtes de colonnes."
+      ]
+    },
+    {
+      "id": "cp_cross_2",
+      "type": "pivot_table",
+      "description": "Catégorie en lignes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "row_fields": ["Catégorie"],
+        "row_values": ["Électronique", "Maison", "Mode"]
+      },
+      "points": 20,
+      "indices": [
+        "Les 3 catégories doivent apparaître dans la première colonne.",
+        "L'ordre peut varier (alphabétique ou autre)."
+      ]
+    },
+    {
+      "id": "cp_cross_3",
+      "type": "pivot_table",
+      "description": "Région en colonnes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "column_fields": ["Région"],
+        "column_values": ["Est", "Nord", "Ouest", "Sud"]
+      },
+      "points": 25,
+      "indices": [
+        "Les 4 régions doivent apparaître en en-têtes de colonnes.",
+        "Est, Nord, Ouest, Sud (ordre alphabétique probable).",
+        "Si les régions sont en lignes, déplace le champ vers 'Colonnes'."
+      ],
+      "erreurs_probables": [
+        { "type": "region_in_rows", "message": "Les régions sont en lignes au lieu d'être en colonnes. Déplace le champ." }
+      ]
+    },
+    {
+      "id": "cp_cross_4",
+      "type": "pivot_table",
+      "description": "Valeurs correctes avec totaux",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "sample_values": {
+          "Électronique/Nord": 85,
+          "Mode/Ouest": 71,
+          "Maison/Est": 52
+        },
+        "row_totals": true,
+        "column_totals": true,
+        "grand_total": 712
+      },
+      "points": 30,
+      "indices": [
+        "Vérifie quelques valeurs : Électronique/Nord = 85, Mode/Ouest = 71.",
+        "Les totaux par ligne et par colonne doivent être affichés.",
+        "Total général = 712 k€"
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "TCD avec Catégorie en lignes, Région en colonnes, Somme de CA en valeurs. Matrice 3×4 + totaux.",
+    "etapes_cles": [
+      "Création TCD nouvelle feuille",
+      "Catégorie → Lignes",
+      "Région → Colonnes",
+      "CA → Valeurs"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Tu maîtrises le TCD à double entrée. C'est l'outil roi de l'analyse de données !",
+    "bien": "👍 Très bien ! La structure est bonne. Vérifie que les régions sont en colonnes, pas en lignes.",
+    "ameliorer": "📊 Presque ! Tu as peut-être inversé lignes et colonnes. Région doit être en colonnes.",
+    "revoir": "🔄 Recommence : Catégorie → Lignes, Région → Colonnes, CA → Valeurs."
+  },
+
+  "pour_aller_plus_loin": [
+    "Inverse lignes et colonnes pour voir une autre perspective.",
+    "Ajoute un 2ème champ en valeurs (ex: Quantité) pour comparer CA et volume.",
+    "Utilise le tri pour mettre la meilleure région en premier."
+  ]
+}

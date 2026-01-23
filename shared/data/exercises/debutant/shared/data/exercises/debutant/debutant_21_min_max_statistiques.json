@@ -1,0 +1,119 @@
+{
+    "id": "debutant_21_min_max_statistiques",
+    "titre": "MIN/MAX : Analyse des Températures",
+    "niveau": "debutant",
+    "duree_estimee": "8 min",
+    "competences": ["MIN", "MAX", "Statistiques de base"],
+    "competence_ids": [5],
+  
+    "contexte": {
+      "situation": "Tu travailles à la station météo de ta ville. Le responsable te demande d'analyser les températures de la semaine pour le bulletin météo quotidien.",
+      "manager": {
+        "nom": "Pierre Météo",
+        "poste": "Météorologue en chef",
+        "personnalite": "Passionné et précis",
+        "demande": "J'ai besoin des températures extrêmes pour l'alerte canicule. Trouve-moi le minimum et le maximum de la semaine !"
+      },
+      "enjeux": "Bulletin météo quotidien",
+      "deadline": "Aujourd'hui 16h"
+    },
+  
+    "objectifs": [
+      "Utiliser MIN pour trouver la valeur minimale",
+      "Utiliser MAX pour trouver la valeur maximale",
+      "Calculer l'amplitude thermique",
+      "Comprendre les fonctions statistiques de base"
+    ],
+  
+    "consignes": [
+      "Dans la cellule B9, calcule la température minimale avec la fonction MIN",
+      "Dans la cellule B10, calcule la température maximale avec la fonction MAX",
+      "Dans la cellule B11, calcule l'amplitude thermique (différence MAX - MIN)"
+    ],
+  
+    "donnees": {
+      "feuille": "Températures",
+      "headers": ["Jour", "Température (°C)"],
+      "rows": [
+        ["Lundi", 18],
+        ["Mardi", 22],
+        ["Mercredi", 15],
+        ["Jeudi", 28],
+        ["Vendredi", 24],
+        ["Samedi", 19],
+        ["Dimanche", 21]
+      ]
+    },
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_min",
+        "cellule": "B9",
+        "type": "formule",
+        "description": "Calculer la température minimale",
+        "competence_id": 5,
+        "expected_formula": "MIN",
+        "expected_result": 15,
+        "points": 30,
+        "indices": [
+          "MIN trouve la plus petite valeur d'une plage",
+          "Syntaxe : =MIN(plage)",
+          "Solution : =MIN(B2:B8)"
+        ]
+      },
+      {
+        "id": "cp_2_max",
+        "cellule": "B10",
+        "type": "formule",
+        "description": "Calculer la température maximale",
+        "competence_id": 5,
+        "expected_formula": "MAX",
+        "expected_result": 28,
+        "points": 30,
+        "indices": [
+          "MAX trouve la plus grande valeur d'une plage",
+          "Syntaxe : =MAX(plage)",
+          "Solution : =MAX(B2:B8)"
+        ]
+      },
+      {
+        "id": "cp_3_amplitude",
+        "cellule": "B11",
+        "type": "formule",
+        "description": "Calculer l'amplitude thermique",
+        "competence_id": 5,
+        "expected_result": 13,
+        "points": 40,
+        "indices": [
+          "L'amplitude = différence entre max et min",
+          "Tu peux combiner MAX et MIN dans une formule",
+          "Solution : =MAX(B2:B8)-MIN(B2:B8) ou =B10-B9"
+        ]
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Parfait ! Tu maîtrises MIN et MAX. Le bulletin météo sera précis grâce à toi ! 🌡️",
+      "partiel": "Bon début ! MIN = minimum, MAX = maximum. Continue !",
+      "echec": "N'oublie pas : =MIN(plage) pour le plus petit, =MAX(plage) pour le plus grand."
+    },
+  
+    "socrate_message": {
+      "intro": "MIN et MAX sont des fonctions statistiques essentielles. Elles parcourent une plage et trouvent les valeurs extrêmes.",
+      "conclusion": "Tu maîtrises maintenant les bases des statistiques Excel ! Ces fonctions sont utilisées partout. 📊"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["min", "max", "statistiques", "débutant"],
+      "prerequis": ["SOMME", "MOYENNE"],
+      "ouvre_vers": ["NB.SI", "Fonctions conditionnelles"]
+    }
+  }

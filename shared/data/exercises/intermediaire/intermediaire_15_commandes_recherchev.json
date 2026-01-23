@@ -1,0 +1,645 @@
+{
+  "id": "intermediaire_15_commandes_recherchev",
+  "titre": "Gestion Commandes avec RECHERCHEV",
+  "niveau": "intermediaire",
+  "duree_estimee": "32 min",
+  "competences": [
+    "RECHERCHEV"
+  ],
+  "contexte": {
+    "situation": "Tu gères 50 commandes. Le catalogue produits est dans une feuille séparée.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Retrouver le nom du produit avec RECHERCHEV",
+    "Retrouver le prix unitaire",
+    "Calculer le total de chaque commande",
+    "Gérer les erreurs #N/A"
+  ],
+  "consignes": [
+    "Feuille 'Catalogue': Crée le tableau des produits (voir données)",
+    "Feuille 'Commandes': Dans C2, cherche le nom: =RECHERCHEV(B2;Catalogue!$A$2:$C$9;2;FAUX)",
+    "Dans E2, cherche le prix: =RECHERCHEV(B2;Catalogue!$A$2:$C$9;3;FAUX)",
+    "Dans F2, calcule le total: =D2*E2",
+    "Recopie jusqu'à la ligne 51",
+    "Calcule le montant total de toutes les commandes",
+    "Si #N/A, remplace par 'Produit introuvable'"
+  ],
+  "donnees": {
+    "headers": [
+      "N° Commande",
+      "Référence",
+      "Nom Produit",
+      "Quantité",
+      "Prix Unit.",
+      "Total"
+    ],
+    "rows": [
+      [
+        "CMD001",
+        "PROD001",
+        "",
+        8,
+        ""
+      ],
+      [
+        "CMD002",
+        "PROD006",
+        "",
+        2,
+        ""
+      ],
+      [
+        "CMD003",
+        "PROD008",
+        "",
+        6,
+        ""
+      ],
+      [
+        "CMD004",
+        "PROD002",
+        "",
+        2,
+        ""
+      ],
+      [
+        "CMD005",
+        "PROD004",
+        "",
+        10,
+        ""
+      ],
+      [
+        "CMD006",
+        "PROD006",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD007",
+        "PROD008",
+        "",
+        5,
+        ""
+      ],
+      [
+        "CMD008",
+        "PROD003",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD009",
+        "PROD006",
+        "",
+        9,
+        ""
+      ],
+      [
+        "CMD010",
+        "PROD001",
+        "",
+        10,
+        ""
+      ],
+      [
+        "CMD011",
+        "PROD005",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD012",
+        "PROD003",
+        "",
+        10,
+        ""
+      ],
+      [
+        "CMD013",
+        "PROD006",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD014",
+        "PROD001",
+        "",
+        7,
+        ""
+      ],
+      [
+        "CMD015",
+        "PROD004",
+        "",
+        9,
+        ""
+      ],
+      [
+        "CMD016",
+        "PROD001",
+        "",
+        8,
+        ""
+      ],
+      [
+        "CMD017",
+        "PROD004",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD018",
+        "PROD003",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD019",
+        "PROD008",
+        "",
+        7,
+        ""
+      ],
+      [
+        "CMD020",
+        "PROD001",
+        "",
+        10,
+        ""
+      ],
+      [
+        "CMD021",
+        "PROD003",
+        "",
+        6,
+        ""
+      ],
+      [
+        "CMD022",
+        "PROD007",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD023",
+        "PROD001",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD024",
+        "PROD001",
+        "",
+        7,
+        ""
+      ],
+      [
+        "CMD025",
+        "PROD007",
+        "",
+        4,
+        ""
+      ],
+      [
+        "CMD026",
+        "PROD001",
+        "",
+        5,
+        ""
+      ],
+      [
+        "CMD027",
+        "PROD002",
+        "",
+        9,
+        ""
+      ],
+      [
+        "CMD028",
+        "PROD008",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD029",
+        "PROD004",
+        "",
+        2,
+        ""
+      ],
+      [
+        "CMD030",
+        "PROD006",
+        "",
+        2,
+        ""
+      ],
+      [
+        "CMD031",
+        "PROD006",
+        "",
+        6,
+        ""
+      ],
+      [
+        "CMD032",
+        "PROD005",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD033",
+        "PROD004",
+        "",
+        4,
+        ""
+      ],
+      [
+        "CMD034",
+        "PROD007",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD035",
+        "PROD007",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD036",
+        "PROD008",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD037",
+        "PROD001",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD038",
+        "PROD006",
+        "",
+        10,
+        ""
+      ],
+      [
+        "CMD039",
+        "PROD005",
+        "",
+        6,
+        ""
+      ],
+      [
+        "CMD040",
+        "PROD004",
+        "",
+        8,
+        ""
+      ],
+      [
+        "CMD041",
+        "PROD007",
+        "",
+        8,
+        ""
+      ],
+      [
+        "CMD042",
+        "PROD007",
+        "",
+        1,
+        ""
+      ],
+      [
+        "CMD043",
+        "PROD002",
+        "",
+        6,
+        ""
+      ],
+      [
+        "CMD044",
+        "PROD008",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD045",
+        "PROD005",
+        "",
+        3,
+        ""
+      ],
+      [
+        "CMD046",
+        "PROD001",
+        "",
+        9,
+        ""
+      ],
+      [
+        "CMD047",
+        "PROD003",
+        "",
+        2,
+        ""
+      ],
+      [
+        "CMD048",
+        "PROD002",
+        "",
+        4,
+        ""
+      ],
+      [
+        "CMD049",
+        "PROD003",
+        "",
+        7,
+        ""
+      ],
+      [
+        "CMD050",
+        "PROD005",
+        "",
+        4,
+        ""
+      ]
+    ],
+    "catalogue": {
+      "headers": [
+        "Référence",
+        "Nom",
+        "Prix"
+      ],
+      "rows": [
+        [
+          "PROD001",
+          "Ordinateur",
+          999
+        ],
+        [
+          "PROD002",
+          "Téléphone",
+          599
+        ],
+        [
+          "PROD003",
+          "Tablette",
+          399
+        ],
+        [
+          "PROD004",
+          "Écouteurs",
+          149
+        ],
+        [
+          "PROD005",
+          "Souris",
+          29
+        ],
+        [
+          "PROD006",
+          "Clavier",
+          79
+        ],
+        [
+          "PROD007",
+          "Écran",
+          299
+        ],
+        [
+          "PROD008",
+          "Imprimante",
+          199
+        ]
+      ]
+    }
+  },
+  "criteres_reussite": {
+    "recherchev_correcte": true,
+    "gestion_erreurs": true,
+    "score_minimum": 8.5
+  },
+  "checkpoints": [
+    {
+      "cellule": "Catalogue!A1:C9",
+      "type": "donnees",
+      "description": "Création du tableau catalogue des produits",
+      "fonction": null,
+      "pattern": null,
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Il faut d'abord créer la base de données des produits dans une feuille séparée.",
+        "Crée une feuille 'Catalogue' avec les colonnes : Référence, Nom, Prix.",
+        "Le tableau doit contenir au minimum 8 produits avec leurs références, noms et prix."
+      ],
+      "id": "cp_1",
+      "competence_id": 18
+    },
+    {
+      "cellule": "C2",
+      "type": "formule",
+      "description": "RECHERCHEV pour le nom du produit (première ligne)",
+      "fonction": "RECHERCHEV",
+      "pattern": [
+        "RECHERCHEV",
+        "B2",
+        "Catalogue!",
+        "$A$2:$C$9",
+        "2",
+        "FAUX"
+      ],
+      "recopie_jusqua": "C51",
+      "points": 20,
+      "indices": [
+        "Tu dois chercher le nom du produit en utilisant sa référence comme clé de recherche.",
+        "Utilise RECHERCHEV avec la référence en B2, cherche dans le catalogue, colonne 2 pour le nom.",
+        "=RECHERCHEV(B2;Catalogue!$A$2:$C$9;2;FAUX)"
+      ],
+      "id": "cp_2",
+      "competence_id": 18
+    },
+    {
+      "cellule": "C51",
+      "type": "formule",
+      "description": "RECHERCHEV pour le nom du produit (dernière ligne)",
+      "fonction": "RECHERCHEV",
+      "pattern": [
+        "RECHERCHEV",
+        "B51",
+        "Catalogue!",
+        "$A$2:$C$9",
+        "2",
+        "FAUX"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée en recopiant jusqu'à la ligne 51.",
+        "La référence de cellule doit avoir changé mais pas la plage du catalogue.",
+        "La formule doit référencer B51 et toujours chercher dans Catalogue!$A$2:$C$9"
+      ],
+      "id": "cp_3",
+      "competence_id": 18
+    },
+    {
+      "cellule": "E2",
+      "type": "formule",
+      "description": "RECHERCHEV pour le prix unitaire (première ligne)",
+      "fonction": "RECHERCHEV",
+      "pattern": [
+        "RECHERCHEV",
+        "B2",
+        "Catalogue!",
+        "$A$2:$C$9",
+        "3",
+        "FAUX"
+      ],
+      "recopie_jusqua": "E51",
+      "points": 15,
+      "indices": [
+        "Maintenant tu dois récupérer le prix du produit depuis le catalogue.",
+        "Même principe que pour le nom, mais cette fois tu veux la 3ème colonne du catalogue.",
+        "=RECHERCHEV(B2;Catalogue!$A$2:$C$9;3;FAUX)"
+      ],
+      "id": "cp_4",
+      "competence_id": 18
+    },
+    {
+      "cellule": "E51",
+      "type": "formule",
+      "description": "RECHERCHEV pour le prix unitaire (dernière ligne)",
+      "fonction": "RECHERCHEV",
+      "pattern": [
+        "RECHERCHEV",
+        "B51",
+        "Catalogue!",
+        "$A$2:$C$9",
+        "3",
+        "FAUX"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Contrôle que la recopie du prix s'est bien effectuée jusqu'en bas.",
+        "La cellule doit maintenant référencer B51 pour la recherche.",
+        "Vérifie que les références absolues du catalogue sont restées fixes."
+      ],
+      "id": "cp_5",
+      "competence_id": 18
+    },
+    {
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Calcul du total ligne (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "D2",
+        "E2",
+        "*"
+      ],
+      "recopie_jusqua": "F51",
+      "points": 10,
+      "indices": [
+        "Pour obtenir le montant total d'une ligne, quelle opération faire entre quantité et prix ?",
+        "Multiplie la quantité par le prix unitaire.",
+        "=D2*E2"
+      ],
+      "id": "cp_6",
+      "competence_id": 18
+    },
+    {
+      "cellule": "F51",
+      "type": "formule",
+      "description": "Calcul du total ligne (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "D51",
+        "E51",
+        "*"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que le calcul du total s'applique bien à la dernière ligne.",
+        "Les références doivent pointer vers D51 et E51.",
+        "=D51*E51"
+      ],
+      "id": "cp_7",
+      "competence_id": 18
+    },
+    {
+      "cellule": "F52",
+      "type": "formule",
+      "description": "Montant total de toutes les commandes",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "F2:F51"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Il faut additionner tous les montants des commandes pour avoir le total général.",
+        "Utilise une fonction qui additionne toute la colonne des totaux.",
+        "=SOMME(F2:F51)"
+      ],
+      "id": "cp_8",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 18
+    },
+    {
+      "cellule": "C2",
+      "type": "formule",
+      "description": "Gestion des erreurs #N/A avec SIERREUR",
+      "fonction": "SIERREUR",
+      "pattern": [
+        "SIERREUR",
+        "RECHERCHEV",
+        "Produit introuvable"
+      ],
+      "recopie_jusqua": "E51",
+      "points": 10,
+      "indices": [
+        "Quand un produit n'existe pas, RECHERCHEV renvoie #N/A. Il faut gérer cette erreur.",
+        "Utilise la fonction SIERREUR pour remplacer les erreurs par un message personnalisé.",
+        "=SIERREUR(RECHERCHEV(B2;Catalogue!$A$2:$C$9;2;FAUX);\"Produit introuvable\")"
+      ],
+      "id": "cp_9",
+      "competence_id": 18
+    }
+  ],
+  "competence_ids": [
+    18
+  ]
+}

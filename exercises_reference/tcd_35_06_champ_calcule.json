@@ -1,0 +1,180 @@
+{
+  "id": "tcd_35_06_champ_calcule",
+  "version": "1.0",
+  "titre": "🧮 TCD : créer un champ calculé",
+
+  "metadata": {
+    "niveau": "avance",
+    "duree_estimee": "15 min",
+    "competences_ids": [35],
+    "competences_noms": ["Tableaux croisés dynamiques"],
+    "prerequis": [35],
+    "objectif_pedagogique": "Créer un champ calculé pour ajouter des métriques dérivées au TCD",
+    "source_pdf": "Chapter 13: Pivot Tables - calculated fields",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu analyses les ventes avec CA et Coûts. Tu veux calculer la Marge directement dans le TCD sans modifier les données source.",
+    
+    "personnage": "Toi, analyste financier calculant la rentabilité.",
+    
+    "objectif": "Créer un champ calculé 'Marge' = CA - Coût dans le TCD.",
+    
+    "motivation": "Le champ calculé permet d'ajouter des KPIs dérivés sans toucher aux données brutes.",
+    
+    "ton": "Le champ calculé, c'est le niveau ninja du TCD !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Ventes par produit avec CA et coûts pour calculer la marge.",
+    "periode": "Q4 2024",
+    "source_fictive": "Comptabilité analytique"
+  },
+
+  "donnees": {
+    "headers": ["Produit", "CA (€)", "Coût (€)"],
+    "rows": [
+      ["Laptop", 12000, 8400],
+      ["Tablette", 6500, 4200],
+      ["Smartphone", 9800, 5900],
+      ["Accessoires", 2400, 960],
+      ["Services", 3500, 1400]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Créer le TCD de base",
+      "consigne": "Insertion > TCD > Nouvelle feuille. Mets 'Produit' en lignes, 'CA' et 'Coût' en valeurs.",
+      "temps": "3 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Ouvrir l'outil Champ calculé",
+      "consigne": "Clic dans le TCD > Onglet 'Analyse du tableau croisé' > Champs, éléments et jeux > Champ calculé...",
+      "aide_contextuelle": "L'onglet peut s'appeler 'Outils de tableau croisé' selon ta version.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Créer le champ Marge",
+      "description": "On définit Marge = CA - Coût.",
+      "consigne": "Nom : 'Marge'. Formule : = CA - Coût (double-clic sur CA et Coût dans la liste pour les insérer).",
+      "aide_contextuelle": "Utilise les noms des champs, pas des références cellules !",
+      "temps": "3 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Valider et vérifier",
+      "consigne": "Clique 'Ajouter' puis 'OK'. La colonne 'Somme de Marge' apparaît dans le TCD.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier les valeurs",
+      "consigne": "Laptop : Marge = 12000-8400 = 3600€. Services : Marge = 3500-1400 = 2100€.",
+      "aide_contextuelle": "Total Marge = 13440€ = Total CA (34200) - Total Coût (20860).",
+      "temps": "2 min"
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "id": "cp_calc_1",
+      "type": "pivot_table",
+      "description": "Champ calculé 'Marge' créé",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "calculated_field": true,
+        "field_name": "Marge",
+        "formula_contains": ["CA", "Coût", "-"]
+      },
+      "points": 40,
+      "indices": [
+        "Tu dois voir une colonne 'Somme de Marge' dans le TCD.",
+        "Analyse du tableau croisé > Champs, éléments > Champ calculé.",
+        "La formule doit être = CA - Coût (utilise les noms des champs)."
+      ],
+      "erreurs_probables": [
+        { "type": "no_calculated_field", "message": "Pas de champ calculé visible. As-tu cliqué 'Ajouter' puis 'OK' ?" },
+        { "type": "wrong_formula", "message": "La formule n'est pas correcte. Utilise = CA - Coût." }
+      ]
+    },
+    {
+      "id": "cp_calc_2",
+      "type": "pivot_table",
+      "description": "Valeurs de marge correctes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "margin_values": {
+          "Laptop": 3600,
+          "Tablette": 2300,
+          "Smartphone": 3900,
+          "Accessoires": 1440,
+          "Services": 2100
+        },
+        "total_margin": 13340
+      },
+      "points": 35,
+      "indices": [
+        "Marge = CA - Coût pour chaque produit.",
+        "Laptop : 12000 - 8400 = 3600€",
+        "Total marge = 34200 - 20860 = 13340€"
+      ]
+    },
+    {
+      "id": "cp_calc_3",
+      "type": "pivot_table",
+      "description": "CA et Coût aussi en valeurs",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "value_fields": ["Somme de CA", "Somme de Coût", "Somme de Marge"]
+      },
+      "points": 15,
+      "indices": [
+        "Tu dois avoir 3 colonnes : CA, Coût, Marge.",
+        "Le champ calculé s'ajoute aux autres, il ne les remplace pas."
+      ]
+    },
+    {
+      "id": "cp_calc_4",
+      "type": "pivot_table",
+      "description": "Produit en lignes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "row_fields": ["Produit"]
+      },
+      "points": 10
+    }
+  ],
+
+  "solution_complete": {
+    "description": "TCD avec Produit en lignes, CA/Coût en valeurs, et champ calculé Marge = CA - Coût.",
+    "etapes_cles": [
+      "Créer TCD avec CA et Coût",
+      "Analyse > Champ calculé",
+      "Nom: Marge, Formule: = CA - Coût"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Bravo ! Tu as créé un KPI dérivé directement dans le TCD. Niveau expert atteint !",
+    "bien": "👍 Bien ! Le champ calculé existe. Vérifie les valeurs de marge.",
+    "ameliorer": "🧮 Presque ! La formule doit être = CA - Coût (avec les noms des champs).",
+    "revoir": "🔄 Analyse > Champs, éléments > Champ calculé > Nom: Marge, Formule: = CA - Coût."
+  }
+}

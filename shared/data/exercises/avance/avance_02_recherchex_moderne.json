@@ -1,0 +1,264 @@
+{
+    "id": "avance_02_recherchex_moderne",
+    "titre": "RECHERCHEX : Le Successeur Moderne de RECHERCHEV",
+    "niveau": "avance",
+    "duree_estimee": "22 min",
+    "competences": ["RECHERCHEX", "XLOOKUP", "Excel 365"],
+    "competence_ids": [38],
+  
+    "contexte": {
+      "situation": "Tu travailles chez DataFlow, une startup tech qui utilise Excel 365. Le CTO veut moderniser tous les fichiers Excel en remplaçant les vieux RECHERCHEV par RECHERCHEX, plus puissant et plus lisible. Tu es chargé(e) de former l'équipe et de migrer le fichier de gestion des licences logicielles.",
+      "manager": {
+        "nom": "Sarah Chen",
+        "poste": "CTO",
+        "personnalite": "Passionnée par les nouvelles technos, elle veut que l'équipe utilise les outils modernes.",
+        "demande": "RECHERCHEV c'est has-been ! Avec RECHERCHEX on peut chercher à gauche, gérer les erreurs nativement, et la syntaxe est plus claire. Montre-moi comment migrer notre fichier de licences."
+      },
+      "enjeux": "Standardisation des pratiques Excel dans l'entreprise.",
+      "deadline": "Formation prévue vendredi"
+    },
+  
+    "objectifs": [
+      "Comprendre les avantages de RECHERCHEX vs RECHERCHEV",
+      "Maîtriser la syntaxe complète de RECHERCHEX",
+      "Utiliser la recherche à gauche (impossible avec RECHERCHEV)",
+      "Gérer les erreurs avec le paramètre intégré",
+      "Utiliser les modes de correspondance avancés"
+    ],
+  
+    "prerequis_version": {
+      "minimum": "Excel 365 ou Excel 2021",
+      "note": "RECHERCHEX n'existe pas dans Excel 2019 et versions antérieures"
+    },
+  
+    "consignes": [
+      "Ouvre le fichier de gestion des licences logicielles",
+      "Remplace les RECHERCHEV existants par RECHERCHEX",
+      "Utilise RECHERCHEX pour des recherches à gauche",
+      "Configure la gestion d'erreurs native de RECHERCHEX"
+    ],
+  
+    "donnees": {
+      "feuille": "Licences",
+      "table_licences": {
+        "headers": ["ID_Licence", "Logiciel", "Utilisateur", "Date_Expiration", "Coût_Annuel", "Statut"],
+        "rows": [
+          ["LIC001", "Microsoft 365", "Martin Sophie", "31/12/2026", 150, "Active"],
+          ["LIC002", "Adobe Creative", "Dubois Thomas", "30/06/2025", 720, "Active"],
+          ["LIC003", "Slack Pro", "Bernard Claire", "15/03/2025", 84, "Expire bientôt"],
+          ["LIC004", "Zoom Business", "Petit Lucas", "01/01/2025", 180, "Expirée"],
+          ["LIC005", "GitHub Enterprise", "Robert Emma", "30/09/2026", 252, "Active"],
+          ["LIC006", "Notion Team", "Durand Marc", "28/02/2025", 96, "Expire bientôt"],
+          ["LIC007", "Figma Pro", "Leroy Julie", "31/12/2025", 144, "Active"],
+          ["LIC008", "Jira Software", "Moreau Antoine", "30/04/2025", 120, "Expire bientôt"]
+        ],
+        "position": "A1:F9"
+      },
+      "formulaire_recherche": {
+        "recherche_par_id": {"cellule_entree": "I3", "cellule_resultat": "J3"},
+        "recherche_par_utilisateur": {"cellule_entree": "I6", "cellule_resultat": "J6"},
+        "recherche_par_logiciel": {"cellule_entree": "I9", "cellule_resultat": "J9"}
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Syntaxe RECHERCHEX",
+        "syntaxe": "=RECHERCHEX(valeur_cherchée; plage_recherche; plage_résultat; [si_non_trouvé]; [mode]; [sens])",
+        "arguments": [
+          "valeur_cherchée : ce qu'on cherche",
+          "plage_recherche : où chercher",
+          "plage_résultat : quoi renvoyer (peut être à GAUCHE !)",
+          "si_non_trouvé : valeur si pas trouvé (optionnel, remplace SIERREUR)",
+          "mode : 0=exact, -1=exact ou inf, 1=exact ou sup, 2=wildcard",
+          "sens : 1=depuis début, -1=depuis fin, 2=binaire croissant, -2=binaire décroissant"
+        ]
+      },
+      {
+        "phase": "B. Comparaison RECHERCHEV vs RECHERCHEX",
+        "recherchev": "=RECHERCHEV(I3;A:F;2;FAUX)",
+        "recherchex": "=RECHERCHEX(I3;A:A;B:B)",
+        "avantages_recherchex": [
+          "Plus lisible : on voit clairement où on cherche et quoi on renvoie",
+          "Recherche à gauche possible",
+          "Gestion d'erreur intégrée",
+          "Pas besoin de compter les colonnes"
+        ]
+      },
+      {
+        "phase": "C. Recherche simple (remplacer RECHERCHEV)",
+        "consignes": [
+          "Trouver le logiciel à partir de l'ID",
+          "RECHERCHEV : =RECHERCHEV(I3;$A$2:$F$9;2;FAUX)",
+          "RECHERCHEX : =RECHERCHEX(I3;$A$2:$A$9;$B$2:$B$9)"
+        ]
+      },
+      {
+        "phase": "D. Recherche à gauche (impossible avec RECHERCHEV)",
+        "consignes": [
+          "Trouver l'ID à partir du nom d'utilisateur (colonne C → colonne A)",
+          "RECHERCHEV : impossible directement !",
+          "RECHERCHEX : =RECHERCHEX(I6;$C$2:$C$9;$A$2:$A$9)"
+        ]
+      },
+      {
+        "phase": "E. Gestion d'erreur intégrée",
+        "consignes": [
+          "Au lieu de : =SIERREUR(RECHERCHEV(...);\"Non trouvé\")",
+          "Utilise : =RECHERCHEX(I3;A:A;B:B;\"Non trouvé\")",
+          "Le 4ème argument gère directement le cas 'non trouvé'"
+        ]
+      },
+      {
+        "phase": "F. Renvoyer plusieurs colonnes",
+        "consignes": [
+          "RECHERCHEX peut renvoyer plusieurs colonnes à la fois !",
+          "=RECHERCHEX(I3;$A$2:$A$9;$B$2:$D$9)",
+          "Renvoie Logiciel + Utilisateur + Date en une formule"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_recherchex_simple",
+        "cellule": "J3",
+        "type": "valeur",
+        "description": "Trouver le logiciel avec RECHERCHEX",
+        "competence_id": 38,
+        "expected_value": "Microsoft 365",
+        "input_value": "LIC001",
+        "points": 15,
+        "indices": [
+          "Cherche LIC001 dans la colonne A",
+          "Renvoie la valeur correspondante en colonne B",
+          "=RECHERCHEX(I3;$A$2:$A$9;$B$2:$B$9)"
+        ]
+      },
+      {
+        "id": "cp_2_formule_recherchex",
+        "cellule": "J3",
+        "type": "formule",
+        "description": "Utilisation de RECHERCHEX (pas RECHERCHEV)",
+        "competence_id": 38,
+        "fonction": "RECHERCHEX",
+        "pattern": ["RECHERCHEX", "I3"],
+        "points": 10,
+        "indices": [
+          "La formule doit utiliser RECHERCHEX",
+          "Pas RECHERCHEV, pas INDEX+EQUIV",
+          "=RECHERCHEX(valeur;où_chercher;quoi_renvoyer)"
+        ]
+      },
+      {
+        "id": "cp_3_recherche_gauche",
+        "cellule": "J6",
+        "type": "valeur",
+        "description": "Recherche à gauche : utilisateur → ID",
+        "competence_id": 38,
+        "expected_value": "LIC003",
+        "input_value": "Bernard Claire",
+        "points": 20,
+        "indices": [
+          "Cherche 'Bernard Claire' en colonne C",
+          "Renvoie l'ID en colonne A (à GAUCHE !)",
+          "=RECHERCHEX(I6;$C$2:$C$9;$A$2:$A$9)"
+        ]
+      },
+      {
+        "id": "cp_4_gestion_erreur",
+        "cellule": "J9",
+        "type": "valeur",
+        "description": "Gestion erreur intégrée (logiciel inexistant)",
+        "competence_id": 38,
+        "expected_value": "Logiciel non trouvé",
+        "input_value": "LogicielInexistant",
+        "points": 20,
+        "indices": [
+          "Le 4ème argument gère le cas 'non trouvé'",
+          "=RECHERCHEX(I9;$B$2:$B$9;$A$2:$A$9;\"Logiciel non trouvé\")",
+          "Pas besoin de SIERREUR !"
+        ]
+      },
+      {
+        "id": "cp_5_cout_licence",
+        "cellule": "J12",
+        "type": "valeur",
+        "description": "Trouver le coût annuel d'une licence",
+        "competence_id": 38,
+        "expected_value": 720,
+        "input_value": "LIC002",
+        "points": 15,
+        "indices": [
+          "Cherche LIC002, renvoie la colonne E (Coût)",
+          "=RECHERCHEX(I12;$A$2:$A$9;$E$2:$E$9)",
+          "Adobe Creative = 720€/an"
+        ]
+      },
+      {
+        "id": "cp_6_statut_utilisateur",
+        "cellule": "J15",
+        "type": "valeur",
+        "description": "Trouver le statut à partir de l'utilisateur",
+        "competence_id": 38,
+        "expected_value": "Expirée",
+        "input_value": "Petit Lucas",
+        "points": 20,
+        "indices": [
+          "Cherche dans Utilisateur (C), renvoie Statut (F)",
+          "=RECHERCHEX(I15;$C$2:$C$9;$F$2:$F$9)",
+          "Petit Lucas a une licence expirée"
+        ]
+      }
+    ],
+  
+    "modes_correspondance": {
+      "0": "Correspondance exacte (défaut)",
+      "-1": "Correspondance exacte ou valeur immédiatement inférieure",
+      "1": "Correspondance exacte ou valeur immédiatement supérieure",
+      "2": "Correspondance avec caractères génériques (* et ?)"
+    },
+  
+    "migration_recherchev": [
+      {
+        "avant": "=RECHERCHEV(A1;Table;3;FAUX)",
+        "apres": "=RECHERCHEX(A1;ColRecherche;ColResultat)",
+        "note": "Plus besoin de compter les colonnes !"
+      },
+      {
+        "avant": "=SIERREUR(RECHERCHEV(A1;Table;2;FAUX);\"Erreur\")",
+        "apres": "=RECHERCHEX(A1;Col1;Col2;\"Erreur\")",
+        "note": "Gestion d'erreur intégrée"
+      },
+      {
+        "avant": "=INDEX(A:A;EQUIV(B1;C:C;0))",
+        "apres": "=RECHERCHEX(B1;C:C;A:A)",
+        "note": "Recherche à gauche simplifiée"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises RECHERCHEX, la fonction de recherche moderne d'Excel 365. Plus lisible, plus puissante, plus élégante ! 🚀",
+      "partiel": "Bon début ! RECHERCHEX est simple : =RECHERCHEX(quoi;où_chercher;quoi_renvoyer). N'oublie pas qu'on peut ajouter un 4ème argument pour les erreurs.",
+      "echec": "RECHERCHEX simplifie tout : pas besoin de compter les colonnes, recherche à gauche possible. Reprends la syntaxe de base."
+    },
+  
+    "socrate_message": {
+      "intro": "RECHERCHEX, c'est RECHERCHEV version 2.0 ! 🆕 Microsoft a écouté toutes les plaintes sur RECHERCHEV et a créé une fonction qui corrige tous ses défauts.",
+      "conclusion": "Tu connais maintenant la fonction de recherche la plus moderne d'Excel. RECHERCHEX = syntaxe claire + recherche bidirectionnelle + gestion d'erreur intégrée. Le futur des recherches Excel ! ✨"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["RECHERCHEX", "XLOOKUP", "Excel 365", "moderne", "recherche", "avancé"],
+      "prerequis": ["RECHERCHEV", "INDEX+EQUIV"],
+      "ouvre_vers": ["FILTER", "SORT", "UNIQUE", "Formules dynamiques"]
+    }
+  }

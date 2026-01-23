@@ -1,0 +1,165 @@
+{
+  "id": "avance_08_decaler_moyenne_mobile",
+  "titre": "Moyennes Mobiles avec DECALER",
+  "niveau": "avance",
+  "competences": ["DECALER", "Moyennes mobiles", "Plages dynamiques", "Analyse temporelle"],
+  "competence_ids": [28],
+  "duree_estimee": "25 min",
+  
+  "contexte": {
+    "situation": "Le contrôleur de gestion veut suivre la tendance des ventes en lissant les variations quotidiennes. Il te demande de calculer une moyenne mobile sur 7 jours.",
+    "manager": {
+      "nom": "François Legrand",
+      "poste": "Contrôleur de Gestion"
+    },
+    "enjeux": "Identifier la vraie tendance sans être pollué par les pics ponctuels.",
+    "deadline": "Réunion de direction lundi"
+  },
+  
+  "objectifs": [
+    "Comprendre la fonction DECALER (OFFSET)",
+    "Créer une plage dynamique qui 'remonte' dans les données",
+    "Calculer une moyenne mobile glissante",
+    "Gérer le cas des premières lignes (pas assez de données)"
+  ],
+  
+  "consignes": [
+    "Les ventes journalières sont en B2:B32 (31 jours)",
+    "En C8, calcule la moyenne des 7 derniers jours avec DECALER",
+    "Formule : =MOYENNE(DECALER(B8;-6;0;7;1))",
+    "Pour C2:C7, affiche 'N/A' ou laisse vide (pas assez de données)",
+    "Recopie C8 jusqu'à C32"
+  ],
+  
+  "donnees": {
+    "headers": ["Date", "Ventes", "Moyenne 7j"],
+    "rows": [
+      ["01/01/2024", 1250, ""],
+      ["02/01/2024", 1180, ""],
+      ["03/01/2024", 1420, ""],
+      ["04/01/2024", 1100, ""],
+      ["05/01/2024", 1350, ""],
+      ["06/01/2024", 980, ""],
+      ["07/01/2024", 1560, ""],
+      ["08/01/2024", 1290, ""],
+      ["09/01/2024", 1440, ""],
+      ["10/01/2024", 1200, ""],
+      ["11/01/2024", 1380, ""],
+      ["12/01/2024", 1150, ""],
+      ["13/01/2024", 1520, ""],
+      ["14/01/2024", 1340, ""],
+      ["15/01/2024", 1480, ""],
+      ["16/01/2024", 1260, ""],
+      ["17/01/2024", 1390, ""],
+      ["18/01/2024", 1170, ""],
+      ["19/01/2024", 1450, ""],
+      ["20/01/2024", 1320, ""],
+      ["21/01/2024", 1580, ""],
+      ["22/01/2024", 1410, ""],
+      ["23/01/2024", 1230, ""],
+      ["24/01/2024", 1490, ""],
+      ["25/01/2024", 1360, ""],
+      ["26/01/2024", 1540, ""],
+      ["27/01/2024", 1280, ""],
+      ["28/01/2024", 1470, ""],
+      ["29/01/2024", 1190, ""],
+      ["30/01/2024", 1520, ""],
+      ["31/01/2024", 1350, ""]
+    ]
+  },
+  
+  "checkpoints": [
+    {
+      "id": "cp_1",
+      "type": "formule",
+      "cellule": "C8",
+      "description": "Formule DECALER présente",
+      "fonction": "DECALER",
+      "pattern": ["MOYENNE", "DECALER", "B8", "-6", "7"],
+      "points": 30,
+      "indices": [
+        "DECALER(référence; lignes; colonnes; [hauteur]; [largeur])",
+        "Pour remonter de 6 lignes : lignes = -6",
+        "Pour une plage de 7 cellules : hauteur = 7",
+        "=MOYENNE(DECALER(B8;-6;0;7;1))"
+      ]
+    },
+    {
+      "id": "cp_2",
+      "type": "valeur",
+      "cellule": "C8",
+      "description": "Moyenne 7j correcte pour le 07/01 (≈1263)",
+      "valeur_attendue": 1262.86,
+      "tolerance": 1,
+      "points": 20
+    },
+    {
+      "id": "cp_3",
+      "type": "formule",
+      "cellule": "C32",
+      "description": "Formule recopiée jusqu'à la ligne 32",
+      "fonction": "DECALER",
+      "pattern": ["DECALER", "B32"],
+      "points": 15
+    },
+    {
+      "id": "cp_4",
+      "type": "valeur",
+      "cellule": "C32",
+      "description": "Moyenne 7j correcte pour le 31/01 (≈1394)",
+      "valeur_attendue": 1394.29,
+      "tolerance": 1,
+      "points": 15
+    },
+    {
+      "id": "cp_5",
+      "type": "vide_ou_na",
+      "cellule": "C2",
+      "description": "Les premières cellules sont vides ou N/A",
+      "points": 10
+    }
+  ],
+  
+  "criteres_reussite": {
+    "score_minimum": 70,
+    "formule_decaler_presente": true
+  },
+  
+  "theorie": {
+    "concept": "DECALER pour plages dynamiques",
+    "explication": "DECALER crée une référence décalée par rapport à une cellule de départ. Avec les arguments hauteur/largeur, elle crée une PLAGE dynamique.",
+    "syntaxe": "=DECALER(référence; lignes; colonnes; [hauteur]; [largeur])",
+    "exemple": "DECALER(B8;-6;0;7;1) = plage de B2 à B8 (7 cellules)",
+    "usages": [
+      "Moyennes mobiles",
+      "Graphiques dynamiques",
+      "Plages qui s'adaptent aux données"
+    ],
+    "attention": "DECALER est une fonction volatile : elle recalcule à chaque modification du classeur. Éviter d'en abuser."
+  },
+  
+  "indices": [
+    "DECALER(B8;-6;0) pointe vers B2 (6 lignes au-dessus)",
+    "Ajoute ;7;1 pour créer une plage de 7 lignes × 1 colonne",
+    "La plage résultante va de B2 à B8",
+    "Quand tu recopies, B8 devient B9, B10... et la plage glisse"
+  ],
+  
+  "erreurs_frequentes": [
+    {
+      "erreur": "#REF!",
+      "cause": "DECALER essaie d'aller au-dessus de la ligne 1",
+      "solution": "Commence la formule à partir de C8, pas C2"
+    },
+    {
+      "erreur": "Moyenne fixe (ne change pas en recopiant)",
+      "cause": "La référence de départ est figée avec $",
+      "solution": "N'utilise PAS de $ : B8 doit devenir B9, B10..."
+    },
+    {
+      "erreur": "Résultat incorrect",
+      "cause": "Arguments dans le mauvais ordre",
+      "solution": "Ordre : référence, lignes (-6), colonnes (0), hauteur (7), largeur (1)"
+    }
+  ]
+}

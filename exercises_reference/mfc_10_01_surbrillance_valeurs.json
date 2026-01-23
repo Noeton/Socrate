@@ -1,0 +1,212 @@
+{
+  "id": "mfc_10_01_surbrillance_valeurs",
+  "version": "1.0",
+  "titre": "🎨 MFC : mettre en évidence les bons vendeurs",
+
+  "metadata": {
+    "niveau": "debutant",
+    "duree_estimee": "10 min",
+    "competences_ids": [10],
+    "competences_noms": ["Mise en forme conditionnelle simple"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Appliquer une mise en forme conditionnelle basée sur une valeur seuil",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.1 (xlCellValue, xlGreater)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu es responsable d'équipe chez TechSales. Tu veux identifier rapidement les vendeurs qui ont dépassé l'objectif de 10 000€ ce mois-ci pour les féliciter.",
+    
+    "personnage": "Toi, manager d'une équipe de 8 commerciaux.",
+    
+    "objectif": "Mettre automatiquement en vert les cellules des vendeurs qui ont dépassé 10 000€.",
+    
+    "motivation": "La MFC transforme ton tableau de chiffres en dashboard visuel. Plus besoin de lire chaque ligne : les bons résultats sautent aux yeux !",
+    
+    "ton": "La MFC, c'est comme avoir un surligneur intelligent qui travaille pour toi."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Ventes mensuelles de l'équipe commerciale TechSales. Objectif individuel : 10 000€.",
+    "periode": "Janvier 2025",
+    "source_fictive": "CRM TechSales"
+  },
+
+  "donnees": {
+    "headers": ["Vendeur", "Ventes (€)"],
+    "rows": [
+      ["Alice", 8500],
+      ["Bob", 12300],
+      ["Claire", 9800],
+      ["David", 15600],
+      ["Emma", 11200],
+      ["Fabien", 7900],
+      ["Gaëlle", 10500],
+      ["Hugo", 13100]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les cellules à formater",
+      "consigne": "Sélectionne la plage B2:B9 (les montants des ventes, sans l'en-tête).",
+      "aide_contextuelle": "On applique la MFC sur les valeurs, pas sur les noms des vendeurs.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Ouvrir le menu MFC",
+      "consigne": "Accueil > Mise en forme conditionnelle > Règles de mise en surbrillance des cellules > Supérieur à...",
+      "aide_contextuelle": "Tu trouveras la MFC dans l'onglet Accueil, groupe Styles.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Définir la condition",
+      "consigne": "Dans la boîte de dialogue, entre la valeur '10000'.",
+      "aide_contextuelle": "La condition est 'Supérieur à 10000'. Les cellules > 10000 seront formatées.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Choisir le format",
+      "consigne": "Dans le menu déroulant, choisis 'Remplissage vert avec texte vert foncé' (ou personnalise avec du vert).",
+      "aide_contextuelle": "Le vert est associé au positif. Tu peux aussi créer un format personnalisé.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier le résultat",
+      "description": "Les cellules > 10000 doivent être en vert.",
+      "consigne": "Vérifie que Bob (12300), David (15600), Emma (11200), Gaëlle (10500) et Hugo (13100) sont en vert.",
+      "aide_contextuelle": "5 vendeurs sur 8 ont dépassé l'objectif. Leurs cellules doivent être vertes.",
+      "temps": "1 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "MFC appliquée sur la colonne des ventes",
+    "structure": [
+      { "cellule": "A1:B9", "label": "Données", "style": "data" },
+      { "cellule": "B2:B9", "label": "Zone MFC", "style": "mfc_zone" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_mfc_1",
+      "type": "format",
+      "subtype": "mfc_cell_value",
+      "description": "MFC appliquée avec règle > 10000",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "cell_value",
+        "operator": ">",
+        "threshold": 10000
+      },
+      "points": 35,
+      "indices": [
+        "La règle doit être 'Supérieur à 10000', pas 'Supérieur ou égal'.",
+        "Accueil > Mise en forme conditionnelle > Supérieur à...",
+        "Entre 10000 dans le champ de valeur."
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_operator", "message": "Tu as utilisé '>=' au lieu de '>'. 10000 pile ne doit PAS être coloré." },
+        { "type": "wrong_threshold", "message": "Le seuil n'est pas 10000. Vérifie la valeur entrée." }
+      ]
+    },
+    {
+      "id": "cp_mfc_2",
+      "type": "format",
+      "subtype": "mfc_color",
+      "description": "Format vert appliqué",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "fill_color": "green",
+        "fill_color_variants": ["vert", "green", "lightgreen", "vert clair"]
+      },
+      "points": 25,
+      "indices": [
+        "Le remplissage doit être vert (associé au positif/succès).",
+        "Choisis 'Remplissage vert' dans le menu déroulant du format.",
+        "Tu peux aussi utiliser Format personnalisé > Remplissage > Vert."
+      ]
+    },
+    {
+      "id": "cp_mfc_3",
+      "type": "format",
+      "subtype": "mfc_coverage",
+      "description": "5 cellules colorées sur 8",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "colored_cells_count": 5,
+        "colored_cells": ["B3", "B5", "B6", "B8", "B9"],
+        "uncolored_cells": ["B2", "B4", "B7"]
+      },
+      "points": 25,
+      "indices": [
+        "Bob (12300), David (15600), Emma (11200), Gaëlle (10500) et Hugo (13100) doivent être verts.",
+        "Alice (8500), Claire (9800) et Fabien (7900) ne doivent PAS être verts.",
+        "Si tout est vert ou rien n'est vert, vérifie ton seuil."
+      ],
+      "erreurs_probables": [
+        { "type": "all_colored", "message": "Toutes les cellules sont colorées. Ton seuil est trop bas." },
+        { "type": "none_colored", "message": "Aucune cellule n'est colorée. Ton seuil est trop haut ou la MFC n'est pas appliquée." }
+      ]
+    },
+    {
+      "id": "cp_mfc_4",
+      "type": "format",
+      "subtype": "mfc_range",
+      "description": "MFC appliquée sur la bonne plage",
+      "competence_id": 10,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "range": "B2:B9",
+        "excludes_header": true
+      },
+      "points": 15,
+      "indices": [
+        "La MFC doit être sur B2:B9, pas sur toute la colonne B.",
+        "L'en-tête 'Ventes (€)' en B1 ne doit pas être formaté.",
+        "Sélectionne uniquement les données, pas les en-têtes."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "MFC 'Supérieur à 10000' avec remplissage vert sur B2:B9. 5 cellules sur 8 sont vertes.",
+    "etapes_cles": [
+      "Sélection B2:B9",
+      "Accueil > MFC > Supérieur à",
+      "Valeur : 10000",
+      "Format : Remplissage vert"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Tu identifies instantanément les 5 vendeurs qui ont dépassé l'objectif. La MFC, c'est de la magie visuelle !",
+    "bien": "👍 Très bien ! La MFC fonctionne. Vérifie que seules les valeurs > 10000 sont colorées.",
+    "ameliorer": "🎨 Presque ! Assure-toi que le seuil est bien 10000 et que le format est vert.",
+    "revoir": "🔄 Recommence : sélectionne B2:B9, puis Accueil > MFC > Supérieur à > 10000 > Vert."
+  },
+
+  "pour_aller_plus_loin": [
+    "Ajoute une 2ème règle : rouge si < 8000 (vendeurs en difficulté).",
+    "Utilise 'Gérer les règles' pour voir toutes les MFC actives.",
+    "Applique la MFC sur toute la ligne (pas juste la cellule du montant)."
+  ]
+}

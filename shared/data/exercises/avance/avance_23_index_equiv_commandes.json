@@ -1,0 +1,841 @@
+{
+  "id": "avance_23_index_equiv_commandes",
+  "titre": "Recherche Avancée avec INDEX+EQUIV",
+  "niveau": "avance",
+  "duree_estimee": "40 min",
+  "competences": [
+    "INDEX+EQUIV"
+  ],
+  "contexte": {
+    "situation": "Tu remplaces RECHERCHEV par INDEX+EQUIV pour plus de flexibilité dans la gestion des commandes.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Comprendre l'avantage INDEX+EQUIV vs RECHERCHEV",
+    "Rechercher à gauche de la clé",
+    "Gérer les erreurs élégamment"
+  ],
+  "consignes": [
+    "Feuille 'Catalogue': Référentiel des produits (colonnes: Nom, Ref, Prix, Stock)",
+    "Dans C2, cherche le nom: =INDEX(Catalogue!$A$2:$A$31;EQUIV(B2;Catalogue!$B$2:$B$31;0))",
+    "Dans E2, cherche le prix: =INDEX(Catalogue!$C$2:$C$31;EQUIV(B2;Catalogue!$B$2:$B$31;0))",
+    "Dans F2, calcule le total: =D2*E2",
+    "Dans G2, vérifie le stock: =INDEX(Catalogue!$D$2:$D$31;EQUIV(B2;Catalogue!$B$2:$B$31;0))",
+    "Dans H2, vérifie dispo: =SI(G2>=D2;\"OK\";\"Stock insuffisant\")",
+    "Gère les erreurs avec SIERREUR"
+  ],
+  "donnees": {
+    "headers": [
+      "N° Commande",
+      "Référence",
+      "Nom",
+      "Qté",
+      "Prix Unit",
+      "Total",
+      "Stock Dispo",
+      "Statut"
+    ],
+    "rows": [
+      [
+        "CMD001",
+        "PROD008",
+        "",
+        5,
+        "",
+        ""
+      ],
+      [
+        "CMD002",
+        "PROD020",
+        "",
+        9,
+        "",
+        ""
+      ],
+      [
+        "CMD003",
+        "PROD028",
+        "",
+        1,
+        "",
+        ""
+      ],
+      [
+        "CMD004",
+        "PROD006",
+        "",
+        6,
+        "",
+        ""
+      ],
+      [
+        "CMD005",
+        "PROD007",
+        "",
+        2,
+        "",
+        ""
+      ],
+      [
+        "CMD006",
+        "PROD012",
+        "",
+        8,
+        "",
+        ""
+      ],
+      [
+        "CMD007",
+        "PROD024",
+        "",
+        8,
+        "",
+        ""
+      ],
+      [
+        "CMD008",
+        "PROD004",
+        "",
+        11,
+        "",
+        ""
+      ],
+      [
+        "CMD009",
+        "PROD008",
+        "",
+        14,
+        "",
+        ""
+      ],
+      [
+        "CMD010",
+        "PROD008",
+        "",
+        9,
+        "",
+        ""
+      ],
+      [
+        "CMD011",
+        "PROD028",
+        "",
+        2,
+        "",
+        ""
+      ],
+      [
+        "CMD012",
+        "PROD019",
+        "",
+        6,
+        "",
+        ""
+      ],
+      [
+        "CMD013",
+        "PROD009",
+        "",
+        3,
+        "",
+        ""
+      ],
+      [
+        "CMD014",
+        "PROD024",
+        "",
+        10,
+        "",
+        ""
+      ],
+      [
+        "CMD015",
+        "PROD005",
+        "",
+        14,
+        "",
+        ""
+      ],
+      [
+        "CMD016",
+        "PROD021",
+        "",
+        10,
+        "",
+        ""
+      ],
+      [
+        "CMD017",
+        "PROD004",
+        "",
+        5,
+        "",
+        ""
+      ],
+      [
+        "CMD018",
+        "PROD017",
+        "",
+        11,
+        "",
+        ""
+      ],
+      [
+        "CMD019",
+        "PROD017",
+        "",
+        11,
+        "",
+        ""
+      ],
+      [
+        "CMD020",
+        "PROD006",
+        "",
+        14,
+        "",
+        ""
+      ],
+      [
+        "CMD021",
+        "PROD020",
+        "",
+        4,
+        "",
+        ""
+      ],
+      [
+        "CMD022",
+        "PROD009",
+        "",
+        7,
+        "",
+        ""
+      ],
+      [
+        "CMD023",
+        "PROD005",
+        "",
+        6,
+        "",
+        ""
+      ],
+      [
+        "CMD024",
+        "PROD004",
+        "",
+        4,
+        "",
+        ""
+      ],
+      [
+        "CMD025",
+        "PROD025",
+        "",
+        1,
+        "",
+        ""
+      ],
+      [
+        "CMD026",
+        "PROD010",
+        "",
+        4,
+        "",
+        ""
+      ],
+      [
+        "CMD027",
+        "PROD002",
+        "",
+        9,
+        "",
+        ""
+      ],
+      [
+        "CMD028",
+        "PROD029",
+        "",
+        7,
+        "",
+        ""
+      ],
+      [
+        "CMD029",
+        "PROD024",
+        "",
+        13,
+        "",
+        ""
+      ],
+      [
+        "CMD030",
+        "PROD017",
+        "",
+        15,
+        "",
+        ""
+      ],
+      [
+        "CMD031",
+        "PROD002",
+        "",
+        8,
+        "",
+        ""
+      ],
+      [
+        "CMD032",
+        "PROD001",
+        "",
+        10,
+        "",
+        ""
+      ],
+      [
+        "CMD033",
+        "PROD023",
+        "",
+        1,
+        "",
+        ""
+      ],
+      [
+        "CMD034",
+        "PROD001",
+        "",
+        13,
+        "",
+        ""
+      ],
+      [
+        "CMD035",
+        "PROD002",
+        "",
+        12,
+        "",
+        ""
+      ],
+      [
+        "CMD036",
+        "PROD013",
+        "",
+        13,
+        "",
+        ""
+      ],
+      [
+        "CMD037",
+        "PROD022",
+        "",
+        8,
+        "",
+        ""
+      ],
+      [
+        "CMD038",
+        "PROD022",
+        "",
+        2,
+        "",
+        ""
+      ],
+      [
+        "CMD039",
+        "PROD018",
+        "",
+        11,
+        "",
+        ""
+      ],
+      [
+        "CMD040",
+        "PROD010",
+        "",
+        8,
+        "",
+        ""
+      ],
+      [
+        "CMD041",
+        "PROD021",
+        "",
+        3,
+        "",
+        ""
+      ],
+      [
+        "CMD042",
+        "PROD028",
+        "",
+        9,
+        "",
+        ""
+      ],
+      [
+        "CMD043",
+        "PROD015",
+        "",
+        10,
+        "",
+        ""
+      ],
+      [
+        "CMD044",
+        "PROD025",
+        "",
+        1,
+        "",
+        ""
+      ],
+      [
+        "CMD045",
+        "PROD010",
+        "",
+        7,
+        "",
+        ""
+      ],
+      [
+        "CMD046",
+        "PROD021",
+        "",
+        11,
+        "",
+        ""
+      ],
+      [
+        "CMD047",
+        "PROD005",
+        "",
+        11,
+        "",
+        ""
+      ],
+      [
+        "CMD048",
+        "PROD002",
+        "",
+        6,
+        "",
+        ""
+      ],
+      [
+        "CMD049",
+        "PROD026",
+        "",
+        6,
+        "",
+        ""
+      ],
+      [
+        "CMD050",
+        "PROD029",
+        "",
+        11,
+        "",
+        ""
+      ]
+    ],
+    "catalogue": {
+      "headers": [
+        "Nom",
+        "Référence",
+        "Prix HT",
+        "Stock"
+      ],
+      "rows": [
+        [
+          "Moniteur",
+          "PROD001",
+          149,
+          46
+        ],
+        [
+          "Adaptateur",
+          "PROD002",
+          99,
+          50
+        ],
+        [
+          "Téléphone",
+          "PROD003",
+          149,
+          24
+        ],
+        [
+          "Câble USB",
+          "PROD004",
+          149,
+          22
+        ],
+        [
+          "Téléphone",
+          "PROD005",
+          399,
+          10
+        ],
+        [
+          "Switch",
+          "PROD006",
+          149,
+          77
+        ],
+        [
+          "Adaptateur",
+          "PROD007",
+          149,
+          52
+        ],
+        [
+          "Écouteurs",
+          "PROD008",
+          299,
+          51
+        ],
+        [
+          "Support",
+          "PROD009",
+          99,
+          79
+        ],
+        [
+          "Router",
+          "PROD010",
+          399,
+          76
+        ],
+        [
+          "Router",
+          "PROD011",
+          149,
+          13
+        ],
+        [
+          "Switch",
+          "PROD012",
+          199,
+          80
+        ],
+        [
+          "Écouteurs",
+          "PROD013",
+          199,
+          98
+        ],
+        [
+          "Moniteur",
+          "PROD014",
+          399,
+          40
+        ],
+        [
+          "Écouteurs",
+          "PROD015",
+          149,
+          58
+        ],
+        [
+          "Adaptateur",
+          "PROD016",
+          399,
+          87
+        ],
+        [
+          "Adaptateur",
+          "PROD017",
+          499,
+          68
+        ],
+        [
+          "Casque",
+          "PROD018",
+          199,
+          81
+        ],
+        [
+          "Clavier",
+          "PROD019",
+          499,
+          19
+        ],
+        [
+          "Adaptateur",
+          "PROD020",
+          199,
+          30
+        ],
+        [
+          "Imprimante",
+          "PROD021",
+          199,
+          37
+        ],
+        [
+          "Écouteurs",
+          "PROD022",
+          199,
+          99
+        ],
+        [
+          "Housse",
+          "PROD023",
+          149,
+          87
+        ],
+        [
+          "Disque dur",
+          "PROD024",
+          299,
+          60
+        ],
+        [
+          "Adaptateur",
+          "PROD025",
+          499,
+          55
+        ],
+        [
+          "Tablette",
+          "PROD026",
+          399,
+          2
+        ],
+        [
+          "Webcam",
+          "PROD027",
+          299,
+          41
+        ],
+        [
+          "Ordinateur portable",
+          "PROD028",
+          299,
+          48
+        ],
+        [
+          "Téléphone",
+          "PROD029",
+          499,
+          80
+        ],
+        [
+          "Moniteur",
+          "PROD030",
+          399,
+          90
+        ]
+      ]
+    }
+  },
+  "criteres_reussite": {
+    "index_equiv_corrects": true,
+    "gestion_erreurs": true,
+    "verification_stock": true,
+    "score_minimum": 9
+  },
+  "checkpoints": [
+    {
+      "cellule": "C2",
+      "type": "formule",
+      "description": "Recherche du nom avec INDEX+EQUIV (première ligne)",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "EQUIV",
+        "Catalogue!$A$2:$A$31",
+        "B2",
+        "Catalogue!$B$2:$B$31",
+        "0"
+      ],
+      "recopie_jusqua": "C51",
+      "points": 20,
+      "indices": [
+        "Tu dois combiner deux fonctions pour chercher dans une autre feuille.",
+        "INDEX récupère la valeur, EQUIV trouve la position dans la colonne des références.",
+        "=INDEX(Catalogue!$A$2:$A$31;EQUIV(B2;Catalogue!$B$2:$B$31;0))"
+      ],
+      "id": "cp_1",
+      "competence_id": 24
+    },
+    {
+      "cellule": "C51",
+      "type": "formule",
+      "description": "Recherche du nom avec INDEX+EQUIV (dernière ligne)",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "EQUIV",
+        "Catalogue!$A$2:$A$31",
+        "B51",
+        "Catalogue!$B$2:$B$31",
+        "0"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée à la ligne 51.",
+        "La référence B2 doit être devenue B51.",
+        "Les références absolues ($) doivent être conservées."
+      ],
+      "id": "cp_2",
+      "competence_id": 24
+    },
+    {
+      "cellule": "E2",
+      "type": "formule",
+      "description": "Recherche du prix avec INDEX+EQUIV (première ligne)",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "EQUIV",
+        "Catalogue!$C$2:$C$31",
+        "B2",
+        "Catalogue!$B$2:$B$31",
+        "0"
+      ],
+      "recopie_jusqua": "E51",
+      "points": 15,
+      "indices": [
+        "Même principe que pour le nom, mais tu cherches dans une autre colonne.",
+        "Change la plage de retour pour pointer vers la colonne des prix.",
+        "=INDEX(Catalogue!$C$2:$C$31;EQUIV(B2;Catalogue!$B$2:$B$31;0))"
+      ],
+      "id": "cp_3",
+      "competence_id": 24
+    },
+    {
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Calcul du total (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "D2",
+        "E2",
+        "*"
+      ],
+      "recopie_jusqua": "F51",
+      "points": 10,
+      "indices": [
+        "Le total, c'est la quantité multipliée par le prix unitaire.",
+        "Tu dois multiplier deux colonnes entre elles.",
+        "=D2*E2"
+      ],
+      "id": "cp_4",
+      "competence_id": 24
+    },
+    {
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Recherche du stock avec INDEX+EQUIV (première ligne)",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "EQUIV",
+        "Catalogue!$D$2:$D$31",
+        "B2",
+        "Catalogue!$B$2:$B$31",
+        "0"
+      ],
+      "recopie_jusqua": "G51",
+      "points": 15,
+      "indices": [
+        "Encore une recherche INDEX+EQUIV, mais pour une autre donnée.",
+        "Cette fois, tu cherches dans la colonne du stock disponible.",
+        "=INDEX(Catalogue!$D$2:$D$31;EQUIV(B2;Catalogue!$B$2:$B$31;0))"
+      ],
+      "id": "cp_5",
+      "competence_id": 24
+    },
+    {
+      "cellule": "H2",
+      "type": "formule",
+      "description": "Vérification de disponibilité (première ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "G2",
+        "D2",
+        ">=",
+        "OK",
+        "Stock insuffisant"
+      ],
+      "recopie_jusqua": "H51",
+      "points": 15,
+      "indices": [
+        "Tu dois comparer le stock disponible avec la quantité demandée.",
+        "Utilise SI pour afficher un message selon que le stock est suffisant ou non.",
+        "=SI(G2>=D2;\"OK\";\"Stock insuffisant\")"
+      ],
+      "id": "cp_6",
+      "competence_id": 24
+    },
+    {
+      "cellule": "C2",
+      "type": "formule",
+      "description": "Gestion d'erreur avec SIERREUR pour le nom",
+      "fonction": "SIERREUR",
+      "pattern": [
+        "SIERREUR",
+        "INDEX",
+        "EQUIV"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Entoure ta formule INDEX+EQUIV avec une fonction de gestion d'erreur.",
+        "SIERREUR permet d'afficher un message personnalisé si la recherche échoue.",
+        "=SIERREUR(INDEX(...);\"Produit non trouvé\")"
+      ],
+      "id": "cp_7",
+      "competence_id": 24
+    },
+    {
+      "cellule": "E51",
+      "type": "formule",
+      "description": "Vérification de la recopie des formules (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "B51"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Vérifie que toutes tes formules se sont bien recopiées jusqu'à la ligne 51.",
+        "Les références relatives doivent s'adapter automatiquement.",
+        "La référence doit pointer sur B51 dans cette cellule."
+      ],
+      "id": "cp_8",
+      "competence_id": 24
+    },
+    {
+      "cellule": "H51",
+      "type": "formule",
+      "description": "Vérification complète de la dernière ligne",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "G51",
+        "D51",
+        ">="
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "La formule de vérification doit fonctionner sur toutes les lignes.",
+        "Vérifie que les références se sont bien adaptées à la ligne 51.",
+        "G51 et D51 doivent être comparés dans cette formule."
+      ],
+      "id": "cp_9",
+      "competence_id": 24
+    }
+  ],
+  "competence_ids": [
+    24
+  ]
+}

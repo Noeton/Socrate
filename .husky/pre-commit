@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# HOOK PRE-COMMIT - Validation des templates et de l'index
+# ═══════════════════════════════════════════════════════════════════════════
+
+echo "🔍 Vérification des templates et de l'index..."
+
+# Vérifier si des fichiers templates ou l'index ont été modifiés
+TEMPLATES_CHANGED=$(git diff --cached --name-only | grep -E "shared/data/exercises/.*\.json$" || true)
+INDEX_CHANGED=$(git diff --cached --name-only | grep -E "shared/data/competenceIndex\.js$" || true)
+GENERATOR_CHANGED=$(git diff --cached --name-only | grep -E "scripts/generate-competence-index\.js$" || true)
+
+# Si des templates ont été modifiés mais pas l'index, régénérer
+if [ -n "$TEMPLATES_CHANGED" ] && [ -z "$INDEX_CHANGED" ]; then
+    echo "📝 Templates modifiés détectés:"
+    echo "$TEMPLATES_CHANGED" | sed 's/^/   /'
+    echo ""
+    echo "🔧 Régénération de l'index..."
+    
+    node scripts/generate-competence-index.js
+    
+    if [ $? -ne 0 ]; then
+        echo "❌ Échec de la régénération de l'index"
+        exit 1
+    fi
+    
+    # Ajouter l'index généré au commit
+    git add shared/data/competenceIndex.js
+    echo "✅ Index régénéré et ajouté au commit"
+fi
+
+# Valider l'index
+echo ""
+echo "🔍 Validation de l'index..."
+node scripts/validate-competence-index.js
+
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -eq 1 ]; then
+    echo ""
+    echo "❌ COMMIT BLOQUÉ - Erreurs critiques détectées"
+    echo "   Corrigez les erreurs avant de committer."
+    echo "   Exécutez: node scripts/validate-competence-index.js --verbose"
+    exit 1
+elif [ $EXIT_CODE -eq 2 ]; then
+    echo ""
+    echo "⚠️  Warnings détectés mais commit autorisé"
+fi
+
+echo ""
+echo "✅ Validation terminée"
+exit 0

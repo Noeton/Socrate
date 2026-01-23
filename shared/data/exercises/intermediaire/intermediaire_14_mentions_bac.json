@@ -1,0 +1,766 @@
+{
+  "id": "intermediaire_14_mentions_bac",
+  "titre": "Attribution Mentions avec SI Imbriqués",
+  "niveau": "intermediaire",
+  "duree_estimee": "30 min",
+  "competences": [
+    "SI_imbriques",
+    "MOYENNE",
+    "NB.SI"
+  ],
+  "contexte": {
+    "situation": "Tu es responsable administratif dans un lycée et tu dois attribuer les mentions du bac selon la moyenne: Très Bien (≥16), Bien (≥14), Assez Bien (≥12), Passable (≥10), Échec (<10).",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer la moyenne générale de chaque élève",
+    "Attribuer la mention avec des SI imbriqués",
+    "Compter les mentions obtenues par catégorie"
+  ],
+  "consignes": [
+    "Dans G2, calcule la moyenne des 5 matières: =MOYENNE(B2:F2) et recopie jusqu'à G46",
+    "Dans H2, écris la formule SI imbriquée pour attribuer la mention et recopie jusqu'à H46",
+    "En J2, compte le nombre de 'Très Bien': =NB.SI(H2:H46;\"Très Bien\")",
+    "En J3, compte le nombre de 'Bien': =NB.SI(H2:H46;\"Bien\")",
+    "En J4, compte le nombre de 'Assez Bien': =NB.SI(H2:H46;\"Assez Bien\")",
+    "En J5, compte le nombre de 'Passable': =NB.SI(H2:H46;\"Passable\")",
+    "En J6, compte le nombre de 'Échec': =NB.SI(H2:H46;\"Échec\")"
+  ],
+  "donnees": {
+    "headers": [
+      "Nom Complet",
+      "Math",
+      "Français",
+      "Histoire",
+      "Anglais",
+      "Physique",
+      "Moyenne",
+      "Mention"
+    ],
+    "rows": [
+      [
+        "Nathan Bonnet",
+        12.2,
+        16.2,
+        15,
+        13.2,
+        13.9,
+        "",
+        ""
+      ],
+      [
+        "Iris Durand",
+        10.5,
+        13.7,
+        11.8,
+        8,
+        13.2,
+        "",
+        ""
+      ],
+      [
+        "Tom Lefebvre",
+        11.5,
+        9.2,
+        10.7,
+        15.2,
+        11.4,
+        "",
+        ""
+      ],
+      [
+        "Quentin Bonnet",
+        10.1,
+        15.3,
+        14,
+        12.7,
+        12.9,
+        "",
+        ""
+      ],
+      [
+        "Leo Thomas",
+        9.9,
+        12.4,
+        14.4,
+        17.7,
+        9.4,
+        "",
+        ""
+      ],
+      [
+        "Zoé Fournier",
+        17.2,
+        14.7,
+        11.5,
+        12.5,
+        8.4,
+        "",
+        ""
+      ],
+      [
+        "Wendy Petit",
+        10.3,
+        10,
+        9.7,
+        8,
+        17.6,
+        "",
+        ""
+      ],
+      [
+        "Diana Lefebvre",
+        17.8,
+        11,
+        8.6,
+        13.8,
+        13.1,
+        "",
+        ""
+      ],
+      [
+        "Wendy Lambert",
+        18,
+        17.6,
+        12.3,
+        13.3,
+        14.6,
+        "",
+        ""
+      ],
+      [
+        "Wendy Dubois",
+        12,
+        15.5,
+        8.4,
+        12.7,
+        17.1,
+        "",
+        ""
+      ],
+      [
+        "Eve Laurent",
+        12.9,
+        11,
+        15.2,
+        13.6,
+        13.1,
+        "",
+        ""
+      ],
+      [
+        "Frank Richard",
+        8.1,
+        9.3,
+        11.7,
+        17.8,
+        17.1,
+        "",
+        ""
+      ],
+      [
+        "Nathan Moreau",
+        16.5,
+        16,
+        8.8,
+        11.8,
+        14.5,
+        "",
+        ""
+      ],
+      [
+        "Kate Leroy",
+        16.9,
+        14.5,
+        14,
+        11.5,
+        16.2,
+        "",
+        ""
+      ],
+      [
+        "Tom Michel",
+        10.6,
+        13.5,
+        14.4,
+        16.4,
+        9.4,
+        "",
+        ""
+      ],
+      [
+        "Wendy Michel",
+        9.4,
+        17.7,
+        12.4,
+        15.5,
+        10.3,
+        "",
+        ""
+      ],
+      [
+        "Kate Fournier",
+        13.6,
+        12.4,
+        12.3,
+        14.5,
+        14.1,
+        "",
+        ""
+      ],
+      [
+        "Henry David",
+        17.3,
+        15,
+        9.2,
+        12.7,
+        8.5,
+        "",
+        ""
+      ],
+      [
+        "Zoé Robert",
+        12,
+        9,
+        13.6,
+        15.6,
+        13.2,
+        "",
+        ""
+      ],
+      [
+        "Leo Simon",
+        14.6,
+        13.9,
+        9.7,
+        8.1,
+        11.4,
+        "",
+        ""
+      ],
+      [
+        "Rose Vincent",
+        12.1,
+        10.3,
+        13.6,
+        16.1,
+        14.2,
+        "",
+        ""
+      ],
+      [
+        "Grace Lefebvre",
+        12.7,
+        17.5,
+        10.1,
+        11.7,
+        10.8,
+        "",
+        ""
+      ],
+      [
+        "Eve Michel",
+        17.1,
+        13.7,
+        14.1,
+        13.6,
+        14.4,
+        "",
+        ""
+      ],
+      [
+        "Quentin Bertrand",
+        14.7,
+        17.9,
+        10.1,
+        12.1,
+        12.4,
+        "",
+        ""
+      ],
+      [
+        "Paul Dubois",
+        11.1,
+        17.5,
+        13.3,
+        10.9,
+        17.1,
+        "",
+        ""
+      ],
+      [
+        "Charlie Lambert",
+        16.7,
+        17.7,
+        14.8,
+        14.7,
+        8.1,
+        "",
+        ""
+      ],
+      [
+        "Alice David",
+        18,
+        11,
+        9.6,
+        12.7,
+        14.3,
+        "",
+        ""
+      ],
+      [
+        "Wendy Leroy",
+        13.3,
+        9.4,
+        13.6,
+        12.8,
+        8.4,
+        "",
+        ""
+      ],
+      [
+        "Olivia Dubois",
+        10.3,
+        12.5,
+        10.1,
+        13.6,
+        15.6,
+        "",
+        ""
+      ],
+      [
+        "Marie Dubois",
+        8.8,
+        14.6,
+        10.5,
+        16.9,
+        15,
+        "",
+        ""
+      ],
+      [
+        "Xavier Petit",
+        11.2,
+        17.3,
+        17.8,
+        10.3,
+        10.2,
+        "",
+        ""
+      ],
+      [
+        "Grace Garcia",
+        14.9,
+        8.6,
+        13.2,
+        17.5,
+        12.4,
+        "",
+        ""
+      ],
+      [
+        "Iris Garcia",
+        17.9,
+        15,
+        15.4,
+        13.1,
+        13.3,
+        "",
+        ""
+      ],
+      [
+        "Quentin Bertrand",
+        10.9,
+        16.8,
+        17,
+        10.1,
+        16.5,
+        "",
+        ""
+      ],
+      [
+        "Rose Lefebvre",
+        11.1,
+        15.7,
+        10.4,
+        14.9,
+        10.4,
+        "",
+        ""
+      ],
+      [
+        "Tom Moreau",
+        15.8,
+        15.3,
+        15.1,
+        17.7,
+        13,
+        "",
+        ""
+      ],
+      [
+        "Frank Dubois",
+        13.2,
+        14.9,
+        11.4,
+        14.8,
+        8.6,
+        "",
+        ""
+      ],
+      [
+        "Zoé Petit",
+        10.9,
+        12.1,
+        15.1,
+        12.3,
+        10.6,
+        "",
+        ""
+      ],
+      [
+        "Rose Michel",
+        16.8,
+        14.9,
+        8.4,
+        11.8,
+        12.4,
+        "",
+        ""
+      ],
+      [
+        "Eve Vincent",
+        14,
+        17.2,
+        15.9,
+        9.9,
+        12.3,
+        "",
+        ""
+      ],
+      [
+        "Uma Laurent",
+        13.2,
+        8.5,
+        11.9,
+        9.5,
+        13.8,
+        "",
+        ""
+      ],
+      [
+        "Iris Michel",
+        8.9,
+        9,
+        13.8,
+        10.9,
+        15.5,
+        "",
+        ""
+      ],
+      [
+        "Frank David",
+        15.6,
+        13.1,
+        12.6,
+        11.6,
+        17.5,
+        "",
+        ""
+      ],
+      [
+        "Sam Simon",
+        10.4,
+        10,
+        16.9,
+        8.5,
+        14.7,
+        "",
+        ""
+      ],
+      [
+        "Sam Robert",
+        9.8,
+        11.2,
+        17.2,
+        13.5,
+        10.6,
+        "",
+        ""
+      ]
+    ],
+    "zone_stats": {
+      "headers": [
+        "Mention",
+        "Nombre"
+      ],
+      "position": "I1:J7",
+      "rows": [
+        [
+          "Mention",
+          "Nombre"
+        ],
+        [
+          "Très Bien",
+          ""
+        ],
+        [
+          "Bien",
+          ""
+        ],
+        [
+          "Assez Bien",
+          ""
+        ],
+        [
+          "Passable",
+          ""
+        ],
+        [
+          "Échec",
+          ""
+        ]
+      ]
+    }
+  },
+  "criteres_reussite": {
+    "si_imbriques_corrects": true,
+    "comptages_presents": true,
+    "score_minimum": 8
+  },
+  "conseil_pedagogique": "Les SI imbriqués se lisent de l'extérieur vers l'intérieur. Commence par le cas le plus restrictif (>=16) et descends progressivement.",
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Calcul de la moyenne (première ligne)",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "B2",
+        "F2"
+      ],
+      "recopie_jusqua": "G46",
+      "points": 10,
+      "indices": [
+        "Tu dois calculer la moyenne des 5 notes de chaque élève.",
+        "La fonction MOYENNE prend une plage de cellules.",
+        "=MOYENNE(B2:F2)"
+      ],
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "id": "cp2",
+      "cellule": "G46",
+      "type": "formule",
+      "description": "Calcul de la moyenne (dernière ligne)",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "B46",
+        "F46"
+      ],
+      "points": 5,
+      "indices": [
+        "Vérifie que la formule s'est bien recopiée.",
+        "Les références doivent pointer vers la ligne 46.",
+        "=MOYENNE(B46:F46)"
+      ],
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "id": "cp3",
+      "cellule": "H2",
+      "type": "formule",
+      "description": "Formule SI imbriquée pour la mention (première ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "G2",
+        "16",
+        "Très Bien",
+        "14",
+        "Bien",
+        "12",
+        "Assez Bien",
+        "10",
+        "Passable",
+        "Échec"
+      ],
+      "recopie_jusqua": "H46",
+      "points": 25,
+      "indices": [
+        "Tu dois imbriquer plusieurs fonctions SI pour tester chaque seuil de mention.",
+        "Commence par le seuil le plus élevé (>=16 pour Très Bien).",
+        "Chaque SI a 3 arguments : condition, valeur si vrai, valeur si faux (qui peut être un autre SI).",
+        "=SI(G2>=16;\"Très Bien\";SI(G2>=14;\"Bien\";SI(G2>=12;\"Assez Bien\";SI(G2>=10;\"Passable\";\"Échec\"))))"
+      ],
+      "competence_id": 4
+    },
+    {
+      "id": "cp4",
+      "cellule": "H46",
+      "type": "formule",
+      "description": "Formule SI imbriquée (dernière ligne)",
+      "fonction": "SI",
+      "pattern": [
+        "SI",
+        "G46"
+      ],
+      "points": 5,
+      "indices": [
+        "Vérifie que la formule SI imbriquée s'est bien recopiée.",
+        "La référence doit pointer vers G46.",
+        "Les textes des mentions restent identiques."
+      ],
+      "competence_id": 4
+    },
+    {
+      "id": "cp5",
+      "cellule": "J2",
+      "type": "formule",
+      "description": "Comptage des Très Bien",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "H",
+        "Très Bien"
+      ],
+      "points": 10,
+      "indices": [
+        "Tu dois compter combien de cellules contiennent 'Très Bien'.",
+        "Utilise NB.SI avec la plage des mentions.",
+        "=NB.SI(H2:H46;\"Très Bien\")"
+      ],
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "id": "cp6",
+      "cellule": "J3",
+      "type": "formule",
+      "description": "Comptage des Bien",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "H",
+        "Bien"
+      ],
+      "points": 10,
+      "indices": [
+        "Même principe que pour Très Bien.",
+        "Attention à ne pas confondre 'Bien' et 'Très Bien'.",
+        "=NB.SI(H2:H46;\"Bien\")"
+      ],
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "id": "cp7",
+      "cellule": "J4",
+      "type": "formule",
+      "description": "Comptage des Assez Bien",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "H",
+        "Assez Bien"
+      ],
+      "points": 10,
+      "indices": [
+        "Continue le comptage pour chaque mention.",
+        "=NB.SI(H2:H46;\"Assez Bien\")"
+      ],
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "id": "cp8",
+      "cellule": "J5",
+      "type": "formule",
+      "description": "Comptage des Passable",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "H",
+        "Passable"
+      ],
+      "points": 10,
+      "indices": [
+        "=NB.SI(H2:H46;\"Passable\")"
+      ],
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "id": "cp9",
+      "cellule": "J6",
+      "type": "formule",
+      "description": "Comptage des Échec",
+      "fonction": "NB.SI",
+      "pattern": [
+        "NB.SI",
+        "H",
+        "Échec"
+      ],
+      "points": 10,
+      "indices": [
+        "Dernier comptage pour les élèves en échec.",
+        "=NB.SI(H2:H46;\"Échec\")"
+      ],
+      "computation": {
+        "type": "countif",
+        "column": "auto",
+        "criteria": "auto"
+      },
+      "competence_id": 4
+    },
+    {
+      "id": "cp10",
+      "cellule": "H2",
+      "type": "valeur",
+      "description": "Vérification résultat mention ligne 1",
+      "valeur_attendue": "Bien",
+      "points": 5,
+      "indices": [
+        "Nathan Bonnet a une moyenne de 14.1, donc mention Bien.",
+        "Vérifie ta formule SI imbriquée."
+      ],
+      "competence_id": 4
+    }
+  ],
+  "competence_ids": [
+    4,
+    11
+  ]
+}

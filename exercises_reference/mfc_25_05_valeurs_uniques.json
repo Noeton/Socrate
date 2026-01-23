@@ -1,0 +1,156 @@
+{
+  "id": "mfc_25_05_valeurs_uniques",
+  "version": "1.0",
+  "titre": "✨ MFC avancée : identifier les valeurs uniques",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "10 min",
+    "competences_ids": [25],
+    "competences_noms": ["MFC avancée"],
+    "prerequis": [10],
+    "objectif_pedagogique": "Utiliser la règle 'Valeurs uniques' pour identifier les éléments non répétés",
+    "source_pdf": "Chapter 27: Conditional formatting - Section 27.3 (FormatConditions.AddUniqueValues)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu analyses une liste de participants à un tirage au sort. Tu veux identifier ceux qui n'ont joué qu'une seule fois pour leur accorder une chance supplémentaire.",
+    
+    "personnage": "Toi, organisateur d'un jeu-concours.",
+    
+    "objectif": "Mettre en bleu les emails qui n'apparaissent qu'une seule fois dans la liste.",
+    
+    "motivation": "L'inverse des doublons ! Parfois on cherche les éléments uniques plutôt que les répétitions.",
+    
+    "ton": "Valeurs uniques vs doublons : deux faces de la même pièce."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Liste de participations au jeu-concours avec des joueurs multi-participations.",
+    "periode": "Janvier 2025",
+    "source_fictive": "Formulaire inscription"
+  },
+
+  "donnees": {
+    "headers": ["Email participant"],
+    "rows": [
+      ["alice@mail.com"],
+      ["bob@mail.com"],
+      ["claire@mail.com"],
+      ["bob@mail.com"],
+      ["david@mail.com"],
+      ["emma@mail.com"],
+      ["claire@mail.com"],
+      ["fabien@mail.com"]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les emails",
+      "consigne": "Sélectionne A2:A9.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Appliquer la règle Valeurs uniques",
+      "consigne": "Accueil > MFC > Règles de surbrillance > Valeurs en double... puis dans le menu déroulant, change 'En double' en 'Uniques'.",
+      "aide_contextuelle": "La boîte de dialogue permet de choisir entre 'En double' et 'Uniques'.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Choisir un format bleu",
+      "consigne": "Sélectionne un format bleu clair pour marquer les valeurs uniques.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Vérifier le résultat",
+      "consigne": "alice, david, emma et fabien doivent être colorés (4 valeurs uniques). bob et claire (doublons) ne doivent PAS être colorés.",
+      "temps": "1 min"
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "id": "cp_unique_1",
+      "type": "format",
+      "subtype": "mfc_unique_values",
+      "description": "Règle Valeurs uniques appliquée",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "mfc_detected": true,
+        "rule_type": "unique",
+        "type": "unique"
+      },
+      "points": 40,
+      "indices": [
+        "Dans la boîte 'Valeurs en double', il y a un menu déroulant.",
+        "Change 'En double' en 'Uniques'.",
+        "Les valeurs uniques = celles qui n'apparaissent qu'UNE SEULE fois."
+      ],
+      "erreurs_probables": [
+        { "type": "duplicate_instead", "message": "Tu as laissé 'En double' au lieu de 'Uniques'. Change dans le menu déroulant." }
+      ]
+    },
+    {
+      "id": "cp_unique_2",
+      "type": "format",
+      "subtype": "mfc_coverage",
+      "description": "4 valeurs uniques colorées",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "colored_cells_count": 4,
+        "unique_emails": ["alice@mail.com", "david@mail.com", "emma@mail.com", "fabien@mail.com"],
+        "not_colored": ["bob@mail.com", "claire@mail.com"]
+      },
+      "points": 40,
+      "indices": [
+        "4 emails n'apparaissent qu'une fois : alice, david, emma, fabien.",
+        "bob et claire apparaissent 2 fois chacun → doublons → pas colorés.",
+        "Si bob et claire sont colorés, tu as utilisé 'En double' au lieu de 'Uniques'."
+      ]
+    },
+    {
+      "id": "cp_unique_3",
+      "type": "format",
+      "subtype": "mfc_color",
+      "description": "Format bleu appliqué",
+      "competence_id": 25,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "fill_color": "blue",
+        "fill_color_variants": ["bleu", "blue", "lightblue", "cyan"]
+      },
+      "points": 20
+    }
+  ],
+
+  "solution_complete": {
+    "description": "MFC Valeurs uniques en bleu sur A2:A9. 4 emails uniques colorés.",
+    "etapes_cles": [
+      "Sélection A2:A9",
+      "MFC > Valeurs en double > changer en 'Uniques'",
+      "Format bleu"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Tu as identifié les 4 joueurs uniques. Ils méritent leur chance bonus !",
+    "bien": "👍 Bien ! Vérifie que SEULES les valeurs uniques sont colorées (pas les doublons).",
+    "ameliorer": "✨ Attention ! Tu as peut-être coloré les doublons au lieu des uniques.",
+    "revoir": "🔄 Dans la boîte de dialogue, cherche le menu déroulant et sélectionne 'Uniques' au lieu de 'En double'."
+  }
+}

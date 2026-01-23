@@ -1,0 +1,51 @@
+{
+    "superstore_sales": {
+      "metier": "vente",
+      "niveau": ["intermediaire", "avance"],
+      "path": "ventes/superstore_sales.csv",
+      "rows": 9994,
+      "columns": ["Row ID", "Order ID", "Order Date", "Ship Date", "Ship Mode", "Customer ID", "Segment", "Country", "City", "State", "Region", "Product ID", "Category", "Sub-Category", "Product Name", "Sales", "Quantity", "Discount", "Profit"],
+      "description": "Ventes retail superstore 4 ans - TCD, SOMME.SI, graphiques"
+    },
+    "online_retail_uci": {
+      "metier": "vente",
+      "niveau": ["avance"],
+      "path": "ventes/online_retail_uci.csv",
+      "rows": 541909,
+      "columns": ["InvoiceNo", "StockCode", "Description", "Quantity", "InvoiceDate", "UnitPrice", "CustomerID", "Country"],
+      "description": "E-commerce UK 541k transactions - Power Query, gros volumes"
+    },
+    "ibm_hr_analytics": {
+      "metier": "rh",
+      "niveau": ["intermediaire", "avance"],
+      "path": "rh/ibm_hr_analytics.csv",
+      "rows": 1470,
+      "columns": ["Age", "Attrition", "BusinessTravel", "DailyRate", "Department", "DistanceFromHome", "Education", "Gender", "JobRole", "MonthlyIncome", "YearsAtCompany"],
+      "description": "Employés IBM avec attrition - analyses RH, turnover"
+    },
+    "accounting_transactions": {
+      "metier": "comptabilite",
+      "niveau": ["intermediaire", "avance"],
+      "path": "compta/accounting_transactions.csv",
+      "rows": 1000,
+      "columns": ["Transaction ID", "Date", "Account Type", "Transaction Amount", "Cash Flow", "Net Income", "Revenue", "Expenditure", "Profit Margin"],
+      "description": "Transactions comptables avec cash flow - P&L, trésorerie"
+    },
+    "company_financials": {
+      "metier": "finance",
+      "niveau": ["intermediaire", "avance"],
+      "path": "finance/company_financials.csv",
+      "rows": 700,
+      "columns": ["Segment", "Country", "Product", "Discount Band", "Units Sold", "Manufacturing Price", "Sale Price", "Gross Sales", "Discounts", "Sales", "COGS", "Profit", "Date"],
+      "description": "P&L entreprises tech - marges, COGS, analyse segments"
+    },
+    "marketing_campaign": {
+      "metier": "marketing",
+      "niveau": ["intermediaire", "avance"],
+      "path": "marketing/marketing_campaign.csv",
+      "rows": 2240,
+      "columns": ["Year_Birth", "Education", "Marital_Status", "Income", "Recency", "MntWines", "MntFruits", "NumWebPurchases", "AcceptedCmp1", "AcceptedCmp2", "AcceptedCmp3", "Response"],
+      "description": "Campagnes marketing clients - RFM, segmentation, conversion"
+    }
+  }
+  

@@ -1,0 +1,286 @@
+{
+    "id": "debutant_20_mfc_alertes",
+    "titre": "Alertes Visuelles avec la Mise en Forme Conditionnelle",
+    "niveau": "debutant",
+    "duree_estimee": "20 min",
+    "competences": ["Mise en forme conditionnelle", "Alertes visuelles"],
+    "competence_ids": [10],
+  
+    "contexte": {
+      "situation": "Tu gères le stock d'une boutique de fournitures de bureau, PapierPlus. Le gérant veut pouvoir voir d'un coup d'œil les produits en rupture, les stocks faibles, et les meilleures ventes. Tu vas créer un tableau de bord visuel avec des couleurs automatiques.",
+      "manager": {
+        "nom": "Antoine Leroy",
+        "poste": "Gérant de la boutique",
+        "personnalite": "Visuel, il préfère les couleurs aux chiffres. Il veut voir rouge quand il y a un problème.",
+        "demande": "Je n'ai pas le temps d'analyser tous les chiffres. Peux-tu faire en sorte que les problèmes de stock sautent aux yeux ? Rouge si c'est urgent, orange si ça commence à baisser."
+      },
+      "enjeux": "Éviter les ruptures de stock qui font perdre des clients.",
+      "deadline": "Pour l'inventaire de demain"
+    },
+  
+    "objectifs": [
+      "Créer des règles de mise en forme conditionnelle simples",
+      "Utiliser les règles prédéfinies (supérieur à, inférieur à, entre)",
+      "Ajouter des barres de données pour visualiser les quantités",
+      "Utiliser les jeux d'icônes (feux tricolores)"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier de stock",
+      "Applique un fond ROUGE aux produits avec stock < 5 (rupture imminente)",
+      "Applique un fond ORANGE aux produits avec stock entre 5 et 15 (stock faible)",
+      "Applique un fond VERT aux produits avec stock > 50 (stock confortable)",
+      "Ajoute des barres de données sur la colonne des ventes mensuelles",
+      "Ajoute des icônes feux tricolores sur la colonne 'État'"
+    ],
+  
+    "donnees": {
+      "feuille": "Stock",
+      "headers": ["Référence", "Produit", "Catégorie", "Stock", "Seuil alerte", "Ventes/mois", "État"],
+      "rows": [
+        ["REF001", "Stylos bleus (x50)", "Écriture", 3, 10, 45, null],
+        ["REF002", "Cahiers A4 (x10)", "Papeterie", 25, 15, 32, null],
+        ["REF003", "Post-it jaunes", "Bureau", 8, 10, 28, null],
+        ["REF004", "Agrafeuse", "Matériel", 52, 5, 8, null],
+        ["REF005", "Trombones (x100)", "Bureau", 4, 10, 35, null],
+        ["REF006", "Enveloppes C5 (x50)", "Papeterie", 67, 20, 22, null],
+        ["REF007", "Correcteur blanc", "Écriture", 12, 10, 18, null],
+        ["REF008", "Classeurs A4", "Rangement", 2, 8, 41, null],
+        ["REF009", "Surligneurs (x4)", "Écriture", 35, 12, 25, null],
+        ["REF010", "Ciseaux", "Matériel", 18, 5, 12, null],
+        ["REF011", "Colle stick", "Bureau", 6, 10, 30, null],
+        ["REF012", "Règle 30cm", "Matériel", 89, 10, 5, null],
+        ["REF013", "Bloc-notes A5", "Papeterie", 14, 15, 38, null],
+        ["REF014", "Feutres couleur (x12)", "Écriture", 1, 8, 52, null],
+        ["REF015", "Perforatrice", "Matériel", 43, 5, 7, null]
+      ]
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Comprendre la MFC",
+        "explications": [
+          "La Mise en Forme Conditionnelle (MFC) change l'apparence d'une cellule selon sa valeur.",
+          "Exemple : si stock < 5, fond rouge automatiquement.",
+          "La MFC se met à jour automatiquement quand les données changent."
+        ],
+        "acces": "Accueil > Mise en forme conditionnelle > Règles de mise en surbrillance"
+      },
+      {
+        "phase": "B. Règle 'Stock critique' (rouge)",
+        "consignes": [
+          "Sélectionne la colonne Stock (D2:D16)",
+          "Accueil > Mise en forme conditionnelle > Règles de mise en surbrillance > Inférieur à...",
+          "Entre : 5",
+          "Choisis le format : Remplissage rouge clair avec texte rouge foncé",
+          "OK - Les cellules < 5 deviennent rouges !"
+        ]
+      },
+      {
+        "phase": "C. Règle 'Stock faible' (orange)",
+        "consignes": [
+          "Garde la sélection D2:D16",
+          "Mise en forme conditionnelle > Règles de mise en surbrillance > Entre...",
+          "Entre : 5 et 15",
+          "Choisis un format orange (personnalisé si nécessaire)",
+          "OK"
+        ]
+      },
+      {
+        "phase": "D. Règle 'Stock confortable' (vert)",
+        "consignes": [
+          "Garde la sélection D2:D16",
+          "Mise en forme conditionnelle > Règles de mise en surbrillance > Supérieur à...",
+          "Entre : 50",
+          "Choisis un format vert",
+          "OK"
+        ]
+      },
+      {
+        "phase": "E. Barres de données",
+        "consignes": [
+          "Sélectionne la colonne Ventes/mois (F2:F16)",
+          "Mise en forme conditionnelle > Barres de données > Barre bleue",
+          "Les barres s'ajustent automatiquement à la valeur max"
+        ]
+      },
+      {
+        "phase": "F. Jeux d'icônes",
+        "consignes": [
+          "En G2, crée une formule : =SI(D2<E2;1;SI(D2<E2*2;2;3))",
+          "Recopie jusqu'à G16",
+          "Sélectionne G2:G16",
+          "Mise en forme conditionnelle > Jeux d'icônes > 3 feux tricolores",
+          "Personnalise : 1=rouge, 2=orange, 3=vert"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_rouge_visible",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Les stocks critiques (<5) sont en rouge",
+        "competence_id": 10,
+        "graph_type": "mfc",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "Les cellules de stock contenant 1, 2, 3 ou 4 doivent avoir un fond rouge ou rouge clair. Au moins 4 cellules doivent être rouges (REF001, REF005, REF008, REF014).",
+          "condition": "stock < 5",
+          "color": "rouge",
+          "cells_concerned": ["D2", "D6", "D9", "D15"]
+        },
+        "points": 25,
+        "indices": [
+          "Sélectionne D2:D16 puis Mise en forme conditionnelle",
+          "Règles de mise en surbrillance > Inférieur à > 5",
+          "Choisis un format rouge"
+        ]
+      },
+      {
+        "id": "cp_2_orange_visible",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Les stocks faibles (5-15) sont en orange",
+        "competence_id": 10,
+        "graph_type": "mfc",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "Les cellules de stock entre 5 et 15 doivent avoir un fond orange ou jaune. Cellules concernées : 6, 8, 12, 14 (REF003, REF007, REF011, REF013).",
+          "condition": "5 <= stock <= 15",
+          "color": "orange",
+          "cells_concerned": ["D4", "D8", "D12", "D14"]
+        },
+        "points": 20,
+        "indices": [
+          "Utilise 'Entre...' dans les règles",
+          "Valeurs : 5 et 15",
+          "Personnalise le format en orange si pas proposé"
+        ]
+      },
+      {
+        "id": "cp_3_vert_visible",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Les stocks confortables (>50) sont en vert",
+        "competence_id": 10,
+        "graph_type": "mfc",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "Les cellules de stock > 50 doivent être en vert. Cellules : 52, 67, 89 (REF004, REF006, REF012).",
+          "condition": "stock > 50",
+          "color": "vert",
+          "cells_concerned": ["D5", "D7", "D13"]
+        },
+        "points": 15,
+        "indices": [
+          "Règle : Supérieur à > 50",
+          "Format vert",
+          "3 produits devraient être verts"
+        ]
+      },
+      {
+        "id": "cp_4_barres_donnees",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Barres de données sur les ventes mensuelles",
+        "competence_id": 10,
+        "graph_type": "mfc",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "La colonne Ventes/mois (F) doit afficher des barres horizontales proportionnelles. La plus longue barre = 52 (REF014), la plus courte = 5 (REF012).",
+          "type": "barres_donnees",
+          "column": "F",
+          "max_value": 52,
+          "min_value": 5
+        },
+        "points": 20,
+        "indices": [
+          "Sélectionne F2:F16",
+          "Mise en forme conditionnelle > Barres de données",
+          "Choisis une couleur (bleu, vert, ou autre)"
+        ]
+      },
+      {
+        "id": "cp_5_formule_etat",
+        "cellule": "G2",
+        "type": "formule",
+        "description": "Formule pour calculer l'état du stock",
+        "competence_id": 9,
+        "fonction": "SI",
+        "pattern": ["SI", "D2", "E2"],
+        "points": 10,
+        "indices": [
+          "Compare le stock (D2) au seuil (E2)",
+          "Retourne 1 si critique, 2 si faible, 3 si OK",
+          "=SI(D2<E2;1;SI(D2<E2*2;2;3))"
+        ]
+      },
+      {
+        "id": "cp_6_icones_visibles",
+        "type": "graphique",
+        "validation_type": "visual",
+        "description": "Icônes feux tricolores dans la colonne État",
+        "competence_id": 10,
+        "graph_type": "mfc",
+        "requires_screenshot": true,
+        "expected_data": {
+          "description": "La colonne G doit afficher des icônes (feux tricolores, flèches, ou symboles). Rouge pour état=1, Orange/Jaune pour état=2, Vert pour état=3.",
+          "type": "jeux_icones",
+          "column": "G",
+          "icone_type": "feux_tricolores"
+        },
+        "points": 10,
+        "indices": [
+          "Après la formule en G, sélectionne G2:G16",
+          "Mise en forme conditionnelle > Jeux d'icônes",
+          "Choisis les 3 feux tricolores"
+        ]
+      }
+    ],
+  
+    "regles_mfc_recap": [
+      {
+        "type": "Mise en surbrillance",
+        "regles": ["Supérieur à", "Inférieur à", "Entre", "Égal à", "Contient", "Date"]
+      },
+      {
+        "type": "Barres de données",
+        "description": "Barres proportionnelles dans les cellules"
+      },
+      {
+        "type": "Nuances de couleurs",
+        "description": "Dégradé de couleurs (heatmap)"
+      },
+      {
+        "type": "Jeux d'icônes",
+        "description": "Feux tricolores, flèches, étoiles, drapeaux..."
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Bravo ! Ton tableau de stock est maintenant super visuel. D'un coup d'œil, on voit les urgences. C'est ça, un vrai dashboard ! 📊🎨",
+      "partiel": "Bien joué pour les premières règles ! Continue avec les barres de données et les icônes pour un résultat encore plus pro.",
+      "echec": "La MFC est très visuelle, reprends l'exercice pas à pas. Commence par une seule règle (rouge si < 5) et vérifie qu'elle fonctionne."
+    },
+  
+    "socrate_message": {
+      "intro": "La mise en forme conditionnelle, c'est ce qui transforme un tableau de chiffres en dashboard visuel ! 🎨 Tu vas apprendre à faire parler tes données avec des couleurs.",
+      "conclusion": "Tu maîtrises maintenant la MFC ! Rouge = danger, Orange = attention, Vert = OK. Tes tableaux ne seront plus jamais ennuyeux. 🚦"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["MFC", "mise en forme conditionnelle", "alertes", "couleurs", "barres de données", "icônes", "fondamental"],
+      "prerequis": ["SI simple", "Formatage cellules"],
+      "ouvre_vers": ["MFC avancée", "Tableaux de bord"]
+    }
+  }

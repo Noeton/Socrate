@@ -1,0 +1,559 @@
+{
+  "id": "debutant_17_recopie_formules",
+  "titre": "Maîtriser la Recopie de Formules",
+  "niveau": "debutant",
+  "duree_estimee": "20 min",
+  "competences": [
+    "Copier-coller",
+    "Recopie de formules"
+  ],
+  "competence_ids": [
+    6
+  ],
+  "contexte": {
+    "situation": "Tu viens d'être embauché(e) comme assistant(e) administratif chez MédiSanté, une clinique vétérinaire. La responsable t'a confié la gestion des factures du mois. Tu dois calculer les totaux pour 15 consultations.",
+    "manager": {
+      "nom": "Dr. Sophie Lemaire",
+      "poste": "Directrice de la clinique",
+      "personnalite": "Bienveillante mais débordée. Elle veut que tu sois autonome rapidement.",
+      "demande": "J'ai commencé le tableau des factures mais je n'ai pas eu le temps de finir. Peux-tu compléter les calculs ? Surtout, utilise la recopie pour aller plus vite !"
+    },
+    "enjeux": "Les factures doivent partir ce soir aux clients. Pas le temps de tout retaper à la main !",
+    "deadline": "17h aujourd'hui"
+  },
+  "objectifs": [
+    "Comprendre comment Excel adapte les références lors de la recopie",
+    "Utiliser la poignée de recopie pour dupliquer des formules",
+    "Savoir quand une formule se recopie correctement"
+  ],
+  "consignes": [
+    "Ouvre le fichier et observe la première ligne de calcul déjà faite",
+    "En E2, crée la formule pour calculer le total HT (Quantité × Prix unitaire)",
+    "Utilise la poignée de recopie pour appliquer la formule jusqu'à E16",
+    "En F2, calcule la TVA (Total HT × 20%)",
+    "Recopie cette formule jusqu'à F16",
+    "En G2, calcule le Total TTC (Total HT + TVA)",
+    "Recopie jusqu'à G16",
+    "Calcule les totaux en ligne 17"
+  ],
+  "donnees": {
+    "feuille": "Factures",
+    "headers": [
+      "N° Facture",
+      "Client",
+      "Prestation",
+      "Quantité",
+      "Prix Unit.",
+      "Total HT",
+      "TVA 20%",
+      "Total TTC"
+    ],
+    "rows": [
+      [
+        "F001",
+        "M. Martin",
+        "Consultation",
+        1,
+        45,
+        null,
+        null,
+        null
+      ],
+      [
+        "F002",
+        "Mme Dubois",
+        "Vaccination",
+        2,
+        35,
+        null,
+        null,
+        null
+      ],
+      [
+        "F003",
+        "M. Bernard",
+        "Détartrage",
+        1,
+        80,
+        null,
+        null,
+        null
+      ],
+      [
+        "F004",
+        "Mme Petit",
+        "Consultation",
+        1,
+        45,
+        null,
+        null,
+        null
+      ],
+      [
+        "F005",
+        "M. Robert",
+        "Chirurgie mineure",
+        1,
+        250,
+        null,
+        null,
+        null
+      ],
+      [
+        "F006",
+        "Mme Richard",
+        "Vaccination",
+        3,
+        35,
+        null,
+        null,
+        null
+      ],
+      [
+        "F007",
+        "M. Durand",
+        "Consultation",
+        2,
+        45,
+        null,
+        null,
+        null
+      ],
+      [
+        "F008",
+        "Mme Moreau",
+        "Radiographie",
+        1,
+        120,
+        null,
+        null,
+        null
+      ],
+      [
+        "F009",
+        "M. Simon",
+        "Détartrage",
+        1,
+        80,
+        null,
+        null,
+        null
+      ],
+      [
+        "F010",
+        "Mme Laurent",
+        "Consultation",
+        1,
+        45,
+        null,
+        null,
+        null
+      ],
+      [
+        "F011",
+        "M. Michel",
+        "Vaccination",
+        1,
+        35,
+        null,
+        null,
+        null
+      ],
+      [
+        "F012",
+        "Mme Garcia",
+        "Chirurgie mineure",
+        1,
+        250,
+        null,
+        null,
+        null
+      ],
+      [
+        "F013",
+        "M. Martinez",
+        "Consultation",
+        3,
+        45,
+        null,
+        null,
+        null
+      ],
+      [
+        "F014",
+        "Mme Lopez",
+        "Radiographie",
+        2,
+        120,
+        null,
+        null,
+        null
+      ],
+      [
+        "F015",
+        "M. Gonzalez",
+        "Détartrage",
+        1,
+        80,
+        null,
+        null,
+        null
+      ]
+    ]
+  },
+  "etapes": [
+    {
+      "phase": "A. Comprendre la recopie",
+      "explications": [
+        "Quand tu recopies une formule, Excel adapte automatiquement les références.",
+        "Si en E2 tu écris =D2*E2, en E3 ça deviendra =D3*E3.",
+        "C'est le comportement par défaut des 'références relatives'."
+      ]
+    },
+    {
+      "phase": "B. Créer et recopier Total HT",
+      "consignes": [
+        "En E2, tape : =D2*E2 (Quantité × Prix)",
+        "Positionne-toi sur E2, observe le petit carré en bas à droite (poignée de recopie)",
+        "Double-clique dessus OU glisse jusqu'à E16",
+        "Vérifie que E16 contient =D16*E16 (pas =D2*E2)"
+      ]
+    },
+    {
+      "phase": "C. Calculer la TVA",
+      "consignes": [
+        "En F2, tape : =E2*0.2 (ou =E2*20%)",
+        "Recopie jusqu'à F16",
+        "La TVA de chaque ligne doit être 20% du Total HT de cette ligne"
+      ]
+    },
+    {
+      "phase": "D. Calculer le TTC et les totaux",
+      "consignes": [
+        "En G2, tape : =E2+F2",
+        "Recopie jusqu'à G16",
+        "En E17, calcule le total de tous les HT avec SOMME",
+        "Fais de même en F17 et G17"
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp_1_formule_ht",
+      "cellule": "E2",
+      "type": "formule",
+      "description": "Formule Total HT première ligne",
+      "competence_id": 6,
+      "fonction": null,
+      "pattern": [
+        "D2",
+        "E2",
+        "*"
+      ],
+      "expected_value": 45,
+      "points": 15,
+      "indices": [
+        "Le Total HT = Quantité × Prix unitaire",
+        "Les colonnes Quantité et Prix sont D et E",
+        "=D2*E2"
+      ]
+    },
+    {
+      "id": "cp_2_recopie_ht",
+      "cellule": "E16",
+      "type": "formule",
+      "description": "Formule Total HT recopiée correctement en dernière ligne",
+      "competence_id": 6,
+      "fonction": null,
+      "pattern": [
+        "D16",
+        "E16",
+        "*"
+      ],
+      "expected_value": 80,
+      "points": 15,
+      "indices": [
+        "La formule doit s'adapter à la ligne 16",
+        "Vérifie que c'est =D16*E16 et non =D2*E2",
+        "Utilise la poignée de recopie (double-clic ou glisser)"
+      ]
+    },
+    {
+      "id": "cp_3_formule_tva",
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Formule TVA première ligne",
+      "competence_id": 6,
+      "fonction": null,
+      "pattern": [
+        "E2",
+        "0.2"
+      ],
+      "expected_value": 9,
+      "tolerance": 0.01,
+      "points": 15,
+      "indices": [
+        "La TVA = Total HT × 20%",
+        "Tu peux écrire 0.2 ou 20%",
+        "=E2*0.2 ou =E2*20%"
+      ]
+    },
+    {
+      "id": "cp_4_recopie_tva",
+      "cellule": "F16",
+      "type": "formule",
+      "description": "Formule TVA recopiée en dernière ligne",
+      "competence_id": 6,
+      "fonction": null,
+      "pattern": [
+        "E16",
+        "0.2"
+      ],
+      "expected_value": 16,
+      "tolerance": 0.01,
+      "points": 10,
+      "indices": [
+        "La formule doit référencer E16, pas E2",
+        "=E16*0.2",
+        "Vérifie en cliquant sur F16"
+      ]
+    },
+    {
+      "id": "cp_5_formule_ttc",
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Formule Total TTC première ligne",
+      "competence_id": 6,
+      "fonction": null,
+      "pattern": [
+        "E2",
+        "F2",
+        "+"
+      ],
+      "expected_value": 54,
+      "tolerance": 0.01,
+      "points": 10,
+      "indices": [
+        "Le TTC = HT + TVA",
+        "=E2+F2",
+        "Ou directement =E2*1.2"
+      ]
+    },
+    {
+      "id": "cp_6_recopie_ttc",
+      "cellule": "G16",
+      "type": "formule",
+      "description": "Formule TTC recopiée en dernière ligne",
+      "competence_id": 6,
+      "fonction": null,
+      "pattern": [
+        "E16",
+        "F16",
+        "+"
+      ],
+      "expected_value": 96,
+      "tolerance": 0.01,
+      "points": 10,
+      "indices": [
+        "=E16+F16",
+        "Vérifie que les références sont bien sur la ligne 16",
+        "Le TTC de la dernière facture doit être 96€"
+      ]
+    },
+    {
+      "id": "cp_7_total_ht",
+      "cellule": "E17",
+      "type": "formule",
+      "description": "Total de tous les HT",
+      "competence_id": 3,
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "E2",
+        "E16"
+      ],
+      "expected_value": 1515,
+      "points": 15,
+      "indices": [
+        "Utilise SOMME pour additionner tous les HT",
+        "La plage va de E2 à E16",
+        "=SOMME(E2:E16)"
+      ],
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      }
+    },
+    {
+      "id": "cp_8_total_ttc",
+      "cellule": "G17",
+      "type": "formule",
+      "description": "Total de tous les TTC",
+      "competence_id": 3,
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "G2",
+        "G16"
+      ],
+      "expected_value": 1818,
+      "tolerance": 0.01,
+      "points": 10,
+      "indices": [
+        "=SOMME(G2:G16)",
+        "Le total TTC doit être le total HT × 1.2",
+        "Résultat attendu : 1818€"
+      ],
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      }
+    }
+  ],
+  "valeurs_attendues": {
+    "calculs": {
+      "total_ht": 1515,
+      "total_tva": 303,
+      "total_ttc": 1818
+    },
+    "details_lignes": [
+      {
+        "ligne": 2,
+        "ht": 45,
+        "tva": 9,
+        "ttc": 54
+      },
+      {
+        "ligne": 3,
+        "ht": 70,
+        "tva": 14,
+        "ttc": 84
+      },
+      {
+        "ligne": 4,
+        "ht": 80,
+        "tva": 16,
+        "ttc": 96
+      },
+      {
+        "ligne": 5,
+        "ht": 45,
+        "tva": 9,
+        "ttc": 54
+      },
+      {
+        "ligne": 6,
+        "ht": 250,
+        "tva": 50,
+        "ttc": 300
+      },
+      {
+        "ligne": 7,
+        "ht": 105,
+        "tva": 21,
+        "ttc": 126
+      },
+      {
+        "ligne": 8,
+        "ht": 90,
+        "tva": 18,
+        "ttc": 108
+      },
+      {
+        "ligne": 9,
+        "ht": 120,
+        "tva": 24,
+        "ttc": 144
+      },
+      {
+        "ligne": 10,
+        "ht": 80,
+        "tva": 16,
+        "ttc": 96
+      },
+      {
+        "ligne": 11,
+        "ht": 45,
+        "tva": 9,
+        "ttc": 54
+      },
+      {
+        "ligne": 12,
+        "ht": 35,
+        "tva": 7,
+        "ttc": 42
+      },
+      {
+        "ligne": 13,
+        "ht": 250,
+        "tva": 50,
+        "ttc": 300
+      },
+      {
+        "ligne": 14,
+        "ht": 135,
+        "tva": 27,
+        "ttc": 162
+      },
+      {
+        "ligne": 15,
+        "ht": 240,
+        "tva": 48,
+        "ttc": 288
+      },
+      {
+        "ligne": 16,
+        "ht": 80,
+        "tva": 16,
+        "ttc": 96
+      }
+    ]
+  },
+  "pieges_pedagogiques": [
+    {
+      "piege": "Recopier sans comprendre",
+      "symptome": "Toutes les cellules affichent le même résultat",
+      "cause": "L'utilisateur a copié-collé la valeur au lieu de la formule",
+      "solution": "Vérifier que la cellule contient bien une formule (commence par =)"
+    },
+    {
+      "piege": "Formule qui ne s'adapte pas",
+      "symptome": "E16 contient =D2*E2 au lieu de =D16*E16",
+      "cause": "L'utilisateur a tapé la même formule partout manuellement",
+      "solution": "Utiliser la poignée de recopie, pas copier-coller le texte"
+    }
+  ],
+  "scoring": {
+    "total_points": 100,
+    "seuil_reussite": 70,
+    "seuil_maitrise": 90
+  },
+  "feedback_manager": {
+    "succes": "Parfait ! Tu maîtrises maintenant la recopie de formules. Tu viens de gagner un temps fou - imagine si tu avais dû taper 45 formules à la main ! 🎉",
+    "partiel": "Tu as compris le principe, mais vérifie que tes formules se sont bien adaptées à chaque ligne. Clique sur une cellule et regarde la barre de formule.",
+    "echec": "La recopie de formules est une compétence clé d'Excel. Reprends l'exercice en observant bien comment les références changent quand tu recopies."
+  },
+  "socrate_message": {
+    "intro": "Aujourd'hui, tu vas découvrir un des super-pouvoirs d'Excel : la recopie automatique de formules ! 🚀 Fini de retaper la même formule 100 fois.",
+    "conclusion": "Tu viens de comprendre un concept fondamental : les références relatives. Excel adapte automatiquement les références quand tu recopies. C'est magique, non ? ✨"
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-21",
+    "tags": [
+      "copier-coller",
+      "recopie",
+      "formules",
+      "références relatives",
+      "fondamental"
+    ],
+    "prerequis": [
+      "SOMME",
+      "Saisie de données"
+    ],
+    "ouvre_vers": [
+      "Références absolues",
+      "SOMME.SI"
+    ]
+  }
+}

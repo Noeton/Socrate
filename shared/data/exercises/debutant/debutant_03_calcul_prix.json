@@ -1,0 +1,488 @@
+{
+  "id": "debutant_03_calcul_prix",
+  "titre": "Catalogue Produits - Calcul Prix TTC",
+  "niveau": "debutant",
+  "duree_estimee": "18 min",
+  "competences": [
+    "calculs_base",
+    "MIN",
+    "MAX"
+  ],
+  "contexte": {
+    "situation": "Tu travailles pour une boutique e-commerce et tu dois calculer les prix TTC pour 40 produits.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer le prix TTC (HT + TVA)",
+    "Identifier le produit le moins cher et le plus cher",
+    "Calculer le prix moyen"
+  ],
+  "consignes": [
+    "Dans F2, calcule le prix TTC: =D2*(1+E2/100) et recopie jusqu'à F41",
+    "En F42, calcule le prix TTC moyen: =MOYENNE(F2:F41)",
+    "En F43, trouve le prix TTC minimum: =MIN(F2:F41)",
+    "En F44, trouve le prix TTC maximum: =MAX(F2:F41)",
+    "Formate les prix avec 2 décimales et le symbole €"
+  ],
+  "donnees": {
+    "headers": [
+      "Référence",
+      "Nom",
+      "Catégorie",
+      "Prix HT",
+      "TVA %",
+      "Prix TTC"
+    ],
+    "rows": [
+      [
+        "PROD001",
+        "Switch",
+        "Électronique",
+        299,
+        20,
+        ""
+      ],
+      [
+        "PROD002",
+        "Adaptateur",
+        "Accessoires",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD003",
+        "Chargeur",
+        "Accessoires",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD004",
+        "Batterie",
+        "Informatique",
+        149,
+        20,
+        ""
+      ],
+      [
+        "PROD005",
+        "Tablette",
+        "Électronique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD006",
+        "Disque dur",
+        "Accessoires",
+        99,
+        20,
+        ""
+      ],
+      [
+        "PROD007",
+        "Ordinateur portable",
+        "Électronique",
+        499,
+        20,
+        ""
+      ],
+      [
+        "PROD008",
+        "Écran",
+        "Accessoires",
+        299,
+        20,
+        ""
+      ],
+      [
+        "PROD009",
+        "Adaptateur",
+        "Accessoires",
+        499,
+        20,
+        ""
+      ],
+      [
+        "PROD010",
+        "Disque dur",
+        "Électronique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD011",
+        "Ordinateur portable",
+        "Accessoires",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD012",
+        "Imprimante",
+        "Électronique",
+        99,
+        20,
+        ""
+      ],
+      [
+        "PROD013",
+        "Housse",
+        "Informatique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD014",
+        "Webcam",
+        "Accessoires",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD015",
+        "Casque",
+        "Informatique",
+        149,
+        20,
+        ""
+      ],
+      [
+        "PROD016",
+        "Câble USB",
+        "Informatique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD017",
+        "Ordinateur portable",
+        "Électronique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD018",
+        "Tablette",
+        "Accessoires",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD019",
+        "Support",
+        "Électronique",
+        99,
+        20,
+        ""
+      ],
+      [
+        "PROD020",
+        "Webcam",
+        "Électronique",
+        99,
+        20,
+        ""
+      ],
+      [
+        "PROD021",
+        "Support",
+        "Électronique",
+        149,
+        20,
+        ""
+      ],
+      [
+        "PROD022",
+        "Support",
+        "Électronique",
+        149,
+        20,
+        ""
+      ],
+      [
+        "PROD023",
+        "Écran",
+        "Informatique",
+        299,
+        20,
+        ""
+      ],
+      [
+        "PROD024",
+        "Imprimante",
+        "Électronique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD025",
+        "Câble USB",
+        "Informatique",
+        149,
+        20,
+        ""
+      ],
+      [
+        "PROD026",
+        "Chargeur",
+        "Accessoires",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD027",
+        "Téléphone",
+        "Accessoires",
+        499,
+        20,
+        ""
+      ],
+      [
+        "PROD028",
+        "Téléphone",
+        "Électronique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD029",
+        "Câble USB",
+        "Informatique",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD030",
+        "Ordinateur portable",
+        "Informatique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD031",
+        "Écouteurs",
+        "Électronique",
+        499,
+        20,
+        ""
+      ],
+      [
+        "PROD032",
+        "Casque",
+        "Informatique",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD033",
+        "Webcam",
+        "Informatique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD034",
+        "Disque dur",
+        "Accessoires",
+        399,
+        20,
+        ""
+      ],
+      [
+        "PROD035",
+        "Téléphone",
+        "Électronique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD036",
+        "Écouteurs",
+        "Accessoires",
+        99,
+        20,
+        ""
+      ],
+      [
+        "PROD037",
+        "Câble USB",
+        "Informatique",
+        99,
+        20,
+        ""
+      ],
+      [
+        "PROD038",
+        "Téléphone",
+        "Électronique",
+        199,
+        20,
+        ""
+      ],
+      [
+        "PROD039",
+        "Écouteurs",
+        "Accessoires",
+        149,
+        20,
+        ""
+      ],
+      [
+        "PROD040",
+        "Webcam",
+        "Accessoires",
+        299,
+        20,
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "calculs_corrects": true,
+    "formule_min_presente": true,
+    "formule_max_presente": true,
+    "score_minimum": 7
+  },
+  "checkpoints": [
+    {
+      "cellule": "F2",
+      "type": "formule",
+      "description": "Calcul du prix TTC (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "D2",
+        "E2",
+        "1",
+        "+",
+        "*"
+      ],
+      "recopie_jusqua": "F41",
+      "points": 25,
+      "indices": [
+        "Pour calculer le TTC, tu dois ajouter la TVA au prix HT. Comment transformer un pourcentage en coefficient ?",
+        "La formule doit multiplier le prix HT par (1 + taux de TVA/100).",
+        "=D2*(1+E2/100)"
+      ],
+      "id": "cp_1",
+      "competence_id": 5
+    },
+    {
+      "cellule": "F41",
+      "type": "formule",
+      "description": "Vérification de la recopie du calcul TTC (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "D41",
+        "E41",
+        "1",
+        "+",
+        "*"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée à la dernière ligne.",
+        "Les références de cellules doivent pointer vers la ligne 41.",
+        "=D41*(1+E41/100)"
+      ],
+      "id": "cp_2",
+      "competence_id": 5
+    },
+    {
+      "cellule": "F42",
+      "type": "formule",
+      "description": "Calcul du prix TTC moyen",
+      "fonction": "MOYENNE",
+      "pattern": [
+        "MOYENNE",
+        "F2:F41"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Pour calculer une moyenne, quelle fonction Excel utilises-tu ?",
+        "Tu dois faire la moyenne de toutes les cellules de prix TTC.",
+        "=MOYENNE(F2:F41)"
+      ],
+      "id": "cp_3",
+      "computation": {
+        "type": "average",
+        "column": "auto"
+      },
+      "competence_id": 5
+    },
+    {
+      "cellule": "F43",
+      "type": "formule",
+      "description": "Calcul du prix TTC minimum",
+      "fonction": "MIN",
+      "pattern": [
+        "MIN",
+        "F2:F41"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Pour trouver la plus petite valeur, quelle fonction utilises-tu ?",
+        "Tu cherches le minimum parmi tous les prix TTC calculés.",
+        "=MIN(F2:F41)"
+      ],
+      "id": "cp_4",
+      "computation": {
+        "type": "min",
+        "column": "auto"
+      },
+      "competence_id": 5
+    },
+    {
+      "cellule": "F44",
+      "type": "formule",
+      "description": "Calcul du prix TTC maximum",
+      "fonction": "MAX",
+      "pattern": [
+        "MAX",
+        "F2:F41"
+      ],
+      "recopie_jusqua": null,
+      "points": 20,
+      "indices": [
+        "Pour trouver la plus grande valeur, quelle fonction utilises-tu ?",
+        "Tu cherches le maximum parmi tous les prix TTC calculés.",
+        "=MAX(F2:F41)"
+      ],
+      "id": "cp_5",
+      "computation": {
+        "type": "max",
+        "column": "auto"
+      },
+      "competence_id": 5
+    }
+  ],
+  "competence_ids": [
+    5
+  ]
+}

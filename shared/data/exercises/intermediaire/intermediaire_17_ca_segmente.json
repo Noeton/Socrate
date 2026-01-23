@@ -1,0 +1,1000 @@
+{
+  "id": "intermediaire_17_ca_segmente",
+  "titre": "CA Segmenté avec SOMME.SI.ENS",
+  "niveau": "intermediaire",
+  "duree_estimee": "38 min",
+  "competences": [
+    "SOMME.SI.ENS"
+  ],
+  "contexte": {
+    "situation": "Tu calcules le CA par combinaisons de critères (vendeur + région + période).",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Calculer le CA avec conditions multiples",
+    "Segmenter par vendeur et région",
+    "Comparer les performances"
+  ],
+  "consignes": [
+    "Crée un tableau: Vendeurs en lignes, Régions en colonnes",
+    "Pour chaque case, calcule: =SOMME.SI.ENS(Ventes!$G$2:$G$91;Ventes!$C$2:$C$91;$A2;Ventes!$D$2:$D$91;B$1)",
+    "Calcule le total par vendeur",
+    "Calcule le total par région",
+    "Identifie le meilleur vendeur de chaque région",
+    "Calcule la contribution de chaque vendeur au CA total (%)"
+  ],
+  "donnees": {
+    "headers": [
+      "Date",
+      "Produit",
+      "Vendeur",
+      "Région",
+      "Quantité",
+      "Prix Unitaire",
+      "Total"
+    ],
+    "rows": [
+      [
+        "01/01/2024",
+        "Tablette",
+        "Charlie",
+        "Pays de la Loire",
+        41,
+        499,
+        20459
+      ],
+      [
+        "02/01/2024",
+        "Ordinateur portable",
+        "Grace",
+        "Normandie",
+        40,
+        99,
+        3960
+      ],
+      [
+        "03/01/2024",
+        "Ordinateur portable",
+        "Charlie",
+        "Auvergne-Rhône-Alpes",
+        10,
+        149,
+        1490
+      ],
+      [
+        "04/01/2024",
+        "Disque dur",
+        "Marie",
+        "Nouvelle-Aquitaine",
+        50,
+        599,
+        29950
+      ],
+      [
+        "05/01/2024",
+        "Clavier",
+        "Marie",
+        "Auvergne-Rhône-Alpes",
+        11,
+        299,
+        3289
+      ],
+      [
+        "06/01/2024",
+        "Adaptateur",
+        "Rose",
+        "Île-de-France",
+        6,
+        149,
+        894
+      ],
+      [
+        "07/01/2024",
+        "Moniteur",
+        "Uma",
+        "Île-de-France",
+        12,
+        399,
+        4788
+      ],
+      [
+        "08/01/2024",
+        "Câble USB",
+        "Olivia",
+        "Bourgogne-Franche-Comté",
+        30,
+        1299,
+        38970
+      ],
+      [
+        "09/01/2024",
+        "Chargeur",
+        "Victor",
+        "Auvergne-Rhône-Alpes",
+        45,
+        99,
+        4455
+      ],
+      [
+        "10/01/2024",
+        "Clavier",
+        "Kate",
+        "Bourgogne-Franche-Comté",
+        36,
+        99,
+        3564
+      ],
+      [
+        "11/01/2024",
+        "Batterie",
+        "Alice",
+        "Bourgogne-Franche-Comté",
+        12,
+        599,
+        7188
+      ],
+      [
+        "12/01/2024",
+        "Imprimante",
+        "Quentin",
+        "Île-de-France",
+        13,
+        149,
+        1937
+      ],
+      [
+        "13/01/2024",
+        "Switch",
+        "Paul",
+        "Centre-Val de Loire",
+        22,
+        499,
+        10978
+      ],
+      [
+        "14/01/2024",
+        "Ordinateur portable",
+        "Victor",
+        "Bretagne",
+        33,
+        599,
+        19767
+      ],
+      [
+        "15/01/2024",
+        "Téléphone",
+        "Nathan",
+        "Hauts-de-France",
+        48,
+        149,
+        7152
+      ],
+      [
+        "16/01/2024",
+        "Router",
+        "Grace",
+        "Provence-Alpes-Côte d'Azur",
+        15,
+        399,
+        5985
+      ],
+      [
+        "17/01/2024",
+        "Housse",
+        "Diana",
+        "Nouvelle-Aquitaine",
+        2,
+        599,
+        1198
+      ],
+      [
+        "18/01/2024",
+        "Webcam",
+        "Marie",
+        "Provence-Alpes-Côte d'Azur",
+        16,
+        149,
+        2384
+      ],
+      [
+        "19/01/2024",
+        "Téléphone",
+        "Eve",
+        "Centre-Val de Loire",
+        18,
+        499,
+        8982
+      ],
+      [
+        "20/01/2024",
+        "Casque",
+        "Yves",
+        "Hauts-de-France",
+        42,
+        499,
+        20958
+      ],
+      [
+        "21/01/2024",
+        "Clavier",
+        "Frank",
+        "Grand Est",
+        36,
+        399,
+        14364
+      ],
+      [
+        "22/01/2024",
+        "Support",
+        "Frank",
+        "Auvergne-Rhône-Alpes",
+        18,
+        499,
+        8982
+      ],
+      [
+        "23/01/2024",
+        "Batterie",
+        "Nathan",
+        "Auvergne-Rhône-Alpes",
+        12,
+        599,
+        7188
+      ],
+      [
+        "24/01/2024",
+        "Webcam",
+        "Tom",
+        "Bourgogne-Franche-Comté",
+        31,
+        99,
+        3069
+      ],
+      [
+        "25/01/2024",
+        "Moniteur",
+        "Paul",
+        "Île-de-France",
+        13,
+        799,
+        10387
+      ],
+      [
+        "26/01/2024",
+        "Écran",
+        "Leo",
+        "Centre-Val de Loire",
+        33,
+        799,
+        26367
+      ],
+      [
+        "27/01/2024",
+        "Ordinateur portable",
+        "Rose",
+        "Auvergne-Rhône-Alpes",
+        27,
+        299,
+        8073
+      ],
+      [
+        "28/01/2024",
+        "Support",
+        "Uma",
+        "Occitanie",
+        11,
+        499,
+        5489
+      ],
+      [
+        "29/01/2024",
+        "Casque",
+        "Xavier",
+        "Bourgogne-Franche-Comté",
+        6,
+        299,
+        1794
+      ],
+      [
+        "30/01/2024",
+        "Chargeur",
+        "Grace",
+        "Île-de-France",
+        36,
+        999,
+        35964
+      ],
+      [
+        "31/01/2024",
+        "Housse",
+        "Henry",
+        "Occitanie",
+        36,
+        599,
+        21564
+      ],
+      [
+        "01/02/2024",
+        "Imprimante",
+        "Yves",
+        "Hauts-de-France",
+        48,
+        499,
+        23952
+      ],
+      [
+        "02/02/2024",
+        "Disque dur",
+        "Yves",
+        "Centre-Val de Loire",
+        24,
+        199,
+        4776
+      ],
+      [
+        "03/02/2024",
+        "Moniteur",
+        "Victor",
+        "Grand Est",
+        47,
+        299,
+        14053
+      ],
+      [
+        "04/02/2024",
+        "Moniteur",
+        "Bob",
+        "Provence-Alpes-Côte d'Azur",
+        50,
+        149,
+        7450
+      ],
+      [
+        "05/02/2024",
+        "Écouteurs",
+        "Uma",
+        "Bourgogne-Franche-Comté",
+        18,
+        99,
+        1782
+      ],
+      [
+        "06/02/2024",
+        "Écran",
+        "Diana",
+        "Auvergne-Rhône-Alpes",
+        47,
+        999,
+        46953
+      ],
+      [
+        "07/02/2024",
+        "Adaptateur",
+        "Olivia",
+        "Occitanie",
+        25,
+        199,
+        4975
+      ],
+      [
+        "08/02/2024",
+        "Imprimante",
+        "Wendy",
+        "Grand Est",
+        9,
+        399,
+        3591
+      ],
+      [
+        "09/02/2024",
+        "Téléphone",
+        "Bob",
+        "Pays de la Loire",
+        34,
+        599,
+        20366
+      ],
+      [
+        "10/02/2024",
+        "Chargeur",
+        "Paul",
+        "Grand Est",
+        11,
+        299,
+        3289
+      ],
+      [
+        "11/02/2024",
+        "Router",
+        "Frank",
+        "Provence-Alpes-Côte d'Azur",
+        41,
+        499,
+        20459
+      ],
+      [
+        "12/02/2024",
+        "Disque dur",
+        "Zoé",
+        "Occitanie",
+        37,
+        999,
+        36963
+      ],
+      [
+        "13/02/2024",
+        "Clavier",
+        "Frank",
+        "Provence-Alpes-Côte d'Azur",
+        23,
+        499,
+        11477
+      ],
+      [
+        "14/02/2024",
+        "Switch",
+        "Zoé",
+        "Hauts-de-France",
+        31,
+        599,
+        18569
+      ],
+      [
+        "15/02/2024",
+        "Support",
+        "Wendy",
+        "Île-de-France",
+        37,
+        399,
+        14763
+      ],
+      [
+        "16/02/2024",
+        "Disque dur",
+        "Marie",
+        "Bretagne",
+        25,
+        499,
+        12475
+      ],
+      [
+        "17/02/2024",
+        "Switch",
+        "Xavier",
+        "Normandie",
+        42,
+        799,
+        33558
+      ],
+      [
+        "18/02/2024",
+        "Ordinateur portable",
+        "Iris",
+        "Pays de la Loire",
+        50,
+        399,
+        19950
+      ],
+      [
+        "19/02/2024",
+        "Souris",
+        "Tom",
+        "Nouvelle-Aquitaine",
+        43,
+        149,
+        6407
+      ],
+      [
+        "20/02/2024",
+        "Écouteurs",
+        "Frank",
+        "Auvergne-Rhône-Alpes",
+        21,
+        99,
+        2079
+      ],
+      [
+        "21/02/2024",
+        "Câble USB",
+        "Charlie",
+        "Île-de-France",
+        15,
+        99,
+        1485
+      ],
+      [
+        "22/02/2024",
+        "Ordinateur portable",
+        "Charlie",
+        "Pays de la Loire",
+        11,
+        299,
+        3289
+      ],
+      [
+        "23/02/2024",
+        "Écouteurs",
+        "Zoé",
+        "Pays de la Loire",
+        5,
+        99,
+        495
+      ],
+      [
+        "24/02/2024",
+        "Webcam",
+        "Henry",
+        "Normandie",
+        5,
+        599,
+        2995
+      ],
+      [
+        "25/02/2024",
+        "Support",
+        "Yves",
+        "Nouvelle-Aquitaine",
+        25,
+        599,
+        14975
+      ],
+      [
+        "26/02/2024",
+        "Écran",
+        "Wendy",
+        "Île-de-France",
+        49,
+        399,
+        19551
+      ],
+      [
+        "27/02/2024",
+        "Moniteur",
+        "Iris",
+        "Centre-Val de Loire",
+        23,
+        399,
+        9177
+      ],
+      [
+        "28/02/2024",
+        "Adaptateur",
+        "Kate",
+        "Hauts-de-France",
+        31,
+        199,
+        6169
+      ],
+      [
+        "29/02/2024",
+        "Batterie",
+        "Frank",
+        "Grand Est",
+        7,
+        199,
+        1393
+      ],
+      [
+        "01/03/2024",
+        "Webcam",
+        "Sam",
+        "Auvergne-Rhône-Alpes",
+        31,
+        999,
+        30969
+      ],
+      [
+        "02/03/2024",
+        "Ordinateur portable",
+        "Wendy",
+        "Bourgogne-Franche-Comté",
+        41,
+        799,
+        32759
+      ],
+      [
+        "03/03/2024",
+        "Souris",
+        "Alice",
+        "Auvergne-Rhône-Alpes",
+        14,
+        799,
+        11186
+      ],
+      [
+        "04/03/2024",
+        "Switch",
+        "Tom",
+        "Auvergne-Rhône-Alpes",
+        45,
+        799,
+        35955
+      ],
+      [
+        "05/03/2024",
+        "Imprimante",
+        "Charlie",
+        "Bourgogne-Franche-Comté",
+        21,
+        399,
+        8379
+      ],
+      [
+        "06/03/2024",
+        "Switch",
+        "Rose",
+        "Provence-Alpes-Côte d'Azur",
+        37,
+        799,
+        29563
+      ],
+      [
+        "07/03/2024",
+        "Chargeur",
+        "Alice",
+        "Bretagne",
+        5,
+        1299,
+        6495
+      ],
+      [
+        "08/03/2024",
+        "Écouteurs",
+        "Alice",
+        "Bretagne",
+        39,
+        599,
+        23361
+      ],
+      [
+        "09/03/2024",
+        "Câble USB",
+        "Victor",
+        "Normandie",
+        11,
+        1299,
+        14289
+      ],
+      [
+        "10/03/2024",
+        "Tablette",
+        "Yves",
+        "Île-de-France",
+        18,
+        199,
+        3582
+      ],
+      [
+        "11/03/2024",
+        "Câble USB",
+        "Sam",
+        "Bretagne",
+        37,
+        399,
+        14763
+      ],
+      [
+        "12/03/2024",
+        "Adaptateur",
+        "Frank",
+        "Nouvelle-Aquitaine",
+        2,
+        999,
+        1998
+      ],
+      [
+        "13/03/2024",
+        "Clavier",
+        "Henry",
+        "Hauts-de-France",
+        20,
+        599,
+        11980
+      ],
+      [
+        "14/03/2024",
+        "Ordinateur portable",
+        "Jack",
+        "Normandie",
+        6,
+        399,
+        2394
+      ],
+      [
+        "15/03/2024",
+        "Téléphone",
+        "Grace",
+        "Bretagne",
+        27,
+        299,
+        8073
+      ],
+      [
+        "16/03/2024",
+        "Switch",
+        "Nathan",
+        "Provence-Alpes-Côte d'Azur",
+        25,
+        499,
+        12475
+      ],
+      [
+        "17/03/2024",
+        "Casque",
+        "Grace",
+        "Île-de-France",
+        9,
+        1299,
+        11691
+      ],
+      [
+        "18/03/2024",
+        "Écran",
+        "Diana",
+        "Normandie",
+        15,
+        599,
+        8985
+      ],
+      [
+        "19/03/2024",
+        "Tablette",
+        "Grace",
+        "Bourgogne-Franche-Comté",
+        1,
+        399,
+        399
+      ],
+      [
+        "20/03/2024",
+        "Switch",
+        "Frank",
+        "Grand Est",
+        9,
+        99,
+        891
+      ],
+      [
+        "21/03/2024",
+        "Ordinateur portable",
+        "Wendy",
+        "Provence-Alpes-Côte d'Azur",
+        10,
+        799,
+        7990
+      ],
+      [
+        "22/03/2024",
+        "Imprimante",
+        "Victor",
+        "Hauts-de-France",
+        33,
+        599,
+        19767
+      ],
+      [
+        "23/03/2024",
+        "Moniteur",
+        "Iris",
+        "Centre-Val de Loire",
+        12,
+        1299,
+        15588
+      ],
+      [
+        "24/03/2024",
+        "Batterie",
+        "Xavier",
+        "Pays de la Loire",
+        14,
+        999,
+        13986
+      ],
+      [
+        "25/03/2024",
+        "Disque dur",
+        "Marie",
+        "Hauts-de-France",
+        12,
+        599,
+        7188
+      ],
+      [
+        "26/03/2024",
+        "Ordinateur portable",
+        "Uma",
+        "Normandie",
+        34,
+        299,
+        10166
+      ],
+      [
+        "27/03/2024",
+        "Souris",
+        "Iris",
+        "Nouvelle-Aquitaine",
+        30,
+        299,
+        8970
+      ],
+      [
+        "28/03/2024",
+        "Adaptateur",
+        "Frank",
+        "Hauts-de-France",
+        20,
+        399,
+        7980
+      ],
+      [
+        "29/03/2024",
+        "Câble USB",
+        "Alice",
+        "Pays de la Loire",
+        22,
+        499,
+        10978
+      ],
+      [
+        "30/03/2024",
+        "Casque",
+        "Xavier",
+        "Nouvelle-Aquitaine",
+        32,
+        799,
+        25568
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "somme_si_ens_present": true,
+    "tableau_complet": true,
+    "analyses_correctes": true,
+    "score_minimum": 8.5
+  },
+  "checkpoints": [
+    {
+      "cellule": "B2",
+      "type": "formule",
+      "description": "Calcul CA vendeur/région avec SOMME.SI.ENS (première cellule)",
+      "fonction": "SOMME.SI.ENS",
+      "pattern": [
+        "SOMME.SI.ENS",
+        "Ventes!$G$2:$G$91",
+        "Ventes!$C$2:$C$91",
+        "$A2",
+        "Ventes!$D$2:$D$91",
+        "B$1"
+      ],
+      "recopie_jusqua": "dernière_cellule_tableau",
+      "points": 25,
+      "indices": [
+        "Tu dois utiliser SOMME.SI.ENS avec plusieurs critères pour croiser vendeur et région.",
+        "La formule doit sommer la colonne G avec 2 conditions : vendeur ($A2) et région (B$1).",
+        "=SOMME.SI.ENS(Ventes!$G$2:$G$91;Ventes!$C$2:$C$91;$A2;Ventes!$D$2:$D$91;B$1)"
+      ],
+      "id": "cp_1",
+      "competence_id": 14
+    },
+    {
+      "cellule": "dernière_colonne_B2",
+      "type": "formule",
+      "description": "Vérification recopie SOMME.SI.ENS (dernière cellule du tableau)",
+      "fonction": "SOMME.SI.ENS",
+      "pattern": [
+        "SOMME.SI.ENS",
+        "Ventes!$G$2:$G$91",
+        "$A",
+        "B$1"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Vérifie que les références absolues et relatives sont correctes après recopie.",
+        "Les plages doivent rester fixes ($G$2:$G$91) mais les critères doivent s'adapter.",
+        "La ligne du vendeur doit être relative, la ligne de la région doit être fixe."
+      ],
+      "id": "cp_2",
+      "competence_id": 14
+    },
+    {
+      "cellule": "colonne_total_vendeurs",
+      "type": "formule",
+      "description": "Total par vendeur (somme horizontale)",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "B2:",
+        "2"
+      ],
+      "recopie_jusqua": "dernière_ligne_vendeurs",
+      "points": 15,
+      "indices": [
+        "Pour le total par vendeur, tu dois additionner toutes les régions de cette ligne.",
+        "Utilise la fonction SOMME sur la plage horizontale de la ligne du vendeur.",
+        "=SOMME(B2:dernière_colonne_région2)"
+      ],
+      "id": "cp_3",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 14
+    },
+    {
+      "cellule": "ligne_total_régions",
+      "type": "formule",
+      "description": "Total par région (somme verticale)",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "B2:B",
+        "B"
+      ],
+      "recopie_jusqua": "dernière_colonne_régions",
+      "points": 15,
+      "indices": [
+        "Pour le total par région, tu dois additionner tous les vendeurs de cette colonne.",
+        "Utilise la fonction SOMME sur la plage verticale de la colonne de la région.",
+        "=SOMME(B2:B_dernière_ligne_vendeur)"
+      ],
+      "id": "cp_4",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      },
+      "competence_id": 14
+    },
+    {
+      "cellule": "meilleur_vendeur_région1",
+      "type": "formule",
+      "description": "Identification du meilleur vendeur par région",
+      "fonction": "INDEX",
+      "pattern": [
+        "INDEX",
+        "MAX",
+        "$A:$A",
+        "B:B"
+      ],
+      "recopie_jusqua": "dernière_région",
+      "points": 20,
+      "indices": [
+        "Tu dois trouver le vendeur qui a le CA maximum dans chaque région.",
+        "Combine INDEX et EQUIV avec MAX pour trouver le nom du vendeur ayant la valeur maximale.",
+        "=INDEX($A:$A;EQUIV(MAX(B:B);B:B;0)) ou utilise une approche similaire"
+      ],
+      "id": "cp_5",
+      "competence_id": 14
+    },
+    {
+      "cellule": "contribution_vendeur1",
+      "type": "formule",
+      "description": "Calcul contribution vendeur au CA total (%)",
+      "fonction": null,
+      "pattern": [
+        "/",
+        "SOMME",
+        "$",
+        "%",
+        "100"
+      ],
+      "recopie_jusqua": "dernier_vendeur",
+      "points": 10,
+      "indices": [
+        "La contribution, c'est la part de chaque vendeur dans le total général.",
+        "Divise le CA du vendeur par le CA total, puis multiplie par 100 pour avoir un %.",
+        "=(CA_vendeur/CA_total)*100 avec une référence absolue sur le total"
+      ],
+      "id": "cp_6",
+      "competence_id": 14
+    }
+  ],
+  "competence_ids": [
+    14
+  ]
+}

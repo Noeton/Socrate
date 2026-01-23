@@ -1,0 +1,267 @@
+{
+    "id": "avance_04_sommeprod_calculs_matriciels",
+    "titre": "SOMMEPROD : Calculs Matriciels Sans Limites",
+    "niveau": "avance",
+    "duree_estimee": "28 min",
+    "competences": ["SOMMEPROD", "Calculs matriciels", "Conditions multiples"],
+    "competence_ids": [23],
+  
+    "contexte": {
+      "situation": "Tu es contrôleur de gestion chez RetailMax, une chaîne de magasins. Tu dois calculer des indicateurs complexes : CA pondéré par région et catégorie, moyennes conditionnelles, comptages avec plusieurs critères... SOMME.SI.ENS ne suffit plus, tu as besoin de SOMMEPROD.",
+      "manager": {
+        "nom": "Caroline Vidal",
+        "poste": "Directrice Financière",
+        "personnalite": "Analytique, elle veut des KPIs sophistiqués que les fonctions classiques ne peuvent pas calculer.",
+        "demande": "Je veux le CA moyen des magasins Premium en Île-de-France, pondéré par leur surface. Et le nombre de magasins qui ont à la fois un CA > 500k ET une marge > 15%. SOMME.SI.ENS ne peut pas faire ça !"
+      },
+      "enjeux": "Reporting stratégique pour le board.",
+      "deadline": "Avant le comité de direction de vendredi"
+    },
+  
+    "objectifs": [
+      "Comprendre le principe de SOMMEPROD (multiplication puis somme)",
+      "Utiliser SOMMEPROD pour des sommes conditionnelles",
+      "Calculer des moyennes pondérées",
+      "Combiner plusieurs conditions (ET, OU)",
+      "Remplacer les formules matricielles classiques"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les données des magasins",
+      "Utilise SOMMEPROD pour calculer le CA total par région ET catégorie",
+      "Calcule des moyennes pondérées",
+      "Compte avec des conditions complexes"
+    ],
+  
+    "donnees": {
+      "feuille": "Magasins",
+      "headers": ["ID", "Magasin", "Région", "Catégorie", "Surface_m2", "CA_Annuel", "Marge_Pct", "Nb_Employes"],
+      "rows": [
+        ["M01", "RetailMax Défense", "IDF", "Premium", 1200, 850000, 18.5, 25],
+        ["M02", "RetailMax Bellecour", "Rhône-Alpes", "Premium", 950, 720000, 17.2, 20],
+        ["M03", "RetailMax Bastille", "IDF", "Standard", 600, 420000, 14.8, 12],
+        ["M04", "RetailMax Part-Dieu", "Rhône-Alpes", "Standard", 750, 580000, 15.5, 16],
+        ["M05", "RetailMax Canebière", "PACA", "Premium", 1100, 680000, 16.8, 22],
+        ["M06", "RetailMax Nation", "IDF", "Standard", 550, 380000, 13.9, 10],
+        ["M07", "RetailMax Confluence", "Rhône-Alpes", "Premium", 1400, 920000, 19.2, 28],
+        ["M08", "RetailMax Opéra", "IDF", "Premium", 1350, 980000, 20.1, 30],
+        ["M09", "RetailMax Vieux-Port", "PACA", "Standard", 700, 450000, 14.2, 14],
+        ["M10", "RetailMax République", "IDF", "Standard", 480, 320000, 12.8, 9],
+        ["M11", "RetailMax Terreaux", "Rhône-Alpes", "Standard", 620, 410000, 14.5, 11],
+        ["M12", "RetailMax Prado", "PACA", "Premium", 1050, 640000, 16.5, 19]
+      ],
+      "position": "A1:H13"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Principe de SOMMEPROD",
+        "explication": [
+          "SOMMEPROD multiplie les éléments de plusieurs plages entre eux",
+          "Puis fait la SOMME de tous ces produits",
+          "=SOMMEPROD(A1:A3;B1:B3) = A1*B1 + A2*B2 + A3*B3"
+        ],
+        "exemple_simple": {
+          "plage_a": [2, 3, 4],
+          "plage_b": [10, 20, 30],
+          "calcul": "2×10 + 3×20 + 4×30 = 20 + 60 + 120 = 200"
+        }
+      },
+      {
+        "phase": "B. SOMMEPROD pour somme conditionnelle",
+        "principe": "On utilise des conditions qui renvoient 1 (VRAI) ou 0 (FAUX)",
+        "syntaxe": "=SOMMEPROD((condition)*(plage_à_sommer))",
+        "exemple": "=SOMMEPROD((C2:C13=\"IDF\")*(F2:F13))",
+        "explication": "Pour chaque ligne : si IDF alors 1×CA, sinon 0×CA"
+      },
+      {
+        "phase": "C. Plusieurs conditions (ET logique)",
+        "syntaxe": "=SOMMEPROD((cond1)*(cond2)*(plage))",
+        "exemple": "=SOMMEPROD((C2:C13=\"IDF\")*(D2:D13=\"Premium\")*(F2:F13))",
+        "explication": "CA des magasins IDF ET Premium"
+      },
+      {
+        "phase": "D. Conditions OU logique",
+        "syntaxe": "=SOMMEPROD(((cond1)+(cond2)>0)*(plage))",
+        "exemple": "=SOMMEPROD(((C2:C13=\"IDF\")+(C2:C13=\"PACA\")>0)*(F2:F13))",
+        "explication": "CA des magasins IDF OU PACA"
+      },
+      {
+        "phase": "E. Moyenne pondérée",
+        "formule": "=SOMMEPROD(valeurs;poids)/SOMME(poids)",
+        "exemple": "=SOMMEPROD(F2:F13;E2:E13)/SOMME(E2:E13)",
+        "explication": "CA moyen pondéré par la surface"
+      },
+      {
+        "phase": "F. Comptage conditionnel avancé",
+        "syntaxe": "=SOMMEPROD((cond1)*(cond2)*1)",
+        "exemple": "=SOMMEPROD((F2:F13>500000)*(G2:G13>15)*1)",
+        "explication": "Compte les magasins avec CA>500k ET marge>15%"
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_ca_idf",
+        "cellule": "K3",
+        "type": "valeur",
+        "description": "CA total des magasins IDF",
+        "competence_id": 23,
+        "expected_value": 2950000,
+        "points": 15,
+        "indices": [
+          "Somme conditionnelle : région = IDF",
+          "=SOMMEPROD((C2:C13=\"IDF\")*(F2:F13))",
+          "5 magasins en IDF"
+        ]
+      },
+      {
+        "id": "cp_2_formule_sommeprod",
+        "cellule": "K3",
+        "type": "formule",
+        "description": "Utilisation de SOMMEPROD",
+        "competence_id": 23,
+        "fonction": "SOMMEPROD",
+        "pattern": ["SOMMEPROD", "IDF"],
+        "points": 10,
+        "indices": [
+          "La formule doit utiliser SOMMEPROD",
+          "Condition entre parenthèses",
+          "Multiplication par la plage CA"
+        ]
+      },
+      {
+        "id": "cp_3_ca_idf_premium",
+        "cellule": "K4",
+        "type": "valeur",
+        "description": "CA des magasins IDF ET Premium",
+        "competence_id": 23,
+        "expected_value": 1830000,
+        "points": 20,
+        "indices": [
+          "Deux conditions : IDF ET Premium",
+          "=SOMMEPROD((C2:C13=\"IDF\")*(D2:D13=\"Premium\")*(F2:F13))",
+          "Défense (850k) + Opéra (980k) = 1830k"
+        ]
+      },
+      {
+        "id": "cp_4_nb_ca_sup_500k",
+        "cellule": "K5",
+        "type": "valeur",
+        "description": "Nombre de magasins avec CA > 500k",
+        "competence_id": 23,
+        "expected_value": 8,
+        "points": 15,
+        "indices": [
+          "Comptage avec condition numérique",
+          "=SOMMEPROD((F2:F13>500000)*1)",
+          "Le *1 force le comptage"
+        ]
+      },
+      {
+        "id": "cp_5_nb_ca_et_marge",
+        "cellule": "K6",
+        "type": "valeur",
+        "description": "Magasins CA>500k ET marge>15%",
+        "competence_id": 23,
+        "expected_value": 6,
+        "points": 20,
+        "indices": [
+          "Deux conditions numériques combinées",
+          "=SOMMEPROD((F2:F13>500000)*(G2:G13>15)*1)",
+          "6 magasins remplissent les deux critères"
+        ]
+      },
+      {
+        "id": "cp_6_moyenne_ponderee",
+        "cellule": "K7",
+        "type": "valeur",
+        "description": "CA moyen pondéré par surface",
+        "competence_id": 23,
+        "expected_value_approx": 658.33,
+        "tolerance": 1,
+        "points": 20,
+        "indices": [
+          "Moyenne pondérée = SOMMEPROD(CA;Surface)/SOMME(Surface)",
+          "=SOMMEPROD(F2:F13;E2:E13)/SOMME(E2:E13)",
+          "Résultat : CA par m² moyen pondéré ≈ 658€/m²"
+        ]
+      }
+    ],
+  
+    "comparaison_fonctions": {
+      "sommesi": {
+        "limite": "1 seul critère, 1 seule plage de critère",
+        "exemple": "=SOMME.SI(C:C;\"IDF\";F:F)"
+      },
+      "sommesiens": {
+        "limite": "Plusieurs critères mais seulement ET logique",
+        "exemple": "=SOMME.SI.ENS(F:F;C:C;\"IDF\";D:D;\"Premium\")"
+      },
+      "sommeprod": {
+        "avantage": "Conditions complexes, OU logique, calculs pondérés",
+        "exemple": "Moyenne pondérée, conditions imbriquées, formules avancées"
+      }
+    },
+  
+    "cas_usage_avances": [
+      {
+        "cas": "Somme avec condition OU",
+        "formule": "=SOMMEPROD(((C:C=\"IDF\")+(C:C=\"PACA\")>0)*(F:F))",
+        "note": "Le >0 convertit le OU en condition valide"
+      },
+      {
+        "cas": "Moyenne conditionnelle",
+        "formule": "=SOMMEPROD((C:C=\"IDF\")*(F:F))/SOMMEPROD((C:C=\"IDF\")*1)",
+        "note": "Somme / Compte des éléments IDF"
+      },
+      {
+        "cas": "Position du max conditionnel",
+        "formule": "=SOMMEPROD((F:F=MAX(SI(C:C=\"IDF\";F:F)))*LIGNE(F:F))",
+        "note": "Ligne du max CA parmi les IDF"
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Oublier les parenthèses autour des conditions",
+        "incorrect": "=SOMMEPROD(C:C=\"IDF\"*F:F)",
+        "correct": "=SOMMEPROD((C:C=\"IDF\")*(F:F))"
+      },
+      {
+        "erreur": "Plages de tailles différentes",
+        "symptome": "#VALEUR!",
+        "solution": "Toutes les plages doivent avoir la même taille"
+      },
+      {
+        "erreur": "Utiliser ET() au lieu de *",
+        "incorrect": "=SOMMEPROD(ET(C:C=\"IDF\";D:D=\"Premium\")*F:F)",
+        "correct": "=SOMMEPROD((C:C=\"IDF\")*(D:D=\"Premium\")*(F:F))"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Impressionnant ! SOMMEPROD n'a plus de secrets pour toi. Tu peux maintenant faire des calculs que SOMME.SI.ENS ne peut pas faire ! 🧮",
+      "partiel": "Tu as compris le principe. Attention aux parenthèses : chaque condition doit être entre (). Utilise * pour combiner.",
+      "echec": "SOMMEPROD = multiplier puis sommer. Pour les conditions : (cond1)*(cond2)*(plage). Les parenthèses sont cruciales !"
+    },
+  
+    "socrate_message": {
+      "intro": "SOMMEPROD, c'est la fonction couteau-suisse ! 🔧 Elle peut tout faire : sommes conditionnelles complexes, moyennes pondérées, comptages avancés...",
+      "conclusion": "Tu maîtrises maintenant la fonction la plus polyvalente d'Excel. SOMMEPROD peut remplacer des dizaines de formules imbriquées. Puissance maximale ! 💪"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["SOMMEPROD", "SUMPRODUCT", "matriciel", "pondéré", "conditions", "avancé"],
+      "prerequis": ["SOMME.SI.ENS", "Logique booléenne"],
+      "ouvre_vers": ["Formules matricielles dynamiques", "DAX"]
+    }
+  }

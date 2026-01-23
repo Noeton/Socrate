@@ -1,0 +1,186 @@
+{
+  "id": "tcd_35_04_multi_valeurs",
+  "version": "1.0",
+  "titre": "📊 TCD : plusieurs mesures en valeurs",
+
+  "metadata": {
+    "niveau": "avance",
+    "duree_estimee": "15 min",
+    "competences_ids": [35],
+    "competences_noms": ["Tableaux croisés dynamiques"],
+    "prerequis": [35],
+    "objectif_pedagogique": "Ajouter plusieurs champs en valeurs avec différentes fonctions d'agrégation",
+    "source_pdf": "Chapter 13: Pivot Tables - Section 13.1",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu analyses les performances commerciales. Tu veux voir à la fois le CA total ET le nombre de ventes par vendeur.",
+    
+    "personnage": "Toi, manager commercial analysant ton équipe.",
+    
+    "objectif": "Créer un TCD qui affiche Somme du CA et Nombre de ventes côte à côte.",
+    
+    "motivation": "Un seul TCD, plusieurs KPIs ! Plus besoin de créer plusieurs tableaux.",
+    
+    "ton": "On combine les métriques pour une vue 360° des performances."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Détail des ventes par vendeur avec montant et nombre de transactions.",
+    "periode": "Q4 2024",
+    "source_fictive": "CRM Commercial"
+  },
+
+  "donnees": {
+    "headers": ["Vendeur", "Produit", "Quantité", "CA (€)"],
+    "rows": [
+      ["Marie", "Laptop", 2, 2400],
+      ["Marie", "Tablette", 5, 2500],
+      ["Marie", "Accessoires", 12, 360],
+      ["Pierre", "Laptop", 3, 3600],
+      ["Pierre", "Smartphone", 4, 2800],
+      ["Sophie", "Tablette", 6, 3000],
+      ["Sophie", "Laptop", 1, 1200],
+      ["Sophie", "Accessoires", 8, 240],
+      ["Lucas", "Smartphone", 7, 4900],
+      ["Lucas", "Accessoires", 15, 450]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Créer le TCD",
+      "consigne": "Insertion > TCD > Nouvelle feuille. Mets 'Vendeur' en lignes.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Ajouter Somme du CA",
+      "consigne": "Glisse 'CA (€)' dans la zone 'Valeurs'. Il devient 'Somme de CA'.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter Somme des Quantités",
+      "consigne": "Glisse aussi 'Quantité' dans la zone 'Valeurs'.",
+      "aide_contextuelle": "Tu peux mettre plusieurs champs dans Valeurs !",
+      "temps": "2 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Ajouter Nombre de ventes",
+      "description": "On veut aussi compter le nombre de lignes (transactions) par vendeur.",
+      "consigne": "Glisse 'Produit' dans Valeurs. Clic droit > Paramètres > Change 'Somme' en 'Nombre'.",
+      "aide_contextuelle": "Le 'Nombre' compte les cellules non vides, donc le nombre de transactions.",
+      "temps": "3 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier le résultat",
+      "consigne": "Tu dois voir 3 colonnes par vendeur : Somme CA, Somme Quantité, Nombre de Produit.",
+      "aide_contextuelle": "Marie : CA=5260, Qté=19, Nb=3 transactions.",
+      "temps": "2 min"
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "id": "cp_multi_val_1",
+      "type": "pivot_table",
+      "description": "Plusieurs champs en Valeurs",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "value_fields_count": 3,
+        "value_fields": ["Somme de CA", "Somme de Quantité", "Nombre de Produit"]
+      },
+      "points": 35,
+      "indices": [
+        "Tu dois avoir 3 champs dans la zone 'Valeurs'.",
+        "Glisse plusieurs champs vers Valeurs.",
+        "Les colonnes du TCD affichent chaque mesure."
+      ],
+      "erreurs_probables": [
+        { "type": "single_value", "message": "Tu n'as qu'un seul champ en Valeurs. Ajoutes-en d'autres." }
+      ]
+    },
+    {
+      "id": "cp_multi_val_2",
+      "type": "pivot_table",
+      "description": "Fonction Nombre utilisée",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_count_function": true,
+        "count_field": "Nombre de Produit"
+      },
+      "points": 25,
+      "indices": [
+        "Un des champs doit utiliser 'Nombre' (pas Somme).",
+        "Clic droit sur le champ > Paramètres > Résumer par > Nombre.",
+        "Le 'Nombre' compte les lignes, la 'Somme' additionne les valeurs."
+      ],
+      "erreurs_probables": [
+        { "type": "all_sum", "message": "Tous tes champs sont en 'Somme'. Change-en un en 'Nombre'." }
+      ]
+    },
+    {
+      "id": "cp_multi_val_3",
+      "type": "pivot_table",
+      "description": "Valeurs correctes pour Marie",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "marie_values": {
+          "somme_ca": 5260,
+          "somme_qte": 19,
+          "nombre": 3
+        }
+      },
+      "points": 25,
+      "indices": [
+        "Marie : CA = 2400+2500+360 = 5260€",
+        "Marie : Quantité = 2+5+12 = 19",
+        "Marie : 3 transactions (3 lignes)"
+      ]
+    },
+    {
+      "id": "cp_multi_val_4",
+      "type": "pivot_table",
+      "description": "Vendeur en lignes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "row_fields": ["Vendeur"]
+      },
+      "points": 15
+    }
+  ],
+
+  "solution_complete": {
+    "description": "TCD avec Vendeur en lignes, 3 champs en valeurs : Somme CA, Somme Quantité, Nombre de transactions.",
+    "etapes_cles": [
+      "Vendeur → Lignes",
+      "CA → Valeurs (Somme)",
+      "Quantité → Valeurs (Somme)",
+      "Produit → Valeurs (Nombre)"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Excellent ! Tu maîtrises les TCD multi-valeurs. Une vue complète en un seul tableau !",
+    "bien": "👍 Bien ! Vérifie que tu as bien 3 mesures différentes.",
+    "ameliorer": "📊 Presque ! N'oublie pas de changer une fonction en 'Nombre'.",
+    "revoir": "🔄 Glisse plusieurs champs vers Valeurs et utilise 'Nombre' pour compter."
+  }
+}

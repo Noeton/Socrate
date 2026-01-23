@@ -1,0 +1,225 @@
+{
+  "id": "graph_26_02_camembert_budget",
+  "version": "1.0",
+  "titre": "🥧 Camembert : où part l'argent ?",
+
+  "metadata": {
+    "niveau": "debutant",
+    "duree_estimee": "15 min",
+    "competences_ids": [26],
+    "competences_noms": ["Graphiques simples"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Créer un graphique en secteurs (camembert) pour visualiser une répartition en pourcentages",
+    "source_pdf": "Chapter 15: Charts and Charting - Section 15.1",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Le directeur financier de StartupVerte te demande un visuel rapide de la répartition du budget annuel pour le conseil d'administration. Les administrateurs n'ont pas le temps de lire des tableaux, ils veulent voir d'un coup d'œil où va l'argent.",
+    
+    "personnage": "Toi, contrôleur de gestion junior chez StartupVerte.",
+    
+    "objectif": "Créer un camembert qui montre instantanément la part de chaque poste de dépense.",
+    
+    "motivation": "Le camembert est LE graphique pour montrer des proportions. 'Les salaires représentent 45% du budget' se comprend en une seconde avec un camembert.",
+    
+    "ton": "Simple et efficace. Le camembert, c'est la visualisation la plus intuitive qui existe."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Budget annuel d'une startup de 85 000€ réparti en 5 postes principaux.",
+    "periode": "Budget prévisionnel 2025",
+    "source_fictive": "Direction financière StartupVerte"
+  },
+
+  "donnees": {
+    "headers": ["Poste budgétaire", "Montant (€)"],
+    "rows": [
+      ["Salaires", 45000],
+      ["Loyer & charges", 12000],
+      ["Marketing", 8000],
+      ["R&D", 15000],
+      ["Autres", 5000]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les données",
+      "consigne": "Sélectionne la plage A1:B6 (en-têtes et données).",
+      "aide_contextuelle": "Pour un camembert, tu as besoin d'une colonne de catégories et une colonne de valeurs.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Insérer le camembert",
+      "consigne": "Va dans Insertion > Graphiques > Secteurs > Secteurs 2D (le premier).",
+      "aide_contextuelle": "Évite les camemberts 3D : ils déforment la perception des proportions. Le 2D est plus honnête.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter un titre",
+      "consigne": "Remplace le titre par 'Répartition Budget 2025'.",
+      "aide_contextuelle": "Un bon titre de camembert dit CE QUI EST réparti et QUAND.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Afficher les pourcentages",
+      "description": "Le camembert montre des parts. Affichons les pourcentages directement sur les secteurs.",
+      "consigne": "Création > Ajouter un élément > Étiquettes de données > Autres options > Cocher 'Pourcentage'.",
+      "aide_contextuelle": "Tu peux aussi cocher 'Nom de catégorie' pour afficher le libellé directement sur chaque part.",
+      "temps": "3 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Ajouter la légende",
+      "consigne": "Vérifie que la légende est visible (en bas ou à droite du graphique).",
+      "aide_contextuelle": "La légende associe chaque couleur à un poste budgétaire. Essentiel si les étiquettes ne sont pas sur le graphique.",
+      "temps": "1 min"
+    }
+  ],
+
+  "zone_travail": {
+    "description": "Le graphique sera créé à côté des données",
+    "structure": [
+      { "cellule": "A1:B6", "label": "Données source", "style": "data" },
+      { "cellule": "D2:K18", "label": "Zone graphique", "style": "chart_area" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_pie_1",
+      "type": "graphique",
+      "description": "Camembert créé avec le bon type",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "type": "camembert",
+        "type_variants": ["pie", "secteurs", "circulaire", "donut", "anneau"],
+        "series_count": 1,
+        "categories_count": 5,
+        "tolerance_categories": 0
+      },
+      "points": 30,
+      "indices": [
+        "Tu dois créer un graphique en secteurs (camembert), pas un histogramme.",
+        "Insertion > Graphiques > Secteurs (icône avec un cercle divisé)",
+        "Le camembert doit avoir 5 parts correspondant aux 5 postes."
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_chart_type", "message": "Tu as créé un autre type de graphique. Choisis 'Secteurs' dans le menu Insertion." },
+        { "type": "missing_categories", "message": "Ton camembert n'a pas 5 parts. Vérifie ta sélection de données." }
+      ]
+    },
+    {
+      "id": "cp_pie_2",
+      "type": "graphique",
+      "description": "Titre présent et pertinent",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_title": true,
+        "title_contains": ["Budget", "Répartition", "2025"],
+        "title_contains_any": true
+      },
+      "points": 15,
+      "indices": [
+        "Le titre doit indiquer ce que le graphique représente.",
+        "Exemple : 'Répartition Budget 2025' ou 'Budget StartupVerte'",
+        "Clique sur le titre existant pour le modifier."
+      ]
+    },
+    {
+      "id": "cp_pie_3",
+      "type": "graphique",
+      "description": "Pourcentages affichés",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_percentage": true,
+        "percentages_visible": true
+      },
+      "points": 25,
+      "indices": [
+        "Les pourcentages doivent apparaître sur ou à côté de chaque part.",
+        "Création > Étiquettes de données > Autres options > Cocher 'Pourcentage'",
+        "Salaires devrait afficher environ 53% (45000/85000)."
+      ],
+      "erreurs_probables": [
+        { "type": "no_percentage", "message": "Les pourcentages ne sont pas visibles. Ajoute des étiquettes de données avec l'option pourcentage." },
+        { "type": "values_instead", "message": "Tu affiches les valeurs (€) au lieu des pourcentages. Décoche 'Valeur' et coche 'Pourcentage'." }
+      ]
+    },
+    {
+      "id": "cp_pie_4",
+      "type": "graphique",
+      "description": "Légende présente",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_legend": true
+      },
+      "points": 15,
+      "indices": [
+        "La légende doit être visible pour identifier chaque couleur.",
+        "Si elle n'apparaît pas : Création > Ajouter un élément > Légende",
+        "Positionne-la en bas ou à droite pour ne pas masquer le graphique."
+      ]
+    },
+    {
+      "id": "cp_pie_5",
+      "type": "graphique",
+      "description": "Graphique lisible",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "is_readable": true,
+        "no_overlap": true,
+        "is_2d": true
+      },
+      "points": 15,
+      "indices": [
+        "Les étiquettes ne doivent pas se chevaucher.",
+        "Préfère un camembert 2D au 3D (plus fidèle aux proportions).",
+        "Le graphique doit être assez grand pour être lisible."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Camembert 2D avec 5 secteurs, titre 'Répartition Budget 2025', pourcentages affichés sur chaque part, légende visible.",
+    "etapes_cles": [
+      "Sélection A1:B6",
+      "Insertion > Secteurs 2D",
+      "Titre personnalisé",
+      "Étiquettes avec pourcentages",
+      "Légende visible"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Ton camembert est clair et les pourcentages permettent de comprendre la répartition en un clin d'œil.",
+    "bien": "👍 Très bien ! Le graphique est fonctionnel. Ajoute les pourcentages pour le rendre encore plus parlant.",
+    "ameliorer": "🥧 C'est un bon début ! Vérifie que tu as bien un camembert avec 5 parts et ajoute un titre.",
+    "revoir": "🔄 Recommence : sélectionne A1:B6, puis Insertion > Secteurs. Le camembert doit avoir 5 parts de couleurs différentes."
+  },
+
+  "pour_aller_plus_loin": [
+    "Essaie de 'détacher' la part Salaires pour la mettre en évidence (clic-glisser sur la part).",
+    "Crée un graphique en anneau (donut) avec les mêmes données.",
+    "Ajoute les noms de catégories directement sur les parts au lieu d'utiliser la légende."
+  ]
+}

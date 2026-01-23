@@ -1,0 +1,234 @@
+{
+  "id": "graph_26_01_histogramme_ventes",
+  "version": "1.0",
+  "titre": "📊 Ton premier histogramme : visualiser les ventes",
+
+  "metadata": {
+    "niveau": "debutant",
+    "duree_estimee": "15 min",
+    "competences_ids": [26],
+    "competences_noms": ["Graphiques simples"],
+    "prerequis": [1, 2],
+    "objectif_pedagogique": "Créer un histogramme simple et comprendre les éléments d'un graphique (titre, axes, légende)",
+    "source_pdf": "Chapter 15: Charts and Charting - Section 15.1-15.2",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu viens d'être embauché(e) comme assistant(e) commercial(e) chez TechStore. Ton manager te demande de présenter l'évolution des ventes du premier semestre 2025 lors de la réunion de demain. Un tableau de chiffres, c'est bien... mais un graphique, c'est mieux !",
+    
+    "personnage": "Toi, assistant(e) commercial(e) motivé(e) qui veut impressionner à sa première réunion.",
+    
+    "objectif": "Créer un histogramme clair et professionnel qui montre l'évolution des ventes mois par mois.",
+    
+    "motivation": "Les graphiques sont LE moyen de communiquer efficacement des données. Un bon graphique peut convaincre un client, obtenir un budget, ou décrocher une promotion !",
+    
+    "ton": "C'est plus simple qu'il n'y paraît. En 5 minutes, tu auras un graphique digne d'une présentation professionnelle."
+  },
+
+  "histoire_des_donnees": {
+    "description": "Les ventes mensuelles du magasin TechStore pour le 1er semestre 2025. On voit une tendance à la hausse avec un pic en juin (soldes d'été).",
+    "periode": "Janvier - Juin 2025",
+    "source_fictive": "Rapport commercial TechStore"
+  },
+
+  "donnees": {
+    "headers": ["Mois", "Ventes (€)"],
+    "rows": [
+      ["Janvier", 12500],
+      ["Février", 15800],
+      ["Mars", 14200],
+      ["Avril", 18900],
+      ["Mai", 16700],
+      ["Juin", 22500]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Sélectionner les données",
+      "description": "Avant de créer un graphique, il faut sélectionner les données à représenter.",
+      "consigne": "Sélectionne la plage A1:B7 (en-têtes inclus).",
+      "aide_contextuelle": "Clique sur A1, maintiens Shift, et clique sur B7. Ou tape A1:B7 dans la zone de nom.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Insérer l'histogramme",
+      "description": "Excel propose plusieurs types de graphiques. Pour des comparaisons de valeurs, l'histogramme est parfait.",
+      "consigne": "Va dans Insertion > Graphiques > Histogramme groupé (le premier de la liste).",
+      "aide_contextuelle": "Tu peux aussi utiliser le raccourci Alt+F1 pour un graphique rapide, mais tu auras moins de contrôle sur le type.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Ajouter un titre",
+      "description": "Un graphique sans titre, c'est comme un livre sans couverture. Personne ne sait de quoi ça parle !",
+      "consigne": "Clique sur le titre du graphique et remplace-le par 'Ventes TechStore - S1 2025'.",
+      "aide_contextuelle": "Si le titre n'apparaît pas, clique sur le graphique > onglet Création > Ajouter un élément de graphique > Titre du graphique.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Ajouter les étiquettes de données",
+      "description": "Pour que ton manager voie directement les valeurs sans loucher sur l'axe Y.",
+      "consigne": "Clique sur le graphique > Création > Ajouter un élément > Étiquettes de données > Au-dessus.",
+      "aide_contextuelle": "Les étiquettes affichent la valeur exacte au-dessus de chaque barre. Super utile en réunion !",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Personnaliser (optionnel)",
+      "description": "Un peu de couleur ne fait jamais de mal.",
+      "consigne": "Change la couleur des barres en bleu foncé (clic droit sur une barre > Remplissage).",
+      "aide_contextuelle": "Tu peux aussi utiliser les styles prédéfinis dans l'onglet Création.",
+      "temps": "2 min",
+      "optionnel": true
+    }
+  ],
+
+  "zone_travail": {
+    "description": "Le graphique sera créé à côté des données",
+    "structure": [
+      { "cellule": "A1:B7", "label": "Données source", "style": "data" },
+      { "cellule": "D2:K18", "label": "Zone graphique", "style": "chart_area" }
+    ]
+  },
+
+  "checkpoints": [
+    {
+      "id": "cp_graph_1",
+      "type": "graphique",
+      "description": "Histogramme créé avec le bon type",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "type": "histogramme",
+        "type_variants": ["histogram", "bar", "column", "colonnes", "barres"],
+        "series_count": 1,
+        "categories_count": 6,
+        "tolerance_categories": 0
+      },
+      "points": 30,
+      "indices": [
+        "Tu dois créer un graphique en colonnes (histogramme), pas un camembert ou une courbe.",
+        "Sélectionne bien A1:B7 avant d'insérer le graphique. Les 6 mois doivent apparaître.",
+        "Menu Insertion > Graphiques > Histogramme groupé (première icône)"
+      ],
+      "erreurs_probables": [
+        { "type": "wrong_chart_type", "message": "Tu as créé un autre type de graphique (camembert, courbe...). Utilise un histogramme." },
+        { "type": "missing_categories", "message": "Tous les mois n'apparaissent pas. Vérifie ta sélection de données." }
+      ]
+    },
+    {
+      "id": "cp_graph_2",
+      "type": "graphique",
+      "description": "Titre du graphique présent et pertinent",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_title": true,
+        "title_contains": ["Ventes", "TechStore", "2025"],
+        "title_contains_any": true
+      },
+      "points": 20,
+      "indices": [
+        "Clique sur le titre par défaut ('Titre du graphique') et tape ton propre titre.",
+        "Le titre doit mentionner ce que montre le graphique : les ventes, la période, l'entreprise.",
+        "Exemple : 'Ventes TechStore - S1 2025' ou 'Évolution des ventes 2025'"
+      ],
+      "erreurs_probables": [
+        { "type": "no_title", "message": "Ton graphique n'a pas de titre. Ajoute-en un via Création > Ajouter un élément > Titre." },
+        { "type": "generic_title", "message": "Le titre 'Titre du graphique' n'est pas explicite. Personnalise-le !" }
+      ]
+    },
+    {
+      "id": "cp_graph_3",
+      "type": "graphique",
+      "description": "Axes correctement configurés",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_x_axis": true,
+        "has_y_axis": true,
+        "x_axis_labels": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin"]
+      },
+      "points": 15,
+      "indices": [
+        "L'axe horizontal (X) doit afficher les mois.",
+        "L'axe vertical (Y) doit afficher une échelle de valeurs.",
+        "Si les mois n'apparaissent pas, tu as peut-être mal sélectionné les données."
+      ]
+    },
+    {
+      "id": "cp_graph_4",
+      "type": "graphique",
+      "description": "Étiquettes de données visibles",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "has_data_labels": true
+      },
+      "points": 15,
+      "indices": [
+        "Les étiquettes affichent la valeur au-dessus de chaque barre.",
+        "Création > Ajouter un élément de graphique > Étiquettes de données > Au-dessus",
+        "Cela permet de lire les valeurs exactes sans regarder l'axe Y."
+      ],
+      "erreurs_probables": [
+        { "type": "no_labels", "message": "Les étiquettes de données ne sont pas visibles. Ajoute-les pour plus de clarté." }
+      ]
+    },
+    {
+      "id": "cp_graph_5",
+      "type": "graphique",
+      "description": "Graphique lisible et professionnel",
+      "competence_id": 26,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "is_readable": true,
+        "no_overlap": true,
+        "reasonable_size": true
+      },
+      "points": 20,
+      "indices": [
+        "Le graphique doit être assez grand pour être lisible.",
+        "Les étiquettes ne doivent pas se chevaucher.",
+        "Les couleurs doivent être contrastées."
+      ]
+    }
+  ],
+
+  "solution_complete": {
+    "description": "Histogramme groupé avec titre 'Ventes TechStore - S1 2025', étiquettes de données au-dessus des barres, axes X (mois) et Y (valeurs €) visibles.",
+    "etapes_cles": [
+      "Sélection A1:B7",
+      "Insertion > Histogramme groupé",
+      "Ajout titre personnalisé",
+      "Ajout étiquettes de données"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Excellent ! Ton histogramme est clair, professionnel et prêt pour la réunion. Ton manager va être impressionné !",
+    "bien": "👍 Très bien ! Le graphique est fonctionnel. Quelques ajustements (titre, étiquettes) le rendraient parfait.",
+    "ameliorer": "📊 C'est un bon début ! Vérifie que tu as bien un histogramme (pas une courbe) et ajoute un titre explicite.",
+    "revoir": "🔄 Reprends depuis le début : sélectionne A1:B7, puis Insertion > Histogramme. On y va étape par étape !"
+  },
+
+  "pour_aller_plus_loin": [
+    "Essaie de changer les couleurs pour matcher la charte graphique de TechStore (bleu et orange).",
+    "Ajoute un titre d'axe Y : 'Chiffre d'affaires (€)'.",
+    "Crée un deuxième graphique en courbe avec les mêmes données pour comparer les styles."
+  ]
+}

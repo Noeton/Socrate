@@ -1,0 +1,212 @@
+{
+    "id": "debutant_24_saisie_navigation",
+    "titre": "Saisie et Navigation : Les Bases Essentielles",
+    "niveau": "debutant",
+    "duree_estimee": "12 min",
+    "competences": ["Saisie de données", "Navigation clavier", "Sélection", "Raccourcis"],
+    "competence_ids": [1],
+  
+    "contexte": {
+      "situation": "C'est ton premier jour chez DataEntry Corp. Ton manager te confie la saisie d'un fichier client. Tu dois être rapide et précis. Les pros n'utilisent presque jamais la souris - tout se fait au clavier !",
+      "manager": {
+        "nom": "Marie Dupont",
+        "poste": "Responsable Administrative",
+        "personnalite": "Patiente mais efficace, elle valorise la rapidité.",
+        "demande": "Je vais te montrer les raccourcis qui vont te faire gagner des heures. En 10 minutes, tu seras 3 fois plus rapide qu'avec la souris."
+      },
+      "enjeux": "Productivité quotidienne.",
+      "deadline": "Formation initiale"
+    },
+  
+    "objectifs": [
+      "Naviguer efficacement au clavier (flèches, Tab, Entrée)",
+      "Sélectionner des plages rapidement",
+      "Modifier le contenu d'une cellule (F2)",
+      "Utiliser les raccourcis essentiels"
+    ],
+  
+    "donnees": {
+      "feuille": "Clients",
+      "headers": ["ID", "Nom", "Prénom", "Email", "Téléphone"],
+      "rows": [
+        ["C001", "Martin", "Sophie", "", ""],
+        ["C002", "Dubois", "", "thomas.dubois@email.com", "0612345678"],
+        ["C003", "", "Claire", "claire.b@email.com", ""],
+        ["C004", "Petit", "Lucas", "", "0698765432"]
+      ],
+      "position": "A1:E5",
+      "note": "Des données manquent, tu dois les compléter"
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Navigation de base",
+        "raccourcis": [
+          "Flèches ↑↓←→ : se déplacer d'une cellule",
+          "Tab : cellule à droite",
+          "Entrée : cellule en bas",
+          "Ctrl+Flèche : sauter au bout des données",
+          "Ctrl+Home : retour en A1",
+          "Ctrl+End : dernière cellule utilisée"
+        ]
+      },
+      {
+        "phase": "B. Sélection",
+        "raccourcis": [
+          "Maj+Flèche : étendre la sélection",
+          "Ctrl+Maj+Flèche : sélectionner jusqu'au bout",
+          "Ctrl+A : tout sélectionner (ou tableau actuel)",
+          "Ctrl+Espace : sélectionner colonne entière",
+          "Maj+Espace : sélectionner ligne entière"
+        ]
+      },
+      {
+        "phase": "C. Édition",
+        "raccourcis": [
+          "F2 : modifier la cellule (mode édition)",
+          "Échap : annuler la saisie en cours",
+          "Suppr : effacer le contenu",
+          "Ctrl+Z : annuler",
+          "Ctrl+Y : rétablir"
+        ]
+      },
+      {
+        "phase": "D. Saisie rapide",
+        "astuces": [
+          "Tape directement pour remplacer le contenu",
+          "F2 pour modifier sans tout effacer",
+          "Ctrl+Entrée : valider et rester sur place",
+          "Alt+Entrée : retour à la ligne dans une cellule"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_navigation_ctrl_end",
+        "type": "action",
+        "description": "Aller à la dernière cellule (Ctrl+End)",
+        "competence_id": 1,
+        "expected_position": "E5",
+        "points": 15,
+        "indices": [
+          "Ctrl+End t'emmène à la dernière cellule utilisée",
+          "C'est E5 dans ce tableau",
+          "Utile pour connaître l'étendue des données"
+        ]
+      },
+      {
+        "id": "cp_2_saisie_prenom",
+        "cellule": "C3",
+        "type": "valeur",
+        "description": "Compléter le prénom manquant (Bernard)",
+        "competence_id": 1,
+        "expected_value": "Bernard",
+        "points": 15,
+        "indices": [
+          "Va en C3 (flèches ou clic)",
+          "Tape 'Bernard'",
+          "Entrée pour valider"
+        ]
+      },
+      {
+        "id": "cp_3_saisie_email",
+        "cellule": "D2",
+        "type": "valeur",
+        "description": "Compléter l'email de Sophie Martin",
+        "competence_id": 1,
+        "expected_pattern": "@",
+        "points": 15,
+        "indices": [
+          "Format email : xxx@xxx.xxx",
+          "Par exemple : sophie.martin@email.com",
+          "Tab pour passer à la cellule suivante"
+        ]
+      },
+      {
+        "id": "cp_4_modification_f2",
+        "cellule": "D3",
+        "type": "valeur",
+        "description": "Corriger l'email (claire.bernard@email.com)",
+        "competence_id": 1,
+        "expected_value": "claire.bernard@email.com",
+        "points": 20,
+        "indices": [
+          "F2 pour entrer en mode édition",
+          "Modifie 'claire.b' en 'claire.bernard'",
+          "Entrée pour valider"
+        ]
+      },
+      {
+        "id": "cp_5_selection_colonne",
+        "type": "action",
+        "description": "Sélectionner toute la colonne Email",
+        "competence_id": 1,
+        "expected_selection": "D:D",
+        "points": 15,
+        "indices": [
+          "Clique sur l'en-tête D",
+          "Ou : cellule en D puis Ctrl+Espace",
+          "Toute la colonne est surlignée"
+        ]
+      },
+      {
+        "id": "cp_6_saisie_telephone",
+        "cellule": "E3",
+        "type": "valeur",
+        "description": "Ajouter le téléphone manquant",
+        "competence_id": 1,
+        "expected_pattern": "^0[0-9]{9}$",
+        "points": 20,
+        "indices": [
+          "Format : 0XXXXXXXXX (10 chiffres)",
+          "Commence par 06 ou 07 pour un mobile",
+          "Exemple : 0654321098"
+        ]
+      }
+    ],
+  
+    "raccourcis_essentiels": {
+      "navigation": {
+        "Ctrl+Home": "Retour en A1",
+        "Ctrl+End": "Dernière cellule",
+        "Ctrl+↓": "Bas des données",
+        "Ctrl+→": "Droite des données"
+      },
+      "selection": {
+        "Ctrl+A": "Tout sélectionner",
+        "Ctrl+Maj+End": "Sélectionner jusqu'à la fin",
+        "Maj+Clic": "Sélection étendue"
+      },
+      "edition": {
+        "F2": "Modifier la cellule",
+        "Ctrl+Z": "Annuler",
+        "Ctrl+C/V/X": "Copier/Coller/Couper"
+      }
+    },
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises la navigation et la saisie. Ces raccourcis vont te faire gagner des heures chaque semaine ! ⌨️",
+      "partiel": "Bon début ! Les raccourcis clavier demandent de la pratique. F2 pour modifier, Ctrl+flèches pour naviguer vite.",
+      "echec": "La souris c'est bien, le clavier c'est mieux ! Commence par Tab, Entrée et les flèches. F2 pour modifier."
+    },
+  
+    "socrate_message": {
+      "intro": "Le clavier, c'est ton meilleur ami dans Excel ! ⌨️ Les pros sont 3× plus rapides que les utilisateurs souris.",
+      "conclusion": "Tu connais maintenant les bases de la navigation efficace. Pratique ces raccourcis jusqu'à ce qu'ils deviennent automatiques ! 🚀"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["saisie", "navigation", "raccourcis", "clavier", "débutant", "fondamentaux"],
+      "prerequis": [],
+      "ouvre_vers": ["Formatage", "Formules de base"]
+    }
+  }

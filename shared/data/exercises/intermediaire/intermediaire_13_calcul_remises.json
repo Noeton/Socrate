@@ -1,0 +1,790 @@
+{
+  "id": "intermediaire_13_calcul_remises",
+  "titre": "Calcul de Remises avec Références Absolues",
+  "niveau": "intermediaire",
+  "duree_estimee": "25 min",
+  "competences": [
+    "references_absolues"
+  ],
+  "contexte": {
+    "situation": "Tu appliques une remise de 15% sur tous les produits. Le taux est en cellule J1.",
+    "manager": {
+      "nom": "Votre manager",
+      "poste": "Responsable"
+    },
+    "enjeux": "Traiter cette demande efficacement.",
+    "deadline": "Dès que possible"
+  },
+  "objectifs": [
+    "Utiliser les $ pour fixer une cellule",
+    "Calculer les prix après remise",
+    "Éviter les erreurs de recopie"
+  ],
+  "consignes": [
+    "Écris le taux de remise 15 en cellule J1",
+    "Dans G2, calcule le prix TTC: =D2*(1+E2/100)",
+    "Dans H2, calcule la remise en €: =G2*$J$1/100 (ATTENTION aux $)",
+    "Dans I2, calcule le prix final: =G2-H2",
+    "Recopie G2:I2 jusqu'à la ligne 51",
+    "Change le taux en J1 à 20% et vérifie que tout se recalcule",
+    "Calcule le montant total des remises accordées"
+  ],
+  "donnees": {
+    "headers": [
+      "Référence",
+      "Nom",
+      "Catégorie",
+      "Prix HT",
+      "TVA %",
+      "Stock",
+      "Prix TTC",
+      "Remise €",
+      "Prix Final"
+    ],
+    "rows": [
+      [
+        "PROD001",
+        "Chargeur",
+        "Informatique",
+        199,
+        20,
+        97,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD002",
+        "Souris",
+        "Informatique",
+        199,
+        20,
+        22,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD003",
+        "Switch",
+        "Informatique",
+        149,
+        20,
+        99,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD004",
+        "Câble USB",
+        "Électronique",
+        99,
+        20,
+        33,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD005",
+        "Router",
+        "Électronique",
+        299,
+        20,
+        27,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD006",
+        "Clavier",
+        "Électronique",
+        199,
+        20,
+        15,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD007",
+        "Souris",
+        "Électronique",
+        149,
+        20,
+        23,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD008",
+        "Housse",
+        "Informatique",
+        99,
+        20,
+        60,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD009",
+        "Clavier",
+        "Électronique",
+        499,
+        20,
+        20,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD010",
+        "Écran",
+        "Électronique",
+        399,
+        20,
+        16,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD011",
+        "Écran",
+        "Électronique",
+        199,
+        20,
+        15,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD012",
+        "Tablette",
+        "Électronique",
+        399,
+        20,
+        49,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD013",
+        "Souris",
+        "Informatique",
+        499,
+        20,
+        98,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD014",
+        "Casque",
+        "Accessoires",
+        199,
+        20,
+        40,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD015",
+        "Webcam",
+        "Électronique",
+        199,
+        20,
+        74,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD016",
+        "Écouteurs",
+        "Accessoires",
+        499,
+        20,
+        5,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD017",
+        "Câble USB",
+        "Accessoires",
+        199,
+        20,
+        7,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD018",
+        "Ordinateur portable",
+        "Électronique",
+        199,
+        20,
+        66,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD019",
+        "Housse",
+        "Électronique",
+        399,
+        20,
+        14,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD020",
+        "Tablette",
+        "Informatique",
+        149,
+        20,
+        4,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD021",
+        "Router",
+        "Électronique",
+        199,
+        20,
+        15,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD022",
+        "Chargeur",
+        "Accessoires",
+        149,
+        20,
+        5,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD023",
+        "Ordinateur portable",
+        "Accessoires",
+        399,
+        20,
+        91,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD024",
+        "Adaptateur",
+        "Accessoires",
+        199,
+        20,
+        6,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD025",
+        "Support",
+        "Informatique",
+        99,
+        20,
+        12,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD026",
+        "Téléphone",
+        "Accessoires",
+        99,
+        20,
+        40,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD027",
+        "Écran",
+        "Électronique",
+        299,
+        20,
+        59,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD028",
+        "Webcam",
+        "Informatique",
+        99,
+        20,
+        11,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD029",
+        "Moniteur",
+        "Électronique",
+        99,
+        20,
+        43,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD030",
+        "Casque",
+        "Informatique",
+        299,
+        20,
+        24,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD031",
+        "Clavier",
+        "Informatique",
+        499,
+        20,
+        66,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD032",
+        "Tablette",
+        "Accessoires",
+        149,
+        20,
+        56,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD033",
+        "Tablette",
+        "Électronique",
+        99,
+        20,
+        45,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD034",
+        "Tablette",
+        "Accessoires",
+        99,
+        20,
+        16,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD035",
+        "Moniteur",
+        "Électronique",
+        299,
+        20,
+        60,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD036",
+        "Câble USB",
+        "Électronique",
+        499,
+        20,
+        88,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD037",
+        "Casque",
+        "Électronique",
+        399,
+        20,
+        78,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD038",
+        "Casque",
+        "Informatique",
+        499,
+        20,
+        89,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD039",
+        "Écouteurs",
+        "Électronique",
+        399,
+        20,
+        8,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD040",
+        "Écouteurs",
+        "Électronique",
+        399,
+        20,
+        81,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD041",
+        "Webcam",
+        "Électronique",
+        199,
+        20,
+        65,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD042",
+        "Disque dur",
+        "Informatique",
+        199,
+        20,
+        64,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD043",
+        "Adaptateur",
+        "Accessoires",
+        149,
+        20,
+        12,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD044",
+        "Support",
+        "Électronique",
+        499,
+        20,
+        9,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD045",
+        "Téléphone",
+        "Informatique",
+        399,
+        20,
+        66,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD046",
+        "Imprimante",
+        "Informatique",
+        399,
+        20,
+        15,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD047",
+        "Router",
+        "Informatique",
+        499,
+        20,
+        13,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD048",
+        "Câble USB",
+        "Informatique",
+        399,
+        20,
+        44,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD049",
+        "Switch",
+        "Électronique",
+        399,
+        20,
+        24,
+        "",
+        "",
+        ""
+      ],
+      [
+        "PROD050",
+        "Support",
+        "Informatique",
+        399,
+        20,
+        40,
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  "criteres_reussite": {
+    "references_absolues": true,
+    "calculs_corrects": true,
+    "score_minimum": 8
+  },
+  "checkpoints": [
+    {
+      "cellule": "J1",
+      "type": "valeur",
+      "description": "Taux de remise initial (15%)",
+      "fonction": null,
+      "pattern": [
+        "15"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Il faut saisir le taux de remise dans cette cellule.",
+        "Le taux initial demandé est de 15.",
+        "Écris simplement 15 en J1"
+      ],
+      "id": "cp_1"
+    },
+    {
+      "cellule": "G2",
+      "type": "formule",
+      "description": "Calcul du prix TTC (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "D2",
+        "1",
+        "E2",
+        "100",
+        "*",
+        "+",
+        "/"
+      ],
+      "recopie_jusqua": "G51",
+      "points": 15,
+      "indices": [
+        "Le prix TTC = prix HT × (1 + taux de TVA en décimal).",
+        "Tu dois convertir le pourcentage de TVA en divisant par 100.",
+        "=D2*(1+E2/100)"
+      ],
+      "id": "cp_2"
+    },
+    {
+      "cellule": "H2",
+      "type": "formule",
+      "description": "Calcul de la remise en € (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "G2",
+        "$J$1",
+        "100",
+        "*",
+        "/"
+      ],
+      "recopie_jusqua": "H51",
+      "points": 20,
+      "indices": [
+        "La remise = prix TTC × taux de remise. Attention aux références absolues !",
+        "Tu dois bloquer la référence à J1 avec des $ pour qu'elle ne bouge pas lors de la recopie.",
+        "=G2*$J$1/100"
+      ],
+      "id": "cp_3"
+    },
+    {
+      "cellule": "I2",
+      "type": "formule",
+      "description": "Calcul du prix final (première ligne)",
+      "fonction": null,
+      "pattern": [
+        "G2",
+        "H2",
+        "-"
+      ],
+      "recopie_jusqua": "I51",
+      "points": 10,
+      "indices": [
+        "Le prix final = prix TTC - remise accordée.",
+        "Tu dois soustraire la remise du prix TTC.",
+        "=G2-H2"
+      ],
+      "id": "cp_4"
+    },
+    {
+      "cellule": "G51",
+      "type": "formule",
+      "description": "Vérification recopie prix TTC (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "D51",
+        "1",
+        "E51",
+        "100",
+        "*",
+        "+",
+        "/"
+      ],
+      "recopie_jusqua": null,
+      "points": 10,
+      "indices": [
+        "Vérifie que la formule s'est bien adaptée à la ligne 51.",
+        "Les références doivent pointer vers D51 et E51.",
+        "=D51*(1+E51/100)"
+      ],
+      "id": "cp_5"
+    },
+    {
+      "cellule": "H51",
+      "type": "formule",
+      "description": "Vérification recopie remise (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "G51",
+        "$J$1",
+        "100",
+        "*",
+        "/"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "La référence à J1 doit rester absolue même en ligne 51.",
+        "Seule la référence à G doit avoir changé pour G51.",
+        "=G51*$J$1/100"
+      ],
+      "id": "cp_6"
+    },
+    {
+      "cellule": "I51",
+      "type": "formule",
+      "description": "Vérification recopie prix final (dernière ligne)",
+      "fonction": null,
+      "pattern": [
+        "G51",
+        "H51",
+        "-"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Les références doivent pointer vers la ligne 51.",
+        "G51 moins H51.",
+        "=G51-H51"
+      ],
+      "id": "cp_7"
+    },
+    {
+      "cellule": "J1",
+      "type": "valeur",
+      "description": "Modification du taux à 20%",
+      "fonction": null,
+      "pattern": [
+        "20"
+      ],
+      "recopie_jusqua": null,
+      "points": 5,
+      "indices": [
+        "Change la valeur en J1 pour tester les références absolues.",
+        "Le nouveau taux demandé est 20.",
+        "Remplace 15 par 20 en J1"
+      ],
+      "id": "cp_8"
+    },
+    {
+      "cellule": "H52",
+      "type": "formule",
+      "description": "Calcul du total des remises accordées",
+      "fonction": "SOMME",
+      "pattern": [
+        "SOMME",
+        "H2",
+        "H51"
+      ],
+      "recopie_jusqua": null,
+      "points": 15,
+      "indices": [
+        "Il faut additionner toutes les remises de la colonne H.",
+        "Utilise la fonction SOMME sur la plage H2:H51.",
+        "=SOMME(H2:H51)"
+      ],
+      "id": "cp_9",
+      "computation": {
+        "type": "sum",
+        "column": "auto"
+      }
+    }
+  ],
+  "competence_ids": [
+    15
+  ]
+}

@@ -1,0 +1,284 @@
+{
+    "id": "intermediaire_24_si_imbriques_mentions",
+    "titre": "SI Imbriqués : Attribution Automatique de Mentions",
+    "niveau": "intermediaire",
+    "duree_estimee": "25 min",
+    "competences": ["SI imbriqués", "Logique conditionnelle"],
+    "competence_ids": [16],
+  
+    "contexte": {
+      "situation": "Tu es assistant(e) administratif au lycée Jean Moulin. Le proviseur te demande d'automatiser l'attribution des mentions au baccalauréat. Avec 450 élèves, impossible de faire ça à la main !",
+      "manager": {
+        "nom": "M. Deschamps",
+        "poste": "Proviseur",
+        "personnalite": "Rigoureux et soucieux de l'équité. Il veut que chaque élève ait la mention qu'il mérite, sans erreur.",
+        "demande": "Les résultats du bac arrivent demain. J'ai besoin d'un système automatique pour attribuer les mentions. Tu connais les seuils : Très Bien ≥16, Bien ≥14, Assez Bien ≥12, Passable ≥10, sinon Ajourné."
+      },
+      "enjeux": "450 élèves attendent leurs résultats. Une erreur de mention serait catastrophique.",
+      "deadline": "Demain 8h pour l'affichage"
+    },
+  
+    "objectifs": [
+      "Comprendre la logique des SI imbriqués (conditions en cascade)",
+      "Construire une formule avec plusieurs niveaux de SI",
+      "Gérer l'ordre des conditions (du plus restrictif au moins restrictif)",
+      "Éviter les erreurs classiques (parenthèses, ordre)"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec les moyennes des élèves",
+      "En colonne C, crée une formule SI imbriquée pour attribuer la mention",
+      "Teste ta formule sur plusieurs cas limites (10, 12, 14, 16, 9.99)",
+      "Recopie la formule pour tous les élèves",
+      "Vérifie les statistiques : combien d'élèves par mention ?"
+    ],
+  
+    "donnees": {
+      "feuille": "Résultats_Bac",
+      "headers": ["Nom", "Moyenne", "Mention", "Félicitations"],
+      "rows": [
+        ["Martin Alice", 17.5, null, null],
+        ["Bernard Lucas", 14.2, null, null],
+        ["Dubois Emma", 11.8, null, null],
+        ["Thomas Hugo", 9.5, null, null],
+        ["Robert Léa", 16.0, null, null],
+        ["Petit Nathan", 12.0, null, null],
+        ["Durand Clara", 15.3, null, null],
+        ["Leroy Théo", 8.2, null, null],
+        ["Moreau Jade", 13.7, null, null],
+        ["Simon Louis", 10.0, null, null],
+        ["Laurent Chloé", 18.2, null, null],
+        ["Michel Raphaël", 14.0, null, null],
+        ["Garcia Manon", 11.2, null, null],
+        ["Martinez Enzo", 16.8, null, null],
+        ["Robinson Sarah", 9.9, null, null]
+      ],
+      "bareme": {
+        "tres_bien": {"seuil": 16, "mention": "Très Bien"},
+        "bien": {"seuil": 14, "mention": "Bien"},
+        "assez_bien": {"seuil": 12, "mention": "Assez Bien"},
+        "passable": {"seuil": 10, "mention": "Passable"},
+        "ajourne": {"seuil": 0, "mention": "Ajourné"}
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Comprendre la logique",
+        "explications": [
+          "Un SI imbriqué, c'est un SI dans un SI. On teste plusieurs conditions en cascade.",
+          "L'ordre est CRUCIAL : on teste d'abord la condition la plus haute (≥16), puis on descend.",
+          "Si aucune condition n'est vraie, on tombe dans le dernier SINON."
+        ],
+        "schema": "SI moyenne ≥ 16 → 'Très Bien' SINON SI moyenne ≥ 14 → 'Bien' SINON SI moyenne ≥ 12 → 'Assez Bien' SINON SI moyenne ≥ 10 → 'Passable' SINON 'Ajourné'"
+      },
+      {
+        "phase": "B. Construire la formule pas à pas",
+        "consignes": [
+          "Commence simple : =SI(B2>=16;\"Très Bien\";\"Autre\")",
+          "Remplace \"Autre\" par un nouveau SI : =SI(B2>=16;\"Très Bien\";SI(B2>=14;\"Bien\";\"Autre\"))",
+          "Continue jusqu'à avoir tous les cas",
+          "Formule finale : =SI(B2>=16;\"Très Bien\";SI(B2>=14;\"Bien\";SI(B2>=12;\"Assez Bien\";SI(B2>=10;\"Passable\";\"Ajourné\"))))"
+        ]
+      },
+      {
+        "phase": "C. Vérifier les cas limites",
+        "consignes": [
+          "10.0 → doit donner 'Passable' (pas 'Ajourné')",
+          "9.99 → doit donner 'Ajourné'",
+          "16.0 → doit donner 'Très Bien' (pas 'Bien')",
+          "12.0 → doit donner 'Assez Bien'"
+        ]
+      },
+      {
+        "phase": "D. Bonus : Félicitations du jury",
+        "consignes": [
+          "En colonne D, ajoute une formule pour les félicitations",
+          "Félicitations si moyenne ≥ 18",
+          "=SI(B2>=18;\"Félicitations du jury\";\"\")"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_tres_bien",
+        "cellule": "C2",
+        "type": "valeur",
+        "description": "Mention Très Bien pour 17.5",
+        "competence_id": 16,
+        "expected_value": "Très Bien",
+        "points": 15,
+        "indices": [
+          "17.5 ≥ 16, donc c'est Très Bien",
+          "=SI(B2>=16;\"Très Bien\";...)",
+          "N'oublie pas les guillemets autour du texte"
+        ]
+      },
+      {
+        "id": "cp_2_bien",
+        "cellule": "C3",
+        "type": "valeur",
+        "description": "Mention Bien pour 14.2",
+        "competence_id": 16,
+        "expected_value": "Bien",
+        "points": 10,
+        "indices": [
+          "14.2 ≥ 14 mais < 16, donc c'est Bien",
+          "Le deuxième SI doit tester >=14",
+          "Vérifie l'ordre de tes conditions"
+        ]
+      },
+      {
+        "id": "cp_3_assez_bien",
+        "cellule": "C4",
+        "type": "valeur",
+        "description": "Mention Assez Bien pour 11.8",
+        "competence_id": 16,
+        "expected_value": "Assez Bien",
+        "points": 10,
+        "indices": [
+          "11.8 ≥ 12 ? Non ! 11.8 < 12",
+          "Donc c'est Passable, pas Assez Bien",
+          "Vérifie : 11.8 >= 10 → Passable"
+        ]
+      },
+      {
+        "id": "cp_4_ajourne",
+        "cellule": "C5",
+        "type": "valeur",
+        "description": "Ajourné pour 9.5",
+        "competence_id": 16,
+        "expected_value": "Ajourné",
+        "points": 10,
+        "indices": [
+          "9.5 < 10, donc Ajourné",
+          "C'est le dernier SINON de ta formule",
+          "Pas besoin de tester <10, c'est le cas par défaut"
+        ]
+      },
+      {
+        "id": "cp_5_cas_limite_16",
+        "cellule": "C6",
+        "type": "valeur",
+        "description": "Cas limite : exactement 16.0",
+        "competence_id": 16,
+        "expected_value": "Très Bien",
+        "points": 15,
+        "indices": [
+          "16.0 >= 16 est VRAI",
+          "Donc c'est Très Bien, pas Bien",
+          "Utilise >= et non > dans ta condition"
+        ]
+      },
+      {
+        "id": "cp_6_cas_limite_12",
+        "cellule": "C7",
+        "type": "valeur",
+        "description": "Cas limite : exactement 12.0",
+        "competence_id": 16,
+        "expected_value": "Assez Bien",
+        "points": 10,
+        "indices": [
+          "12.0 >= 12 est VRAI",
+          "Donc Assez Bien",
+          "Le >= inclut la valeur exacte"
+        ]
+      },
+      {
+        "id": "cp_7_cas_limite_10",
+        "cellule": "C11",
+        "type": "valeur",
+        "description": "Cas limite : exactement 10.0",
+        "competence_id": 16,
+        "expected_value": "Passable",
+        "points": 10,
+        "indices": [
+          "10.0 >= 10 est VRAI",
+          "Donc Passable, pas Ajourné",
+          "C'est la frontière entre réussite et échec"
+        ]
+      },
+      {
+        "id": "cp_8_formule_correcte",
+        "cellule": "C2",
+        "type": "formule",
+        "description": "Formule SI imbriquée correcte",
+        "competence_id": 16,
+        "fonction": "SI",
+        "pattern": ["SI", "B2", "16", "14", "12", "10"],
+        "points": 15,
+        "indices": [
+          "Ta formule doit contenir 4 SI imbriqués",
+          "Teste dans l'ordre : 16, 14, 12, 10",
+          "=SI(B2>=16;\"Très Bien\";SI(B2>=14;\"Bien\";SI(B2>=12;\"Assez Bien\";SI(B2>=10;\"Passable\";\"Ajourné\"))))"
+        ]
+      },
+      {
+        "id": "cp_9_felicitations",
+        "cellule": "D12",
+        "type": "valeur",
+        "description": "Félicitations pour moyenne ≥ 18",
+        "competence_id": 9,
+        "expected_value": "Félicitations du jury",
+        "points": 5,
+        "indices": [
+          "18.2 >= 18, donc félicitations",
+          "=SI(B12>=18;\"Félicitations du jury\";\"\")",
+          "Cellule vide si pas de félicitations"
+        ]
+      }
+    ],
+  
+    "erreurs_frequentes": [
+      {
+        "erreur": "Ordre des conditions inversé",
+        "exemple": "=SI(B2>=10;\"Passable\";SI(B2>=12;\"AB\";...))",
+        "probleme": "Tout le monde aura 'Passable' car >=10 est testé en premier",
+        "solution": "Toujours du plus grand au plus petit : 16, 14, 12, 10"
+      },
+      {
+        "erreur": "Parenthèses mal fermées",
+        "exemple": "=SI(B2>=16;\"TB\";SI(B2>=14;\"B\";\"Autre\")",
+        "probleme": "Il manque des parenthèses à la fin",
+        "solution": "Compte : autant de SI que de parenthèses fermantes à la fin"
+      },
+      {
+        "erreur": "> au lieu de >=",
+        "exemple": "=SI(B2>16;\"TB\";...)",
+        "probleme": "Un élève à 16.0 n'aura pas Très Bien",
+        "solution": "Utilise >= pour inclure la valeur limite"
+      },
+      {
+        "erreur": "Guillemets manquants",
+        "exemple": "=SI(B2>=16;Très Bien;...)",
+        "probleme": "Excel cherche une cellule nommée 'Très'",
+        "solution": "Le texte doit être entre guillemets : \"Très Bien\""
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Excellent ! Tu maîtrises les SI imbriqués. C'est une compétence clé pour automatiser des décisions complexes. Les 450 élèves auront leur mention correcte ! 🎓",
+      "partiel": "Tu as compris le principe. Vérifie les cas limites (10, 12, 14, 16) et l'ordre de tes conditions.",
+      "echec": "Les SI imbriqués demandent de la rigueur. Reprends étape par étape : d'abord un SI simple, puis ajoute les autres un par un."
+    },
+  
+    "socrate_message": {
+      "intro": "Les SI imbriqués, c'est comme un arbre de décision : on pose une question, puis une autre, puis une autre... jusqu'à trouver la bonne réponse ! 🌳",
+      "conclusion": "Tu sais maintenant créer des formules de décision complexes. Astuce pro : pour plus de 4-5 conditions, regarde du côté de RECHERCHEV ou SWITCH ! 💡"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["SI imbriqués", "conditions", "logique", "mentions", "bac", "intermédiaire"],
+      "prerequis": ["SI simple"],
+      "ouvre_vers": ["SIERREUR", "SWITCH", "RECHERCHEV approchée"]
+    }
+  }

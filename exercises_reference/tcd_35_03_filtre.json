@@ -1,0 +1,178 @@
+{
+  "id": "tcd_35_03_filtre",
+  "version": "1.0",
+  "titre": "🔍 TCD : ajouter un filtre interactif",
+
+  "metadata": {
+    "niveau": "intermediaire",
+    "duree_estimee": "12 min",
+    "competences_ids": [35],
+    "competences_noms": ["Tableaux croisés dynamiques"],
+    "prerequis": [35],
+    "objectif_pedagogique": "Ajouter un champ de filtre (zone Page) pour analyser les données par segment",
+    "source_pdf": "Chapter 13: Pivot Tables - Section 13.1 (xlPageField)",
+    "requires_screenshot": true
+  },
+
+  "contexte": {
+    "situation": "Tu analyses les ventes sur plusieurs années. Le directeur veut pouvoir filtrer par année pour comparer les performances année par année.",
+    
+    "personnage": "Toi, analyste financier préparant un rapport flexible.",
+    
+    "objectif": "Créer un TCD avec un filtre par année permettant d'isoler chaque exercice.",
+    
+    "motivation": "Le filtre (zone Page) permet de créer des rapports interactifs sans recréer le TCD.",
+    
+    "ton": "Le filtre TCD, c'est comme un bouton magique pour changer de perspective !"
+  },
+
+  "histoire_des_donnees": {
+    "description": "Ventes par produit sur 3 années.",
+    "periode": "2022-2024",
+    "source_fictive": "Historique commercial"
+  },
+
+  "donnees": {
+    "headers": ["Année", "Produit", "CA (k€)"],
+    "rows": [
+      ["2022", "Laptop", 120],
+      ["2022", "Tablette", 85],
+      ["2022", "Smartphone", 95],
+      ["2023", "Laptop", 145],
+      ["2023", "Tablette", 92],
+      ["2023", "Smartphone", 110],
+      ["2024", "Laptop", 168],
+      ["2024", "Tablette", 98],
+      ["2024", "Smartphone", 125]
+    ],
+    "placement": {
+      "start_cell": "A1",
+      "headers_row": 1
+    }
+  },
+
+  "etapes": [
+    {
+      "numero": 1,
+      "titre": "Créer le TCD de base",
+      "consigne": "Insertion > TCD > Nouvelle feuille. Mets 'Produit' en lignes et 'CA' en valeurs.",
+      "temps": "3 min"
+    },
+    {
+      "numero": 2,
+      "titre": "Ajouter le filtre Année",
+      "consigne": "Glisse le champ 'Année' dans la zone 'Filtres' (en haut du volet).",
+      "aide_contextuelle": "La zone Filtres est au-dessus des zones Colonnes et Lignes.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 3,
+      "titre": "Observer le filtre",
+      "description": "Un menu déroulant apparaît au-dessus du TCD.",
+      "consigne": "Tu dois voir 'Année' avec '(Tous)' au-dessus de ton tableau.",
+      "temps": "1 min"
+    },
+    {
+      "numero": 4,
+      "titre": "Tester le filtre",
+      "consigne": "Clique sur le menu déroulant 'Année' et sélectionne '2024' uniquement.",
+      "aide_contextuelle": "Le TCD se met à jour instantanément pour n'afficher que 2024.",
+      "temps": "2 min"
+    },
+    {
+      "numero": 5,
+      "titre": "Vérifier les totaux filtrés",
+      "consigne": "Avec filtre 2024 : Laptop=168, Tablette=98, Smartphone=125, Total=391.",
+      "temps": "2 min"
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "id": "cp_filter_1",
+      "type": "pivot_table",
+      "description": "Champ Année dans zone Filtres",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "page_fields": ["Année"],
+        "filter_visible": true
+      },
+      "points": 35,
+      "indices": [
+        "Le champ 'Année' doit être dans la zone 'Filtres' du volet.",
+        "Tu dois voir 'Année' avec un menu déroulant AU-DESSUS du TCD.",
+        "Si 'Année' est en lignes ou colonnes, déplace-le vers 'Filtres'."
+      ],
+      "erreurs_probables": [
+        { "type": "year_in_rows", "message": "L'année est en lignes, pas en filtre. Déplace vers la zone 'Filtres'." },
+        { "type": "no_filter", "message": "Pas de zone filtre visible. Glisse 'Année' vers 'Filtres' dans le volet." }
+      ]
+    },
+    {
+      "id": "cp_filter_2",
+      "type": "pivot_table",
+      "description": "Produit en lignes",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "row_fields": ["Produit"]
+      },
+      "points": 20
+    },
+    {
+      "id": "cp_filter_3",
+      "type": "pivot_table",
+      "description": "Filtre fonctionnel",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "filter_works": true,
+        "filter_value_2024": {
+          "Laptop": 168,
+          "Tablette": 98,
+          "Smartphone": 125,
+          "Total": 391
+        }
+      },
+      "points": 30,
+      "indices": [
+        "Quand tu filtres sur 2024, les valeurs doivent changer.",
+        "Total 2024 = 391 k€",
+        "Total toutes années = 1038 k€"
+      ]
+    },
+    {
+      "id": "cp_filter_4",
+      "type": "pivot_table",
+      "description": "Somme de CA en valeurs",
+      "competence_id": 35,
+      "validation_type": "visual",
+      "requires_screenshot": true,
+      "expected": {
+        "value_fields": ["Somme de CA"]
+      },
+      "points": 15
+    }
+  ],
+
+  "solution_complete": {
+    "description": "TCD avec Année en Filtres, Produit en Lignes, Somme de CA en Valeurs.",
+    "etapes_cles": [
+      "Créer TCD",
+      "Année → Filtres",
+      "Produit → Lignes",
+      "CA → Valeurs"
+    ]
+  },
+
+  "feedback_personnalise": {
+    "parfait": "🎉 Parfait ! Ton rapport est interactif. Le directeur peut explorer année par année !",
+    "bien": "👍 Bien ! Le filtre est là. Teste-le pour vérifier qu'il fonctionne.",
+    "ameliorer": "🔍 Presque ! Assure-toi que 'Année' est dans la zone 'Filtres', pas en lignes.",
+    "revoir": "🔄 Glisse 'Année' vers la zone 'Filtres' en haut du volet des champs."
+  }
+}

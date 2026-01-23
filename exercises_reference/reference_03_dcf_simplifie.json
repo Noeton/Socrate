@@ -1,0 +1,527 @@
+{
+    "id": "reference_03_dcf_simplifie",
+    "version": "2.0",
+    "titre": "Valorisation d'une startup SaaS pour due diligence",
+    
+    "metadata": {
+      "niveau": "avance",
+      "duree_estimee": "50 min",
+      "competences_ids": [3, 9, 15, 16, 18, 24, 28, 30],
+      "competences_noms": ["SOMME", "SI", "Références absolues", "SI imbriqués", "RECHERCHEV", "INDEX+EQUIV", "SOMMEPROD", "INDIRECT"],
+      "prerequis": [3, 9, 13, 15, 18],
+      "objectif_pedagogique": "Construire un modèle financier structuré avec formules dynamiques et analyse de sensibilité",
+      "tags": ["finance", "M&A", "DCF", "valorisation", "modélisation"]
+    },
+  
+    "contexte": {
+      "entreprise_cible": {
+        "nom": "DataFlow",
+        "secteur": "SaaS B2B - Data Analytics",
+        "creation": 2021,
+        "effectif": 35,
+        "arr_actuel": "4.2M€",
+        "croissance": "65% annuel",
+        "marge_brute": "78%"
+      },
+      
+      "situation": "Nous sommes le 20 janvier 2026. Tu es Analyst chez Elaia Partners, un fonds VC early-stage. DataFlow, une startup SaaS en forte croissance, cherche à lever 15M€ en Série B. Ton Partner, Marc Tessier, doit présenter une recommandation au comité d'investissement lundi prochain.",
+      
+      "ton_role": "Junior Analyst (1 an d'expérience). Tu as déjà fait quelques analyses de marché, mais c'est ton premier modèle de valorisation complet en autonomie.",
+      
+      "partner": {
+        "nom": "Marc Tessier",
+        "poste": "Partner",
+        "experience": "15 ans en VC, ex-Goldman Sachs",
+        "personnalite": "Brillant, pressé, peu patient avec les approximations. Il challenge chaque hypothèse.",
+        "citation": "Un modèle, c'est pas pour avoir le bon chiffre. C'est pour comprendre ce qui fait bouger le chiffre. Si tu ne peux pas m'expliquer la sensibilité à la croissance, ton modèle ne sert à rien."
+      },
+      
+      "enjeux": "Le deal est compétitif. Sequoia et Index Ventures sont aussi sur le coup. Marc veut une valorisation défendable ET une analyse de sensibilité pour négocier. Si on rate ce deal, c'est 6 mois de travail perdu.",
+      
+      "deadline": "Vendredi 14h - Marc part en week-end et veut tout relire avant.",
+      
+      "brief_marc": {
+        "contexte": "J'ai eu le CEO ce matin. Il veut 15M€ pour 12% du capital, ça nous met à une valo pré-money de 110M€. C'est cher. Je veux qu'on vérifie si c'est justifié.",
+        "demande": "Fais-moi un DCF simplifié sur 5 ans. Je veux :\n1. Les projections de revenus (on part de leur ARR actuel, avec des hypothèses de croissance décroissante)\n2. Les marges (EBITDA) avec amélioration progressive\n3. Les cash-flows libres\n4. Une valeur terminale (multiple de sortie)\n5. La valeur actualisée avec un WACC de 15-20%\n6. Une sensibilité croissance × WACC",
+        "warning": "Je veux un modèle FLEXIBLE. Si on change une hypothèse, tout doit se recalculer. Pas de valeurs en dur dans les formules."
+      }
+    },
+  
+    "concepts_cles": {
+      "dcf": "Discounted Cash Flow - on projette les cash-flows futurs et on les actualise à leur valeur présente",
+      "wacc": "Weighted Average Cost of Capital - le taux de rendement minimum exigé par les investisseurs (15-20% en VC)",
+      "terminal_value": "Valeur de l'entreprise au-delà de la période de projection, calculée avec un multiple de sortie",
+      "sensitivity": "Analyse montrant comment la valorisation change quand on modifie les hypothèses clés"
+    },
+  
+    "feuilles": [
+      {
+        "nom": "Hypotheses",
+        "description": "Toutes les hypothèses du modèle (ce qu'on peut modifier)",
+        "structure": {
+          "B2": "ARR Année 0 (2025)",
+          "B3": "Croissance Année 1",
+          "B4": "Décroissance annuelle du taux",
+          "B5": "Marge EBITDA Année 1",
+          "B6": "Amélioration marge annuelle",
+          "B7": "Capex % du CA",
+          "B8": "BFR % du CA",
+          "B9": "WACC",
+          "B10": "Multiple de sortie (EV/Revenue)"
+        }
+      },
+      {
+        "nom": "Projections",
+        "description": "Le modèle avec les projections année par année",
+        "structure": "Tableau avec colonnes A0 (2025) à A5 (2030)"
+      },
+      {
+        "nom": "Valorisation",
+        "description": "Calcul de la valeur DCF",
+        "structure": "Somme des FCF actualisés + valeur terminale"
+      },
+      {
+        "nom": "Sensibilite",
+        "description": "Table de sensibilité 2D",
+        "structure": "Matrice Croissance × WACC"
+      }
+    ],
+  
+    "donnees": {
+      "Hypotheses": {
+        "valeurs_initiales": {
+          "ARR_2025": 4200000,
+          "croissance_Y1": 0.65,
+          "decroissance_taux": 0.10,
+          "marge_ebitda_Y1": 0.05,
+          "amelioration_marge": 0.05,
+          "capex_pct": 0.03,
+          "bfr_pct": 0.10,
+          "wacc": 0.18,
+          "multiple_sortie": 8
+        }
+      },
+      "Historique_DataFlow": {
+        "description": "Pour contexte (pas utilisé dans les calculs)",
+        "ARR_2023": 1500000,
+        "ARR_2024": 2550000,
+        "ARR_2025": 4200000,
+        "croissance_2024": 0.70,
+        "croissance_2025": 0.65
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Structure du modèle (Hypothèses)",
+        "objectif": "Créer une feuille d'hypothèses propre - c'est la BASE d'un bon modèle",
+        "principe": "JAMAIS de valeur en dur dans une formule. Tout doit pointer vers les hypothèses.",
+        "questions": [
+          {
+            "numero": 1,
+            "consigne": "Dans la feuille 'Hypotheses', vérifie que toutes les cellules B2:B10 contiennent les valeurs initiales fournies. Nomme les plages (ex: B2 = 'ARR_2025').",
+            "competence": "Structure",
+            "temps": "3 min",
+            "note": "Les plages nommées rendent les formules lisibles : =ARR_2025 au lieu de =Hypotheses!$B$2"
+          }
+        ]
+      },
+      {
+        "phase": "B. Projections de revenus",
+        "objectif": "Projeter l'ARR sur 5 ans avec une croissance décroissante",
+        "questions": [
+          {
+            "numero": 2,
+            "consigne": "En Projections!B4 (Année 0 = 2025), récupère l'ARR initial depuis les Hypothèses avec une référence absolue.",
+            "cellule": "Projections!B4",
+            "competence_id": 15,
+            "temps": "2 min"
+          },
+          {
+            "numero": 3,
+            "consigne": "En Projections!B3 (ligne Croissance), récupère le taux de croissance Y1 depuis les Hypothèses.",
+            "cellule": "Projections!C3",
+            "competence_id": 15,
+            "temps": "2 min"
+          },
+          {
+            "numero": 4,
+            "consigne": "En Projections!C4 (ARR Année 1), calcule : ARR précédent × (1 + taux de croissance). Ta formule doit être recopiable.",
+            "cellule": "Projections!C4",
+            "competence_id": 15,
+            "temps": "3 min"
+          },
+          {
+            "numero": 5,
+            "consigne": "En Projections!D3:G3, calcule le taux de croissance qui diminue chaque année (taux précédent - décroissance). Utilise MAX pour éviter d'aller sous 10%.",
+            "cellule": "Projections!D3:G3",
+            "competence_id": 16,
+            "temps": "4 min",
+            "formule_attendue": "=MAX(C3-Hypotheses!$B$4;0.10)"
+          },
+          {
+            "numero": 6,
+            "consigne": "Recopie la formule d'ARR de C4 jusqu'à G4 (Année 5).",
+            "cellule": "Projections!D4:G4",
+            "competence_id": 15,
+            "temps": "1 min"
+          }
+        ]
+      },
+      {
+        "phase": "C. Calcul des marges et cash-flows",
+        "objectif": "Calculer l'EBITDA et le Free Cash Flow",
+        "questions": [
+          {
+            "numero": 7,
+            "consigne": "En ligne 5 (Marge EBITDA %), calcule la marge qui s'améliore chaque année. Année 1 = valeur initiale, puis +5% par an. Utilise MIN pour plafonner à 25%.",
+            "cellule": "Projections!C5:G5",
+            "competence_id": 16,
+            "temps": "4 min",
+            "formule_attendue": "=MIN(Hypotheses!$B$5+(COLONNE()-3)*Hypotheses!$B$6;0.25)"
+          },
+          {
+            "numero": 8,
+            "consigne": "En ligne 6 (EBITDA €), calcule : ARR × Marge EBITDA.",
+            "cellule": "Projections!C6:G6",
+            "competence_id": 3,
+            "temps": "2 min"
+          },
+          {
+            "numero": 9,
+            "consigne": "En ligne 7 (Capex), calcule : ARR × Capex%. C'est une sortie de cash, donc en négatif.",
+            "cellule": "Projections!C7:G7",
+            "competence_id": 15,
+            "temps": "2 min"
+          },
+          {
+            "numero": 10,
+            "consigne": "En ligne 8 (Variation BFR), calcule la VARIATION du BFR : (ARR année N - ARR année N-1) × BFR%. C'est une sortie si le BFR augmente.",
+            "cellule": "Projections!C8:G8",
+            "competence_id": 15,
+            "temps": "3 min"
+          },
+          {
+            "numero": 11,
+            "consigne": "En ligne 9 (Free Cash Flow), calcule : EBITDA + Capex + Variation BFR (les deux derniers sont négatifs).",
+            "cellule": "Projections!C9:G9",
+            "competence_id": 3,
+            "temps": "2 min"
+          }
+        ]
+      },
+      {
+        "phase": "D. Actualisation et valorisation",
+        "objectif": "Calculer la valeur présente des cash-flows",
+        "questions": [
+          {
+            "numero": 12,
+            "consigne": "En ligne 10 (Facteur d'actualisation), calcule : 1 / (1 + WACC)^n où n = numéro de l'année.",
+            "cellule": "Projections!C10:G10",
+            "competence_id": 15,
+            "temps": "3 min",
+            "formule_attendue": "=1/(1+Hypotheses!$B$9)^(COLONNE()-2)"
+          },
+          {
+            "numero": 13,
+            "consigne": "En ligne 11 (FCF actualisé), calcule : FCF × Facteur d'actualisation.",
+            "cellule": "Projections!C11:G11",
+            "competence_id": 3,
+            "temps": "2 min"
+          },
+          {
+            "numero": 14,
+            "consigne": "Dans Valorisation!B3, calcule la somme des FCF actualisés (années 1 à 5).",
+            "cellule": "Valorisation!B3",
+            "competence_id": 3,
+            "temps": "2 min"
+          },
+          {
+            "numero": 15,
+            "consigne": "En Valorisation!B4, calcule la valeur terminale : ARR Année 5 × Multiple de sortie × Facteur d'actualisation Année 5.",
+            "cellule": "Valorisation!B4",
+            "competence_id": 15,
+            "temps": "3 min"
+          },
+          {
+            "numero": 16,
+            "consigne": "En Valorisation!B5, calcule la valeur d'entreprise totale : Somme FCF + Valeur terminale.",
+            "cellule": "Valorisation!B5",
+            "competence_id": 3,
+            "temps": "1 min"
+          }
+        ]
+      },
+      {
+        "phase": "E. Analyse de sensibilité",
+        "objectif": "Créer une table montrant l'impact des hypothèses",
+        "questions": [
+          {
+            "numero": 17,
+            "consigne": "Dans Sensibilite, crée une table 2D avec en ligne les taux de croissance Y1 (50%, 55%, 60%, 65%, 70%, 75%) et en colonne les WACC (14%, 16%, 18%, 20%, 22%).",
+            "competence": "Structure",
+            "temps": "3 min"
+          },
+          {
+            "numero": 18,
+            "consigne": "Au croisement, utilise une TABLE DE DONNÉES Excel (ou formules avec INDIRECT) pour afficher la valorisation correspondante.",
+            "cellule": "Sensibilite!B3:F8",
+            "competence_id": 30,
+            "temps": "8 min",
+            "optionnel": true,
+            "note": "Les tables de données Excel sont puissantes mais complexes. Alternative : formules manuelles."
+          }
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1",
+        "cellule": "Projections!B4",
+        "type": "formule",
+        "description": "ARR Année 0 (référence aux hypothèses)",
+        "competence_id": 15,
+        "computation": { "type": "manual" },
+        "expected_value": 4200000,
+        "tolerance": 0,
+        "reference_formula": "=Hypotheses!$B$2",
+        "pattern": ["Hypotheses", "$", "B2"],
+        "points": 5,
+        "indices": [
+          "Cette cellule doit pointer vers les Hypothèses, pas contenir la valeur en dur.",
+          "Utilise une référence absolue ($) pour que ça ne bouge pas si tu recopies.",
+          "=Hypotheses!$B$2 ou =ARR_2025 si tu as nommé la plage"
+        ]
+      },
+      {
+        "id": "cp_2",
+        "cellule": "Projections!C3",
+        "type": "formule",
+        "description": "Taux de croissance Année 1",
+        "competence_id": 15,
+        "computation": { "type": "manual" },
+        "expected_value": 0.65,
+        "tolerance": 0,
+        "reference_formula": "=Hypotheses!$B$3",
+        "points": 5,
+        "indices": [
+          "Récupère le taux de croissance depuis les Hypothèses.",
+          "Référence absolue sur B3.",
+          "=Hypotheses!$B$3"
+        ]
+      },
+      {
+        "id": "cp_3",
+        "cellule": "Projections!C4",
+        "type": "formule",
+        "description": "ARR Année 1",
+        "competence_id": 15,
+        "computation": { "type": "manual", "formula": "B4*(1+C3)" },
+        "expected_value": 6930000,
+        "tolerance": 1,
+        "reference_formula": "=B4*(1+C3)",
+        "pattern": ["B4", "*", "1", "+", "C3"],
+        "points": 8,
+        "indices": [
+          "ARR Année 1 = ARR Année 0 × (1 + taux de croissance).",
+          "Les références doivent être relatives pour pouvoir recopier vers la droite.",
+          "=B4*(1+C3)"
+        ]
+      },
+      {
+        "id": "cp_4",
+        "cellule": "Projections!G3",
+        "type": "formule",
+        "description": "Taux de croissance Année 5 (avec plancher)",
+        "competence_id": 16,
+        "fonction": "MAX",
+        "computation": { "type": "manual" },
+        "expected_value": 0.25,
+        "tolerance": 0.01,
+        "reference_formula": "=MAX(F3-Hypotheses!$B$4;0.10)",
+        "pattern": ["MAX", "Hypotheses"],
+        "points": 10,
+        "indices": [
+          "Le taux diminue chaque année de 10%, mais ne doit pas passer sous 10%.",
+          "MAX(valeur; plancher) garde la plus grande des deux.",
+          "=MAX(F3-Hypotheses!$B$4;0.10)"
+        ]
+      },
+      {
+        "id": "cp_5",
+        "cellule": "Projections!G4",
+        "type": "formule",
+        "description": "ARR Année 5",
+        "competence_id": 15,
+        "computation": { "type": "manual" },
+        "expected_value": 18140922,
+        "tolerance": 1000,
+        "reference_formula": "=F4*(1+G3)",
+        "points": 8,
+        "indices": [
+          "Même formule que pour l'année 1, recopiée.",
+          "Si le résultat est faux, vérifie les taux de croissance intermédiaires.",
+          "Doit donner environ 18.1M€"
+        ]
+      },
+      {
+        "id": "cp_6",
+        "cellule": "Projections!G5",
+        "type": "formule",
+        "description": "Marge EBITDA Année 5 (avec plafond)",
+        "competence_id": 16,
+        "fonction": "MIN",
+        "computation": { "type": "manual" },
+        "expected_value": 0.25,
+        "tolerance": 0.01,
+        "reference_formula": "=MIN(Hypotheses!$B$5+(COLONNE()-3)*Hypotheses!$B$6;0.25)",
+        "pattern": ["MIN", "COLONNE"],
+        "points": 10,
+        "indices": [
+          "La marge démarre à 5% et augmente de 5% par an, plafonnée à 25%.",
+          "COLONNE() retourne le numéro de colonne, utile pour calculer l'année.",
+          "=MIN(Hypotheses!$B$5+(COLONNE()-3)*Hypotheses!$B$6;0.25)"
+        ]
+      },
+      {
+        "id": "cp_7",
+        "cellule": "Projections!G6",
+        "type": "formule",
+        "description": "EBITDA Année 5",
+        "competence_id": 3,
+        "computation": { "type": "manual", "formula": "G4*G5" },
+        "expected_value": 4535230.5,
+        "tolerance": 1000,
+        "reference_formula": "=G4*G5",
+        "points": 5,
+        "indices": [
+          "EBITDA = Revenus × Marge.",
+          "Multiplie l'ARR par la marge EBITDA.",
+          "=G4*G5"
+        ]
+      },
+      {
+        "id": "cp_8",
+        "cellule": "Projections!G9",
+        "type": "formule",
+        "description": "Free Cash Flow Année 5",
+        "competence_id": 3,
+        "computation": { "type": "manual" },
+        "expected_value": 3686566,
+        "tolerance": 5000,
+        "reference_formula": "=G6+G7+G8",
+        "points": 8,
+        "indices": [
+          "FCF = EBITDA + Capex + Variation BFR (les deux derniers sont négatifs).",
+          "Additionne les trois lignes (6, 7, 8).",
+          "=G6+G7+G8 ou =SOMME(G6:G8)"
+        ]
+      },
+      {
+        "id": "cp_9",
+        "cellule": "Projections!G10",
+        "type": "formule",
+        "description": "Facteur d'actualisation Année 5",
+        "competence_id": 15,
+        "computation": { "type": "manual" },
+        "expected_value": 0.4371,
+        "tolerance": 0.01,
+        "reference_formula": "=1/(1+Hypotheses!$B$9)^5",
+        "pattern": ["1", "/", "WACC", "^"],
+        "points": 10,
+        "indices": [
+          "Facteur = 1 / (1 + WACC)^n où n est le numéro de l'année.",
+          "Pour l'année 5, n = 5. Le WACC est dans les Hypothèses.",
+          "=1/(1+Hypotheses!$B$9)^5 ou avec COLONNE() pour être dynamique"
+        ]
+      },
+      {
+        "id": "cp_10",
+        "cellule": "Valorisation!B3",
+        "type": "formule",
+        "description": "Somme des FCF actualisés",
+        "competence_id": 3,
+        "fonction": "SOMME",
+        "computation": { "type": "manual" },
+        "expected_value": 4825678,
+        "tolerance": 10000,
+        "reference_formula": "=SOMME(Projections!C11:G11)",
+        "pattern": ["SOMME", "Projections", "11"],
+        "points": 8,
+        "indices": [
+          "Additionne tous les FCF actualisés (ligne 11, années 1 à 5).",
+          "La somme doit couvrir C11 à G11.",
+          "=SOMME(Projections!C11:G11)"
+        ]
+      },
+      {
+        "id": "cp_11",
+        "cellule": "Valorisation!B4",
+        "type": "formule",
+        "description": "Valeur terminale actualisée",
+        "competence_id": 15,
+        "computation": { "type": "manual" },
+        "expected_value": 63435146,
+        "tolerance": 100000,
+        "reference_formula": "=Projections!G4*Hypotheses!$B$10*Projections!G10",
+        "pattern": ["Projections", "G4", "Hypotheses", "B10", "G10"],
+        "points": 10,
+        "indices": [
+          "Valeur terminale = ARR Année 5 × Multiple de sortie × Facteur d'actualisation Année 5.",
+          "Le multiple de sortie est dans les Hypothèses (B10).",
+          "=Projections!G4*Hypotheses!$B$10*Projections!G10"
+        ]
+      },
+      {
+        "id": "cp_12",
+        "cellule": "Valorisation!B5",
+        "type": "formule",
+        "description": "Valeur d'entreprise totale (DCF)",
+        "competence_id": 3,
+        "computation": { "type": "manual" },
+        "expected_value": 68260824,
+        "tolerance": 100000,
+        "reference_formula": "=B3+B4",
+        "points": 8,
+        "indices": [
+          "Valeur totale = Somme des FCF + Valeur terminale.",
+          "Additionne simplement B3 et B4.",
+          "=B3+B4 — ce qui donne environ 68M€"
+        ]
+      }
+    ],
+  
+    "validation_finale": {
+      "valeur_attendue": 68260824,
+      "interpretation": "La valorisation DCF donne ~68M€, bien en-dessous des 110M€ demandés par le fondateur. Ça laisse de la marge de négociation.",
+      "sensibilite_cle": "Avec une croissance à 75% au lieu de 65%, on monte à ~85M€. Avec un WACC à 14%, on monte à ~95M€. La valo du fondateur suppose soit une croissance très agressive, soit un WACC de marché coté."
+    },
+  
+    "debrief_marc": {
+      "succes": {
+        "contenu": "Très bien. Ton modèle tient la route. 68M€ vs 110M€ demandés, ça nous donne du levier. Je vais négocier une valo à 80M€ max, ce qui nous donnerait 18.75% pour 15M€. La sensibilité est claire : leur valo suppose une croissance maintenue à 65%+ sur 5 ans, ce qui est optimiste. On va challenger leurs projections de rétention. Bon travail.",
+        "apprentissage": "Tu as compris l'essentiel : un modèle, c'est un outil de discussion, pas une vérité absolue. Les hypothèses comptent plus que les formules."
+      }
+    },
+  
+    "messages_socrate": {
+      "intro": "C'est un exercice exigeant. Un vrai modèle DCF de VC. Prends ton temps, vérifie chaque formule. Marc va tout challenger.",
+      
+      "warning_structure": "⚠️ La règle d'or : AUCUNE valeur en dur dans les formules des projections. Tout doit pointer vers les Hypothèses. Si Marc change un chiffre, tout doit se recalculer automatiquement.",
+      
+      "encouragement": "La partie actualisation est souvent la plus confuse. Rappelle-toi : on ramène les cash-flows futurs à leur valeur d'aujourd'hui. 1€ dans 5 ans vaut moins que 1€ aujourd'hui, car tu aurais pu le placer entre-temps.",
+      
+      "conclusion_succes": "Félicitations. Tu viens de construire ton premier modèle de valorisation. C'est le même type de modèle qu'on utilise chez Goldman, Lazard ou dans les fonds. Maintenant tu comprends comment on met un prix sur une startup. La prochaine étape : ajouter des scénarios (bull/base/bear) et affiner les hypothèses opérationnelles."
+    },
+  
+    "criteres_qualite": {
+      "contexte_immersif": true,
+      "donnees_realistes": true,
+      "progression_logique": true,
+      "enjeux_professionnels": true,
+      "concepts_financiers_expliques": true,
+      "modele_flexible": true,
+      "feedback_expert": true
+    }
+  }

@@ -1,0 +1,260 @@
+{
+    "id": "intermediaire_25_nbsi_ens_rh",
+    "titre": "NB.SI.ENS : Analyse RH Multi-Critères",
+    "niveau": "intermediaire",
+    "duree_estimee": "20 min",
+    "competences": ["NB.SI.ENS", "Comptage multi-critères"],
+    "competence_ids": [12],
+  
+    "contexte": {
+      "situation": "Tu travailles aux Ressources Humaines de TechVision, une entreprise de 200 employés. La DRH prépare le bilan social annuel et a besoin de statistiques croisées : combien d'hommes dans le service IT ? Combien de femmes managers ? Combien de CDI à Paris ?",
+      "manager": {
+        "nom": "Isabelle Renard",
+        "poste": "Directrice des Ressources Humaines",
+        "personnalite": "Analytique et précise. Elle veut des chiffres fiables pour le comité de direction.",
+        "demande": "J'ai besoin de statistiques croisées pour le bilan social. NB.SI ne suffit plus, il me faut croiser plusieurs critères. Tu connais NB.SI.ENS ?"
+      },
+      "enjeux": "Le bilan social est un document légal. Les chiffres doivent être exacts.",
+      "deadline": "Vendredi pour le CODIR"
+    },
+  
+    "objectifs": [
+      "Comprendre la différence entre NB.SI (1 critère) et NB.SI.ENS (plusieurs critères)",
+      "Maîtriser la syntaxe NB.SI.ENS(plage1;critère1;plage2;critère2;...)",
+      "Croiser jusqu'à 3 critères différents",
+      "Utiliser des critères avec opérateurs (>=, <>, etc.)"
+    ],
+  
+    "consignes": [
+      "Ouvre le fichier avec la liste des employés",
+      "Calcule le nombre d'employés par combinaison de critères",
+      "Utilise NB.SI.ENS pour croiser : Service + Genre, Contrat + Ville, etc.",
+      "Crée un mini-tableau de bord avec les indicateurs clés"
+    ],
+  
+    "donnees": {
+      "feuille": "Employés",
+      "headers": ["ID", "Nom", "Service", "Genre", "Contrat", "Ville", "Ancienneté", "Salaire"],
+      "rows": [
+        ["E001", "Martin Pierre", "IT", "H", "CDI", "Paris", 5, 45000],
+        ["E002", "Dubois Marie", "IT", "F", "CDI", "Paris", 3, 42000],
+        ["E003", "Bernard Lucas", "Commercial", "H", "CDI", "Lyon", 7, 52000],
+        ["E004", "Thomas Emma", "IT", "F", "CDD", "Paris", 1, 38000],
+        ["E005", "Robert Julie", "RH", "F", "CDI", "Paris", 4, 41000],
+        ["E006", "Petit Marc", "Commercial", "H", "CDI", "Marseille", 2, 44000],
+        ["E007", "Durand Sophie", "Finance", "F", "CDI", "Lyon", 6, 55000],
+        ["E008", "Leroy Thomas", "IT", "H", "CDD", "Paris", 1, 36000],
+        ["E009", "Moreau Claire", "Commercial", "F", "CDI", "Paris", 8, 58000],
+        ["E010", "Simon Antoine", "Finance", "H", "CDI", "Lyon", 4, 48000],
+        ["E011", "Laurent Camille", "RH", "F", "CDI", "Marseille", 3, 39000],
+        ["E012", "Michel David", "IT", "H", "CDI", "Lyon", 5, 47000],
+        ["E013", "Garcia Léa", "Commercial", "F", "CDD", "Paris", 1, 35000],
+        ["E014", "Martinez Hugo", "Finance", "H", "CDI", "Paris", 2, 43000],
+        ["E015", "Robinson Sarah", "IT", "F", "CDI", "Marseille", 4, 44000]
+      ],
+      "statistiques_attendues": {
+        "hommes_it": 3,
+        "femmes_cdi_paris": 3,
+        "commercial_lyon_ou_marseille": 2,
+        "cdd_moins_2ans": 4,
+        "finance_salaire_sup_45k": 2
+      }
+    },
+  
+    "etapes": [
+      {
+        "phase": "A. Rappel NB.SI vs NB.SI.ENS",
+        "explications": [
+          "NB.SI(plage;critère) → 1 seul critère",
+          "NB.SI.ENS(plage1;critère1;plage2;critère2;...) → plusieurs critères",
+          "Tous les critères doivent être vrais EN MÊME TEMPS (ET logique)"
+        ],
+        "exemple": "=NB.SI.ENS(C:C;\"IT\";D:D;\"H\") compte les hommes du service IT"
+      },
+      {
+        "phase": "B. Compter avec 2 critères",
+        "consignes": [
+          "Combien d'hommes dans le service IT ?",
+          "=NB.SI.ENS(C2:C16;\"IT\";D2:D16;\"H\")",
+          "Critère 1 : Service = IT",
+          "Critère 2 : Genre = H"
+        ]
+      },
+      {
+        "phase": "C. Utiliser des opérateurs dans les critères",
+        "consignes": [
+          "Combien d'employés avec ancienneté >= 5 ans ?",
+          "=NB.SI.ENS(G2:G16;\">=\"&5) ou =NB.SI.ENS(G2:G16;\">=5\")",
+          "Combien de salaires > 45000 ?",
+          "=NB.SI.ENS(H2:H16;\">45000\")"
+        ]
+      },
+      {
+        "phase": "D. Croiser 3 critères",
+        "consignes": [
+          "Combien de femmes en CDI à Paris ?",
+          "=NB.SI.ENS(D2:D16;\"F\";E2:E16;\"CDI\";F2:F16;\"Paris\")",
+          "3 plages, 3 critères, même logique"
+        ]
+      }
+    ],
+  
+    "checkpoints": [
+      {
+        "id": "cp_1_hommes_it",
+        "cellule": "K2",
+        "type": "valeur",
+        "description": "Nombre d'hommes dans le service IT",
+        "competence_id": 12,
+        "expected_value": 3,
+        "points": 15,
+        "indices": [
+          "Critère 1 : Service (colonne C) = \"IT\"",
+          "Critère 2 : Genre (colonne D) = \"H\"",
+          "=NB.SI.ENS(C2:C16;\"IT\";D2:D16;\"H\")"
+        ]
+      },
+      {
+        "id": "cp_2_femmes_it",
+        "cellule": "K3",
+        "type": "valeur",
+        "description": "Nombre de femmes dans le service IT",
+        "competence_id": 12,
+        "expected_value": 3,
+        "points": 10,
+        "indices": [
+          "Même logique mais Genre = \"F\"",
+          "=NB.SI.ENS(C2:C16;\"IT\";D2:D16;\"F\")",
+          "3 femmes : Dubois, Thomas, Robinson"
+        ]
+      },
+      {
+        "id": "cp_3_cdi_paris",
+        "cellule": "K4",
+        "type": "valeur",
+        "description": "Nombre de CDI à Paris",
+        "competence_id": 12,
+        "expected_value": 5,
+        "points": 15,
+        "indices": [
+          "Critère 1 : Contrat = \"CDI\"",
+          "Critère 2 : Ville = \"Paris\"",
+          "=NB.SI.ENS(E2:E16;\"CDI\";F2:F16;\"Paris\")"
+        ]
+      },
+      {
+        "id": "cp_4_femmes_cdi_paris",
+        "cellule": "K5",
+        "type": "valeur",
+        "description": "Nombre de femmes en CDI à Paris (3 critères)",
+        "competence_id": 12,
+        "expected_value": 3,
+        "points": 20,
+        "indices": [
+          "3 critères : Genre=\"F\", Contrat=\"CDI\", Ville=\"Paris\"",
+          "=NB.SI.ENS(D2:D16;\"F\";E2:E16;\"CDI\";F2:F16;\"Paris\")",
+          "Dubois Marie, Robert Julie, Moreau Claire"
+        ]
+      },
+      {
+        "id": "cp_5_anciennete_sup_5",
+        "cellule": "K6",
+        "type": "valeur",
+        "description": "Employés avec ancienneté >= 5 ans",
+        "competence_id": 12,
+        "expected_value": 5,
+        "points": 15,
+        "indices": [
+          "Utilise l'opérateur >= dans le critère",
+          "=NB.SI.ENS(G2:G16;\">=5\")",
+          "Ou =NB.SI.ENS(G2:G16;\">=\"&5)"
+        ]
+      },
+      {
+        "id": "cp_6_salaire_sup_45k",
+        "cellule": "K7",
+        "type": "valeur",
+        "description": "Employés avec salaire > 45000",
+        "competence_id": 12,
+        "expected_value": 5,
+        "points": 10,
+        "indices": [
+          "Critère : \">45000\"",
+          "=NB.SI.ENS(H2:H16;\">45000\")",
+          "5 employés gagnent plus de 45k"
+        ]
+      },
+      {
+        "id": "cp_7_commercial_h_cdi",
+        "cellule": "K8",
+        "type": "valeur",
+        "description": "Hommes commerciaux en CDI",
+        "competence_id": 12,
+        "expected_value": 2,
+        "points": 15,
+        "indices": [
+          "3 critères : Service, Genre, Contrat",
+          "=NB.SI.ENS(C2:C16;\"Commercial\";D2:D16;\"H\";E2:E16;\"CDI\")",
+          "Bernard et Petit"
+        ]
+      }
+    ],
+  
+    "formules_utiles": [
+      {
+        "syntaxe": "=NB.SI.ENS(plage1;critère1;plage2;critère2)",
+        "description": "Compte avec 2 critères (ET)"
+      },
+      {
+        "syntaxe": "=NB.SI.ENS(plage;\">=\"&valeur)",
+        "description": "Critère avec opérateur et référence cellule"
+      },
+      {
+        "syntaxe": "=NB.SI.ENS(plage;\"<>\"&\"valeur\")",
+        "description": "Critère 'différent de'"
+      }
+    ],
+  
+    "pieges_pedagogiques": [
+      {
+        "piege": "Oublier les guillemets autour des critères texte",
+        "exemple": "=NB.SI.ENS(C:C;IT;D:D;H)",
+        "correction": "=NB.SI.ENS(C:C;\"IT\";D:D;\"H\")"
+      },
+      {
+        "piege": "Plages de tailles différentes",
+        "exemple": "=NB.SI.ENS(C2:C16;\"IT\";D2:D20;\"H\")",
+        "correction": "Toutes les plages doivent avoir la même taille"
+      },
+      {
+        "piege": "Confondre ET et OU",
+        "exemple": "NB.SI.ENS compte les lignes où TOUS les critères sont vrais",
+        "correction": "Pour un OU, utilise la somme de plusieurs NB.SI"
+      }
+    ],
+  
+    "scoring": {
+      "total_points": 100,
+      "seuil_reussite": 70,
+      "seuil_maitrise": 90
+    },
+  
+    "feedback_manager": {
+      "succes": "Parfait ! Tu maîtrises NB.SI.ENS et les analyses multi-critères. Le bilan social sera impeccable ! 📊",
+      "partiel": "Tu as compris le principe. Vérifie la syntaxe : plage1;critère1;plage2;critère2 (pas de parenthèses entre).",
+      "echec": "NB.SI.ENS étend NB.SI à plusieurs critères. Reprends avec 2 critères simples avant d'en ajouter."
+    },
+  
+    "socrate_message": {
+      "intro": "NB.SI.ENS, c'est NB.SI sous stéroïdes ! 💪 Tu vas pouvoir croiser plusieurs critères en une seule formule.",
+      "conclusion": "Tu sais maintenant faire des analyses croisées. Prochaine étape : SOMME.SI.ENS pour additionner avec plusieurs critères !"
+    },
+  
+    "metadata": {
+      "version": "1.0",
+      "created_at": "2026-01-21",
+      "tags": ["NB.SI.ENS", "multi-critères", "comptage", "RH", "statistiques", "intermédiaire"],
+      "prerequis": ["NB.SI"],
+      "ouvre_vers": ["SOMME.SI.ENS", "MOYENNE.SI.ENS"]
+    }
+  }
