@@ -18,11 +18,11 @@ export default function SkillPage() {
   const [correctionResult, setCorrectionResult] = useState(null);
   const [error, setError] = useState(null);
   
-  // CORRECTION BUG 4: State pour le screenshot (validation visuelle)
+  // State pour le screenshot (validation visuelle)
   const [screenshotFile, setScreenshotFile] = useState(null);
   const [screenshotBase64, setScreenshotBase64] = useState(null);
   
-  // CORRECTION BUG 4: Détecter si l'exercice nécessite un screenshot
+  // Détecter si l'exercice nécessite un screenshot
   const needsScreenshot = useNeedsScreenshot(exercise);
   
   useEffect(() => {
@@ -37,7 +37,6 @@ export default function SkillPage() {
   }, [skillKey, router]);
 
   // Naviguer vers Socrate avec le contexte de la compétence
-  // CORRECTION BUG 3: Inclure les données de l'exercice et de la correction si disponibles
   const goToSocrateLearn = () => {
     const skillContext = {
       mode: 'learn_competence',
@@ -46,25 +45,23 @@ export default function SkillPage() {
       competenceId: pedagogie?.id || null,
       fromCatalogue: true,
       timestamp: Date.now(),
-      // CORRECTION BUG 3: Ajouter les données d'exercice si disponibles
       exerciseCompleted: !!correctionResult,
       exerciseData: exercise ? {
         id: exercise.id,
         titre: exercise.titre,
         niveau: exercise.niveau
       } : null,
-      // CORRECTION BUG 3: Ajouter les résultats de correction si disponibles
       correctionData: correctionResult ? {
         score: correctionResult.score,
         success: correctionResult.success,
         masteryLevel: correctionResult.masteryLevel,
         feedback: correctionResult.feedback,
-        errors: correctionResult.errors?.slice(0, 5), // Limiter à 5 erreurs
+        errors: correctionResult.errors?.slice(0, 5),
         competencesValidated: correctionResult.competencesValidated,
         checkpointsFailed: correctionResult.checkpointsDetail
           ?.filter(cp => !cp.passed)
           ?.map(cp => ({ id: cp.id, description: cp.description, feedback: cp.feedback }))
-          ?.slice(0, 3) // Limiter à 3 checkpoints échoués
+          ?.slice(0, 3)
       } : null
     };
     localStorage.setItem('socrate-skill-context', JSON.stringify(skillContext));
@@ -80,8 +77,6 @@ export default function SkillPage() {
     try {
       const userId = localStorage.getItem('socrate-user-id') || 'anonymous';
       
-      // CORRECTION BUG 1: Utiliser select-template au lieu de generate-dynamic
-      // Cela utilise les 76 templates pré-validés au lieu de générer avec Claude
       const response = await fetch('/api/select-template', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -105,7 +100,6 @@ export default function SkillPage() {
       
       setExercise(data.exercise);
       
-      // Stocker l'exercice complet pour la correction (avec checkpoints)
       localStorage.setItem('current-exercise-id', data.exercise.id);
       localStorage.setItem('current-exercise-data', JSON.stringify(data.exercise));
       
@@ -172,12 +166,8 @@ export default function SkillPage() {
       const exerciseData = exercise || JSON.parse(localStorage.getItem('current-exercise-data') || '{}');
       formData.append('exerciseData', JSON.stringify(exerciseData));
       
-      // CORRECTION BUG 4: Ajouter le screenshot si présent
       if (screenshotFile) {
         formData.append('screenshot', screenshotFile);
-        console.log('📷 [CATALOGUE] Screenshot ajouté à la correction');
-      } else if (needsScreenshot) {
-        console.log('⚠️ [CATALOGUE] Screenshot requis mais non fourni');
       }
       
       const response = await fetch('/api/correct-exercise', {
@@ -190,9 +180,7 @@ export default function SkillPage() {
       const result = await response.json();
       setCorrectionResult(result);
       
-      // Si réussi, passer à la phase success
       if (result.success || result.score >= 7) {
-        // Sauvegarder la progression
         const progress = JSON.parse(localStorage.getItem('socrate-skills-progress') || '{}');
         progress[skillKey] = {
           completed: true,
@@ -215,8 +203,8 @@ export default function SkillPage() {
   // Si pas de pédagogie, on attend ou on redirige
   if (!pedagogie) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="animate-pulse text-slate-400">Chargement...</div>
+      <div className="min-h-screen bg-[var(--slate-50)] flex items-center justify-center">
+        <div className="animate-pulse text-[var(--slate-400)]">Chargement...</div>
       </div>
     );
   }
@@ -225,162 +213,165 @@ export default function SkillPage() {
   const skillDescription = pedagogie?.description;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[var(--slate-50)]">
+      {/* Progress bar - style onboarding */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-[var(--slate-200)] z-50">
+        <div 
+          className="h-full bg-[var(--accent-base)] transition-all duration-500 ease-out"
+          style={{ width: phase === 'learn' ? '33%' : phase === 'practice' ? '66%' : '100%' }}
+        />
+      </div>
+
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
-        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center gap-4">
-          <button 
-            onClick={() => router.push('/?menu=true')}
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-          >
-            <span className="text-xl font-semibold italic text-blue-800" style={{ fontFamily: "'Source Serif 4', 'Playfair Display', Georgia, serif" }}>Socrate</span>
-          </button>
-          
-          <span className="text-slate-300">|</span>
-          
-          <button 
-            onClick={() => router.push('/catalogue')}
-            className="text-sm text-slate-500 hover:text-slate-700 transition-colors"
-          >
-            ← Catalogue
-          </button>
-          
-          {/* Barre de progression */}
-          <div className="flex-1">
-            <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-green-500 rounded-full transition-all duration-500"
-                style={{ width: phase === 'learn' ? '33%' : phase === 'practice' ? '66%' : '100%' }}
-              />
-            </div>
+      <header className="bg-white border-b border-[var(--slate-200)] sticky top-0 z-40 pt-1">
+        <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => router.push('/?menu=true')}
+              className="font-display text-xl font-semibold text-[var(--slate-900)] hover:text-[var(--slate-700)] transition-colors"
+            >
+              Socrate
+            </button>
+            
+            <span className="text-[var(--slate-300)]">·</span>
+            
+            <button 
+              onClick={() => router.push('/catalogue')}
+              className="text-sm text-[var(--slate-500)] hover:text-[var(--slate-700)] transition-colors flex items-center gap-1"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Catalogue
+            </button>
           </div>
           
-          <div className="text-sm font-medium text-slate-600">
-            {phase === 'learn' && '1/3'}
-            {phase === 'practice' && '2/3'}
-            {phase === 'success' && '✓'}
+          <div className="text-sm font-medium text-[var(--slate-500)]">
+            {phase === 'learn' && 'Étape 1/3'}
+            {phase === 'practice' && 'Étape 2/3'}
+            {phase === 'success' && 'Terminé'}
           </div>
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-4 py-6">
+      <main className="max-w-2xl mx-auto px-6 py-10">
         
         {/* PHASE 1 : APPRENDRE */}
         {phase === 'learn' && (
-          <div className="animate-fadeIn">
+          <div className="animate-fade-in">
             {/* Titre */}
-            <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold text-slate-900 mb-2">
+            <div className="text-center mb-10">
+              <h1 className="font-display text-3xl font-semibold text-[var(--slate-900)] mb-3">
                 {skillName}
               </h1>
-              <p className="text-slate-500">
+              <p className="text-[var(--slate-500)] text-lg max-w-md mx-auto">
                 {skillDescription || 'Découvrons cette fonctionnalité ensemble.'}
               </p>
             </div>
 
-            {/* Explication principale */}
-            <div className="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-slate-200">
-              <h2 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="text-xl">📖</span> 
-                Comment ça marche
-              </h2>
-              
-              <p className="text-slate-700 mb-6 leading-relaxed">
-                {pedagogie?.description || 'Découvrons cette fonctionnalité ensemble.'}
-              </p>
-              
-              {/* Syntaxe */}
-              {pedagogie?.syntaxe && (
-                <div className="bg-slate-50 rounded-xl p-4 mb-6">
-                  <h3 className="font-semibold text-slate-800 mb-3 flex items-center gap-2">
-                    <span>⌨️</span> Syntaxe
-                  </h3>
-                  <code className="block bg-slate-900 text-green-400 p-4 rounded-lg font-mono text-sm mb-4">
+            {/* Syntaxe - Design épuré */}
+            {pedagogie?.syntaxe && (
+              <div className="mb-8">
+                <h2 className="text-sm font-medium text-[var(--slate-500)] uppercase tracking-wide mb-3">
+                  Syntaxe
+                </h2>
+                <div className="bg-white rounded-lg border border-[var(--slate-200)] p-5">
+                  <code className="block text-[var(--slate-900)] font-mono text-base mb-4">
                     {pedagogie.syntaxe.formule}
                   </code>
                   
                   {pedagogie.syntaxe.arguments?.length > 0 && (
-                    <div className="space-y-2">
+                    <div className="space-y-2 pt-4 border-t border-[var(--slate-100)]">
                       {pedagogie.syntaxe.arguments.map((arg, i) => (
-                        <div key={i} className="flex items-start gap-2 text-sm">
-                          <code className={`px-2 py-0.5 rounded ${arg.obligatoire ? 'bg-blue-100 text-blue-800' : 'bg-slate-200 text-slate-600'}`}>
+                        <div key={i} className="flex items-baseline gap-3 text-sm">
+                          <code className={`px-2 py-0.5 rounded font-mono text-xs ${
+                            arg.obligatoire 
+                              ? 'bg-[var(--accent-base)]/10 text-[var(--accent-dark)]' 
+                              : 'bg-[var(--slate-100)] text-[var(--slate-600)]'
+                          }`}>
                             {arg.nom}
                           </code>
-                          <span className="text-slate-600">
+                          <span className="text-[var(--slate-600)]">
                             {arg.description}
-                            {!arg.obligatoire && <span className="text-slate-400 ml-1">(optionnel)</span>}
+                            {!arg.obligatoire && (
+                              <span className="text-[var(--slate-400)] ml-1">(optionnel)</span>
+                            )}
                           </span>
                         </div>
                       ))}
                     </div>
                   )}
                 </div>
-              )}
-              
-              {/* Exemples */}
-              {pedagogie?.exemples && pedagogie.exemples.length > 0 && (
-                <div className="mb-6">
-                  <h3 className="font-semibold text-slate-800 mb-3 flex items-center gap-2">
-                    <span>💡</span> Exemples
-                  </h3>
-                  <div className="space-y-3">
-                    {pedagogie.exemples.map((ex, i) => (
-                      <div key={i} className="flex items-start gap-3 bg-slate-50 rounded-lg p-3">
-                        <code className="bg-white px-3 py-1 rounded border border-slate-200 font-mono text-sm text-slate-800 whitespace-nowrap">
-                          {ex.formule}
-                        </code>
-                        <span className="text-sm text-slate-600 pt-1">
-                          {ex.description}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+              </div>
+            )}
+            
+            {/* Exemples */}
+            {pedagogie?.exemples && pedagogie.exemples.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-sm font-medium text-[var(--slate-500)] uppercase tracking-wide mb-3">
+                  Exemples
+                </h2>
+                <div className="space-y-3">
+                  {pedagogie.exemples.map((ex, i) => (
+                    <div key={i} className="bg-white rounded-lg border border-[var(--slate-200)] p-4 flex items-center gap-4">
+                      <code className="bg-[var(--slate-50)] px-3 py-1.5 rounded border border-[var(--slate-200)] font-mono text-sm text-[var(--slate-800)] whitespace-nowrap">
+                        {ex.formule}
+                      </code>
+                      <span className="text-sm text-[var(--slate-600)]">
+                        {ex.description}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
 
             {/* Erreurs fréquentes */}
             {pedagogie?.erreursFrequentes && pedagogie.erreursFrequentes.length > 0 && (
-              <div className="bg-red-50 rounded-2xl p-5 mb-6 border border-red-200">
-                <h3 className="font-bold text-red-900 mb-3 flex items-center gap-2">
-                  <span>⚠️</span> Erreurs fréquentes à éviter
-                </h3>
-                <ul className="space-y-2">
-                  {pedagogie.erreursFrequentes.map((err, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-red-800">
-                      <span className="text-red-500 mt-0.5">•</span>
-                      <span>{err}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="mb-8">
+                <h2 className="text-sm font-medium text-[var(--slate-500)] uppercase tracking-wide mb-3">
+                  Erreurs fréquentes
+                </h2>
+                <div className="bg-white rounded-lg border border-[var(--slate-200)] p-5">
+                  <ul className="space-y-2">
+                    {pedagogie.erreursFrequentes.map((err, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-[var(--slate-700)]">
+                        <span className="text-[var(--error)] mt-0.5">×</span>
+                        <span>{err}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             )}
 
             {/* Astuces */}
             {pedagogie?.astuces && pedagogie.astuces.length > 0 && (
-              <div className="bg-amber-50 rounded-2xl p-5 mb-6 border border-amber-200">
-                <h3 className="font-bold text-amber-900 mb-3 flex items-center gap-2">
-                  <span>✨</span> Astuces pro
-                </h3>
-                <ul className="space-y-2">
-                  {pedagogie.astuces.map((tip, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-amber-800">
-                      <span className="text-amber-500 mt-0.5">→</span>
-                      <span>{tip}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                {pedagogie.raccourci && (
-                  <div className="mt-4 pt-4 border-t border-amber-200">
-                    <span className="text-sm text-amber-700">
-                      <strong>Raccourci clavier :</strong>{' '}
-                      <kbd className="bg-white px-2 py-1 rounded border border-amber-300 font-mono text-xs">
-                        {pedagogie.raccourci}
-                      </kbd>
-                    </span>
-                  </div>
-                )}
+              <div className="mb-10">
+                <h2 className="text-sm font-medium text-[var(--slate-500)] uppercase tracking-wide mb-3">
+                  Astuces
+                </h2>
+                <div className="bg-[var(--accent-base)]/5 rounded-lg border border-[var(--accent-base)]/20 p-5">
+                  <ul className="space-y-2">
+                    {pedagogie.astuces.map((tip, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-[var(--slate-700)]">
+                        <span className="text-[var(--accent-base)] mt-0.5">→</span>
+                        <span>{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  {pedagogie.raccourci && (
+                    <div className="mt-4 pt-4 border-t border-[var(--accent-base)]/20">
+                      <span className="text-sm text-[var(--slate-600)]">
+                        Raccourci clavier :{' '}
+                        <kbd className="bg-white px-2 py-1 rounded border border-[var(--slate-200)] font-mono text-xs">
+                          {pedagogie.raccourci}
+                        </kbd>
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
@@ -388,17 +379,16 @@ export default function SkillPage() {
             <div className="space-y-3">
               <button
                 onClick={() => setPhase('practice')}
-                className="w-full py-4 bg-blue-600 text-white font-bold text-lg rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
+                className="w-full py-4 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200 hover:-translate-y-0.5"
               >
-                J'ai compris, passons à la pratique ! 🚀
+                Passer à la pratique
               </button>
               
               <button
                 onClick={goToSocrateLearn}
-                className="w-full py-3 bg-white text-green-700 font-medium rounded-xl border-2 border-green-200 hover:bg-green-50 hover:border-green-300 transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 bg-white text-[var(--slate-700)] font-medium rounded-lg border border-[var(--slate-200)] hover:border-[var(--slate-300)] hover:bg-[var(--slate-50)] transition-all duration-200"
               >
-                <span>🎓</span>
-                Ou apprendre directement avec Socrate
+                Apprendre avec Socrate
               </button>
             </div>
           </div>
@@ -406,62 +396,65 @@ export default function SkillPage() {
 
         {/* PHASE 2 : PRATIQUER */}
         {phase === 'practice' && (
-          <div className="animate-fadeIn">
-            <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold text-slate-900 mb-2">
-                À toi de jouer ! 🎯
+          <div className="animate-fade-in">
+            <div className="text-center mb-10">
+              <h1 className="font-display text-3xl font-semibold text-[var(--slate-900)] mb-3">
+                À toi de jouer
               </h1>
-              <p className="text-slate-500">
+              <p className="text-[var(--slate-500)] text-lg">
                 Applique ce que tu viens d'apprendre sur un vrai fichier Excel
               </p>
             </div>
 
-            {/* Rappel rapide de la syntaxe */}
+            {/* Rappel syntaxe */}
             {pedagogie?.syntaxe && (
-              <div className="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">💡</span>
-                  <div>
-                    <span className="text-sm text-blue-800">Rappel : </span>
-                    <code className="text-sm font-mono text-blue-900 font-medium">
-                      {pedagogie.syntaxe.formule}
-                    </code>
-                  </div>
-                </div>
+              <div className="bg-[var(--slate-100)] rounded-lg p-4 mb-8 flex items-center gap-3">
+                <span className="text-[var(--slate-500)]">Rappel</span>
+                <code className="font-mono text-sm text-[var(--slate-800)]">
+                  {pedagogie.syntaxe.formule}
+                </code>
               </div>
             )}
 
             {/* Erreur */}
             {error && (
-              <div className="bg-red-50 rounded-xl p-4 mb-6 border border-red-200">
-                <p className="text-red-800 text-sm">{error}</p>
+              <div className="bg-[var(--error)]/10 rounded-lg p-4 mb-6 border border-[var(--error)]/20">
+                <p className="text-[var(--error)] text-sm">{error}</p>
               </div>
             )}
 
             {/* État : pas encore d'exercice généré */}
             {!exercise && !isGenerating && (
-              <div className="bg-white rounded-2xl p-8 mb-6 shadow-sm border border-slate-200 text-center">
-                <div className="text-5xl mb-4">📊</div>
-                <h3 className="font-bold text-slate-900 mb-2">Prêt à pratiquer ?</h3>
-                <p className="text-slate-500 mb-6">
+              <div className="bg-white rounded-lg border border-[var(--slate-200)] p-10 mb-6 text-center">
+                <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[var(--slate-100)] flex items-center justify-center">
+                  <svg className="w-8 h-8 text-[var(--slate-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="font-display text-xl font-semibold text-[var(--slate-900)] mb-2">Prêt à pratiquer ?</h3>
+                <p className="text-[var(--slate-500)] mb-6 max-w-sm mx-auto">
                   Je vais générer un exercice Excel personnalisé avec des données réelles.
                 </p>
                 <button
                   onClick={handleGenerateExercise}
-                  className="px-8 py-4 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-colors shadow-lg shadow-green-200"
+                  className="px-8 py-3.5 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200"
                 >
-                  🎲 Générer mon exercice
+                  Générer un exercice
                 </button>
               </div>
             )}
 
             {/* État : génération en cours */}
             {isGenerating && (
-              <div className="bg-white rounded-2xl p-8 mb-6 shadow-sm border border-slate-200 text-center">
-                <div className="animate-spin text-5xl mb-4">⚙️</div>
-                <h3 className="font-bold text-slate-900 mb-2">Génération en cours...</h3>
-                <p className="text-slate-500">
-                  Je crée un exercice avec des données adaptées à ton niveau.
+              <div className="bg-white rounded-lg border border-[var(--slate-200)] p-10 mb-6 text-center">
+                <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[var(--slate-100)] flex items-center justify-center animate-pulse">
+                  <svg className="w-8 h-8 text-[var(--slate-400)] animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </div>
+                <h3 className="font-display text-xl font-semibold text-[var(--slate-900)] mb-2">Génération en cours...</h3>
+                <p className="text-[var(--slate-500)]">
+                  Je crée un exercice adapté à ton niveau.
                 </p>
               </div>
             )}
@@ -470,46 +463,55 @@ export default function SkillPage() {
             {exercise && !isGenerating && (
               <div className="space-y-4">
                 {/* Carte exercice */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-2">{exercise.titre}</h3>
+                <div className="bg-white rounded-lg border border-[var(--slate-200)] p-6">
+                  <h3 className="font-display text-lg font-semibold text-[var(--slate-900)] mb-2">
+                    {exercise.titre}
+                  </h3>
                   
                   {exercise.contexte && (
-                    <p className="text-slate-600 text-sm mb-4">
+                    <p className="text-[var(--slate-600)] text-sm mb-4 leading-relaxed">
                       {typeof exercise.contexte === 'string' 
                         ? exercise.contexte 
                         : exercise.contexte.situation}
                     </p>
                   )}
                   
-                  <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
-                    <span>📊 {exercise.donnees?.rows?.length || '?'} lignes</span>
-                    <span>❓ {exercise.checkpoints?.length || '?'} questions</span>
+                  <div className="flex items-center gap-4 text-sm text-[var(--slate-500)] mb-5">
+                    <span>{exercise.donnees?.rows?.length || '?'} lignes</span>
+                    <span>·</span>
+                    <span>{exercise.checkpoints?.length || '?'} questions</span>
                   </div>
                   
-                  {/* Bouton télécharger */}
                   <button
                     onClick={handleDownload}
-                    className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200 flex items-center justify-center gap-2"
                   >
-                    <span>📥</span> Télécharger l'exercice Excel
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Télécharger l'exercice
                   </button>
                 </div>
 
                 {/* Zone upload */}
-                <div className="bg-slate-100 rounded-2xl p-6 border-2 border-dashed border-slate-300">
+                <div className="bg-[var(--slate-50)] rounded-lg p-6 border-2 border-dashed border-[var(--slate-300)]">
                   <div className="text-center">
-                    <div className="text-4xl mb-3">📤</div>
-                    <h3 className="font-bold text-slate-900 mb-2">Exercice terminé ?</h3>
-                    <p className="text-slate-500 text-sm mb-4">
-                      Uploade ton fichier Excel complété pour correction
+                    <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-white border border-[var(--slate-200)] flex items-center justify-center">
+                      <svg className="w-6 h-6 text-[var(--slate-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                      </svg>
+                    </div>
+                    <h3 className="font-medium text-[var(--slate-900)] mb-1">Exercice terminé ?</h3>
+                    <p className="text-[var(--slate-500)] text-sm mb-4">
+                      Uploade ton fichier Excel pour correction
                     </p>
                     
-                    <label className={`inline-block px-6 py-3 rounded-xl font-bold cursor-pointer transition-colors ${
+                    <label className={`inline-block px-6 py-3 rounded-lg font-medium cursor-pointer transition-all duration-200 ${
                       isUploading 
-                        ? 'bg-slate-300 text-slate-500' 
-                        : 'bg-green-600 text-white hover:bg-green-700'
+                        ? 'bg-[var(--slate-200)] text-[var(--slate-500)]' 
+                        : 'bg-[var(--accent-base)] text-white hover:bg-[var(--accent-dark)]'
                     }`}>
-                      {isUploading ? 'Correction en cours...' : '📎 Choisir mon fichier Excel'}
+                      {isUploading ? 'Correction en cours...' : 'Choisir mon fichier'}
                       <input
                         type="file"
                         accept=".xlsx,.xls"
@@ -519,12 +521,11 @@ export default function SkillPage() {
                       />
                     </label>
                     
-                    {/* CORRECTION BUG 4: Upload de screenshot pour validation visuelle */}
+                    {/* Upload de screenshot pour validation visuelle */}
                     {needsScreenshot && (
-                      <div className="mt-6 pt-6 border-t border-slate-300">
-                        <p className="text-sm text-slate-600 mb-3 flex items-center justify-center gap-2">
-                          <span>📷</span>
-                          <span>Cet exercice inclut des <strong>éléments visuels</strong> (graphique, MFC, TCD)</span>
+                      <div className="mt-6 pt-6 border-t border-[var(--slate-300)]">
+                        <p className="text-sm text-[var(--slate-600)] mb-3">
+                          Cet exercice inclut des éléments visuels (graphique, MFC, TCD)
                         </p>
                         <ScreenshotUploader
                           required={true}
@@ -541,22 +542,18 @@ export default function SkillPage() {
 
                 {/* Résultat correction (si pas réussi) */}
                 {correctionResult && !correctionResult.success && correctionResult.score < 7 && (
-                  <div className="bg-amber-50 rounded-2xl p-5 border border-amber-200">
-                    <h3 className="font-bold text-amber-900 mb-2">
+                  <div className="bg-[var(--error)]/5 rounded-lg p-5 border border-[var(--error)]/20">
+                    <h3 className="font-medium text-[var(--slate-900)] mb-2">
                       Score : {correctionResult.score}/10
                     </h3>
-                    <p className="text-amber-800 text-sm mb-3">
+                    <p className="text-[var(--slate-600)] text-sm mb-3">
                       {correctionResult.feedback || 'Quelques erreurs à corriger.'}
                     </p>
                     
-                    {/* CORRECTION BUG 4: Message si screenshot manquant */}
                     {correctionResult.needs_screenshot && (
-                      <div className="bg-orange-100 rounded-lg p-3 mb-3 text-left">
-                        <p className="text-sm text-orange-800 font-medium">
-                          📷 <strong>Éléments visuels non vérifiés</strong>
-                        </p>
-                        <p className="text-xs text-orange-700 mt-1">
-                          Ajoute une capture d'écran pour valider tes graphiques ou ta mise en forme conditionnelle.
+                      <div className="bg-white rounded-lg p-3 mb-3">
+                        <p className="text-sm text-[var(--slate-700)]">
+                          <strong>Éléments visuels non vérifiés</strong> — Ajoute une capture d'écran.
                         </p>
                       </div>
                     )}
@@ -564,14 +561,14 @@ export default function SkillPage() {
                     {correctionResult.errors?.length > 0 && (
                       <ul className="space-y-1">
                         {correctionResult.errors.slice(0, 3).map((err, i) => (
-                          <li key={i} className="text-sm text-amber-700">
-                            • {err.description || err.probleme || 'Erreur détectée'}
+                          <li key={i} className="text-sm text-[var(--slate-600)]">
+                            · {err.description || err.probleme || 'Erreur détectée'}
                           </li>
                         ))}
                       </ul>
                     )}
-                    <p className="text-sm text-amber-600 mt-3">
-                      Corrige et ré-uploade ton fichier !
+                    <p className="text-sm text-[var(--slate-500)] mt-3">
+                      Corrige et ré-uploade ton fichier.
                     </p>
                   </div>
                 )}
@@ -579,7 +576,7 @@ export default function SkillPage() {
             )}
 
             {/* Boutons navigation */}
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 mt-8">
               <button
                 onClick={() => {
                   setPhase('learn');
@@ -587,16 +584,16 @@ export default function SkillPage() {
                   setCorrectionResult(null);
                   setError(null);
                 }}
-                className="flex-1 py-3 text-slate-500 hover:text-slate-700 text-sm bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors"
+                className="flex-1 py-3 text-[var(--slate-600)] hover:text-[var(--slate-800)] text-sm bg-white rounded-lg border border-[var(--slate-200)] hover:border-[var(--slate-300)] transition-all duration-200"
               >
                 ← Revoir l'explication
               </button>
               
               <button
                 onClick={goToSocrateLearn}
-                className="flex-1 py-3 text-blue-600 hover:text-blue-700 text-sm bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors font-medium"
+                className="flex-1 py-3 text-[var(--accent-dark)] hover:text-[var(--accent-base)] text-sm bg-[var(--accent-base)]/10 rounded-lg hover:bg-[var(--accent-base)]/15 transition-all duration-200 font-medium"
               >
-                Passer → Socrate 🎓
+                Passer à Socrate →
               </button>
             </div>
           </div>
@@ -604,30 +601,36 @@ export default function SkillPage() {
 
         {/* PHASE 3 : SUCCÈS */}
         {phase === 'success' && (
-          <div className="animate-fadeIn text-center">
-            <div className="mb-8">
-              <div className="w-24 h-24 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl animate-bounce">
-                🎉
+          <div className="animate-fade-in text-center">
+            <div className="mb-10">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--accent-base)]/10 flex items-center justify-center">
+                <svg className="w-10 h-10 text-[var(--accent-base)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+                </svg>
               </div>
-              <h1 className="text-2xl font-bold text-slate-900 mb-2">Bravo !</h1>
-              <p className="text-slate-500">Tu maîtrises maintenant {skillName}</p>
+              <h1 className="font-display text-3xl font-semibold text-[var(--slate-900)] mb-3">
+                Bravo !
+              </h1>
+              <p className="text-[var(--slate-500)] text-lg">
+                Tu maîtrises maintenant <strong>{skillName}</strong>
+              </p>
             </div>
 
             {/* Stats */}
-            <div className="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-slate-200">
+            <div className="bg-white rounded-lg border border-[var(--slate-200)] p-8 mb-8">
               <div className="flex justify-center gap-12">
                 <div className="text-center">
-                  <div className="text-3xl mb-1">🎯</div>
-                  <p className="text-2xl font-bold text-slate-900">
+                  <p className="text-4xl font-display font-semibold text-[var(--slate-900)] mb-1">
                     {correctionResult?.score || 10}/10
                   </p>
-                  <p className="text-sm text-slate-500">score</p>
+                  <p className="text-sm text-[var(--slate-500)]">score</p>
                 </div>
                 {correctionResult?.score === 10 && (
                   <div className="text-center">
-                    <div className="text-3xl mb-1">🏆</div>
-                    <p className="text-2xl font-bold text-purple-600">Perfect</p>
-                    <p className="text-sm text-slate-500">sans erreur !</p>
+                    <p className="text-4xl font-display font-semibold text-[var(--accent-base)] mb-1">
+                      Perfect
+                    </p>
+                    <p className="text-sm text-[var(--slate-500)]">sans erreur</p>
                   </div>
                 )}
               </div>
@@ -635,11 +638,11 @@ export default function SkillPage() {
 
             {/* Ce qu'il faut retenir */}
             {pedagogie?.astuces?.[0] && (
-              <div className="bg-blue-50 rounded-2xl p-5 mb-6 text-left border border-blue-200">
-                <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
-                  <span>📝</span> À retenir
+              <div className="bg-[var(--accent-base)]/5 rounded-lg p-5 mb-8 text-left border border-[var(--accent-base)]/20">
+                <h3 className="font-medium text-[var(--slate-900)] mb-2">
+                  À retenir
                 </h3>
-                <p className="text-blue-800">
+                <p className="text-[var(--slate-600)] text-sm">
                   {pedagogie.astuces[0]}
                 </p>
               </div>
@@ -649,17 +652,16 @@ export default function SkillPage() {
             <div className="space-y-3">
               <button
                 onClick={goToSocrateLearn}
-                className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold text-lg rounded-2xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-200 flex items-center justify-center gap-3"
+                className="w-full py-4 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200 hover:-translate-y-0.5"
               >
-                <span className="text-xl">🎓</span>
                 Continuer avec Socrate
               </button>
               
               <button
                 onClick={() => router.push('/catalogue')}
-                className="w-full py-3 bg-slate-100 text-slate-700 font-medium rounded-2xl hover:bg-slate-200 transition-colors"
+                className="w-full py-3 bg-white text-[var(--slate-700)] font-medium rounded-lg border border-[var(--slate-200)] hover:border-[var(--slate-300)] hover:bg-[var(--slate-50)] transition-all duration-200"
               >
-                ← Retour au catalogue
+                Retour au catalogue
               </button>
               
               <button
@@ -669,7 +671,7 @@ export default function SkillPage() {
                   setCorrectionResult(null);
                   setError(null);
                 }}
-                className="w-full py-3 text-slate-500 hover:text-slate-700"
+                className="w-full py-3 text-[var(--slate-500)] hover:text-[var(--slate-700)] transition-colors"
               >
                 Refaire un exercice
               </button>
@@ -677,16 +679,6 @@ export default function SkillPage() {
           </div>
         )}
       </main>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
     </div>
   );
 }
