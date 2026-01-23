@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import ProtectedPage from '../components/ProtectedPage';
-import AppHeader from '../components/AppHeader';
-import SkillTree from '../components/SkillTree';
-import { getLessonByCompetenceId, getEnrichedLearningPath } from '@/shared/data/learningPath';
+import SkillTree from '../components/SkillTree.jsx';
+import { PEDAGOGIE } from '@/shared/data/pedagogie';
+import { getEnrichedLearningPath } from '@/shared/data/learningPath';
 
 export default function SkillTreePage() {
   return (
@@ -37,8 +37,11 @@ function SkillTreeContent() {
             const data = await response.json();
             
             if (data.profile) {
+              // Convertir les compétences pour utiliser les clés PEDAGOGIE
+              const convertedCompetences = convertCompetences(data.profile.competences || {});
               setUserProfile({
                 ...data.profile,
+                competences: convertedCompetences,
                 badges: data.badges || []
               });
               setLoading(false);
@@ -62,7 +65,6 @@ function SkillTreeContent() {
             total_xp: progress.totalXP || 0,
             streak: progress.streak || 0,
             completed_lessons: progress.completedLessons || [],
-            // Mapper les leçons complétées vers des compétences
             competences: buildCompetencesFromLessons(progress.completedLessons || []),
             badges: []
           };
@@ -96,21 +98,43 @@ function SkillTreeContent() {
     loadProfile();
   }, []);
 
+  // Convertir les compétences (nom → clé PEDAGOGIE)
+  function convertCompetences(competences) {
+    const converted = {};
+    
+    // Créer un mapping nom → clé
+    const nomToKey = {};
+    Object.entries(PEDAGOGIE).forEach(([key, value]) => {
+      nomToKey[value.nom] = key;
+      nomToKey[key] = key; // Au cas où c'est déjà une clé
+    });
+    
+    Object.entries(competences).forEach(([nameOrKey, data]) => {
+      const key = nomToKey[nameOrKey] || nameOrKey;
+      converted[key] = data;
+    });
+    
+    return converted;
+  }
+
   // Construire les compétences depuis les leçons complétées
   function buildCompetencesFromLessons(completedLessons) {
     const competences = {};
     
-    // Utiliser le parcours enrichi (avec competenceId)
     const enrichedUnits = getEnrichedLearningPath();
     
     completedLessons.forEach(lessonId => {
       for (const unit of enrichedUnits) {
         const lesson = unit.lessons.find(l => l.id === lessonId);
-        if (lesson && lesson.competenceId) {
-          competences[lesson.competenceId] = {
-            mastery: 70,
-            lastPracticed: new Date().toISOString()
-          };
+        if (lesson && lesson.sandboxKey) {
+          // Utiliser sandboxKey comme clé de compétence
+          const key = lesson.sandboxKey.toUpperCase();
+          if (PEDAGOGIE[key]) {
+            competences[key] = {
+              score: 0.85, // Considéré comme maîtrisé si leçon complétée
+              lastPracticed: new Date().toISOString()
+            };
+          }
         }
       }
     });
@@ -119,51 +143,28 @@ function SkillTreeContent() {
   }
 
   const handleStartExercise = (skill) => {
-    const lesson = getLessonByCompetenceId(skill.id);
-    
-    if (lesson) {
-      // Rediriger vers le catalogue (plus complet)
-      router.push(`/catalogue/${lesson.sandboxKey.toLowerCase()}`);
-    } else {
-      localStorage.setItem('socrate-pending-skill', JSON.stringify(skill));
-      router.push('/ask');
-    }
+    // Naviguer vers la page du catalogue pour cette compétence
+    router.push(`/catalogue/${skill.key.toLowerCase()}`);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[var(--slate-900)]">
-        <AppHeader showBack title="Compétences" />
+      <div className="min-h-screen bg-white">
         <div className="flex items-center justify-center py-20">
-          <div className="text-[var(--slate-400)] animate-pulse-subtle">Chargement...</div>
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-8 h-8 border-2 border-[var(--accent-base)] border-t-transparent rounded-full animate-spin"></div>
+            <span className="text-[var(--slate-500)] text-sm">Chargement...</span>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[var(--slate-900)]">
-      {/* Bannière de recommandation vers le catalogue */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="text-xl">✨</span>
-            <div>
-              <p className="font-medium text-sm">Nouveau : Catalogue des 58 compétences</p>
-              <p className="text-xs text-blue-100">Plus complet et mis à jour régulièrement</p>
-            </div>
-          </div>
-          <button
-            onClick={() => router.push('/catalogue')}
-            className="px-4 py-2 bg-white text-blue-700 font-semibold text-sm rounded-lg hover:bg-blue-50 transition-colors whitespace-nowrap"
-          >
-            Voir le catalogue →
-          </button>
-        </div>
-      </div>
-
-      <div className="bg-white border-b border-[var(--slate-200)]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+    <div className="min-h-screen bg-white">
+      {/* Header compact */}
+      <header className="border-b border-[var(--slate-200)] bg-white sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <button
             onClick={() => router.push('/learn')}
             className="inline-flex items-center gap-2 text-[var(--slate-500)] hover:text-[var(--slate-700)] transition-colors"
@@ -171,45 +172,27 @@ function SkillTreeContent() {
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
             </svg>
-            <span className="text-sm font-medium">Retour au parcours</span>
+            <span className="text-sm font-medium hidden sm:inline">Parcours</span>
           </button>
-          <h1 className="font-display text-lg font-semibold text-[var(--slate-900)]">
-            Arbre de compétences
-          </h1>
-          <div className="w-24" /> {/* Spacer pour centrer le titre */}
-        </div>
-      </div>
-
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-        {userProfile ? (
-          <SkillTree 
-            userProfile={userProfile} 
-            onStartExercise={handleStartExercise}
-          />
-        ) : (
-          <div className="text-center py-16">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--slate-800)] flex items-center justify-center">
-              <svg className="w-8 h-8 text-[var(--slate-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-            </div>
-            <h2 className="font-display text-xl font-semibold text-white mb-2">
-              Ton arbre est vide
-            </h2>
-            <p className="text-[var(--slate-400)] mb-6 max-w-sm mx-auto">
-              Commence le parcours d'apprentissage pour débloquer tes premières compétences.
-            </p>
+          
+          <div className="flex items-center gap-3">
             <button
-              onClick={() => router.push('/learn')}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-base)] text-white rounded-lg font-medium hover:bg-[var(--accent-dark)] transition-colors"
+              onClick={() => router.push('/catalogue')}
+              className="text-sm text-[var(--slate-500)] hover:text-[var(--accent-base)] transition-colors"
             >
-              Commencer à apprendre
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              Voir le catalogue
             </button>
           </div>
-        )}
+        </div>
+      </header>
+
+      {/* Contenu principal */}
+      <main className="pb-12">
+        <SkillTree 
+          userProfile={userProfile} 
+          onStartExercise={handleStartExercise}
+          showBackButton={false}
+        />
       </main>
     </div>
   );

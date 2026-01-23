@@ -55,7 +55,7 @@ export default function CataloguePage() {
   };
   
   const niveauColors = {
-    debutant: { bg: 'bg-green-100', text: 'text-green-800', border: 'border-green-300' },
+    debutant: { bg: 'bg-[var(--accent-base)]/10', text: 'text-[var(--accent-dark)]', border: 'border-[var(--accent-base)]/30' },
     intermediaire: { bg: 'bg-yellow-100', text: 'text-yellow-800', border: 'border-yellow-300' },
     avance: { bg: 'bg-purple-100', text: 'text-purple-800', border: 'border-purple-300' },
     expert: { bg: 'bg-red-100', text: 'text-red-800', border: 'border-red-300' }
@@ -79,7 +79,7 @@ export default function CataloguePage() {
     const isDisabled = disabled || coverage === 'none';
     
     const coverageIndicator = {
-      'full': { icon: '✅', label: 'Prêt', className: 'text-green-600', badge: null },
+      'full': { icon: '✅', label: 'Prêt', className: 'text-[var(--accent-base)]', badge: null },
       'partial': { icon: '📝', label: '1 exercice', className: 'text-yellow-600', badge: '1 exercice' },
       'none': { icon: '🚧', label: 'Bientôt', className: 'text-slate-400', badge: 'Bientôt' }
     };
@@ -95,7 +95,7 @@ export default function CataloguePage() {
       >
         <div className="flex items-start justify-between mb-3">
           <div className="flex-1">
-            <h3 className={`font-bold text-slate-900 ${!isDisabled && 'group-hover:text-blue-600'} transition-colors`}>
+            <h3 className={`font-bold text-slate-900 ${!isDisabled && 'group-hover:text-[var(--accent-base)]'} transition-colors`}>
               {skill.nom}
             </h3>
           </div>
@@ -119,13 +119,13 @@ export default function CataloguePage() {
             <span className="text-xs text-slate-400">{skill.categorie}</span>
             {/* Badge screenshot si nécessaire */}
             {needsScreenshot && (
-              <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded" title="Capture d'écran requise">
+              <span className="text-xs bg-[var(--accent-base)]/10 text-[var(--accent-base)] px-1.5 py-0.5 rounded" title="Capture d'écran requise">
                 📷
               </span>
             )}
           </div>
           {!isDisabled && (
-            <div className="flex items-center gap-1 text-blue-600 text-sm font-medium group-hover:translate-x-1 transition-transform">
+            <div className="flex items-center gap-1 text-[var(--accent-base)] text-sm font-medium group-hover:translate-x-1 transition-transform">
               {coverage === 'partial' ? 'Essayer' : 'Commencer'}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -175,7 +175,7 @@ export default function CataloguePage() {
                 onClick={() => router.push('/?menu=true')}
                 className="flex items-center gap-2 hover:opacity-80 transition-opacity"
               >
-                <span className="text-xl font-semibold italic text-blue-800" style={{ fontFamily: "'Source Serif 4', 'Playfair Display', Georgia, serif" }}>Socrate</span>
+                <span className="text-xl font-semibold text-[var(--slate-900)]" style={{ fontFamily: "'Source Serif 4', Georgia, serif" }}>Socrate</span>
               </button>
               
               <span className="text-slate-300">|</span>
@@ -183,7 +183,7 @@ export default function CataloguePage() {
               <div>
                 <h1 className="text-lg font-bold text-slate-900">Catalogue</h1>
                 <p className="text-xs text-slate-500">
-                  <span className="text-green-600 font-medium">{availableSkills.length} opérationnelles</span>
+                  <span className="text-[var(--accent-base)] font-medium">{availableSkills.length} opérationnelles</span>
                   <span className="mx-1">•</span>
                   <span className="text-yellow-600" title="En développement avec 1 exercice">📝 {devSkills.filter(s => s.coverage === 'partial').length}</span>
                   <span className="mx-1">•</span>

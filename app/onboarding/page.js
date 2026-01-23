@@ -172,7 +172,7 @@ export default function OnboardingPage() {
 
             <button
               onClick={nextStep}
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--slate-900)] text-white rounded-lg font-medium transition-all duration-250 hover:bg-[var(--slate-800)] hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--accent-base)] text-white rounded-lg font-medium transition-all duration-250 hover:bg-[var(--accent-dark)] hover:-translate-y-0.5"
             >
               Commencer
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -212,7 +212,7 @@ export default function OnboardingPage() {
                 disabled={!canProceed()}
                 className={`w-full mt-6 py-3.5 rounded-lg font-medium transition-all duration-250 ${
                   canProceed()
-                    ? 'bg-[var(--slate-900)] text-white hover:bg-[var(--slate-800)]'
+                    ? 'bg-[var(--accent-base)] text-white hover:bg-[var(--accent-dark)]'
                     : 'bg-[var(--slate-100)] text-[var(--slate-400)] cursor-not-allowed'
                 }`}
               >
@@ -322,7 +322,7 @@ export default function OnboardingPage() {
 
             <button
               onClick={handleComplete}
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--slate-900)] text-white rounded-lg font-medium transition-all duration-250 hover:bg-[var(--slate-800)] hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--accent-base)] text-white rounded-lg font-medium transition-all duration-250 hover:bg-[var(--accent-dark)] hover:-translate-y-0.5"
             >
               Découvrir Socrate
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

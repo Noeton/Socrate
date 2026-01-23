@@ -483,7 +483,7 @@ useEffect(() => {
         }
 
         .exercise-actions-panel {
-          background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 100%);
+          background: linear-gradient(135deg, var(--accent-base)/5 0%, #ecfeff 100%);
           border: 1px solid #86efac;
           border-radius: 12px;
           padding: 1rem;
@@ -493,7 +493,7 @@ useEffect(() => {
         .actions-label {
           font-size: 0.875rem;
           font-weight: 600;
-          color: #166534;
+          color: var(--accent-dark);
           margin-bottom: 0.75rem;
         }
 
@@ -538,58 +538,58 @@ useEffect(() => {
         }
 
         .action-button.sandbox {
-          background: #fef3c7;
-          border-color: #fbbf24;
-          color: #92400e;
+          background: var(--accent-base)/10;
+          border-color: var(--accent-base)/30;
+          color: var(--accent-dark);
         }
 
         .action-button.sandbox:hover:not(:disabled) {
-          background: #fde68a;
-          border-color: #f59e0b;
+          background: var(--accent-base)/20;
+          border-color: var(--accent-base);
           transform: translateY(-2px);
         }
 
         .action-button.excel {
-          background: #dbeafe;
-          border-color: #60a5fa;
-          color: #1e40af;
+          background: var(--slate-100);
+          border-color: var(--slate-300);
+          color: var(--slate-800);
         }
 
         .action-button.excel:hover:not(:disabled) {
-          background: #bfdbfe;
-          border-color: #3b82f6;
+          background: var(--slate-200);
+          border-color: var(--slate-900);
           transform: translateY(-2px);
         }
 
         .action-button.upload {
-          background: #f0fdf4;
-          border-color: #4ade80;
-          color: #166534;
+          background: var(--accent-base)/5;
+          border-color: var(--accent-base)/40;
+          color: var(--accent-dark);
         }
 
         .action-button.upload:hover:not(:disabled) {
-          background: #dcfce7;
-          border-color: #22c55e;
+          background: var(--accent-base)/15;
+          border-color: var(--accent-base);
           transform: translateY(-2px);
         }
 
         /* NOUVEAU: Styles pour bouton screenshot */
         .action-button.screenshot {
-          background: #fef3c7;
-          border-color: #fbbf24;
-          color: #92400e;
+          background: var(--accent-base)/10;
+          border-color: var(--accent-base)/30;
+          color: var(--accent-dark);
         }
 
         .action-button.screenshot:hover:not(:disabled) {
-          background: #fde68a;
-          border-color: #f59e0b;
+          background: var(--accent-base)/20;
+          border-color: var(--accent-base);
           transform: translateY(-2px);
         }
 
         .action-button.screenshot.has-screenshot {
-          background: #d1fae5;
-          border-color: #10b981;
-          color: #065f46;
+          background: var(--accent-base)/20;
+          border-color: var(--accent-base);
+          color: var(--accent-dark);
         }
 
         /* NOUVEAU: Preview du screenshot */
@@ -655,20 +655,21 @@ useEffect(() => {
           align-items: flex-end;
           gap: 0.75rem;
           padding: 0.75rem 1rem;
-          background: #f9fafb;
-          border: 2px solid #e5e7eb;
+          background: var(--slate-50);
+          border: 1px solid var(--slate-200);
           border-radius: 12px;
           transition: all 0.2s;
         }
 
         .input-wrapper:focus-within {
-          border-color: #3b82f6;
+          border-color: var(--accent-base);
           background: white;
+          box-shadow: 0 0 0 3px rgba(90, 124, 101, 0.1);
         }
 
         .input-wrapper.drag-active {
-          border-color: #3b82f6;
-          background: #eff6ff;
+          border-color: var(--accent-base);
+          background: rgba(90, 124, 101, 0.05);
         }
 
         .message-input {
@@ -678,7 +679,7 @@ useEffect(() => {
           resize: none;
           outline: none;
           font-size: 0.95rem;
-          color: #111827;
+          color: var(--slate-800);
           font-family: inherit;
           line-height: 1.5;
           max-height: 150px;
@@ -686,7 +687,7 @@ useEffect(() => {
         }
 
         .message-input::placeholder {
-          color: #9ca3af;
+          color: var(--slate-400);
         }
 
         .send-button {
@@ -696,7 +697,7 @@ useEffect(() => {
           align-items: center;
           justify-content: center;
           border: none;
-          background: #3b82f6;
+          background: var(--accent-base);
           color: white;
           border-radius: 8px;
           cursor: pointer;
@@ -705,12 +706,12 @@ useEffect(() => {
         }
 
         .send-button:hover:not(:disabled) {
-          background: #2563eb;
+          background: var(--accent-dark);
           transform: scale(1.05);
         }
 
         .send-button:disabled {
-          background: #d1d5db;
+          background: var(--slate-300);
           cursor: not-allowed;
           transform: none;
         }

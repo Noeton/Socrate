@@ -55,8 +55,8 @@ export default function AppHeader({ showBack = false, title = null }) {
                 className="flex items-center gap-2 hover:opacity-80 transition-opacity"
               >
                 <span 
-                  className="text-xl font-semibold italic text-blue-800"
-                  style={{ fontFamily: "'Source Serif 4', 'Playfair Display', Georgia, serif" }}
+                  className="text-xl font-semibold text-[var(--slate-900)]"
+                  style={{ fontFamily: "'Source Serif 4', Georgia, serif" }}
                 >
                   Socrate
                 </span>
@@ -115,19 +115,19 @@ export default function AppHeader({ showBack = false, title = null }) {
               <MobileNavButton href="/catalogue" active={isCatalogueActive} icon="📂" label="Liste" />
             </div>
 
-            {/* Bouton profil - Fond sobre mais bien visible */}
+            {/* Bouton profil */}
             <div className="relative">
               <button
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white border-2 border-[var(--slate-200)] hover:border-[var(--slate-300)] hover:bg-[var(--slate-50)] transition-all duration-200 shadow-sm hover:shadow-md"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-[var(--slate-200)] hover:border-[var(--slate-300)] hover:bg-[var(--slate-50)] transition-all duration-200"
               >
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center ring-2 ring-white shadow-sm">
-                  <span className="text-base font-bold text-white">
-                    {userData?.name ? userData.name.charAt(0).toUpperCase() : '👤'}
+                <div className="w-8 h-8 rounded-full bg-[var(--accent-base)] flex items-center justify-center">
+                  <span className="text-sm font-semibold text-white">
+                    {userData?.name ? userData.name.charAt(0).toUpperCase() : '?'}
                   </span>
                 </div>
-                <span className="text-sm font-semibold text-[var(--slate-700)] hidden sm:inline max-w-32 truncate">
-                  {userData?.name || 'Mon profil'}
+                <span className="text-sm font-medium text-[var(--slate-700)] hidden sm:inline max-w-24 truncate">
+                  {userData?.name || 'Profil'}
                 </span>
                 <svg className="w-4 h-4 text-[var(--slate-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

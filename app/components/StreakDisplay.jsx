@@ -78,25 +78,25 @@ export default function StreakDisplay({ userId }) {
                 align-items: center;
                 gap: 0.5rem;
                 padding: 0.5rem 0.875rem;
-                background: #f9fafb;
-                border: 1px solid #e5e7eb;
-                border-radius: 20px;
+                background: var(--slate-50);
+                border: 1px solid var(--slate-200);
+                border-radius: 8px;
                 transition: all 0.2s;
               }
     
               .streak-container-compact:hover {
-                background: #f3f4f6;
-                border-color: #d1d5db;
+                background: var(--slate-100);
+                border-color: var(--slate-300);
               }
     
               .streak-flame-small {
-                font-size: 1.125rem;
+                font-size: 1rem;
                 opacity: 0.5;
               }
     
               .streak-text-compact {
-                font-size: 0.875rem;
-                color: #6b7280;
+                font-size: 0.8rem;
+                color: var(--slate-500);
                 font-weight: 500;
               }
             `}</style>
@@ -106,29 +106,18 @@ export default function StreakDisplay({ userId }) {
     
       return (
         <div className={`streak-container ${intensity}`}>
-          <div className="streak-flame">
-            🔥
-          </div>
+          <div className="streak-flame">🔥</div>
           
           <div className="streak-info">
-            <div className="streak-current">
-              {streak.current_streak} {streak.current_streak <= 1 ? 'jour' : 'jours'}
-            </div>
-            <div className="streak-label">
-              {streak.is_active_today ? '✅ Actif aujourd\'hui' : '⏰ Fais un exercice !'}
-            </div>
+            <span className="streak-current">{streak.current_streak}j</span>
+            {streak.longest_streak > streak.current_streak && (
+              <span className="streak-record">· Record {streak.longest_streak}j</span>
+            )}
           </div>
-    
-
-      {streak.longest_streak > 0 && (
-        <div className="streak-record">
-          🏆 Record: {streak.longest_streak}j
-        </div>
-      )}
 
       {!streak.is_active_today && streak.current_streak > 0 && streak.streak_freeze_available > 0 && (
         <button className="freeze-button" onClick={useFreeze}>
-          ❄️ Utiliser Freeze ({streak.streak_freeze_available})
+          ❄️ {streak.streak_freeze_available}
         </button>
       )}
 
@@ -136,101 +125,79 @@ export default function StreakDisplay({ userId }) {
         .streak-container {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
-          padding: 0.625rem 1rem;
+          gap: 0.4rem;
+          padding: 0.35rem 0.65rem;
           background: white;
-          border: 1px solid #e5e7eb;
-          border-radius: 20px;
+          border: 1px solid var(--slate-200);
+          border-radius: 6px;
           transition: all 0.2s;
+          font-size: 0.8rem;
         }
 
         .streak-container:hover {
-          border-color: #d1d5db;
-          background: #fafafa;
+          border-color: var(--slate-300);
         }
 
-        .streak-container.small {
-          border-color: #fbbf24;
-        }
-
-        .streak-container.medium {
-          border-color: #f97316;
-        }
-
-        .streak-container.large {
-          border-color: #ef4444;
-        }
-
+        .streak-container.small,
+        .streak-container.medium,
+        .streak-container.large,
         .streak-container.epic {
-          border-color: #dc2626;
-          background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+          border-color: var(--accent-base);
+          background: rgba(90, 124, 101, 0.05);
         }
 
         .streak-flame {
-          font-size: 1.5rem;
+          font-size: 1rem;
           line-height: 1;
         }
 
         .streak-info {
-          flex: 1;
+          display: flex;
+          align-items: baseline;
+          gap: 0.35rem;
         }
 
         .streak-current {
-          font-size: 1.125rem;
+          font-size: 0.85rem;
           font-weight: 600;
-          color: #111827;
+          color: var(--slate-800);
           line-height: 1;
-          margin-bottom: 0.125rem;
         }
 
         .streak-label {
-          font-size: 0.75rem;
-          color: #6b7280;
+          font-size: 0.65rem;
+          color: var(--slate-500);
           font-weight: 500;
         }
 
         .streak-record {
-          font-size: 0.75rem;
-          color: #6b7280;
-          background: #f9fafb;
-          padding: 0.375rem 0.625rem;
-          border-radius: 6px;
+          font-size: 0.65rem;
+          color: var(--slate-500);
           font-weight: 500;
+          margin-left: 0.25rem;
         }
 
         .freeze-button {
-          padding: 0.375rem 0.75rem;
-          background: #3b82f6;
+          padding: 0.25rem 0.5rem;
+          background: var(--accent-base);
           color: white;
           border: none;
-          border-radius: 6px;
-          font-size: 0.75rem;
+          border-radius: 4px;
+          font-size: 0.65rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.2s;
+          margin-left: 0.25rem;
         }
 
         .freeze-button:hover {
-          background: #2563eb;
+          background: var(--accent-dark);
         }
 
         .streak-loading {
-          font-size: 1.5rem;
+          font-size: 1rem;
           text-align: center;
-          padding: 1rem;
-        }
-
-        @media (max-width: 768px) {
-          .streak-container {
-            flex-wrap: wrap;
-          }
-
-          .streak-record {
-            order: 4;
-            width: 100%;
-            text-align: center;
-            margin-top: 0.5rem;
-          }
+          padding: 0.25rem;
         }
       `}</style>
 

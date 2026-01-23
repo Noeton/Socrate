@@ -52,7 +52,7 @@ export const PEDAGOGIE = {
   // ─────────────────────────────────────────────────────────────
   
   "SAISIE": {
-    id: 1, nom: "Saisie de données", categorie: "Bases", niveau: "debutant",
+    id: 1, prerequis: [], nom: "Saisie de données", categorie: "Bases", niveau: "debutant",
     description: "Entrer du texte et des nombres dans les cellules Excel.",
     syntaxe: { formule: "Cliquer → Taper → Entrée", arguments: [] },
     exemples: [
@@ -65,7 +65,7 @@ export const PEDAGOGIE = {
   },
 
   "FORMATAGE": {
-    id: 2, nom: "Formatage cellules", categorie: "Bases", niveau: "debutant",
+    id: 2, prerequis: ["SAISIE"], nom: "Formatage cellules", categorie: "Bases", niveau: "debutant",
     description: "Mettre en forme nombres, dates, couleurs, polices.",
     syntaxe: { formule: "Ctrl+1 ou clic droit → Format", arguments: [] },
     exemples: [
@@ -76,7 +76,7 @@ export const PEDAGOGIE = {
   },
 
   "SOMME": {
-    id: 3, nom: "SOMME", categorie: "Mathématiques", niveau: "debutant",
+    id: 3, prerequis: ["SAISIE"], nom: "SOMME", categorie: "Mathématiques", niveau: "debutant",
     description: "Additionne toutes les valeurs d'une plage de cellules.",
     syntaxe: {
       formule: "=SOMME(nombre1; [nombre2]; ...)",
@@ -95,7 +95,7 @@ export const PEDAGOGIE = {
   },
 
   "MOYENNE": {
-    id: 4, nom: "MOYENNE", categorie: "Statistiques", niveau: "debutant",
+    id: 4, prerequis: ["SOMME"], nom: "MOYENNE", categorie: "Statistiques", niveau: "debutant",
     description: "Calcule la moyenne arithmétique d'une série de nombres.",
     syntaxe: {
       formule: "=MOYENNE(nombre1; [nombre2]; ...)",
@@ -111,7 +111,7 @@ export const PEDAGOGIE = {
   },
 
   "MIN_MAX": {
-    id: 5, nom: "MIN / MAX", categorie: "Statistiques", niveau: "debutant",
+    id: 5, prerequis: ["SOMME"], nom: "MIN / MAX", categorie: "Statistiques", niveau: "debutant",
     description: "MIN = plus petite valeur, MAX = plus grande.",
     syntaxe: { formule: "=MIN(plage) / =MAX(plage)", arguments: [] },
     exemples: [
@@ -121,7 +121,7 @@ export const PEDAGOGIE = {
   },
 
   "COPIER_COLLER": {
-    id: 6, nom: "Copier-Coller", categorie: "Bases", niveau: "debutant",
+    id: 6, prerequis: ["FORMATAGE"], nom: "Copier-Coller", categorie: "Bases", niveau: "debutant",
     description: "Dupliquer des cellules et recopier des formules.",
     syntaxe: { formule: "Ctrl+C → Ctrl+V", arguments: [] },
     exemples: [
@@ -133,7 +133,7 @@ export const PEDAGOGIE = {
   },
 
   "TRI": {
-    id: 7, nom: "Tri de données", categorie: "Manipulation", niveau: "debutant",
+    id: 7, prerequis: ["SAISIE"], nom: "Tri de données", categorie: "Manipulation", niveau: "debutant",
     description: "Organiser les données par ordre croissant ou décroissant.",
     syntaxe: { formule: "Données → Trier", arguments: [] },
     exemples: [
@@ -143,7 +143,7 @@ export const PEDAGOGIE = {
   },
 
   "FILTRES": {
-    id: 8, nom: "Filtres", categorie: "Manipulation", niveau: "debutant",
+    id: 8, prerequis: ["TRI"], nom: "Filtres", categorie: "Manipulation", niveau: "debutant",
     description: "Afficher uniquement certaines lignes selon des critères.",
     syntaxe: { formule: "Ctrl+Maj+L ou Données → Filtrer", arguments: [] },
     astuces: ["Ctrl+Maj+L = activer/désactiver filtres"],
@@ -151,7 +151,7 @@ export const PEDAGOGIE = {
   },
 
   "SI": {
-    id: 9, nom: "SI", categorie: "Logique", niveau: "debutant",
+    id: 9, prerequis: ["SOMME"], nom: "SI", categorie: "Logique", niveau: "debutant",
     description: "Teste une condition et renvoie une valeur selon le résultat.",
     syntaxe: {
       formule: "=SI(test; valeur_si_vrai; valeur_si_faux)",
@@ -169,7 +169,7 @@ export const PEDAGOGIE = {
   },
 
   "MFC": {
-    id: 10, nom: "Mise en forme conditionnelle", categorie: "Formatage", niveau: "debutant",
+    id: 10, prerequis: ["FORMATAGE"], nom: "Mise en forme conditionnelle", categorie: "Formatage", niveau: "debutant",
     description: "Change automatiquement le format selon le contenu.",
     syntaxe: { formule: "Accueil → Mise en forme conditionnelle", arguments: [] },
     exemples: [
@@ -183,7 +183,7 @@ export const PEDAGOGIE = {
   // ─────────────────────────────────────────────────────────────
 
   "NB_SI": {
-    id: 11, nom: "NB.SI", categorie: "Statistiques", niveau: "intermediaire",
+    id: 11, prerequis: ["SI"], nom: "NB.SI", categorie: "Statistiques", niveau: "intermediaire",
     description: "Compte les cellules qui répondent à un critère.",
     syntaxe: {
       formule: "=NB.SI(plage; critère)",
@@ -201,7 +201,7 @@ export const PEDAGOGIE = {
   },
 
   "NB_SI_ENS": {
-    id: 12, nom: "NB.SI.ENS", categorie: "Statistiques", niveau: "intermediaire",
+    id: 12, prerequis: ["NB_SI"], nom: "NB.SI.ENS", categorie: "Statistiques", niveau: "intermediaire",
     description: "Compte avec PLUSIEURS critères (ET logique).",
     syntaxe: {
       formule: "=NB.SI.ENS(plage1; critère1; plage2; critère2; ...)",
@@ -218,7 +218,7 @@ export const PEDAGOGIE = {
   },
 
   "SOMME_SI": {
-    id: 13, nom: "SOMME.SI", categorie: "Mathématiques", niveau: "intermediaire",
+    id: 13, prerequis: ["SOMME", "SI"], nom: "SOMME.SI", categorie: "Mathématiques", niveau: "intermediaire",
     description: "Additionne les cellules qui répondent à un critère.",
     syntaxe: {
       formule: "=SOMME.SI(plage_critère; critère; [plage_somme])",
@@ -235,7 +235,7 @@ export const PEDAGOGIE = {
   },
 
   "SOMME_SI_ENS": {
-    id: 14, nom: "SOMME.SI.ENS", categorie: "Mathématiques", niveau: "intermediaire",
+    id: 14, prerequis: ["SOMME_SI"], nom: "SOMME.SI.ENS", categorie: "Mathématiques", niveau: "intermediaire",
     description: "Additionne selon PLUSIEURS critères. ATTENTION à l'ordre !",
     syntaxe: {
       formule: "=SOMME.SI.ENS(plage_somme; plage1; critère1; ...)",
@@ -251,7 +251,7 @@ export const PEDAGOGIE = {
   },
 
   "REFERENCES_ABSOLUES": {
-    id: 15, nom: "Références absolues ($)", categorie: "Bases", niveau: "intermediaire",
+    id: 15, prerequis: ["COPIER_COLLER"], nom: "Références absolues ($)", categorie: "Bases", niveau: "intermediaire",
     description: "Figer une référence pour qu'elle ne change pas en recopiant.",
     syntaxe: { formule: "$A$1 = figé, A1 = relatif", arguments: [] },
     exemples: [
@@ -263,7 +263,7 @@ export const PEDAGOGIE = {
   },
 
   "SI_IMBRIQUES": {
-    id: 16, nom: "SI imbriqués", categorie: "Logique", niveau: "intermediaire",
+    id: 16, prerequis: ["SI"], nom: "SI imbriqués", categorie: "Logique", niveau: "intermediaire",
     description: "Enchaîner plusieurs conditions SI.",
     syntaxe: { formule: "=SI(test1; résultat1; SI(test2; ...))", arguments: [] },
     exemples: [
@@ -274,7 +274,7 @@ export const PEDAGOGIE = {
   },
 
   "TCD": {
-    id: 17, nom: "Tableau Croisé Dynamique", categorie: "Analyse", niveau: "intermediaire",
+    id: 17, prerequis: ["TRI", "FILTRES", "SOMME_SI"], nom: "Tableau Croisé Dynamique", categorie: "Analyse", niveau: "intermediaire",
     description: "Résume et analyse de grandes quantités de données.",
     syntaxe: { formule: "Insertion → Tableau croisé dynamique", arguments: [] },
     exemples: [
@@ -284,7 +284,7 @@ export const PEDAGOGIE = {
   },
 
   "RECHERCHEV": {
-    id: 18, nom: "RECHERCHEV", categorie: "Recherche", niveau: "intermediaire",
+    id: 18, prerequis: ["SI", "REFERENCES_ABSOLUES"], nom: "RECHERCHEV", categorie: "Recherche", niveau: "intermediaire",
     description: "Cherche dans la 1ère colonne et renvoie une valeur.",
     syntaxe: {
       formule: "=RECHERCHEV(cherché; table; no_col; FAUX)",
@@ -303,7 +303,7 @@ export const PEDAGOGIE = {
   },
 
   "CONCATENER": {
-    id: 19, nom: "CONCATENER / &", categorie: "Texte", niveau: "intermediaire",
+    id: 19, prerequis: ["SAISIE"], nom: "CONCATENER / &", categorie: "Texte", niveau: "intermediaire",
     description: "Assemble plusieurs textes en un seul.",
     syntaxe: { formule: '=A1&" "&B1', arguments: [] },
     exemples: [
@@ -314,7 +314,7 @@ export const PEDAGOGIE = {
   },
 
   "TEXTE_EXTRACTION": {
-    id: 20, nom: "Fonctions texte", categorie: "Texte", niveau: "intermediaire",
+    id: 20, prerequis: ["CONCATENER"], nom: "Fonctions texte", categorie: "Texte", niveau: "intermediaire",
     description: "GAUCHE, DROITE, STXT pour extraire du texte.",
     syntaxe: { formule: "=GAUCHE(texte;n) / =DROITE(texte;n)", arguments: [] },
     exemples: [
@@ -325,7 +325,7 @@ export const PEDAGOGIE = {
   },
 
   "DATES": {
-    id: 21, nom: "Fonctions date", categorie: "Dates", niveau: "intermediaire",
+    id: 21, prerequis: ["SAISIE"], nom: "Fonctions date", categorie: "Dates", niveau: "intermediaire",
     description: "AUJOURDHUI, ANNEE, MOIS, JOUR, DATEDIF.",
     syntaxe: { formule: "=AUJOURDHUI() / =DATEDIF(début;fin;\"Y\")", arguments: [] },
     exemples: [
@@ -335,7 +335,7 @@ export const PEDAGOGIE = {
   },
 
   "VALIDATION": {
-    id: 22, nom: "Validation de données", categorie: "Manipulation", niveau: "intermediaire",
+    id: 22, prerequis: ["FORMATAGE"], nom: "Validation de données", categorie: "Manipulation", niveau: "intermediaire",
     description: "Restreindre ce qui peut être saisi dans une cellule.",
     syntaxe: { formule: "Données → Validation des données", arguments: [] },
     exemples: [
@@ -345,7 +345,7 @@ export const PEDAGOGIE = {
   },
 
   "SOMMEPROD": {
-    id: 23, nom: "SOMMEPROD", categorie: "Mathématiques", niveau: "intermediaire",
+    id: 23, prerequis: ["SOMME_SI_ENS", "RECHERCHEV"], nom: "SOMMEPROD", categorie: "Mathématiques", niveau: "intermediaire",
     description: "Multiplie les plages puis additionne.",
     syntaxe: { formule: "=SOMMEPROD(plage1; plage2)", arguments: [] },
     exemples: [
@@ -356,7 +356,7 @@ export const PEDAGOGIE = {
   },
 
   "MFC_AVANCEE": {
-    id: 24, nom: "MFC avec formules", categorie: "Formatage", niveau: "intermediaire",
+    id: 24, prerequis: ["MFC", "SI_IMBRIQUES"], nom: "MFC avec formules", categorie: "Formatage", niveau: "intermediaire",
     description: "Mise en forme conditionnelle avec formules personnalisées.",
     syntaxe: { formule: "Nouvelle règle → Utiliser une formule", arguments: [] },
     exemples: [
@@ -366,7 +366,7 @@ export const PEDAGOGIE = {
   },
 
   "GRAPHIQUES": {
-    id: 25, nom: "Graphiques", categorie: "Visualisation", niveau: "intermediaire",
+    id: 25, prerequis: ["TCD"], nom: "Graphiques", categorie: "Visualisation", niveau: "intermediaire",
     description: "Visualiser les données sous forme de graphiques.",
     syntaxe: { formule: "Sélectionner → Insertion → Graphique", arguments: [] },
     exemples: [
@@ -382,7 +382,7 @@ export const PEDAGOGIE = {
   // ─────────────────────────────────────────────────────────────
 
   "INDEX_EQUIV": {
-    id: 26, nom: "INDEX + EQUIV", categorie: "Recherche", niveau: "avance",
+    id: 26, prerequis: ["RECHERCHEV"], nom: "INDEX + EQUIV", categorie: "Recherche", niveau: "avance",
     description: "EQUIV trouve la position, INDEX renvoie la valeur.",
     syntaxe: { formule: "=INDEX(résultat; EQUIV(cherché; recherche; 0))", arguments: [] },
     exemples: [
@@ -393,7 +393,7 @@ export const PEDAGOGIE = {
   },
 
   "TABLEAUX_STRUCTURES": {
-    id: 27, nom: "Tableaux structurés", categorie: "Bases", niveau: "avance",
+    id: 27, prerequis: ["TCD"], nom: "Tableaux structurés", categorie: "Bases", niveau: "avance",
     description: "Convertir des plages en tableaux Excel (Ctrl+T).",
     syntaxe: { formule: "Sélectionner → Ctrl+T", arguments: [] },
     exemples: [
@@ -404,7 +404,7 @@ export const PEDAGOGIE = {
   },
 
   "DECALER": {
-    id: 28, nom: "DECALER", categorie: "Recherche", niveau: "avance",
+    id: 28, prerequis: ["REFERENCES_ABSOLUES"], nom: "DECALER", categorie: "Recherche", niveau: "avance",
     description: "Renvoie une référence décalée.",
     syntaxe: { formule: "=DECALER(réf; lignes; colonnes; [hauteur]; [largeur])", arguments: [] },
     exemples: [
@@ -415,7 +415,7 @@ export const PEDAGOGIE = {
   },
 
   "MATRICIELLES": {
-    id: 29, nom: "Formules matricielles", categorie: "Avancé", niveau: "avance",
+    id: 29, prerequis: ["INDEX_EQUIV"], nom: "Formules matricielles", categorie: "Avancé", niveau: "avance",
     description: "Formules sur des plages entières.",
     syntaxe: { formule: "Ctrl+Maj+Entrée (anciennes versions)", arguments: [] },
     exemples: [
@@ -425,55 +425,55 @@ export const PEDAGOGIE = {
   },
 
   "POWER_QUERY": {
-    id: 30, nom: "Power Query", categorie: "ETL", niveau: "avance",
+    id: 30, prerequis: ["TABLEAUX_STRUCTURES"], nom: "Power Query", categorie: "ETL", niveau: "avance",
     description: "Importer et transformer des données.",
     syntaxe: { formule: "Données → Obtenir des données", arguments: [] },
     astuces: ["Les étapes sont reproductibles"]
   },
 
   "POWER_QUERY_ETL": {
-    id: 31, nom: "Power Query ETL", categorie: "ETL", niveau: "avance",
+    id: 31, prerequis: ["POWER_QUERY"], nom: "Power Query ETL", categorie: "ETL", niveau: "avance",
     description: "Transformations complexes : pivots, jointures.",
     syntaxe: { formule: "Langage M dans l'éditeur avancé", arguments: [] }
   },
 
   "GRAPHIQUES_COMBINES": {
-    id: 32, nom: "Graphiques combinés", categorie: "Visualisation", niveau: "avance",
+    id: 32, prerequis: ["GRAPHIQUES"], nom: "Graphiques combinés", categorie: "Visualisation", niveau: "avance",
     description: "Combiner plusieurs types de graphiques.",
     syntaxe: { formule: "Graphique → Modifier type → Combiné", arguments: [] }
   },
 
   "GRAPHIQUES_DYNAMIQUES": {
-    id: 33, nom: "Graphiques croisés dynamiques", categorie: "Visualisation", niveau: "avance",
+    id: 33, prerequis: ["GRAPHIQUES_COMBINES"], nom: "Graphiques croisés dynamiques", categorie: "Visualisation", niveau: "avance",
     description: "Graphiques liés à des TCD.",
     syntaxe: { formule: "Insertion → Graphique croisé dynamique", arguments: [] }
   },
 
   "VBA_DEBUTANT": {
-    id: 34, nom: "VBA Introduction", categorie: "Programmation", niveau: "avance",
+    id: 34, prerequis: [], nom: "VBA Introduction", categorie: "Programmation", niveau: "avance",
     inDevelopment: true,
     description: "Automatiser Excel avec des macros VBA."
   },
 
   "POWER_PIVOT": {
-    id: 35, nom: "Power Pivot", categorie: "BI", niveau: "avance",
+    id: 35, prerequis: ["POWER_QUERY"], nom: "Power Pivot", categorie: "BI", niveau: "avance",
     description: "Modèles de données et relations entre tables."
   },
 
   "DAX_BASIQUE": {
-    id: 36, nom: "DAX bases", categorie: "BI", niveau: "avance",
+    id: 36, prerequis: ["POWER_PIVOT"], nom: "DAX bases", categorie: "BI", niveau: "avance",
     inDevelopment: true,
     description: "Formules DAX pour Power Pivot."
   },
 
   "RELATIONS_TABLES": {
-    id: 37, nom: "Relations de tables", categorie: "BI", niveau: "avance",
+    id: 37, prerequis: ["POWER_PIVOT"], nom: "Relations de tables", categorie: "BI", niveau: "avance",
     inDevelopment: true,
     description: "Créer des relations entre tables."
   },
 
   "XLOOKUP": {
-    id: 38, nom: "RECHERCHEX", categorie: "Recherche", niveau: "avance",
+    id: 38, prerequis: ["INDEX_EQUIV"], nom: "RECHERCHEX", categorie: "Recherche", niveau: "avance",
     description: "RECHERCHEV moderne (Excel 365).",
     syntaxe: {
       formule: "=RECHERCHEX(cherché; plage_recherche; plage_résultat; [si_absent])",
@@ -486,7 +486,7 @@ export const PEDAGOGIE = {
   },
 
   "FILTER_SORT_UNIQUE": {
-    id: 39, nom: "FILTER/SORT/UNIQUE", categorie: "Recherche", niveau: "avance",
+    id: 39, prerequis: ["TABLEAUX_STRUCTURES"], nom: "FILTER/SORT/UNIQUE", categorie: "Recherche", niveau: "avance",
     description: "Fonctions dynamiques Excel 365.",
     syntaxe: { formule: "=FILTER(tableau; condition)", arguments: [] },
     astuces: ["Excel 365+ requis", "Résultats débordants"]
@@ -497,67 +497,67 @@ export const PEDAGOGIE = {
   // ─────────────────────────────────────────────────────────────
 
   "LET": {
-    id: 40, nom: "LET", categorie: "Avancé", niveau: "expert",
+    id: 40, prerequis: ["MATRICIELLES"], nom: "LET", categorie: "Avancé", niveau: "expert",
     inDevelopment: true,
     description: "Définir des variables dans une formule."
   },
 
   "LAMBDA": {
-    id: 41, nom: "LAMBDA", categorie: "Avancé", niveau: "expert",
+    id: 41, prerequis: ["LET"], nom: "LAMBDA", categorie: "Avancé", niveau: "expert",
     inDevelopment: true,
     description: "Créer des fonctions personnalisées."
   },
 
   "VBA_AVANCE": {
-    id: 42, nom: "VBA avancé", categorie: "Programmation", niveau: "expert",
+    id: 42, prerequis: ["VBA_DEBUTANT"], nom: "VBA avancé", categorie: "Programmation", niveau: "expert",
     inDevelopment: true,
     description: "Programmation VBA avancée."
   },
 
   "VBA_USERFORMS": {
-    id: 43, nom: "UserForms VBA", categorie: "Programmation", niveau: "expert",
+    id: 43, prerequis: ["VBA_AVANCE"], nom: "UserForms VBA", categorie: "Programmation", niveau: "expert",
     inDevelopment: true,
     description: "Créer des interfaces utilisateur en VBA."
   },
 
   "VBA_API": {
-    id: 44, nom: "API REST VBA", categorie: "Programmation", niveau: "expert",
+    id: 44, prerequis: ["VBA_AVANCE"], nom: "API REST VBA", categorie: "Programmation", niveau: "expert",
     inDevelopment: true,
     description: "Appeler des API externes depuis VBA."
   },
 
   "POWER_QUERY_M": {
-    id: 45, nom: "Power Query M", categorie: "ETL", niveau: "expert",
+    id: 45, prerequis: ["POWER_QUERY_ETL"], nom: "Power Query M", categorie: "ETL", niveau: "expert",
     inDevelopment: true,
     description: "Langage M avancé pour Power Query."
   },
 
   "DAX_AVANCE": {
-    id: 46, nom: "DAX avancé", categorie: "BI", niveau: "expert",
+    id: 46, prerequis: ["DAX_BASIQUE"], nom: "DAX avancé", categorie: "BI", niveau: "expert",
     inDevelopment: true,
     description: "Formules DAX complexes."
   },
 
   "OPTIMISATION": {
-    id: 47, nom: "Optimisation performance", categorie: "Avancé", niveau: "expert",
+    id: 47, prerequis: ["POWER_PIVOT", "DAX_AVANCE"], nom: "Optimisation performance", categorie: "Avancé", niveau: "expert",
     inDevelopment: true,
     description: "Optimiser les classeurs Excel lents."
   },
 
   "POWER_BI": {
-    id: 48, nom: "Power BI Desktop", categorie: "BI", niveau: "expert",
+    id: 48, prerequis: ["POWER_PIVOT", "DAX_AVANCE"], nom: "Power BI Desktop", categorie: "BI", niveau: "expert",
     inDevelopment: true,
     description: "Créer des rapports Power BI."
   },
 
   "PYTHON_R": {
-    id: 49, nom: "Python/R dans Excel", categorie: "Programmation", niveau: "expert",
+    id: 49, prerequis: ["VBA_AVANCE"], nom: "Python/R dans Excel", categorie: "Programmation", niveau: "expert",
     inDevelopment: true,
     description: "Utiliser Python ou R dans Excel."
   },
 
   "ARCHITECTURE": {
-    id: 50, nom: "Architecture solutions", categorie: "Avancé", niveau: "expert",
+    id: 50, prerequis: ["OPTIMISATION", "POWER_BI"], nom: "Architecture solutions", categorie: "Avancé", niveau: "expert",
     inDevelopment: true,
     description: "Concevoir des solutions Excel complexes."
   },
@@ -567,7 +567,7 @@ export const PEDAGOGIE = {
   // ─────────────────────────────────────────────────────────────
 
   "REFERENCES_MIXTES": {
-    id: 51, nom: "Références mixtes", categorie: "Bases", niveau: "intermediaire",
+    id: 51, prerequis: ["REFERENCES_ABSOLUES"], nom: "Références mixtes", categorie: "Bases", niveau: "intermediaire",
     description: "Figer seulement la ligne OU la colonne.",
     syntaxe: { formule: "$A1 = colonne fixe, A$1 = ligne fixe", arguments: [] },
     exemples: [
@@ -577,7 +577,7 @@ export const PEDAGOGIE = {
   },
 
   "SERIES": {
-    id: 52, nom: "Séries automatiques", categorie: "Bases", niveau: "debutant",
+    id: 52, prerequis: ["SAISIE"], nom: "Séries automatiques", categorie: "Bases", niveau: "debutant",
     description: "Générer des suites de nombres, dates, textes.",
     syntaxe: { formule: "Entrer 2 valeurs → Tirer la poignée", arguments: [] },
     exemples: [
@@ -586,7 +586,7 @@ export const PEDAGOGIE = {
   },
 
   "RECHERCHEV_APPROCHEE": {
-    id: 53, nom: "RECHERCHEV approchée", categorie: "Recherche", niveau: "intermediaire",
+    id: 53, prerequis: ["RECHERCHEV"], nom: "RECHERCHEV approchée", categorie: "Recherche", niveau: "intermediaire",
     description: "RECHERCHEV pour les tranches (barèmes, remises).",
     syntaxe: { formule: "=RECHERCHEV(valeur; table_TRIÉE; no_col; VRAI)", arguments: [] },
     erreursFrequentes: ["Table NON triée (obligatoire !)"],
@@ -594,32 +594,32 @@ export const PEDAGOGIE = {
   },
 
   "RECHERCHEH": {
-    id: 54, nom: "RECHERCHEH", categorie: "Recherche", niveau: "intermediaire",
+    id: 54, prerequis: ["RECHERCHEV"], nom: "RECHERCHEH", categorie: "Recherche", niveau: "intermediaire",
     description: "Comme RECHERCHEV mais horizontalement.",
     syntaxe: { formule: "=RECHERCHEH(valeur; table; no_ligne; FAUX)", arguments: [] },
     astuces: ["Pour tableaux avec mois en colonnes"]
   },
 
   "FONCTIONS_BD": {
-    id: 55, nom: "Fonctions BD", categorie: "Avancé", niveau: "avance",
+    id: 55, prerequis: ["SOMME_SI", "SOMME_SI_ENS"], nom: "Fonctions BD", categorie: "Avancé", niveau: "avance",
     description: "BDSOMME, BDNB, BDMOYENNE pour bases de données.",
     syntaxe: { formule: "=BDSOMME(base; champ; critères)", arguments: [] }
   },
 
   "REF_STRUCTUREES": {
-    id: 56, nom: "Références structurées", categorie: "Bases", niveau: "avance",
+    id: 56, prerequis: ["TABLEAUX_STRUCTURES"], nom: "Références structurées", categorie: "Bases", niveau: "avance",
     description: "Références dans les tableaux structurés.",
     syntaxe: { formule: "=Tableau1[@Colonne]", arguments: [] }
   },
 
   "FILTRES_AVANCES": {
-    id: 57, nom: "Filtres avancés", categorie: "Manipulation", niveau: "avance",
+    id: 57, prerequis: ["FILTRES"], nom: "Filtres avancés", categorie: "Manipulation", niveau: "avance",
     description: "Filtres avec critères complexes.",
     syntaxe: { formule: "Données → Avancé", arguments: [] }
   },
 
   "COLLAGE_SPECIAL": {
-    id: 58, nom: "Collage spécial", categorie: "Bases", niveau: "debutant",
+    id: 58, prerequis: ["COPIER_COLLER"], nom: "Collage spécial", categorie: "Bases", niveau: "debutant",
     description: "Coller uniquement valeurs, formats, ou formules.",
     syntaxe: { formule: "Ctrl+Alt+V", arguments: [] },
     exemples: [
@@ -679,6 +679,59 @@ export function getStats() {
       avance: all.filter(p => p.niveau === 'avance' && !p.inDevelopment).length,
       expert: all.filter(p => p.niveau === 'expert' && !p.inDevelopment).length
     }
+  };
+}
+
+// ═══════════════════════════════════════════════════════════════
+// HELPERS POUR LE SKILL TREE
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Obtient les prérequis d'une compétence (clés)
+ */
+export function getPrerequisites(key) {
+  const p = getPedagogie(key);
+  return p?.prerequis || [];
+}
+
+/**
+ * Obtient les compétences qu'une compétence débloque
+ */
+export function getUnlocks(key) {
+  const unlocks = [];
+  for (const [k, v] of Object.entries(PEDAGOGIE)) {
+    if (v.prerequis && v.prerequis.includes(key)) {
+      unlocks.push(k);
+    }
+  }
+  return unlocks;
+}
+
+/**
+ * Obtient toutes les compétences pour le skill tree
+ * Retourne un tableau trié par ID avec prerequis et unlocks
+ */
+export function getSkillTreeData() {
+  return Object.entries(PEDAGOGIE)
+    .map(([key, value]) => ({
+      key,
+      ...value,
+      prerequis: value.prerequis || [],
+      unlocks: getUnlocks(key)
+    }))
+    .sort((a, b) => a.id - b.id);
+}
+
+/**
+ * Obtient les compétences par niveau pour l'affichage en arbre
+ */
+export function getSkillsByLevel() {
+  const skills = getSkillTreeData();
+  return {
+    debutant: skills.filter(s => s.niveau === 'debutant'),
+    intermediaire: skills.filter(s => s.niveau === 'intermediaire'),
+    avance: skills.filter(s => s.niveau === 'avance'),
+    expert: skills.filter(s => s.niveau === 'expert')
   };
 }
 

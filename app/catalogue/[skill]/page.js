@@ -379,14 +379,14 @@ export default function SkillPage() {
             <div className="space-y-3">
               <button
                 onClick={() => setPhase('practice')}
-                className="w-full py-4 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200 hover:-translate-y-0.5"
+                className="w-full py-4 bg-[var(--accent-base)] text-white font-medium rounded-lg hover:bg-[var(--accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
               >
                 Passer à la pratique
               </button>
               
               <button
                 onClick={goToSocrateLearn}
-                className="w-full py-3 bg-white text-[var(--slate-700)] font-medium rounded-lg border border-[var(--slate-200)] hover:border-[var(--slate-300)] hover:bg-[var(--slate-50)] transition-all duration-200"
+                className="w-full py-3 bg-white text-[var(--slate-700)] font-medium rounded-lg border border-[var(--slate-200)] hover:border-[var(--accent-base)] hover:text-[var(--accent-base)] transition-all duration-200"
               >
                 Apprendre avec Socrate
               </button>
@@ -437,7 +437,7 @@ export default function SkillPage() {
                 </p>
                 <button
                   onClick={handleGenerateExercise}
-                  className="px-8 py-3.5 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200"
+                  className="px-8 py-3.5 bg-[var(--accent-base)] text-white font-medium rounded-lg hover:bg-[var(--accent-dark)] transition-all duration-200"
                 >
                   Générer un exercice
                 </button>
@@ -484,7 +484,7 @@ export default function SkillPage() {
                   
                   <button
                     onClick={handleDownload}
-                    className="w-full py-3 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200 flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-[var(--accent-base)] text-white font-medium rounded-lg hover:bg-[var(--accent-dark)] transition-all duration-200 flex items-center justify-center gap-2"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -591,7 +591,7 @@ export default function SkillPage() {
               
               <button
                 onClick={goToSocrateLearn}
-                className="flex-1 py-3 text-[var(--accent-dark)] hover:text-[var(--accent-base)] text-sm bg-[var(--accent-base)]/10 rounded-lg hover:bg-[var(--accent-base)]/15 transition-all duration-200 font-medium"
+                className="flex-1 py-3 text-[var(--accent-base)] hover:text-[var(--accent-dark)] text-sm bg-[var(--accent-base)]/10 rounded-lg hover:bg-[var(--accent-base)]/15 transition-all duration-200 font-medium"
               >
                 Passer à Socrate →
               </button>
@@ -652,14 +652,14 @@ export default function SkillPage() {
             <div className="space-y-3">
               <button
                 onClick={goToSocrateLearn}
-                className="w-full py-4 bg-[var(--slate-900)] text-white font-medium rounded-lg hover:bg-[var(--slate-800)] transition-all duration-200 hover:-translate-y-0.5"
+                className="w-full py-4 bg-[var(--accent-base)] text-white font-medium rounded-lg hover:bg-[var(--accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
               >
                 Continuer avec Socrate
               </button>
               
               <button
                 onClick={() => router.push('/catalogue')}
-                className="w-full py-3 bg-white text-[var(--slate-700)] font-medium rounded-lg border border-[var(--slate-200)] hover:border-[var(--slate-300)] hover:bg-[var(--slate-50)] transition-all duration-200"
+                className="w-full py-3 bg-white text-[var(--slate-700)] font-medium rounded-lg border border-[var(--slate-200)] hover:border-[var(--accent-base)] hover:text-[var(--accent-base)] transition-all duration-200"
               >
                 Retour au catalogue
               </button>
@@ -671,7 +671,7 @@ export default function SkillPage() {
                   setCorrectionResult(null);
                   setError(null);
                 }}
-                className="w-full py-3 text-[var(--slate-500)] hover:text-[var(--slate-700)] transition-colors"
+                className="w-full py-3 text-[var(--accent-base)] hover:text-[var(--accent-dark)] transition-colors"
               >
                 Refaire un exercice
               </button>

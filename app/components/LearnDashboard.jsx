@@ -223,20 +223,17 @@ export default function LearnDashboard() {
       <AppHeader />
 
       {/* Bannière de recommandation vers le catalogue */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="text-xl">✨</span>
-            <div>
-              <p className="font-medium text-sm">Nouveau : Catalogue des 58 compétences</p>
-              <p className="text-xs text-blue-100">Plus complet et mis à jour régulièrement</p>
-            </div>
+      <div className="bg-[var(--accent-base)]">
+        <div className="max-w-2xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-base">✨</span>
+            <p className="text-sm text-white/90">Catalogue : 58 compétences disponibles</p>
           </div>
           <button
             onClick={() => router.push('/catalogue')}
-            className="px-4 py-2 bg-white text-blue-700 font-semibold text-sm rounded-lg hover:bg-blue-50 transition-colors whitespace-nowrap"
+            className="px-3 py-1.5 bg-white/20 text-white text-sm font-medium rounded-md hover:bg-white/30 transition-colors whitespace-nowrap"
           >
-            Voir le catalogue →
+            Voir →
           </button>
         </div>
       </div>
@@ -452,7 +449,7 @@ export default function LearnDashboard() {
                                 {lesson.titre}
                               </p>
                               {lesson.requiresExcel && (
-                                <span className="px-1.5 py-0.5 bg-blue-100 text-blue-600 text-[10px] font-semibold rounded">
+                                <span className="px-1.5 py-0.5 bg-[var(--accent-base)]/10 text-[var(--accent-dark)] text-[10px] font-semibold rounded">
                                   Excel
                                 </span>
                               )}

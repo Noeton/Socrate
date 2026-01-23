@@ -789,20 +789,47 @@ export default function ChatInterface() {
           <div className="messages-container">
             {messages.length === 0 && (
               <div className="empty-state">
-                <div className="empty-icon">💡</div>
-                <h2>Bienvenue sur Socrate</h2>
-                <p>Ton tuteur Excel IA pour devenir un pro des tableurs</p>
+                <div className="empty-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h2>Que veux-tu apprendre ?</h2>
+                <p>Je suis là pour t'aider à maîtriser Excel</p>
                 <div className="quick-starts">
-                  <button onClick={() => handleSubmit("Je suis débutant en Excel")}>
-                    🎓 Je débute en Excel
+                  <button onClick={() => handleSubmit("Je suis débutant en Excel, par où commencer ?")}>
+                    <span className="qs-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                      </svg>
+                    </span>
+                    <span className="qs-text">Je débute en Excel</span>
                   </button>
-                  <button onClick={() => handleSubmit("Donne-moi un exercice adapté")}>
-                    🎯 Un exercice maintenant
+                  <button onClick={() => handleSubmit("Donne-moi un exercice adapté à mon niveau")}>
+                    <span className="qs-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                    </span>
+                    <span className="qs-text">Un exercice maintenant</span>
                   </button>
-                  <button onClick={() => handleSubmit("J'ai un problème avec une formule")}>
-                    🔧 Aide avec une formule
+                  <button onClick={() => handleSubmit("J'ai un problème avec une formule Excel")}>
+                    <span className="qs-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                      </svg>
+                    </span>
+                    <span className="qs-text">Aide avec une formule</span>
                   </button>
                 </div>
+                <a href="/skill-tree" className="tree-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                  </svg>
+                  Explorer l'arbre de compétences
+                </a>
               </div>
             )}
 
@@ -942,54 +969,100 @@ export default function ChatInterface() {
         }
 
         .empty-icon {
-          font-size: 4rem;
+          width: 72px;
+          height: 72px;
+          border-radius: 20px;
+          background: var(--accent-light, rgba(90, 124, 101, 0.12));
+          display: flex;
+          align-items: center;
+          justify-content: center;
           margin-bottom: 1.5rem;
-          animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
+          color: var(--accent-base, #5a7c65);
         }
 
         .empty-state h2 {
+          font-family: var(--font-display, 'Source Serif 4', Georgia, serif);
           font-size: 1.75rem;
           font-weight: 600;
-          color: #111827;
+          color: var(--slate-900, #0f172a);
           margin-bottom: 0.5rem;
         }
 
         .empty-state p {
           font-size: 1rem;
-          color: #6b7280;
+          color: var(--slate-500, #64748b);
           margin-bottom: 2rem;
         }
 
         .quick-starts {
           display: flex;
           flex-direction: column;
-          gap: 0.75rem;
+          gap: 0.625rem;
           width: 100%;
-          max-width: 400px;
+          max-width: 320px;
         }
 
         .quick-starts button {
-          padding: 0.875rem 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.875rem 1rem;
           background: white;
-          border: 1.5px solid #e5e7eb;
-          border-radius: 12px;
-          font-size: 0.95rem;
-          color: #374151;
+          border: 1.5px solid var(--slate-200, #e2e8f0);
+          border-radius: 10px;
+          font-size: 0.9rem;
+          color: var(--slate-700, #334155);
           cursor: pointer;
-          transition: all 0.2s;
+          transition: all 0.15s ease;
           text-align: left;
           font-weight: 500;
         }
 
         .quick-starts button:hover {
-          border-color: #3b82f6;
-          background: #eff6ff;
+          border-color: var(--accent-base, #5a7c65);
+          background: var(--accent-light, rgba(90, 124, 101, 0.08));
           transform: translateY(-1px);
+        }
+
+        .qs-icon {
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          background: var(--slate-100, #f1f5f9);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--slate-500, #64748b);
+          flex-shrink: 0;
+          transition: all 0.15s ease;
+        }
+
+        .quick-starts button:hover .qs-icon {
+          background: var(--accent-base, #5a7c65);
+          color: white;
+        }
+
+        .qs-text {
+          flex: 1;
+        }
+
+        .tree-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 2rem;
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: var(--accent-base, #5a7c65);
+          text-decoration: none;
+          border-radius: 6px;
+          transition: all 0.15s ease;
+        }
+
+        .tree-link:hover {
+          background: var(--accent-light, rgba(90, 124, 101, 0.1));
+          color: var(--accent-dark, #3d5a47);
         }
 
         .typing-indicator {
