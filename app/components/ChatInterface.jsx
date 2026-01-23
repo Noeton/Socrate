@@ -296,10 +296,10 @@ export default function ChatInterface() {
           timestamp: new Date()
         };
         
-        // Ajouter sandbox si présent
-        if (data.sandbox) {
-          assistantMessage.sandbox = data.sandbox;
-        }
+        // SANDBOX DÉSACTIVÉ
+        // if (data.sandbox) {
+        //   assistantMessage.sandbox = data.sandbox;
+        // }
         
         // Activer les boutons Excel si demandé
         if (data.showExerciseActions) {
@@ -410,12 +410,12 @@ export default function ChatInterface() {
         timestamp: new Date()
       };
       
-      // Ajouter les données sandbox si présentes
-      if (data.sandbox) {
-        assistantMessage.sandbox = data.sandbox;
-        console.log('🎮 [CHAT] Sandbox reçue:', data.sandbox.titre);
-        setShowExerciseActions(false); // Cacher les boutons Excel si sandbox
-      }
+      // SANDBOX DÉSACTIVÉ - Toujours utiliser les fichiers Excel
+      // if (data.sandbox) {
+      //   assistantMessage.sandbox = data.sandbox;
+      //   console.log('🎮 [CHAT] Sandbox reçue:', data.sandbox.titre);
+      //   setShowExerciseActions(false);
+      // }
       
       // Activer les boutons télécharger/upload si demandé par l'API
       if (data.showExerciseActions) {
@@ -424,9 +424,13 @@ export default function ChatInterface() {
       }
       
       // Vérifier si l'API suggère de lancer le générateur
+      console.log('🎮 [CHAT] triggerGenerator:', data.triggerGenerator, 'competence:', data.competence?.nom);
       if (data.triggerGenerator && data.competence) {
+        console.log('🚀 [CHAT] Lancement générateur pour:', data.competence.nom);
         setGeneratorCompetence(data.competence);
         setShowExerciseGenerator(true);
+      } else if (data.showExerciseActions && !data.triggerGenerator) {
+        console.log('⚠️ [CHAT] Boutons affichés mais générateur NON déclenché');
       }
       
       setMessages(prev => [...prev, assistantMessage]);
@@ -638,9 +642,10 @@ export default function ChatInterface() {
           timestamp: new Date()
         };
         
-        if (data.sandbox) {
-          assistantMessage.sandbox = data.sandbox;
-        }
+        // SANDBOX DÉSACTIVÉ
+        // if (data.sandbox) {
+        //   assistantMessage.sandbox = data.sandbox;
+        // }
         
         if (data.showExerciseActions) {
           setShowExerciseActions(true);
@@ -666,71 +671,37 @@ export default function ChatInterface() {
     }
   };
 
-  // Handler pour la complétion d'un exercice sandbox
+  // SANDBOX DÉSACTIVÉ - Handler pour la complétion d'un exercice sandbox
   const handleSandboxComplete = async (result) => {
-    console.log('🎮 [CHAT] Sandbox complétée:', result);
-    
-    // ENREGISTRER le résultat en BDD
-    try {
-      await fetch('/api/sandbox-result', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: sessionId,
-          exerciseId: result.exerciseId || `sandbox_${Date.now()}`,
-          competence: result.competence || userProfile?.competenceEnCours?.key,
-          competenceId: userProfile?.competenceEnCours?.id,
-          success: result.success,
-          formula: result.formula,
-          expectedFormula: result.expectedFormula,
-          hintsUsed: result.hintsUsed || 0,
-          attempts: result.attempts || 1
-        })
-      });
-      console.log('💾 [CHAT] Résultat sandbox enregistré');
-    } catch (e) {
-      console.warn('⚠️ [CHAT] Erreur enregistrement sandbox:', e.message);
-    }
-    
-    if (result.success) {
-      // Message de félicitations
-      const congratsMessage = `🎉 **Bravo !** Tu as réussi l'exercice sandbox !\n\nFormule utilisée : \`${result.formula}\`\nRésultat : **${result.result}**\n\nTu veux continuer avec un autre exercice ou approfondir cette notion ?`;
-      
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: congratsMessage,
-        timestamp: new Date()
-      }]);
-    }
+    console.log('⚠️ [CHAT] Sandbox désactivé, utiliser fichiers Excel');
+    // Tout le code sandbox est désactivé
+    return;
   };
 
   /**
-   * Handler quand un exercice est chargé via le bouton "Pratiquer dans la sandbox"
+   * SANDBOX DÉSACTIVÉ - Handler quand un exercice est chargé
+   * Redirige vers le téléchargement Excel
    */
   const handleExerciseLoaded = (exercise) => {
-    console.log('🎮 [CHAT] Exercice chargé:', exercise.id);
+    console.log('⚠️ [CHAT] Sandbox désactivé, activation boutons Excel');
     
-    // Transformer l'exercice en format sandbox pour l'afficher dans un message
-    const sandboxData = {
-      titre: exercise.titre,
-      data: exercise.donnees?.rows ? 
-        [exercise.donnees.headers, ...exercise.donnees.rows] : 
-        [],
-      editableCells: exercise.checkpoints?.map(cp => cp.cellule) || [],
-      instruction: exercise.consignes?.join('\n') || exercise.contexte || '',
-      expectedFormula: exercise.checkpoints?.[0]?.fonction || null,
-      expectedResult: exercise.checkpoints?.[0]?.resultat_attendu || null,
-      tolerance: exercise.checkpoints?.[0]?.tolerance || 0.01,
-      hints: exercise.checkpoints?.[0]?.indices || [],
-      readOnly: false
-    };
+    // Au lieu d'afficher une sandbox, activer les boutons Excel
+    setShowExerciseActions(true);
     
-    // Créer un message avec la sandbox
+    // Stocker l'exercice pour le téléchargement
+    if (exercise) {
+      localStorage.setItem('current-exercise-data', JSON.stringify({
+        id: exercise.id,
+        competence: exercise.competence,
+        titre: exercise.titre
+      }));
+    }
+    
+    // Message indiquant de télécharger
     const exerciseMessage = {
       role: 'assistant',
-      content: `## 📊 ${exercise.titre}\n\n${exercise.contexte || ''}\n\n${exercise.presentation_donnees || ''}\n\n**Consignes :**\n${exercise.consignes?.map((c, i) => `${i+1}. ${c}`).join('\n') || 'Complète l\'exercice ci-dessous.'}`,
-      timestamp: new Date(),
-      sandbox: sandboxData
+      content: `## 📊 ${exercise?.titre || 'Exercice'}\n\n${exercise?.contexte || ''}\n\n📥 **Télécharge le fichier Excel** ci-dessous, complète-le, puis uploade-le pour correction !`,
+      timestamp: new Date()
     };
     
     setMessages(prev => [...prev, exerciseMessage]);

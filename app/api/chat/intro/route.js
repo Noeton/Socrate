@@ -256,7 +256,7 @@ Ne mentionne PAS les détails techniques (checkpoints, masteryLevel, etc.). Sois
     const score = completion.score;
     const isCatalogue = completion.fromCatalogue;
     
-    // CORRECTION BUG 3: Fallbacks adaptés selon le contexte (catalogue vs leçon)
+    // Fallbacks adaptés - SANS "ci-dessous" ni "télécharge"
     if (isCatalogue && score !== undefined) {
       // Exercice du catalogue avec score
       if (score >= 8) {
@@ -273,19 +273,19 @@ Tu as compris l'essentiel. Veux-tu que je t'explique les points qui t'ont posé 
 Pas de souci, cette compétence demande de la pratique ! Je peux t'expliquer les concepts ou te proposer un exercice plus guidé.`;
       }
     } else {
-      // Leçon interactive (comportement original)
+      // Leçon interactive
       if (performance.level === 'excellent') {
         return `🎯 ${greeting}Impressionnant ! Tu as maîtrisé **${competenceName}** sans difficulté.
 
-Je te propose un exercice Excel pour consolider tout ça. Télécharge-le, complète-le dans Excel, puis uploade-le pour que je le corrige !`;
+Je te prépare un exercice Excel pour consolider tout ça.`;
       } else if (performance.level === 'struggling') {
         return `👍 ${greeting}Bien joué d'avoir terminé la leçon sur **${competenceName}** !
 
-Je sens que certains points méritent d'être approfondis. Pas de souci, on va reprendre ça ensemble avec un exercice pratique. Télécharge le fichier Excel ci-dessous !`;
+Je sens que certains points méritent d'être approfondis. Je te prépare un exercice pratique adapté.`;
       } else {
         return `✨ ${greeting}Bravo pour **${lessonTitle}** !
 
-Tu as bien compris le principe. Maintenant, passons à la pratique avec un exercice Excel concret. Télécharge-le, travaille dessus, puis uploade-le pour correction !`;
+Tu as bien compris le principe. Je te prépare un exercice pour passer à la pratique.`;
       }
     }
   }

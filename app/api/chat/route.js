@@ -9,6 +9,62 @@ import logger from '@/lib/logger';
 import { PEDAGOGIE } from '@/shared/data/pedagogie';
 
 /**
+ * Détecte si l'utilisateur demande explicitement une compétence
+ * @param {string} message - Message de l'utilisateur
+ * @returns {Object|null} - Compétence trouvée ou null
+ */
+function detectRequestedCompetence(message) {
+  const messageLower = message.toLowerCase();
+  
+  // Mapping mots-clés → clé PEDAGOGIE (ordre de priorité : du plus spécifique au plus général)
+  const competencePatterns = [
+    // Très spécifiques
+    { patterns: ['power query', 'powerquery'], key: 'POWER_QUERY' },
+    { patterns: ['tableau croisé dynamique', 'tableaux croisés dynamiques', 'tcd'], key: 'TCD' },
+    { patterns: ['index equiv', 'index+equiv', 'index et equiv'], key: 'INDEX_EQUIV' },
+    { patterns: ['somme.si.ens', 'sommesidens'], key: 'SOMME_SI_ENS' },
+    { patterns: ['nb.si.ens', 'nbsiens'], key: 'NB_SI_ENS' },
+    { patterns: ['somme.si', 'sommesi', 'somme si'], key: 'SOMME_SI' },
+    { patterns: ['nb.si', 'nbsi', 'nb si'], key: 'NB_SI' },
+    { patterns: ['mise en forme conditionnelle', 'mfc', 'formatage conditionnel'], key: 'MFC' },
+    { patterns: ['recherchex', 'xlookup'], key: 'RECHERCHEX' },
+    { patterns: ['recherchev', 'vlookup'], key: 'RECHERCHEV' },
+    { patterns: ['rechercheh', 'hlookup'], key: 'RECHERCHEH' },
+    { patterns: ['si imbriqué', 'si imbriqués', 'si dans si'], key: 'SI_IMBRIQUE' },
+    { patterns: ['sierreur', 'si.erreur', 'iferror'], key: 'SIERREUR' },
+    { patterns: ['sommeprod'], key: 'SOMMEPROD' },
+    { patterns: ['validation de données', 'validation données', 'liste déroulante'], key: 'VALIDATION_DONNEES' },
+    // Moyennement spécifiques  
+    { patterns: ['graphique', 'graphiques', 'chart', 'diagramme'], key: 'GRAPHIQUES' },
+    { patterns: ['filtre', 'filtrer', 'filtres'], key: 'FILTRES' },
+    { patterns: ['trier', 'tri ', 'tri de données'], key: 'TRI' },
+    { patterns: ['moyenne'], key: 'MOYENNE' },
+    { patterns: ['somme', 'additionner', 'total'], key: 'SOMME' },
+    { patterns: ['min', 'max', 'minimum', 'maximum'], key: 'MIN_MAX' },
+    { patterns: ['concatener', 'concaténer', 'concat'], key: 'CONCATENER' },
+    { patterns: ['gauche', 'droite', 'stxt', 'extraire texte'], key: 'TEXTE' },
+    { patterns: ['date', 'datedif', 'jour', 'mois', 'année'], key: 'DATES' },
+    // Génériques (en dernier)
+    { patterns: ['fonction si', 'formule si', 'condition'], key: 'SI' },
+    { patterns: ['formatage', 'format', 'mise en forme'], key: 'FORMATAGE' },
+    { patterns: ['référence absolue', 'dollar', '$'], key: 'REFERENCES_ABSOLUES' },
+  ];
+  
+  // Chercher dans l'ordre (le premier match gagne)
+  for (const { patterns, key } of competencePatterns) {
+    if (patterns.some(p => messageLower.includes(p))) {
+      const competence = findCompetenceByName(key);
+      if (competence) {
+        console.log('🎯 [DETECT] Compétence demandée explicitement:', key);
+        return competence;
+      }
+    }
+  }
+  
+  return null;
+}
+
+/**
  * Trouve une compétence complète depuis un nom
  * @param {string} nom - Nom de la compétence (ex: "SOMME", "RECHERCHEV")
  * @returns {Object|null} - { id, nom, key } ou null
@@ -29,6 +85,12 @@ function findCompetenceByName(nom) {
     if (data.nom && data.nom.toUpperCase().includes(nomUpper)) {
       return { id: data.id, nom: data.nom, key };
     }
+  }
+  
+  // Fallback: chercher par clé directe
+  if (PEDAGOGIE[nomUpper]) {
+    const data = PEDAGOGIE[nomUpper];
+    return { id: data.id, nom: data.nom, key: nomUpper };
   }
   
   return null;
@@ -333,18 +395,54 @@ export async function POST(request) {
     let exerciseSelection = null;
     let recommendedCompetence = null;
     
+    // PRIORITÉ 1 : Compétence explicitement demandée par l'utilisateur MAINTENANT
+    const explicitCompetence = detectRequestedCompetence(message);
+    if (explicitCompetence) {
+      recommendedCompetence = explicitCompetence;
+      console.log('🎯 [CHAT] Compétence EXPLICITE détectée:', explicitCompetence.nom);
+      
+      // Stocker dans le profil pour mémoire
+      userProfile.competenceExplicite = explicitCompetence;
+      await saveUserProfile(sessionId, userProfile);
+    }
+    
+    // PRIORITÉ 2 : Compétence stockée dans le profil (demandée précédemment)
+    if (!recommendedCompetence && userProfile.competenceExplicite) {
+      recommendedCompetence = userProfile.competenceExplicite;
+      console.log('🎯 [CHAT] Compétence depuis MÉMOIRE profil:', recommendedCompetence.nom);
+    }
+    
+    // PRIORITÉ 3 : Chercher dans l'historique récent de la conversation
+    if (!recommendedCompetence && history && history.length > 0) {
+      // Parcourir les 5 derniers messages (utilisateur + assistant)
+      const recentMessages = history.slice(-10);
+      for (const msg of recentMessages) {
+        if (msg.content) {
+          const historyCompetence = detectRequestedCompetence(msg.content);
+          if (historyCompetence) {
+            recommendedCompetence = historyCompetence;
+            console.log('🎯 [CHAT] Compétence depuis HISTORIQUE:', historyCompetence.nom);
+            break;
+          }
+        }
+      }
+    }
+    
     // Si demande d'exercice, ajouter contexte pour Claude ET préparer le générateur
     if (isExerciseRequest) {
-      // Obtenir les recommandations de l'AdaptiveEngine
-      exerciseSelection = await AdaptiveEngine.selectNextExercise(userProfile);
-      
-      // Trouver la première compétence recommandée avec ses infos complètes
-      if (exerciseSelection.competencesToWork?.length > 0) {
-        recommendedCompetence = findCompetenceByName(exerciseSelection.competencesToWork[0]);
-        console.log('🎯 [CHAT] Compétence recommandée:', recommendedCompetence);
+      // PRIORITÉ 4 : Si toujours pas de compétence, utiliser l'AdaptiveEngine
+      if (!recommendedCompetence) {
+        // Obtenir les recommandations de l'AdaptiveEngine
+        exerciseSelection = await AdaptiveEngine.selectNextExercise(userProfile);
+        
+        // Trouver la première compétence recommandée avec ses infos complètes
+        if (exerciseSelection.competencesToWork?.length > 0) {
+          recommendedCompetence = findCompetenceByName(exerciseSelection.competencesToWork[0]);
+          console.log('🎯 [CHAT] Compétence recommandée par AdaptiveEngine:', recommendedCompetence);
+        }
       }
       
-      // Fallback intelligent si pas de compétence trouvée
+      // PRIORITÉ 5 : Fallback intelligent si toujours pas de compétence
       if (!recommendedCompetence) {
         const userLevel = userProfile?.niveau || 'debutant';
         // Intermédiaire/avancé → SOMME.SI, Débutant → SI (plus formateur que SOMME)
@@ -359,14 +457,15 @@ export async function POST(request) {
 DEMANDE D'EXERCICE DÉTECTÉE
 ═══════════════════════════════════════════════════════════════
 L'utilisateur veut pratiquer. Voici les recommandations :
-- Type d'exercice suggéré : ${exerciseSelection.exerciseType || 'standard'}
+- Type d'exercice suggéré : ${exerciseSelection?.exerciseType || 'standard'}
 - Compétence principale : ${recommendedCompetence?.nom || 'au choix'}
-- Topics : ${exerciseSelection.topics?.join(', ') || 'au choix'}
+- Topics : ${exerciseSelection?.topics?.join(', ') || 'au choix'}
 
 IMPORTANT :
 - Dis quelque chose de COURT et ENGAGEANT (1-2 phrases max)
 - Le générateur d'exercice va s'afficher automatiquement
 - NE décris PAS l'exercice en détail, le générateur s'en charge
+- NE DIS JAMAIS "ci-dessous" ou "télécharge ci-dessous"
 ═══════════════════════════════════════════════════════════════`;
     }
 
@@ -380,7 +479,7 @@ IMPORTANT :
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1024,
+        max_tokens: 512, // Réduit de 1024 pour forcer la concision
         messages: [
           ...history.filter(msg => msg.content).map(msg => ({
             role: msg.role === 'assistant' ? 'assistant' : 'user',
@@ -487,13 +586,26 @@ IMPORTANT :
     });
     await saveUserProfile(sessionId, userProfile);
 
-    // Retourner la réponse avec les boutons d'exercice si demande d'exercice
-    // ET déclencher le générateur V2 si on a une compétence recommandée
+    // GARANTIE : Si on doit montrer les boutons exercice, on DOIT avoir une compétence
+    if (shouldShowExerciseActions && !recommendedCompetence) {
+      // Fallback ultime - ne devrait jamais arriver avec les nouvelles priorités
+      recommendedCompetence = findCompetenceByName('SI');
+      console.log('⚠️ [CHAT] Fallback ultime → SI');
+    }
+
+    // Log pour debug
+    console.log('📤 [CHAT] Réponse:', {
+      showExerciseActions: shouldShowExerciseActions,
+      triggerGenerator: shouldShowExerciseActions && recommendedCompetence !== null,
+      competence: recommendedCompetence?.nom || null
+    });
+
+    // Retourner la réponse
     return NextResponse.json({ 
       response: responseText,
       profile: userProfile.getProfile(),
       showExerciseActions: shouldShowExerciseActions,
-      // NOUVEAU: déclencher le générateur V2 automatiquement
+      // Déclencher le générateur si on montre les boutons ET qu'on a une compétence
       triggerGenerator: shouldShowExerciseActions && recommendedCompetence !== null,
       competence: recommendedCompetence
     });

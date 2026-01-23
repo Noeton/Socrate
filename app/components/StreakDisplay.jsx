@@ -63,13 +63,18 @@ export default function StreakDisplay({ userId }) {
 
   const intensity = getFlameIntensity();
 
-    // Version compacte si streak = 0
+    // CACHER COMPLÈTEMENT si streak = 0 (pas de "Commence ta série !")
     if (streak.current_streak === 0) {
+      return null;
+    }
+
+    // Version compacte pour petits streaks (1-2)
+    if (streak.current_streak < 3) {
         return (
           <div className="streak-container-compact">
             <div className="streak-flame-small">🔥</div>
             <div className="streak-text-compact">
-              Commence ta série !
+              {streak.current_streak} jour{streak.current_streak > 1 ? 's' : ''}
             </div>
     
             <style jsx>{`
