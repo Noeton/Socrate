@@ -130,56 +130,86 @@ export function detectAndUpdateProfile(userMessage, userProfile) {
   let updated = false;
   const messageLower = userMessage.toLowerCase();
 
-  // DÉTECTION DU NIVEAU
+  // DÉTECTION DU NIVEAU EXPLICITE
   const keywordsDebutant = [
     'débutant', 'debutant', 'jamais utilisé', 'jamais ouvert',
     'première fois', 'je ne connais pas', 'je débute',
-    'je commence', 'novice', 'aucune expérience'
+    'je commence', 'novice', 'aucune expérience', 'je ne sais pas'
   ];
 
   const keywordsIntermediaire = [
     'intermédiaire', 'quelques formules', 'je connais somme',
     'je connais moyenne', 'bases', 'j\'utilise régulièrement',
-    'niveau moyen', 'pas expert', 'à l\'aise' 
+    'niveau moyen', 'pas expert', 'à l\'aise', 'je me débrouille',
+    'je délègue', 'tous les jours', 'régulièrement'
   ];
 
   const keywordsAvance = [
     'avancé', 'avance', 'expert', 'recherchev', 'tcd',
     'tableau croisé', 'vba', 'macro', 'power query',
-    'power pivot', 'je maîtrise'
+    'power pivot', 'je maîtrise', 'je connais bien'
   ];
 
+  // NOUVEAUTÉ : Postes qui impliquent un niveau minimum
+  const postesAvances = [
+    'ceo', 'cfo', 'coo', 'cto', 'directeur', 'directrice', 
+    'daf', 'dg', 'président', 'fondateur', 'founder',
+    'partner', 'associé', 'consultant senior', 'manager',
+    'head of', 'chief', 'vp', 'vice president'
+  ];
+  
+  const postesIntermediaires = [
+    'analyste', 'analyst', 'commercial', 'chef de projet',
+    'responsable', 'coordinateur', 'chargé', 'assistant',
+    'contrôleur', 'comptable', 'auditeur', 'consultant'
+  ];
+
+  // Détection niveau explicite (prioritaire)
   if (keywordsDebutant.some(keyword => messageLower.includes(keyword))) {
     if (userProfile.niveau !== 'debutant') {
       userProfile.setNiveau('debutant');
-      console.log('🔍 [PROFILE DETECTOR] Niveau: DÉBUTANT');
-      updated = true;
-    }
-  }
-  else if (keywordsIntermediaire.some(keyword => messageLower.includes(keyword))) {
-    if (userProfile.niveau !== 'intermediaire') {
-      userProfile.setNiveau('intermediaire');
-      console.log('🔍 [PROFILE DETECTOR] Niveau: INTERMÉDIAIRE');
+      console.log('🔍 [PROFILE DETECTOR] Niveau explicite: DÉBUTANT');
       updated = true;
     }
   }
   else if (keywordsAvance.some(keyword => messageLower.includes(keyword))) {
     if (userProfile.niveau !== 'avance') {
       userProfile.setNiveau('avance');
-      console.log('🔍 [PROFILE DETECTOR] Niveau: AVANCÉ');
+      console.log('🔍 [PROFILE DETECTOR] Niveau explicite: AVANCÉ');
+      updated = true;
+    }
+  }
+  else if (keywordsIntermediaire.some(keyword => messageLower.includes(keyword))) {
+    if (userProfile.niveau !== 'intermediaire') {
+      userProfile.setNiveau('intermediaire');
+      console.log('🔍 [PROFILE DETECTOR] Niveau explicite: INTERMÉDIAIRE');
+      updated = true;
+    }
+  }
+  // NOUVEAUTÉ : Inférence depuis le poste (si pas de niveau explicite)
+  else if (!userProfile.niveau) {
+    if (postesAvances.some(poste => messageLower.includes(poste))) {
+      userProfile.setNiveau('avance');
+      console.log('🔍 [PROFILE DETECTOR] Niveau inféré du poste: AVANCÉ');
+      updated = true;
+    }
+    else if (postesIntermediaires.some(poste => messageLower.includes(poste))) {
+      userProfile.setNiveau('intermediaire');
+      console.log('🔍 [PROFILE DETECTOR] Niveau inféré du poste: INTERMÉDIAIRE');
       updated = true;
     }
   }
 
   // DÉTECTION DU MÉTIER
   const metiers = {
-    'finance': ['analyste financier', 'm&a', 'private equity', 'controleur de gestion', 'controleur', 'auditeur', 'trader'],
+    'finance': ['analyste financier', 'm&a', 'private equity', 'controleur de gestion', 'controleur', 'auditeur', 'trader', 'daf', 'cfo', 'finance'],
     'comptabilité': ['comptable', 'compta', 'comptabilité'],
-    'vente': ['vente', 'commercial', 'business', 'sales'],
-    'rh': ['rh', 'ressources humaines', 'recrutement', 'paie'],
+    'vente': ['vente', 'commercial', 'business', 'sales', 'account manager'],
+    'rh': ['rh', 'ressources humaines', 'recrutement', 'paie', 'drh'],
     'logistique': ['logistique', 'supply chain', 'stock', 'approvisionnement'],
     'marketing': ['marketing', 'communication', 'publicité', 'digital', 'growth'],
-    'data': ['data', 'analyse', 'statistiques', 'reporting']
+    'data': ['data', 'analyse', 'statistiques', 'reporting', 'bi', 'business intelligence'],
+    'direction': ['ceo', 'coo', 'cfo', 'directeur', 'dg', 'président', 'fondateur', 'founder', 'gérant']
   };
 
   for (const [metier, keywords] of Object.entries(metiers)) {
