@@ -344,10 +344,13 @@ export async function POST(request) {
         console.log('🎯 [CHAT] Compétence recommandée:', recommendedCompetence);
       }
       
-      // Fallback si pas de compétence trouvée → SOMME pour débutants
+      // Fallback intelligent si pas de compétence trouvée
       if (!recommendedCompetence) {
-        recommendedCompetence = findCompetenceByName('SOMME');
-        console.log('🎯 [CHAT] Fallback compétence:', recommendedCompetence);
+        const userLevel = userProfile?.niveau || 'debutant';
+        // Intermédiaire/avancé → SOMME.SI, Débutant → SI (plus formateur que SOMME)
+        const fallbackComp = userLevel === 'debutant' ? 'SI' : 'SOMME_SI';
+        recommendedCompetence = findCompetenceByName(fallbackComp);
+        console.log('🎯 [CHAT] Fallback compétence niveau', userLevel, '→', fallbackComp);
       }
       
       systemPrompt += `
@@ -404,6 +407,77 @@ IMPORTANT :
     }
     
     const responseText = data.content[0].text;
+    const responseLower = responseText.toLowerCase();
+
+    // Détecter si la réponse propose un exercice à télécharger
+    const responseProposesExercise = [
+      "télécharge", "telecharge", "fichier excel", "📥", "télécharger", 
+      "exercice excel", "fichier ci-dessous", "complète-le", "complète le"
+    ].some(kw => responseLower.includes(kw));
+    
+    // Activer les boutons si demande utilisateur OU réponse propose un exercice
+    const shouldShowExerciseActions = isExerciseRequest || responseProposesExercise;
+    
+    if (responseProposesExercise && !isExerciseRequest) {
+      console.log('📥 [CHAT] Réponse propose un exercice, activation boutons');
+    }
+
+    // Si la réponse propose un exercice mais qu'on n'a pas de compétence, essayer de la détecter
+    if (shouldShowExerciseActions && !recommendedCompetence) {
+      // Mapping mots-clés → compétence
+      const competenceKeywords = {
+        'tcd': 'TCD', 'tableau croisé': 'TCD', 'tableaux croisés': 'TCD', 'pivot': 'TCD',
+        'recherchev': 'RECHERCHEV', 'vlookup': 'RECHERCHEV',
+        'recherchex': 'XLOOKUP', 'xlookup': 'XLOOKUP',
+        'somme.si': 'SOMME_SI', 'somme si': 'SOMME_SI', 'sommesi': 'SOMME_SI',
+        'nb.si': 'NB_SI', 'nbsi': 'NB_SI', 'nb si': 'NB_SI',
+        'index': 'INDEX_EQUIV', 'equiv': 'INDEX_EQUIV',
+        'graphique': 'GRAPHIQUES', 'graphiques': 'GRAPHIQUES', 'chart': 'GRAPHIQUES',
+        'si(': 'SI', 'condition': 'SI', 'conditionnel': 'SI',
+        'moyenne': 'MOYENNE', 'average': 'MOYENNE',
+        'filtre': 'FILTRES', 'filtrer': 'FILTRES',
+        'tri': 'TRI', 'trier': 'TRI', 'sort': 'TRI',
+        'format': 'FORMATAGE', 'mise en forme': 'MFC',
+        'power query': 'POWER_QUERY', 'powerquery': 'POWER_QUERY'
+      };
+      
+      for (const [keyword, compKey] of Object.entries(competenceKeywords)) {
+        if (responseLower.includes(keyword)) {
+          recommendedCompetence = findCompetenceByName(compKey);
+          if (recommendedCompetence) {
+            console.log('🎯 [CHAT] Compétence détectée dans réponse:', compKey);
+            break;
+          }
+        }
+      }
+      
+      // Fallback intelligent basé sur le contexte
+      if (!recommendedCompetence) {
+        const userLevel = userProfile?.niveau || 'debutant';
+        const context = responseLower + ' ' + messageLower;
+        
+        // Contexte analyse/business → TCD
+        if (['analy', 'données', 'ventes', 'performance', 'rapport', 'dashboard', 'kpi', 'reporting'].some(kw => context.includes(kw))) {
+          recommendedCompetence = findCompetenceByName('TCD');
+          console.log('🎯 [CHAT] Fallback contexte analyse → TCD');
+        }
+        // Contexte recherche/base de données → RECHERCHEV
+        else if (['cherch', 'trouver', 'retrouver', 'base', 'liste', 'client', 'produit', 'référence'].some(kw => context.includes(kw))) {
+          recommendedCompetence = findCompetenceByName('RECHERCHEV');
+          console.log('🎯 [CHAT] Fallback contexte recherche → RECHERCHEV');
+        }
+        // Niveau intermédiaire/avancé sans contexte → SOMME.SI (plus utile)
+        else if (userLevel !== 'debutant') {
+          recommendedCompetence = findCompetenceByName('SOMME_SI');
+          console.log('🎯 [CHAT] Fallback niveau', userLevel, '→ SOMME_SI');
+        }
+        // Débutant → SI (plus formateur que SOMME)
+        else {
+          recommendedCompetence = findCompetenceByName('SI');
+          console.log('🎯 [CHAT] Fallback débutant → SI');
+        }
+      }
+    }
 
     // Ajout de l'interaction à l'historique
     userProfile.addToHistory({
@@ -418,9 +492,9 @@ IMPORTANT :
     return NextResponse.json({ 
       response: responseText,
       profile: userProfile.getProfile(),
-      showExerciseActions: isExerciseRequest,
+      showExerciseActions: shouldShowExerciseActions,
       // NOUVEAU: déclencher le générateur V2 automatiquement
-      triggerGenerator: isExerciseRequest && recommendedCompetence !== null,
+      triggerGenerator: shouldShowExerciseActions && recommendedCompetence !== null,
       competence: recommendedCompetence
     });
     
