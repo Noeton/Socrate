@@ -243,7 +243,7 @@ IMPORTANT :
 
 export async function POST(request) {
   try {
-    const { message, history, sessionId, isSystemMessage, onboardingProfile } = await request.json();
+    const { message, history, sessionId, isSystemMessage, onboardingProfile, competenceEnCours } = await request.json();
     
     // Rate limiting
     const rateLimit = await checkRateLimit(sessionId || 'anonymous', '/api/chat');
@@ -289,7 +289,7 @@ export async function POST(request) {
     console.log('🔍 [DEBUG] isExerciseRequest:', isExerciseRequest);
 
     // Construction du prompt système
-    let systemPrompt = selectPrompt(userProfile, message);
+    let systemPrompt = selectPrompt(userProfile, message, competenceEnCours);
     systemPrompt = enrichWithMetier(systemPrompt, userProfile.contexteMetier);
 
     // CORRECTION BUG 2: Ajouter le contexte onboarding (nom, métier, niveau)

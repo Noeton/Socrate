@@ -13,7 +13,7 @@ import EXERCISEUR_PROMPT from '../prompts/exerciseur.js';
 import DEBUGGER_PROMPT from '../prompts/debugger.js';
 import { COMPETENCES_INJECTION } from '../prompts/competences-injection.js';
 
-export function selectPrompt(userProfile, userMessage = '') {
+export function selectPrompt(userProfile, userMessage = '', competenceEnCours = null) {
   
   // CAS 0A : DEMANDE DE DEBUG
   const debugKeywords = ['bug', 'marche pas', 'fonctionne pas', 'erreur', 'problème', 'ne marche pas'];
@@ -50,6 +50,33 @@ export function selectPrompt(userProfile, userMessage = '') {
     // Note: EXERCISEUR_PROMPT contient déjà la liste des compétences
     
     return exercisePrompt;
+  }
+  
+  // CAS 0C : CONTEXTE COMPÉTENCE SANS NIVEAU CONNU
+  // → L'utilisateur arrive sur une page de compétence et pose une question
+  // → On répond directement au lieu de faire un diagnostic
+  if (!userProfile.niveau && competenceEnCours) {
+    console.log('🎯 [PROMPT SELECTOR] → PÉDAGOGUE CONTEXTUEL (bypass diagnostic)');
+    
+    // Utiliser le prompt intermédiaire par défaut (le plus polyvalent)
+    let contextualPrompt = PEDAGOGUE_INTERMEDIAIRE;
+    contextualPrompt = contextualPrompt.replace(/{contexteMetier}/g, userProfile.contexteMetier || 'contexte général');
+    
+    // Ajouter le contexte de compétence
+    contextualPrompt += `
+
+═══════════════════════════════════════════════════════════════
+CONTEXTE : L'utilisateur apprend "${competenceEnCours.nom}"
+═══════════════════════════════════════════════════════════════
+- Compétence en cours : ${competenceEnCours.nom} (ID: ${competenceEnCours.id})
+- L'utilisateur a posé une question ou demandé une explication
+- RÉPONDS D'ABORD À SA QUESTION de manière claire et pédagogique
+- Tu peux ensuite proposer un exercice ou demander s'il veut approfondir
+- NE FAIS PAS de diagnostic (niveau/métier) - tu pourras l'inférer au fil de la conversation
+═══════════════════════════════════════════════════════════════`;
+
+    contextualPrompt += COMPETENCES_INJECTION;
+    return contextualPrompt;
   }
   
   // CAS 1 : DIAGNOSTIC NÉCESSAIRE
